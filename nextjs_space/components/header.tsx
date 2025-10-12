@@ -12,6 +12,7 @@ export default function Header() {
   const navigation = [
     { name: "Home", href: "/" },
     { name: "AI Workforce", href: "/ai-workforce" },
+    { name: "Process Intelligence", href: "/process-intelligence" },
     { name: "Services", href: "/#services" },
     { name: "About", href: "/#founder" },
   ];
