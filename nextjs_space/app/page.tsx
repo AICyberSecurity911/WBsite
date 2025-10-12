@@ -196,23 +196,63 @@ export default function EnterpriseLandingPage() {
         </div>
       </section>
 
+      {/* GUARANTEES */}
+      <section className="bg-gradient-to-br from-amber-50 to-orange-50 py-20 border-t border-amber-100">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-semibold mb-10 text-gray-900">Our Guarantees</h2>
+          <div className="grid md:grid-cols-3 gap-8 text-left">
+            <div className="p-6 bg-white rounded-xl shadow-md border border-amber-200">
+              <h3 className="font-semibold mb-2 text-lg text-gray-900">AI Workforce Guarantee</h3>
+              <p className="text-gray-700">
+                A 20% productivity increase within 90 days or we refund your
+                implementation cost.
+              </p>
+            </div>
+            <div className="p-6 bg-white rounded-xl shadow-md border border-amber-200">
+              <h3 className="font-semibold mb-2 text-lg text-gray-900">
+                Beyond Background Checks™ Guarantee
+              </h3>
+              <p className="text-gray-700">
+                If our investigation doesn&apos;t reveal material, verifiable
+                intelligence that would have changed your decision, we refund
+                your fee.
+              </p>
+              <p className="text-sm text-gray-500 mt-2">
+                *Material = undisclosed litigation, verified dark-web exposure,
+                or evidence of professional misconduct.*
+              </p>
+            </div>
+            <div className="p-6 bg-white rounded-xl shadow-md border border-amber-200">
+              <h3 className="font-semibold mb-2 text-lg text-gray-900">
+                Cyber Intelligence Challenge
+              </h3>
+              <p className="text-gray-700">
+                Our offensive assessment will find at least one
+                high-severity vulnerability missed by previous tests—or your
+                initial assessment is free.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FOUNDER PROFILE */}
       <section className="py-20 bg-gradient-to-br from-gray-900 to-black text-white border-t border-gray-800">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <img
-            src="https://media.licdn.com/dms/image/v2/D4D03AQFuLuWTNi4Nxg/profile-displayphoto-shrink_400_400/B4DZT2GPQmHYAg-/0/1739295619092?e=2147483647&v=beta&t=KIFkVkXLDX3z6sR09BNWSxyY1ZAsGn6zBqq-b96_SPI"
+            src="/images/founder-paras-khurana.jpg"
             alt="Paras Khurana Founder QuantumLeap AI"
             className="mx-auto rounded-full w-32 h-32 object-cover mb-6 shadow-xl border-4 border-yellow-500"
           />
           <h2 className="text-3xl font-semibold mb-4">
-            Built by Someone Who's Been in Your Shoes—and in the Boardroom
+            Built by Someone Who&apos;s Been in Your Shoes—and in the Boardroom
           </h2>
           <blockquote className="italic text-gray-300 mb-4 text-lg">
-            "I've spent 20 years building systems for Fortune 500s—and I've also
+            &quot;I&apos;ve spent 20 years building systems for Fortune 500s—and I&apos;ve also
             been the exhausted entrepreneur doing payroll at midnight.  
             I founded QuantumLeap AI to bridge that gap: bringing enterprise-grade
             intelligence to leaders who need freedom, clarity, and a team that
-            never quits."
+            never quits.&quot;
           </blockquote>
           <p className="font-semibold text-yellow-400 text-lg">— Paras Khurana, Founder & CEO</p>
           <p className="text-sm text-gray-400 mt-2">
@@ -238,6 +278,72 @@ export default function EnterpriseLandingPage() {
             secondaryLabel="Download Executive Transformation Brief"
             secondaryHref="/download-brief"
           />
+        </div>
+      </section>
+
+      {/* FAQ (VOICE-SEARCH OPTIMIZED) */}
+      <section className="bg-gradient-to-br from-gray-50 to-amber-50 py-16 text-left">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="text-3xl font-semibold mb-8 text-center text-gray-900">
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-6 text-gray-700">
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-amber-100">
+              <h3 className="font-semibold text-lg mb-2 text-gray-900">
+                What is an Executive Briefing with QuantumLeap AI?
+              </h3>
+              <p>
+                A 30-minute confidential session with our strategists to map
+                high-impact opportunities and a 90-day action plan. No sales pitch.
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-amber-100">
+              <h3 className="font-semibold text-lg mb-2 text-gray-900">
+                How long does the Enterprise Readiness Assessment take?
+              </h3>
+              <p>
+                About 90 seconds. You get an instant score, dollar value at risk,
+                and two clear next steps.
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-amber-100">
+              <h3 className="font-semibold text-lg mb-2 text-gray-900">
+                What do I get in the Executive Transformation Brief?
+              </h3>
+              <p>
+                A board-ready blueprint with quick wins, a 90-day pilot, and ROI map
+                you can act on immediately.
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-amber-100">
+              <h3 className="font-semibold text-lg mb-2 text-gray-900">
+                Is the brief customized to my company?
+              </h3>
+              <p>
+                The brief is a standardized, high-value framework. Custom strategies
+                are developed during the Executive Briefing.
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-amber-100">
+              <h3 className="font-semibold text-lg mb-2 text-gray-900">
+                How is Beyond Background Checks™ different from standard checks?
+              </h3>
+              <p>
+                Standard checks confirm records; Beyond Background Checks™ performs
+                intelligence-grade analysis of digital footprints, dark-web exposure,
+                and hidden associations.
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-amber-100">
+              <h3 className="font-semibold text-lg mb-2 text-gray-900">
+                What security guarantees do you offer?
+              </h3>
+              <p>
+                Our NASA-recognized offensive assessment guarantees at least one
+                high/critical finding—or the assessment is free.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
     </main>
