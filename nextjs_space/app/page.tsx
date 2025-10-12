@@ -1,0 +1,245 @@
+
+import React from "react";
+import HeroSection from "@/components/hero-section";
+import TrustBar from "@/components/trust-bar";
+import ReadinessCalculator from "@/components/readiness-calculator";
+import TestimonialCarousel from "@/components/testimonial-carousel";
+import { HeroCTA } from "@/components/hero-cta";
+
+export default function EnterpriseLandingPage() {
+  return (
+    <main className="font-sans text-gray-800">
+      {/* HERO */}
+      <HeroSection
+        headline="Your complexity is costing you momentum."
+        subheadline="QuantumLeap AI helps large organizations move with startup velocity—without losing enterprise discipline."
+        primaryCta={{ label: "Book Executive Briefing", href: "/schedule" }}
+        secondaryCta={{
+          label: "Download Free: Executive Transformation Brief",
+          href: "#gated-offer",
+        }}
+        stats={[
+          { value: "$170M+", label: "Enterprise Value Delivered" },
+          { value: "75+", label: "Products Orchestrated" },
+          { value: "NASA-Recognized", label: "Cyber Intelligence" },
+        ]}
+        bgVideo="https://cdn.abacus.ai/videos/0c1058fb-08d8-41a3-8786-6afd8cffb386.mp4"
+      />
+
+      {/* TRUST BAR */}
+      <TrustBar />
+
+      {/* GATED OFFER */}
+      <section
+        id="gated-offer"
+        className="bg-gradient-to-br from-amber-50 to-orange-50 py-16 border-t border-orange-100 text-center"
+      >
+        <div className="max-w-3xl mx-auto px-6">
+          <h2 className="text-3xl font-semibold mb-4 text-gray-900">
+            Get the Executive Transformation Brief
+          </h2>
+          <p className="text-lg text-gray-700 mb-6">
+            A concise, board-ready blueprint used by Fortune 500 executives to
+            uncover hidden inefficiencies, accelerate transformation, and
+            reclaim millions in lost productivity.
+          </p>
+          <ul className="text-left inline-block text-gray-700 mb-8 space-y-2">
+            <li>• 90-day pilot roadmap for immediate wins</li>
+            <li>• Top three hidden cost centers and how to eliminate them</li>
+            <li>• ROI model trusted by CFOs and boards</li>
+          </ul>
+          <HeroCTA
+            primaryLabel="Download Free Brief"
+            primaryHref="/download-brief"
+          />
+          <p className="text-xs text-gray-500 mt-3">
+            🔒 Your information is confidential. No spam. Ever.
+          </p>
+        </div>
+      </section>
+
+      {/* BOARDROOM MOMENT */}
+      <section className="py-20 bg-white">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-semibold mb-6 text-gray-900">
+            The Question Every Board Will Ask Next Quarter
+          </h2>
+          <p className="text-xl text-orange-600 mb-10 font-medium">
+            "Why are smaller competitors moving faster than we are?"
+          </p>
+          <div className="grid sm:grid-cols-3 gap-6 text-left">
+            <div className="p-6 bg-gradient-to-br from-amber-50 to-yellow-50 rounded-xl">
+              <h3 className="font-bold text-gray-900 mb-2 text-lg">
+                Deployment Lag
+              </h3>
+              <p className="text-gray-700">
+                Average enterprise launches new tech in 6–12 months.
+                Competitors: 4–8 weeks.
+              </p>
+            </div>
+            <div className="p-6 bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl">
+              <h3 className="font-bold text-gray-900 mb-2 text-lg">
+                Hidden Vulnerabilities
+              </h3>
+              <p className="text-gray-700">
+                73% of organizations have undetected breaches for months.
+              </p>
+            </div>
+            <div className="p-6 bg-gradient-to-br from-orange-50 to-red-50 rounded-xl">
+              <h3 className="font-bold text-gray-900 mb-2 text-lg">
+                Lost Profit Opportunity
+              </h3>
+              <p className="text-gray-700">
+                AI-mature enterprises average 23% higher margins and 30% lower
+                costs.
+              </p>
+            </div>
+          </div>
+          <div className="mt-10">
+            <HeroCTA
+              primaryLabel="Assess Your Readiness (90 Seconds)"
+              primaryHref="#readiness-assessment"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* CALCULATOR */}
+      <section id="readiness-assessment" className="bg-gray-900 py-20">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-semibold mb-4 text-white">
+            Enterprise Readiness Assessment
+          </h2>
+          <p className="text-gray-300 mb-10 text-lg">
+            Eight quick questions. Instant insights into where your enterprise
+            is bleeding time, talent, or trust.
+          </p>
+          <ReadinessCalculator />
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <TestimonialCarousel
+        testimonials={[
+          {
+            quote:
+              "QuantumLeap's AI automation caught a $2.5M procurement discrepancy our legacy systems overlooked—integrated across 5,000 endpoints within weeks.",
+            before:
+              "Manual audits across global operations, $10M annual leakage from errors.",
+            after:
+              "80% reduction in audit time, $8M recovered in Year 1.",
+            author: "CISO",
+            title: "",
+            company: "Multinational Retailer",
+            isAnonymized: true,
+            rating: "★★★★★",
+          },
+          {
+            quote:
+              "From siloed factories to unified AI-driven lines, their automations slashed downtime 65%—increasing throughput without extra headcount.",
+            before:
+              "Reactive maintenance costing $15M/year in lost output.",
+            after:
+              "90% faster issue resolution, ROI in under 6 months.",
+            author: "VP Operations",
+            title: "",
+            company: "Automotive Giant",
+            isAnonymized: true,
+            rating: "★★★★★",
+          },
+        ]}
+      />
+
+      {/* SERVICES */}
+      <section className="py-20 bg-white border-t border-gray-100">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-semibold mb-12 text-gray-900">
+            Turn Organizational Liabilities into Competitive Leverage
+          </h2>
+          <div className="grid md:grid-cols-3 gap-10 text-left">
+            {[
+              {
+                title: "AI Workforce",
+                desc: "Multiply capacity without increasing headcount.",
+                link: "/ai-workforce",
+              },
+              {
+                title: "Process Intelligence & Automation",
+                desc: "Orchestrate work from insight to execution.",
+                link: "/process-intelligence",
+              },
+              {
+                title: "Beyond Background Checks™",
+                desc: "Intelligence-grade executive due diligence.",
+                link: "/beyond-background-checks",
+              },
+              {
+                title: "Enterprise Cyber Intelligence",
+                desc: "NASA-recognized offensive testing and defense.",
+                link: "/cyber-intelligence",
+              },
+              {
+                title: "Enterprise Transformation",
+                desc: "Re-architect technology, process, and culture for momentum.",
+                link: "/enterprise-transformation",
+              },
+            ].map((s) => (
+              <div
+                key={s.title}
+                className="block border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-lg transition bg-gradient-to-br from-amber-50 to-orange-50"
+              >
+                <h3 className="font-semibold text-xl mb-2 text-gray-900">{s.title}</h3>
+                <p className="text-gray-700">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FOUNDER PROFILE */}
+      <section className="py-20 bg-gradient-to-br from-gray-900 to-black text-white border-t border-gray-800">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <img
+            src="https://media.licdn.com/dms/image/v2/D4D03AQFuLuWTNi4Nxg/profile-displayphoto-shrink_400_400/B4DZT2GPQmHYAg-/0/1739295619092?e=2147483647&v=beta&t=KIFkVkXLDX3z6sR09BNWSxyY1ZAsGn6zBqq-b96_SPI"
+            alt="Paras Khurana Founder QuantumLeap AI"
+            className="mx-auto rounded-full w-32 h-32 object-cover mb-6 shadow-xl border-4 border-yellow-500"
+          />
+          <h2 className="text-3xl font-semibold mb-4">
+            Built by Someone Who's Been in Your Shoes—and in the Boardroom
+          </h2>
+          <blockquote className="italic text-gray-300 mb-4 text-lg">
+            "I've spent 20 years building systems for Fortune 500s—and I've also
+            been the exhausted entrepreneur doing payroll at midnight.  
+            I founded QuantumLeap AI to bridge that gap: bringing enterprise-grade
+            intelligence to leaders who need freedom, clarity, and a team that
+            never quits."
+          </blockquote>
+          <p className="font-semibold text-yellow-400 text-lg">— Paras Khurana, Founder & CEO</p>
+          <p className="text-sm text-gray-400 mt-2">
+            MIT & Caltech Alum  |  $170M Value Delivered  |  65+ Enterprise
+            Transformations  |  75+ Products Ignited
+          </p>
+        </div>
+      </section>
+
+      {/* FINAL CTA */}
+      <section className="bg-gradient-to-r from-yellow-600 via-orange-600 to-red-600 text-white py-20 text-center">
+        <div className="max-w-3xl mx-auto px-6">
+          <h2 className="text-4xl font-semibold mb-4">
+            Every Month You Wait Costs Real Dollars
+          </h2>
+          <p className="text-xl mb-8 text-orange-100">
+            The cost of inaction is measurable—lost revenue, missed innovation,
+            hidden risk. Book your 30-minute Executive Briefing today.
+          </p>
+          <HeroCTA
+            primaryLabel="Book Executive Briefing"
+            primaryHref="/schedule"
+            secondaryLabel="Download Executive Transformation Brief"
+            secondaryHref="/download-brief"
+          />
+        </div>
+      </section>
+    </main>
+  );
+}

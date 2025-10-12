@@ -1,0 +1,39 @@
+
+generator client {
+    provider = "prisma-client-js"
+    binaryTargets = ["native", "linux-musl-arm64-openssl-3.0.x"]
+    output = "/home/ubuntu/quantumleap_enterprise/nextjs_space/node_modules/.prisma/client"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model ReadinessResult {
+  id        String   @id @default(cuid())
+  email     String?
+  company   String?
+  role      String?
+  answers   Json
+  score     Int
+  riskLevel String
+  dollarRisk String
+  recommendations Json
+  createdAt DateTime @default(now())
+  
+  @@map("readiness_results")
+}
+
+model Lead {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  firstName String?
+  lastName  String?
+  company   String?
+  role      String?
+  source    String?
+  createdAt DateTime @default(now())
+  
+  @@map("leads")
+}
