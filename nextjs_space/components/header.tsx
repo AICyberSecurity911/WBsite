@@ -13,6 +13,7 @@ export default function Header() {
     { name: "Home", href: "/" },
     { name: "AI Workforce", href: "/ai-workforce" },
     { name: "Process Intelligence", href: "/process-intelligence" },
+    { name: "Executive Due Diligence", href: "/beyond-background-checks" },
     { name: "Services", href: "/#services" },
     { name: "About", href: "/#founder" },
   ];

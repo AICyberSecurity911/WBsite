@@ -37,3 +37,24 @@ model Lead {
   
   @@map("leads")
 }
+
+model ExecutiveRiskResult {
+  id                  String   @id @default(cuid())
+  email               String?
+  role                String
+  txSize              String
+  geo                 String
+  profile             String
+  reg                 String
+  digital             String
+  anomalies           String
+  hunch               String
+  riskScore           Int
+  riskTier            String
+  dollarExposureRange String
+  primaryAction       String
+  recommendations     String[]
+  createdAt           DateTime @default(now())
+  
+  @@map("executive_risk_results")
+}
