@@ -6,10 +6,14 @@
 Your local repository is now connected to:
 **https://github.com/AICyberSecurity911/WBsite.git**
 
+**Branch Strategy:**
+- `main` branch: SMB version (preserved)
+- `enterprise-development` branch: Enterprise version (current)
+
 All commits are ready to push:
-- 6 total commits
-- Latest: "Add GitHub backup documentation"
-- Includes all pages, components, and features
+- 8 total commits on enterprise-development branch
+- Latest: "Connect to GitHub repo and add push instructions"
+- Includes all Enterprise pages, components, and features
 
 ## 🔐 Authentication Required
 
@@ -44,8 +48,8 @@ If you prefer to push manually, run these commands in your terminal:
 # Then navigate to the project directory
 cd quantumleap_enterprise
 
-# The remote is already configured, so just push:
-git push -u origin main
+# The remote is already configured, so just push the enterprise branch:
+git push -u origin enterprise-development
 ```
 
 When prompted:
@@ -62,7 +66,7 @@ If you have SSH keys set up with GitHub:
    ```bash
    cd /home/ubuntu/quantumleap_enterprise
    git remote set-url origin git@github.com:AICyberSecurity911/WBsite.git
-   git push -u origin main
+   git push -u origin enterprise-development
    ```
 
 ---
