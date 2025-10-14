@@ -4,6 +4,7 @@ import { HeroCTA } from "@/components/hero-cta";
 import TrustBar from "@/components/trust-bar";
 import TestimonialCarousel from "@/components/testimonial-carousel";
 import CyberRiskCalculator from "@/components/CyberRiskCalculator";
+import CyberIntelligenceHero from "@/components/CyberIntelligenceHero";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -21,30 +22,7 @@ const EnterpriseCyberIntelligencePage: React.FC = () => {
   return (
     <main className="font-sans text-gray-900">
       {/* HERO */}
-      <section className="relative bg-black text-white py-24 text-center overflow-hidden">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          src="/videos/cyber-hero.mp4"
-          className="absolute inset-0 w-full h-full object-cover opacity-25"
-        />
-        <div className="relative z-10 max-w-4xl mx-auto px-6">
-          <h1 className="text-4xl md:text-5xl font-bold mb-5">
-            Enterprise Cyber Intelligence — Predict Threats Before They Strike
-          </h1>
-          <p className="text-lg md:text-xl text-gray-200 mb-10">
-            Offensive-grade intelligence and zero-trust defense built for the speed of modern enterprise.
-          </p>
-          <HeroCTA
-            primaryLabel="Book Security Briefing"
-            primaryHref="/schedule"
-            secondaryLabel="Download Cyber Intelligence Blueprint"
-            secondaryHref="/download-cyber-blueprint"
-          />
-        </div>
-      </section>
+      <CyberIntelligenceHero />
 
       {/* TRUST BAR */}
       <TrustBar />

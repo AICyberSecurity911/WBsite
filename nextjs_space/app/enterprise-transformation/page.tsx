@@ -5,6 +5,7 @@ import { HeroCTA } from "@/components/hero-cta";
 import TrustBar from "@/components/trust-bar";
 import TestimonialCarousel from "@/components/testimonial-carousel";
 import TransformationCalculator from "@/components/TransformationCalculator";
+import TransformationHero from "@/components/TransformationHero";
 
 export const metadata: Metadata = {
   title: "Enterprise Transformation | QuantumLeap AI",
@@ -64,30 +65,7 @@ const EnterpriseTransformationPage: React.FC = () => {
       />
       <main className="font-sans text-gray-900">
         {/* HERO */}
-        <section className="relative bg-black text-white py-24 text-center overflow-hidden">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            src="/videos/transform-hero.mp4"
-            className="absolute inset-0 w-full h-full object-cover opacity-25"
-          />
-          <div className="relative z-10 max-w-4xl mx-auto px-6">
-            <h1 className="text-4xl md:text-5xl font-bold mb-5">
-              Enterprise Transformation — Strategy That Moves, Systems That Deliver
-            </h1>
-            <p className="text-lg md:text-xl text-gray-200 mb-10">
-              Align technology, people, and capital into one momentum engine — and lead markets, not react to them.
-            </p>
-            <HeroCTA
-              primaryLabel="Book Transformation Briefing"
-              primaryHref="/schedule"
-              secondaryLabel="Download Transformation Playbook"
-              secondaryHref="/download-transformation-playbook"
-            />
-          </div>
-        </section>
+        <TransformationHero />
 
         {/* TRUST BAR */}
         <TrustBar />
