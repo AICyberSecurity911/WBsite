@@ -23,11 +23,15 @@ export default function DownloadPlaybookPage() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/leads", {
+      const response = await fetch("/api/capture-lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          ...formData,
+          email: formData.email,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          company: formData.company,
+          role: formData.jobTitle,
           source: "process-intelligence-playbook",
         }),
       });

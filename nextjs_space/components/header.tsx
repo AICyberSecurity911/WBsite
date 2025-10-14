@@ -14,6 +14,7 @@ export default function Header() {
     { name: "AI Workforce", href: "/ai-workforce" },
     { name: "Process Intelligence", href: "/process-intelligence" },
     { name: "Beyond Background Checks", href: "/beyond-background-checks" },
+    { name: "Cyber Intelligence", href: "/cyber-intelligence" },
     { name: "Services", href: "/#services" },
     { name: "About", href: "/#founder" },
   ];
