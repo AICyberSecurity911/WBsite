@@ -15,6 +15,7 @@ export default function Header() {
     { name: "Process Intelligence", href: "/process-intelligence" },
     { name: "Beyond Background Checks", href: "/beyond-background-checks" },
     { name: "Cyber Intelligence", href: "/cyber-intelligence" },
+    { name: "Enterprise Transformation", href: "/enterprise-transformation" },
     { name: "Services", href: "/#services" },
     { name: "About", href: "/#founder" },
   ];
