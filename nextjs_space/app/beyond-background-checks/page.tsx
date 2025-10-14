@@ -7,8 +7,8 @@ import ExecutiveRiskCalculator from "@/components/executive-risk-calculator";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Beyond Background Checks™ — Executive Due Diligence | QuantumLeap AI",
-  description: "Beyond Background Checks™ delivers intelligence-grade executive due diligence: uncover hidden risk before hires, deals or partnerships. Book a confidential briefing or run the Executive Risk Assessment.",
+  title: "Beyond Background Checks™ — Intelligence-Grade Executive Due Diligence | QuantumLeap AI",
+  description: "Beyond Background Checks™ delivers intelligence-grade executive due diligence: uncover the 96% of intelligence that standard checks miss. Book a confidential briefing or run the Executive Risk Assessment.",
 };
 
 export default function BeyondBackgroundChecksPage() {
@@ -27,11 +27,13 @@ export default function BeyondBackgroundChecksPage() {
         />
         <div className="relative z-10 max-w-4xl mx-auto px-6">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Beyond Background Checks™: Intelligence-Grade Executive Due Diligence
+            Beyond Background Checks™
           </h1>
-          <p className="text-lg md:text-xl text-gray-200 mb-8">
-            Hire, invest, and partner with confidence. We find the things
-            standard checks miss—before they become boardroom disasters.
+          <p className="text-lg md:text-xl text-gray-200 mb-4">
+            Intelligence-Grade Executive Due Diligence
+          </p>
+          <p className="text-xl md:text-2xl text-amber-400 font-semibold mb-8">
+            Uncover the 96% of intelligence that standard checks miss
           </p>
 
           <HeroCTA
@@ -46,6 +48,132 @@ export default function BeyondBackgroundChecksPage() {
 
       {/* TRUST BAR */}
       <TrustBar />
+
+      {/* THE INTELLIGENCE GAP */}
+      <section className="py-20 bg-gradient-to-b from-red-50 to-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+              The Intelligence Gap
+            </h2>
+            <p className="text-xl text-gray-700 mb-2">
+              What Standard Background Checks Actually Check
+            </p>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Most enterprises believe background checks provide comprehensive due diligence. They don't.
+            </p>
+          </div>
+
+          {/* COMPARISON TABLE */}
+          <div className="bg-white rounded-2xl shadow-xl overflow-hidden mb-12">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead className="bg-gradient-to-r from-gray-900 to-gray-800 text-white">
+                  <tr>
+                    <th className="px-6 py-4 text-left text-lg font-semibold">What They Check</th>
+                    <th className="px-6 py-4 text-left text-lg font-semibold text-red-300">What They Miss</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200">
+                  <tr className="hover:bg-gray-50 transition-colors">
+                    <td className="px-6 py-4">
+                      <p className="font-semibold text-gray-900">Criminal Records</p>
+                    </td>
+                    <td className="px-6 py-4 text-red-700">
+                      <p className="font-medium">Only prosecuted crimes.</p>
+                      <p className="text-sm text-gray-600 mt-1">Settled civil cases, sealed records, international violations—invisible</p>
+                    </td>
+                  </tr>
+                  <tr className="hover:bg-gray-50 transition-colors">
+                    <td className="px-6 py-4">
+                      <p className="font-semibold text-gray-900">Employment Verification</p>
+                    </td>
+                    <td className="px-6 py-4 text-red-700">
+                      <p className="font-medium">Dates and titles only.</p>
+                      <p className="text-sm text-gray-600 mt-1">Short tenures, "quiet departures," termination reasons—not investigated</p>
+                    </td>
+                  </tr>
+                  <tr className="hover:bg-gray-50 transition-colors">
+                    <td className="px-6 py-4">
+                      <p className="font-semibold text-gray-900">Education Verification</p>
+                    </td>
+                    <td className="px-6 py-4 text-red-700">
+                      <p className="font-medium">Degree exists.</p>
+                      <p className="text-sm text-gray-600 mt-1">Whether institution is legitimate or a diploma mill—not verified</p>
+                    </td>
+                  </tr>
+                  <tr className="hover:bg-gray-50 transition-colors">
+                    <td className="px-6 py-4">
+                      <p className="font-semibold text-gray-900">Credit Check</p>
+                    </td>
+                    <td className="px-6 py-4 text-red-700">
+                      <p className="font-medium">Payment history.</p>
+                      <p className="text-sm text-gray-600 mt-1">Hidden financial stress, undisclosed debts, offshore accounts—not discovered</p>
+                    </td>
+                  </tr>
+                  <tr className="hover:bg-gray-50 transition-colors">
+                    <td className="px-6 py-4">
+                      <p className="font-semibold text-gray-900">Reference Check</p>
+                    </td>
+                    <td className="px-6 py-4 text-red-700">
+                      <p className="font-medium">Curated contacts only.</p>
+                      <p className="text-sm text-gray-600 mt-1">Real reputation, peer reviews, former colleagues' honest opinions—not captured</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* WHAT'S NEVER CHECKED */}
+          <div className="bg-red-900 text-white rounded-2xl p-8 md:p-12 mb-8">
+            <h3 className="text-2xl font-bold mb-6 text-center">What's Never Checked:</h3>
+            <div className="grid md:grid-cols-2 gap-4 text-lg">
+              <div className="flex items-start gap-3">
+                <span className="text-red-300 font-bold text-xl">✗</span>
+                <p>Digital footprint and online behavior (96% of their actual presence)</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-red-300 font-bold text-xl">✗</span>
+                <p>Dark web exposure (compromised credentials, illicit activity)</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-red-300 font-bold text-xl">✗</span>
+                <p>Behavioral patterns and communication style</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-red-300 font-bold text-xl">✗</span>
+                <p>Hidden biases and discriminatory views</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-red-300 font-bold text-xl">✗</span>
+                <p>Cultural fit and leadership style</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-red-300 font-bold text-xl">✗</span>
+                <p>Risky associations and networks</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-red-300 font-bold text-xl">✗</span>
+                <p>Undisclosed conflicts of interest</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-red-300 font-bold text-xl">✗</span>
+                <p>International activities and relationships</p>
+              </div>
+            </div>
+          </div>
+
+          {/* IMPACT STATEMENT */}
+          <div className="text-center">
+            <div className="inline-block bg-amber-100 border-2 border-amber-500 rounded-xl px-8 py-6">
+              <p className="text-2xl font-bold text-gray-900">
+                The Result: You're making million-dollar decisions on <span className="text-red-600">4%</span> of available intelligence.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* LEAD MAGNET */}
       <section id="gated-offer" className="bg-white py-16 border-t text-center">
@@ -67,27 +195,256 @@ export default function BeyondBackgroundChecksPage() {
         </div>
       </section>
 
-      {/* BOARDROOM RISK */}
-      <section className="py-20 bg-gray-50 text-center">
-        <div className="max-w-5xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold mb-4">Blind hires, blind deals — real boardroom risk</h2>
-          <p className="text-gray-700 mb-6">
-            Standard checks confirm records. Beyond Background Checks™ finds behavior,
-            associations, and digital signals that matter when millions and reputations are at stake.
-          </p>
-          <div className="grid md:grid-cols-3 gap-6 text-left">
-            <div>
-              <h3 className="font-semibold">Hidden history</h3>
-              <p className="text-gray-600">Terminations, undisclosed litigation, pattern behaviors.</p>
+      {/* THE SOLUTION */}
+      <section className="py-20 bg-gradient-to-b from-white to-gray-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+              The Solution: Intelligence-Grade Due Diligence
+            </h2>
+            <p className="text-xl text-gray-700 mb-2">
+              From Data Entry to Intelligence Operations
+            </p>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Standard background checks are conducted by data entry operators running database queries. 
+              <span className="font-semibold text-gray-900"> Our investigations are conducted by cybersecurity & intelligence professionals who have worked with security agencies around the globe</span>, not by clerks.
+            </p>
+          </div>
+
+          {/* TIER 1 */}
+          <div className="mb-8">
+            <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-t-2xl px-8 py-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-2xl font-bold mb-1">TIER 1: Enhanced Executive Vetting</h3>
+                  <p className="text-blue-100">Perfect for C-suite, board members, key hires</p>
+                </div>
+                <div className="hidden md:block bg-blue-800 rounded-xl px-6 py-3">
+                  <p className="text-sm font-semibold">MOST POPULAR</p>
+                </div>
+              </div>
             </div>
-            <div>
-              <h3 className="font-semibold">Digital risk</h3>
-              <p className="text-gray-600">Dark-web exposure, account compromise, toxic networks.</p>
+            <div className="bg-white rounded-b-2xl shadow-lg p-8 border-2 border-blue-600">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="font-bold text-gray-900 mb-3 text-lg">Scope:</h4>
+                  <ul className="space-y-2 text-gray-700">
+                    <li className="flex items-start gap-2">
+                      <span className="text-blue-600 font-bold">✓</span>
+                      <span>Everything standard checks cover, plus:</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-blue-600 font-bold">✓</span>
+                      <span>Deep digital footprint analysis (10+ years of online presence)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-blue-600 font-bold">✓</span>
+                      <span>Professional reputation intelligence (beyond curated references)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-blue-600 font-bold">✓</span>
+                      <span>Communication style and behavioral assessment</span>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <ul className="space-y-2 text-gray-700 mt-9">
+                    <li className="flex items-start gap-2">
+                      <span className="text-blue-600 font-bold">✓</span>
+                      <span>Leadership pattern analysis</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-blue-600 font-bold">✓</span>
+                      <span>Financial stress indicators</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-blue-600 font-bold">✓</span>
+                      <span>Geographic and industry network mapping</span>
+                    </li>
+                  </ul>
+                  <div className="mt-6 p-4 bg-blue-50 rounded-lg">
+                    <p className="text-sm font-semibold text-gray-900">Use Case:</p>
+                    <p className="text-sm text-gray-700">Senior executive hires, board appointments, advisory roles</p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div>
-              <h3 className="font-semibold">Decision impact</h3>
-              <p className="text-gray-600">Board trust, regulatory exposure, M&A fallout.</p>
+          </div>
+
+          {/* TIER 2 */}
+          <div className="mb-8">
+            <div className="bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-t-2xl px-8 py-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-2xl font-bold mb-1">TIER 2: Comprehensive Intelligence Investigation</h3>
+                  <p className="text-purple-100">For highest-stakes decisions requiring complete picture</p>
+                </div>
+              </div>
             </div>
+            <div className="bg-white rounded-b-2xl shadow-lg p-8 border-2 border-purple-600">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="font-bold text-gray-900 mb-3 text-lg">Scope:</h4>
+                  <ul className="space-y-2 text-gray-700">
+                    <li className="flex items-start gap-2">
+                      <span className="text-purple-600 font-bold">✓</span>
+                      <span>Everything in Enhanced Vetting, plus:</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-purple-600 font-bold">✓</span>
+                      <span>Dark web intelligence (credential exposure, illicit activity monitoring)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-purple-600 font-bold">✓</span>
+                      <span>International background verification (global records search)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-purple-600 font-bold">✓</span>
+                      <span>Hidden identity and alias investigation</span>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <ul className="space-y-2 text-gray-700">
+                    <li className="flex items-start gap-2">
+                      <span className="text-purple-600 font-bold">✓</span>
+                      <span>Risky association mapping (problematic networks and relationships)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-purple-600 font-bold">✓</span>
+                      <span>Pattern analysis across multiple identities</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-purple-600 font-bold">✓</span>
+                      <span>Cultural fit and values alignment assessment</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-purple-600 font-bold">✓</span>
+                      <span>Bias and discrimination indicators</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-purple-600 font-bold">✓</span>
+                      <span>Undisclosed conflict identification</span>
+                    </li>
+                  </ul>
+                  <div className="mt-6 p-4 bg-purple-50 rounded-lg">
+                    <p className="text-sm font-semibold text-gray-900">Use Case:</p>
+                    <p className="text-sm text-gray-700">Acquisition targets, major investors, critical partnerships, high-risk positions</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* TIER 3 */}
+          <div className="mb-8">
+            <div className="bg-gradient-to-r from-amber-600 to-orange-600 text-white rounded-t-2xl px-8 py-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-2xl font-bold mb-1">TIER 3: Continuous Executive Intelligence</h3>
+                  <p className="text-amber-100">Ongoing monitoring for portfolio companies and key stakeholders</p>
+                </div>
+              </div>
+            </div>
+            <div className="bg-white rounded-b-2xl shadow-lg p-8 border-2 border-amber-600">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="font-bold text-gray-900 mb-3 text-lg">Scope:</h4>
+                  <ul className="space-y-2 text-gray-700">
+                    <li className="flex items-start gap-2">
+                      <span className="text-amber-600 font-bold">✓</span>
+                      <span>Everything in Tier 2, plus:</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-amber-600 font-bold">✓</span>
+                      <span>Quarterly update reports</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-amber-600 font-bold">✓</span>
+                      <span>Real-time alert system for material changes</span>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <ul className="space-y-2 text-gray-700">
+                    <li className="flex items-start gap-2">
+                      <span className="text-amber-600 font-bold">✓</span>
+                      <span>Dark web credential monitoring</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-amber-600 font-bold">✓</span>
+                      <span>Reputation tracking</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-amber-600 font-bold">✓</span>
+                      <span>Network change analysis</span>
+                    </li>
+                  </ul>
+                  <div className="mt-6 p-4 bg-amber-50 rounded-lg">
+                    <p className="text-sm font-semibold text-gray-900">Use Case:</p>
+                    <p className="text-sm text-gray-700">Portfolio company executives, board members, strategic partners</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* TIER 4 */}
+          <div className="mb-8">
+            <div className="bg-gradient-to-r from-red-600 to-red-700 text-white rounded-t-2xl px-8 py-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-2xl font-bold mb-1">TIER 4: M&A Intelligence & Due Diligence</h3>
+                  <p className="text-red-100">Complete intelligence for acquisition targets and major deals</p>
+                </div>
+                <div className="hidden md:block bg-red-800 rounded-xl px-6 py-3">
+                  <p className="text-sm font-semibold">ENTERPRISE</p>
+                </div>
+              </div>
+            </div>
+            <div className="bg-white rounded-b-2xl shadow-lg p-8 border-2 border-red-600">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="font-bold text-gray-900 mb-3 text-lg">Scope:</h4>
+                  <ul className="space-y-2 text-gray-700">
+                    <li className="flex items-start gap-2">
+                      <span className="text-red-600 font-bold">✓</span>
+                      <span>Full leadership team investigation (Tier 3 level), plus:</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-red-600 font-bold">✓</span>
+                      <span>Company reputation and culture analysis</span>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <ul className="space-y-2 text-gray-700">
+                    <li className="flex items-start gap-2">
+                      <span className="text-red-600 font-bold">✓</span>
+                      <span>Customer and vendor sentiment intelligence</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-red-600 font-bold">✓</span>
+                      <span>Competitive intelligence</span>
+                    </li>
+                  </ul>
+                  <div className="mt-6 p-4 bg-red-50 rounded-lg">
+                    <p className="text-sm font-semibold text-gray-900">Use Case:</p>
+                    <p className="text-sm text-gray-700">Acquisitions, major investments, strategic partnerships</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="text-center mt-12">
+            <HeroCTA
+              primaryLabel="Book Executive Briefing"
+              primaryHref="/schedule"
+              secondaryLabel="Run Risk Assessment"
+              secondaryHref="#executive-risk-assessment"
+            />
           </div>
         </div>
       </section>
