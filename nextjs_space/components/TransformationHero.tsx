@@ -15,6 +15,16 @@ const TransformationHero: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // Department positions for unified state
+  const departments = [
+    { label: 'IT', angle: 0 },
+    { label: 'Finance', angle: 60 },
+    { label: 'HR', angle: 120 },
+    { label: 'Sales', angle: 180 },
+    { label: 'Ops', angle: 240 },
+    { label: 'Marketing', angle: 300 },
+  ];
+
   return (
     <section className="relative bg-gradient-to-br from-gray-900 via-slate-800 to-blue-950 text-white py-24 text-center overflow-hidden min-h-[600px]">
       {/* Animated background particles */}
@@ -158,109 +168,109 @@ const TransformationHero: React.FC = () => {
                 transition={{ duration: 0.5 }}
                 className="absolute inset-0 flex items-center justify-center"
               >
-                <div className="relative w-full max-w-4xl">
-                  {/* Unified circular arrangement */}
-                  <div className="relative h-64 flex items-center justify-center">
-                    {/* Central hub */}
-                    <motion.div
-                      initial={{ scale: 0, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ delay: 0.3, type: "spring" }}
-                      className="absolute z-10"
+                <div className="relative w-full max-w-4xl h-full">
+                  {/* Unified circular arrangement - Fixed positioning */}
+                  <div className="relative w-full h-full flex items-center justify-center">
+                    {/* SVG for connection lines - positioned absolutely to match the layout */}
+                    <svg 
+                      className="absolute inset-0 w-full h-full pointer-events-none" 
+                      viewBox="0 0 600 320"
+                      preserveAspectRatio="xMidYMid meet"
                     >
-                      <div className="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full w-32 h-32 flex items-center justify-center shadow-2xl shadow-blue-500/50">
-                        <p className="text-lg font-bold">AI Engine</p>
-                      </div>
-                      {/* Pulsing rings */}
-                      {[1, 2, 3].map((ring) => (
-                        <motion.div
-                          key={ring}
-                          className="absolute inset-0 border-2 border-blue-400 rounded-full"
-                          animate={{ scale: [1, 1.5, 1.5], opacity: [0.6, 0, 0] }}
-                          transition={{ duration: 2, repeat: Infinity, delay: ring * 0.4 }}
-                        />
-                      ))}
-                    </motion.div>
-
-                    {/* Departments arranged in circle */}
-                    {[
-                      { label: 'IT', angle: 0 },
-                      { label: 'Finance', angle: 60 },
-                      { label: 'HR', angle: 120 },
-                      { label: 'Sales', angle: 180 },
-                      { label: 'Ops', angle: 240 },
-                      { label: 'Marketing', angle: 300 },
-                    ].map((dept, i) => {
-                      const radius = 140;
-                      const x = Math.cos((dept.angle * Math.PI) / 180) * radius;
-                      const y = Math.sin((dept.angle * Math.PI) / 180) * radius;
-                      
-                      return (
-                        <motion.div
-                          key={i}
-                          className="absolute"
-                          style={{
-                            left: '50%',
-                            top: '50%',
-                            transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`
-                          }}
-                          initial={{ opacity: 0, scale: 0 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 0.5 + i * 0.1, type: "spring" }}
-                        >
-                          <div className="bg-blue-500/20 border-2 border-blue-400 rounded-lg px-3 py-2 backdrop-blur-sm">
-                            <p className="text-sm font-semibold text-blue-300">{dept.label}</p>
-                          </div>
-                        </motion.div>
-                      );
-                    })}
-
-                    {/* Connected lines */}
-                    <svg className="absolute inset-0 w-full h-full pointer-events-none">
-                      {[0, 60, 120, 180, 240, 300].map((angle, i) => {
-                        const startRadius = 64;
-                        const endRadius = 140;
-                        const x1 = 50 + Math.cos((angle * Math.PI) / 180) * startRadius / 4;
-                        const y1 = 50 + Math.sin((angle * Math.PI) / 180) * startRadius / 4;
-                        const x2 = 50 + Math.cos((angle * Math.PI) / 180) * endRadius / 4;
-                        const y2 = 50 + Math.sin((angle * Math.PI) / 180) * endRadius / 4;
+                      <defs>
+                        <filter id="glow">
+                          <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                          <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                          </feMerge>
+                        </filter>
+                      </defs>
+                      {departments.map((dept, i) => {
+                        const radius = 160;
+                        const centerX = 300;
+                        const centerY = 160;
+                        const x = centerX + Math.cos((dept.angle * Math.PI) / 180) * radius;
+                        const y = centerY + Math.sin((dept.angle * Math.PI) / 180) * radius;
                         
                         return (
                           <motion.line
                             key={i}
-                            x1={`${x1}%`}
-                            y1={`${y1}%`}
-                            x2={`${x2}%`}
-                            y2={`${y2}%`}
+                            x1={centerX}
+                            y1={centerY}
+                            x2={x}
+                            y2={y}
                             stroke="#60a5fa"
-                            strokeWidth="2"
+                            strokeWidth="3"
+                            filter="url(#glow)"
                             initial={{ pathLength: 0, opacity: 0 }}
-                            animate={{ pathLength: 1, opacity: 0.6 }}
+                            animate={{ pathLength: 1, opacity: 0.8 }}
                             transition={{ delay: 0.7 + i * 0.1, duration: 0.5 }}
                           />
                         );
                       })}
                     </svg>
 
+                    {/* Central hub */}
+                    <motion.div
+                      initial={{ scale: 0, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ delay: 0.3, type: "spring" }}
+                      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20"
+                    >
+                      <div className="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full w-28 h-28 flex items-center justify-center shadow-2xl shadow-blue-500/50">
+                        <p className="text-base font-bold">AI Engine</p>
+                      </div>
+                      {/* Pulsing rings */}
+                      {[1, 2, 3].map((ring) => (
+                        <motion.div
+                          key={ring}
+                          className="absolute inset-0 border-2 border-blue-400 rounded-full"
+                          animate={{ scale: [1, 1.6, 1.6], opacity: [0.6, 0, 0] }}
+                          transition={{ duration: 2, repeat: Infinity, delay: ring * 0.4 }}
+                        />
+                      ))}
+                    </motion.div>
+
+                    {/* Departments arranged in circle */}
+                    {departments.map((dept, i) => {
+                      const radius = 160;
+                      const x = Math.cos((dept.angle * Math.PI) / 180) * radius;
+                      const y = Math.sin((dept.angle * Math.PI) / 180) * radius;
+                      
+                      return (
+                        <motion.div
+                          key={i}
+                          className="absolute left-1/2 top-1/2 z-10"
+                          style={{
+                            transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`
+                          }}
+                          initial={{ opacity: 0, scale: 0 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: 0.5 + i * 0.1, type: "spring" }}
+                        >
+                          <div className="bg-blue-500/20 border-2 border-blue-400 rounded-lg px-4 py-2 backdrop-blur-sm whitespace-nowrap">
+                            <p className="text-sm font-semibold text-blue-300">{dept.label}</p>
+                          </div>
+                        </motion.div>
+                      );
+                    })}
+
                     {/* Data flow particles */}
-                    {[...Array(6)].map((_, i) => (
+                    {departments.map((dept, i) => (
                       <motion.div
                         key={i}
-                        className="absolute w-2 h-2 bg-blue-400 rounded-full"
-                        style={{
-                          left: '50%',
-                          top: '50%',
-                        }}
+                        className="absolute left-1/2 top-1/2 w-2 h-2 bg-blue-400 rounded-full shadow-lg shadow-blue-400/50 z-30"
                         animate={{
-                          x: [0, Math.cos((i * 60 * Math.PI) / 180) * 140],
-                          y: [0, Math.sin((i * 60 * Math.PI) / 180) * 140],
-                          scale: [1, 0],
-                          opacity: [1, 0],
+                          x: [0, Math.cos((dept.angle * Math.PI) / 180) * 160],
+                          y: [0, Math.sin((dept.angle * Math.PI) / 180) * 160],
+                          scale: [1, 0.5, 0],
+                          opacity: [1, 0.8, 0],
                         }}
                         transition={{
                           duration: 1.5,
                           repeat: Infinity,
-                          delay: i * 0.3,
+                          delay: i * 0.25,
                           ease: "easeOut",
                         }}
                       />
@@ -271,7 +281,7 @@ const TransformationHero: React.FC = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.2 }}
-                    className="mt-8 text-blue-300 font-semibold"
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full text-center text-blue-300 font-semibold"
                   >
                     +22% ROI uplift in 9 months with unified transformation
                   </motion.div>
