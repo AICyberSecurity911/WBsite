@@ -2,18 +2,83 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
+import Breadcrumb from "@/components/Breadcrumb";
+import { createArticleSchema, createBreadcrumbSchema } from "@/lib/schemas";
 
 export const metadata: Metadata = {
-  title: "The 1,200-Process Map That Saved a Fortune | QuantumLeap AI",
-  description: "A global manufacturer discovered $8M annual waste after QuantumLeap's AI mapped its entire supply chain — and automated procurement in 10 weeks.",
+  title: "The 1,200-Process Map That Saved a Fortune",
+  description: "A global manufacturer discovered $8M annual waste after QuantumLeap's AI mapped its entire supply chain and automated procurement in 10 weeks. Learn how process intelligence transforms operations.",
+  keywords: [
+    "process mapping",
+    "supply chain automation",
+    "process intelligence",
+    "operational efficiency",
+    "AI automation",
+    "cost reduction",
+    "process optimization",
+    "manufacturing automation"
+  ],
+  openGraph: {
+    title: "The 1,200-Process Map That Saved a Fortune | QuantumLeap AI",
+    description: "How AI-powered process mapping saved $8M annually for a global manufacturer",
+    url: "https://quantumleap.ai/blog/1200-process-map",
+    type: "article",
+    images: [
+      {
+        url: "https://cdn.abacus.ai/images/26e5ad0d-5d3e-477d-bd39-2c60a1125857.png",
+        width: 1200,
+        height: 630,
+        alt: "Process Intelligence Dashboard",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The 1,200-Process Map That Saved a Fortune",
+    description: "How AI-powered process mapping saved $8M annually",
+    images: ["https://cdn.abacus.ai/images/26e5ad0d-5d3e-477d-bd39-2c60a1125857.png"],
+  },
+  alternates: {
+    canonical: "https://quantumleap.ai/blog/1200-process-map",
+  },
 };
 
 export default function ProcessMapBlogPost() {
+  const breadcrumbItems = [
+    { name: "Blog", href: "/blog" },
+    { name: "Process Intelligence", href: "/blog/1200-process-map" }
+  ];
+
+  const articleSchema = createArticleSchema(
+    "The 1,200-Process Map That Saved a Fortune",
+    "A global manufacturer discovered $8M annual waste after QuantumLeap's AI mapped its entire supply chain and automated procurement in 10 weeks.",
+    "https://quantumleap.ai/blog/1200-process-map",
+    "2025-10-01",
+    "2025-10-14",
+    "https://cdn.abacus.ai/images/26e5ad0d-5d3e-477d-bd39-2c60a1125857.png"
+  );
+
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: "Home", url: "https://quantumleap.ai" },
+    { name: "Blog", url: "https://quantumleap.ai/blog" },
+    { name: "Process Intelligence Case Study", url: "https://quantumleap.ai/blog/1200-process-map" }
+  ]);
+
   return (
-    <article className="max-w-4xl mx-auto px-6 py-16">
-      <Link href="/process-intelligence" className="text-blue-600 hover:underline mb-6 inline-block">
-        ← Back to Process Intelligence
-      </Link>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <Breadcrumb items={breadcrumbItems} />
+      <article className="max-w-4xl mx-auto px-6 py-16">
+        <Link href="/process-intelligence" className="text-blue-600 hover:underline mb-6 inline-block">
+          ← Back to Process Intelligence
+        </Link>
       
       <h1 className="text-4xl font-bold mb-4 text-gray-900">
         The 1,200-Process Map That Saved a Fortune
@@ -141,5 +206,6 @@ export default function ProcessMapBlogPost() {
         </div>
       </div>
     </article>
+    </>
   );
 }

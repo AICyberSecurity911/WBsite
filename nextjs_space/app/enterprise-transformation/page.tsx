@@ -6,18 +6,75 @@ import TrustBar from "@/components/trust-bar";
 import TestimonialCarousel from "@/components/testimonial-carousel";
 import TransformationCalculator from "@/components/TransformationCalculator";
 import TransformationHero from "@/components/TransformationHero";
+import Breadcrumb from "@/components/Breadcrumb";
+import { createServiceSchema, createBreadcrumbSchema, createSoftwareSchema } from "@/lib/schemas";
 
 export const metadata: Metadata = {
-  title: "Enterprise Transformation | QuantumLeap AI",
-  description: "QuantumLeap AI helps enterprises achieve measurable transformation in 90 days. Align people, tech, and strategy into one engine of momentum.",
+  title: "Enterprise Transformation Services",
+  description: "QuantumLeap AI delivers measurable enterprise transformation in 90 days. Unite AI, automation, and strategy into one engine of momentum. Trusted by Fortune 500 leaders for digital transformation.",
+  keywords: [
+    "enterprise transformation",
+    "digital transformation",
+    "business transformation",
+    "organizational change",
+    "AI transformation",
+    "enterprise modernization",
+    "transformation consulting",
+    "McKinsey transformation",
+    "change management",
+    "business strategy"
+  ],
   openGraph: {
-    title: "Enterprise Transformation | QuantumLeap AI",
-    description: "QuantumLeap AI helps enterprises achieve measurable transformation in 90 days. Align people, tech, and strategy into one engine of momentum.",
+    title: "Enterprise Transformation Services | QuantumLeap AI",
+    description: "Achieve measurable transformation in 90 days. Unite people, tech, and strategy for sustainable growth.",
+    url: "https://quantumleap.ai/enterprise-transformation",
+    type: "website",
+    images: [
+      {
+        url: "https://quantumleap.ai/og-transformation.png",
+        width: 1200,
+        height: 630,
+        alt: "Enterprise Transformation by QuantumLeap AI",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Enterprise Transformation Services | QuantumLeap AI",
+    description: "Achieve measurable transformation in 90 days",
+    images: ["https://quantumleap.ai/twitter-transformation.png"],
+  },
+  alternates: {
+    canonical: "https://quantumleap.ai/enterprise-transformation",
   },
 };
 
 const EnterpriseTransformationPage: React.FC = () => {
-  // JSON-LD Schema for SEO + AEO
+  const breadcrumbItems = [
+    { name: "Services", href: "/#services" },
+    { name: "Enterprise Transformation", href: "/enterprise-transformation" }
+  ];
+
+  const serviceSchema = createServiceSchema(
+    "Enterprise Transformation",
+    "Measurable enterprise transformation that unites AI, automation, and strategy to deliver sustainable business growth in 90 days.",
+    "https://quantumleap.ai/enterprise-transformation",
+    "Business Consulting"
+  );
+
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: "Home", url: "https://quantumleap.ai" },
+    { name: "Services", url: "https://quantumleap.ai/#services" },
+    { name: "Enterprise Transformation", url: "https://quantumleap.ai/enterprise-transformation" }
+  ]);
+
+  const calculatorSchema = createSoftwareSchema(
+    "Enterprise Transformation Calculator",
+    "Free interactive calculator to assess your organization's transformation readiness and estimate potential ROI within 90 days.",
+    "BusinessApplication"
+  );
+
+  // Enhanced FAQ Schema for AEO
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -61,8 +118,21 @@ const EnterpriseTransformationPage: React.FC = () => {
     <>
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(calculatorSchema) }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
+      <Breadcrumb items={breadcrumbItems} />
       <main className="font-sans text-gray-900">
         {/* HERO */}
         <TransformationHero />

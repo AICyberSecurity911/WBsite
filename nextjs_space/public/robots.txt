@@ -1,0 +1,37 @@
+
+# QuantumLeap AI - Robots.txt
+# Optimized for maximum crawl efficiency
+
+User-agent: *
+Allow: /
+
+# High-value pages - crawl frequently
+Allow: /enterprise-transformation
+Allow: /cyber-intelligence
+Allow: /beyond-background-checks
+Allow: /ai-workforce
+Allow: /process-intelligence
+Allow: /blog/
+
+# Prevent crawling of internal/utility pages
+Disallow: /api/
+Disallow: /download-*
+Disallow: /_next/
+Disallow: /schedule
+
+# Allow search engines to index images
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.png
+Allow: /*.svg
+Allow: /*.webp
+
+# Sitemap location
+Sitemap: https://quantumleap.ai/sitemap.xml
+
+# Crawl-delay for aggressive bots
+User-agent: GPTBot
+Crawl-delay: 2
+
+User-agent: CCBot
+Crawl-delay: 2

@@ -5,27 +5,149 @@ import TrustBar from "@/components/trust-bar";
 import TestimonialCarousel from "@/components/testimonial-carousel";
 import CyberRiskCalculator from "@/components/CyberRiskCalculator";
 import CyberIntelligenceHero from "@/components/CyberIntelligenceHero";
+import Breadcrumb from "@/components/Breadcrumb";
 import type { Metadata } from "next";
+import { createServiceSchema, createBreadcrumbSchema, createSoftwareSchema } from "@/lib/schemas";
 
 export const metadata: Metadata = {
-  title: "Enterprise Cyber Intelligence | QuantumLeap AI",
-  description: "QuantumLeap AI's Enterprise Cyber Intelligence identifies vulnerabilities before attackers do. Offensive-grade testing, dark-web monitoring, and guaranteed discovery or it's free.",
-  keywords: "cyber intelligence, cybersecurity, offensive security, penetration testing, dark web monitoring, zero trust, threat detection",
+  title: "Enterprise Cyber Intelligence Services",
+  description: "QuantumLeap AI's Enterprise Cyber Intelligence identifies vulnerabilities before attackers do. NASA-recognized offensive-grade testing, dark-web monitoring, and guaranteed discovery. Trusted by Fortune 500.",
+  keywords: [
+    "cyber intelligence",
+    "cybersecurity services",
+    "offensive security",
+    "penetration testing",
+    "dark web monitoring",
+    "zero trust security",
+    "threat intelligence",
+    "vulnerability assessment",
+    "security consulting",
+    "cyber threat detection",
+    "enterprise security",
+    "security operations"
+  ],
   openGraph: {
-    title: "Enterprise Cyber Intelligence | QuantumLeap AI",
-    description: "Predict threats before they strike with offensive-grade intelligence and zero-trust defense.",
+    title: "Enterprise Cyber Intelligence Services | QuantumLeap AI",
+    description: "Predict threats before they strike with NASA-recognized offensive-grade intelligence and zero-trust defense.",
+    url: "https://quantumleap.ai/cyber-intelligence",
     type: "website",
+    images: [
+      {
+        url: "https://quantumleap.ai/og-cyber.png",
+        width: 1200,
+        height: 630,
+        alt: "Enterprise Cyber Intelligence by QuantumLeap AI",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Enterprise Cyber Intelligence Services | QuantumLeap AI",
+    description: "Predict threats before they strike with offensive-grade intelligence",
+    images: ["https://quantumleap.ai/twitter-cyber.png"],
+  },
+  alternates: {
+    canonical: "https://quantumleap.ai/cyber-intelligence",
   },
 };
 
 const EnterpriseCyberIntelligencePage: React.FC = () => {
-  return (
-    <main className="font-sans text-gray-900">
-      {/* HERO */}
-      <CyberIntelligenceHero />
+  const breadcrumbItems = [
+    { name: "Services", href: "/#services" },
+    { name: "Enterprise Cyber Intelligence", href: "/cyber-intelligence" }
+  ];
 
-      {/* TRUST BAR */}
-      <TrustBar />
+  const serviceSchema = createServiceSchema(
+    "Enterprise Cyber Intelligence",
+    "NASA-recognized offensive-grade security testing that identifies vulnerabilities before attackers do. Includes dark-web monitoring, penetration testing, and guaranteed discovery.",
+    "https://quantumleap.ai/cyber-intelligence",
+    "Cybersecurity Services"
+  );
+
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: "Home", url: "https://quantumleap.ai" },
+    { name: "Services", url: "https://quantumleap.ai/#services" },
+    { name: "Enterprise Cyber Intelligence", url: "https://quantumleap.ai/cyber-intelligence" }
+  ]);
+
+  const calculatorSchema = createSoftwareSchema(
+    "Cyber Risk Assessment Calculator",
+    "Free 3-minute cyber risk assessment to estimate potential loss exposure and receive actionable security recommendations instantly.",
+    "BusinessApplication"
+  );
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Enterprise Cyber Intelligence?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Enterprise Cyber Intelligence combines NASA-recognized offensive security testing, continuous dark-web monitoring, and threat intelligence to identify vulnerabilities before attackers do. Our approach includes penetration testing, security assessments, and proactive defense strategies."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is it different from traditional cybersecurity?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Traditional cybersecurity is reactive. Our Enterprise Cyber Intelligence is proactive and offensive-grade—we think like attackers to find vulnerabilities before they're exploited. We combine penetration testing, dark-web monitoring, and real-time threat intelligence."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the 4-tier solution include?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tier 1: Vulnerability Discovery (automated scanning and threat detection). Tier 2: Offensive Simulation (ethical hacking and penetration testing). Tier 3: Dark Web Intelligence (monitoring and breach detection). Tier 4: Zero-Trust Integration (implementing comprehensive security architecture)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How quickly can you identify vulnerabilities?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Initial vulnerability discovery begins within 48 hours. Comprehensive assessment with actionable recommendations is typically delivered within 5-7 business days. Our clients cut their attack surface by 73% within 90 days."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What industries do you serve?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We serve Fortune 500 enterprises across finance, healthcare, manufacturing, technology, energy, and government sectors. Our NASA-recognized methodology is trusted by organizations with the highest security requirements."
+        }
+      }
+    ]
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(calculatorSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <Breadcrumb items={breadcrumbItems} />
+      <main className="font-sans text-gray-900">
+        {/* HERO */}
+        <CyberIntelligenceHero />
+
+        {/* TRUST BAR */}
+        <TrustBar />
 
       {/* PROBLEM STATEMENT */}
       <section className="py-20 bg-gray-50 text-center">
@@ -193,7 +315,8 @@ const EnterpriseCyberIntelligencePage: React.FC = () => {
           }),
         }}
       />
-    </main>
+      </main>
+    </>
   );
 };
 

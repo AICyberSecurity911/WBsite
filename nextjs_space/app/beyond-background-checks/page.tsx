@@ -4,14 +4,77 @@ import { HeroCTA } from "@/components/hero-cta";
 import TrustBar from "@/components/trust-bar";
 import TestimonialCarousel from "@/components/testimonial-carousel";
 import ExecutiveRiskCalculator from "@/components/executive-risk-calculator";
+import Breadcrumb from "@/components/Breadcrumb";
 import { Metadata } from "next";
+import { createServiceSchema, createBreadcrumbSchema, createSoftwareSchema } from "@/lib/schemas";
 
 export const metadata: Metadata = {
-  title: "Beyond Background Checks™ — Intelligence-Grade Executive Due Diligence | QuantumLeap AI",
-  description: "Beyond Background Checks™ delivers intelligence-grade executive due diligence: uncover the 96% of intelligence that standard checks miss. Book a confidential briefing or run the Executive Risk Assessment.",
+  title: "Beyond Background Checks™ — Intelligence-Grade Executive Due Diligence",
+  description: "Beyond Background Checks™ delivers intelligence-grade executive due diligence. Uncover the 96% of intelligence that standard background checks miss. Trusted for C-suite hires, board appointments, and M&A decisions.",
+  keywords: [
+    "executive due diligence",
+    "background checks",
+    "executive vetting",
+    "C-suite hiring",
+    "board appointments",
+    "M&A due diligence",
+    "executive screening",
+    "reputation intelligence",
+    "dark web monitoring",
+    "executive background check",
+    "pre-employment screening",
+    "executive search"
+  ],
+  openGraph: {
+    title: "Beyond Background Checks™ | Intelligence-Grade Executive Due Diligence",
+    description: "Uncover the 96% of intelligence that standard checks miss. Protect high-stakes decisions with intelligence-grade vetting.",
+    url: "https://quantumleap.ai/beyond-background-checks",
+    type: "website",
+    images: [
+      {
+        url: "https://quantumleap.ai/og-background-checks.png",
+        width: 1200,
+        height: 630,
+        alt: "Beyond Background Checks by QuantumLeap AI",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Beyond Background Checks™ | QuantumLeap AI",
+    description: "Intelligence-grade executive due diligence for high-stakes decisions",
+    images: ["https://quantumleap.ai/twitter-background-checks.png"],
+  },
+  alternates: {
+    canonical: "https://quantumleap.ai/beyond-background-checks",
+  },
 };
 
 export default function BeyondBackgroundChecksPage() {
+  const breadcrumbItems = [
+    { name: "Services", href: "/#services" },
+    { name: "Beyond Background Checks™", href: "/beyond-background-checks" }
+  ];
+
+  const serviceSchema = createServiceSchema(
+    "Beyond Background Checks™ - Intelligence-Grade Executive Due Diligence",
+    "Intelligence-grade executive due diligence that uncovers the 96% of information standard background checks miss. Includes digital footprint analysis, dark-web exposure monitoring, litigation history, and reputation intelligence.",
+    "https://quantumleap.ai/beyond-background-checks",
+    "Professional Services"
+  );
+
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: "Home", url: "https://quantumleap.ai" },
+    { name: "Services", url: "https://quantumleap.ai/#services" },
+    { name: "Beyond Background Checks™", url: "https://quantumleap.ai/beyond-background-checks" }
+  ]);
+
+  const calculatorSchema = createSoftwareSchema(
+    "Executive Risk Assessment Calculator",
+    "Free executive risk assessment tool to evaluate potential exposure and receive confidential recommendations for C-suite hires and board appointments.",
+    "BusinessApplication"
+  );
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -52,12 +115,26 @@ export default function BeyondBackgroundChecksPage() {
   };
 
   return (
-    <main className="font-sans text-gray-900">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(calculatorSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      {/* HERO */}
+      <Breadcrumb items={breadcrumbItems} />
+      <main className="font-sans text-gray-900">
+        {/* HERO */}
       <section className="relative bg-black text-white py-24 text-center overflow-hidden">
         <video
           autoPlay
@@ -630,6 +707,7 @@ export default function BeyondBackgroundChecksPage() {
           </div>
         </div>
       </section>
-    </main>
+      </main>
+    </>
   );
 }
