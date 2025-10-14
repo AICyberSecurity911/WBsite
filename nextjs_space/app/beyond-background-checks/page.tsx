@@ -12,8 +12,51 @@ export const metadata: Metadata = {
 };
 
 export default function BeyondBackgroundChecksPage() {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What makes Beyond Background Checks™ different?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Beyond Background Checks™ provides intelligence-grade executive due diligence that goes far beyond standard verification. We analyze digital footprints, dark web exposure, litigation history, professional associations, and reputation intelligence — uncovering the 96% of information that standard background checks miss. Our investigations are designed for high-stakes decisions: board appointments, C-suite hires, and strategic partnerships."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is it for hiring or partnership vetting?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Both. Beyond Background Checks™ is ideal for executive hiring, board appointments, M&A due diligence, strategic partnerships, investor vetting, and any situation where a single bad decision could cost millions. Our clients include boards, investors, and executives making critical people and partnership decisions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does a typical investigation take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Standard investigations are completed within 5-7 business days. Expedited assessments for time-sensitive decisions can be delivered in 48-72 hours. Complex investigations involving international entities or deep forensic analysis may require 10-14 days depending on scope and data availability."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is it compliant with data privacy laws?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. All investigations comply with FCRA, GDPR, and applicable data privacy regulations. We use only legally permissible sources and methods, obtaining proper consent where required. Our processes are designed to meet the highest standards for executive-level due diligence while respecting privacy rights and regulatory requirements."
+        }
+      }
+    ]
+  };
+
   return (
     <main className="font-sans text-gray-900">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       {/* HERO */}
       <section className="relative bg-black text-white py-24 text-center overflow-hidden">
         <video

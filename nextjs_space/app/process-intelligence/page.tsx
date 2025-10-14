@@ -15,8 +15,51 @@ export const metadata: Metadata = {
 };
 
 export default function ProcessIntelligencePage() {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Process Intelligence?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Process Intelligence combines process mining, data analytics, and AI to visualize how work actually flows through your organization. It reveals bottlenecks, inefficiencies, and automation opportunities that traditional business analysis misses — giving you a data-driven roadmap for operational transformation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does AI improve process efficiency?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AI analyzes millions of process events to identify patterns, predict bottlenecks, and recommend automation opportunities. It continuously learns from your operations to optimize workflows, reduce manual handoffs, and eliminate repetitive tasks — driving 30-50% efficiency gains in target processes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is it compatible with legacy systems?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Process Intelligence works with your existing systems by analyzing event logs, APIs, and data flows without requiring system replacement. Our solutions integrate with ERP, CRM, and legacy platforms through secure connectors and middleware — preserving your technology investments while adding intelligence."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What ROI should we expect?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most enterprises see ROI within 6-9 months through reduced cycle times (30-40%), lower operational costs (20-30%), and improved compliance. Typical benefits include faster order-to-cash cycles, reduced manual errors, and freed capacity equivalent to 15-20% of process team time."
+        }
+      }
+    ]
+  };
+
   return (
     <main className="font-sans text-gray-800">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       {/* HERO */}
       <section className="relative bg-gradient-to-r from-slate-900 to-blue-800 text-white py-24 text-center overflow-hidden">
         <video

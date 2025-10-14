@@ -7,8 +7,59 @@ import TestimonialCarousel from "@/components/testimonial-carousel";
 import { HeroCTA } from "@/components/hero-cta";
 
 export default function EnterpriseLandingPage() {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is QuantumLeap AI Enterprise?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "QuantumLeap AI helps large organizations move with startup velocity through AI Workforce, Process Intelligence, Enterprise Cyber Intelligence, and Beyond Background Checks™ — combining automation, intelligence-grade due diligence, and transformation expertise trusted by Fortune 500 leaders."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does it help business leaders?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We help eliminate hidden inefficiencies, accelerate digital transformation, multiply capacity without increasing headcount, and provide intelligence-grade executive vetting that protects boardroom decisions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What's included in Beyond Background Checks™?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Intelligence-grade analysis of digital footprints, dark-web exposure monitoring, litigation history verification, professional association mapping, and reputation intelligence that reveals the 96% of information standard checks miss."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I see ROI before I invest?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Our Enterprise Readiness Assessment provides instant dollar value at risk, identifies top inefficiencies, and maps clear ROI within 90 seconds. The Executive Transformation Brief includes board-ready ROI models."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer live consultation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. We offer complimentary 30-minute Executive Briefings with no sales pitch — just strategic insights and a 90-day action plan tailored to your organization."
+        }
+      }
+    ]
+  };
+
   return (
     <main className="font-sans text-gray-800">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       {/* HERO */}
       <HeroSection
         headline="Your complexity is costing you momentum."

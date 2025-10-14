@@ -5,10 +5,59 @@ import { HeroCTA } from "@/components/hero-cta";
 import TestimonialCarousel from "@/components/testimonial-carousel";
 import AIWorkforceCalculator from "@/components/ai-workforce-calculator";
 import { BlogCard } from "@/components/blog-card";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "AI Workforce | QuantumLeap AI",
+  description: "Deploy an AI workforce that drives measurable productivity — 20% gains in 90 days, guaranteed. Automate intelligently, scale responsibly, and free your teams to focus on what matters.",
+};
 
 export default function AIWorkforceServicePage() {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is an AI Workforce?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An AI Workforce consists of intelligent automation agents that handle repetitive, time-consuming tasks across your organization — from data entry and report generation to customer support and compliance monitoring — allowing human teams to focus on strategic, high-value work."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How fast can it be deployed?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most AI Workforce implementations show measurable productivity gains within 90 days. Initial pilot deployments can be operational in 2-4 weeks, with full enterprise rollout typically completed in 3-6 months depending on complexity and integration requirements."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What productivity increase can we expect?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our clients typically see 20-35% productivity gains within the first 90 days. We guarantee a minimum 20% increase or refund your implementation cost. Results vary based on process maturity and automation scope, but most enterprises save 15-25 hours per employee per week on repetitive tasks."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it replace or support human teams?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AI Workforce augments human teams rather than replacing them. It handles repetitive, rules-based work while freeing employees to focus on strategic thinking, relationship building, and creative problem-solving. Most organizations redeploy freed capacity to higher-value initiatives rather than reducing headcount."
+        }
+      }
+    ]
+  };
+
   return (
     <main className="font-sans text-gray-800">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       {/* HERO */}
       <section className="relative bg-gradient-to-r from-amber-900 to-orange-800 text-white py-24 text-center">
         <div className="max-w-5xl mx-auto px-6">
