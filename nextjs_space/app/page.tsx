@@ -5,6 +5,7 @@ import TrustBar from "@/components/trust-bar";
 import ReadinessCalculator from "@/components/readiness-calculator";
 import TestimonialCarousel from "@/components/testimonial-carousel";
 import { HeroCTA } from "@/components/hero-cta";
+import { Users, Network, Search, Shield, TrendingUp } from "lucide-react";
 
 export default function EnterpriseLandingPage() {
   const faqSchema = {
@@ -201,48 +202,107 @@ export default function EnterpriseLandingPage() {
         ]}
       />
 
-      {/* SERVICES */}
+      {/* ENTERPRISE SOLUTIONS */}
       <section className="py-20 bg-white border-t border-gray-100">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-semibold mb-12 text-gray-900">
-            Turn Organizational Liabilities into Competitive Leverage
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl font-semibold mb-12 text-gray-900 text-center">
+            Enterprise Solutions That Turn Scale Into Advantage
           </h2>
-          <div className="grid md:grid-cols-3 gap-10 text-left">
-            {[
-              {
-                title: "AI Workforce",
-                desc: "Multiply capacity without increasing headcount.",
-                link: "/ai-workforce",
-              },
-              {
-                title: "Process Intelligence & Automation",
-                desc: "Orchestrate work from insight to execution.",
-                link: "/process-intelligence",
-              },
-              {
-                title: "Beyond Background Checks™",
-                desc: "Intelligence-grade executive due diligence.",
-                link: "/beyond-background-checks",
-              },
-              {
-                title: "Enterprise Cyber Intelligence",
-                desc: "NASA-recognized offensive testing and defense.",
-                link: "/cyber-intelligence",
-              },
-              {
-                title: "Enterprise Transformation",
-                desc: "Re-architect technology, process, and culture for momentum.",
-                link: "/enterprise-transformation",
-              },
-            ].map((s) => (
-              <div
-                key={s.title}
-                className="block border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-lg transition bg-gradient-to-br from-amber-50 to-orange-50"
-              >
-                <h3 className="font-semibold text-xl mb-2 text-gray-900">{s.title}</h3>
-                <p className="text-gray-700">{s.desc}</p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* AI Workforce Card */}
+            <div className="border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-lg transition bg-gradient-to-br from-blue-50 to-indigo-50">
+              <div className="flex items-center justify-center w-12 h-12 bg-blue-600 text-white rounded-lg mb-4">
+                <Users className="w-6 h-6" />
               </div>
-            ))}
+              <h3 className="font-semibold text-xl mb-3 text-gray-900">
+                Supercharge Your Teams Without Expanding Headcount
+              </h3>
+              <p className="text-gray-700 mb-6">
+                Deploy custom-trained AI employees that work 24/7, scale instantly, and free your best people for strategic work.
+              </p>
+              <a
+                href="/ai-workforce"
+                className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium transition"
+              >
+                Explore AI Workforce →
+              </a>
+            </div>
+
+            {/* Process Intelligence Card */}
+            <div className="border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-lg transition bg-gradient-to-br from-purple-50 to-pink-50">
+              <div className="flex items-center justify-center w-12 h-12 bg-purple-600 text-white rounded-lg mb-4">
+                <Network className="w-6 h-6" />
+              </div>
+              <h3 className="font-semibold text-xl mb-3 text-gray-900">
+                Transform Operational Chaos Into Competitive Edge
+              </h3>
+              <p className="text-gray-700 mb-6">
+                Move beyond basic automation. Deploy intelligent orchestration that adapts, learns, and optimizes across your enterprise.
+              </p>
+              <a
+                href="/process-intelligence"
+                className="inline-flex items-center text-purple-600 hover:text-purple-700 font-medium transition"
+              >
+                Explore Process Intelligence →
+              </a>
+            </div>
+
+            {/* Beyond Background Checks Card */}
+            <div className="border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-lg transition bg-gradient-to-br from-amber-50 to-orange-50">
+              <div className="flex items-center justify-center w-12 h-12 bg-orange-600 text-white rounded-lg mb-4">
+                <Search className="w-6 h-6" />
+              </div>
+              <h3 className="font-semibold text-xl mb-3 text-gray-900">
+                Eliminate Blind Spots in High-Stakes Decisions
+              </h3>
+              <p className="text-gray-700 mb-6">
+                Standard checks see 4%. We investigate the hidden 96%—protecting M&A, C-suite hires, and strategic partnerships.
+              </p>
+              <a
+                href="/beyond-background-checks"
+                className="inline-flex items-center text-orange-600 hover:text-orange-700 font-medium transition"
+              >
+                Explore Beyond Background Checks™ →
+              </a>
+            </div>
+
+            {/* Cyber Intelligence Card */}
+            <div className="border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-lg transition bg-gradient-to-br from-green-50 to-emerald-50">
+              <div className="flex items-center justify-center w-12 h-12 bg-green-600 text-white rounded-lg mb-4">
+                <Shield className="w-6 h-6" />
+              </div>
+              <h3 className="font-semibold text-xl mb-3 text-gray-900">
+                NASA-Recognized Security for Mission-Critical Operations
+              </h3>
+              <p className="text-gray-700 mb-6">
+                Stop threats before they launch. Our offensive security experts find and fix vulnerabilities attackers are looking for.
+              </p>
+              <a
+                href="/cyber-intelligence"
+                className="inline-flex items-center text-green-600 hover:text-green-700 font-medium transition"
+              >
+                Explore Cyber Intelligence →
+              </a>
+            </div>
+
+            {/* Enterprise Transformation Card */}
+            <div className="border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-lg transition bg-gradient-to-br from-red-50 to-rose-50 md:col-span-2 lg:col-span-1">
+              <div className="flex items-center justify-center w-12 h-12 bg-red-600 text-white rounded-lg mb-4">
+                <TrendingUp className="w-6 h-6" />
+              </div>
+              <h3 className="font-semibold text-xl mb-3 text-gray-900">
+                Rewire Your Organization for the AI Era
+              </h3>
+              <p className="text-gray-700 mb-6">
+                Don&apos;t optimize outdated models. Fundamentally reconstruct your operating architecture for Fortune 500 power with startup speed.
+              </p>
+              <a
+                href="/enterprise-transformation"
+                className="inline-flex items-center text-red-600 hover:text-red-700 font-medium transition"
+              >
+                Explore Enterprise Transformation →
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -317,18 +377,18 @@ export default function EnterpriseLandingPage() {
       <section className="bg-gradient-to-r from-yellow-600 via-orange-600 to-red-600 text-white py-20 text-center">
         <div className="max-w-3xl mx-auto px-6">
           <h2 className="text-4xl font-semibold mb-4">
-            Every Month You Wait Costs Real Dollars
+            Ready to Turn Your Scale Into Speed?
           </h2>
           <p className="text-xl mb-8 text-orange-100">
-            The cost of inaction is measurable—lost revenue, missed innovation,
-            hidden risk. Book your 30-minute Executive Briefing today.
+            Book a 30-minute executive briefing. No sales pitch. Just a clear assessment of your transformation opportunities and a roadmap to capture them.
           </p>
           <HeroCTA
-            primaryLabel="Book Executive Briefing"
+            primaryLabel="Schedule Executive Briefing"
             primaryHref="/schedule"
-            secondaryLabel="Download Executive Transformation Brief"
-            secondaryHref="/download-brief"
           />
+          <p className="text-sm text-orange-100 mt-4">
+            🔒 Confidential consultation
+          </p>
         </div>
       </section>
 
