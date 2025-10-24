@@ -86,18 +86,21 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           />
         </div>
 
-        {/* Stats with animated counters */}
+        {/* Stats with animated counters and enhanced visual separation */}
         <div 
-          className={`grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 hero-stats ${
+          className={`grid grid-cols-1 md:grid-cols-3 gap-8 mt-20 hero-stats ${
             isVisible ? 'hero-stats-visible' : ''
           }`}
         >
           {stats?.map?.((stat, index) => (
             <div 
               key={index} 
-              className="text-center p-6 bg-black/40 rounded-xl backdrop-blur-md border border-yellow-500/30 hover:border-yellow-500/60 hover:bg-black/50 transition-all duration-300 hover:transform hover:scale-105"
+              className="text-center p-8 bg-black/40 rounded-xl backdrop-blur-md border-2 border-yellow-500/40 hover:border-yellow-500/70 hover:bg-black/50 transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-2xl"
+              style={{
+                animationDelay: `${index * 100}ms`,
+              }}
             >
-              <div className="text-4xl font-bold text-yellow-400 mb-3">
+              <div className="text-5xl font-bold text-yellow-400 mb-4 drop-shadow-lg">
                 {stat.value.includes('$') ? (
                   <>
                     $<AnimatedCounter end={170} suffix="M+" />
@@ -108,7 +111,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                   stat.value
                 )}
               </div>
-              <div className="text-gray-300 text-sm uppercase tracking-wider">
+              <div className="text-gray-200 text-base uppercase tracking-wider font-medium">
                 {stat.label}
               </div>
             </div>

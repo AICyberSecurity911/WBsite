@@ -7,7 +7,7 @@ import TestimonialCarousel from "@/components/testimonial-carousel";
 import { HeroCTA } from "@/components/hero-cta";
 import ScrollReveal from "@/components/scroll-reveal";
 import FAQAccordion from "@/components/faq-accordion";
-import { Users, Network, Search, Shield, TrendingUp } from "lucide-react";
+import ServiceCard from "@/components/service-card";
 
 export default function EnterpriseLandingPage() {
   const faqItems = [
@@ -254,106 +254,88 @@ export default function EnterpriseLandingPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* AI Workforce Card */}
             <ScrollReveal direction="up" delay={100}>
-              <div className="group border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-blue-50 to-indigo-50 hover:scale-105 h-full flex flex-col">
-                <div className="flex items-center justify-center w-14 h-14 bg-blue-600 text-white rounded-lg mb-5 group-hover:bg-blue-700 transition-colors">
-                  <Users className="w-7 h-7" />
-                </div>
-                <h3 className="font-semibold text-xl mb-4 text-gray-900 leading-tight">
-                  Supercharge Your Teams Without Expanding Headcount
-                </h3>
-                <p className="text-gray-700 mb-6 leading-relaxed flex-grow">
-                  Deploy custom-trained AI employees that work 24/7, scale instantly, and free your best people for strategic work.
-                </p>
-                <a
-                  href="/ai-workforce"
-                  className="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold transition group-hover:translate-x-1"
-                >
-                  Explore AI Workforce →
-                </a>
-              </div>
+              <ServiceCard
+                title="Supercharge Your Teams Without Expanding Headcount"
+                description="Deploy custom-trained AI employees that work 24/7, scale instantly, and free your best people for strategic work."
+                href="/ai-workforce"
+                iconName="users"
+                gradientFrom="from-blue-50"
+                gradientTo="to-indigo-50"
+                iconBg="bg-blue-600"
+                iconBgHover="group-hover:bg-blue-700"
+                linkColor="text-blue-600"
+                linkColorHover="hover:text-blue-700"
+                borderGlowColor="#3b82f6"
+              />
             </ScrollReveal>
 
             {/* Process Intelligence Card */}
             <ScrollReveal direction="up" delay={200}>
-              <div className="group border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-purple-50 to-pink-50 hover:scale-105 h-full flex flex-col">
-                <div className="flex items-center justify-center w-14 h-14 bg-purple-600 text-white rounded-lg mb-5 group-hover:bg-purple-700 transition-colors">
-                  <Network className="w-7 h-7" />
-                </div>
-                <h3 className="font-semibold text-xl mb-4 text-gray-900 leading-tight">
-                  Transform Operational Chaos Into Competitive Edge
-                </h3>
-                <p className="text-gray-700 mb-6 leading-relaxed flex-grow">
-                  Move beyond basic automation. Deploy intelligent orchestration that adapts, learns, and optimizes across your enterprise.
-                </p>
-                <a
-                  href="/process-intelligence"
-                  className="inline-flex items-center text-purple-600 hover:text-purple-700 font-semibold transition group-hover:translate-x-1"
-                >
-                  Explore Process Intelligence →
-                </a>
-              </div>
+              <ServiceCard
+                title="Transform Operational Chaos Into Competitive Edge"
+                description="Move beyond basic automation. Deploy intelligent orchestration that adapts, learns, and optimizes across your enterprise."
+                href="/process-intelligence"
+                iconName="network"
+                gradientFrom="from-purple-50"
+                gradientTo="to-pink-50"
+                iconBg="bg-purple-600"
+                iconBgHover="group-hover:bg-purple-700"
+                linkColor="text-purple-600"
+                linkColorHover="hover:text-purple-700"
+                borderGlowColor="#9333ea"
+              />
             </ScrollReveal>
 
             {/* Beyond Background Checks Card */}
             <ScrollReveal direction="up" delay={300}>
-              <div className="group border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-amber-50 to-orange-50 hover:scale-105 h-full flex flex-col">
-                <div className="flex items-center justify-center w-14 h-14 bg-orange-600 text-white rounded-lg mb-5 group-hover:bg-orange-700 transition-colors">
-                  <Search className="w-7 h-7" />
-                </div>
-                <h3 className="font-semibold text-xl mb-4 text-gray-900 leading-tight">
-                  Eliminate Blind Spots in High-Stakes Decisions
-                </h3>
-                <p className="text-gray-700 mb-6 leading-relaxed flex-grow">
-                  Standard checks see 4%. We investigate the hidden 96%—protecting M&A, C-suite hires, and strategic partnerships.
-                </p>
-                <a
-                  href="/beyond-background-checks"
-                  className="inline-flex items-center text-orange-600 hover:text-orange-700 font-semibold transition group-hover:translate-x-1"
-                >
-                  Explore Beyond Background Checks™ →
-                </a>
-              </div>
+              <ServiceCard
+                title="Eliminate Blind Spots in High-Stakes Decisions"
+                description="Standard checks see 4%. We investigate the hidden 96%—protecting M&A, C-suite hires, and strategic partnerships."
+                href="/beyond-background-checks"
+                iconName="search"
+                gradientFrom="from-amber-50"
+                gradientTo="to-orange-50"
+                iconBg="bg-orange-600"
+                iconBgHover="group-hover:bg-orange-700"
+                linkColor="text-orange-600"
+                linkColorHover="hover:text-orange-700"
+                borderGlowColor="#f97316"
+              />
             </ScrollReveal>
 
             {/* Cyber Intelligence Card */}
             <ScrollReveal direction="up" delay={400}>
-              <div className="group border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-green-50 to-emerald-50 hover:scale-105 h-full flex flex-col">
-                <div className="flex items-center justify-center w-14 h-14 bg-green-600 text-white rounded-lg mb-5 group-hover:bg-green-700 transition-colors">
-                  <Shield className="w-7 h-7" />
-                </div>
-                <h3 className="font-semibold text-xl mb-4 text-gray-900 leading-tight">
-                  NASA-Recognized Security for Mission-Critical Operations
-                </h3>
-                <p className="text-gray-700 mb-6 leading-relaxed flex-grow">
-                  Stop threats before they launch. Our offensive security experts find and fix vulnerabilities attackers are looking for.
-                </p>
-                <a
-                  href="/cyber-intelligence"
-                  className="inline-flex items-center text-green-600 hover:text-green-700 font-semibold transition group-hover:translate-x-1"
-                >
-                  Explore Cyber Intelligence →
-                </a>
-              </div>
+              <ServiceCard
+                title="NASA-Recognized Security for Mission-Critical Operations"
+                description="Stop threats before they launch. Our offensive security experts find and fix vulnerabilities attackers are looking for."
+                href="/cyber-intelligence"
+                iconName="shield"
+                gradientFrom="from-green-50"
+                gradientTo="to-emerald-50"
+                iconBg="bg-green-600"
+                iconBgHover="group-hover:bg-green-700"
+                linkColor="text-green-600"
+                linkColorHover="hover:text-green-700"
+                borderGlowColor="#10b981"
+              />
             </ScrollReveal>
 
             {/* Enterprise Transformation Card */}
             <ScrollReveal direction="up" delay={500}>
-              <div className="group border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-red-50 to-rose-50 hover:scale-105 md:col-span-2 lg:col-span-1 h-full flex flex-col">
-                <div className="flex items-center justify-center w-14 h-14 bg-red-600 text-white rounded-lg mb-5 group-hover:bg-red-700 transition-colors">
-                  <TrendingUp className="w-7 h-7" />
-                </div>
-                <h3 className="font-semibold text-xl mb-4 text-gray-900 leading-tight">
-                  Rewire Your Organization for the AI Era
-                </h3>
-                <p className="text-gray-700 mb-6 leading-relaxed flex-grow">
-                  Don&apos;t optimize outdated models. Fundamentally reconstruct your operating architecture for Fortune 500 power with startup speed.
-                </p>
-                <a
+              <div className="md:col-span-2 lg:col-span-1">
+                <ServiceCard
+                  title="Rewire Your Organization for the AI Era"
+                  description="Don't optimize outdated models. Fundamentally reconstruct your operating architecture for Fortune 500 power with startup speed."
                   href="/enterprise-transformation"
-                  className="inline-flex items-center text-red-600 hover:text-red-700 font-semibold transition group-hover:translate-x-1"
-                >
-                  Explore Enterprise Transformation →
-                </a>
+                  iconName="trending-up"
+                  gradientFrom="from-red-50"
+                  gradientTo="to-rose-50"
+                  iconBg="bg-red-600"
+                  iconBgHover="group-hover:bg-red-700"
+                  linkColor="text-red-600"
+                  linkColorHover="hover:text-red-700"
+                  borderGlowColor="#ef4444"
+                />
               </div>
             </ScrollReveal>
           </div>
