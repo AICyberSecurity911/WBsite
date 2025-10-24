@@ -4,6 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import { HeroCTA } from './hero-cta';
 import AnimatedCounter from './animated-counter';
+import AnimatedHeroBackground from './animated-hero-background';
 
 interface HeroSectionProps {
   headline: string;
@@ -45,15 +46,18 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         </video>
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/80" />
         
-        {/* Animated grid overlay for premium feel */}
-        <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-orange-500/5 animate-pulse" style={{ animationDuration: '4s' }} />
+        {/* Animated SVG background overlay */}
+        <AnimatedHeroBackground />
+        
+        {/* Animated gradient overlay for premium feel */}
+        <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-orange-500/5 hero-pulse" />
       </div>
 
       {/* Content with staggered animations */}
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center text-white">
         <h1 
-          className={`text-5xl md:text-7xl font-bold mb-8 leading-tight transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          className={`text-5xl md:text-7xl font-bold mb-8 leading-tight hero-headline ${
+            isVisible ? 'hero-headline-visible' : ''
           }`}
           style={{ letterSpacing: '-0.02em', lineHeight: '1.1' }}
         >
@@ -61,8 +65,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         </h1>
         
         <p 
-          className={`text-xl md:text-2xl mb-10 text-gray-200 max-w-3xl mx-auto leading-relaxed transition-all duration-1000 delay-200 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          className={`text-xl md:text-2xl mb-10 text-gray-200 max-w-3xl mx-auto leading-relaxed hero-subheadline ${
+            isVisible ? 'hero-subheadline-visible' : ''
           }`}
           style={{ lineHeight: '1.6' }}
         >
@@ -70,8 +74,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         </p>
 
         <div 
-          className={`flex flex-col sm:flex-row gap-4 justify-center mb-16 transition-all duration-1000 delay-300 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          className={`flex flex-col sm:flex-row gap-4 justify-center mb-16 hero-cta ${
+            isVisible ? 'hero-cta-visible' : ''
           }`}
         >
           <HeroCTA
@@ -84,8 +88,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 
         {/* Stats with animated counters */}
         <div 
-          className={`grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 transition-all duration-1000 delay-500 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          className={`grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 hero-stats ${
+            isVisible ? 'hero-stats-visible' : ''
           }`}
         >
           {stats?.map?.((stat, index) => (
@@ -111,6 +115,116 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           ))}
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes heroPulse {
+          0%, 100% { opacity: 0.05; }
+          50% { opacity: 0.08; }
+        }
+
+        @keyframes heroHeadlineFadeUp {
+          from {
+            opacity: 0;
+            transform: translateY(32px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes heroSubheadlineFadeUp {
+          from {
+            opacity: 0;
+            transform: translateY(24px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes heroCtaFadeUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes heroStatsFadeUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .hero-pulse {
+          animation: heroPulse 4s ease-in-out infinite;
+        }
+
+        .hero-headline {
+          opacity: 0;
+          transform: translateY(32px);
+        }
+
+        .hero-headline-visible {
+          animation: heroHeadlineFadeUp 0.8s ease-out forwards;
+        }
+
+        .hero-subheadline {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+
+        .hero-subheadline-visible {
+          animation: heroSubheadlineFadeUp 0.8s ease-out 0.2s forwards;
+        }
+
+        .hero-cta {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        .hero-cta-visible {
+          animation: heroCtaFadeUp 0.8s ease-out 0.4s forwards;
+        }
+
+        .hero-stats {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        .hero-stats-visible {
+          animation: heroStatsFadeUp 0.8s ease-out 0.6s forwards;
+        }
+
+        /* Respect prefers-reduced-motion */
+        @media (prefers-reduced-motion: reduce) {
+          .hero-pulse,
+          .hero-headline-visible,
+          .hero-subheadline-visible,
+          .hero-cta-visible,
+          .hero-stats-visible {
+            animation: none;
+          }
+
+          .hero-headline,
+          .hero-subheadline,
+          .hero-cta,
+          .hero-stats {
+            opacity: 1;
+            transform: none;
+          }
+        }
+      `}</style>
     </section>
   );
 };
