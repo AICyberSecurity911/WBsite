@@ -340,9 +340,9 @@ export default function EnterpriseLandingPage() {
               </div>
             </ScrollReveal>
 
-            {/* Orb Mascot Filler - appears in the 6th grid position on lg screens */}
+            {/* Orb Mascot Filler - appears in the 6th grid position on md+ screens */}
             <ScrollReveal direction="up" delay={600}>
-              <div className="hidden lg:block">
+              <div className="hidden md:block">
                 <OrbCardFiller
                   variant="blue-orange"
                   message="Ready to unlock your enterprise potential?"
