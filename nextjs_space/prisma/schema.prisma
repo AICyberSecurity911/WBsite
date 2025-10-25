@@ -78,3 +78,79 @@ model CyberRiskResult {
   
   @@map("cyber_risk_results")
 }
+
+// SMB-specific lead tables
+model SMBLead {
+  id        String   @id @default(cuid())
+  email     String
+  firstName String?
+  lastName  String?
+  company   String?
+  phone     String?
+  employees String?
+  industry  String?
+  source    String   @default("ai-workforce")
+  createdAt DateTime @default(now())
+  
+  @@map("smb_leads")
+}
+
+model SMBAutomationLead {
+  id        String   @id @default(cuid())
+  email     String
+  firstName String?
+  lastName  String?
+  company   String?
+  phone     String?
+  employees String?
+  industry  String?
+  source    String   @default("process-automation")
+  createdAt DateTime @default(now())
+  
+  @@map("smb_automation_leads")
+}
+
+model SMBBackgroundCheckLead {
+  id        String   @id @default(cuid())
+  email     String
+  firstName String?
+  lastName  String?
+  company   String?
+  phone     String?
+  employees String?
+  industry  String?
+  source    String   @default("background-checks")
+  createdAt DateTime @default(now())
+  
+  @@map("smb_background_check_leads")
+}
+
+model SMBCyberLead {
+  id        String   @id @default(cuid())
+  email     String
+  firstName String?
+  lastName  String?
+  company   String?
+  phone     String?
+  employees String?
+  industry  String?
+  source    String   @default("cyber-intelligence")
+  createdAt DateTime @default(now())
+  
+  @@map("smb_cyber_leads")
+}
+
+model SMBTransformationLead {
+  id        String   @id @default(cuid())
+  email     String
+  firstName String?
+  lastName  String?
+  company   String?
+  phone     String?
+  employees String?
+  industry  String?
+  source    String   @default("business-transformation")
+  createdAt DateTime @default(now())
+  
+  @@map("smb_transformation_leads")
+}
