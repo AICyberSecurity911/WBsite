@@ -144,12 +144,12 @@ export default function EnterpriseLandingPage() {
       <section className="py-24 bg-white">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <ScrollReveal direction="fade">
-            <h2 className="text-4xl font-semibold mb-6 text-gray-900">
+            <h2 className="text-4xl font-semibold mb-6" style={{ color: '#111827' }}>
               The Question Every Board Will Ask Next Quarter
             </h2>
           </ScrollReveal>
           <ScrollReveal direction="fade" delay={100}>
-            <p className="text-2xl text-orange-600 mb-14 font-semibold italic">
+            <p className="text-2xl mb-14 font-semibold italic" style={{ color: '#ea580c' }}>
               "Why are smaller competitors moving faster than we are?"
             </p>
           </ScrollReveal>
