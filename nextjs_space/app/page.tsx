@@ -8,6 +8,7 @@ import { HeroCTA } from "@/components/hero-cta";
 import ScrollReveal from "@/components/scroll-reveal";
 import FAQAccordion from "@/components/faq-accordion";
 import ServiceCard from "@/components/service-card";
+import OrbCardFiller from "@/components/orb-card-filler";
 
 export default function EnterpriseLandingPage() {
   const faqItems = [
@@ -335,6 +336,17 @@ export default function EnterpriseLandingPage() {
                   linkColor="text-red-600"
                   linkColorHover="hover:text-red-700"
                   borderGlowColor="#ef4444"
+                />
+              </div>
+            </ScrollReveal>
+
+            {/* Orb Mascot Filler - appears in the 6th grid position on lg screens */}
+            <ScrollReveal direction="up" delay={600}>
+              <div className="hidden lg:block">
+                <OrbCardFiller
+                  variant="blue-orange"
+                  message="Ready to unlock your enterprise potential?"
+                  size={220}
                 />
               </div>
             </ScrollReveal>
