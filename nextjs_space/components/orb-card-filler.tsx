@@ -1,9 +1,9 @@
 
 "use client";
 
-import React from 'react';
-import AnimatedOrb from './animated-orb';
-import { motion } from 'framer-motion';
+import React, { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 
 interface OrbCardFillerProps {
   variant?: 'blue-orange' | 'grey';
@@ -14,10 +14,28 @@ interface OrbCardFillerProps {
 
 export default function OrbCardFiller({
   variant = 'blue-orange',
-  message = "More innovations coming soon...",
+  message = "Ready to unlock your Enterprise potential?",
   size = 240,
   className = '',
 }: OrbCardFillerProps) {
+  const [showMessage, setShowMessage] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleVideoEnd = () => {
+      setShowMessage(true);
+    };
+
+    video.addEventListener('ended', handleVideoEnd);
+
+    return () => {
+      video.removeEventListener('ended', handleVideoEnd);
+    };
+  }, []);
+
   return (
     <motion.div
       className={`group relative h-full flex flex-col items-center justify-center p-8 bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl border-2 border-slate-200/50 hover:border-blue-300/50 transition-all duration-500 overflow-hidden ${className}`}
@@ -39,41 +57,91 @@ export default function OrbCardFiller({
         }}
       />
 
-      {/* Orb */}
-      <div className="relative z-10 mb-6">
-        <AnimatedOrb
-          variant={variant}
-          size={size}
-          animationPreset="float"
-          glowIntensity="high"
-          interactive={true}
-        />
-      </div>
+      <AnimatePresence mode="wait">
+        {!showMessage ? (
+          /* Video Animation */
+          <motion.div
+            key="video"
+            className="relative z-10 w-full h-full flex items-center justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.5 }}
+          >
+            <video
+              ref={videoRef}
+              autoPlay
+              muted
+              playsInline
+              className="w-full h-auto max-w-[280px] object-contain"
+            >
+              <source src="/videos/orb-animation.mp4" type="video/mp4" />
+            </video>
+          </motion.div>
+        ) : (
+          /* Message & CTA */
+          <motion.div
+            key="message"
+            className="relative z-10 flex flex-col items-center justify-center gap-6 text-center px-4"
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
+            {/* Message */}
+            <motion.h3
+              className="text-2xl font-bold text-gray-900 max-w-xs leading-tight"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+            >
+              {message}
+            </motion.h3>
 
-      {/* Message */}
-      <motion.p
-        className="relative z-10 text-center text-lg font-medium text-gray-700 group-hover:text-gray-900 transition-colors duration-300 max-w-xs"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3, duration: 0.5 }}
-      >
-        {message}
-      </motion.p>
+            {/* CTA Button */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+            >
+              <Link
+                href="/schedule"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-blue-800 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                <span>Book a Call</span>
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  />
+                </svg>
+              </Link>
+            </motion.div>
 
-      {/* Sparkle effect on hover */}
-      <motion.div
-        className="absolute top-4 right-4 text-2xl opacity-0 group-hover:opacity-100"
-        animate={{
-          rotate: [0, 360],
-        }}
-        transition={{
-          duration: 3,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-      >
-        ✨
-      </motion.div>
+            {/* Sparkle decoration */}
+            <motion.div
+              className="absolute -top-2 -right-2 text-3xl"
+              animate={{
+                rotate: [0, 360],
+                scale: [1, 1.2, 1],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            >
+              ✨
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Bottom glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-1/3 bg-gradient-to-t from-blue-300/20 to-transparent blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
