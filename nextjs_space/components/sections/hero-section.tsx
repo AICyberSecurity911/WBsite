@@ -40,14 +40,14 @@ export function HeroSection() {
         <div className="grid items-center gap-16 lg:grid-cols-2">
           {/* Left Content */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0.7, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-center lg:text-left"
           >
             {/* Pre-headline Badge */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0.7, scale: 0.9 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mb-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-teal-50 to-emerald-50 px-5 py-2.5 text-sm font-semibold text-teal-700 shadow-sm dark:from-teal-950/50 dark:to-emerald-950/50 dark:text-teal-300 border border-teal-200 dark:border-teal-800"
@@ -58,7 +58,7 @@ export function HeroSection() {
 
             {/* Main Headline */}
             <motion.h1
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0.7, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.3 }}
               className="mb-6 text-5xl font-extrabold leading-[1.1] tracking-tight text-gray-900 dark:text-white sm:text-6xl lg:text-7xl"
@@ -72,7 +72,7 @@ export function HeroSection() {
 
             {/* Subheadline */}
             <motion.p
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0.7, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
               className="mb-10 text-xl leading-relaxed text-gray-600 dark:text-gray-300 sm:text-2xl"
@@ -83,7 +83,7 @@ export function HeroSection() {
 
             {/* CTA Buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0.7, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.5 }}
               className="mb-12 flex flex-col gap-4 sm:flex-row sm:items-center"
@@ -104,7 +104,7 @@ export function HeroSection() {
 
             {/* Trust Indicators */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0.7, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.6 }}
               className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-600 dark:text-gray-400 lg:justify-start"
@@ -132,7 +132,7 @@ export function HeroSection() {
 
           {/* Right Content - Hero Visual & Stats */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0.7, x: 30 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="relative"
@@ -158,7 +158,7 @@ export function HeroSection() {
 
               {/* Floating Stats Cards */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                initial={{ opacity: 0.7, scale: 0.8, y: 20 }}
                 animate={inView ? { opacity: 1, scale: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.9, type: "spring" }}
                 className="absolute -bottom-8 -left-8 rounded-2xl bg-white p-5 shadow-2xl dark:bg-gray-800 border border-gray-100 dark:border-gray-700 lg:-left-12"
@@ -170,7 +170,7 @@ export function HeroSection() {
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                initial={{ opacity: 0.7, scale: 0.8, y: 20 }}
                 animate={inView ? { opacity: 1, scale: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 1.1, type: "spring" }}
                 className="absolute -right-8 -top-8 rounded-2xl bg-white p-5 shadow-2xl dark:bg-gray-800 border border-gray-100 dark:border-gray-700 lg:-right-12"
@@ -182,7 +182,7 @@ export function HeroSection() {
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0.7, scale: 0.8 }}
                 animate={inView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.6, delay: 1.3, type: "spring" }}
                 className="absolute bottom-4 right-4 rounded-xl bg-white/90 backdrop-blur-sm p-4 shadow-lg dark:bg-gray-800/90 border border-gray-200 dark:border-gray-700"
@@ -203,7 +203,7 @@ export function HeroSection() {
 
         {/* Scroll Indicator */}
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={{ opacity: 0.5 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 1.5 }}
           className="absolute bottom-12 left-1/2 -translate-x-1/2 transform hidden lg:flex"

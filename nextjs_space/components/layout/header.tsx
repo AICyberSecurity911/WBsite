@@ -4,6 +4,7 @@
 import { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Menu, X, Sun, Moon, ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
@@ -53,12 +54,18 @@ export function Header() {
     >
       <nav className="container flex h-16 items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center space-x-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-600">
-            <span className="text-lg font-bold text-white">Q</span>
+        <Link href="/" className="flex items-center space-x-3">
+          <div className="relative h-10 w-10">
+            <Image
+              src="/logo.png"
+              alt="QuantumLeap AI Logo"
+              fill
+              className="object-contain"
+              priority
+            />
           </div>
           <span className="text-xl font-bold text-gray-900 dark:text-white">
-            QuantumLeap
+            QuantumLeap <span className="ai-pulse text-orange-500">AI</span>
           </span>
         </Link>
 
