@@ -1,20 +1,21 @@
-
 import { PrismaClient } from '@prisma/client'
 import bcrypt from 'bcryptjs'
 
 const prisma = new PrismaClient()
 
 async function main() {
-  console.log('🚀 Initializing admin user...')
+  console.log('🔄 Updating admin email...')
 
-  const existingAdmin = await prisma.adminUser.findFirst()
+  // Delete the old admin user
+  await prisma.adminUser.deleteMany({
+    where: {
+      email: 'admin@quantumleap.io'
+    }
+  })
 
-  if (existingAdmin) {
-    console.log('✅ Admin user already exists')
-    console.log(`Email: ${existingAdmin.email}`)
-    return
-  }
+  console.log('✅ Old admin user removed')
 
+  // Create the new admin user
   const defaultPassword = 'QuantumLeap2025!'
   const passwordHash = await bcrypt.hash(defaultPassword, 10)
 
@@ -27,7 +28,7 @@ async function main() {
     }
   })
 
-  console.log('✅ Default admin user created successfully!')
+  console.log('✅ New admin user created successfully!')
   console.log(`Email: ${admin.email}`)
   console.log(`Password: ${defaultPassword}`)
   console.log('\n⚠️  Please change the default password after first login!')
@@ -35,7 +36,7 @@ async function main() {
 
 main()
   .catch((e) => {
-    console.error('Error initializing admin:', e)
+    console.error('Error updating admin:', e)
     process.exit(1)
   })
   .finally(async () => {

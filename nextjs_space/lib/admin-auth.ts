@@ -42,13 +42,13 @@ export async function createDefaultAdmin() {
     
     await prisma.adminUser.create({
       data: {
-        email: 'admin@quantumleap.io',
+        email: 'paras@leapintoai.com',
         passwordHash,
-        name: 'QuantumLeap Admin',
+        name: 'Paras - QuantumLeap Admin',
         role: 'super_admin'
       }
     })
     
-    console.log('Default admin created: admin@quantumleap.io / QuantumLeap2025!')
+    console.log('Default admin created: paras@leapintoai.com / QuantumLeap2025!')
   }
 }
