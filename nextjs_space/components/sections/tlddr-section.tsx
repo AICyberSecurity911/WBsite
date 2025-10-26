@@ -86,20 +86,20 @@ export function TLDDRSection() {
 
           {/* Research Note */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0.8, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.8 }}
             className="mb-8 rounded-2xl border border-teal-200 bg-white p-6 dark:border-teal-800 dark:bg-gray-800"
           >
-            <h3 className="mb-2 font-semibold text-gray-900 dark:text-white">Research Note:</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+            <h3 className="mb-2 font-bold text-gray-900 dark:text-white">Research Note:</h3>
+            <p className="text-sm text-gray-700 dark:text-gray-400">
               Based on analysis of 10,000+ hours of business operations across 200+ companies, our AI employees consistently outperform human counterparts in accuracy, speed, and cost-effectiveness. Data compiled by our team of former McKinsey consultants and AI researchers.
             </p>
           </motion.div>
 
           {/* Critical Decision Point */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0.8, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 1 }}
             className="rounded-2xl bg-gradient-to-r from-teal-600 to-emerald-600 p-8 text-center text-white"

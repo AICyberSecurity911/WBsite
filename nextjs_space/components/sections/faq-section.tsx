@@ -128,7 +128,7 @@ export function FAQSection() {
             {faqData.map((item, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0.7, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
                 className="overflow-hidden rounded-2xl bg-white shadow-sm dark:bg-gray-800"
@@ -138,7 +138,7 @@ export function FAQSection() {
                   className="w-full px-6 py-5 text-left transition-colors hover:bg-gray-50 dark:hover:bg-gray-700/50"
                 >
                   <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-white">
                       {item.question}
                     </h3>
                     <ChevronDown 

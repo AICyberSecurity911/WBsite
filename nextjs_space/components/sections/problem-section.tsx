@@ -106,13 +106,13 @@ export function ProblemSection() {
                 {costBreakdown.map((item, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0.9, x: -20 }}
                     animate={inView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
                     className="flex items-center justify-between px-6 py-4"
                   >
-                    <span className="font-medium text-gray-800 dark:text-gray-200">{item.item}</span>
-                    <span className="font-bold text-gray-900 dark:text-white">{item.amount}</span>
+                    <span className="font-bold text-gray-900 dark:text-gray-200">{item.item}</span>
+                    <span className="font-bold text-red-600 dark:text-white">{item.amount}</span>
                   </motion.div>
                 ))}
                 
