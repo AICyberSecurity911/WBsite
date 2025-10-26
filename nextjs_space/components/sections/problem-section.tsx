@@ -63,7 +63,7 @@ export function ProblemSection() {
             initial={{ opacity: 0.7, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="mb-8 rounded-2xl bg-white p-6 shadow-lg dark:bg-gray-800 border border-gray-200 dark:border-gray-700"
+            className="mb-8 rounded-2xl bg-gradient-to-br from-slate-50 to-gray-100 dark:from-slate-950/30 dark:to-gray-950/30 p-6 shadow-lg border-2 border-slate-200 dark:border-slate-800 hover:shadow-[0_0_30px_rgba(148,163,184,0.5)] dark:hover:shadow-[0_0_30px_rgba(203,213,225,0.4)] transition-all duration-300"
           >
             <div className="mb-4 flex items-center gap-3">
               <div className="h-12 w-12 rounded-full bg-gradient-to-r from-red-500 to-pink-600" />
@@ -106,13 +106,13 @@ export function ProblemSection() {
                 {costBreakdown.map((item, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0.3, x: -20 }}
+                    initial={{ opacity: 1, x: -20 }}
                     animate={inView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
                     className="flex items-center justify-between px-6 py-4"
                   >
-                    <span className="text-gray-900 dark:text-gray-300">{item.item}</span>
-                    <span className="font-bold text-gray-950 dark:text-white">{item.amount}</span>
+                    <span className="font-medium text-gray-800 dark:text-gray-200">{item.item}</span>
+                    <span className="font-bold text-gray-900 dark:text-white">{item.amount}</span>
                   </motion.div>
                 ))}
                 
@@ -149,28 +149,40 @@ export function ProblemSection() {
                 icon: Clock,
                 title: 'Week 1-4',
                 problem: 'Training & Onboarding',
-                description: 'Reduced productivity while learning systems and processes'
+                description: 'Reduced productivity while learning systems and processes',
+                bgClass: 'bg-gradient-to-br from-amber-50 to-yellow-100 dark:from-amber-950/30 dark:to-yellow-950/30 border-2 border-amber-200 dark:border-amber-800 hover:shadow-[0_0_25px_rgba(245,158,11,0.5)] dark:hover:shadow-[0_0_25px_rgba(251,191,36,0.4)]',
+                iconBg: 'bg-amber-100 dark:bg-amber-900',
+                iconColor: 'text-amber-700 dark:text-amber-400',
+                textColor: 'text-amber-700 dark:text-amber-400'
               },
               {
                 icon: TrendingDown,
                 title: 'Month 2-6',
                 problem: 'Mistakes & Corrections',
-                description: 'Errors in critical business operations causing revenue loss'
+                description: 'Errors in critical business operations causing revenue loss',
+                bgClass: 'bg-gradient-to-br from-rose-50 to-red-100 dark:from-rose-950/30 dark:to-red-950/30 border-2 border-rose-200 dark:border-rose-800 hover:shadow-[0_0_25px_rgba(244,63,94,0.5)] dark:hover:shadow-[0_0_25px_rgba(251,113,133,0.4)]',
+                iconBg: 'bg-rose-100 dark:bg-rose-900',
+                iconColor: 'text-rose-700 dark:text-rose-400',
+                textColor: 'text-rose-700 dark:text-rose-400'
               },
               {
                 icon: DollarSign,
                 title: 'Month 6+',
                 problem: 'Turnover & Replacement',
-                description: 'Average employee stays 18 months, restart entire process'
+                description: 'Average employee stays 18 months, restart entire process',
+                bgClass: 'bg-gradient-to-br from-red-50 to-orange-100 dark:from-red-950/30 dark:to-orange-950/30 border-2 border-red-200 dark:border-red-800 hover:shadow-[0_0_25px_rgba(239,68,68,0.5)] dark:hover:shadow-[0_0_25px_rgba(248,113,113,0.4)]',
+                iconBg: 'bg-red-100 dark:bg-red-900',
+                iconColor: 'text-red-700 dark:text-red-400',
+                textColor: 'text-red-700 dark:text-red-400'
               }
             ].map((item, index) => (
-              <div key={index} className="rounded-lg bg-white p-6 shadow-md dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+              <div key={index} className={`rounded-lg p-6 shadow-md transition-all duration-300 ${item.bgClass}`}>
                 <div className="mb-3 flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-red-100 dark:bg-red-900">
-                    <item.icon className="h-5 w-5 text-red-700 dark:text-red-400" />
+                  <div className={`flex h-10 w-10 items-center justify-center rounded-full ${item.iconBg}`}>
+                    <item.icon className={`h-5 w-5 ${item.iconColor}`} />
                   </div>
                   <div>
-                    <div className="text-sm font-semibold text-red-700 dark:text-red-400">{item.title}</div>
+                    <div className={`text-sm font-semibold ${item.textColor}`}>{item.title}</div>
                     <div className="font-bold text-gray-900 dark:text-white">{item.problem}</div>
                   </div>
                 </div>

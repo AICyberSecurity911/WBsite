@@ -329,53 +329,67 @@ export function AIEmployeesSection() {
 
         {/* AI Employee Grid */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {aiEmployees.map((employee, index) => (
-            <motion.div
-              key={employee.id}
-              initial={{ opacity: 0.7, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-              className="group card cursor-pointer"
-              onClick={() => setSelectedEmployee(employee)}
-            >
-              {/* Icon and gradient background */}
-              <div className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-r ${employee.color} text-white`}>
-                <employee.icon className="h-6 w-6" />
-              </div>
-
-              {/* Content */}
-              <div>
-                <h3 className="mb-2 text-lg font-bold text-gray-900 dark:text-white">
-                  {employee.title}
-                </h3>
-                <p className="mb-3 text-sm text-gray-700 dark:text-gray-300">
-                  {employee.tagline}
-                </p>
-
-                {/* Metrics */}
-                <div className="mb-4 grid grid-cols-3 gap-2 text-xs">
-                  <div className="text-center">
-                    <div className="font-bold text-teal-700 dark:text-teal-400">{employee.metrics.accuracy}</div>
-                    <div className="text-gray-700 dark:text-gray-300">Accuracy</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="font-bold text-emerald-700 dark:text-emerald-400">{employee.metrics.timeSaved}</div>
-                    <div className="text-gray-700 dark:text-gray-300">Saved</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="font-bold text-purple-700 dark:text-purple-400">{employee.metrics.costSavings}</div>
-                    <div className="text-gray-700 dark:text-gray-300">Less Cost</div>
-                  </div>
+          {aiEmployees.map((employee, index) => {
+            // Define unique background colors for each card
+            const cardBackgrounds = [
+              'bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-950/30 dark:to-indigo-950/30 border-2 border-blue-200 dark:border-blue-800 hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] dark:hover:shadow-[0_0_30px_rgba(96,165,250,0.4)]',
+              'bg-gradient-to-br from-emerald-50 to-teal-100 dark:from-emerald-950/30 dark:to-teal-950/30 border-2 border-emerald-200 dark:border-emerald-800 hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] dark:hover:shadow-[0_0_30px_rgba(52,211,153,0.4)]',
+              'bg-gradient-to-br from-orange-50 to-red-100 dark:from-orange-950/30 dark:to-red-950/30 border-2 border-orange-200 dark:border-orange-800 hover:shadow-[0_0_30px_rgba(249,115,22,0.5)] dark:hover:shadow-[0_0_30px_rgba(251,146,60,0.4)]',
+              'bg-gradient-to-br from-purple-50 to-pink-100 dark:from-purple-950/30 dark:to-pink-950/30 border-2 border-purple-200 dark:border-purple-800 hover:shadow-[0_0_30px_rgba(168,85,247,0.5)] dark:hover:shadow-[0_0_30px_rgba(192,132,252,0.4)]',
+              'bg-gradient-to-br from-green-50 to-emerald-100 dark:from-green-950/30 dark:to-emerald-950/30 border-2 border-green-200 dark:border-green-800 hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] dark:hover:shadow-[0_0_30px_rgba(74,222,128,0.4)]',
+              'bg-gradient-to-br from-pink-50 to-purple-100 dark:from-pink-950/30 dark:to-purple-950/30 border-2 border-pink-200 dark:border-pink-800 hover:shadow-[0_0_30px_rgba(236,72,153,0.5)] dark:hover:shadow-[0_0_30px_rgba(244,114,182,0.4)]',
+              'bg-gradient-to-br from-indigo-50 to-blue-100 dark:from-indigo-950/30 dark:to-blue-950/30 border-2 border-indigo-200 dark:border-indigo-800 hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] dark:hover:shadow-[0_0_30px_rgba(129,140,248,0.4)]',
+              'bg-gradient-to-br from-yellow-50 to-orange-100 dark:from-yellow-950/30 dark:to-orange-950/30 border-2 border-yellow-200 dark:border-yellow-800 hover:shadow-[0_0_30px_rgba(234,179,8,0.5)] dark:hover:shadow-[0_0_30px_rgba(250,204,21,0.4)]'
+            ]
+            
+            return (
+              <motion.div
+                key={employee.id}
+                initial={{ opacity: 0.7, y: 30 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
+                className={`group relative overflow-hidden rounded-2xl p-6 cursor-pointer transition-all duration-300 ${cardBackgrounds[index]}`}
+                onClick={() => setSelectedEmployee(employee)}
+              >
+                {/* Icon and gradient background */}
+                <div className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-r ${employee.color} text-white shadow-lg`}>
+                  <employee.icon className="h-6 w-6" />
                 </div>
 
-                {/* CTA */}
-                <div className="flex items-center gap-2 text-sm font-semibold text-teal-700 group-hover:text-teal-900 dark:text-teal-400 dark:group-hover:text-teal-200">
-                  <span>Learn More</span>
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                {/* Content */}
+                <div>
+                  <h3 className="mb-2 text-lg font-bold text-gray-900 dark:text-white">
+                    {employee.title}
+                  </h3>
+                  <p className="mb-3 text-sm text-gray-700 dark:text-gray-300">
+                    {employee.tagline}
+                  </p>
+
+                  {/* Metrics */}
+                  <div className="mb-4 grid grid-cols-3 gap-2 text-xs">
+                    <div className="text-center">
+                      <div className="font-bold text-teal-700 dark:text-teal-400">{employee.metrics.accuracy}</div>
+                      <div className="text-gray-700 dark:text-gray-300">Accuracy</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="font-bold text-emerald-700 dark:text-emerald-400">{employee.metrics.timeSaved}</div>
+                      <div className="text-gray-700 dark:text-gray-300">Saved</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="font-bold text-purple-700 dark:text-purple-400">{employee.metrics.costSavings}</div>
+                      <div className="text-gray-700 dark:text-gray-300">Less Cost</div>
+                    </div>
+                  </div>
+
+                  {/* CTA */}
+                  <div className="flex items-center gap-2 text-sm font-semibold text-teal-700 group-hover:text-teal-900 dark:text-teal-400 dark:group-hover:text-teal-200">
+                    <span>Learn More</span>
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            )
+          })}
         </div>
 
         {/* CTA Section */}

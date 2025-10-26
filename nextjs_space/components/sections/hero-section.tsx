@@ -161,11 +161,11 @@ export function HeroSection() {
                 initial={{ opacity: 0.7, scale: 0.8, y: 20 }}
                 animate={inView ? { opacity: 1, scale: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.9, type: "spring" }}
-                className="absolute -bottom-8 -left-8 rounded-2xl bg-white p-5 shadow-2xl dark:bg-gray-800 border border-gray-100 dark:border-gray-700 lg:-left-12"
+                className="absolute -bottom-8 -left-8 rounded-2xl bg-gradient-to-br from-teal-50 to-cyan-100 dark:from-teal-950/50 dark:to-cyan-950/50 p-5 shadow-2xl border-2 border-teal-200 dark:border-teal-800 hover:shadow-[0_0_30px_rgba(20,184,166,0.6)] dark:hover:shadow-[0_0_30px_rgba(45,212,191,0.5)] transition-all duration-300 lg:-left-12"
               >
                 <div className="text-center">
-                  <div className="mb-1 text-3xl font-bold text-teal-600">87%</div>
-                  <div className="text-sm font-medium text-gray-600 dark:text-gray-400">Cost Savings</div>
+                  <div className="mb-1 text-3xl font-bold text-teal-600 dark:text-teal-400">87%</div>
+                  <div className="text-sm font-medium text-gray-700 dark:text-gray-300">Cost Savings</div>
                 </div>
               </motion.div>
 
@@ -173,11 +173,11 @@ export function HeroSection() {
                 initial={{ opacity: 0.7, scale: 0.8, y: 20 }}
                 animate={inView ? { opacity: 1, scale: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 1.1, type: "spring" }}
-                className="absolute -right-8 -top-8 rounded-2xl bg-white p-5 shadow-2xl dark:bg-gray-800 border border-gray-100 dark:border-gray-700 lg:-right-12"
+                className="absolute -right-8 -top-8 rounded-2xl bg-gradient-to-br from-emerald-50 to-green-100 dark:from-emerald-950/50 dark:to-green-950/50 p-5 shadow-2xl border-2 border-emerald-200 dark:border-emerald-800 hover:shadow-[0_0_30px_rgba(16,185,129,0.6)] dark:hover:shadow-[0_0_30px_rgba(52,211,153,0.5)] transition-all duration-300 lg:-right-12"
               >
                 <div className="text-center">
-                  <div className="mb-1 text-3xl font-bold text-emerald-600">99.2%</div>
-                  <div className="text-sm font-medium text-gray-600 dark:text-gray-400">Accuracy Rate</div>
+                  <div className="mb-1 text-3xl font-bold text-emerald-600 dark:text-emerald-400">99.2%</div>
+                  <div className="text-sm font-medium text-gray-700 dark:text-gray-300">Accuracy Rate</div>
                 </div>
               </motion.div>
 
@@ -185,15 +185,15 @@ export function HeroSection() {
                 initial={{ opacity: 0.7, scale: 0.8 }}
                 animate={inView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.6, delay: 1.3, type: "spring" }}
-                className="absolute bottom-4 right-4 rounded-xl bg-white/90 backdrop-blur-sm p-4 shadow-lg dark:bg-gray-800/90 border border-gray-200 dark:border-gray-700"
+                className="absolute bottom-4 right-4 rounded-xl bg-gradient-to-br from-purple-50 to-pink-100 dark:from-purple-950/50 dark:to-pink-950/50 backdrop-blur-sm p-4 shadow-lg border-2 border-purple-200 dark:border-purple-800 hover:shadow-[0_0_30px_rgba(168,85,247,0.6)] dark:hover:shadow-[0_0_30px_rgba(192,132,252,0.5)] transition-all duration-300"
               >
                 <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-purple-500 to-pink-500">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 shadow-lg">
                     <CheckCircle className="h-5 w-5 text-white" />
                   </div>
                   <div>
                     <div className="text-sm font-semibold text-gray-900 dark:text-white">24/7</div>
-                    <div className="text-xs text-gray-600 dark:text-gray-400">Always On</div>
+                    <div className="text-xs text-gray-700 dark:text-gray-300">Always On</div>
                   </div>
                 </div>
               </motion.div>
