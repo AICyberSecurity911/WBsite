@@ -80,7 +80,7 @@ export function ProblemSection() {
               </p>
               <p className="font-medium">
                 "By the time I calculated recruitment, training, mistakes, and replacement costs, that '$50K employee' 
-                actually cost me <span className="text-red-700 font-bold dark:text-red-400">$118,958</span>."
+                actually cost me <span className="text-red-800 font-extrabold dark:text-red-400">$118,958</span>."
               </p>
             </blockquote>
           </motion.div>
