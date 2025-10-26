@@ -164,17 +164,17 @@ export function ProblemSection() {
                 description: 'Average employee stays 18 months, restart entire process'
               }
             ].map((item, index) => (
-              <div key={index} className="rounded-lg bg-white p-6 shadow-md dark:bg-gray-800">
+              <div key={index} className="rounded-lg bg-white p-6 shadow-md dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
                 <div className="mb-3 flex items-center gap-3">
                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-red-100 dark:bg-red-900">
-                    <item.icon className="h-5 w-5 text-red-600" />
+                    <item.icon className="h-5 w-5 text-red-700 dark:text-red-400" />
                   </div>
                   <div>
-                    <div className="text-sm font-medium text-red-600">{item.title}</div>
-                    <div className="font-semibold text-gray-900 dark:text-white">{item.problem}</div>
+                    <div className="text-sm font-semibold text-red-700 dark:text-red-400">{item.title}</div>
+                    <div className="font-bold text-gray-900 dark:text-white">{item.problem}</div>
                   </div>
                 </div>
-                <p className="text-sm text-gray-600 dark:text-gray-400">{item.description}</p>
+                <p className="text-sm font-medium text-gray-800 dark:text-gray-300">{item.description}</p>
               </div>
             ))}
           </motion.div>

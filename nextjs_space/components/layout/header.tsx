@@ -7,15 +7,23 @@ import Link from 'next/link'
 import { Menu, X, Sun, Moon, ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
+const services = [
+  { name: 'AI Workforce', href: '/', description: 'AI employees for your business' },
+  { name: 'Intelligent Automation', href: '/intelligent-automation', description: 'Eliminate busywork' },
+  { name: 'Beyond Background Checks™', href: '/background-checks', description: 'Hiring risk assessment' },
+  { name: 'Cyber Intelligence', href: '/cyber-intelligence', description: 'NASA-grade security' },
+  { name: 'Business Transformation', href: '/business-transformation', description: 'Scale without chaos' },
+]
+
 const navigation = [
-  { name: 'AI Workforce', href: '#ai-workforce' },
+  { name: 'Services', href: '/', hasDropdown: true },
   { name: 'How It Works', href: '#how-it-works' },
-  { name: 'Pricing', href: '#pricing' },
   { name: 'About', href: '#about' },
 ]
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [servicesOpen, setServicesOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const { theme, setTheme } = useTheme()
@@ -57,13 +65,49 @@ export function Header() {
         {/* Desktop Navigation */}
         <div className="hidden items-center space-x-8 md:flex">
           {navigation.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="text-sm font-medium text-gray-700 transition-colors hover:text-teal-600 dark:text-gray-300 dark:hover:text-teal-400"
-            >
-              {item.name}
-            </Link>
+            item.hasDropdown ? (
+              <div key={item.name} className="relative">
+                <Link
+                  href={item.href}
+                  onMouseEnter={() => setServicesOpen(true)}
+                  onMouseLeave={() => setServicesOpen(false)}
+                  className="flex items-center text-sm font-medium text-gray-700 transition-colors hover:text-teal-600 dark:text-gray-300 dark:hover:text-teal-400"
+                >
+                  {item.name}
+                  <ChevronDown className="ml-1 h-4 w-4" />
+                </Link>
+                {servicesOpen && (
+                  <div
+                    onMouseEnter={() => setServicesOpen(true)}
+                    onMouseLeave={() => setServicesOpen(false)}
+                    className="absolute left-0 top-full mt-2 w-72 rounded-lg bg-white p-4 shadow-xl dark:bg-gray-900 dark:border dark:border-gray-800"
+                  >
+                    {services.map((service) => (
+                      <Link
+                        key={service.name}
+                        href={service.href}
+                        className="block rounded-md p-3 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800"
+                      >
+                        <div className="font-semibold text-gray-900 dark:text-white">
+                          {service.name}
+                        </div>
+                        <div className="text-sm text-gray-500 dark:text-gray-400">
+                          {service.description}
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="text-sm font-medium text-gray-700 transition-colors hover:text-teal-600 dark:text-gray-300 dark:hover:text-teal-400"
+              >
+                {item.name}
+              </Link>
+            )
           ))}
           
           {/* Theme Toggle */}
@@ -123,9 +167,32 @@ export function Header() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="absolute left-0 right-0 top-16 z-40 border-t bg-white dark:bg-gray-900 md:hidden">
+          <div className="absolute left-0 right-0 top-16 z-40 border-t bg-white dark:bg-gray-900 md:hidden max-h-[calc(100vh-4rem)] overflow-y-auto">
             <div className="container space-y-1 py-4">
-              {navigation.map((item) => (
+              {/* Services Section */}
+              <div className="mb-4">
+                <div className="px-3 py-2 text-sm font-semibold text-gray-500 dark:text-gray-400">
+                  Services
+                </div>
+                {services.map((service) => (
+                  <Link
+                    key={service.name}
+                    href={service.href}
+                    className="block rounded-md px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <div className="font-medium text-gray-900 dark:text-white">
+                      {service.name}
+                    </div>
+                    <div className="text-sm text-gray-500 dark:text-gray-400">
+                      {service.description}
+                    </div>
+                  </Link>
+                ))}
+              </div>
+
+              {/* Other Navigation */}
+              {navigation.filter(item => !item.hasDropdown).map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
@@ -135,6 +202,7 @@ export function Header() {
                   {item.name}
                 </Link>
               ))}
+
               <div className="pt-4">
                 <Button asChild className="btn-primary w-full">
                   <Link href="#calculator" onClick={() => setMobileMenuOpen(false)}>
