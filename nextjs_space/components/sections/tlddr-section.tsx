@@ -134,7 +134,7 @@ export function TLDDRSection() {
             </div>
             <div className="text-left text-sm">
               <p className="font-semibold text-gray-900 dark:text-white">QuantumLeap AI Research Team</p>
-              <p className="text-gray-600 dark:text-gray-400">Former McKinsey consultants & AI researchers</p>
+              <p className="text-gray-800 dark:text-gray-200">Former McKinsey consultants & AI researchers</p>
             </div>
           </motion.div>
         </motion.div>

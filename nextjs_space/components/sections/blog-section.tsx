@@ -191,10 +191,10 @@ export function BlogSection() {
               >
                 <Link href={`/blog/${post.slug}`} className="block p-6">
                   <div className="mb-3 flex items-center justify-between">
-                    <span className="rounded-full bg-teal-100 px-3 py-1 text-xs font-semibold text-teal-700 dark:bg-teal-900 dark:text-teal-300">
+                    <span className="rounded-full bg-teal-100 px-3 py-1 text-xs font-semibold text-teal-800 dark:bg-teal-900 dark:text-teal-200">
                       {post.category}
                     </span>
-                    <span className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
+                    <span className="flex items-center gap-1 text-xs text-gray-700 dark:text-gray-300">
                       <Clock className="h-3 w-3" />
                       {post.readTime}
                     </span>
@@ -204,11 +204,11 @@ export function BlogSection() {
                     {post.title}
                   </h3>
                   
-                  <p className="mb-3 text-sm text-gray-600 dark:text-gray-400">
+                  <p className="mb-3 text-sm text-gray-700 dark:text-gray-300">
                     {post.excerpt}
                   </p>
                   
-                  <div className="flex items-center gap-2 text-sm font-semibold text-teal-600 dark:text-teal-400">
+                  <div className="flex items-center gap-2 text-sm font-semibold text-teal-700 dark:text-teal-300">
                     Read Article
                     <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
                   </div>

@@ -35,11 +35,26 @@ export default function ConsultationPage() {
 
   const onSubmit = async (data: any) => {
     try {
-      // In a real app, this would go to an API endpoint
-      console.log('Consultation request:', data)
-      
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000))
+      const response = await fetch('/api/consultation', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          company: data.company,
+          phone: data.phone,
+          message: data.message,
+          subject: 'Free Consultation Request'
+        }),
+      })
+
+      const result = await response.json()
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to submit request')
+      }
       
       setIsSubmitted(true)
       reset()
@@ -49,9 +64,10 @@ export default function ConsultationPage() {
         description: 'We\'ll contact you within 24 hours to schedule your consultation.',
       })
     } catch (error) {
+      console.error('Consultation submission error:', error)
       toast({
         title: 'Error',
-        description: 'Failed to submit request. Please try again.',
+        description: error instanceof Error ? error.message : 'Failed to submit request. Please try again.',
         variant: 'destructive'
       })
     }

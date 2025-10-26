@@ -8,3 +8,56 @@ datasource db {
     provider = "postgresql"
     url      = env("DATABASE_URL")
 }
+
+model Lead {
+    id                  String   @id @default(uuid())
+    email               String   @unique
+    name                String
+    company             String?
+    phone               String?
+    confirmationToken   String?  @map("confirmation_token")
+    confirmed           Boolean  @default(false)
+    calculatorData      Json?    @map("calculator_data")
+    source              String?  @default("ai-workforce-calculator")
+    createdAt           DateTime @default(now()) @map("created_at")
+    updatedAt           DateTime @updatedAt @map("updated_at")
+    
+    calculatorResponses CalculatorResponse[]
+    
+    @@index([email])
+    @@index([confirmationToken])
+    @@index([confirmed])
+    @@index([createdAt(sort: Desc)])
+    @@map("leads")
+}
+
+model CalculatorResponse {
+    id                String   @id @default(uuid())
+    calculatorType    String   @map("calculator_type")
+    responses         Json
+    recommendations   Json?
+    projectedSavings  Json?    @map("projected_savings")
+    timestamp         DateTime @default(now())
+    leadId            String?  @map("lead_id")
+    
+    lead              Lead?    @relation(fields: [leadId], references: [id], onDelete: Cascade)
+    
+    @@index([calculatorType, timestamp(sort: Desc)])
+    @@map("calculator_responses")
+}
+
+model ContactSubmission {
+    id        String   @id @default(uuid())
+    name      String
+    email     String
+    company   String?
+    phone     String?
+    subject   String?
+    message   String
+    status    String   @default("new")
+    createdAt DateTime @default(now()) @map("created_at")
+    
+    @@index([createdAt(sort: Desc)])
+    @@index([status])
+    @@map("contact_submissions")
+}

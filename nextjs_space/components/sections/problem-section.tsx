@@ -92,7 +92,7 @@ export function ProblemSection() {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="mb-8"
           >
-            <h3 className="mb-6 text-center text-2xl font-bold text-gray-900 dark:text-white">
+            <h3 className="mb-6 text-center text-2xl font-bold text-red-900 dark:text-red-100">
               The "$50,000 Salary" Lie
             </h3>
             
@@ -106,13 +106,13 @@ export function ProblemSection() {
                 {costBreakdown.map((item, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0.9, x: -20 }}
+                    initial={{ opacity: 0, x: -20 }}
                     animate={inView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
                     className="flex items-center justify-between px-6 py-4"
                   >
-                    <span className="font-bold text-gray-900 dark:text-gray-200">{item.item}</span>
-                    <span className="font-bold text-red-600 dark:text-white">{item.amount}</span>
+                    <span className="font-bold text-gray-900 dark:text-gray-100">{item.item}</span>
+                    <span className="font-bold text-red-700 dark:text-red-400">{item.amount}</span>
                   </motion.div>
                 ))}
                 

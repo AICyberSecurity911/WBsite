@@ -321,7 +321,7 @@ export function AIEmployeesSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300"
+            className="mx-auto max-w-2xl text-lg text-gray-800 dark:text-gray-200"
           >
             Each AI employee is trained on 10,000+ hours of real business operations and ready to deploy within days
           </motion.p>
