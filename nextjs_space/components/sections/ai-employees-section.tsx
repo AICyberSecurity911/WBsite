@@ -302,7 +302,7 @@ export function AIEmployeesSection() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-6 inline-flex items-center gap-2 rounded-full bg-teal-100 px-4 py-2 text-sm font-semibold text-teal-800 dark:bg-teal-900 dark:text-teal-200"
+            className="mb-6 inline-flex items-center gap-2 rounded-full bg-teal-100 px-4 py-2 text-sm font-semibold text-teal-900 dark:bg-teal-900 dark:text-teal-100"
           >
             <Users className="h-4 w-4" />
             Meet Your AI Workforce
@@ -312,7 +312,7 @@ export function AIEmployeesSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mb-4 text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl"
+            className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl"
           >
             8 AI Employees Ready to Transform Your Business
           </motion.h2>
@@ -345,31 +345,31 @@ export function AIEmployeesSection() {
 
               {/* Content */}
               <div>
-                <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
+                <h3 className="mb-2 text-lg font-bold text-gray-900 dark:text-white">
                   {employee.title}
                 </h3>
-                <p className="mb-3 text-sm text-gray-600 dark:text-gray-400">
+                <p className="mb-3 text-sm text-gray-700 dark:text-gray-300">
                   {employee.tagline}
                 </p>
 
                 {/* Metrics */}
                 <div className="mb-4 grid grid-cols-3 gap-2 text-xs">
                   <div className="text-center">
-                    <div className="font-semibold text-teal-600">{employee.metrics.accuracy}</div>
-                    <div className="text-gray-600 dark:text-gray-400">Accuracy</div>
+                    <div className="font-bold text-teal-700 dark:text-teal-400">{employee.metrics.accuracy}</div>
+                    <div className="text-gray-700 dark:text-gray-300">Accuracy</div>
                   </div>
                   <div className="text-center">
-                    <div className="font-semibold text-emerald-600">{employee.metrics.timeSaved}</div>
-                    <div className="text-gray-600 dark:text-gray-400">Saved</div>
+                    <div className="font-bold text-emerald-700 dark:text-emerald-400">{employee.metrics.timeSaved}</div>
+                    <div className="text-gray-700 dark:text-gray-300">Saved</div>
                   </div>
                   <div className="text-center">
-                    <div className="font-semibold text-purple-600">{employee.metrics.costSavings}</div>
-                    <div className="text-gray-600 dark:text-gray-400">Less Cost</div>
+                    <div className="font-bold text-purple-700 dark:text-purple-400">{employee.metrics.costSavings}</div>
+                    <div className="text-gray-700 dark:text-gray-300">Less Cost</div>
                   </div>
                 </div>
 
                 {/* CTA */}
-                <div className="flex items-center gap-2 text-sm font-medium text-teal-700 group-hover:text-teal-800">
+                <div className="flex items-center gap-2 text-sm font-semibold text-teal-700 group-hover:text-teal-900 dark:text-teal-400 dark:group-hover:text-teal-200">
                   <span>Learn More</span>
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </div>
@@ -385,7 +385,7 @@ export function AIEmployeesSection() {
           transition={{ duration: 0.6, delay: 1.2 }}
           className="mt-12 text-center"
         >
-          <p className="mb-6 text-lg text-gray-600 dark:text-gray-300">
+          <p className="mb-6 text-lg text-gray-700 dark:text-gray-200 font-medium">
             Not sure which AI employee you need first?
           </p>
           <Button asChild size="lg" className="btn-primary">

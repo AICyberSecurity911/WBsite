@@ -41,7 +41,7 @@ export function ProblemSection() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="mb-6 inline-flex items-center gap-2 rounded-full bg-red-100 px-4 py-2 text-sm font-semibold text-red-700 dark:bg-red-900 dark:text-red-300"
+              className="mb-6 inline-flex items-center gap-2 rounded-full bg-red-100 px-4 py-2 text-sm font-semibold text-red-900 dark:bg-red-900 dark:text-red-100"
             >
               <AlertTriangle className="h-4 w-4" />
               The Hidden Reality
@@ -51,10 +51,10 @@ export function ProblemSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mb-4 text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl"
+              className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl"
             >
               The Real Cost Nobody Talks About: 
-              <span className="block text-red-600">Why That "$50K Employee" Just Bankrupted Your Q4</span>
+              <span className="block text-red-700 dark:text-red-400 font-extrabold">Why That "$50K Employee" Just Bankrupted Your Q4</span>
             </motion.h2>
           </div>
 
@@ -63,16 +63,16 @@ export function ProblemSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="mb-8 rounded-2xl bg-white p-6 shadow-lg dark:bg-gray-800"
+            className="mb-8 rounded-2xl bg-white p-6 shadow-lg dark:bg-gray-800 border border-gray-200 dark:border-gray-700"
           >
             <div className="mb-4 flex items-center gap-3">
               <div className="h-12 w-12 rounded-full bg-gradient-to-r from-red-500 to-pink-600" />
               <div>
                 <h3 className="font-semibold text-gray-900 dark:text-white">Jennifer's Story</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Restaurant Owner, Austin TX</p>
+                <p className="text-sm text-gray-700 dark:text-gray-300">Restaurant Owner, Austin TX</p>
               </div>
             </div>
-            <blockquote className="text-gray-700 dark:text-gray-300">
+            <blockquote className="text-gray-800 dark:text-gray-200">
               <p className="mb-4">
                 "I hired Sarah as my bookkeeper for '$50K' thinking I was getting a great deal. Three months later, 
                 I discovered $23,000 in uncategorized expenses, missed tax deadlines, and she quit via text message 
@@ -80,7 +80,7 @@ export function ProblemSection() {
               </p>
               <p className="font-medium">
                 "By the time I calculated recruitment, training, mistakes, and replacement costs, that '$50K employee' 
-                actually cost me <span className="text-red-600 font-bold">$118,958</span>."
+                actually cost me <span className="text-red-700 font-bold dark:text-red-400">$118,958</span>."
               </p>
             </blockquote>
           </motion.div>
