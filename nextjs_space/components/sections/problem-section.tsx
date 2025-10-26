@@ -30,7 +30,7 @@ export function ProblemSection() {
     <section ref={ref} className="section-padding bg-red-50 dark:bg-red-950/10">
       <div className="container">
         <motion.div
-          initial={{ opacity: 0.7, y: 30 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="mx-auto max-w-4xl"
@@ -38,7 +38,7 @@ export function ProblemSection() {
           {/* Section Header */}
           <div className="mb-12 text-center">
             <motion.div
-              initial={{ opacity: 0.7, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.9 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mb-6 inline-flex items-center gap-2 rounded-full bg-red-100 px-4 py-2 text-sm font-semibold text-red-900 dark:bg-red-900 dark:text-red-100"
@@ -48,7 +48,7 @@ export function ProblemSection() {
             </motion.div>
             
             <motion.h2
-              initial={{ opacity: 0.7, y: 20 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
               className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl"
@@ -60,7 +60,7 @@ export function ProblemSection() {
 
           {/* Story Hook */}
           <motion.div
-            initial={{ opacity: 0.7, y: 30 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
             className="mb-8 rounded-2xl bg-gradient-to-br from-slate-50 to-gray-100 dark:from-slate-950/30 dark:to-gray-950/30 p-6 shadow-lg border-2 border-slate-200 dark:border-slate-800 hover:shadow-[0_0_30px_rgba(148,163,184,0.5)] dark:hover:shadow-[0_0_30px_rgba(203,213,225,0.4)] transition-all duration-300"
@@ -87,7 +87,7 @@ export function ProblemSection() {
 
           {/* Cost Breakdown Table */}
           <motion.div
-            initial={{ opacity: 0.7, y: 30 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.6 }}
             className="mb-8"
@@ -106,7 +106,7 @@ export function ProblemSection() {
                 {costBreakdown.map((item, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 1, x: -20 }}
+                    initial={{ opacity: 0, x: -20 }}
                     animate={inView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
                     className="flex items-center justify-between px-6 py-4"
@@ -117,7 +117,7 @@ export function ProblemSection() {
                 ))}
                 
                 <motion.div
-                  initial={{ opacity: 0.7, scale: 0.95 }}
+                  initial={{ opacity: 0, scale: 0.95 }}
                   animate={inView ? { opacity: 1, scale: 1 } : {}}
                   transition={{ duration: 0.6, delay: 1.6 }}
                   className="bg-red-50 px-6 py-6 dark:bg-red-950/20"
@@ -139,7 +139,7 @@ export function ProblemSection() {
 
           {/* Timeline of Problems */}
           <motion.div
-            initial={{ opacity: 0.7, y: 30 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 1.8 }}
             className="mb-8 grid gap-4 md:grid-cols-3"
@@ -193,7 +193,7 @@ export function ProblemSection() {
 
           {/* Breaking Point */}
           <motion.div
-            initial={{ opacity: 0.7, y: 30 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 2 }}
             className="rounded-2xl bg-gradient-to-r from-gray-900 to-black p-8 text-white"
@@ -221,7 +221,7 @@ export function ProblemSection() {
 
           {/* Transition to Solution */}
           <motion.div
-            initial={{ opacity: 0.7, y: 30 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 2.2 }}
             className="mt-12 text-center"

@@ -17,7 +17,7 @@ export function TLDDRSection() {
     <section ref={ref} className="section-padding bg-teal-50 dark:bg-teal-950/20">
       <div className="container">
         <motion.div
-          initial={{ opacity: 0.7, y: 30 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="mx-auto max-w-4xl"
@@ -25,7 +25,7 @@ export function TLDDRSection() {
           {/* Header */}
           <div className="mb-8 text-center">
             <motion.h2
-              initial={{ opacity: 0.7, y: 20 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mb-4 text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl"
@@ -33,7 +33,7 @@ export function TLDDRSection() {
               What You Need to Know About AI Workforce Solutions
             </motion.h2>
             <motion.p
-              initial={{ opacity: 0.7, y: 20 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-lg text-gray-600 dark:text-gray-300"
@@ -68,7 +68,7 @@ export function TLDDRSection() {
             ].map((item, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0.7, y: 30 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
                 className="flex items-start gap-3"
@@ -86,7 +86,7 @@ export function TLDDRSection() {
 
           {/* Research Note */}
           <motion.div
-            initial={{ opacity: 0.7, y: 30 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.8 }}
             className="mb-8 rounded-2xl border border-teal-200 bg-white p-6 dark:border-teal-800 dark:bg-gray-800"
@@ -99,7 +99,7 @@ export function TLDDRSection() {
 
           {/* Critical Decision Point */}
           <motion.div
-            initial={{ opacity: 0.7, y: 30 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 1 }}
             className="rounded-2xl bg-gradient-to-r from-teal-600 to-emerald-600 p-8 text-center text-white"
@@ -119,7 +119,7 @@ export function TLDDRSection() {
 
           {/* Author Attribution */}
           <motion.div
-            initial={{ opacity: 0.7, y: 30 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 1.2 }}
             className="mt-8 flex items-center justify-center gap-4 text-center"
