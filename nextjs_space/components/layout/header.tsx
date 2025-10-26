@@ -87,22 +87,25 @@ export function Header() {
                   <div
                     onMouseEnter={() => setServicesOpen(true)}
                     onMouseLeave={() => setServicesOpen(false)}
-                    className="absolute left-0 top-full mt-2 w-72 rounded-lg bg-white p-4 shadow-xl dark:bg-gray-900 dark:border dark:border-gray-800"
+                    className="absolute left-0 top-full pt-2 w-72"
                   >
-                    {services.map((service) => (
-                      <Link
-                        key={service.name}
-                        href={service.href}
-                        className="block rounded-md p-3 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800"
-                      >
-                        <div className="font-semibold text-gray-900 dark:text-white">
-                          {service.name}
-                        </div>
-                        <div className="text-sm text-gray-500 dark:text-gray-400">
-                          {service.description}
-                        </div>
-                      </Link>
-                    ))}
+                    <div className="rounded-lg bg-white p-4 shadow-xl dark:bg-gray-900 dark:border dark:border-gray-800"
+                    >
+                      {services.map((service) => (
+                        <Link
+                          key={service.name}
+                          href={service.href}
+                          className="block rounded-md p-3 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800"
+                        >
+                          <div className="font-semibold text-gray-900 dark:text-white">
+                            {service.name}
+                          </div>
+                          <div className="text-sm text-gray-500 dark:text-gray-400">
+                            {service.description}
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
