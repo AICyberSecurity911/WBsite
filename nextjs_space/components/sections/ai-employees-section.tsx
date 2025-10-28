@@ -49,8 +49,8 @@ interface AIEmployee {
 const aiEmployees: AIEmployee[] = [
   {
     id: 'bookkeeper',
-    title: 'AI Bookkeeper',
-    tagline: 'Never worry about financial accuracy again',
+    title: 'AI Bookkeeper — from $499/month',
+    tagline: 'Tired of month-end chaos and missed invoices? Stop stressful accounting forever and focus on growing your business.',
     description: 'Automates your entire accounting workflow with 99.7% accuracy',
     icon: Calculator,
     problemSolved: 'Eliminates bookkeeping errors, late tax filings, and financial blind spots',
@@ -78,8 +78,8 @@ const aiEmployees: AIEmployee[] = [
   },
   {
     id: 'executive-assistant',
-    title: 'AI Executive Assistant',
-    tagline: 'Your 24/7 productivity powerhouse',
+    title: 'AI Executive Assistant — from $499/month',
+    tagline: 'Sick of drowning in calls and endless small tasks? Get more time back and finally close important deals.',
     description: 'Manages your schedule, emails, and administrative tasks flawlessly',
     icon: User,
     problemSolved: 'Eliminates scheduling conflicts, missed opportunities, and administrative overwhelm',
@@ -107,8 +107,8 @@ const aiEmployees: AIEmployee[] = [
   },
   {
     id: 'sales-rep',
-    title: 'AI Sales Representative',
-    tagline: 'Your top performer who never burns out',
+    title: 'AI Sales Rep — from $599/month',
+    tagline: 'Never miss another hot lead or follow-up. Boost your sales and let your AI close deals while you work on your business.',
     description: 'Manages leads, follows up consistently, and closes deals 24/7',
     icon: TrendingUp,
     problemSolved: 'Eliminates inconsistent follow-ups and missed sales opportunities',
@@ -136,8 +136,8 @@ const aiEmployees: AIEmployee[] = [
   },
   {
     id: 'customer-service',
-    title: 'AI Customer Service Rep',
-    tagline: 'Always available, always helpful',
+    title: 'AI Customer Service Rep — from $499/month',
+    tagline: 'Never lose another client after hours. Your customers get fast replies, you get more sales and better sleep.',
     description: 'Handles customer inquiries with empathy and accuracy',
     icon: MessageSquare,
     problemSolved: 'Eliminates long response times and inconsistent customer experiences',
@@ -165,8 +165,8 @@ const aiEmployees: AIEmployee[] = [
   },
   {
     id: 'recruiter',
-    title: 'AI Recruiter',
-    tagline: 'Find perfect candidates without the headaches',
+    title: 'AI Recruiter — from $599/month',
+    tagline: 'Eliminate hiring headaches. Screen, onboard, and manage paperwork automatically, so you can focus on people—not paperwork.',
     description: 'Sources, screens, and schedules candidates automatically',
     icon: Users,
     problemSolved: 'Eliminates bad hires, lengthy processes, and recruitment costs',
@@ -194,8 +194,8 @@ const aiEmployees: AIEmployee[] = [
   },
   {
     id: 'social-media-manager',
-    title: 'AI Social Media Manager',
-    tagline: 'Consistent content, growing engagement',
+    title: 'AI Social Media Manager — from $599/month',
+    tagline: 'Grow your brand while you sleep. No more posts left unfinished or lost sales from missed opportunities.',
     description: 'Creates, schedules, and optimizes your social media presence',
     icon: Share2,
     problemSolved: 'Eliminates inconsistent posting and poor engagement rates',
@@ -223,8 +223,8 @@ const aiEmployees: AIEmployee[] = [
   },
   {
     id: 'project-manager',
-    title: 'AI Project Manager',
-    tagline: 'On-time delivery, every time',
+    title: 'AI Project Manager — from $599/month',
+    tagline: 'No more fire-fighting—your AI keeps projects, staff, and vendors on track. Run smoother and stress less.',
     description: 'Coordinates teams, tracks progress, and ensures deadlines are met',
     icon: Calendar,
     problemSolved: 'Eliminates project delays, miscommunication, and scope creep',
@@ -252,8 +252,8 @@ const aiEmployees: AIEmployee[] = [
   },
   {
     id: 'financial-analyst',
-    title: 'AI Financial Analyst',
-    tagline: 'Data-driven insights for smarter decisions',
+    title: 'AI Financial Analyst — from $599/month',
+    tagline: 'Stop guessing about your cash flow. Get instant, actionable insights and make smarter business decisions.',
     description: 'Analyzes financial data and provides strategic recommendations',
     icon: BarChart3,
     problemSolved: 'Eliminates gut-based decisions and financial blind spots',

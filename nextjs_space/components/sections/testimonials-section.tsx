@@ -55,8 +55,8 @@ const testimonials: Testimonial[] = [
     company: 'Tech Startup',
     quote: "Hiring was overwhelming. QuantumLeap cut our hiring costs 60% and reduced time-to-fill by 53%. Efficiency soared—now we scale without the chaos. Before: Endless resume sifting, missed talent windows. After: Filled roles 53% faster, costs slashed 60%.",
     metrics: [
-      { icon: DollarSign, label: 'Cost Reduction', value: '-60%' },
-      { icon: Clock, label: 'Faster Hiring', value: '-53%' }
+      { icon: DollarSign, label: 'Cost Reduction', value: '60%' },
+      { icon: Clock, label: 'Faster Hiring', value: '53%' }
     ],
     avatar: '/images/testimonials/elias.jpg',
     featured: true
