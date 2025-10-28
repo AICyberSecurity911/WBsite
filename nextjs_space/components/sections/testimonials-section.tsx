@@ -50,52 +50,16 @@ const testimonials: Testimonial[] = [
   },
   {
     id: '3',
-    name: 'Sofia J. Delacroix',
-    role: 'Founder & CEO',
-    company: 'Delacroix Marketing Agency',
-    quote: "Our automation workflows reduced manual tasks by 70%, freeing our team to focus on clients and creative strategy. We scaled from 15 to 40 clients without hiring additional staff. Game changer.",
-    metrics: [
-      { icon: TrendingUp, label: 'Client Growth', value: '+167%' },
-      { icon: DollarSign, label: 'Cost Savings', value: '$120K/year' }
-    ],
-    avatar: '/images/testimonials/sofia.jpg',
-    featured: true
-  },
-  {
-    id: '4',
     name: 'Elias T. Montrose',
-    role: 'Co-Founder',
-    company: 'Montrose Tech Solutions',
-    quote: "Hiring was overwhelming us. QuantumLeap's AI Recruiter cut our hiring costs by 60% and reduced time-to-fill by 53%. We found better candidates faster, and our new hires are performing above expectations.",
+    role: 'Founder',
+    company: 'Tech Startup',
+    quote: "Hiring was overwhelming. QuantumLeap cut our hiring costs 60% and reduced time-to-fill by 53%. Efficiency soared—now we scale without the chaos. Before: Endless resume sifting, missed talent windows. After: Filled roles 53% faster, costs slashed 60%.",
     metrics: [
-      { icon: DollarSign, label: 'Savings', value: '$38K/year' },
+      { icon: DollarSign, label: 'Cost Reduction', value: '-60%' },
       { icon: Clock, label: 'Faster Hiring', value: '-53%' }
     ],
-    avatar: '/images/testimonials/elias.jpg'
-  },
-  {
-    id: '5',
-    name: 'Dr. Rachel Chen',
-    role: 'Medical Director',
-    company: 'Chen Family Practice',
-    quote: "The AI Customer Service Rep handles appointment scheduling, insurance questions, and follow-ups 24/7. Our patient satisfaction scores increased by 28%, and my staff can focus on in-person patient care.",
-    metrics: [
-      { icon: TrendingUp, label: 'Satisfaction', value: '+28%' },
-      { icon: Clock, label: 'Response Time', value: '< 2 min' }
-    ],
-    avatar: '/images/testimonials/rachel.jpg'
-  },
-  {
-    id: '6',
-    name: 'Marcus Williams',
-    role: 'Owner',
-    company: 'Williams & Associates Law',
-    quote: "The AI handles intake forms, schedules consultations, and follows up with prospects automatically. We're capturing 3x more leads and converting them 40% faster. Best investment we've made in the practice.",
-    metrics: [
-      { icon: TrendingUp, label: 'Lead Capture', value: '+200%' },
-      { icon: TrendingUp, label: 'Conversion', value: '+40%' }
-    ],
-    avatar: '/images/testimonials/marcus.jpg'
+    avatar: '/images/testimonials/elias.jpg',
+    featured: true
   }
 ]
 
@@ -168,6 +132,11 @@ export function TestimonialsSection() {
               <div className="grid items-center gap-8 lg:grid-cols-2">
                 {/* Left: Quote */}
                 <div>
+                  <div className="mb-4 flex items-center gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
                   <Quote className="mb-6 h-12 w-12 text-teal-500 dark:text-teal-400" />
                   <blockquote className="mb-8 text-xl font-medium leading-relaxed text-gray-900 dark:text-white lg:text-2xl">
                     "{currentTestimonial.quote}"
@@ -250,60 +219,6 @@ export function TestimonialsSection() {
               </Button>
             </div>
           </motion.div>
-
-          {/* Grid of Additional Testimonials */}
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {testimonials.filter(t => !t.featured).map((testimonial, idx) => (
-              <motion.div
-                key={testimonial.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.7 + idx * 0.1 }}
-                className="rounded-2xl bg-white p-6 shadow-lg dark:bg-gray-800"
-              >
-                <div className="mb-4 flex items-center gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-                
-                <blockquote className="mb-6 text-gray-700 dark:text-gray-300">
-                  "{testimonial.quote}"
-                </blockquote>
-                
-                {testimonial.metrics && (
-                  <div className="mb-4 flex gap-4">
-                    {testimonial.metrics.map((metric, i) => (
-                      <div key={i} className="text-center">
-                        <div className="text-xl font-bold text-teal-600 dark:text-teal-400">
-                          {metric.value}
-                        </div>
-                        <div className="text-xs text-gray-600 dark:text-gray-400">
-                          {metric.label}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-                
-                <div className="flex items-center gap-3 border-t border-gray-200 pt-4 dark:border-gray-700">
-                  <div className="h-10 w-10 overflow-hidden rounded-full bg-gradient-to-r from-teal-400 to-emerald-500">
-                    <div className="flex h-full w-full items-center justify-center text-lg font-bold text-white">
-                      {testimonial.name.charAt(0)}
-                    </div>
-                  </div>
-                  <div>
-                    <div className="font-semibold text-gray-900 dark:text-white">
-                      {testimonial.name}
-                    </div>
-                    <div className="text-xs text-gray-600 dark:text-gray-400">
-                      {testimonial.role} • {testimonial.company}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
 
           {/* Trust Badges */}
           <motion.div
