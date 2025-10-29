@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { motion } from 'framer-motion'
 import { CheckCircle, Shield, Clock, TrendingUp } from 'lucide-react'
+import Image from 'next/image'
 
 export function TrustBarSection() {
   const [ref, inView] = useInView({
@@ -45,14 +46,22 @@ export function TrustBarSection() {
     }
   ]
 
-  // Mock company logos - these would be replaced with actual client logos
+  // Actual company logos
   const companyLogos = [
-    { name: 'TechCorp', color: 'from-blue-600 to-cyan-600' },
-    { name: 'GlobalCo', color: 'from-purple-600 to-pink-600' },
-    { name: 'Innovate', color: 'from-teal-600 to-emerald-600' },
-    { name: 'Nexus', color: 'from-orange-600 to-red-600' },
-    { name: 'Vertex', color: 'from-indigo-600 to-blue-600' },
-    { name: 'Catalyst', color: 'from-green-600 to-teal-600' }
+    { name: 'IBM', logo: '/company-logos/ibm.png' },
+    { name: 'GE', logo: '/company-logos/ge.png' },
+    { name: 'Deloitte', logo: '/company-logos/deloitte.png' },
+    { name: 'BMO', logo: '/company-logos/bmo.png' },
+    { name: 'CIBC', logo: '/company-logos/cibc.png' },
+    { name: 'ING', logo: '/company-logos/ing.png' },
+    { name: 'Husky', logo: '/company-logos/husky.png' },
+    { name: 'Allianz', logo: '/company-logos/allianz.png' },
+    { name: 'UCOL', logo: '/company-logos/ucol.png' },
+    { name: 'CIIS', logo: '/company-logos/ciis.png' },
+    { name: 'Scotiabank', logo: '/company-logos/scotiabank.png' },
+    { name: 'HSBC', logo: '/company-logos/hsbc.png' },
+    { name: 'ICICI Bank', logo: '/company-logos/icici.png' },
+    { name: 'NASA', logo: '/company-logos/nasa.png' }
   ]
 
   if (!mounted) {
@@ -118,13 +127,13 @@ export function TrustBarSection() {
             <motion.div
               className="flex gap-12"
               animate={{
-                x: [0, -1200],
+                x: [0, -2000],
               }}
               transition={{
                 x: {
                   repeat: Infinity,
                   repeatType: "loop",
-                  duration: 20,
+                  duration: 30,
                   ease: "linear",
                 },
               }}
@@ -133,10 +142,16 @@ export function TrustBarSection() {
               {companyLogos.map((logo, idx) => (
                 <div
                   key={`logo-1-${idx}`}
-                  className="flex h-16 w-40 flex-shrink-0 items-center justify-center"
+                  className="flex h-16 w-32 flex-shrink-0 items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
                 >
-                  <div className={`flex h-full w-full items-center justify-center rounded-lg bg-gradient-to-r ${logo.color} px-6 py-3 text-center font-bold text-white shadow-md opacity-80 hover:opacity-100 transition-opacity`}>
-                    {logo.name}
+                  <div className="relative h-full w-full">
+                    <Image
+                      src={logo.logo}
+                      alt={`${logo.name} logo`}
+                      fill
+                      className="object-contain"
+                      sizes="128px"
+                    />
                   </div>
                 </div>
               ))}
@@ -144,10 +159,16 @@ export function TrustBarSection() {
               {companyLogos.map((logo, idx) => (
                 <div
                   key={`logo-2-${idx}`}
-                  className="flex h-16 w-40 flex-shrink-0 items-center justify-center"
+                  className="flex h-16 w-32 flex-shrink-0 items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
                 >
-                  <div className={`flex h-full w-full items-center justify-center rounded-lg bg-gradient-to-r ${logo.color} px-6 py-3 text-center font-bold text-white shadow-md opacity-80 hover:opacity-100 transition-opacity`}>
-                    {logo.name}
+                  <div className="relative h-full w-full">
+                    <Image
+                      src={logo.logo}
+                      alt={`${logo.name} logo`}
+                      fill
+                      className="object-contain"
+                      sizes="128px"
+                    />
                   </div>
                 </div>
               ))}
