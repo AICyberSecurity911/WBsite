@@ -12,58 +12,102 @@ interface FAQItem {
   question: string
   answer: string
   category?: string
+  cta: {
+    text: string
+    href: string
+  }
 }
 
 const faqData: FAQItem[] = [
   {
     question: "I'm barely keeping up as it is—how do I find time to implement this?",
-    answer: "That's exactly why we handle everything. You spend 60 minutes on a strategy call, then we deploy and integrate your first AI employee while you get back to running your business. Most clients see their AI employee working within 3-5 days—no learning curve, no project management from you. Ready to get those hours back? Try the savings calculator to see your exact time savings.",
-    category: "Time & Implementation"
+    answer: "That's exactly why we handle everything. You spend 60 minutes on a strategy call, then we deploy and integrate your first AI employee while you get back to running your business. Most clients see their AI employee working within 3-5 days—no learning curve, no project management from you.",
+    category: "Time & Implementation",
+    cta: {
+      text: "Try savings calculator",
+      href: "#calculator"
+    }
   },
   {
     question: "What if this is just another 'shiny object' that doesn't work for my industry?",
-    answer: "We've deployed AI employees in restaurants, law firms, construction companies, medical practices, and accounting firms. The work changes, but every business has repetitive tasks bleeding time and money. Our assessment identifies your specific automation opportunities—no generic solutions. Book a free consultation to see real examples from your industry.",
-    category: "Industry Fit"
+    answer: "We've deployed AI employees in restaurants, law firms, construction companies, medical practices, and accounting firms. The work changes, but every business has repetitive tasks bleeding time and money. Our assessment identifies your specific automation opportunities—no generic solutions.",
+    category: "Industry Fit",
+    cta: {
+      text: "Book a free consult",
+      href: "/consultation"
+    }
   },
   {
     question: "I've been burned by tech promises before. How is this different?",
-    answer: "Fair question. Unlike software you have to learn and maintain, AI employees do the actual work—like hiring someone who never quits and costs 85% less. Plus, our 30-day performance guarantee means you risk nothing. If you're not seeing real time savings, your plan is free until you do. Calculate your potential savings now to see the hard numbers.",
-    category: "Trust & Risk"
+    answer: "Fair question. Unlike software you have to learn and maintain, AI employees do the actual work—like hiring someone who never quits and costs 85% less. Plus, our 30-day performance guarantee means you risk nothing. If you're not seeing real time savings, your plan is free until you do.",
+    category: "Trust & Risk",
+    cta: {
+      text: "Try savings calculator",
+      href: "#calculator"
+    }
   },
   {
     question: "My team is already resistant to change. Won't this cause chaos?",
-    answer: "AI employees don't replace your team—they eliminate the soul-crushing busywork your team hates anyway. Most clients report their staff is thrilled to dump data entry, appointment scheduling, and invoice tracking. We handle change management and training so this feels like relief, not disruption. Ready to give your team their time back? Try the savings calculator.",
-    category: "Team Dynamics"
+    answer: "AI employees don't replace your team—they eliminate the soul-crushing busywork your team hates anyway. Most clients report their staff is thrilled to dump data entry, appointment scheduling, and invoice tracking. We handle change management and training so this feels like relief, not disruption.",
+    category: "Team Dynamics",
+    cta: {
+      text: "Book a free consult",
+      href: "/consultation"
+    }
   },
   {
     question: "Can I really trust a machine with sensitive client data and finances?",
-    answer: "Our AI employees use NASA-recognized security protocols—the same standards protecting national security data. They're more secure than human employees who might access files on unsecured devices or accidentally forward sensitive emails. Plus, every action is logged and auditable. Want to see exactly how your data stays protected? Book a free consultation.",
-    category: "Security & Trust"
+    answer: "Our AI employees use NASA-recognized security protocols—the same standards protecting national security data. They're more secure than human employees who might access files on unsecured devices or accidentally forward sensitive emails. Plus, every action is logged and auditable.",
+    category: "Security & Trust",
+    cta: {
+      text: "Book a free consult",
+      href: "/consultation"
+    }
   },
   {
     question: "What happens when something breaks or the AI doesn't understand a task?",
-    answer: "AI employees flag anything they're uncertain about before proceeding, so you stay in control. Plus, you have 24/7 support from our team—we monitor performance and jump in immediately if issues arise. Our accuracy rates run 99.2%, but when edge cases happen, we fix them fast and free. See how much time you could save with the calculator.",
-    category: "Reliability"
+    answer: "AI employees flag anything they're uncertain about before proceeding, so you stay in control. Plus, you have 24/7 support from our team—we monitor performance and jump in immediately if issues arise. Our accuracy rates run 99.2%, but when edge cases happen, we fix them fast and free.",
+    category: "Reliability",
+    cta: {
+      text: "Try savings calculator",
+      href: "#calculator"
+    }
   },
   {
     question: "I can barely afford payroll now. How is this not just another expense?",
-    answer: "This isn't an expense—it's eliminating one. A $50K employee actually costs $118K after taxes, benefits, and turnover. An AI employee doing the same work costs under $15K/year and never calls in sick, quits, or makes expensive mistakes. Most clients recoup their investment in 6-8 weeks. Try the savings calculator to see your exact break-even point.",
-    category: "Cost & ROI"
+    answer: "This isn't an expense—it's eliminating one. A $50K employee actually costs $118K after taxes, benefits, and turnover. An AI employee doing the same work costs under $15K/year and never calls in sick, quits, or makes expensive mistakes. Most clients recoup their investment in 6-8 weeks.",
+    category: "Cost & ROI",
+    cta: {
+      text: "Try savings calculator",
+      href: "#calculator"
+    }
   },
   {
     question: "What if I hire an AI employee and then realize I don't need it?",
-    answer: "That's what the 30-day performance guarantee is for. If your AI employee isn't saving you time and money within 30 days, your plan is free until it does. No gotchas, no fine print. We only win when you win. Ready to see what's possible? Book a free consultation to explore your options.",
-    category: "Guarantee & Commitment"
+    answer: "That's what the 30-day performance guarantee is for. If your AI employee isn't saving you time and money within 30 days, your plan is free until it does. No gotchas, no fine print. We only win when you win.",
+    category: "Guarantee & Commitment",
+    cta: {
+      text: "Book a free consult",
+      href: "/consultation"
+    }
   },
   {
     question: "Do I have to commit to multiple AI employees or can I start small?",
-    answer: "Start with one. We recommend beginning with your biggest time drain—usually admin, scheduling, or bookkeeping. Once you see the results (typically within 30 days), you can add more AI employees as needed. No long-term contracts, no pressure. Calculate your savings to see which AI employee makes the most sense for you first.",
-    category: "Getting Started"
+    answer: "Start with one. We recommend beginning with your biggest time drain—usually admin, scheduling, or bookkeeping. Once you see the results (typically within 30 days), you can add more AI employees as needed. No long-term contracts, no pressure.",
+    category: "Getting Started",
+    cta: {
+      text: "Try savings calculator",
+      href: "#calculator"
+    }
   },
   {
     question: "I don't have an IT person. Will I need to hire one to manage this?",
-    answer: "Absolutely not. You interact with AI employees through email, Slack, or a simple dashboard—no technical skills required. We handle all setup, integration, maintenance, and updates. If you can send an email, you can manage an AI employee. Want to see how simple it is? Book a free consultation for a live walkthrough.",
-    category: "Technical Complexity"
+    answer: "Absolutely not. You interact with AI employees through email, Slack, or a simple dashboard—no technical skills required. We handle all setup, integration, maintenance, and updates. If you can send an email, you can manage an AI employee.",
+    category: "Technical Complexity",
+    cta: {
+      text: "Book a free consult",
+      href: "/consultation"
+    }
   }
 ]
 
@@ -159,11 +203,24 @@ export function FAQSection() {
                   className="overflow-hidden"
                 >
                   <div className="border-t border-gray-200 px-6 py-5 dark:border-gray-700">
-                    <p className="text-gray-600 dark:text-gray-300">
+                    <p className="mb-4 text-gray-600 dark:text-gray-300">
                       {item.answer}
                     </p>
+                    
+                    {/* CTA Button */}
+                    <div className="mt-4">
+                      <Button 
+                        asChild 
+                        className="btn-primary"
+                      >
+                        <Link href={item.cta.href}>
+                          {item.cta.text}
+                        </Link>
+                      </Button>
+                    </div>
+                    
                     {item.category && (
-                      <div className="mt-3">
+                      <div className="mt-4">
                         <span className="rounded-full bg-teal-100 px-3 py-1 text-xs font-medium text-teal-700 dark:bg-teal-900 dark:text-teal-300">
                           {item.category}
                         </span>
