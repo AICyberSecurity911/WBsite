@@ -61,7 +61,8 @@ export function TrustBarSection() {
     { name: 'Scotiabank', logo: '/company-logos/scotiabank.png' },
     { name: 'HSBC', logo: '/company-logos/hsbc.png' },
     { name: 'ICICI Bank', logo: '/company-logos/icici.png' },
-    { name: 'NASA', logo: '/company-logos/nasa.png' }
+    { name: 'NASA', logo: '/company-logos/nasa.png' },
+    { name: 'RIM', logo: '/company-logos/rim.png' }
   ]
 
   if (!mounted) {
@@ -142,7 +143,7 @@ export function TrustBarSection() {
               {companyLogos.map((logo, idx) => (
                 <div
                   key={`logo-1-${idx}`}
-                  className="flex h-16 w-32 flex-shrink-0 items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                  className="flex h-16 w-32 flex-shrink-0 items-center justify-center transition-all duration-300"
                 >
                   <div className="relative h-full w-full">
                     <Image
@@ -159,7 +160,7 @@ export function TrustBarSection() {
               {companyLogos.map((logo, idx) => (
                 <div
                   key={`logo-2-${idx}`}
-                  className="flex h-16 w-32 flex-shrink-0 items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                  className="flex h-16 w-32 flex-shrink-0 items-center justify-center transition-all duration-300"
                 >
                   <div className="relative h-full w-full">
                     <Image
