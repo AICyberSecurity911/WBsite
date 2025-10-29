@@ -77,8 +77,8 @@ export function HeroSection() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="mb-10 text-xl leading-relaxed text-gray-600 dark:text-gray-300 sm:text-2xl"
             >
-              Deploy battle-tested AI employees trained on 10,000+ hours of real business operations.{' '}
-              <strong className="font-semibold text-gray-900 dark:text-white">Zero interviews. Zero drama. Immediate relief.</strong>
+              Hire digital employees that work 24/7, cost 85% less than humans, and never miss a task.{' '}
+              <strong className="font-semibold text-gray-900 dark:text-white">Free yourself from busywork and finally run a business that runs without you.</strong>
             </motion.p>
 
             {/* CTA Buttons */}

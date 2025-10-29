@@ -16,54 +16,54 @@ interface FAQItem {
 
 const faqData: FAQItem[] = [
   {
-    question: "How long does implementation take?",
-    answer: "Most AI employees can be deployed within 1-7 business days, depending on complexity. Our AI Executive Assistant can start working in just 1-2 days, while more specialized roles like AI Financial Analyst may take 4-6 days for full integration with your existing systems.",
-    category: "Implementation"
+    question: "I'm barely keeping up as it is—how do I find time to implement this?",
+    answer: "That's exactly why we handle everything. You spend 60 minutes on a strategy call, then we deploy and integrate your first AI employee while you get back to running your business. Most clients see their AI employee working within 3-5 days—no learning curve, no project management from you. Ready to get those hours back? Try the savings calculator to see your exact time savings.",
+    category: "Time & Implementation"
   },
   {
-    question: "What if the AI makes a mistake?",
-    answer: "Our AI employees have built-in error detection and self-correction capabilities. They maintain accuracy rates of 91.7%-99.7% depending on the role. Any errors are immediately flagged, corrected, and used to improve future performance. Plus, you have our 60-day money-back guarantee if you're not satisfied.",
+    question: "What if this is just another 'shiny object' that doesn't work for my industry?",
+    answer: "We've deployed AI employees in restaurants, law firms, construction companies, medical practices, and accounting firms. The work changes, but every business has repetitive tasks bleeding time and money. Our assessment identifies your specific automation opportunities—no generic solutions. Book a free consultation to see real examples from your industry.",
+    category: "Industry Fit"
+  },
+  {
+    question: "I've been burned by tech promises before. How is this different?",
+    answer: "Fair question. Unlike software you have to learn and maintain, AI employees do the actual work—like hiring someone who never quits and costs 85% less. Plus, our 30-day performance guarantee means you risk nothing. If you're not seeing real time savings, your plan is free until you do. Calculate your potential savings now to see the hard numbers.",
+    category: "Trust & Risk"
+  },
+  {
+    question: "My team is already resistant to change. Won't this cause chaos?",
+    answer: "AI employees don't replace your team—they eliminate the soul-crushing busywork your team hates anyway. Most clients report their staff is thrilled to dump data entry, appointment scheduling, and invoice tracking. We handle change management and training so this feels like relief, not disruption. Ready to give your team their time back? Try the savings calculator.",
+    category: "Team Dynamics"
+  },
+  {
+    question: "Can I really trust a machine with sensitive client data and finances?",
+    answer: "Our AI employees use NASA-recognized security protocols—the same standards protecting national security data. They're more secure than human employees who might access files on unsecured devices or accidentally forward sensitive emails. Plus, every action is logged and auditable. Want to see exactly how your data stays protected? Book a free consultation.",
+    category: "Security & Trust"
+  },
+  {
+    question: "What happens when something breaks or the AI doesn't understand a task?",
+    answer: "AI employees flag anything they're uncertain about before proceeding, so you stay in control. Plus, you have 24/7 support from our team—we monitor performance and jump in immediately if issues arise. Our accuracy rates run 99.2%, but when edge cases happen, we fix them fast and free. See how much time you could save with the calculator.",
     category: "Reliability"
   },
   {
-    question: "Do I need technical expertise to manage AI employees?",
-    answer: "Not at all. Our AI employees are designed to work just like human employees - you communicate with them through familiar interfaces like email, Slack, or our simple dashboard. No coding or technical knowledge required. We handle all the technical setup and maintenance.",
-    category: "Technical"
+    question: "I can barely afford payroll now. How is this not just another expense?",
+    answer: "This isn't an expense—it's eliminating one. A $50K employee actually costs $118K after taxes, benefits, and turnover. An AI employee doing the same work costs under $15K/year and never calls in sick, quits, or makes expensive mistakes. Most clients recoup their investment in 6-8 weeks. Try the savings calculator to see your exact break-even point.",
+    category: "Cost & ROI"
   },
   {
-    question: "What's the actual cost compared to human employees?",
-    answer: "AI employees typically cost 87% less than human employees when you factor in salary, benefits, payroll taxes, training, and management overhead. A human bookkeeper costing $118,958/year in total expenses can be replaced with an AI Bookkeeper for under $15,000/year.",
-    category: "Pricing"
+    question: "What if I hire an AI employee and then realize I don't need it?",
+    answer: "That's what the 30-day performance guarantee is for. If your AI employee isn't saving you time and money within 30 days, your plan is free until it does. No gotchas, no fine print. We only win when you win. Ready to see what's possible? Book a free consultation to explore your options.",
+    category: "Guarantee & Commitment"
   },
   {
-    question: "Can AI employees integrate with my existing tools?",
-    answer: "Yes! Our AI employees integrate with 200+ business tools including QuickBooks, Salesforce, Google Workspace, Microsoft 365, Slack, Asana, and many more. During setup, we configure all necessary integrations to match your current workflow.",
-    category: "Integration"
-  },
-  {
-    question: "What happens if I'm not satisfied?",
-    answer: "We offer a 60-day money-back guarantee. If you don't see measurable ROI within 60 days, we'll refund your investment completely. Our average customer sees positive ROI within 30 days, so we're confident in our guarantee.",
-    category: "Guarantee"
-  },
-  {
-    question: "How is my data kept secure?",
-    answer: "We use NASA-recognized security protocols, including 256-bit encryption, SOC 2 compliance, and zero-trust architecture. Your data never leaves secure, audited systems, and we maintain strict access controls. We're more secure than most traditional employees who might have unsecured personal devices.",
-    category: "Security"
-  },
-  {
-    question: "Can I start with just one AI employee?",
-    answer: "Absolutely! Most businesses start with one AI employee in their biggest pain point area. Our assessment helps identify which AI employee will give you the highest immediate ROI. You can always add more AI employees as you see results.",
+    question: "Do I have to commit to multiple AI employees or can I start small?",
+    answer: "Start with one. We recommend beginning with your biggest time drain—usually admin, scheduling, or bookkeeping. Once you see the results (typically within 30 days), you can add more AI employees as needed. No long-term contracts, no pressure. Calculate your savings to see which AI employee makes the most sense for you first.",
     category: "Getting Started"
   },
   {
-    question: "How do AI employees handle complex or creative tasks?",
-    answer: "Our AI employees excel at structured, process-driven tasks and can handle moderate complexity well. For creative or highly strategic work, they work alongside your human team, handling the routine tasks so your people can focus on high-value creative and strategic work.",
-    category: "Capabilities"
-  },
-  {
-    question: "What kind of support do you provide?",
-    answer: "You get dedicated support throughout setup and ongoing operations. This includes initial configuration, training on how to work with your AI employee, ongoing optimization, and 24/7 technical support. We also provide monthly performance reviews to ensure maximum ROI.",
-    category: "Support"
+    question: "I don't have an IT person. Will I need to hire one to manage this?",
+    answer: "Absolutely not. You interact with AI employees through email, Slack, or a simple dashboard—no technical skills required. We handle all setup, integration, maintenance, and updates. If you can send an email, you can manage an AI employee. Want to see how simple it is? Book a free consultation for a live walkthrough.",
+    category: "Technical Complexity"
   }
 ]
 
@@ -101,7 +101,7 @@ export function FAQSection() {
               className="mb-6 inline-flex items-center gap-2 rounded-full bg-teal-100 px-4 py-2 text-sm font-semibold text-teal-900 dark:bg-teal-900 dark:text-teal-300"
             >
               <HelpCircle className="h-4 w-4" />
-              Frequently Asked Questions
+              Your Questions, Honestly Answered
             </motion.div>
             
             <motion.h2
@@ -110,7 +110,7 @@ export function FAQSection() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="mb-4 text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl"
             >
-              Everything You Need to Know
+              "I'm Skeptical. Here's Why You Should Be Too."
             </motion.h2>
             
             <motion.p
@@ -119,7 +119,7 @@ export function FAQSection() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-lg text-gray-600 dark:text-gray-300"
             >
-              Common questions about AI workforce automation and implementation
+              Real concerns from business owners like you—and the honest answers you deserve
             </motion.p>
           </div>
 

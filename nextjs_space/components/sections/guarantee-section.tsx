@@ -34,11 +34,11 @@ export function GuaranteeSection() {
             </div>
             
             <h2 className="mb-4 text-4xl font-bold text-gray-900 dark:text-white sm:text-5xl">
-              Our Iron-Clad 60-Day Guarantee
+              30-Day Performance Guarantee
             </h2>
             
             <p className="mx-auto max-w-3xl text-xl text-gray-600 dark:text-gray-300">
-              We're so confident in our AI employees that we're putting our money where our mouth is. If you don't see measurable ROI within 60 days, we'll refund every penny—no questions asked.
+              If you don't save time within 30 days, your plan is free until you do. We're so confident in our AI employees that we'll keep working with you at no cost until you see real results.
             </p>
           </motion.div>
 
@@ -47,20 +47,20 @@ export function GuaranteeSection() {
             {[
               {
                 icon: DollarSign,
-                title: 'Full Money-Back',
-                description: '100% refund if not satisfied',
+                title: 'Free Until It Works',
+                description: 'Your plan is free until you save time',
                 color: 'from-green-500 to-emerald-600'
               },
               {
                 icon: Clock,
-                title: '60 Days to Decide',
-                description: 'Plenty of time to see results',
+                title: '30 Days to Prove It',
+                description: 'Fast results or we keep working for free',
                 color: 'from-blue-500 to-cyan-600'
               },
               {
                 icon: CheckCircle,
-                title: 'No Questions Asked',
-                description: 'Simple, straightforward process',
+                title: 'Zero Risk Promise',
+                description: 'We only win when you win',
                 color: 'from-purple-500 to-pink-600'
               }
             ].map((feature, idx) => (
@@ -103,7 +103,7 @@ export function GuaranteeSection() {
                 <div>
                   <h4 className="mb-2 font-semibold">Proven Track Record</h4>
                   <p className="text-teal-50">
-                    97% of our clients see positive ROI within the first 30 days. Most recoup their investment in weeks, not months.
+                    93% of our clients see measurable time savings within the first 30 days. Most save 15-20 hours per week immediately.
                   </p>
                 </div>
               </div>
@@ -127,7 +127,7 @@ export function GuaranteeSection() {
                 <div>
                   <h4 className="mb-2 font-semibold">Dedicated Support</h4>
                   <p className="text-teal-50">
-                    You're not alone. Our team provides white-glove onboarding and ongoing optimization to ensure success.
+                    You're not alone. Our team provides white-glove onboarding and ongoing optimization to ensure you start saving time fast.
                   </p>
                 </div>
               </div>
@@ -139,7 +139,7 @@ export function GuaranteeSection() {
                 <div>
                   <h4 className="mb-2 font-semibold">Measurable Results</h4>
                   <p className="text-teal-50">
-                    Every AI employee comes with built-in analytics. You'll see exactly how much time and money you're saving, in real-time.
+                    Every AI employee comes with built-in time tracking. You'll see exactly how many hours you're getting back, in real-time.
                   </p>
                 </div>
               </div>
@@ -178,10 +178,10 @@ export function GuaranteeSection() {
             className="text-center"
           >
             <h3 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white">
-              Ready to Transform Your Business?
+              Ready to Get Your Time Back?
             </h3>
             <p className="mb-8 text-xl text-gray-600 dark:text-gray-300">
-              Take the 90-second assessment and discover which AI employee will give you the fastest ROI
+              See exactly how much time and money you could save—get your free estimate in 2 minutes
             </p>
             
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -222,8 +222,8 @@ export function GuaranteeSection() {
             className="mt-12 border-t border-gray-200 pt-8 text-center text-sm text-gray-500 dark:border-gray-700 dark:text-gray-400"
           >
             <p>
-              <strong className="text-gray-900 dark:text-white">Zero Risk.</strong> If you're not seeing results within 60 days, we'll refund your investment completely. 
-              That's how confident we are that AI employees will transform your business.
+              <strong className="text-gray-900 dark:text-white">Zero Risk.</strong> If you're not saving time within 30 days, your plan is free until you do. 
+              That's how confident we are that AI employees will give you your life back.
             </p>
           </motion.div>
         </motion.div>

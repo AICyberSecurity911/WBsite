@@ -22,60 +22,60 @@ interface BlogPost {
 const blogPosts: BlogPost[] = [
   {
     id: '1',
-    title: 'The True Cost of Hiring: Why That $50K Salary Actually Costs $118K',
-    excerpt: 'Most business owners drastically underestimate the real cost of traditional employees. Learn the hidden expenses that are bleeding your business dry.',
-    category: 'Business Strategy',
+    title: 'How I Saved $52,000 and Stopped Working Weekends',
+    excerpt: 'A restaurant owner\'s journey from 70-hour weeks and constant stress to running a business that finally runs without her—and the exact steps she took to get there.',
+    category: 'Success Story',
     readTime: '8 min read',
     image: '/images/blog/cost-of-hiring.jpg',
-    slug: 'true-cost-of-hiring',
+    slug: 'saved-52000-stopped-working-weekends',
     featured: true
   },
   {
     id: '2',
-    title: '7 Signs Your Business Is Ready for AI Automation (And 3 Signs It\'s Not)',
-    excerpt: 'Not every business is ready for AI. Discover the critical indicators that signal it\'s time to automate, and when to wait.',
-    category: 'AI Strategy',
+    title: 'AI Rescued My Family Time—Here\'s How Much It Costs (And Saves)',
+    excerpt: 'An honest breakdown from a medical practice owner who was missing soccer games and family dinners—until AI employees gave him his life back.',
+    category: 'Real Results',
     readTime: '6 min read',
     image: '/images/blog/ready-for-ai.jpg',
-    slug: 'ready-for-ai-automation',
+    slug: 'ai-rescued-family-time',
     featured: true
   },
   {
     id: '3',
-    title: 'How to Calculate ROI on AI Employees (With Real Examples)',
-    excerpt: 'Step-by-step framework for measuring the actual return on investment from AI workforce automation, with case studies from 50+ businesses.',
-    category: 'Financial Planning',
-    readTime: '12 min read',
+    title: 'I Was Drowning in Busywork. Then I Hired an AI Employee for $15K.',
+    excerpt: 'The complete story of how a construction company owner replaced a $118K administrative assistant with an AI employee—and what happened next.',
+    category: 'Case Study',
+    readTime: '10 min read',
     image: '/images/blog/calculate-roi.jpg',
-    slug: 'calculate-ai-roi',
+    slug: 'drowning-in-busywork',
     featured: true
   },
   {
     id: '4',
-    title: 'The 5 Tasks You Should Automate First (And Why)',
-    excerpt: 'Start with these high-impact, low-risk tasks to build confidence and demonstrate ROI quickly.',
-    category: 'Implementation',
-    readTime: '5 min read',
+    title: 'I Fired My Bookkeeper (and My Stress) in the Same Week',
+    excerpt: 'A law firm owner shares how replacing her error-prone bookkeeper with AI saved $73K and eliminated months of tax deadline anxiety.',
+    category: 'Transformation',
+    readTime: '7 min read',
     image: '/images/blog/tasks-to-automate.jpg',
-    slug: 'tasks-to-automate-first'
+    slug: 'fired-bookkeeper-and-stress'
   },
   {
     id: '5',
-    title: 'AI vs. Outsourcing: Which Is Right for Your Business?',
-    excerpt: 'A comprehensive comparison of AI employees vs. traditional outsourcing, with a decision framework.',
-    category: 'Business Strategy',
-    readTime: '10 min read',
+    title: 'From 60-Hour Weeks to 30: My AI Workforce Journey',
+    excerpt: 'An e-commerce founder\'s transparent account of deploying three AI employees, the mistakes made, the time reclaimed, and the freedom gained.',
+    category: 'Journey',
+    readTime: '9 min read',
     image: '/images/blog/ai-vs-outsourcing.jpg',
-    slug: 'ai-vs-outsourcing'
+    slug: 'sixty-to-thirty-hour-weeks'
   },
   {
     id: '6',
-    title: 'Case Study: How a Law Firm Reduced Admin Costs 73% With AI',
-    excerpt: 'Inside look at a 12-attorney firm that replaced 3 administrative staff with AI employees and increased profitability by $180K.',
-    category: 'Case Study',
-    readTime: '7 min read',
+    title: 'The Day I Stopped Being "Chief Everything Officer"',
+    excerpt: 'A marketing agency owner reveals how AI employees freed her from administrative hell—and what she did with her first free weekend in three years.',
+    category: 'Freedom Story',
+    readTime: '8 min read',
     image: '/images/blog/law-firm-case-study.jpg',
-    slug: 'law-firm-case-study'
+    slug: 'stopped-being-chief-everything-officer'
   }
 ]
 
@@ -105,7 +105,7 @@ export function BlogSection() {
               className="mb-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-100 to-pink-100 px-4 py-2 text-sm font-semibold text-purple-700 dark:from-purple-900/50 dark:to-pink-900/50 dark:text-purple-300"
             >
               <BookOpen className="h-4 w-4" />
-              Strategic Insights
+              Real Stories, Real Results
             </motion.div>
             
             <motion.h2
@@ -114,7 +114,7 @@ export function BlogSection() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="mb-4 text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl"
             >
-              Learn How to Transform Your Business
+              From Overworked to Unstoppable
             </motion.h2>
             
             <motion.p
@@ -123,7 +123,7 @@ export function BlogSection() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300"
             >
-              Practical guides, case studies, and frameworks from businesses that have successfully deployed AI workforces
+              Real business owners share their journey from burnout to breakthrough—and exactly how they did it
             </motion.p>
           </div>
 

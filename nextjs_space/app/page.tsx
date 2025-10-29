@@ -2,6 +2,7 @@
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { HeroSection } from '@/components/sections/hero-section'
+import { TrustBarSection } from '@/components/sections/trust-bar-section'
 import { TLDDRSection } from '@/components/sections/tlddr-section'
 import { ProblemSection } from '@/components/sections/problem-section'
 import { AIEmployeesSection } from '@/components/sections/ai-employees-section'
@@ -18,7 +19,7 @@ export default function HomePage() {
       
       <main>
         <HeroSection />
-        <TLDDRSection />
+        <TrustBarSection />
         <ProblemSection />
         <AIEmployeesSection />
         <TestimonialsSection />

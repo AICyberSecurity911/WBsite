@@ -46,7 +46,7 @@ export function CalculatorSection() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="mx-auto max-w-2xl text-lg text-gray-700 dark:text-gray-300"
             >
-              Answer 7 quick questions to discover which AI employees can save you the most time and money
+              See exactly how much time and money you could save—get your free estimate in 2 minutes
             </motion.p>
           </div>
 

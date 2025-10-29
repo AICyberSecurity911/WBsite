@@ -47,14 +47,23 @@ export function ProblemSection() {
               The Hidden Reality
             </motion.div>
             
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.25 }}
+              className="mb-3 text-xl font-semibold text-gray-700 dark:text-gray-300"
+            >
+              What's Breaking You?
+            </motion.p>
+            
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
               className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl"
             >
-              The Real Cost Nobody Talks About: 
-              <span className="block text-red-700 dark:text-red-400 font-extrabold">Why That "$50K Employee" Just Bankrupted Your Q4</span>
+              You're Working Harder Than Ever, But Getting Less Time Back
+              <span className="block mt-2 text-red-700 dark:text-red-400 font-extrabold">Why That "$50K Employee" Just Bankrupted Your Q4</span>
             </motion.h2>
           </div>
 
@@ -112,7 +121,7 @@ export function ProblemSection() {
                     className="flex items-center justify-between px-6 py-4"
                   >
                     <span className="font-bold text-gray-900 dark:text-gray-100">{item.item}</span>
-                    <span className="font-bold text-red-700 dark:text-red-400">{item.amount}</span>
+                    <span className="font-bold text-red-800 dark:text-red-300">{item.amount}</span>
                   </motion.div>
                 ))}
                 
