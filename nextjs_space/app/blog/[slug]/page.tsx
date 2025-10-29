@@ -12,7 +12,6 @@ interface BlogPost {
   excerpt: string
   category: string
   readTime: string
-  publishedAt: string
   author: {
     name: string
     role: string
@@ -36,7 +35,6 @@ const blogPosts: Record<string, BlogPost> = {
     excerpt: 'Most business owners drastically underestimate the real cost of traditional employees. Learn the hidden expenses that are bleeding your business dry.',
     category: 'Business Strategy',
     readTime: '8 min read',
-    publishedAt: 'October 15, 2025',
     author: {
       name: 'QuantumLeap Research Team',
       role: 'Former McKinsey Consultants'
@@ -97,7 +95,6 @@ const blogPosts: Record<string, BlogPost> = {
     excerpt: 'Not every business is ready for AI. Discover the critical indicators that signal it\'s time to automate, and when to wait.',
     category: 'AI Strategy',
     readTime: '6 min read',
-    publishedAt: 'October 20, 2025',
     author: {
       name: 'QuantumLeap Research Team',
       role: 'AI Implementation Specialists'
@@ -141,7 +138,6 @@ const blogPosts: Record<string, BlogPost> = {
     excerpt: 'Step-by-step framework for measuring the actual return on investment from AI workforce automation, with case studies from 50+ businesses.',
     category: 'Financial Planning',
     readTime: '12 min read',
-    publishedAt: 'October 22, 2025',
     author: {
       name: 'QuantumLeap Financial Analysis Team',
       role: 'Former McKinsey Financial Consultants'
@@ -205,7 +201,6 @@ const blogPosts: Record<string, BlogPost> = {
     excerpt: 'Start with these high-impact, low-risk tasks to build confidence and demonstrate ROI quickly.',
     category: 'Implementation',
     readTime: '5 min read',
-    publishedAt: 'October 10, 2025',
     author: {
       name: 'QuantumLeap Implementation Team',
       role: 'AI Deployment Specialists'
@@ -255,7 +250,6 @@ const blogPosts: Record<string, BlogPost> = {
     excerpt: 'A comprehensive comparison of AI employees vs. traditional outsourcing, with a decision framework.',
     category: 'Business Strategy',
     readTime: '10 min read',
-    publishedAt: 'October 5, 2025',
     author: {
       name: 'QuantumLeap Strategy Team',
       role: 'Business Optimization Experts'
@@ -318,7 +312,6 @@ const blogPosts: Record<string, BlogPost> = {
     excerpt: 'Inside look at a 12-attorney firm that replaced 3 administrative staff with AI employees and increased profitability by $180K.',
     category: 'Case Study',
     readTime: '7 min read',
-    publishedAt: 'September 28, 2025',
     author: {
       name: 'QuantumLeap Research Team',
       role: 'Case Study Analysts'
@@ -394,7 +387,6 @@ const blogPosts: Record<string, BlogPost> = {
     excerpt: 'A restaurant owner\'s journey from 70-hour weeks and constant stress to running a business that finally runs without her—and the exact steps she took to get there.',
     category: 'Success Story',
     readTime: '8 min read',
-    publishedAt: 'October 28, 2025',
     author: {
       name: 'Jennifer Martinez',
       role: 'Owner, La Mesa Restaurant'
@@ -452,7 +444,6 @@ const blogPosts: Record<string, BlogPost> = {
     excerpt: 'An honest breakdown from a medical practice owner who was missing soccer games and family dinners—until AI employees gave him his life back.',
     category: 'Real Results',
     readTime: '6 min read',
-    publishedAt: 'October 26, 2025',
     author: {
       name: 'Dr. Michael Chen',
       role: 'Owner, Chen Family Medicine'
@@ -515,7 +506,6 @@ const blogPosts: Record<string, BlogPost> = {
     excerpt: 'The complete story of how a construction company owner replaced a $118K administrative assistant with an AI employee—and what happened next.',
     category: 'Case Study',
     readTime: '10 min read',
-    publishedAt: 'October 24, 2025',
     author: {
       name: 'Tom Rodriguez',
       role: 'Owner, Rodriguez Construction'
@@ -582,7 +572,6 @@ const blogPosts: Record<string, BlogPost> = {
     excerpt: 'A law firm owner shares how replacing her error-prone bookkeeper with AI saved $73K and eliminated months of tax deadline anxiety.',
     category: 'Transformation',
     readTime: '7 min read',
-    publishedAt: 'October 21, 2025',
     author: {
       name: 'Sarah Williams',
       role: 'Managing Partner, Williams Legal'
@@ -647,7 +636,6 @@ const blogPosts: Record<string, BlogPost> = {
     excerpt: 'An e-commerce founder\'s transparent account of deploying three AI employees, the mistakes made, the time reclaimed, and the freedom gained.',
     category: 'Journey',
     readTime: '9 min read',
-    publishedAt: 'October 18, 2025',
     author: {
       name: 'Marcus Johnson',
       role: 'Founder, Peak Performance Supplements'
@@ -711,7 +699,6 @@ const blogPosts: Record<string, BlogPost> = {
     excerpt: 'A marketing agency owner reveals how AI employees freed her from administrative hell—and what she did with her first free weekend in three years.',
     category: 'Freedom Story',
     readTime: '8 min read',
-    publishedAt: 'October 15, 2025',
     author: {
       name: 'Emily Patel',
       role: 'Owner, Catalyst Digital Marketing'
@@ -822,9 +809,6 @@ export default function BlogPostPage({ params }: PageProps) {
                 <span className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                   <Clock className="h-4 w-4" />
                   {post.readTime}
-                </span>
-                <span className="text-sm text-gray-600 dark:text-gray-400">
-                  {post.publishedAt}
                 </span>
               </div>
               
