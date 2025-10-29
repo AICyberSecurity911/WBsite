@@ -29,6 +29,15 @@ const faqData: FAQItem[] = [
     }
   },
   {
+    question: "How does setup work?",
+    answer: "There's no coding. Just 4 simple steps—we do them for you.",
+    category: "Setup Process",
+    cta: {
+      text: "Get started now",
+      href: "/consultation"
+    }
+  },
+  {
     question: "What if this is just another 'shiny object' that doesn't work for my industry?",
     answer: "We've deployed AI employees in restaurants, law firms, construction companies, medical practices, and accounting firms. The work changes, but every business has repetitive tasks bleeding time and money. Our assessment identifies your specific automation opportunities—no generic solutions.",
     category: "Industry Fit",
@@ -44,6 +53,15 @@ const faqData: FAQItem[] = [
     cta: {
       text: "Try savings calculator",
       href: "#calculator"
+    }
+  },
+  {
+    question: "Will AI replace my team or help them?",
+    answer: "AI handles the busywork, so your team has more time for clients and sales.",
+    category: "Team Dynamics",
+    cta: {
+      text: "Book a free consult",
+      href: "/consultation"
     }
   },
   {
@@ -74,9 +92,27 @@ const faqData: FAQItem[] = [
     }
   },
   {
+    question: "How fast can I see results?",
+    answer: "Most business owners save 15–30 hours every week, starting in the first month.",
+    category: "Results & Timeline",
+    cta: {
+      text: "Try savings calculator",
+      href: "#calculator"
+    }
+  },
+  {
     question: "I can barely afford payroll now. How is this not just another expense?",
     answer: "This isn't an expense—it's eliminating one. A $50K employee actually costs $118K after taxes, benefits, and turnover. An AI employee doing the same work costs under $15K/year and never calls in sick, quits, or makes expensive mistakes. Most clients recoup their investment in 6-8 weeks.",
     category: "Cost & ROI",
+    cta: {
+      text: "Try savings calculator",
+      href: "#calculator"
+    }
+  },
+  {
+    question: "How much does it cost?",
+    answer: "Starting at just $499/month—up to 85% less than hiring staff.",
+    category: "Pricing",
     cta: {
       text: "Try savings calculator",
       href: "#calculator"
