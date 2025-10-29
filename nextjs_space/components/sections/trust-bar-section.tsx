@@ -118,7 +118,7 @@ export function TrustBarSection() {
         >
           <div className="mb-4 text-center">
             <p className="text-sm font-semibold text-gray-600 dark:text-gray-400">
-              Trusted by innovative businesses worldwide
+              Trusted by companies that demand Perfection
             </p>
           </div>
 
