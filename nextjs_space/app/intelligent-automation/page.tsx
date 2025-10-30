@@ -315,7 +315,7 @@ export default function IntelligentAutomationPage() {
               </motion.h1>
               
               <motion.p variants={fadeInUp} className="text-xl lg:text-2xl text-gray-200 mb-8 max-w-4xl mx-auto">
-                Your time drives growth. Our Intelligent Automations connect your tools, remove repetitive tasks, and work 24/7—so you can <strong className="text-white">free yourself</strong> so you could finally focus on growing your business.
+                Your time drives growth. Our Intelligent Automations connect your tools, take over repetitive tasks, and work 24/7. Free yourself and finally focus on growing your business.
               </motion.p>
 
               {/* Stats */}
@@ -551,8 +551,11 @@ export default function IntelligentAutomationPage() {
                 <h2 className="text-4xl lg:text-5xl font-bold mb-6">
                   Our <span className="text-brand-teal-500">Intelligent Automation</span> Solutions
                 </h2>
-                <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-4">
                   Proprietary systems designed to eliminate busywork and maximize efficiency.
+                </p>
+                <p className="text-lg text-brand-teal-600 dark:text-brand-teal-400 font-semibold max-w-3xl mx-auto">
+                  These are just some of our Intelligent Automations. We can automate any workflow you can think of.
                 </p>
               </motion.div>
 
@@ -687,7 +690,7 @@ export default function IntelligentAutomationPage() {
                   href="/consultation"
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-brand-teal-500 hover:bg-brand-teal-600 rounded-lg transition shadow-lg"
                 >
-                  See Which Systems Fit Your Business
+                  See Which Processes You Can Automate for Faster ROI
                 </a>
               </motion.div>
             </motion.div>
