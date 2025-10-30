@@ -197,7 +197,7 @@ export function FAQSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-lg text-gray-600 dark:text-gray-300"
+              className="text-lg text-gray-700 dark:text-gray-300"
             >
               Real concerns from business owners like you—and the honest answers you deserve
             </motion.p>

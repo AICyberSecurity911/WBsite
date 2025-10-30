@@ -34,11 +34,11 @@ export function GuaranteeSection() {
             </div>
             
             <h2 className="mb-4 text-4xl font-bold text-gray-900 dark:text-white sm:text-5xl">
-              30-Day Performance Guarantee
+              Our 60-Day "Time-Back & ROI" Guarantee
             </h2>
             
             <p className="mx-auto max-w-3xl text-xl text-gray-600 dark:text-gray-300">
-              If you don't save time within 30 days, your plan is free until you do. We're so confident in our AI employees that we'll keep working with you at no cost until you see real results.
+              If you don't save at least 10 hours a week OR see measurable ROI in 60 days, we'll continue optimizing your automations <strong className="font-semibold text-gray-900 dark:text-white">free</strong> until you do.
             </p>
           </motion.div>
 

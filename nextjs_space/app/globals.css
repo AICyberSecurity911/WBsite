@@ -122,6 +122,10 @@
     @apply bg-gradient-to-r from-teal-600 via-emerald-600 to-teal-600 bg-clip-text text-transparent;
   }
 
+  .text-gradient-subtle {
+    @apply bg-gradient-to-r from-teal-700 via-emerald-700 to-teal-700 bg-clip-text text-transparent dark:from-teal-400 dark:via-emerald-400 dark:to-teal-400;
+  }
+
   .glass-effect {
     @apply backdrop-blur-xl bg-white/70 dark:bg-gray-900/70 border border-white/20 dark:border-gray-800/20 shadow-xl;
   }

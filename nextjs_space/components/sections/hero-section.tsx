@@ -102,6 +102,22 @@ export function HeroSection() {
               </Button>
             </motion.div>
 
+            {/* Credibility Line */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.55 }}
+              className="mb-8 text-center lg:text-left"
+            >
+              <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 tracking-wide">
+                <span className="text-gradient-subtle">Fortune 500 Strategy</span>
+                <span className="mx-2 text-gray-400 dark:text-gray-600">|</span>
+                <span className="text-gradient-subtle">MIT & Caltech Engineering</span>
+                <span className="mx-2 text-gray-400 dark:text-gray-600">|</span>
+                <span className="text-gradient-subtle">NASA-Recognized Security</span>
+              </p>
+            </motion.div>
+
             {/* Trust Indicators */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
