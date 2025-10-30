@@ -228,36 +228,52 @@ export default function IntelligentAutomationPage() {
 
   const faqs = [
     {
-      question: "Will automation break my current processes?",
-      answer: "Not if done right. We implement automations gradually, with extensive testing and rollback plans. You'll never be left in a worse position than when you started. Plus, we provide a 30-day guarantee—if the automations don't work as promised, we'll fix them or refund you."
+      question: "Isn't automation expensive or complicated?",
+      answer: "Absolutely not. Our Intelligent Automations are modular, affordable, and plug directly into the tools you already use. We handle all the technical implementation for you. Most of our clients see a clear, measurable Return on Investment (ROI) within the first month.",
+      cta: {
+        text: "🟢 Show Me My ROI",
+        link: "#calculator"
+      }
     },
     {
-      question: "How long until I see results?",
-      answer: "Most clients report immediate time savings within the first week of implementation. The full ROI typically becomes visible within 30-60 days as the automations handle more tasks. We provide weekly performance reports so you can track the exact hours and money saved."
+      question: "Will automation replace my employees?",
+      answer: "Not at all. It replaces repetitive tasks, not people. Automation handles the data entry, follow-ups, and report generation, freeing your team to spend less time clicking and more time focusing on high-value work like strategy and customer relationships.",
+      cta: {
+        text: "🟢 Automate the Repetitive Work",
+        link: "/consultation"
+      }
     },
     {
-      question: "What if my team doesn't adopt the new workflows?",
-      answer: "We design automations that are so simple and beneficial that adoption happens naturally. We also provide hands-on training and create easy-to-follow documentation. If your team struggles with any workflow, we'll redesign it until it works seamlessly for everyone."
+      question: "My business is always changing. Can automation keep up?",
+      answer: "Yes, that's exactly what it's designed for. We don't just build it and leave. Your automations evolve with your business as part of our ongoing service. Think of us as your strategic operations partner, ensuring your systems always match your new processes.",
+      cta: {
+        text: "🟢 Discuss Your Growth Plan",
+        link: "/consultation"
+      }
     },
     {
-      question: "Can you automate tasks specific to my industry?",
-      answer: "Absolutely. We've implemented automations across dozens of industries—from healthcare to construction to e-commerce. Every automation is custom-designed for your specific business processes, not generic templates. If you do it manually today, we can likely automate it."
+      question: "How quickly will I see a return on my investment?",
+      answer: "Most clients see measurable time savings within the first 2-3 weeks. The financial ROI, from capturing missed deals and eliminating costly errors, typically becomes obvious within the first 60-90 days. One client saved $15,000 in the first month from a single caught accounting error.",
+      cta: {
+        text: "🟢 Get My Personalized ROI Timeline",
+        link: "/consultation"
+      }
     },
     {
-      question: "What happens after implementation?",
-      answer: "You get ongoing support for the duration of your plan (1-12 months depending on tier). We monitor your automations, provide optimization recommendations, identify new automation opportunities, and offer priority support whenever you need help. You're never left on your own."
+      question: "Will this work with the software I already use?",
+      answer: "Yes. We integrate with hundreds of common business tools, including QuickBooks, HubSpot, Salesforce, Gmail, Slack, Calendly, and many more. Our automations connect your existing systems—you don't have to change the way you work.",
+      cta: {
+        text: "🟢 Request an Integration Preview Call",
+        link: "/consultation"
+      }
     },
     {
-      question: "How much technical knowledge do I need?",
-      answer: "Zero. We handle all the technical setup and provide training so simple that anyone can use the automations. If you can use email and a web browser, you can use our automations. Plus, we document everything step-by-step."
-    },
-    {
-      question: "What if I want to change something later?",
-      answer: "Automations are meant to evolve with your business. All our clients get ongoing support that includes workflow modifications. Need to add a step, change a trigger, or integrate a new tool? Just let us know, and we'll handle it."
-    },
-    {
-      question: "How do I know which automations to start with?",
-      answer: "That's what the Time Audit (Phase 1) is for. We'll identify your biggest time drains and prioritize automations based on impact and ease of implementation. You'll get a clear roadmap showing exactly which automations to tackle first for maximum ROI."
+      question: "What if I don't know where to start?",
+      answer: "That's the most common question we get, and it's why we built our free tools. The ROI calculator will instantly pinpoint your biggest time and money leaks. From there, our complimentary audit will give you a clear, prioritized roadmap.",
+      cta: {
+        text: "🟢 Get My 30-Day Efficiency Plan",
+        link: "#calculator"
+      }
     }
   ]
 
@@ -299,9 +315,7 @@ export default function IntelligentAutomationPage() {
               </motion.h1>
               
               <motion.p variants={fadeInUp} className="text-xl lg:text-2xl text-gray-200 mb-8 max-w-4xl mx-auto">
-                You're wasting <strong className="text-white">21.8 hours every week</strong> on manual tasks that could be automated. 
-                We build simple, affordable automations that eliminate errors, save thousands, and let you 
-                finally focus on growing your business.
+                Your time drives growth. Our Intelligent Automations connect your tools, remove repetitive tasks, and work 24/7—so you can <strong className="text-white">free yourself</strong> so you could finally focus on growing your business.
               </motion.p>
 
               {/* Stats */}
@@ -322,20 +336,75 @@ export default function IntelligentAutomationPage() {
                 })}
               </motion.div>
               
-              <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center">
+              <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                 <a 
                   href="#calculator" 
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-brand-teal-500 hover:bg-brand-teal-600 rounded-lg transition shadow-lg shadow-brand-teal-500/50"
                 >
-                  Calculate Your Time Waste
+                  🟢 Reveal My Hidden Hours & Savings
                 </a>
                 <a 
-                  href="#solution" 
+                  href="/consultation" 
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold border-2 border-white text-white rounded-lg hover:bg-white/10 transition"
                 >
-                  See Solutions
+                  ⚙️ Show Me What I Can Automate (Free Audit)
                 </a>
               </motion.div>
+
+              {/* Trust Bar */}
+              <motion.div variants={fadeInUp} className="text-center">
+                <p className="text-sm font-semibold text-teal-100 tracking-wide">
+                  Fortune 500 Strategy | MIT & Caltech Engineering | NASA-Recognized Security
+                </p>
+              </motion.div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* TLDDR Box Section */}
+        <section className="py-16 bg-background border-b border-border">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="bg-gradient-to-br from-brand-teal-50 to-emerald-50 dark:from-brand-teal-950/30 dark:to-emerald-950/30 rounded-2xl p-8 border-2 border-brand-teal-200 dark:border-brand-teal-800"
+            >
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-brand-teal-500 to-emerald-500 flex items-center justify-center flex-shrink-0">
+                  <span className="text-2xl font-bold text-white">PK</span>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold mb-2">What Is Intelligent Automation?</h3>
+                  <p className="text-sm text-brand-teal-700 dark:text-brand-teal-300 font-semibold">
+                    From the desk of Paras Khurana, Founder & CEO
+                  </p>
+                </div>
+              </div>
+              
+              <div className="prose prose-lg dark:prose-invert max-w-none">
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+                  Intelligent Automation means connecting your business tools (CRM, email, accounting software, calendars) 
+                  so they work together automatically. Instead of copying data manually or remembering to send follow-ups, 
+                  your systems do it for you—24/7, error-free, and without you lifting a finger.
+                </p>
+                
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+                  Think of it as giving your business a digital nervous system. When a lead fills out a form, 
+                  your CRM updates automatically, an email goes out, a task gets created, and your team gets notified—all 
+                  in seconds, without human intervention.
+                </p>
+
+                <div className="bg-white dark:bg-gray-900 rounded-xl p-6 border-l-4 border-brand-teal-500 mt-6">
+                  <p className="text-sm font-semibold text-brand-teal-700 dark:text-brand-teal-300 uppercase tracking-wide mb-2">
+                    💡 Critical Insight
+                  </p>
+                  <p className="text-gray-900 dark:text-gray-100 font-semibold text-lg">
+                    Every manual workflow is a hidden expense center. Find it, automate it, and your margins expand.
+                  </p>
+                </div>
+              </div>
             </motion.div>
           </div>
         </section>
@@ -464,6 +533,162 @@ export default function IntelligentAutomationPage() {
                     </motion.div>
                   )
                 })}
+              </motion.div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Branded Automation Solutions Section */}
+        <section className="py-24 bg-gradient-to-b from-background to-muted">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={staggerContainer}
+            >
+              <motion.div variants={fadeInUp} className="text-center mb-16">
+                <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+                  Our <span className="text-brand-teal-500">Intelligent Automation</span> Solutions
+                </h2>
+                <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                  Proprietary systems designed to eliminate busywork and maximize efficiency.
+                </p>
+              </motion.div>
+
+              <motion.div variants={staggerContainer} className="grid md:grid-cols-2 gap-8">
+                <motion.div
+                  variants={fadeInUp}
+                  className="group relative bg-background rounded-2xl p-8 border-2 border-border hover:border-brand-teal-500 transition-all duration-300 hover:shadow-[0_0_30px_rgba(20,184,166,0.3)]"
+                >
+                  <div className="absolute top-6 right-6 bg-gradient-to-r from-brand-teal-500 to-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                    PROPRIETARY
+                  </div>
+                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-brand-teal-500 to-emerald-500 flex items-center justify-center mb-6">
+                    <DollarSign className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3">InvoiceIQ™</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Intelligent invoice and payment automation system that creates, sends, and tracks invoices automatically. 
+                    Never chase payments manually again—InvoiceIQ handles reminders, payment processing, and reconciliation 24/7.
+                  </p>
+                  <ul className="space-y-2">
+                    <li className="flex items-start gap-2 text-sm">
+                      <CheckCircle className="w-5 h-5 text-brand-teal-500 mt-0.5 flex-shrink-0" />
+                      <span>Automated invoice generation and delivery</span>
+                    </li>
+                    <li className="flex items-start gap-2 text-sm">
+                      <CheckCircle className="w-5 h-5 text-brand-teal-500 mt-0.5 flex-shrink-0" />
+                      <span>Smart payment reminders and follow-ups</span>
+                    </li>
+                    <li className="flex items-start gap-2 text-sm">
+                      <CheckCircle className="w-5 h-5 text-brand-teal-500 mt-0.5 flex-shrink-0" />
+                      <span>Real-time payment tracking and reporting</span>
+                    </li>
+                  </ul>
+                </motion.div>
+
+                <motion.div
+                  variants={fadeInUp}
+                  className="group relative bg-background rounded-2xl p-8 border-2 border-border hover:border-brand-teal-500 transition-all duration-300 hover:shadow-[0_0_30px_rgba(20,184,166,0.3)]"
+                >
+                  <div className="absolute top-6 right-6 bg-gradient-to-r from-brand-teal-500 to-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                    PROPRIETARY
+                  </div>
+                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-brand-teal-500 to-emerald-500 flex items-center justify-center mb-6">
+                    <Zap className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3">LeadFlow™</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Automated lead response and nurture system that captures, qualifies, and engages leads instantly. 
+                    No more missed opportunities—LeadFlow ensures every prospect gets immediate attention and personalized follow-up.
+                  </p>
+                  <ul className="space-y-2">
+                    <li className="flex items-start gap-2 text-sm">
+                      <CheckCircle className="w-5 h-5 text-brand-teal-500 mt-0.5 flex-shrink-0" />
+                      <span>Instant lead capture and qualification</span>
+                    </li>
+                    <li className="flex items-start gap-2 text-sm">
+                      <CheckCircle className="w-5 h-5 text-brand-teal-500 mt-0.5 flex-shrink-0" />
+                      <span>Personalized email sequences and nurturing</span>
+                    </li>
+                    <li className="flex items-start gap-2 text-sm">
+                      <CheckCircle className="w-5 h-5 text-brand-teal-500 mt-0.5 flex-shrink-0" />
+                      <span>Automated task creation for your sales team</span>
+                    </li>
+                  </ul>
+                </motion.div>
+
+                <motion.div
+                  variants={fadeInUp}
+                  className="group relative bg-background rounded-2xl p-8 border-2 border-border hover:border-brand-teal-500 transition-all duration-300 hover:shadow-[0_0_30px_rgba(20,184,166,0.3)]"
+                >
+                  <div className="absolute top-6 right-6 bg-gradient-to-r from-brand-teal-500 to-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                    PROPRIETARY
+                  </div>
+                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-brand-teal-500 to-emerald-500 flex items-center justify-center mb-6">
+                    <Target className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3">ClientPulse™</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Seamless customer onboarding workflow that guides new clients from signup to success automatically. 
+                    ClientPulse creates a VIP experience for every customer without manual intervention.
+                  </p>
+                  <ul className="space-y-2">
+                    <li className="flex items-start gap-2 text-sm">
+                      <CheckCircle className="w-5 h-5 text-brand-teal-500 mt-0.5 flex-shrink-0" />
+                      <span>Automated welcome sequences and onboarding</span>
+                    </li>
+                    <li className="flex items-start gap-2 text-sm">
+                      <CheckCircle className="w-5 h-5 text-brand-teal-500 mt-0.5 flex-shrink-0" />
+                      <span>Smart document collection and setup</span>
+                    </li>
+                    <li className="flex items-start gap-2 text-sm">
+                      <CheckCircle className="w-5 h-5 text-brand-teal-500 mt-0.5 flex-shrink-0" />
+                      <span>Progress tracking and milestone notifications</span>
+                    </li>
+                  </ul>
+                </motion.div>
+
+                <motion.div
+                  variants={fadeInUp}
+                  className="group relative bg-background rounded-2xl p-8 border-2 border-border hover:border-brand-teal-500 transition-all duration-300 hover:shadow-[0_0_30px_rgba(20,184,166,0.3)]"
+                >
+                  <div className="absolute top-6 right-6 bg-gradient-to-r from-brand-teal-500 to-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                    PROPRIETARY
+                  </div>
+                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-brand-teal-500 to-emerald-500 flex items-center justify-center mb-6">
+                    <BarChart3 className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3">SmartDocs™</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Automated financial reporting and dashboard system that compiles data from all your sources into 
+                    real-time, actionable insights. No more manual spreadsheets—SmartDocs delivers intelligence on demand.
+                  </p>
+                  <ul className="space-y-2">
+                    <li className="flex items-start gap-2 text-sm">
+                      <CheckCircle className="w-5 h-5 text-brand-teal-500 mt-0.5 flex-shrink-0" />
+                      <span>Automated data aggregation and reporting</span>
+                    </li>
+                    <li className="flex items-start gap-2 text-sm">
+                      <CheckCircle className="w-5 h-5 text-brand-teal-500 mt-0.5 flex-shrink-0" />
+                      <span>Real-time dashboards and visualizations</span>
+                    </li>
+                    <li className="flex items-start gap-2 text-sm">
+                      <CheckCircle className="w-5 h-5 text-brand-teal-500 mt-0.5 flex-shrink-0" />
+                      <span>Scheduled reports delivered to your inbox</span>
+                    </li>
+                  </ul>
+                </motion.div>
+              </motion.div>
+
+              <motion.div variants={fadeInUp} className="mt-12 text-center">
+                <a
+                  href="/consultation"
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-brand-teal-500 hover:bg-brand-teal-600 rounded-lg transition shadow-lg"
+                >
+                  See Which Systems Fit Your Business
+                </a>
               </motion.div>
             </motion.div>
           </div>
@@ -726,7 +951,15 @@ export default function IntelligentAutomationPage() {
                         {faq.question}
                       </AccordionTrigger>
                       <AccordionContent className="text-muted-foreground">
-                        {faq.answer}
+                        <p className="mb-4">{faq.answer}</p>
+                        {faq.cta && (
+                          <a
+                            href={faq.cta.link}
+                            className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white bg-brand-teal-500 hover:bg-brand-teal-600 rounded-lg transition shadow-md hover:shadow-lg"
+                          >
+                            {faq.cta.text}
+                          </a>
+                        )}
                       </AccordionContent>
                     </AccordionItem>
                   ))}
