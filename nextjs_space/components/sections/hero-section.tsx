@@ -147,21 +147,53 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="relative"
           >
-            {/* Main Visual Card */}
+            {/* Main Visual Card - Removed placeholder content */}
             <div className="relative">
               <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-gradient-to-br from-teal-500 via-emerald-500 to-teal-600 p-8 shadow-2xl shadow-teal-600/30">
                 {/* Decorative elements */}
                 <div className="absolute -right-12 -top-12 h-48 w-48 rounded-full bg-white/10 blur-2xl" />
                 <div className="absolute -bottom-8 -left-8 h-32 w-32 rounded-full bg-emerald-400/30 blur-xl" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
                 
-                {/* Content placeholder */}
+                {/* Enhanced visual elements */}
                 <div className="relative flex h-full items-center justify-center">
-                  <div className="text-center text-white">
-                    <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-white/20 backdrop-blur-sm">
-                      <TrendingUp className="h-10 w-10" />
-                    </div>
-                    <p className="mb-2 text-2xl font-bold">AI Workforce Demo</p>
-                    <p className="text-base opacity-90">Video coming soon</p>
+                  <div className="grid grid-cols-2 gap-4 w-full">
+                    {/* Animated stat blocks */}
+                    <motion.div
+                      animate={{ y: [0, -10, 0] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                      className="rounded-2xl bg-white/20 backdrop-blur-sm p-4 text-white"
+                    >
+                      <div className="text-3xl font-bold">24/7</div>
+                      <div className="text-sm opacity-90">Uptime</div>
+                    </motion.div>
+                    
+                    <motion.div
+                      animate={{ y: [0, 10, 0] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                      className="rounded-2xl bg-white/20 backdrop-blur-sm p-4 text-white"
+                    >
+                      <div className="text-3xl font-bold">99%</div>
+                      <div className="text-sm opacity-90">Accurate</div>
+                    </motion.div>
+                    
+                    <motion.div
+                      animate={{ y: [0, 10, 0] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                      className="rounded-2xl bg-white/20 backdrop-blur-sm p-4 text-white"
+                    >
+                      <div className="text-3xl font-bold">87%</div>
+                      <div className="text-sm opacity-90">Savings</div>
+                    </motion.div>
+                    
+                    <motion.div
+                      animate={{ y: [0, -10, 0] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+                      className="rounded-2xl bg-white/20 backdrop-blur-sm p-4 text-white"
+                    >
+                      <div className="text-3xl font-bold">8</div>
+                      <div className="text-sm opacity-90">AI Roles</div>
+                    </motion.div>
                   </div>
                 </div>
               </div>

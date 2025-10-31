@@ -5,6 +5,7 @@ import { Footer } from '@/components/layout/footer'
 import { ArrowLeft, Clock, Share2, BookOpen, TrendingUp, DollarSign, Users } from 'lucide-react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { toast } from 'sonner'
 
 interface BlogPost {
   slug: string
@@ -1083,18 +1084,22 @@ export default function BlogPostPage({ params }: PageProps) {
           text: post.excerpt,
           url: window.location.href
         })
+        toast.success('Shared successfully!')
       } else {
         // Fallback: copy to clipboard
         await navigator.clipboard.writeText(window.location.href)
-        alert('Link copied to clipboard!')
+        toast.success('Link copied to clipboard!')
       }
-    } catch (error) {
-      // If all else fails, try clipboard again
-      try {
-        await navigator.clipboard.writeText(window.location.href)
-        alert('Link copied to clipboard!')
-      } catch (clipboardError) {
-        console.error('Failed to share or copy:', error)
+    } catch (error: any) {
+      // Only show error if it's not a user cancellation
+      if (error?.name !== 'AbortError') {
+        // Try clipboard as last resort
+        try {
+          await navigator.clipboard.writeText(window.location.href)
+          toast.success('Link copied to clipboard!')
+        } catch (clipboardError) {
+          toast.error('Unable to share. Please copy the URL manually.')
+        }
       }
     }
   }

@@ -330,16 +330,38 @@ export function AIEmployeesSection() {
         {/* AI Employee Grid */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {aiEmployees.map((employee, index) => {
-            // Define unique background colors for each card
+            // Define unique background colors for each card with better contrast
             const cardBackgrounds = [
-              'bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-950/30 dark:to-indigo-950/30 border-2 border-blue-200 dark:border-blue-800 hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] dark:hover:shadow-[0_0_30px_rgba(96,165,250,0.4)]',
-              'bg-gradient-to-br from-emerald-50 to-teal-100 dark:from-emerald-950/30 dark:to-teal-950/30 border-2 border-emerald-200 dark:border-emerald-800 hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] dark:hover:shadow-[0_0_30px_rgba(52,211,153,0.4)]',
-              'bg-gradient-to-br from-orange-50 to-red-100 dark:from-orange-950/30 dark:to-red-950/30 border-2 border-orange-200 dark:border-orange-800 hover:shadow-[0_0_30px_rgba(249,115,22,0.5)] dark:hover:shadow-[0_0_30px_rgba(251,146,60,0.4)]',
-              'bg-gradient-to-br from-purple-50 to-pink-100 dark:from-purple-950/30 dark:to-pink-950/30 border-2 border-purple-200 dark:border-purple-800 hover:shadow-[0_0_30px_rgba(168,85,247,0.5)] dark:hover:shadow-[0_0_30px_rgba(192,132,252,0.4)]',
-              'bg-gradient-to-br from-green-50 to-emerald-100 dark:from-green-950/30 dark:to-emerald-950/30 border-2 border-green-200 dark:border-green-800 hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] dark:hover:shadow-[0_0_30px_rgba(74,222,128,0.4)]',
-              'bg-gradient-to-br from-pink-50 to-purple-100 dark:from-pink-950/30 dark:to-purple-950/30 border-2 border-pink-200 dark:border-pink-800 hover:shadow-[0_0_30px_rgba(236,72,153,0.5)] dark:hover:shadow-[0_0_30px_rgba(244,114,182,0.4)]',
-              'bg-gradient-to-br from-indigo-50 to-blue-100 dark:from-indigo-950/30 dark:to-blue-950/30 border-2 border-indigo-200 dark:border-indigo-800 hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] dark:hover:shadow-[0_0_30px_rgba(129,140,248,0.4)]',
-              'bg-gradient-to-br from-yellow-50 to-orange-100 dark:from-yellow-950/30 dark:to-orange-950/30 border-2 border-yellow-200 dark:border-yellow-800 hover:shadow-[0_0_30px_rgba(234,179,8,0.5)] dark:hover:shadow-[0_0_30px_rgba(250,204,21,0.4)]'
+              'bg-gradient-to-br from-blue-100 via-indigo-100 to-blue-200 dark:from-blue-900/50 dark:via-indigo-900/50 dark:to-blue-800/50',
+              'bg-gradient-to-br from-emerald-100 via-teal-100 to-emerald-200 dark:from-emerald-900/50 dark:via-teal-900/50 dark:to-emerald-800/50',
+              'bg-gradient-to-br from-orange-100 via-red-100 to-orange-200 dark:from-orange-900/50 dark:via-red-900/50 dark:to-orange-800/50',
+              'bg-gradient-to-br from-purple-100 via-pink-100 to-purple-200 dark:from-purple-900/50 dark:via-pink-900/50 dark:to-purple-800/50',
+              'bg-gradient-to-br from-green-100 via-emerald-100 to-green-200 dark:from-green-900/50 dark:via-emerald-900/50 dark:to-green-800/50',
+              'bg-gradient-to-br from-pink-100 via-purple-100 to-pink-200 dark:from-pink-900/50 dark:via-purple-900/50 dark:to-pink-800/50',
+              'bg-gradient-to-br from-indigo-100 via-blue-100 to-indigo-200 dark:from-indigo-900/50 dark:via-blue-900/50 dark:to-indigo-800/50',
+              'bg-gradient-to-br from-yellow-100 via-orange-100 to-yellow-200 dark:from-yellow-900/50 dark:via-orange-900/50 dark:to-yellow-800/50'
+            ]
+            
+            const borderColors = [
+              'border-blue-300 dark:border-blue-600',
+              'border-emerald-300 dark:border-emerald-600',
+              'border-orange-300 dark:border-orange-600',
+              'border-purple-300 dark:border-purple-600',
+              'border-green-300 dark:border-green-600',
+              'border-pink-300 dark:border-pink-600',
+              'border-indigo-300 dark:border-indigo-600',
+              'border-yellow-300 dark:border-yellow-600'
+            ]
+
+            const glowColors = [
+              'group-hover:shadow-[0_0_40px_rgba(59,130,246,0.7),0_0_80px_rgba(99,102,241,0.4)] group-hover:border-blue-400 dark:group-hover:shadow-[0_0_40px_rgba(96,165,250,0.6),0_0_80px_rgba(129,140,248,0.3)] dark:group-hover:border-blue-400',
+              'group-hover:shadow-[0_0_40px_rgba(16,185,129,0.7),0_0_80px_rgba(20,184,166,0.4)] group-hover:border-emerald-400 dark:group-hover:shadow-[0_0_40px_rgba(52,211,153,0.6),0_0_80px_rgba(45,212,191,0.3)] dark:group-hover:border-emerald-400',
+              'group-hover:shadow-[0_0_40px_rgba(249,115,22,0.7),0_0_80px_rgba(239,68,68,0.4)] group-hover:border-orange-400 dark:group-hover:shadow-[0_0_40px_rgba(251,146,60,0.6),0_0_80px_rgba(248,113,113,0.3)] dark:group-hover:border-orange-400',
+              'group-hover:shadow-[0_0_40px_rgba(168,85,247,0.7),0_0_80px_rgba(236,72,153,0.4)] group-hover:border-purple-400 dark:group-hover:shadow-[0_0_40px_rgba(192,132,252,0.6),0_0_80px_rgba(244,114,182,0.3)] dark:group-hover:border-purple-400',
+              'group-hover:shadow-[0_0_40px_rgba(34,197,94,0.7),0_0_80px_rgba(16,185,129,0.4)] group-hover:border-green-400 dark:group-hover:shadow-[0_0_40px_rgba(74,222,128,0.6),0_0_80px_rgba(52,211,153,0.3)] dark:group-hover:border-green-400',
+              'group-hover:shadow-[0_0_40px_rgba(236,72,153,0.7),0_0_80px_rgba(168,85,247,0.4)] group-hover:border-pink-400 dark:group-hover:shadow-[0_0_40px_rgba(244,114,182,0.6),0_0_80px_rgba(192,132,252,0.3)] dark:group-hover:border-pink-400',
+              'group-hover:shadow-[0_0_40px_rgba(99,102,241,0.7),0_0_80px_rgba(59,130,246,0.4)] group-hover:border-indigo-400 dark:group-hover:shadow-[0_0_40px_rgba(129,140,248,0.6),0_0_80px_rgba(96,165,250,0.3)] dark:group-hover:border-indigo-400',
+              'group-hover:shadow-[0_0_40px_rgba(234,179,8,0.7),0_0_80px_rgba(249,115,22,0.4)] group-hover:border-yellow-400 dark:group-hover:shadow-[0_0_40px_rgba(250,204,21,0.6),0_0_80px_rgba(251,146,60,0.3)] dark:group-hover:border-yellow-400'
             ]
             
             return (
@@ -348,49 +370,97 @@ export function AIEmployeesSection() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-                className={`group relative overflow-hidden rounded-2xl p-6 cursor-pointer transition-all duration-300 ${cardBackgrounds[index]}`}
+                whileHover={{ 
+                  scale: 1.05,
+                  y: -8,
+                  rotateX: 5,
+                  transition: { duration: 0.3 }
+                }}
+                className={`group relative overflow-hidden rounded-2xl p-6 cursor-pointer transition-all duration-500 border-2 shadow-lg ${cardBackgrounds[index]} ${borderColors[index]} ${glowColors[index]}`}
+                style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}
                 onClick={() => setSelectedEmployee(employee)}
               >
-                {/* Icon and gradient background */}
-                <div className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-r ${employee.color} text-white shadow-lg`}>
-                  <employee.icon className="h-6 w-6" />
-                </div>
+                {/* Animated gradient overlay on hover */}
+                <motion.div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{
+                    background: `radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.2), transparent 50%)`
+                  }}
+                />
 
-                {/* Content */}
-                <div>
-                  <h3 className="mb-2 text-lg font-bold text-gray-900 dark:text-white">
+                {/* Animated border glow */}
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
+                     style={{
+                       background: 'linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%)',
+                       animation: 'shimmer 2s infinite',
+                       backgroundSize: '200% 200%'
+                     }} 
+                />
+
+                {/* Icon with enhanced 3D effect */}
+                <motion.div 
+                  className={`mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-r ${employee.color} text-white shadow-2xl relative z-10`}
+                  whileHover={{ 
+                    scale: 1.1, 
+                    rotate: [0, -5, 5, -5, 0],
+                    transition: { duration: 0.5 }
+                  }}
+                  style={{ 
+                    boxShadow: '0 10px 30px rgba(0,0,0,0.3), 0 1px 8px rgba(0,0,0,0.2)'
+                  }}
+                >
+                  <employee.icon className="h-7 w-7" />
+                </motion.div>
+
+                {/* Content with relative positioning */}
+                <div className="relative z-10">
+                  <h3 className="mb-2 text-lg font-bold text-gray-900 dark:text-white group-hover:text-gray-950 dark:group-hover:text-white transition-colors">
                     {employee.title}
                   </h3>
-                  <p className="mb-3 text-sm text-gray-700 dark:text-gray-300">
+                  <p className="mb-4 text-sm text-gray-800 dark:text-gray-200 leading-relaxed">
                     {employee.tagline}
                   </p>
 
-                  {/* Metrics */}
+                  {/* Metrics with enhanced styling */}
                   <div className="mb-4 grid grid-cols-3 gap-2 text-xs">
-                    <div className="text-center">
-                      <div className="font-bold text-teal-700 dark:text-teal-400">{employee.metrics.accuracy}</div>
-                      <div className="text-gray-700 dark:text-gray-300">Accuracy</div>
+                    <div className="text-center bg-white/40 dark:bg-black/20 rounded-lg p-2 backdrop-blur-sm">
+                      <div className="font-bold text-teal-700 dark:text-teal-300 text-base">{employee.metrics.accuracy}</div>
+                      <div className="text-gray-800 dark:text-gray-200 font-medium">Accuracy</div>
                     </div>
-                    <div className="text-center">
-                      <div className="font-bold text-emerald-700 dark:text-emerald-400">{employee.metrics.timeSaved}</div>
-                      <div className="text-gray-700 dark:text-gray-300">Saved</div>
+                    <div className="text-center bg-white/40 dark:bg-black/20 rounded-lg p-2 backdrop-blur-sm">
+                      <div className="font-bold text-emerald-700 dark:text-emerald-300 text-base">{employee.metrics.timeSaved}</div>
+                      <div className="text-gray-800 dark:text-gray-200 font-medium">Saved</div>
                     </div>
-                    <div className="text-center">
-                      <div className="font-bold text-purple-700 dark:text-purple-400">{employee.metrics.costSavings}</div>
-                      <div className="text-gray-700 dark:text-gray-300">Less Cost</div>
+                    <div className="text-center bg-white/40 dark:bg-black/20 rounded-lg p-2 backdrop-blur-sm">
+                      <div className="font-bold text-purple-700 dark:text-purple-300 text-base">{employee.metrics.costSavings}</div>
+                      <div className="text-gray-800 dark:text-gray-200 font-medium">Less Cost</div>
                     </div>
                   </div>
 
-                  {/* CTA */}
-                  <div className="flex items-center gap-2 text-sm font-semibold text-teal-700 group-hover:text-teal-900 dark:text-teal-400 dark:group-hover:text-teal-200">
+                  {/* CTA with animated arrow */}
+                  <motion.div 
+                    className="flex items-center gap-2 text-sm font-semibold text-teal-700 group-hover:text-teal-900 dark:text-teal-300 dark:group-hover:text-teal-100 transition-colors"
+                    whileHover={{ x: 5 }}
+                  >
                     <span>Learn More</span>
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </div>
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-2" />
+                  </motion.div>
                 </div>
+
+                {/* Decorative corner glow */}
+                <div className="absolute -top-10 -right-10 h-32 w-32 rounded-full bg-white/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute -bottom-10 -left-10 h-32 w-32 rounded-full bg-white/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </motion.div>
             )
           })}
         </div>
+
+        <style jsx>{`
+          @keyframes shimmer {
+            0% { background-position: -200% -200%; }
+            100% { background-position: 200% 200%; }
+          }
+        `}</style>
 
         {/* CTA Section */}
         <motion.div
