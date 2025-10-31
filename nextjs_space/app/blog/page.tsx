@@ -61,6 +61,15 @@ const blogPosts = [
     category: 'Case Study',
     readTime: '7 min read',
     slug: 'law-firm-case-study'
+  },
+  {
+    id: '7',
+    title: 'Intelligent Automation 101: A Complete Guide for SMB Owners',
+    excerpt: 'Everything you need to know about intelligent automation: what it is, how it works, and how to implement it in your business for maximum ROI.',
+    category: 'Implementation',
+    readTime: '10 min read',
+    slug: 'intelligent-automation-guide',
+    featured: false
   }
 ]
 

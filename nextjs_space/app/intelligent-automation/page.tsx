@@ -164,7 +164,7 @@ export default function IntelligentAutomationPage() {
     },
     {
       title: 'Ongoing Support',
-      description: '30-day guarantee + priority support to ensure everything runs smoothly',
+      description: '30-day money-back guarantee + priority support to ensure everything runs smoothly',
       icon: Target
     }
   ]
@@ -354,7 +354,7 @@ export default function IntelligentAutomationPage() {
               {/* Trust Bar */}
               <motion.div variants={fadeInUp} className="text-center">
                 <p className="text-sm font-semibold text-teal-100 tracking-wide">
-                  Fortune 500 Strategy | MIT & Caltech Engineering | NASA-Recognized Security
+                  Fortune 500 Strategy | MIT & Caltech Engineering | Money Back Guarantee
                 </p>
               </motion.div>
             </motion.div>
@@ -967,6 +967,19 @@ export default function IntelligentAutomationPage() {
                     </AccordionItem>
                   ))}
                 </Accordion>
+
+                {/* Contact Support Button */}
+                <motion.div variants={fadeInUp} className="mt-8 text-center">
+                  <p className="text-muted-foreground mb-4">
+                    Still have questions? We're here to help!
+                  </p>
+                  <a
+                    href="/intelligent-automation/contact"
+                    className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-brand-teal-500 hover:bg-brand-teal-600 rounded-lg transition shadow-lg hover:shadow-xl"
+                  >
+                    Contact Support
+                  </a>
+                </motion.div>
               </motion.div>
             </motion.div>
           </div>
@@ -1002,7 +1015,7 @@ export default function IntelligentAutomationPage() {
                 </a>
               </div>
               <p className="mt-6 text-sm text-teal-100">
-                🔒 No credit card required • 30-day satisfaction guarantee • Free time audit
+                🔒 No credit card required • 30-day money-back guarantee • Free time audit
               </p>
             </motion.div>
           </div>

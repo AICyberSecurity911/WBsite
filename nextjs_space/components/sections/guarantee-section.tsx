@@ -34,11 +34,11 @@ export function GuaranteeSection() {
             </div>
             
             <h2 className="mb-4 text-4xl font-bold text-gray-900 dark:text-white sm:text-5xl">
-              Our 60-Day "Time-Back & ROI" Guarantee
+              Our 30-Day "Time-Back & ROI" Guarantee
             </h2>
             
             <p className="mx-auto max-w-3xl text-xl text-gray-600 dark:text-gray-300">
-              If you don't save at least 10 hours a week OR see measurable ROI in 60 days, we'll continue optimizing your automations <strong className="font-semibold text-gray-900 dark:text-white">free</strong> until you do.
+              If you don't save at least 10 hours a week OR see measurable ROI within 30 days, we'll continue optimizing your automations <strong className="font-semibold text-gray-900 dark:text-white">at no additional cost</strong> until you do. Terms and conditions apply.*
             </p>
           </motion.div>
 
@@ -156,7 +156,7 @@ export function GuaranteeSection() {
             {[
               { value: '97%', label: 'Client Success Rate' },
               { value: '30 days', label: 'Average Time to ROI' },
-              { value: '200+', label: 'Businesses Trust Us' },
+              { value: '200+', label: 'Businesses Transformed' },
               { value: '$47K', label: 'Average Annual Savings' }
             ].map((stat, idx) => (
               <div key={idx} className="text-center">
@@ -221,9 +221,14 @@ export function GuaranteeSection() {
             transition={{ duration: 0.6, delay: 1.3 }}
             className="mt-12 border-t border-gray-200 pt-8 text-center text-sm text-gray-500 dark:border-gray-700 dark:text-gray-400"
           >
-            <p>
-              <strong className="text-gray-900 dark:text-white">Zero Risk.</strong> If you're not saving time within 30 days, your plan is free until you do. 
-              That's how confident we are that AI employees will give you your life back.
+            <p className="mb-4">
+              <strong className="text-gray-900 dark:text-white">Zero Risk.</strong> If you're not saving time within 30 days, we'll continue optimizing at no additional cost. 
+              That's how confident we are that intelligent automation will transform your business.
+            </p>
+            <p className="text-xs">
+              *Guarantee applies to clients who actively participate in implementation, provide necessary system access, and follow recommended workflows. 
+              "Measurable ROI" is defined as documented time savings of 10+ hours per week or quantifiable cost reductions exceeding the service investment. 
+              Continued optimization services are subject to availability and reasonable use terms. Full terms available upon request.
             </p>
           </motion.div>
         </motion.div>
