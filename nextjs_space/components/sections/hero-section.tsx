@@ -114,7 +114,7 @@ export function HeroSection() {
                 <span className="mx-2 text-gray-400 dark:text-gray-600">|</span>
                 <span className="text-gradient-subtle">MIT & Caltech Engineering</span>
                 <span className="mx-2 text-gray-400 dark:text-gray-600">|</span>
-                <span className="text-gradient-subtle">NASA-Recognized Security</span>
+                <span className="text-gradient-subtle">Money Back Guarantee</span>
               </p>
             </motion.div>
 
@@ -129,19 +129,13 @@ export function HeroSection() {
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-100 dark:bg-teal-900/50">
                   <Users className="h-4 w-4 text-teal-600 dark:text-teal-400" />
                 </div>
-                <span className="font-medium">200+ businesses</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-100 dark:bg-emerald-900/50">
-                  <Shield className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
-                </div>
-                <span className="font-medium">NASA-recognized</span>
+                <span className="font-medium">200+ Businesses Transformed</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-100 dark:bg-purple-900/50">
                   <CheckCircle className="h-4 w-4 text-purple-600 dark:text-purple-400" />
                 </div>
-                <span className="font-medium">60-day guarantee</span>
+                <span className="font-medium">Money Back Guarantee</span>
               </div>
             </motion.div>
           </motion.div>

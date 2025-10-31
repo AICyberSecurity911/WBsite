@@ -18,46 +18,42 @@ export async function POST(request: NextRequest) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(email)) {
       return NextResponse.json(
-        { error: 'Invalid email format' },
+        { error: 'Invalid email address' },
         { status: 400 }
       )
     }
 
-    // Validate message length
-    if (message.length > 400) {
-      return NextResponse.json(
-        { error: 'Message must be 400 characters or less' },
-        { status: 400 }
-      )
-    }
+    // Here you would typically:
+    // 1. Save to database
+    // 2. Send notification email
+    // 3. Trigger any other workflows
 
-    // Log the contact support request
-    console.log('Contact Support Request:', {
+    // For now, we'll just log it and return success
+    console.log('Contact Support Form Submission:', {
       name,
       email,
       phone,
-      messageLength: message.length,
+      message,
       timestamp: new Date().toISOString()
     })
 
-    // In a production environment, you would:
-    // 1. Send an email notification to the support team
-    // 2. Store the message in a database
-    // 3. Send a confirmation email to the user
-    // 4. Create a support ticket in your CRM
+    // In a production environment, you would integrate with:
+    // - Email service (SendGrid, Mailgun, etc.)
+    // - CRM system
+    // - Notification service (Discord, Slack, etc.)
+    // - Database for storing submissions
 
-    // For now, we'll just return success
     return NextResponse.json(
       { 
         success: true,
-        message: 'Your message has been received. We will respond within 24 hours.'
+        message: 'Your message has been received. We will contact you shortly.'
       },
       { status: 200 }
     )
   } catch (error) {
-    console.error('Error processing contact support request:', error)
+    console.error('Error processing contact form:', error)
     return NextResponse.json(
-      { error: 'An error occurred processing your request' },
+      { error: 'Failed to process your request' },
       { status: 500 }
     )
   }

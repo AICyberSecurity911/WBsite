@@ -1015,7 +1015,7 @@ export default function IntelligentAutomationPage() {
                 </a>
               </div>
               <p className="mt-6 text-sm text-teal-100">
-                🔒 No credit card required • 30-day money-back guarantee • Free time audit
+                🔒 No credit card required • Money Back Guarantee • Free time audit
               </p>
             </motion.div>
           </div>

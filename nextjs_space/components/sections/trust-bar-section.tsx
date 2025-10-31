@@ -40,7 +40,7 @@ export function TrustBarSection() {
     },
     {
       icon: Shield,
-      value: '60-Day',
+      value: 'Money Back',
       label: 'Guarantee',
       color: 'from-blue-500 to-cyan-500'
     }
