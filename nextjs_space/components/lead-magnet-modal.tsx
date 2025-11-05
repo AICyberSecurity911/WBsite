@@ -12,9 +12,22 @@ import { useToast } from '@/hooks/use-toast'
 interface LeadMagnetModalProps {
   isOpen: boolean
   onClose: () => void
+  title?: string
+  subtitle?: string
+  description?: string
+  successMessage?: string
+  successDescription?: string
 }
 
-export function LeadMagnetModal({ isOpen, onClose }: LeadMagnetModalProps) {
+export function LeadMagnetModal({ 
+  isOpen, 
+  onClose,
+  title = "Before You Go—Get Your Free AI Workforce Blueprint",
+  subtitle = "Learn How Entrepreneurs Are Reclaiming Time and Profits",
+  description = "Discover how custom AI employees are designed for their exact workflows—delivered instantly to your inbox.",
+  successMessage = "Success! Check your inbox 📧",
+  successDescription = "Your free guide is on its way. Check your email in a few moments."
+}: LeadMagnetModalProps) {
   const [email, setEmail] = useState('')
   const [name, setName] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -62,8 +75,8 @@ export function LeadMagnetModal({ isOpen, onClose }: LeadMagnetModalProps) {
       setIsSuccess(true)
       
       toast({
-        title: "Success! Check your inbox 📧",
-        description: "Your free AI Workforce Blueprint is on its way. Check your email in a few moments.",
+        title: successMessage,
+        description: successDescription,
       })
 
       // Auto-close after 3 seconds on success
@@ -100,13 +113,13 @@ export function LeadMagnetModal({ isOpen, onClose }: LeadMagnetModalProps) {
               <DialogHeader>
                 <DialogTitle className="text-2xl font-bold flex items-center gap-2">
                   <Download className="h-6 w-6" />
-                  Before You Go—Get Your Free AI Workforce Blueprint
+                  {title}
                 </DialogTitle>
                 <DialogDescription className="text-white/90 text-base mt-2">
                   <span className="font-semibold text-lg block mb-2">
-                    Learn How Entrepreneurs Are Reclaiming Time and Profits
+                    {subtitle}
                   </span>
-                  Discover how custom AI employees are designed for their exact workflows—delivered instantly to your inbox.
+                  {description}
                 </DialogDescription>
               </DialogHeader>
             </div>
@@ -169,10 +182,10 @@ export function LeadMagnetModal({ isOpen, onClose }: LeadMagnetModalProps) {
               </div>
             </div>
             <h3 className="text-2xl font-bold text-gray-900">
-              Check Your Inbox! 📧
+              {successMessage}
             </h3>
             <p className="text-gray-600">
-              Your free AI Workforce Blueprint is on its way to <strong>{email}</strong>
+              {successDescription.replace('Check your email in a few moments.', '')} <strong>{email}</strong>
             </p>
             <p className="text-sm text-gray-500">
               (Don't forget to check your spam folder)

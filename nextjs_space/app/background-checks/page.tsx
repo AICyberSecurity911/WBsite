@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Shield, AlertTriangle, Search, FileCheck, Users, TrendingUp, CheckCircle2, XCircle, Eye, UserX, Lock, DollarSign } from 'lucide-react'
 import { useState } from 'react'
+import { BackgroundChecksExitIntent } from '@/components/background-checks-exit-intent'
 
 export default function BackgroundChecksPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -110,6 +111,9 @@ export default function BackgroundChecksPage() {
                 The Dangerous Lie of a<br />
                 <span className="text-red-500">"Clean" Background Check</span>
               </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mt-4">
+                Ever wonder why so many "good hires" turn bad? Here's what most business owners don't know...
+              </p>
             </div>
 
             <div className="prose prose-lg dark:prose-invert max-w-none">
@@ -164,6 +168,10 @@ export default function BackgroundChecksPage() {
                   The worst part? <strong>You won't see it coming if you rely on a database search that only shows who got caught.</strong>
                 </p>
 
+                <p className="text-lg text-gray-700 dark:text-gray-300 mt-4">
+                  Here's the thing most business owners don't realize: Hiring the wrong person wastes the time you could spend on <a href="/business-transformation" className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 underline">growing your business</a>. And once they have access to your <a href="/intelligent-automation" className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 underline">automated workflows and systems</a>, a bad actor can cause exponential damage.
+                </p>
+
                 <Card className="my-8 border-blue-200 dark:border-blue-800 bg-blue-50/50 dark:bg-blue-950/20">
                   <CardContent className="p-6">
                     <p className="text-lg italic text-gray-700 dark:text-gray-300">
@@ -197,7 +205,10 @@ export default function BackgroundChecksPage() {
                 Standard checks pull from databases anyone can access. We investigate like a private detective—following trails, connecting dots, and uncovering what's deliberately hidden.
               </p>
               <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mt-4">
-                While others search public records for 10 minutes, we spend days investigating behavior, connections, and hidden identities. We look where criminals hide information—in places most people don't even know exist.
+                <strong>Here's what we do differently.</strong> While others search public records for 10 minutes, we spend days investigating behavior, connections, and hidden identities. We don't just ask "Were they caught?" We ask <strong>"Are they dangerous?"</strong>
+              </p>
+              <p className="text-base text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mt-4 italic">
+                That's the difference.
               </p>
             </div>
 
@@ -253,7 +264,7 @@ export default function BackgroundChecksPage() {
                       <strong className="not-italic text-blue-600 dark:text-blue-400">Translation:</strong> We look in places where criminals share stolen information and plan illegal activity—places standard checks never see.
                     </p>
                     <p className="text-gray-700 dark:text-gray-300">
-                      <strong className="text-red-600 dark:text-red-400">Why this matters:</strong> If their email or identity shows up in these areas, they're either a victim of identity theft (which creates legal problems for you) or actively involved in something they're hiding.
+                      <strong className="text-red-600 dark:text-red-400">Why this matters:</strong> If this person will have access to your company's <a href="/cyber-intelligence" className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 underline">financial systems or sensitive data</a>, you need to know if their credentials are floating around in criminal networks. Identity theft victims create legal liability—and active criminals create catastrophic risk.
                     </p>
                   </div>
                 </CardContent>
@@ -625,6 +636,170 @@ export default function BackgroundChecksPage() {
           </div>
         </section>
 
+        {/* Trusted By Section - Organizations That Demand Excellence */}
+        <section className="py-20 bg-white dark:bg-gray-900">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+                Trusted by Organizations That <span className="text-red-500">Demand Excellence</span>
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto leading-relaxed">
+                Our team has conducted intelligence investigations and security operations for these organizations—now we bring that expertise to entrepreneurs, SMBs, and families.
+              </p>
+            </div>
+
+            {/* Company Logos Carousel */}
+            <div className="mb-12 overflow-hidden">
+              <div className="flex items-center justify-center flex-wrap gap-8 lg:gap-12">
+                {['ibm', 'deloitte', 'bmo', 'cibc', 'ge', 'scotiabank', 'nasa', 'allianz', 'hsbc', 'husky', 'rim', 'ing', 'ciis'].map((logo) => (
+                  <div key={logo} className="grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
+                    <img 
+                      src={`/company-logos/${logo}.png`} 
+                      alt={logo.toUpperCase()}
+                      className="h-12 lg:h-16 w-auto object-contain"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Credibility Bullets */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
+              {[
+                {
+                  icon: '🎖️',
+                  text: 'Former intelligence analysts from government agencies'
+                },
+                {
+                  icon: '🛡️',
+                  text: 'Cybersecurity experts who secured NASA systems'
+                },
+                {
+                  icon: '⏳',
+                  text: '250+ years combined experience in threat assessment'
+                },
+                {
+                  icon: '🎓',
+                  text: 'MIT & Caltech-trained engineers'
+                },
+                {
+                  icon: '📊',
+                  text: '15 years, 2,000+ investigations, 98.7% accuracy rate'
+                }
+              ].map((item, idx) => (
+                <Card key={idx} className="border-red-200 dark:border-red-800 text-center hover:border-red-400 dark:hover:border-red-600 transition-all">
+                  <CardContent className="p-6">
+                    <div className="text-4xl mb-3">{item.icon}</div>
+                    <p className="text-sm text-gray-700 dark:text-gray-300 font-medium leading-relaxed">
+                      {item.text}
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Guarantee Section - "Find It or Free" */}
+        <section className="py-20 bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-950/20 dark:to-pink-950/20">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <Card className="border-red-300 dark:border-red-700 shadow-[0_0_50px_rgba(239,68,68,0.25)]">
+              <CardContent className="p-8 lg:p-12">
+                <div className="text-center mb-8">
+                  <div className="inline-block bg-red-100 dark:bg-red-900/30 rounded-full px-6 py-3 mb-6">
+                    <span className="text-lg font-bold text-red-700 dark:text-red-300 uppercase tracking-wide">
+                      🛡️ Our Iron-Clad Guarantee
+                    </span>
+                  </div>
+                  <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
+                    Our "Find It or Free" Guarantee—<br />
+                    <span className="text-red-500">You Only Pay If We Uncover What Others Miss</span>
+                  </h2>
+                </div>
+
+                <div className="prose prose-lg dark:prose-invert max-w-none">
+                  <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+                    If our first investigation doesn't uncover <strong>at least three significant findings</strong> (beyond what a standard background check would show), <strong className="text-red-600 dark:text-red-400">you don't pay</strong>.
+                  </p>
+
+                  <Card className="my-8 border-blue-200 dark:border-blue-800 bg-blue-50/50 dark:bg-blue-950/20">
+                    <CardContent className="p-6">
+                      <p className="text-lg font-bold text-blue-600 dark:text-blue-400 mb-4">
+                        Why? Because 73% of the time, we find disqualifying information that standard checks miss.
+                      </p>
+                      <p className="text-gray-700 dark:text-gray-300">
+                        We're confident we'll find something worth knowing—or you don't pay.
+                      </p>
+                    </CardContent>
+                  </Card>
+
+                  <div className="bg-white dark:bg-gray-800 rounded-lg p-6 mb-6">
+                    <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+                      Qualifying Findings Include:
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {[
+                        'Hidden identities or aliases',
+                        'Concerning behavior patterns online',
+                        'Undisclosed legal or financial problems',
+                        'Resume fraud or fake credentials',
+                        'References that aren\'t legitimate',
+                        'Activity in areas where criminals operate',
+                        'Conflicts of interest',
+                        'Red flags standard checks never see'
+                      ].map((finding, idx) => (
+                        <div key={idx} className="flex items-start gap-3">
+                          <CheckCircle2 className="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5" />
+                          <span className="text-gray-700 dark:text-gray-300">{finding}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+                    <div className="text-center p-6 bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-950/30 dark:to-pink-950/30 rounded-lg">
+                      <p className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-2">Your Investment</p>
+                      <p className="text-3xl font-bold text-gray-900 dark:text-white">$3,000–$7,500</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">Varies by role & depth</p>
+                    </div>
+                    <div className="text-center p-6 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30 rounded-lg">
+                      <p className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-2">Your Protection</p>
+                      <p className="text-3xl font-bold text-green-600 dark:text-green-400">Complete Refund</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">If we don't find 3+ findings</p>
+                    </div>
+                    <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg">
+                      <p className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-2">Your Peace of Mind</p>
+                      <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">Priceless</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">Know before you commit</p>
+                    </div>
+                  </div>
+
+                  <div className="text-center py-6 bg-gradient-to-r from-red-500 to-pink-600 rounded-lg text-white mb-6">
+                    <p className="text-2xl font-bold italic">
+                      "Confidence shouldn't be a gamble."
+                    </p>
+                  </div>
+
+                  <p className="text-lg text-gray-700 dark:text-gray-300 text-center mb-6">
+                    The question isn't whether you can afford this investigation.<br />
+                    <strong className="text-red-600 dark:text-red-400">It's whether you can afford to hire blindly.</strong>
+                  </p>
+
+                  <div className="text-center">
+                    <Button 
+                      asChild
+                      className="bg-red-500 hover:bg-red-600 text-white px-10 py-6 text-lg font-semibold"
+                    >
+                      <a href="/consultation">🛡️ Start Your Risk-Free Investigation → Schedule Now</a>
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+
         {/* Comprehensive Educational FAQ Section */}
         <section className="py-20 bg-gray-50 dark:bg-gray-800">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -987,6 +1162,7 @@ export default function BackgroundChecksPage() {
       </main>
 
       <Footer />
+      <BackgroundChecksExitIntent />
     </div>
   )
 }
