@@ -22,6 +22,7 @@ import {
 } from 'lucide-react'
 import Image from 'next/image'
 import { AITeamCalculator } from '@/components/calculator/ai-team-calculator'
+import { AIEmployeesSection } from '@/components/sections/ai-employees-section'
 import {
   Accordion,
   AccordionContent,
@@ -228,51 +229,59 @@ export default function IntelligentAutomationPage() {
 
   const faqs = [
     {
-      question: "Isn't automation expensive or complicated?",
-      answer: "Absolutely not. Our Intelligent Automations are modular, affordable, and plug directly into the tools you already use. We handle all the technical implementation for you. Most of our clients see a clear, measurable Return on Investment (ROI) within the first month.",
+      question: "I'm barely keeping up as it is—how do I find time to implement this?",
+      answer: "You're busy. That's why we handle everything: 60 minutes on a strategy call, then we deploy and integrate your first AI employee while you focus on your business. Most see results in 3–5 days.",
       cta: {
-        text: "🟢 Show Me My ROI",
+        text: "Book a Free Consult",
+        link: "/consultation"
+      }
+    },
+    {
+      question: "Will AI replace my team or help them?",
+      answer: "AI handles busywork. Your team has more time for clients and sales. Most staff are happy to lose repetitive tasks.",
+      cta: {
+        text: "Book a Free Consult",
+        link: "/consultation"
+      }
+    },
+    {
+      question: "Can I really trust a machine with sensitive client data and finances?",
+      answer: "Our AI employees use NASA-recognized security protocols. More secure than human teams—every action is logged and auditable.",
+      cta: {
+        text: "Book a Free Consult",
+        link: "/consultation"
+      }
+    },
+    {
+      question: "I've been burned by tech promises before. How is this different?",
+      answer: "AI employees do the work—not just automate software. 30-day guarantee means your risk is zero.",
+      cta: {
+        text: "Try Savings Calculator",
         link: "#calculator"
       }
     },
     {
-      question: "Will automation replace my employees?",
-      answer: "Not at all. It replaces repetitive tasks, not people. Automation handles the data entry, follow-ups, and report generation, freeing your team to spend less time clicking and more time focusing on high-value work like strategy and customer relationships.",
+      question: "How fast can I see results?",
+      answer: "Most clients save 15-30 hours/week in the first month.",
       cta: {
-        text: "🟢 Automate the Repetitive Work",
-        link: "/consultation"
-      }
-    },
-    {
-      question: "My business is always changing. Can automation keep up?",
-      answer: "Yes, that's exactly what it's designed for. We don't just build it and leave. Your automations evolve with your business as part of our ongoing service. Think of us as your strategic operations partner, ensuring your systems always match your new processes.",
-      cta: {
-        text: "🟢 Discuss Your Growth Plan",
-        link: "/consultation"
-      }
-    },
-    {
-      question: "How quickly will I see a return on my investment?",
-      answer: "Most clients see measurable time savings within the first 2-3 weeks. The financial ROI, from capturing missed deals and eliminating costly errors, typically becomes obvious within the first 60-90 days. One client saved $15,000 in the first month from a single caught accounting error.",
-      cta: {
-        text: "🟢 Get My Personalized ROI Timeline",
-        link: "/consultation"
-      }
-    },
-    {
-      question: "Will this work with the software I already use?",
-      answer: "Yes. We integrate with hundreds of common business tools, including QuickBooks, HubSpot, Salesforce, Gmail, Slack, Calendly, and many more. Our automations connect your existing systems—you don't have to change the way you work.",
-      cta: {
-        text: "🟢 Request an Integration Preview Call",
-        link: "/consultation"
-      }
-    },
-    {
-      question: "What if I don't know where to start?",
-      answer: "That's the most common question we get, and it's why we built our free tools. The ROI calculator will instantly pinpoint your biggest time and money leaks. From there, our complimentary audit will give you a clear, prioritized roadmap.",
-      cta: {
-        text: "🟢 Get My 30-Day Efficiency Plan",
+        text: "Try Savings Calculator",
         link: "#calculator"
+      }
+    },
+    {
+      question: "How much does it cost?",
+      answer: "Starting at $499/month—up to 85% less than staff.",
+      cta: {
+        text: "Try Savings Calculator",
+        link: "#calculator"
+      }
+    },
+    {
+      question: "What if I hire an AI employee and then realize I don't need it?",
+      answer: "Your 30-day guarantee covers you. If your AI employee isn't saving you time and money, your plan is free until it does.",
+      cta: {
+        text: "Book a Free Consult",
+        link: "/consultation"
       }
     }
   ]
@@ -303,59 +312,62 @@ export default function IntelligentAutomationPage() {
               variants={staggerContainer}
               className="text-center"
             >
-              <motion.div variants={fadeInUp} className="inline-block bg-amber-100 dark:bg-amber-900/30 rounded-full px-4 py-2 mb-6">
-                <span className="text-sm font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-wide">
-                  Intelligent Automation
-                </span>
-              </motion.div>
-              
               <motion.h1 variants={fadeInUp} className="text-5xl lg:text-7xl font-bold mb-6 leading-tight text-white">
-                Stop Drowning in Busywork.<br />
-                <span className="text-brand-teal-400">Get 10 Hours Back</span> Every Week.
+                Fire Your Biggest Headache.<br />
+                <span className="text-brand-teal-400">Hire Your Most Reliable Employee</span>—Same Day.
               </motion.h1>
               
-              <motion.p variants={fadeInUp} className="text-xl lg:text-2xl text-gray-200 mb-8 max-w-4xl mx-auto">
-                Your time drives growth. Our Intelligent Automations connect your tools, take over repetitive tasks, and work 24/7. Free yourself and finally focus on growing your business.
+              <motion.p variants={fadeInUp} className="text-xl lg:text-2xl text-gray-200 mb-4 max-w-4xl mx-auto">
+                Hire digital employees that work 24/7, cost 85% less than humans, and never miss a task.
               </motion.p>
 
-              {/* Stats */}
-              <motion.div variants={fadeInUp} className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
-                {timeWasteStats.map((stat, index) => {
-                  const Icon = stat.icon
-                  return (
-                    <motion.div
-                      key={index}
-                      variants={fadeInUp}
-                      className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6"
-                    >
-                      <Icon className={`w-10 h-10 ${stat.color} mb-3 mx-auto`} />
-                      <div className="text-3xl font-bold text-white mb-1">{stat.value}</div>
-                      <div className="text-sm text-gray-300">{stat.label}</div>
-                    </motion.div>
-                  )
-                })}
-              </motion.div>
+              <motion.p variants={fadeInUp} className="text-2xl lg:text-3xl text-teal-200 mb-12 max-w-4xl mx-auto font-semibold">
+                Free yourself from busywork and finally run a business that runs without you.
+              </motion.p>
               
               <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                 <a 
                   href="#calculator" 
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-brand-teal-500 hover:bg-brand-teal-600 rounded-lg transition shadow-lg shadow-brand-teal-500/50"
                 >
-                  🟢 Reveal My Hidden Hours & Savings
+                  Calculate My Savings in 60s
                 </a>
                 <a 
-                  href="/consultation" 
+                  href="#ai-employees" 
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold border-2 border-white text-white rounded-lg hover:bg-white/10 transition"
                 >
-                  ⚙️ Show Me What I Can Automate (Free Audit)
+                  See AI Employees
                 </a>
               </motion.div>
 
               {/* Trust Bar */}
-              <motion.div variants={fadeInUp} className="text-center">
+              <motion.div variants={fadeInUp} className="text-center mb-12">
                 <p className="text-sm font-semibold text-teal-100 tracking-wide">
-                  Fortune 500 Strategy | MIT & Caltech Engineering | Money Back Guarantee
+                  Fortune 500 Strategy | MIT & Caltech Engineering | Money-Back Guarantee
                 </p>
+              </motion.div>
+
+              {/* Core Results Stat Bar */}
+              <motion.div variants={fadeInUp} className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4 max-w-6xl mx-auto">
+                {[
+                  { value: '200+', label: 'Businesses Transformed' },
+                  { value: 'Money Back', label: 'Guarantee' },
+                  { value: '24/7', label: 'Uptime' },
+                  { value: '99.2%', label: 'Accuracy Rate' },
+                  { value: '87%', label: 'Cost Savings' },
+                  { value: '8', label: 'AI Roles' },
+                  { value: '24-48h', label: 'Deployment' },
+                  { value: '$499', label: 'Starting From' }
+                ].map((stat, index) => (
+                  <motion.div
+                    key={index}
+                    variants={fadeInUp}
+                    className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4"
+                  >
+                    <div className="text-2xl font-bold text-brand-teal-300 mb-1">{stat.value}</div>
+                    <div className="text-xs text-gray-300 leading-tight">{stat.label}</div>
+                  </motion.div>
+                ))}
               </motion.div>
             </motion.div>
           </div>
@@ -409,76 +421,102 @@ export default function IntelligentAutomationPage() {
           </div>
         </section>
 
-        {/* The Hidden Cost Section */}
+        {/* The Hidden Reality: Pain Story Section */}
         <section ref={costRef} className="py-24 bg-gradient-to-b from-background to-muted">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial="hidden"
               animate={costInView ? "visible" : "hidden"}
               variants={staggerContainer}
-              className="grid lg:grid-cols-2 gap-12 items-center"
             >
-              <motion.div variants={fadeInUp}>
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
-                  <Image
-                    src="/manual-tasks-burden.jpg"
-                    alt="Manual Tasks Burden"
-                    fill
-                    className="object-cover"
-                  />
+              <motion.div variants={fadeInUp} className="text-center mb-16">
+                <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+                  The Hidden Reality: <span className="text-brand-teal-500">What's Breaking You?</span>
+                </h2>
+                <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                  You're Working Harder Than Ever, But Getting Less Time Back
+                </p>
+              </motion.div>
+
+              <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+                <motion.div variants={fadeInUp}>
+                  <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                    <Image
+                      src="/manual-tasks-burden.jpg"
+                      alt="Manual Tasks Burden"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                </motion.div>
+
+                <motion.div variants={staggerContainer} className="space-y-6">
+                  <motion.div variants={fadeInUp}>
+                    <h3 className="text-3xl font-bold mb-4">
+                      Why That "$50K Employee" Just Bankrupted Your Q4
+                    </h3>
+                    <div className="bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-950/30 dark:to-orange-950/30 rounded-2xl p-8 border-2 border-red-200 dark:border-red-800">
+                      <p className="text-lg text-gray-800 dark:text-gray-200 leading-relaxed mb-6 italic">
+                        "I hired Sarah as my bookkeeper for '$50K' thinking I was getting a great deal. Three months later, I discovered $23,000 in uncategorized expenses, missed tax deadlines, and she quit via text message during our busiest season.
+                      </p>
+                      <p className="text-lg text-gray-800 dark:text-gray-200 leading-relaxed font-semibold">
+                        By the time I calculated recruitment, training, mistakes, and replacement costs, that '$50K employee' actually cost me $118,958."
+                      </p>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              </div>
+
+              {/* TRUE Cost Breakdown */}
+              <motion.div variants={fadeInUp} className="max-w-4xl mx-auto">
+                <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-2xl border-2 border-brand-teal-200 dark:border-brand-teal-800">
+                  <h3 className="text-3xl font-bold text-center mb-8 text-brand-teal-600 dark:text-brand-teal-400">
+                    TRUE Cost Breakdown
+                  </h3>
+                  <div className="space-y-4">
+                    {[
+                      { item: 'Base Salary', amount: '$52,000' },
+                      { item: 'Payroll Taxes (15.3%)', amount: '$7,956' },
+                      { item: 'Benefits & Insurance', amount: '$8,840' },
+                      { item: 'Recruiting Costs', amount: '$6,500' },
+                      { item: 'Training Time (40 hours)', amount: '$8,250' },
+                      { item: 'Management Overhead', amount: '$15,600' },
+                      { item: 'Lost Revenue (mistakes)', amount: '$12,000' },
+                      { item: 'Replacement Cost (turnover)', amount: '$7,812' }
+                    ].map((cost, index) => (
+                      <motion.div
+                        key={index}
+                        variants={fadeInUp}
+                        className="flex justify-between items-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg"
+                      >
+                        <span className="font-medium text-gray-900 dark:text-gray-100">{cost.item}</span>
+                        <span className="text-xl font-bold text-red-600 dark:text-red-400">{cost.amount}</span>
+                      </motion.div>
+                    ))}
+                    <div className="border-t-4 border-brand-teal-500 pt-6 mt-6">
+                      <div className="flex justify-between items-center">
+                        <span className="text-2xl font-bold text-gray-900 dark:text-gray-100">TOTAL ACTUAL COST per employee, per year:</span>
+                        <span className="text-4xl font-extrabold text-red-600 dark:text-red-400">$118,958</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
 
-              <motion.div variants={staggerContainer} className="space-y-6">
-                <motion.div variants={fadeInUp}>
-                  <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                    The Hidden Cost of <span className="text-brand-teal-500">Manual Work</span>
-                  </h2>
-                  <p className="text-xl text-muted-foreground mb-8">
-                    Every hour your team spends on repetitive tasks is an hour not spent on revenue-generating activities.
-                  </p>
-                </motion.div>
-
-                <motion.div variants={fadeInUp} className="space-y-4">
-                  <div className="flex items-start gap-4 p-4 bg-red-50 dark:bg-red-950/30 rounded-lg border border-red-200 dark:border-red-800">
-                    <AlertCircle className="w-6 h-6 text-red-600 mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold text-red-900 dark:text-red-100 mb-1">
-                        You're Hemorrhaging Money
-                      </h3>
-                      <p className="text-red-800 dark:text-red-200 text-sm">
-                        At $50/hour (average fully-loaded cost per employee), 21.8 hours of busywork = 
-                        <strong> $1,090 wasted per employee per week</strong>. That's $56,680 per year per person.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4 p-4 bg-amber-50 dark:bg-amber-950/30 rounded-lg border border-amber-200 dark:border-amber-800">
-                    <AlertCircle className="w-6 h-6 text-amber-600 mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold text-amber-900 dark:text-amber-100 mb-1">
-                        Manual Errors Are Crushing You
-                      </h3>
-                      <p className="text-amber-800 dark:text-amber-200 text-sm">
-                        Human error in data entry costs businesses an average of <strong>$3.1 million annually</strong>. 
-                        One mistake in pricing, invoicing, or accounting can cost thousands.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4 p-4 bg-orange-50 dark:bg-orange-950/30 rounded-lg border border-orange-200 dark:border-orange-800">
-                    <AlertCircle className="w-6 h-6 text-orange-600 mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold text-orange-900 dark:text-orange-100 mb-1">
-                        Your Best People Are Leaving
-                      </h3>
-                      <p className="text-orange-800 dark:text-orange-200 text-sm">
-                        68% of employees say they'd be more satisfied if they didn't have to do repetitive tasks. 
-                        Busywork is driving away your top talent.
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
+              {/* Impact Stats */}
+              <motion.div variants={fadeInUp} className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mt-16">
+                <div className="bg-red-50 dark:bg-red-950/30 rounded-xl p-6 border border-red-200 dark:border-red-800 text-center">
+                  <div className="text-4xl font-bold text-red-600 dark:text-red-400 mb-2">73%</div>
+                  <p className="text-sm text-red-800 dark:text-red-200 font-medium">of small business owners work weekends</p>
+                </div>
+                <div className="bg-amber-50 dark:bg-amber-950/30 rounded-xl p-6 border border-amber-200 dark:border-amber-800 text-center">
+                  <div className="text-4xl font-bold text-amber-600 dark:text-amber-400 mb-2">$12K</div>
+                  <p className="text-sm text-amber-800 dark:text-amber-200 font-medium">average cost of a bad hire</p>
+                </div>
+                <div className="bg-orange-50 dark:bg-orange-950/30 rounded-xl p-6 border border-orange-200 dark:border-orange-800 text-center">
+                  <div className="text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2">18 months</div>
+                  <p className="text-sm text-orange-800 dark:text-orange-200 font-medium">average employee tenure</p>
+                </div>
               </motion.div>
             </motion.div>
           </div>
@@ -530,6 +568,80 @@ export default function IntelligentAutomationPage() {
                           {area.solution}
                         </p>
                       </div>
+                    </motion.div>
+                  )
+                })}
+              </motion.div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Critical Decision & Solution Section */}
+        <section className="py-24 bg-gradient-to-br from-brand-teal-50 to-emerald-50 dark:from-brand-teal-950/30 dark:to-emerald-950/30">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={staggerContainer}
+            >
+              <motion.div variants={fadeInUp} className="text-center mb-16">
+                <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+                  You started a business to create <span className="text-brand-teal-600 dark:text-brand-teal-400">freedom and wealth</span>
+                </h2>
+                <p className="text-2xl text-gray-800 dark:text-gray-200 max-w-4xl mx-auto mb-8">
+                  Instead, you're spending 60% of your time managing people, fixing their mistakes, and dealing with HR drama.
+                </p>
+                <p className="text-3xl font-bold text-brand-teal-600 dark:text-brand-teal-400 max-w-3xl mx-auto">
+                  Imagine employees who never quit, never make mistakes, and cost 87% less…
+                </p>
+              </motion.div>
+
+              <motion.div variants={fadeInUp} className="max-w-5xl mx-auto mb-16">
+                <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-2xl border-4 border-brand-teal-500">
+                  <h3 className="text-3xl font-bold text-center mb-8">Bottom Line:</h3>
+                  <p className="text-xl text-gray-800 dark:text-gray-200 leading-relaxed text-center mb-8">
+                    Traditional hiring is broken, expensive, and unreliable. AI employees work 24/7, never quit, never complain, and cost 87% less than human employees.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Benefits Grid */}
+              <motion.div variants={staggerContainer} className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {[
+                  {
+                    title: 'Immediate Deployment',
+                    description: 'AI employees start working the moment you deploy them. No weeks of training, no onboarding drama.',
+                    icon: Zap
+                  },
+                  {
+                    title: 'Guaranteed Accuracy',
+                    description: '99.2% accuracy rate with built-in error detection and self-correction capabilities.',
+                    icon: Target
+                  },
+                  {
+                    title: 'Massive Cost Savings',
+                    description: 'Average 87% cost reduction compared to traditional employees when factoring in salary, benefits, and overhead.',
+                    icon: DollarSign
+                  },
+                  {
+                    title: 'Zero Management Overhead',
+                    description: 'No sick days, no drama, no HR issues. Just consistent, reliable performance every single day.',
+                    icon: CheckCircle
+                  }
+                ].map((benefit, index) => {
+                  const Icon = benefit.icon
+                  return (
+                    <motion.div
+                      key={index}
+                      variants={fadeInUp}
+                      className="bg-white dark:bg-gray-900 rounded-xl p-6 border-2 border-brand-teal-200 dark:border-brand-teal-800 hover:border-brand-teal-500 transition-all duration-300 hover:shadow-[0_0_30px_rgba(20,184,166,0.3)]"
+                    >
+                      <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-brand-teal-500 to-emerald-500 flex items-center justify-center mb-4">
+                        <Icon className="w-7 h-7 text-white" />
+                      </div>
+                      <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">{benefit.title}</h3>
+                      <p className="text-gray-600 dark:text-gray-300">{benefit.description}</p>
                     </motion.div>
                   )
                 })}
@@ -697,6 +809,9 @@ export default function IntelligentAutomationPage() {
           </div>
         </section>
 
+        {/* AI Employees Section */}
+        <AIEmployeesSection />
+
         {/* How We Automate Section */}
         <section ref={processRef} className="py-24 bg-gradient-to-b from-background to-muted">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -834,12 +949,118 @@ export default function IntelligentAutomationPage() {
                   Calculate Your <span className="text-brand-teal-500">AI Workforce Savings</span>
                 </h2>
                 <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-                  Answer 7 quick questions to discover which AI employees can save you the most time and money.
+                  See exactly how much time and money you could save—get your free estimate in 2 minutes.
                 </p>
               </motion.div>
 
               <motion.div variants={fadeInUp}>
                 <AITeamCalculator />
+              </motion.div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Testimonials Section */}
+        <section className="py-24 bg-gradient-to-b from-muted to-background">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={staggerContainer}
+            >
+              <motion.div variants={fadeInUp} className="text-center mb-16">
+                <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+                  Real Results from <span className="text-brand-teal-500">Real Business Owners</span>
+                </h2>
+                <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                  See how AI employees transformed these businesses
+                </p>
+              </motion.div>
+
+              <motion.div variants={staggerContainer} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {[
+                  {
+                    before: "Our bookkeeper kept missing things and I was constantly stressed about our finances. I was working weekends just to double-check everything.",
+                    after: "The AI Bookkeeper caught a $15,000 accounting error our human bookkeeper missed three times. It paid for itself in month one.",
+                    result: "Now I have real-time visibility into my financials instead of waiting weeks. I finally have peace of mind.",
+                    author: "Peter Fernandes",
+                    company: "Construction Company Owner"
+                  },
+                  {
+                    before: "I was drowning in emails and calls. I couldn't focus on landing new contracts because I was too busy scheduling and following up.",
+                    after: "My AI Executive Assistant handles all my scheduling and email management. I went from 60-hour weeks to 35-hour weeks.",
+                    result: "I finally have weekends back with my family. My stress levels dropped dramatically.",
+                    author: "Sofia Delacroix",
+                    company: "Marketing Agency Owner"
+                  },
+                  {
+                    before: "We were losing leads left and right because we couldn't follow up fast enough. Our sales process was a mess.",
+                    after: "The AI Sales Rep follows up with every lead within 5 minutes, 24/7. Our close rate increased by 40%.",
+                    result: "Our sales pipeline has never been more organized. We're closing deals we would have lost before.",
+                    author: "Marcus Chen",
+                    company: "TechFlow Solutions"
+                  },
+                  {
+                    before: "Customers were complaining about slow response times. We couldn't afford 24/7 support but were losing business because of it.",
+                    after: "The AI Customer Service Rep handles inquiries instantly, any time of day. Customer satisfaction scores increased 40% in 2 months.",
+                    result: "We're keeping customers happy without the overhead of night shift employees.",
+                    author: "Lisa Rodriguez",
+                    company: "HomeComfort Services"
+                  },
+                  {
+                    before: "Hiring was a nightmare. We wasted months interviewing the wrong people and made several bad hires that cost us thousands.",
+                    after: "The AI Recruiter screens candidates, schedules interviews, and even handles onboarding paperwork automatically.",
+                    result: "We've hired 5 great employees in half the time it used to take. No more bad hires.",
+                    author: "David Kim",
+                    company: "GreenTech Manufacturing"
+                  },
+                  {
+                    before: "Our social media was inconsistent and engagement was terrible. I didn't have time to post regularly or engage with followers.",
+                    after: "The AI Social Media Manager posts daily, responds to comments, and even suggests content ideas. Our engagement tripled in 2 months.",
+                    result: "We're actually building a real brand presence now without me spending hours every day on social media.",
+                    author: "Amanda Foster",
+                    company: "Boutique Fashion Co."
+                  }
+                ].map((testimonial, index) => (
+                  <motion.div
+                    key={index}
+                    variants={fadeInUp}
+                    className="bg-white dark:bg-gray-900 rounded-2xl p-6 border-2 border-border hover:border-brand-teal-500 transition-all duration-300 hover:shadow-[0_0_30px_rgba(20,184,166,0.3)]"
+                  >
+                    <div className="mb-6">
+                      <div className="inline-block bg-red-100 dark:bg-red-900/30 rounded-full px-3 py-1 text-xs font-semibold text-red-700 dark:text-red-300 mb-3">
+                        BEFORE
+                      </div>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 italic">
+                        "{testimonial.before}"
+                      </p>
+                    </div>
+                    
+                    <div className="mb-6">
+                      <div className="inline-block bg-amber-100 dark:bg-amber-900/30 rounded-full px-3 py-1 text-xs font-semibold text-amber-700 dark:text-amber-300 mb-3">
+                        AFTER
+                      </div>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 font-medium">
+                        "{testimonial.after}"
+                      </p>
+                    </div>
+                    
+                    <div className="mb-6">
+                      <div className="inline-block bg-emerald-100 dark:bg-emerald-900/30 rounded-full px-3 py-1 text-xs font-semibold text-emerald-700 dark:text-emerald-300 mb-3">
+                        RESULT
+                      </div>
+                      <p className="text-sm text-brand-teal-700 dark:text-brand-teal-300 font-semibold">
+                        "{testimonial.result}"
+                      </p>
+                    </div>
+                    
+                    <div className="pt-6 border-t border-border">
+                      <p className="font-semibold text-gray-900 dark:text-white">{testimonial.author}</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">{testimonial.company}</p>
+                    </div>
+                  </motion.div>
+                ))}
               </motion.div>
             </motion.div>
           </div>
@@ -921,6 +1142,58 @@ export default function IntelligentAutomationPage() {
                   above for a personalized recommendation.
                 </p>
               </motion.div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Money-Back Guarantee Section */}
+        <section className="py-24 bg-gradient-to-r from-brand-teal-600 to-emerald-600">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-center"
+            >
+              <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-white/20 backdrop-blur-sm mb-8">
+                <Shield className="w-12 h-12 text-white" />
+              </div>
+              
+              <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+                Our 30-Day "Time-Back & ROI" Guarantee
+              </h2>
+              
+              <div className="bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-2xl p-8 mb-8">
+                <p className="text-2xl text-white leading-relaxed mb-6">
+                  If you don't save at least <span className="font-bold text-teal-200">10 hours a week</span> OR see measurable ROI within 30 days, we'll continue optimizing your automations at no additional cost until you do.
+                </p>
+                <p className="text-xl text-teal-100">
+                  No gotchas, no fine print. We only win when you win.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-6 text-white">
+                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                  <CheckCircle className="w-10 h-10 mx-auto mb-3 text-teal-200" />
+                  <h3 className="font-bold mb-2">Zero Risk</h3>
+                  <p className="text-sm text-teal-100">Your investment is protected by our guarantee</p>
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                  <Target className="w-10 h-10 mx-auto mb-3 text-teal-200" />
+                  <h3 className="font-bold mb-2">Results Guaranteed</h3>
+                  <p className="text-sm text-teal-100">Measurable time savings or we keep working</p>
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                  <Workflow className="w-10 h-10 mx-auto mb-3 text-teal-200" />
+                  <h3 className="font-bold mb-2">Continuous Support</h3>
+                  <p className="text-sm text-teal-100">We optimize until you see the results you need</p>
+                </div>
+              </div>
+
+              <p className="mt-8 text-sm text-teal-100">
+                * Terms and conditions apply. See our full guarantee policy for details.
+              </p>
             </motion.div>
           </div>
         </section>
