@@ -81,18 +81,29 @@ export default function CyberIntelligencePage() {
     setBreachResult(null)
 
     try {
-      const response = await fetch(`https://api.xposedornot.com/v1/check-email/${encodeURIComponent(breachEmail)}`)
+      const response = await fetch('/api/breach-check', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: breachEmail })
+      })
       
-      if (response.status === 404) {
-        setBreachResult({ exposed: false })
-      } else if (response.ok) {
-        const data = await response.json()
-        setBreachResult({ exposed: true, data })
-      } else {
-        throw new Error('Failed to check email')
+      const data = await response.json()
+      
+      if (response.status === 429) {
+        setBreachError(data.error || 'Rate limit exceeded. Please try again later.')
+        return
       }
       
-      setChecksRemaining(prev => prev - 1)
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to check email')
+      }
+      
+      setBreachResult(data)
+      if (data.remaining !== undefined) {
+        setChecksRemaining(data.remaining)
+      }
     } catch (error) {
       setBreachError('Unable to check email. Please try again.')
     } finally {
@@ -319,7 +330,7 @@ export default function CyberIntelligencePage() {
               <div className="grid md:grid-cols-2 gap-4">
                 {[
                   'External & internal penetration testing (customized to your systems)',
-                  'Dark-web exposure & credential intelligence (XposedOrNot + human analyst validation)',
+                  'Dark-web exposure & credential intelligence (Have I Been Pwned + human analyst validation)',
                   'Cloud & email configuration audits (unique to your infrastructure)',
                   'Controlled phishing & human-engineering tests (designed for your team)',
                   'Vendor & API access risk assessment (based on your actual integrations)',
@@ -416,7 +427,7 @@ export default function CyberIntelligencePage() {
                 Check If Your Email Has Been <span className="text-red-500">Exposed</span> in a Data Breach
               </h2>
               <p className="text-lg text-muted-foreground">
-                We securely query XposedOrNot's breach database. Instant results. No storage.
+                We securely query Have I Been Pwned's trusted breach database. Instant results. No storage.
               </p>
             </div>
 
@@ -474,15 +485,41 @@ export default function CyberIntelligencePage() {
                         ⚠️ Email Found in Data Breaches
                       </h3>
                       <p className="mb-4">
-                        This email was exposed in {breachResult.data?.breaches_details?.length || 'multiple'} known data breaches.
+                        {breachResult.message || `This email was exposed in ${breachResult.breachCount || 'multiple'} known data breach${breachResult.breachCount > 1 ? 'es' : ''}.`}
                       </p>
-                      {breachResult.data?.breaches_details && (
-                        <div className="space-y-2 mb-4">
-                          {breachResult.data.breaches_details.slice(0, 3).map((breach: any, index: number) => (
-                            <div key={index} className="text-sm p-2 bg-background/50 rounded">
-                              <strong>{breach.breach}</strong> - {breach.domain}
+                      {breachResult.breachCount && (
+                        <div className="grid grid-cols-2 gap-4 mb-4 p-4 bg-background/50 rounded">
+                          <div>
+                            <div className="text-2xl font-bold text-red-500">{breachResult.breachCount}</div>
+                            <div className="text-sm text-muted-foreground">Total Breaches</div>
+                          </div>
+                          {breachResult.mostRecentBreach && (
+                            <div>
+                              <div className="text-lg font-bold text-red-500">{breachResult.mostRecentBreach.name}</div>
+                              <div className="text-sm text-muted-foreground">Most Recent</div>
+                              <div className="text-xs text-muted-foreground mt-1">{new Date(breachResult.mostRecentBreach.date).toLocaleDateString()}</div>
                             </div>
-                          ))}
+                          )}
+                        </div>
+                      )}
+                      {breachResult.breachNames && breachResult.breachNames.length > 0 && (
+                        <div className="space-y-2 mb-4">
+                          <div className="text-sm font-semibold mb-2">Affected Services:</div>
+                          <div className="flex flex-wrap gap-2">
+                            {breachResult.breachNames.map((breach: string, index: number) => (
+                              <div key={index} className="text-xs px-3 py-1 bg-red-500/20 rounded-full">
+                                {breach}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                      {breachResult.mostRecentBreach?.dataClasses && (
+                        <div className="mb-4 p-3 bg-background/50 rounded">
+                          <div className="text-sm font-semibold mb-2">Compromised Data Types:</div>
+                          <div className="text-sm text-muted-foreground">
+                            {breachResult.mostRecentBreach.dataClasses.join(', ')}
+                          </div>
                         </div>
                       )}
                       <div className="mt-6 pt-6 border-t border-red-500/30">
@@ -502,7 +539,7 @@ export default function CyberIntelligencePage() {
                         ✓ No Breaches Found
                       </h3>
                       <p className="mb-4">
-                        This email wasn't found in our breach database. But that doesn't mean you're fully secure.
+                        {breachResult.message || "This email wasn't found in our breach database. But that doesn't mean you're fully secure."}
                       </p>
                       <div className="mt-6 pt-6 border-t border-green-500/30">
                         <p className="font-semibold mb-4">Want to check your full security posture?</p>
