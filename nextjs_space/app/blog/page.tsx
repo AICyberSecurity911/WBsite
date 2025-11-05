@@ -79,6 +79,15 @@ const blogPosts = [
     readTime: '9 min read',
     slug: 'intelligent-automation-saves-time-and-money',
     featured: true
+  },
+  {
+    id: '9',
+    title: 'The $12 Password, the $80,000 Ransom, and the Small Business That Didn\'t See It Coming',
+    excerpt: 'How one accountant\'s "simple" password habit cascaded into a ransomware attack that nearly destroyed her firm. A cautionary tale about the hidden costs of weak security.',
+    category: 'Cybersecurity',
+    readTime: '9 min read',
+    slug: 'password-ransom-attack-story',
+    featured: true
   }
 ]
 

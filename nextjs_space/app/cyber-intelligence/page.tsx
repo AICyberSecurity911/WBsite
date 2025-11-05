@@ -2,7 +2,7 @@
 
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { 
   Shield, 
   AlertTriangle, 
@@ -21,7 +21,11 @@ import {
   CheckCircle2,
   TrendingUp,
   Target,
-  Search
+  Search,
+  ChevronLeft,
+  ChevronRight,
+  Loader2,
+  X
 } from 'lucide-react'
 import { 
   Accordion,
@@ -30,9 +34,114 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function CyberIntelligencePage() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null)
+  const [currentTestimonial, setCurrentTestimonial] = useState(0)
+  const [breachEmail, setBreachEmail] = useState('')
+  const [breachResult, setBreachResult] = useState<any>(null)
+  const [breachLoading, setBreachLoading] = useState(false)
+  const [breachError, setBreachError] = useState('')
+  const [checksRemaining, setChecksRemaining] = useState(4)
+  const [showExitIntent, setShowExitIntent] = useState(false)
+  const [exitIntentEmail, setExitIntentEmail] = useState('')
+  const [exitIntentSubmitted, setExitIntentSubmitted] = useState(false)
+
+  const testimonials = [
+    {
+      name: 'Harper Kingsley',
+      title: 'VP, Adroit Infosystems',
+      quote: 'We thought we were fine. QuantumLeap found vulnerabilities in our client dashboard that could have exposed private data.',
+      result: 'Avoided a $250K breach and months of damage control.'
+    },
+    {
+      name: 'Lydia V. Penrose',
+      title: 'Co-Founder, Code Vibe Studio',
+      quote: 'They discovered old admin credentials still active—publicly visible on a repo.',
+      result: 'Prevented a silent leak and protected client trust.'
+    },
+    {
+      name: 'Tiffany Duncan',
+      title: 'Director, Talent Leap AI',
+      quote: 'Routine IT scans said "all clear." QuantumLeap\'s analysts found a vendor breach tied to our CRM.',
+      result: 'Fixed in 48 hours and kept our clients secure.'
+    }
+  ]
+
+  const handleBreachCheck = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (checksRemaining <= 0) {
+      setBreachError('Maximum checks reached. Book an audit for comprehensive analysis.')
+      return
+    }
+
+    setBreachLoading(true)
+    setBreachError('')
+    setBreachResult(null)
+
+    try {
+      const response = await fetch(`https://api.xposedornot.com/v1/check-email/${encodeURIComponent(breachEmail)}`)
+      
+      if (response.status === 404) {
+        setBreachResult({ exposed: false })
+      } else if (response.ok) {
+        const data = await response.json()
+        setBreachResult({ exposed: true, data })
+      } else {
+        throw new Error('Failed to check email')
+      }
+      
+      setChecksRemaining(prev => prev - 1)
+    } catch (error) {
+      setBreachError('Unable to check email. Please try again.')
+    } finally {
+      setBreachLoading(false)
+    }
+  }
+
+  const handleExitIntentSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    // Submit to API
+    try {
+      await fetch('/api/lead-magnet', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: exitIntentEmail, source: 'cyber-intelligence-exit-intent' })
+      })
+      setExitIntentSubmitted(true)
+    } catch (error) {
+      console.error('Failed to submit:', error)
+    }
+  }
+
+  // Exit-intent detection
+  useEffect(() => {
+    let hasShown = false
+
+    const handleMouseLeave = (e: MouseEvent) => {
+      if (e.clientY <= 0 && !hasShown && !exitIntentSubmitted) {
+        setShowExitIntent(true)
+        hasShown = true
+      }
+    }
+
+    const handleScroll = () => {
+      const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100
+      if (scrollPercentage >= 80 && !hasShown && !exitIntentSubmitted) {
+        setShowExitIntent(true)
+        hasShown = true
+      }
+    }
+
+    document.addEventListener('mouseleave', handleMouseLeave)
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      document.removeEventListener('mouseleave', handleMouseLeave)
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [exitIntentSubmitted])
 
   return (
     <div className="min-h-screen">
@@ -45,7 +154,7 @@ export default function CyberIntelligencePage() {
           <div className="absolute inset-0 z-0">
             <Image
               src="https://cdn.abacus.ai/images/3cf00997-5373-4003-91de-cf75fe3d2b51.png"
-              alt="Cybersecurity Shield Background"
+              alt="Cyber threat landscape showing attack vectors"
               fill
               className="object-cover opacity-20"
               priority
@@ -55,475 +164,551 @@ export default function CyberIntelligencePage() {
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
             <div className="text-center">
-              <div className="inline-flex items-center gap-2 bg-blue-100 dark:bg-blue-900/30 rounded-full px-4 py-2 mb-6 animate-pulse">
-                <Shield className="w-4 h-4 text-blue-700 dark:text-blue-300" />
-                <span className="text-sm font-semibold text-blue-700 dark:text-blue-300 uppercase tracking-wide">
-                  NASA-Recognized Expertise
+              <div className="inline-flex items-center gap-2 bg-red-100 dark:bg-red-900/30 rounded-full px-4 py-2 mb-6">
+                <AlertTriangle className="w-4 h-4 text-red-700 dark:text-red-300" />
+                <span className="text-sm font-semibold text-red-700 dark:text-red-300 uppercase tracking-wide">
+                  Critical Risk Alert
                 </span>
               </div>
               
               <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
-                Fort Knox Security<br />
-                <span className="text-blue-500">For Main Street Business</span>
+                One Exposed Password<br />
+                <span className="text-red-500">Can End Your Business</span>
               </h1>
               
               <p className="text-xl lg:text-2xl text-muted-foreground mb-12 max-w-4xl mx-auto">
-                60% of small businesses close within 6 months of a cyberattack. Our team has been recognized 
-                by NASA for uncovering critical vulnerabilities. Now we protect businesses like yours with 
-                enterprise-grade security at small business prices.
+                Hackers don't wait—they hold companies hostage, deface sites, and demand ransoms. 
+                If you don't test for real risks today, it's not a question of <em>if</em> you'll be hit—it's <em>when</em>. 
+                Are you ready?
               </p>
 
-              {/* Stats */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
-                {[
-                  { number: '99.7%', label: 'Threat Prevention Rate' },
-                  { number: '< 15min', label: 'Average Response Time' },
-                  { number: '24/7/365', label: 'Continuous Monitoring' }
-                ].map((stat, index) => (
-                  <div key={index} className="bg-card/50 backdrop-blur-sm border border-blue-500/20 rounded-lg p-6">
-                    <div className="text-4xl font-bold text-blue-500 mb-2">{stat.number}</div>
-                    <div className="text-sm text-muted-foreground">{stat.label}</div>
-                  </div>
-                ))}
+              {/* Trust Bar */}
+              <div className="mb-12 max-w-4xl mx-auto">
+                <p className="text-sm text-muted-foreground mb-4">
+                  Built by engineers with <strong>Fortune 500, MIT & Caltech</strong> experience • <strong>250+ years</strong> combined expertise • Human-led ethical hacking customized for your business
+                </p>
               </div>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a 
                   href="/consultation" 
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-blue-500 hover:bg-blue-600 rounded-lg transition shadow-lg shadow-blue-500/20"
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-red-500 hover:bg-red-600 rounded-lg transition shadow-lg shadow-red-500/20"
                 >
                   <Shield className="w-5 h-5 mr-2" />
-                  Get Security Assessment
+                  Audit My Business Now →
                 </a>
                 <a 
-                  href="#pricing" 
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold border-2 border-blue-500 text-blue-500 hover:bg-blue-500/10 rounded-lg transition"
+                  href="#breach-checker" 
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold border-2 border-red-500 text-red-500 hover:bg-red-500/10 rounded-lg transition"
                 >
-                  View Security Packages
+                  Check If My Email Was Breached →
                 </a>
               </div>
             </div>
           </div>
         </section>
 
-        {/* The Real Cost Section */}
+        {/* Problem Section */}
         <section className="py-20 bg-muted/50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                The <span className="text-red-500">Real Cost</span> of a Breach
+                Small Businesses Are <span className="text-red-500">Easy Targets</span>
               </h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                It's not just about stolen data. A single breach can destroy everything you've built.
+            </div>
+
+            <div className="max-w-4xl mx-auto space-y-6 mb-12">
+              <p className="text-xl text-muted-foreground leading-relaxed">
+                You don't get hacked because you're big. You get hacked because you're <strong>unguarded</strong>.
+              </p>
+
+              <ul className="space-y-4 text-lg">
+                <li className="flex items-start gap-3">
+                  <AlertTriangle className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
+                  <span>Reused or leaked passwords open the door</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <AlertTriangle className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
+                  <span>Outdated plugins and forgotten admin accounts become attack paths</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <AlertTriangle className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
+                  <span>Attackers deface sites with derogatory content and ransom your data (demands often <strong>$80,000+</strong>)</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <AlertTriangle className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
+                  <span>Once inside, they encrypt files, hijack email, and silence you until you pay</span>
+                </li>
+              </ul>
+
+              <div className="mt-8 p-6 bg-red-500/10 border-2 border-red-500/30 rounded-xl">
+                <p className="text-xl font-semibold text-center">
+                  <strong>Bottom line:</strong> If you don't actively test your defenses, criminals will test them for you.
+                </p>
+              </div>
+            </div>
+
+            <div className="text-center">
+              <a 
+                href="/consultation" 
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-red-500 hover:bg-red-600 rounded-lg transition shadow-lg shadow-red-500/20"
+              >
+                Run My Security Audit →
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Solution Section */}
+        <section className="py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+                We Think Like an <span className="text-blue-500">Attacker</span>—So You Don't Have To
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
+                We don't use plug-and-play checklists. Every audit is custom-built to map how criminals would breach <em>your</em> specific tech stack, team behaviors, and vendor connections.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 mb-12">
-              <div className="relative aspect-video rounded-xl overflow-hidden border border-red-500/20">
-                <Image
-                  src="https://cdn.abacus.ai/images/f139c458-258e-4b8a-a0d9-69e33c9fa38d.png"
-                  alt="Security Breach Consequences"
-                  fill
-                  className="object-cover"
-                />
+            {/* Comparison Table */}
+            <div className="max-w-5xl mx-auto mb-16 overflow-x-auto">
+              <div className="bg-card border border-muted-foreground/20 rounded-xl overflow-hidden">
+                <table className="w-full">
+                  <thead className="bg-muted">
+                    <tr>
+                      <th className="px-6 py-4 text-left font-semibold">Threat Layer</th>
+                      <th className="px-6 py-4 text-left font-semibold">"IT Checklist"</th>
+                      <th className="px-6 py-4 text-left font-semibold bg-blue-500/10">QuantumLeap Custom Audit</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-muted-foreground/20">
+                    <tr>
+                      <td className="px-6 py-4 font-medium">Password Safety</td>
+                      <td className="px-6 py-4 text-sm text-muted-foreground">Flags weak passwords</td>
+                      <td className="px-6 py-4 text-sm bg-blue-500/5"><strong>Confirms breach exposure</strong> & reuse risk across dark web</td>
+                    </tr>
+                    <tr>
+                      <td className="px-6 py-4 font-medium">Vulnerabilities</td>
+                      <td className="px-6 py-4 text-sm text-muted-foreground">Static scan</td>
+                      <td className="px-6 py-4 text-sm bg-blue-500/5"><strong>Full penetration simulation</strong> (safe & controlled) tailored to your environment</td>
+                    </tr>
+                    <tr>
+                      <td className="px-6 py-4 font-medium">Dark Web</td>
+                      <td className="px-6 py-4 text-sm text-muted-foreground">Ignored</td>
+                      <td className="px-6 py-4 text-sm bg-blue-500/5"><strong>Exposure & credential intelligence</strong> (XON + analyst validation)</td>
+                    </tr>
+                    <tr>
+                      <td className="px-6 py-4 font-medium">Human Error</td>
+                      <td className="px-6 py-4 text-sm text-muted-foreground">Not tested</td>
+                      <td className="px-6 py-4 text-sm bg-blue-500/5"><strong>Phishing & social engineering</strong> simulations specific to your team</td>
+                    </tr>
+                    <tr>
+                      <td className="px-6 py-4 font-medium">Remediation</td>
+                      <td className="px-6 py-4 text-sm text-muted-foreground">Generic PDF</td>
+                      <td className="px-6 py-4 text-sm bg-blue-500/5"><strong>Action roadmap</strong> prioritized for your stack & team capacity</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
-              
-              <div className="space-y-4">
+            </div>
+
+            {/* What's Included */}
+            <div className="max-w-4xl mx-auto mb-12">
+              <h3 className="text-2xl font-bold mb-6 text-center">What's Included</h3>
+              <div className="grid md:grid-cols-2 gap-4">
                 {[
-                  { icon: DollarSign, title: 'Financial Impact', desc: 'Average cost: $200,000+ per incident. Most small businesses never recover.' },
-                  { icon: Users, title: 'Customer Trust Loss', desc: '65% of breach victims lose customer confidence permanently.' },
-                  { icon: Building2, title: 'Operational Shutdown', desc: 'Average downtime: 23 days. Your business stops, costs don\'t.' },
-                  { icon: AlertTriangle, title: 'Legal Liability', desc: 'GDPR, CCPA, and other regulations bring massive fines and lawsuits.' }
+                  'External & internal penetration testing (customized to your systems)',
+                  'Dark-web exposure & credential intelligence (XposedOrNot + human analyst validation)',
+                  'Cloud & email configuration audits (unique to your infrastructure)',
+                  'Controlled phishing & human-engineering tests (designed for your team)',
+                  'Vendor & API access risk assessment (based on your actual integrations)',
+                  'Prioritized remediation plan (30/60/90-day actions tailored to your resources)'
                 ].map((item, index) => (
-                  <div key={index} className="flex gap-4 p-4 bg-card rounded-lg border border-red-500/20">
-                    <div className="flex-shrink-0">
-                      <div className="w-12 h-12 rounded-lg bg-red-500/10 flex items-center justify-center">
-                        <item.icon className="w-6 h-6 text-red-500" />
-                      </div>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold mb-1">{item.title}</h3>
-                      <p className="text-sm text-muted-foreground">{item.desc}</p>
-                    </div>
+                  <div key={index} className="flex items-start gap-3 p-4 bg-card border border-blue-500/20 rounded-lg">
+                    <CheckCircle2 className="w-5 h-5 text-blue-500 flex-shrink-0 mt-1" />
+                    <span>{item}</span>
                   </div>
                 ))}
               </div>
             </div>
-          </div>
-        </section>
 
-        {/* What Makes You a Target */}
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                What Makes You a <span className="text-orange-500">Target</span>?
-              </h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Hackers specifically target small businesses because they assume you lack protection.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              {[
-                {
-                  icon: CreditCard,
-                  title: 'Payment Data',
-                  desc: 'Customer credit cards, payment processor credentials, transaction histories',
-                  color: 'blue'
-                },
-                {
-                  icon: Database,
-                  title: 'Customer Information',
-                  desc: 'Names, addresses, emails, phone numbers - goldmine for identity theft',
-                  color: 'orange'
-                },
-                {
-                  icon: Mail,
-                  title: 'Email & Credentials',
-                  desc: 'Employee emails used as gateways to larger corporate networks',
-                  color: 'blue'
-                },
-                {
-                  icon: Server,
-                  title: 'Server Resources',
-                  desc: 'Your infrastructure hijacked for crypto mining or launching attacks',
-                  color: 'orange'
-                },
-                {
-                  icon: FileSearch,
-                  title: 'Intellectual Property',
-                  desc: 'Business plans, client lists, proprietary processes sold to competitors',
-                  color: 'blue'
-                },
-                {
-                  icon: Lock,
-                  title: 'Ransomware Leverage',
-                  desc: 'Your entire operation locked until you pay - and they often still leak your data',
-                  color: 'orange'
-                }
-              ].map((item, index) => (
-                <div 
-                  key={index}
-                  onMouseEnter={() => setHoveredCard(index)}
-                  onMouseLeave={() => setHoveredCard(null)}
-                  className={`p-6 rounded-xl border-2 transition-all duration-300 ${
-                    hoveredCard === index 
-                      ? `border-${item.color}-500 shadow-lg shadow-${item.color}-500/20 -translate-y-1` 
-                      : 'border-muted-foreground/20'
-                  }`}
-                >
-                  <div className={`w-14 h-14 rounded-lg bg-${item.color}-500/10 flex items-center justify-center mb-4`}>
-                    <item.icon className={`w-7 h-7 text-${item.color}-500`} />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
-                  <p className="text-muted-foreground">{item.desc}</p>
-                </div>
-              ))}
+            <div className="text-center">
+              <a 
+                href="/consultation" 
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-blue-500 hover:bg-blue-600 rounded-lg transition shadow-lg shadow-blue-500/20"
+              >
+                See My Full Risk Map →
+              </a>
             </div>
           </div>
         </section>
 
-        {/* 360° Security Shield */}
+        {/* Testimonials Carousel */}
         <section className="py-20 bg-muted/50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                Our 360° <span className="text-blue-500">Security Shield</span>
+                Real Protection, <span className="text-blue-500">Real Results</span>
               </h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Comprehensive protection that covers every angle of attack.
-              </p>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-              <div className="relative aspect-video rounded-xl overflow-hidden border border-blue-500/20">
-                <Image
-                  src="https://cdn.abacus.ai/images/822365f4-a460-40c2-acf9-1f0479c5f1da.png"
-                  alt="Cyber Threat Landscape"
-                  fill
-                  className="object-cover"
-                />
+            <div className="max-w-4xl mx-auto relative">
+              <div className="bg-card border border-blue-500/20 rounded-2xl p-8 md:p-12">
+                <div className="mb-6">
+                  <p className="text-xl md:text-2xl text-muted-foreground italic leading-relaxed mb-6">
+                    "{testimonials[currentTestimonial].quote}"
+                  </p>
+                  <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+                    <p className="font-semibold text-lg">
+                      <strong>Result:</strong> {testimonials[currentTestimonial].result}
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="font-bold text-lg">{testimonials[currentTestimonial].name}</p>
+                    <p className="text-muted-foreground">{testimonials[currentTestimonial].title}</p>
+                  </div>
+
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
+                      className="p-2 rounded-lg border border-blue-500/20 hover:bg-blue-500/10 transition"
+                      aria-label="Previous testimonial"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </button>
+                    <button
+                      onClick={() => setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)}
+                      className="p-2 rounded-lg border border-blue-500/20 hover:bg-blue-500/10 transition"
+                      aria-label="Next testimonial"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
+                  </div>
+                </div>
               </div>
 
-              <div className="space-y-6">
-                {[
-                  {
-                    phase: 'Layer 1',
-                    title: 'Perimeter Defense',
-                    icon: Shield,
-                    description: 'Advanced firewall configuration, intrusion detection systems, and DDoS protection that stops attacks before they reach your network.'
-                  },
-                  {
-                    phase: 'Layer 2',
-                    title: 'Internal Monitoring',
-                    icon: Eye,
-                    description: 'AI-powered behavioral analysis detects unusual activity inside your network. We catch threats that slip through the perimeter.'
-                  },
-                  {
-                    phase: 'Layer 3',
-                    title: 'Endpoint Protection',
-                    icon: Lock,
-                    description: 'Every device (computers, phones, tablets) protected with enterprise-grade antivirus, encryption, and access controls.'
-                  },
-                  {
-                    phase: 'Layer 4',
-                    title: 'Human Factor Training',
-                    icon: Users,
-                    description: 'Your employees are your biggest vulnerability. We provide ongoing security awareness training and simulated phishing tests.'
-                  }
-                ].map((layer, index) => (
-                  <div key={index} className="flex gap-4 p-6 bg-card rounded-xl border border-blue-500/20">
-                    <div className="flex-shrink-0">
-                      <div className="w-14 h-14 rounded-lg bg-blue-500/10 flex items-center justify-center">
-                        <layer.icon className="w-7 h-7 text-blue-500" />
-                      </div>
-                    </div>
-                    <div>
-                      <div className="text-sm text-blue-500 font-semibold mb-1">{layer.phase}</div>
-                      <h3 className="text-xl font-semibold mb-2">{layer.title}</h3>
-                      <p className="text-muted-foreground">{layer.description}</p>
-                    </div>
-                  </div>
+              {/* Dots indicator */}
+              <div className="flex justify-center gap-2 mt-6">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentTestimonial(index)}
+                    className={`w-2 h-2 rounded-full transition ${
+                      index === currentTestimonial ? 'bg-blue-500 w-8' : 'bg-muted-foreground/30'
+                    }`}
+                    aria-label={`Go to testimonial ${index + 1}`}
+                  />
                 ))}
               </div>
             </div>
           </div>
         </section>
 
-        {/* What You Receive */}
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
+        {/* Email Breach Checker Tool */}
+        <section id="breach-checker" className="py-20">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                What You <span className="text-orange-500">Receive</span>
+                Check If Your Email Has Been <span className="text-red-500">Exposed</span> in a Data Breach
               </h2>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[
-                { icon: FileSearch, title: 'Complete Security Audit', desc: 'Full assessment of your current vulnerabilities' },
-                { icon: ShieldCheck, title: 'Security Infrastructure Setup', desc: 'Enterprise-grade protection deployed across your systems' },
-                { icon: Eye, title: '24/7 Threat Monitoring', desc: 'Real-time surveillance with AI-powered threat detection' },
-                { icon: AlertTriangle, title: 'Incident Response Plan', desc: 'Step-by-step protocols for when (not if) something happens' },
-                { icon: Users, title: 'Employee Security Training', desc: 'Quarterly training sessions and phishing simulations' },
-                { icon: TrendingUp, title: 'Monthly Security Reports', desc: 'Detailed analytics on threats blocked and system health' }
-              ].map((item, index) => (
-                <div key={index} className="p-6 bg-card rounded-xl border border-muted-foreground/20 hover:border-blue-500/50 transition-all">
-                  <div className="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center mb-4">
-                    <item.icon className="w-6 h-6 text-blue-500" />
-                  </div>
-                  <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-12 p-8 bg-gradient-to-r from-blue-500/10 to-orange-500/10 rounded-2xl border border-blue-500/20">
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0">
-                  <div className="w-16 h-16 rounded-full bg-blue-500/20 flex items-center justify-center">
-                    <Shield className="w-8 h-8 text-blue-500" />
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold mb-3">Ongoing Support & Adaptation</h3>
-                  <p className="text-muted-foreground mb-4">
-                    Cyber threats evolve daily. Unlike one-time security audits that become obsolete in months, 
-                    our service continuously adapts to new threats. We update your defenses, patch vulnerabilities, 
-                    and ensure you're always protected against the latest attack methods.
-                  </p>
-                  <ul className="space-y-2">
-                    {[
-                      'Automatic security updates and patches',
-                      'Quarterly vulnerability assessments',
-                      'Priority support hotline for security incidents',
-                      'Free emergency response for critical threats'
-                    ].map((item, i) => (
-                      <li key={i} className="flex items-center gap-2">
-                        <CheckCircle2 className="w-5 h-5 text-blue-500 flex-shrink-0" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Pricing Section */}
-        <section id="pricing" className="py-20 bg-muted/50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                Security <span className="text-blue-500">Investment</span>
-              </h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Protection that costs less than one day of downtime.
+              <p className="text-lg text-muted-foreground">
+                We securely query XposedOrNot's breach database. Instant results. No storage.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                {
-                  name: 'Essential Shield',
-                  price: '$2,500',
-                  period: '/month',
-                  description: 'Core protection for small businesses',
-                  features: [
-                    'Perimeter defense & firewall',
-                    'Endpoint protection (up to 10 devices)',
-                    'Monthly security reports',
-                    'Email & web filtering',
-                    'Quarterly security training',
-                    'Business hours support'
-                  ],
-                  highlighted: false,
-                  color: 'blue'
-                },
-                {
-                  name: 'Complete Defense',
-                  price: '$5,000',
-                  period: '/month',
-                  description: 'Comprehensive protection with 24/7 monitoring',
-                  features: [
-                    'Everything in Essential Shield',
-                    '24/7 threat monitoring & response',
-                    'Unlimited device protection',
-                    'Advanced threat detection (AI-powered)',
-                    'Incident response plan & drills',
-                    'Monthly phishing simulations',
-                    'Priority support hotline',
-                    'Compliance assistance (GDPR, CCPA)'
-                  ],
-                  highlighted: true,
-                  color: 'orange'
-                },
-                {
-                  name: 'Enterprise Fortress',
-                  price: 'Custom',
-                  period: 'pricing',
-                  description: 'Maximum security for complex operations',
-                  features: [
-                    'Everything in Complete Defense',
-                    'Dedicated security engineer',
-                    'Custom security architecture',
-                    'Penetration testing (quarterly)',
-                    'Zero-trust network implementation',
-                    'Security operations center (SOC)',
-                    'Incident response team on retainer',
-                    'Board-level security reporting'
-                  ],
-                  highlighted: false,
-                  color: 'blue'
-                }
-              ].map((tier, index) => (
-                <div 
-                  key={index}
-                  className={`relative p-8 rounded-2xl border-2 transition-all ${
-                    tier.highlighted 
-                      ? 'border-orange-500 shadow-xl shadow-orange-500/20 scale-105' 
-                      : 'border-muted-foreground/20 hover:border-blue-500/50'
-                  }`}
-                >
-                  {tier.highlighted && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-orange-500 text-white text-sm font-semibold rounded-full">
-                      Most Popular
+            <div className="bg-card border-2 border-blue-500/30 rounded-2xl p-8">
+              <form onSubmit={handleBreachCheck} className="mb-6">
+                <div className="flex flex-col md:flex-row gap-4">
+                  <input
+                    type="email"
+                    value={breachEmail}
+                    onChange={(e) => setBreachEmail(e.target.value)}
+                    placeholder="Enter any email address..."
+                    required
+                    className="flex-1 px-4 py-3 rounded-lg border border-muted-foreground/20 bg-background focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                  <button
+                    type="submit"
+                    disabled={breachLoading || checksRemaining <= 0}
+                    className="px-8 py-3 bg-blue-500 hover:bg-blue-600 disabled:bg-muted disabled:cursor-not-allowed text-white font-semibold rounded-lg transition flex items-center justify-center gap-2"
+                  >
+                    {breachLoading ? (
+                      <>
+                        <Loader2 className="w-5 h-5 animate-spin" />
+                        Checking...
+                      </>
+                    ) : (
+                      <>
+                        <Search className="w-5 h-5" />
+                        Check Now
+                      </>
+                    )}
+                  </button>
+                </div>
+                
+                <p className="text-sm text-muted-foreground mt-2">
+                  Checks remaining: {checksRemaining}/4
+                </p>
+              </form>
+
+              {breachError && (
+                <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-lg mb-6">
+                  <p className="text-red-500">{breachError}</p>
+                </div>
+              )}
+
+              {breachResult && (
+                <div className={`p-6 rounded-lg border-2 ${
+                  breachResult.exposed 
+                    ? 'bg-red-500/10 border-red-500/30' 
+                    : 'bg-green-500/10 border-green-500/30'
+                }`}>
+                  {breachResult.exposed ? (
+                    <div>
+                      <h3 className="text-xl font-bold text-red-500 mb-3 flex items-center gap-2">
+                        <AlertTriangle className="w-6 h-6" />
+                        ⚠️ Email Found in Data Breaches
+                      </h3>
+                      <p className="mb-4">
+                        This email was exposed in {breachResult.data?.breaches_details?.length || 'multiple'} known data breaches.
+                      </p>
+                      {breachResult.data?.breaches_details && (
+                        <div className="space-y-2 mb-4">
+                          {breachResult.data.breaches_details.slice(0, 3).map((breach: any, index: number) => (
+                            <div key={index} className="text-sm p-2 bg-background/50 rounded">
+                              <strong>{breach.breach}</strong> - {breach.domain}
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                      <div className="mt-6 pt-6 border-t border-red-500/30">
+                        <p className="font-semibold mb-4">Found a breach? Get a full security audit →</p>
+                        <a 
+                          href="/consultation"
+                          className="inline-flex items-center justify-center px-6 py-3 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg transition"
+                        >
+                          Schedule My Security Audit
+                        </a>
+                      </div>
+                    </div>
+                  ) : (
+                    <div>
+                      <h3 className="text-xl font-bold text-green-500 mb-3 flex items-center gap-2">
+                        <CheckCircle2 className="w-6 h-6" />
+                        ✓ No Breaches Found
+                      </h3>
+                      <p className="mb-4">
+                        This email wasn't found in our breach database. But that doesn't mean you're fully secure.
+                      </p>
+                      <div className="mt-6 pt-6 border-t border-green-500/30">
+                        <p className="font-semibold mb-4">Want to check your full security posture?</p>
+                        <a 
+                          href="/consultation"
+                          className="inline-flex items-center justify-center px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition"
+                        >
+                          Get a Comprehensive Audit
+                        </a>
+                      </div>
                     </div>
                   )}
-                  
-                  <div className="text-center mb-6">
-                    <h3 className="text-2xl font-bold mb-2">{tier.name}</h3>
-                    <p className="text-sm text-muted-foreground mb-4">{tier.description}</p>
-                    <div className="flex items-baseline justify-center gap-1">
-                      <span className={`text-5xl font-bold ${tier.highlighted ? 'text-orange-500' : 'text-blue-500'}`}>
-                        {tier.price}
-                      </span>
-                      <span className="text-muted-foreground">{tier.period}</span>
-                    </div>
-                  </div>
-
-                  <ul className="space-y-3 mb-8">
-                    {tier.features.map((feature, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <CheckCircle2 className={`w-5 h-5 flex-shrink-0 mt-0.5 ${
-                          tier.highlighted ? 'text-orange-500' : 'text-blue-500'
-                        }`} />
-                        <span className="text-sm">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <a 
-                    href="/consultation"
-                    className={`block w-full text-center py-3 rounded-lg font-semibold transition ${
-                      tier.highlighted
-                        ? 'bg-orange-500 text-white hover:bg-orange-600'
-                        : 'border-2 border-blue-500 text-blue-500 hover:bg-blue-500/10'
-                    }`}
-                  >
-                    Get Started
-                  </a>
                 </div>
-              ))}
-            </div>
+              )}
 
-            <div className="mt-12 text-center text-sm text-muted-foreground">
-              <p>All plans include: One-time setup fee waived for annual contracts • 30-day money-back guarantee • No long-term commitments</p>
+              <div className="mt-6 text-sm text-muted-foreground text-center">
+                <Lock className="w-4 h-4 inline mr-1" />
+                Privacy protected • No storage without consent • Rate-limit friendly
+              </div>
             </div>
           </div>
         </section>
 
-        {/* FAQ Section */}
+        {/* Guarantee Section */}
+        <section className="py-20 bg-gradient-to-r from-blue-500/10 to-purple-500/10">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <ShieldCheck className="w-16 h-16 text-blue-500 mx-auto mb-6" />
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+              Our <span className="text-blue-500">'Find 3 or It's Free'</span> Guarantee
+            </h2>
+            <p className="text-xl text-muted-foreground mb-6 max-w-3xl mx-auto leading-relaxed">
+              If our first audit doesn't uncover at least <strong>three</strong> critical vulnerabilities or exposure points, you don't pay.
+            </p>
+            <p className="text-lg mb-8">
+              We've never had to honor this guarantee—because every business has blind spots criminals are already mapping.
+            </p>
+            <p className="text-xl font-semibold mb-8">
+              Because confidence shouldn't be a risk.
+            </p>
+            <a 
+              href="/consultation"
+              className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-blue-500 hover:bg-blue-600 rounded-lg transition shadow-lg shadow-blue-500/20"
+            >
+              Start Risk-Free →
+            </a>
+          </div>
+        </section>
+
+        {/* Trusted By Section */}
+        <section className="py-20 bg-muted/50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl lg:text-4xl font-bold mb-6">
+                Trusted by Organizations That Value Security
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                Our team has served in strategic roles within these organizations. We bring enterprise-grade rigor to small businesses—customized, not templated.
+              </p>
+            </div>
+
+            {/* Logo Grid */}
+            <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-8 items-center opacity-60 grayscale hover:grayscale-0 transition-all duration-300">
+              {[
+                { name: 'IBM', src: '/company-logos/ibm.png' },
+                { name: 'Deloitte', src: '/company-logos/deloitte.png' },
+                { name: 'BMO', src: '/company-logos/bmo.png' },
+                { name: 'CIBC', src: '/company-logos/cibc.png' },
+                { name: 'GE', src: '/company-logos/ge.png' },
+                { name: 'Scotiabank', src: '/company-logos/scotiabank.png' },
+                { name: 'NASA', src: '/company-logos/nasa.png' },
+                { name: 'Allianz', src: '/company-logos/allianz.png' },
+                { name: 'HSBC', src: '/company-logos/hsbc.png' },
+                { name: 'Husky', src: '/company-logos/husky.png' },
+                { name: 'RIM', src: '/company-logos/rim.png' },
+                { name: 'ING', src: '/company-logos/ing.png' },
+                { name: 'CIIS', src: '/company-logos/ciis.png' },
+                { name: 'UCOL', src: '/company-logos/ucol.png' }
+              ].map((logo, index) => (
+                <div key={index} className="flex items-center justify-center">
+                  <div className="relative w-20 h-20">
+                    <Image
+                      src={logo.src}
+                      alt={`${logo.name} logo`}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section with CTAs */}
         <section className="py-20">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                Frequently Asked <span className="text-blue-500">Questions</span>
+                What Our Clients Ask <span className="text-blue-500">Before Starting</span>
               </h2>
             </div>
 
             <Accordion type="single" collapsible className="space-y-4">
               {[
                 {
-                  question: 'Do I really need this if I haven\'t been hacked yet?',
-                  answer: 'That\'s what 60% of breached businesses thought before it happened. The average small business faces 43 cyberattacks per year - you just haven\'t noticed them yet. By the time you detect a breach, the damage is often irreversible. Prevention costs a fraction of recovery.'
+                  question: 'Why would hackers target my small business?',
+                  answer: (
+                    <div className="space-y-4">
+                      <p>Because you're easier to breach and more likely to pay quickly. Criminals automate scans and go after weak doors. One leaked password can cascade into total system access.</p>
+                      <p className="font-semibold">Your size isn't protection—it's the reason you're targeted.</p>
+                      <a 
+                        href="#breach-checker"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition mt-4"
+                      >
+                        <Lock className="w-4 h-4" />
+                        Find Out How Exposed You Are →
+                      </a>
+                    </div>
+                  )
                 },
                 {
-                  question: 'Why not just use regular antivirus software?',
-                  answer: 'Consumer antivirus catches about 25-30% of modern threats. Professional cybercriminals specifically design malware to bypass these basic protections. Our multi-layered approach uses AI-powered threat detection, behavioral analysis, and human expertise - not just signature-based detection that misses zero-day attacks.'
+                  question: 'Will a penetration test disrupt our systems?',
+                  answer: (
+                    <div className="space-y-4">
+                      <p>No—our tests are safe, controlled, and non-destructive. We simulate attacks in isolated environments and coordinate every step with your team.</p>
+                      <p className="font-semibold">You'll see exactly what criminals see, without the damage.</p>
+                      <a 
+                        href="/consultation"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition mt-4"
+                      >
+                        <Shield className="w-4 h-4" />
+                        Book a Non-Disruptive Audit →
+                      </a>
+                    </div>
+                  )
                 },
                 {
-                  question: 'What happens during a security incident?',
-                  answer: 'Within 15 minutes of threat detection, our team initiates our incident response protocol: isolating affected systems, containing the threat, forensic analysis to understand the attack vector, and systematic remediation. You receive real-time updates and a detailed post-incident report with prevention measures.'
+                  question: 'How is this different from our IT company\'s security scan?',
+                  answer: (
+                    <div className="space-y-4">
+                      <p>Most IT scans check for outdated software and open ports. We simulate full attack chains: how a criminal would chain small vulnerabilities into complete system access, test your team's response to phishing, and analyze dark-web credential exposure.</p>
+                      <p className="font-semibold">We don't just scan—we think like the attacker who's planning your breach right now.</p>
+                      <a 
+                        href="#solution"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition mt-4"
+                      >
+                        <FileSearch className="w-4 h-4" />
+                        Compare: Scan vs. Custom Pen Test →
+                      </a>
+                    </div>
+                  )
                 },
                 {
-                  question: 'Can you guarantee we won\'t get hacked?',
-                  answer: 'No one can guarantee 100% security - anyone claiming otherwise is lying. What we guarantee: 99.7% threat prevention rate, sub-15-minute response to incidents, and if a breach occurs despite our protection, we provide emergency response at no additional cost plus work with your insurance for cyber liability claims.'
+                  question: 'How soon will I get results?',
+                  answer: (
+                    <div className="space-y-4">
+                      <p>Preliminary findings within 72 hours. Full report with prioritized remediation plan in 7–10 days.</p>
+                      <p className="font-semibold">Every report is custom-built—no templates, no generic PDFs.</p>
+                      <a 
+                        href="/consultation"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition mt-4"
+                      >
+                        <FileSearch className="w-4 h-4" />
+                        Request a Sample Report →
+                      </a>
+                    </div>
+                  )
                 },
                 {
-                  question: 'How long does implementation take?',
-                  answer: 'Essential Shield: 2-3 weeks. Complete Defense: 3-4 weeks. Enterprise Fortress: 6-8 weeks. We phase the rollout to minimize disruption - you\'ll have basic protection within the first week while we build out the comprehensive security architecture.'
+                  question: 'Is this affordable for a small business?',
+                  answer: (
+                    <div className="space-y-4">
+                      <p>Our audits cost a fraction of a typical ransom or recovery. One prevented breach pays for years of proactive security.</p>
+                      <p className="font-semibold">Think of it as insurance—except we also fix the vulnerabilities before they're exploited.</p>
+                      <a 
+                        href="/consultation"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition mt-4"
+                      >
+                        <DollarSign className="w-4 h-4" />
+                        See Custom Pricing for Your Business →
+                      </a>
+                    </div>
+                  )
                 },
                 {
-                  question: 'What\'s your team\'s actual experience?',
-                  answer: 'Our security engineers average 12+ years in enterprise security, with backgrounds at organizations including NASA (where we discovered critical vulnerabilities in satellite systems), Fortune 500 financial institutions, and government cybersecurity agencies. We hold certifications including CISSP, CEH, and OSCP.'
-                },
-                {
-                  question: 'Do you work with our existing IT provider?',
-                  answer: 'Yes. We partner with your current IT team/provider - we\'re not here to replace them. We handle the specialized cybersecurity layer while they manage day-to-day IT operations. Most IT providers appreciate having security experts handle this complex, high-liability area.'
-                },
-                {
-                  question: 'What about compliance requirements (HIPAA, PCI-DSS, etc.)?',
-                  answer: 'All our plans include compliance framework support. We assess your specific regulatory requirements, implement necessary controls, maintain required documentation, and provide audit assistance. For heavily regulated industries, our Enterprise Fortress plan includes dedicated compliance management.'
+                  question: 'What if you don\'t find anything?',
+                  answer: (
+                    <div className="space-y-4">
+                      <p>If our first audit doesn't uncover at least <strong>three</strong> critical vulnerabilities or exposure points, you don't pay.</p>
+                      <p className="font-semibold">We've never had to honor this guarantee—because every business has blind spots.</p>
+                      <a 
+                        href="/consultation"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition mt-4"
+                      >
+                        <Target className="w-4 h-4" />
+                        Start Your Risk-Free Assessment →
+                      </a>
+                    </div>
+                  )
                 }
               ].map((faq, index) => (
                 <AccordionItem key={index} value={`item-${index}`} className="border border-muted-foreground/20 rounded-lg px-6">
                   <AccordionTrigger className="text-left hover:no-underline">
                     <span className="font-semibold">{faq.question}</span>
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground">
+                  <AccordionContent className="text-muted-foreground pt-4">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
@@ -533,36 +718,90 @@ export default function CyberIntelligencePage() {
         </section>
 
         {/* Final CTA */}
-        <section className="py-20 bg-gradient-to-r from-blue-500/10 via-orange-500/10 to-blue-500/10">
+        <section className="py-20 bg-gradient-to-r from-red-500/10 via-blue-500/10 to-red-500/10">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <Shield className="w-16 h-16 text-blue-500 mx-auto mb-6" />
+            <AlertTriangle className="w-16 h-16 text-red-500 mx-auto mb-6" />
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-              Don't Wait for a Breach to<br />Take Security Seriously
+              Don't Wait for the Ransom Note
             </h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Every day without proper security is a day you're vulnerable. Get your free security assessment 
-              and see exactly where you're exposed - before hackers do.
+              Every day without proper security is a day criminals are mapping your vulnerabilities. 
+              Check an email. See the truth. Then secure what you've built.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
-                href="/consultation"
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-blue-500 hover:bg-blue-600 rounded-lg transition shadow-lg shadow-blue-500/20"
+                href="#breach-checker"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-red-500 hover:bg-red-600 rounded-lg transition shadow-lg shadow-red-500/20"
               >
-                <Shield className="w-5 h-5 mr-2" />
-                Get Free Security Assessment
+                <Lock className="w-5 h-5 mr-2" />
+                Check Any Email for Breaches →
               </a>
               <a 
-                href="#pricing"
+                href="/consultation"
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold border-2 border-blue-500 text-blue-500 hover:bg-blue-500/10 rounded-lg transition"
               >
-                View Security Packages
+                <Shield className="w-5 h-5 mr-2" />
+                Schedule My Security Audit →
               </a>
             </div>
             <p className="mt-6 text-sm text-muted-foreground">
-              Free 30-minute consultation • No obligation • Same-day response
+              Free breach check • Risk-free guarantee • Same-day response
             </p>
           </div>
         </section>
+
+        {/* Exit-Intent Popup */}
+        {showExitIntent && !exitIntentSubmitted && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm animate-in fade-in duration-300">
+            <div className="relative bg-card border-2 border-blue-500 rounded-2xl p-8 max-w-lg mx-4 animate-in zoom-in duration-300">
+              <button
+                onClick={() => setShowExitIntent(false)}
+                className="absolute top-4 right-4 p-2 hover:bg-muted rounded-lg transition"
+                aria-label="Close popup"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <h3 className="text-3xl font-bold mb-4">
+                Before You Go—Get Our <span className="text-blue-500">Free Guide</span>
+              </h3>
+              <p className="text-lg text-muted-foreground mb-6">
+                <em>"The 5 Invisible Red Flags Standard IT Checks Never Catch"</em>
+              </p>
+
+              {exitIntentSubmitted ? (
+                <div className="text-center py-8">
+                  <CheckCircle2 className="w-16 h-16 text-green-500 mx-auto mb-4" />
+                  <h4 className="text-2xl font-bold mb-2">Check Your Inbox!</h4>
+                  <p className="text-muted-foreground">
+                    We've sent the guide to your email. It should arrive within 5 minutes.
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={handleExitIntentSubmit} className="space-y-4">
+                  <input
+                    type="email"
+                    value={exitIntentEmail}
+                    onChange={(e) => setExitIntentEmail(e.target.value)}
+                    placeholder="Your email address..."
+                    required
+                    className="w-full px-4 py-3 rounded-lg border border-muted-foreground/20 bg-background focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                  <button
+                    type="submit"
+                    className="w-full px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition"
+                  >
+                    Send It to My Inbox →
+                  </button>
+                  <p className="text-sm text-muted-foreground text-center">
+                    <Lock className="w-3 h-3 inline mr-1" />
+                    No spam. Unsubscribe anytime. Your email is never shared.
+                  </p>
+                </form>
+              )}
+            </div>
+          </div>
+        )}
       </main>
 
       <Footer />
