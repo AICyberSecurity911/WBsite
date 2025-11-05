@@ -49,15 +49,15 @@ const staggerContainer = {
 export default function IntelligentAutomationPage() {
   // Update meta tags for SEO
   useEffect(() => {
-    document.title = "Custom AI Workforce for Entrepreneurs | Work Less, Grow Faster | QuantumLeap AI"
+    document.title = "Custom Intelligent Automations for SMBs | Save 20+ Hours/Week & Cut Costs by 60–85% | QuantumLeap AI"
     
     const metaDescription = document.querySelector('meta[name="description"]')
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Build an unstoppable business without hiring more staff. QuantumLeap designs custom AI employees tailored to your workflows—handling admin, marketing, and finance so you can focus on growth, not grind.')
+      metaDescription.setAttribute('content', 'Stop losing time and profit to manual work. QuantumLeap\'s custom Intelligent Automations connect your tools, eliminate repetitive tasks, and save 20+ hours/week—without hiring. Run the free ROI scan and get your personalized automation blueprint.')
     } else {
       const meta = document.createElement('meta')
       meta.name = 'description'
-      meta.content = 'Build an unstoppable business without hiring more staff. QuantumLeap designs custom AI employees tailored to your workflows—handling admin, marketing, and finance so you can focus on growth, not grind.'
+      meta.content = 'Stop losing time and profit to manual work. QuantumLeap\'s custom Intelligent Automations connect your tools, eliminate repetitive tasks, and save 20+ hours/week—without hiring. Run the free ROI scan and get your personalized automation blueprint.'
       document.head.appendChild(meta)
     }
   }, [])
@@ -245,99 +245,107 @@ export default function IntelligentAutomationPage() {
 
   const faqs = [
     {
-      question: "Do you provide plug-and-play AI solutions, or do you build custom?",
-      answer: "We custom-build every AI employee to fit your exact workflows, tools, and goals. You're not buying a template—you're getting a digital team member designed for how you do business. The AI employee cards you see on this page are examples of roles we've created for other clients. Your solution will be tailored to your unique needs—because no two businesses are identical.",
+      question: "Do you provide plug-and-play automation, or do you build custom?",
+      answer: "We custom-build every automation to fit your exact tools, workflows, and business logic. You're not buying a pre-built template—you're getting intelligent workflows designed specifically for how you operate. The automation types you see on this page (LeadFlow, InvoiceIQ, etc.) are examples from past client projects. Your solution will be tailored to your unique tech stack and processes.",
       cta: {
-        text: "Book Your Free Discovery Call →",
+        text: "⚙️ Ready to see what custom automation would look like for your business? Book your free discovery call →",
         link: "/consultation"
       }
     },
     {
-      question: "Will AI replace my team or help them?",
-      answer: "AI replaces repetitive work—not people. Your AI Workforce handles admin, emails, data entry, and reports so your human team can focus on clients and strategy. We design each AI employee to complement your team's strengths, not replace them. Most entrepreneurs start with one or two custom AI employees and quickly see their teams become more productive and less stressed.",
+      question: "Isn't automation expensive or complicated?",
+      answer: "No. Intelligent Automations are modular and plug directly into your existing tools—no rip-and-replace required. We design each workflow to start simple and scale as you grow. Most clients see ROI within the first month because we focus on high-impact, low-complexity wins first. The average SMB loses $93,000/year to manual work. Our automations typically cost a fraction of that—and pay for themselves in weeks, not months.",
       cta: {
-        text: "Book a Complimentary AI Workforce Consultation →",
+        text: "🟢 Show me my ROI → Run the free automation scan or book a consultation",
+        link: "#calculator"
+      }
+    },
+    {
+      question: "Will automation replace my employees?",
+      answer: "Not at all. Automation replaces tasks, not people. Your team spends less time clicking, copying, and chasing—and more time creating value. We've seen teams become more engaged (not less) because they finally have bandwidth for strategic work. Custom automation makes your team more productive, not redundant.",
+      cta: {
+        text: "🟢 See how automation would complement your team → Book a free consultation",
         link: "/consultation"
       }
     },
     {
-      question: "How fast can I see results?",
-      answer: "Most businesses see measurable results within 14–30 days. Once we deploy your custom AI employee, it starts completing tasks immediately. Clients often report saving 15–30 hours per week in the first month.",
+      question: "How secure is it?",
+      answer: "Every integration is built on encrypted APIs and monitored 24/7 by a team that's helped secure NASA systems. We follow enterprise-grade security protocols: End-to-end encryption (AES-256), SOC2-compliant data handling, Zero-storage of sensitive credentials, and Audit logs for every automated action. Your data is more secure than most manual processes—because humans make mistakes, automation doesn't.",
       cta: {
-        text: "Schedule Your Free Consultation →",
+        text: "🔒 Want to see how we secure your data? Request a security walkthrough →",
         link: "/consultation"
       }
     },
     {
-      question: "How does setup work?",
-      answer: "We handle everything—from discovery to deployment. Here's the process: 1) You book a 30-minute strategy call, 2) We identify your top 3 time-draining tasks, 3) We design your first custom AI employee, 4) We deploy it within 7 days—no coding needed on your end.",
+      question: "What if I don't know where to start?",
+      answer: "That's exactly why we built the calculator and free audit. You'll get a clear roadmap showing: Which workflows are costing you the most time, Which automations deliver the fastest ROI, and A 30-day deployment plan tailored to your business. No guesswork. No overwhelm. Just a prioritized plan you can act on immediately.",
       cta: {
-        text: "Book Your Complimentary Setup Session →",
+        text: "🧭 Get your custom roadmap → Start your free audit or run the calculator",
+        link: "#calculator"
+      }
+    },
+    {
+      question: "How long does it take to see results?",
+      answer: "Preliminary findings within 72 hours. Full deployment in 7–14 days. Because we're building custom workflows (not installing templates), the timeline depends on complexity. But we prioritize quick wins first—so you start seeing time savings within the first week of deployment.",
+      cta: {
+        text: "📅 Want to see your deployment timeline? Book a free scoping call →",
         link: "/consultation"
       }
     },
     {
-      question: "Can I start with just one AI employee?",
-      answer: "Absolutely. Most founders begin with a custom virtual admin or bookkeeper to remove time-draining work. Within 30 days, 8 out of 10 clients expand their AI Workforce after seeing results. We design your first AI employee based on where you're losing the most time right now.",
+      question: "What if my tools are unique or niche?",
+      answer: "Perfect. That's what we're built for. Most automation vendors only work with the top 20 SaaS tools. We've integrated with hundreds of platforms—from mainstream (HubSpot, Salesforce) to niche industry software. If your tools have APIs (or even just CSV exports), we can automate them. If they don't, we'll find creative workarounds.",
       cta: {
-        text: "Book Your Free AI Workforce Consultation →",
+        text: "💡 Curious if your stack is compatible? Book a technical review call →",
         link: "/consultation"
       }
     },
     {
-      question: "What if I'm not tech-savvy?",
-      answer: "No problem at all. You don't touch any code or system settings. Our team handles setup, integration, training, and updates. You just tell us what's eating your time—we'll build the solution.",
+      question: "Is this affordable for SMBs?",
+      answer: "Yes. Our automations cost a fraction of a typical hire—and far less than the profit you're losing to manual work. Example: A custom DataBridge automation (syncing 3 tools) costs ~$299–499/mo. That's less than one day of an employee's salary—but it works 24/7 and never makes mistakes. Most clients save 10–20x the cost of automation in recovered productivity and reduced errors.",
       cta: {
-        text: "Book Your Complimentary Setup Call →",
+        text: "💰 See your cost-benefit breakdown → Run the free ROI scan",
+        link: "#calculator"
+      }
+    },
+    {
+      question: "What happens after deployment?",
+      answer: "You get ongoing monitoring, optimization, and monthly ROI reports. We don't just 'set and forget.' Your dedicated success manager: Monitors performance 24/7, Optimizes workflows based on usage patterns, Reports monthly time/cost savings, and Handles any tweaks or expansions. You'll always have real human support—not chatbots.",
+      cta: {
+        text: "🙌 Want to meet your potential success manager? Book your free consultation →",
         link: "/consultation"
       }
     },
     {
-      question: "Can AI really understand my business?",
-      answer: "Yes—because we custom-train it on your workflows. Before deployment, we train your AI employees on your tone, documents, processes, and tools. They adapt to how you do business—not the other way around.",
+      question: "Can I start small and scale later?",
+      answer: "Absolutely. That's our recommended approach. Most founders start with 1–2 high-impact automations (usually invoice processing or lead routing). Once you see the ROI, you expand. We design every automation to be modular—so you can add, adjust, or scale without rebuilding from scratch.",
       cta: {
-        text: "Book a Demo and Meet Your First Custom AI Employee Live →",
+        text: "🎯 Start small. Scale smart. Book your free scoping call →",
         link: "/consultation"
       }
     },
     {
-      question: "What's the risk if it doesn't work for me?",
-      answer: "None. You're protected by our 30-Day Performance Guarantee—if you don't see measurable time savings in the first month, we extend your plan free until you do.",
+      question: "What if it breaks or stops working?",
+      answer: "We monitor 24/7 and fix issues proactively—usually before you even notice. If an integration changes (like when a SaaS tool updates its API), we handle the update automatically. If something unexpected happens, we're alerted instantly and resolve it. Our average response time is under 2 hours. Most issues are resolved in under 30 minutes.",
       cta: {
-        text: "Start Your Free Consultation Today →",
+        text: "🛡️ See our uptime guarantee → Request service level agreement details →",
         link: "/consultation"
       }
     },
     {
-      question: "How much does it cost?",
-      answer: "Each custom AI employee starts at $399–$499/month, all-inclusive—about 85% less than hiring a human employee, with zero training, benefits, or turnover costs. For example, our custom AI Bookkeeper saves clients $50,000+ annually compared to hiring. Pricing depends on scope and complexity. We'll give you a transparent quote during your free consultation.",
+      question: "How is this different from Zapier or Make?",
+      answer: "Great question. Zapier and Make are DIY automation tools—you build and maintain everything yourself. They're powerful, but they require technical knowledge, ongoing maintenance, and troubleshooting when things break. QuantumLeap is a done-for-you service. We: Design the automation logic, Build and test the workflows, Monitor performance 24/7, Optimize and troubleshoot automatically, and Provide human support when you need it. Think of it this way: Zapier is like buying lumber to build a house. QuantumLeap is hiring an architect and construction crew.",
       cta: {
-        text: "Book a Consultation or Use the Calculator Above",
+        text: "🧠 Want to see the difference in action? Book a live demo →",
         link: "/consultation"
       }
     },
     {
-      question: "What kinds of businesses benefit most?",
-      answer: "We work best with service providers and consultants, e-commerce founders, real estate and finance professionals, construction and trade businesses, and startup founders and solopreneurs. If you use tools like Google Workspace, QuickBooks, or HubSpot—you can benefit immediately. And if you use something unique, we'll build around it.",
+      question: "How do I get started?",
+      answer: "Simple: 1) Run the free automation scan (2 minutes) to see where you're losing time, 2) Book a complimentary strategy call (30 minutes) to review your results, 3) Get your custom 30-day automation plan (delivered within 48 hours), 4) Deploy your first automation (7–14 days from approval). No obligation. No pressure. Just clarity on what's possible for your business.",
       cta: {
-        text: "Book Your Complimentary Discovery Call →",
-        link: "/consultation"
-      }
-    },
-    {
-      question: "Do I need to switch my current tools?",
-      answer: "No. Your AI employees integrate directly with your existing stack—Gmail, Outlook, QuickBooks, HubSpot, Salesforce, ClickUp, Shopify, and more. We make AI fit your current system—not the other way around.",
-      cta: {
-        text: "Request Your Integration Preview Call →",
-        link: "/consultation"
-      }
-    },
-    {
-      question: "What support do I get after setup?",
-      answer: "You get a dedicated AI Success Manager who monitors performance, optimizes workflows, and reports your ROI monthly. You'll always have real human support—not chatbots.",
-      cta: {
-        text: "Book Your Free Consultation Now →",
-        link: "/consultation"
+        text: "🚀 Start your free automation scan → or Book your strategy call →",
+        link: "#calculator"
       }
     }
   ]
@@ -369,12 +377,12 @@ export default function IntelligentAutomationPage() {
               className="text-center"
             >
               <motion.h1 variants={fadeInUp} className="text-5xl lg:text-7xl font-bold mb-6 leading-tight text-white">
-                You Don't Need More Staff.<br />
-                <span className="text-brand-teal-400">You Need an AI Workforce.</span>
+                Save 20+ Hours a Week and Cut Costs by 60–85%—<br />
+                <span className="text-brand-teal-400">Automate the Busywork That's Holding You Back</span>
               </motion.h1>
               
               <motion.p variants={fadeInUp} className="text-xl lg:text-2xl text-gray-200 mb-12 max-w-4xl mx-auto leading-relaxed">
-                Custom-built digital employees that work 24/7, cost 85% less than human hires, and never miss a task. Free yourself from busywork and finally run a business that runs without you.
+                Your time drives growth. Our custom Intelligent Automations connect your tools, remove repetitive tasks, and work 24/7—so you can do the work that moves the needle.
               </motion.p>
               
               <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
@@ -382,15 +390,19 @@ export default function IntelligentAutomationPage() {
                   href="#calculator" 
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-brand-teal-500 hover:bg-brand-teal-600 rounded-lg transition shadow-lg shadow-brand-teal-500/50"
                 >
-                  👉 Discover What AI Can Do For Your Business
+                  🟢 Reveal My Hidden Hours & Savings
                 </a>
                 <a 
-                  href="#ai-employees" 
+                  href="/consultation" 
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold border-2 border-white text-white rounded-lg hover:bg-white/10 transition"
                 >
-                  See AI Employees
+                  ⚙️ Show Me What I Can Automate (Free Audit)
                 </a>
               </motion.div>
+              
+              <motion.p variants={fadeInUp} className="text-sm text-teal-100 mb-4">
+                See how much time and money you can free up this month.
+              </motion.p>
 
               {/* Trust Bar */}
               <motion.div variants={fadeInUp} className="text-center mb-12">
@@ -440,7 +452,7 @@ export default function IntelligentAutomationPage() {
                   <span className="text-2xl font-bold text-white">PK</span>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold mb-2">What Is QuantumLeap AI Workforce?</h3>
+                  <h3 className="text-2xl font-bold mb-2">What is QuantumLeap Intelligent Automations?</h3>
                   <p className="text-sm text-brand-teal-700 dark:text-brand-teal-300 font-semibold">
                     From the Desk of Paras Khurana, Founder & CEO
                   </p>
@@ -449,45 +461,41 @@ export default function IntelligentAutomationPage() {
               
               <div className="prose prose-lg dark:prose-invert max-w-none">
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-                  Custom-designed AI employees that take over your admin, sales, and marketing work—built specifically for your business, not copied from a template.
+                  A custom-learning automation layer that links your CRM, email, finance, and operations tools—then takes over the repeatable work. Built for your business, not copied from a template.
                 </p>
                 
                 <div className="mb-6">
-                  <h4 className="font-bold text-gray-900 dark:text-white mb-3">Key Outcomes:</h4>
+                  <h4 className="font-bold text-gray-900 dark:text-white mb-3">Typical Outcomes:</h4>
                   <ul className="space-y-2 text-gray-700 dark:text-gray-300">
                     <li className="flex items-start gap-2">
                       <span className="text-brand-teal-500 flex-shrink-0">⏱</span>
-                      <span>Save 15–30 hours every week</span>
+                      <span>Reclaim 15–25 hours per week per employee</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-brand-teal-500 flex-shrink-0">💰</span>
-                      <span>Cut operating costs up to 70%</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-brand-teal-500 flex-shrink-0">🧠</span>
-                      <span>Scale without new hires or training</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-brand-teal-500 flex-shrink-0">🔒</span>
-                      <span>Built by the team that secured NASA</span>
+                      <span className="text-brand-teal-500 flex-shrink-0">💵</span>
+                      <span>Reduce manual labor costs by 60–85%</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-brand-teal-500 flex-shrink-0">⚙️</span>
-                      <span>Deploy in 7 days—no tech skills needed</span>
+                      <span>Deploy in ≤14 days (no code required)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-brand-teal-500 flex-shrink-0">🔒</span>
+                      <span>Built by the team that secured NASA systems</span>
                     </li>
                   </ul>
                 </div>
 
                 <p className="text-sm text-gray-600 dark:text-gray-400 italic mb-4">
-                  20+ years advising Fortune 500 and SMB leaders on growth and digital transformation.
+                  <em>From the desk of Paras Khurana, Founder & CEO</em>
                 </p>
 
                 <div className="bg-white dark:bg-gray-900 rounded-xl p-6 border-l-4 border-brand-teal-500 mt-6">
                   <p className="text-sm font-semibold text-brand-teal-700 dark:text-brand-teal-300 uppercase tracking-wide mb-2">
-                    💡 Critical Insight
+                    💡 Critical Insight (from 250+ years combined experience)
                   </p>
                   <p className="text-gray-900 dark:text-gray-100 font-semibold text-lg">
-                    Entrepreneurs lose ~1,200 hours a year to tasks they shouldn't be doing. Your business doesn't need more people—it needs more leverage.
+                    Every manual workflow is a hidden expense center. Find it, automate it, and your margins expand.
                   </p>
                 </div>
               </div>
@@ -495,7 +503,7 @@ export default function IntelligentAutomationPage() {
           </div>
         </section>
 
-        {/* The Hidden Reality: Pain Story Section */}
+        {/* The Manual Trap: Problem Section */}
         <section ref={costRef} className="py-24 bg-gradient-to-b from-background to-muted">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -505,10 +513,10 @@ export default function IntelligentAutomationPage() {
             >
               <motion.div variants={fadeInUp} className="text-center mb-16">
                 <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                  The Hidden Reality: <span className="text-brand-teal-500">What's Breaking You?</span>
+                  The Manual Trap—<span className="text-brand-teal-500">Where Profits Go to Die</span>
                 </h2>
                 <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                  You're Working Harder Than Ever, But Getting Less Time Back
+                  You didn't start a business to babysit spreadsheets
                 </p>
               </motion.div>
 
@@ -526,37 +534,62 @@ export default function IntelligentAutomationPage() {
 
                 <motion.div variants={staggerContainer} className="space-y-6">
                   <motion.div variants={fadeInUp}>
-                    <h3 className="text-3xl font-bold mb-4">
-                      Why That "$50K Employee" Just Bankrupted Your Q4
-                    </h3>
                     <div className="bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-950/30 dark:to-orange-950/30 rounded-2xl p-8 border-2 border-red-200 dark:border-red-800">
-                      <p className="text-lg text-gray-800 dark:text-gray-200 leading-relaxed mb-6 italic">
-                        "I hired Sarah as my bookkeeper for '$50K' thinking I was getting a great deal. Three months later, I discovered $23,000 in uncategorized expenses, missed tax deadlines, and she quit via text message during our busiest season.
+                      <p className="text-xl text-gray-800 dark:text-gray-200 leading-relaxed mb-6">
+                        You didn't start a business to babysit spreadsheets. But today you:
                       </p>
-                      <p className="text-lg text-gray-800 dark:text-gray-200 leading-relaxed font-semibold">
-                        By the time I calculated recruitment, training, mistakes, and replacement costs, that '$50K employee' actually cost me $118,958."
+                      <ul className="space-y-4 text-lg text-gray-700 dark:text-gray-300 mb-6">
+                        <li className="flex items-start gap-3">
+                          <span className="text-red-500 font-bold">•</span>
+                          <span>Copy/paste data between CRMs and sheets</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <span className="text-red-500 font-bold">•</span>
+                          <span>Manually chase invoices and follow-ups</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <span className="text-red-500 font-bold">•</span>
+                          <span>Spend weekends "catching up" on reports</span>
+                        </li>
+                      </ul>
+                      <p className="text-lg text-gray-800 dark:text-gray-200 leading-relaxed mb-4 font-semibold">
+                        Reality: The average SMB loses ~1,200 hours/year to manual tasks—that's ~$93,000 in hidden waste.
                       </p>
+                      <p className="text-lg text-gray-800 dark:text-gray-200 leading-relaxed">
+                        <strong>Result:</strong> Burnout, errors, slow cash flow, missed sales.
+                      </p>
+                      <p className="text-xl text-brand-teal-700 dark:text-brand-teal-300 font-bold mt-6">
+                        Every manual step is a leak in your profit pipe. And most owners never see it until they calculate the real cost.
+                      </p>
+                    </div>
+                    <div className="mt-6 text-center">
+                      <a
+                        href="#calculator"
+                        className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-brand-teal-500 hover:bg-brand-teal-600 rounded-lg transition shadow-lg"
+                      >
+                        🔍 Calculate My Hidden Waste Now →
+                      </a>
                     </div>
                   </motion.div>
                 </motion.div>
               </div>
 
-              {/* TRUE Cost Breakdown */}
-              <motion.div variants={fadeInUp} className="max-w-4xl mx-auto">
+              {/* Hidden Manual Task Costs */}
+              <motion.div variants={fadeInUp} className="max-w-5xl mx-auto mt-16">
                 <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-2xl border-2 border-brand-teal-200 dark:border-brand-teal-800">
                   <h3 className="text-3xl font-bold text-center mb-8 text-brand-teal-600 dark:text-brand-teal-400">
-                    TRUE Cost Breakdown
+                    Hidden Cost of Manual Work (Per Year)
                   </h3>
                   <div className="space-y-4">
                     {[
-                      { item: 'Base Salary', amount: '$52,000' },
-                      { item: 'Payroll Taxes (15.3%)', amount: '$7,956' },
-                      { item: 'Benefits & Insurance', amount: '$8,840' },
-                      { item: 'Recruiting Costs', amount: '$6,500' },
-                      { item: 'Training Time (40 hours)', amount: '$8,250' },
-                      { item: 'Management Overhead', amount: '$15,600' },
-                      { item: 'Lost Revenue (mistakes)', amount: '$12,000' },
-                      { item: 'Replacement Cost (turnover)', amount: '$7,812' }
+                      { item: 'Data Entry & Copy/Paste (8h/week)', amount: '$20,800' },
+                      { item: 'Email Management & Triage (6h/week)', amount: '$15,600' },
+                      { item: 'Invoice Creation & Follow-ups (4h/week)', amount: '$10,400' },
+                      { item: 'Report Compilation (4h/week)', amount: '$10,400' },
+                      { item: 'Calendar & Meeting Scheduling (3h/week)', amount: '$7,800' },
+                      { item: 'Customer Follow-ups (4h/week)', amount: '$10,400' },
+                      { item: 'Errors & Rework (3h/week)', amount: '$15,600' },
+                      { item: 'Opportunity Cost (Lost Sales)', amount: '$12,000' }
                     ].map((cost, index) => (
                       <motion.div
                         key={index}
@@ -568,9 +601,9 @@ export default function IntelligentAutomationPage() {
                       </motion.div>
                     ))}
                     <div className="border-t-4 border-brand-teal-500 pt-6 mt-6">
-                      <div className="flex justify-between items-center">
-                        <span className="text-2xl font-bold text-gray-900 dark:text-gray-100">TOTAL ACTUAL COST per employee, per year:</span>
-                        <span className="text-4xl font-extrabold text-red-600 dark:text-red-400">$118,958</span>
+                      <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <span className="text-2xl font-bold text-gray-900 dark:text-gray-100">TOTAL ANNUAL COST:</span>
+                        <span className="text-4xl font-extrabold text-red-600 dark:text-red-400">$93,000+</span>
                       </div>
                     </div>
                   </div>
@@ -580,16 +613,16 @@ export default function IntelligentAutomationPage() {
               {/* Impact Stats */}
               <motion.div variants={fadeInUp} className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mt-16">
                 <div className="bg-red-50 dark:bg-red-950/30 rounded-xl p-6 border border-red-200 dark:border-red-800 text-center">
-                  <div className="text-4xl font-bold text-red-600 dark:text-red-400 mb-2">73%</div>
-                  <p className="text-sm text-red-800 dark:text-red-200 font-medium">of small business owners work weekends</p>
+                  <div className="text-4xl font-bold text-red-600 dark:text-red-400 mb-2">1,200+</div>
+                  <p className="text-sm text-red-800 dark:text-red-200 font-medium">hours wasted yearly on manual tasks</p>
                 </div>
                 <div className="bg-amber-50 dark:bg-amber-950/30 rounded-xl p-6 border border-amber-200 dark:border-amber-800 text-center">
-                  <div className="text-4xl font-bold text-amber-600 dark:text-amber-400 mb-2">$12K</div>
-                  <p className="text-sm text-amber-800 dark:text-amber-200 font-medium">average cost of a bad hire</p>
+                  <div className="text-4xl font-bold text-amber-600 dark:text-amber-400 mb-2">68%</div>
+                  <p className="text-sm text-amber-800 dark:text-amber-200 font-medium">productivity loss from context switching</p>
                 </div>
                 <div className="bg-orange-50 dark:bg-orange-950/30 rounded-xl p-6 border border-orange-200 dark:border-orange-800 text-center">
-                  <div className="text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2">18 months</div>
-                  <p className="text-sm text-orange-800 dark:text-orange-200 font-medium">average employee tenure</p>
+                  <div className="text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2">3-7x</div>
+                  <p className="text-sm text-orange-800 dark:text-orange-200 font-medium">error rate in manual processes</p>
                 </div>
               </motion.div>
             </motion.div>
@@ -735,7 +768,7 @@ export default function IntelligentAutomationPage() {
           </div>
         </section>
 
-        {/* Branded Automation Solutions Section */}
+        {/* Custom Automation Solutions Section */}
         <section className="py-24 bg-gradient-to-b from-background to-muted">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -744,15 +777,18 @@ export default function IntelligentAutomationPage() {
               viewport={{ once: true }}
               variants={staggerContainer}
             >
-              <motion.div variants={fadeInUp} className="text-center mb-16">
+              <motion.div variants={fadeInUp} className="text-center mb-8">
                 <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                  Our <span className="text-brand-teal-500">Intelligent Automation</span> Solutions
+                  The Intelligent Automation Suite—<span className="text-brand-teal-500">Custom-Built to Connect Your Exact Tools and Workflows</span>
                 </h2>
-                <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-4">
-                  Proprietary systems designed to eliminate busywork and maximize efficiency.
+              </motion.div>
+              
+              <motion.div variants={fadeInUp} className="max-w-4xl mx-auto text-center mb-12">
+                <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                  We don't sell you off-the-shelf automation. We map your current stack, identify the friction points costing you time and money, then build intelligent workflows that run in the background—24/7, error-free.
                 </p>
-                <p className="text-lg text-brand-teal-600 dark:text-brand-teal-400 font-semibold max-w-3xl mx-auto">
-                  These are just some of our Intelligent Automations. We can automate any workflow you can think of.
+                <p className="text-lg text-gray-600 dark:text-gray-400">
+                  Below are examples of automation types we've deployed for clients. Your solution will be tailored to your unique processes, tools, and goals.
                 </p>
               </motion.div>
 
@@ -769,8 +805,7 @@ export default function IntelligentAutomationPage() {
                   </div>
                   <h3 className="text-2xl font-bold mb-3">InvoiceIQ™</h3>
                   <p className="text-muted-foreground mb-6">
-                    Intelligent invoice and payment automation system that creates, sends, and tracks invoices automatically. 
-                    Never chase payments manually again—InvoiceIQ handles reminders, payment processing, and reconciliation 24/7.
+                    Auto-creates invoices based on your triggers and sends smart follow-ups on your schedule. Custom-built for your billing workflow—never chase payments manually again.
                   </p>
                   <ul className="space-y-2">
                     <li className="flex items-start gap-2 text-sm">
@@ -800,8 +835,7 @@ export default function IntelligentAutomationPage() {
                   </div>
                   <h3 className="text-2xl font-bold mb-3">LeadFlow™</h3>
                   <p className="text-muted-foreground mb-6">
-                    Automated lead response and nurture system that captures, qualifies, and engages leads instantly. 
-                    No more missed opportunities—LeadFlow ensures every prospect gets immediate attention and personalized follow-up.
+                    Custom-captures and routes leads from every source you use—web forms, email, calls, chat. Ensures every prospect gets immediate attention with personalized follow-up sequences.
                   </p>
                   <ul className="space-y-2">
                     <li className="flex items-start gap-2 text-sm">
@@ -831,8 +865,7 @@ export default function IntelligentAutomationPage() {
                   </div>
                   <h3 className="text-2xl font-bold mb-3">ClientPulse™</h3>
                   <p className="text-muted-foreground mb-6">
-                    Seamless customer onboarding workflow that guides new clients from signup to success automatically. 
-                    ClientPulse creates a VIP experience for every customer without manual intervention.
+                    Automated feedback loops and retention triggers tailored to your customer lifecycle. Creates a VIP experience for every customer without manual intervention.
                   </p>
                   <ul className="space-y-2">
                     <li className="flex items-start gap-2 text-sm">
@@ -862,8 +895,7 @@ export default function IntelligentAutomationPage() {
                   </div>
                   <h3 className="text-2xl font-bold mb-3">SmartDocs™</h3>
                   <p className="text-muted-foreground mb-6">
-                    Automated financial reporting and dashboard system that compiles data from all your sources into 
-                    real-time, actionable insights. No more manual spreadsheets—SmartDocs delivers intelligence on demand.
+                    Auto-routes and summarizes reports based on your business logic. Compiles data from all your sources into real-time, actionable insights—no more manual spreadsheets.
                   </p>
                   <ul className="space-y-2">
                     <li className="flex items-start gap-2 text-sm">
@@ -883,12 +915,18 @@ export default function IntelligentAutomationPage() {
               </motion.div>
 
               <motion.div variants={fadeInUp} className="mt-12 text-center">
+                <p className="text-sm text-gray-600 dark:text-gray-400 italic mb-6">
+                  *Sample automation types. Your solution will be custom-designed for your business.
+                </p>
                 <a
                   href="/consultation"
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-brand-teal-500 hover:bg-brand-teal-600 rounded-lg transition shadow-lg"
                 >
-                  See Which Processes You Can Automate for Faster ROI
+                  🟢 Build My Custom Automation Plan (Free)
                 </a>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mt-3">
+                  Pinpoint the top 3 workflows to automate first and the ROI you can expect.
+                </p>
               </motion.div>
             </motion.div>
           </div>
@@ -1069,46 +1107,52 @@ export default function IntelligentAutomationPage() {
               <motion.div variants={staggerContainer} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {[
                   {
-                    before: "Our bookkeeper kept missing things and I was constantly stressed about our finances. I was working weekends just to double-check everything.",
-                    after: "The AI Bookkeeper caught a $15,000 accounting error our human bookkeeper missed three times. It paid for itself in month one.",
-                    result: "Now I have real-time visibility into my financials instead of waiting weeks. I finally have peace of mind.",
+                    before: "7 days/month on invoicing; late payments bleeding cash.",
+                    after: "InvoiceIQ + OpsSync automated billing & reminders.",
+                    result: "12 hours/week saved, 62% faster collections, +$45K cash-flow gain.",
+                    quote: "I used to dread month-end. Now everything closes by the 3rd—automatically.",
                     author: "Peter Fernandes",
-                    company: "Construction Company Owner"
+                    company: "AAA Construction Services"
                   },
                   {
-                    before: "I was drowning in emails and calls. I couldn't focus on landing new contracts because I was too busy scheduling and following up.",
-                    after: "My AI Executive Assistant handles all my scheduling and email management. I went from 60-hour weeks to 35-hour weeks.",
-                    result: "I finally have weekends back with my family. My stress levels dropped dramatically.",
-                    author: "Sofia Delacroix",
-                    company: "Marketing Agency Owner"
+                    before: "6 platforms to track leads and follow-ups; deals falling through cracks.",
+                    after: "LeadFlow + MailPilot centralized and nurtured automatically.",
+                    result: "+34% revenue; 2 extra client slots/month.",
+                    quote: "We went from reactive chaos to proactive growth—without adding headcount.",
+                    author: "Tiffany Duncan",
+                    company: "Director, Talent Leap AI"
                   },
                   {
-                    before: "We were losing leads left and right because we couldn't follow up fast enough. Our sales process was a mess.",
-                    after: "The AI Sales Rep follows up with every lead within 5 minutes, 24/7. Our close rate increased by 40%.",
-                    result: "Our sales pipeline has never been more organized. We're closing deals we would have lost before.",
-                    author: "Marcus Chen",
-                    company: "TechFlow Solutions"
+                    before: "Manual listing updates across CRM, MLS, and ads—18 hours/week.",
+                    after: "OpsSync + DataBridge synced all channels in real-time.",
+                    result: "18 hours/week saved; errors down 97%; ~$61K annual savings.",
+                    quote: "I got my weekends back. And my team stopped making costly mistakes.",
+                    author: "Gurpreet Sandhu",
+                    company: "Broker, Real Estate Vision"
                   },
                   {
-                    before: "Customers were complaining about slow response times. We couldn't afford 24/7 support but were losing business because of it.",
-                    after: "The AI Customer Service Rep handles inquiries instantly, any time of day. Customer satisfaction scores increased 40% in 2 months.",
-                    result: "We're keeping customers happy without the overhead of night shift employees.",
-                    author: "Lisa Rodriguez",
-                    company: "HomeComfort Services"
+                    before: "Clients waited days for reports; manual compilation killed velocity.",
+                    after: "SmartDocs compiled insights overnight.",
+                    result: "Turnaround cut from 72h to 6h; retention up 29%.",
+                    quote: "Our clients think we're psychic. We're just automated.",
+                    author: "Lydia V. Penrose",
+                    company: "Co-Founder, Code Vibe Studio"
                   },
                   {
-                    before: "Hiring was a nightmare. We wasted months interviewing the wrong people and made several bad hires that cost us thousands.",
-                    after: "The AI Recruiter screens candidates, schedules interviews, and even handles onboarding paperwork automatically.",
-                    result: "We've hired 5 great employees in half the time it used to take. No more bad hires.",
-                    author: "David Kim",
-                    company: "GreenTech Manufacturing"
+                    before: "Overwhelmed inbox; missed deals; team drowning in triage.",
+                    after: "MailPilot handled 75% of inbound messages.",
+                    result: "Team stress ↓68%; close rate ↑41%.",
+                    quote: "MailPilot didn't replace us—it freed us to do our actual jobs.",
+                    author: "Harper Kingsley",
+                    company: "VP, Adroit Infosystems"
                   },
                   {
-                    before: "Our social media was inconsistent and engagement was terrible. I didn't have time to post regularly or engage with followers.",
-                    after: "The AI Social Media Manager posts daily, responds to comments, and even suggests content ideas. Our engagement tripled in 2 months.",
-                    result: "We're actually building a real brand presence now without me spending hours every day on social media.",
-                    author: "Amanda Foster",
-                    company: "Boutique Fashion Co."
+                    before: "Invoice chasing consumed 10+ hours/week; cash flow unpredictable.",
+                    after: "InvoiceIQ + ClientPulse automated billing and payment reminders.",
+                    result: "10 hours/week recovered; payment time cut by 55%.",
+                    quote: "I finally have predictable cash flow. Game changer.",
+                    author: "Michael Torres",
+                    company: "Torres Consulting Group"
                   }
                 ].map((testimonial, index) => (
                   <motion.div
@@ -1116,30 +1160,36 @@ export default function IntelligentAutomationPage() {
                     variants={fadeInUp}
                     className="bg-white dark:bg-gray-900 rounded-2xl p-6 border-2 border-border hover:border-brand-teal-500 transition-all duration-300 hover:shadow-[0_0_30px_rgba(20,184,166,0.3)]"
                   >
-                    <div className="mb-6">
-                      <div className="inline-block bg-red-100 dark:bg-red-900/30 rounded-full px-3 py-1 text-xs font-semibold text-red-700 dark:text-red-300 mb-3">
+                    <div className="mb-4">
+                      <div className="inline-block bg-red-100 dark:bg-red-900/30 rounded-full px-3 py-1 text-xs font-semibold text-red-700 dark:text-red-300 mb-2">
                         BEFORE
                       </div>
-                      <p className="text-sm text-gray-600 dark:text-gray-400 italic">
-                        "{testimonial.before}"
+                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                        {testimonial.before}
                       </p>
                     </div>
                     
-                    <div className="mb-6">
-                      <div className="inline-block bg-amber-100 dark:bg-amber-900/30 rounded-full px-3 py-1 text-xs font-semibold text-amber-700 dark:text-amber-300 mb-3">
+                    <div className="mb-4">
+                      <div className="inline-block bg-amber-100 dark:bg-amber-900/30 rounded-full px-3 py-1 text-xs font-semibold text-amber-700 dark:text-amber-300 mb-2">
                         AFTER
                       </div>
                       <p className="text-sm text-gray-600 dark:text-gray-400 font-medium">
-                        "{testimonial.after}"
+                        {testimonial.after}
                       </p>
                     </div>
                     
-                    <div className="mb-6">
-                      <div className="inline-block bg-emerald-100 dark:bg-emerald-900/30 rounded-full px-3 py-1 text-xs font-semibold text-emerald-700 dark:text-emerald-300 mb-3">
+                    <div className="mb-4">
+                      <div className="inline-block bg-emerald-100 dark:bg-emerald-900/30 rounded-full px-3 py-1 text-xs font-semibold text-emerald-700 dark:text-emerald-300 mb-2">
                         RESULT
                       </div>
                       <p className="text-sm text-brand-teal-700 dark:text-brand-teal-300 font-semibold">
-                        "{testimonial.result}"
+                        {testimonial.result}
+                      </p>
+                    </div>
+                    
+                    <div className="mb-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                      <p className="text-sm text-gray-700 dark:text-gray-300 italic">
+                        "{testimonial.quote}"
                       </p>
                     </div>
                     
@@ -1149,6 +1199,15 @@ export default function IntelligentAutomationPage() {
                     </div>
                   </motion.div>
                 ))}
+              </motion.div>
+              
+              <motion.div variants={fadeInUp} className="mt-12 text-center">
+                <a
+                  href="#calculator"
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-brand-teal-500 hover:bg-brand-teal-600 rounded-lg transition shadow-lg"
+                >
+                  🟢 I Want Results Like These—Show Me My Automation ROI →
+                </a>
               </motion.div>
             </motion.div>
           </div>
@@ -1249,15 +1308,15 @@ export default function IntelligentAutomationPage() {
               </div>
               
               <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-                The Only Risk-Free Hire You'll Ever Make
+                Our 60-Day "Time-Back" Guarantee
               </h2>
               
               <div className="bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-2xl p-8 mb-8">
                 <p className="text-2xl text-white leading-relaxed mb-6">
-                  If your custom AI employee doesn't save you at least <span className="font-bold text-teal-200">10 hours a week</span> in the first 30 days, we'll keep optimizing it for free until it does.
+                  If you don't save at least <span className="font-bold text-teal-200">10 hours a week</span> or see measurable ROI within 60 days, we'll continue optimizing your automations free until you do.
                 </p>
                 <p className="text-xl text-teal-100">
-                  No gotchas, no fine print. We only win when you win.
+                  Because confidence shouldn't be a risk.
                 </p>
               </div>
 
@@ -1279,7 +1338,14 @@ export default function IntelligentAutomationPage() {
                 </div>
               </div>
 
-              <p className="mt-8 text-sm text-teal-100">
+              <a
+                href="/consultation"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-white/20 hover:bg-white/30 rounded-lg transition shadow-lg mt-8 border-2 border-white/30"
+              >
+                🟢 Get My Free Automation Blueprint—Start Risk-Free →
+              </a>
+              
+              <p className="mt-6 text-sm text-teal-100">
                 * Terms and conditions apply. See our full guarantee policy for details.
               </p>
             </motion.div>
