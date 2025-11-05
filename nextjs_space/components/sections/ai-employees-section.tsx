@@ -314,16 +314,25 @@ export function AIEmployeesSection() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl"
           >
-            8 AI Employees Ready to Transform Your Business
+            Meet Your AI Workforce—Custom-Built For Your Business, Not Copied From a Template
           </motion.h2>
           
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="mx-auto max-w-2xl text-lg text-gray-800 dark:text-gray-200"
+            className="mx-auto max-w-3xl text-lg text-gray-800 dark:text-gray-200 mb-4"
           >
-            Each AI employee is trained on 10,000+ hours of real business operations and ready to deploy within days
+            Each AI employee is engineered by MIT & Caltech graduates and trained by strategists who've advised global enterprises and scrappy SMBs. We don't sell you a one-size-fits-all bot—we build digital team members tailored to your workflows, tools, and goals.
+          </motion.p>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="mx-auto max-w-3xl text-base text-gray-700 dark:text-gray-300 font-medium"
+          >
+            Below are examples of AI roles we've designed for clients. Your business is unique—so we'll craft roles that fit your exact needs.
           </motion.p>
         </motion.div>
 
@@ -437,9 +446,16 @@ export function AIEmployeesSection() {
                     </div>
                   </div>
 
+                  {/* Disclaimer */}
+                  <div className="mt-4 pt-3 border-t border-gray-300 dark:border-gray-600">
+                    <p className="text-xs text-gray-600 dark:text-gray-400 italic">
+                      *Sample role. Your AI employee will be custom-built for your workflows and tools.
+                    </p>
+                  </div>
+
                   {/* CTA with animated arrow */}
                   <motion.div 
-                    className="flex items-center gap-2 text-sm font-semibold text-teal-700 group-hover:text-teal-900 dark:text-teal-300 dark:group-hover:text-teal-100 transition-colors"
+                    className="flex items-center gap-2 text-sm font-semibold text-teal-700 group-hover:text-teal-900 dark:text-teal-300 dark:group-hover:text-teal-100 transition-colors mt-2"
                     whileHover={{ x: 5 }}
                   >
                     <span>Learn More</span>
@@ -470,14 +486,22 @@ export function AIEmployeesSection() {
           className="mt-12 text-center"
         >
           <p className="mb-6 text-lg text-gray-900 dark:text-gray-200 font-medium">
-            Not sure which AI employee you need first?
+            Want to see what a custom AI workforce would look like for your business?
           </p>
-          <Button asChild size="lg" className="btn-primary">
-            <Link href="#calculator">
-              Take the Free Assessment
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button asChild size="lg" className="btn-primary">
+              <Link href="#calculator">
+                Take the Free Assessment
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="border-2">
+              <Link href="/consultation">
+                Book Free Consultation
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
         </motion.div>
       </div>
 

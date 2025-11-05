@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect } from 'react'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { motion } from 'framer-motion'
@@ -46,6 +47,21 @@ const staggerContainer = {
 }
 
 export default function IntelligentAutomationPage() {
+  // Update meta tags for SEO
+  useEffect(() => {
+    document.title = "Custom AI Workforce for Entrepreneurs | Work Less, Grow Faster | QuantumLeap AI"
+    
+    const metaDescription = document.querySelector('meta[name="description"]')
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Build an unstoppable business without hiring more staff. QuantumLeap designs custom AI employees tailored to your workflows—handling admin, marketing, and finance so you can focus on growth, not grind.')
+    } else {
+      const meta = document.createElement('meta')
+      meta.name = 'description'
+      meta.content = 'Build an unstoppable business without hiring more staff. QuantumLeap designs custom AI employees tailored to your workflows—handling admin, marketing, and finance so you can focus on growth, not grind.'
+      document.head.appendChild(meta)
+    }
+  }, [])
+
   const [heroRef, heroInView] = useInView({ triggerOnce: true, threshold: 0.1 })
   const [costRef, costInView] = useInView({ triggerOnce: true, threshold: 0.1 })
   const [problemRef, problemInView] = useInView({ triggerOnce: true, threshold: 0.1 })
@@ -229,58 +245,98 @@ export default function IntelligentAutomationPage() {
 
   const faqs = [
     {
-      question: "I'm barely keeping up as it is—how do I find time to implement this?",
-      answer: "You're busy. That's why we handle everything: 60 minutes on a strategy call, then we deploy and integrate your first AI employee while you focus on your business. Most see results in 3–5 days.",
+      question: "Do you provide plug-and-play AI solutions, or do you build custom?",
+      answer: "We custom-build every AI employee to fit your exact workflows, tools, and goals. You're not buying a template—you're getting a digital team member designed for how you do business. The AI employee cards you see on this page are examples of roles we've created for other clients. Your solution will be tailored to your unique needs—because no two businesses are identical.",
       cta: {
-        text: "Book a Free Consult",
+        text: "Book Your Free Discovery Call →",
         link: "/consultation"
       }
     },
     {
       question: "Will AI replace my team or help them?",
-      answer: "AI handles busywork. Your team has more time for clients and sales. Most staff are happy to lose repetitive tasks.",
+      answer: "AI replaces repetitive work—not people. Your AI Workforce handles admin, emails, data entry, and reports so your human team can focus on clients and strategy. We design each AI employee to complement your team's strengths, not replace them. Most entrepreneurs start with one or two custom AI employees and quickly see their teams become more productive and less stressed.",
       cta: {
-        text: "Book a Free Consult",
+        text: "Book a Complimentary AI Workforce Consultation →",
         link: "/consultation"
-      }
-    },
-    {
-      question: "Can I really trust a machine with sensitive client data and finances?",
-      answer: "Our AI employees use NASA-recognized security protocols. More secure than human teams—every action is logged and auditable.",
-      cta: {
-        text: "Book a Free Consult",
-        link: "/consultation"
-      }
-    },
-    {
-      question: "I've been burned by tech promises before. How is this different?",
-      answer: "AI employees do the work—not just automate software. 30-day guarantee means your risk is zero.",
-      cta: {
-        text: "Try Savings Calculator",
-        link: "#calculator"
       }
     },
     {
       question: "How fast can I see results?",
-      answer: "Most clients save 15-30 hours/week in the first month.",
+      answer: "Most businesses see measurable results within 14–30 days. Once we deploy your custom AI employee, it starts completing tasks immediately. Clients often report saving 15–30 hours per week in the first month.",
       cta: {
-        text: "Try Savings Calculator",
-        link: "#calculator"
+        text: "Schedule Your Free Consultation →",
+        link: "/consultation"
+      }
+    },
+    {
+      question: "How does setup work?",
+      answer: "We handle everything—from discovery to deployment. Here's the process: 1) You book a 30-minute strategy call, 2) We identify your top 3 time-draining tasks, 3) We design your first custom AI employee, 4) We deploy it within 7 days—no coding needed on your end.",
+      cta: {
+        text: "Book Your Complimentary Setup Session →",
+        link: "/consultation"
+      }
+    },
+    {
+      question: "Can I start with just one AI employee?",
+      answer: "Absolutely. Most founders begin with a custom virtual admin or bookkeeper to remove time-draining work. Within 30 days, 8 out of 10 clients expand their AI Workforce after seeing results. We design your first AI employee based on where you're losing the most time right now.",
+      cta: {
+        text: "Book Your Free AI Workforce Consultation →",
+        link: "/consultation"
+      }
+    },
+    {
+      question: "What if I'm not tech-savvy?",
+      answer: "No problem at all. You don't touch any code or system settings. Our team handles setup, integration, training, and updates. You just tell us what's eating your time—we'll build the solution.",
+      cta: {
+        text: "Book Your Complimentary Setup Call →",
+        link: "/consultation"
+      }
+    },
+    {
+      question: "Can AI really understand my business?",
+      answer: "Yes—because we custom-train it on your workflows. Before deployment, we train your AI employees on your tone, documents, processes, and tools. They adapt to how you do business—not the other way around.",
+      cta: {
+        text: "Book a Demo and Meet Your First Custom AI Employee Live →",
+        link: "/consultation"
+      }
+    },
+    {
+      question: "What's the risk if it doesn't work for me?",
+      answer: "None. You're protected by our 30-Day Performance Guarantee—if you don't see measurable time savings in the first month, we extend your plan free until you do.",
+      cta: {
+        text: "Start Your Free Consultation Today →",
+        link: "/consultation"
       }
     },
     {
       question: "How much does it cost?",
-      answer: "Starting at $499/month—up to 85% less than staff.",
+      answer: "Each custom AI employee starts at $399–$499/month, all-inclusive—about 85% less than hiring a human employee, with zero training, benefits, or turnover costs. For example, our custom AI Bookkeeper saves clients $50,000+ annually compared to hiring. Pricing depends on scope and complexity. We'll give you a transparent quote during your free consultation.",
       cta: {
-        text: "Try Savings Calculator",
-        link: "#calculator"
+        text: "Book a Consultation or Use the Calculator Above",
+        link: "/consultation"
       }
     },
     {
-      question: "What if I hire an AI employee and then realize I don't need it?",
-      answer: "Your 30-day guarantee covers you. If your AI employee isn't saving you time and money, your plan is free until it does.",
+      question: "What kinds of businesses benefit most?",
+      answer: "We work best with service providers and consultants, e-commerce founders, real estate and finance professionals, construction and trade businesses, and startup founders and solopreneurs. If you use tools like Google Workspace, QuickBooks, or HubSpot—you can benefit immediately. And if you use something unique, we'll build around it.",
       cta: {
-        text: "Book a Free Consult",
+        text: "Book Your Complimentary Discovery Call →",
+        link: "/consultation"
+      }
+    },
+    {
+      question: "Do I need to switch my current tools?",
+      answer: "No. Your AI employees integrate directly with your existing stack—Gmail, Outlook, QuickBooks, HubSpot, Salesforce, ClickUp, Shopify, and more. We make AI fit your current system—not the other way around.",
+      cta: {
+        text: "Request Your Integration Preview Call →",
+        link: "/consultation"
+      }
+    },
+    {
+      question: "What support do I get after setup?",
+      answer: "You get a dedicated AI Success Manager who monitors performance, optimizes workflows, and reports your ROI monthly. You'll always have real human support—not chatbots.",
+      cta: {
+        text: "Book Your Free Consultation Now →",
         link: "/consultation"
       }
     }
@@ -313,16 +369,12 @@ export default function IntelligentAutomationPage() {
               className="text-center"
             >
               <motion.h1 variants={fadeInUp} className="text-5xl lg:text-7xl font-bold mb-6 leading-tight text-white">
-                Fire Your Biggest Headache.<br />
-                <span className="text-brand-teal-400">Hire Your Most Reliable Employee</span>—Same Day.
+                You Don't Need More Staff.<br />
+                <span className="text-brand-teal-400">You Need an AI Workforce.</span>
               </motion.h1>
               
-              <motion.p variants={fadeInUp} className="text-xl lg:text-2xl text-gray-200 mb-4 max-w-4xl mx-auto">
-                Hire digital employees that work 24/7, cost 85% less than humans, and never miss a task.
-              </motion.p>
-
-              <motion.p variants={fadeInUp} className="text-2xl lg:text-3xl text-teal-200 mb-12 max-w-4xl mx-auto font-semibold">
-                Free yourself from busywork and finally run a business that runs without you.
+              <motion.p variants={fadeInUp} className="text-xl lg:text-2xl text-gray-200 mb-12 max-w-4xl mx-auto leading-relaxed">
+                Custom-built digital employees that work 24/7, cost 85% less than human hires, and never miss a task. Free yourself from busywork and finally run a business that runs without you.
               </motion.p>
               
               <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
@@ -330,7 +382,7 @@ export default function IntelligentAutomationPage() {
                   href="#calculator" 
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-brand-teal-500 hover:bg-brand-teal-600 rounded-lg transition shadow-lg shadow-brand-teal-500/50"
                 >
-                  Calculate My Savings in 60s
+                  👉 Discover What AI Can Do For Your Business
                 </a>
                 <a 
                   href="#ai-employees" 
@@ -343,7 +395,7 @@ export default function IntelligentAutomationPage() {
               {/* Trust Bar */}
               <motion.div variants={fadeInUp} className="text-center mb-12">
                 <p className="text-sm font-semibold text-teal-100 tracking-wide">
-                  Fortune 500 Strategy | MIT & Caltech Engineering | Money-Back Guarantee
+                  Fortune 500 Strategy | MIT & Caltech Engineering | Team That Secured NASA
                 </p>
               </motion.div>
 
@@ -388,24 +440,46 @@ export default function IntelligentAutomationPage() {
                   <span className="text-2xl font-bold text-white">PK</span>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold mb-2">What Is Intelligent Automation?</h3>
+                  <h3 className="text-2xl font-bold mb-2">What Is QuantumLeap AI Workforce?</h3>
                   <p className="text-sm text-brand-teal-700 dark:text-brand-teal-300 font-semibold">
-                    From the desk of Paras Khurana, Founder & CEO
+                    From the Desk of Paras Khurana, Founder & CEO
                   </p>
                 </div>
               </div>
               
               <div className="prose prose-lg dark:prose-invert max-w-none">
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-                  Intelligent Automation means connecting your business tools (CRM, email, accounting software, calendars) 
-                  so they work together automatically. Instead of copying data manually or remembering to send follow-ups, 
-                  your systems do it for you—24/7, error-free, and without you lifting a finger.
+                  Custom-designed AI employees that take over your admin, sales, and marketing work—built specifically for your business, not copied from a template.
                 </p>
                 
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-                  Think of it as giving your business a digital nervous system. When a lead fills out a form, 
-                  your CRM updates automatically, an email goes out, a task gets created, and your team gets notified—all 
-                  in seconds, without human intervention.
+                <div className="mb-6">
+                  <h4 className="font-bold text-gray-900 dark:text-white mb-3">Key Outcomes:</h4>
+                  <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                    <li className="flex items-start gap-2">
+                      <span className="text-brand-teal-500 flex-shrink-0">⏱</span>
+                      <span>Save 15–30 hours every week</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-brand-teal-500 flex-shrink-0">💰</span>
+                      <span>Cut operating costs up to 70%</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-brand-teal-500 flex-shrink-0">🧠</span>
+                      <span>Scale without new hires or training</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-brand-teal-500 flex-shrink-0">🔒</span>
+                      <span>Built by the team that secured NASA</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-brand-teal-500 flex-shrink-0">⚙️</span>
+                      <span>Deploy in 7 days—no tech skills needed</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <p className="text-sm text-gray-600 dark:text-gray-400 italic mb-4">
+                  20+ years advising Fortune 500 and SMB leaders on growth and digital transformation.
                 </p>
 
                 <div className="bg-white dark:bg-gray-900 rounded-xl p-6 border-l-4 border-brand-teal-500 mt-6">
@@ -413,7 +487,7 @@ export default function IntelligentAutomationPage() {
                     💡 Critical Insight
                   </p>
                   <p className="text-gray-900 dark:text-gray-100 font-semibold text-lg">
-                    Every manual workflow is a hidden expense center. Find it, automate it, and your margins expand.
+                    Entrepreneurs lose ~1,200 hours a year to tasks they shouldn't be doing. Your business doesn't need more people—it needs more leverage.
                   </p>
                 </div>
               </div>
@@ -532,11 +606,22 @@ export default function IntelligentAutomationPage() {
             >
               <motion.div variants={fadeInUp} className="text-center mb-16">
                 <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                  What's <span className="text-brand-teal-500">Stealing Your Time?</span>
+                  You're Working Harder Than Ever—<br /><span className="text-brand-teal-500">But Getting Less Time Back</span>
                 </h2>
-                <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                  These are the silent productivity killers draining your team's energy and your business's potential.
-                </p>
+                <div className="max-w-3xl mx-auto space-y-4">
+                  <p className="text-xl text-gray-800 dark:text-gray-200 leading-relaxed">
+                    You built your business to gain freedom.<br />
+                    Now you're the owner, assistant, and accountant—all before lunch.
+                  </p>
+                  <p className="text-lg text-gray-700 dark:text-gray-300">
+                    Every email, invoice, and customer follow-up takes your focus away from growth.<br />
+                    Hiring help means $68K+ salaries and training delays.<br />
+                    Doing it yourself means burnout.
+                  </p>
+                  <p className="text-xl text-brand-teal-700 dark:text-brand-teal-300 font-bold">
+                    If growth depends on you doing everything, you're not scaling—you're stalling.
+                  </p>
+                </div>
               </motion.div>
 
               <motion.div variants={staggerContainer} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -946,10 +1031,13 @@ export default function IntelligentAutomationPage() {
                   </span>
                 </div>
                 <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                  Calculate Your <span className="text-brand-teal-500">AI Workforce Savings</span>
+                  See How Much Your Time Is Really Worth—<br /><span className="text-brand-teal-500">And What We Could Custom-Build to Save It</span>
                 </h2>
-                <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-                  See exactly how much time and money you could save—get your free estimate in 2 minutes.
+                <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mb-4">
+                  Answer a few questions to see how much money you're losing to manual work—and which custom AI roles could eliminate it.
+                </p>
+                <p className="text-lg text-brand-teal-700 dark:text-brand-teal-300 font-semibold max-w-3xl mx-auto">
+                  Based on your inputs, here's what a custom AI workforce could do for your business:
                 </p>
               </motion.div>
 
@@ -1161,12 +1249,12 @@ export default function IntelligentAutomationPage() {
               </div>
               
               <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-                Our 30-Day "Time-Back & ROI" Guarantee
+                The Only Risk-Free Hire You'll Ever Make
               </h2>
               
               <div className="bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-2xl p-8 mb-8">
                 <p className="text-2xl text-white leading-relaxed mb-6">
-                  If you don't save at least <span className="font-bold text-teal-200">10 hours a week</span> OR see measurable ROI within 30 days, we'll continue optimizing your automations at no additional cost until you do.
+                  If your custom AI employee doesn't save you at least <span className="font-bold text-teal-200">10 hours a week</span> in the first 30 days, we'll keep optimizing it for free until it does.
                 </p>
                 <p className="text-xl text-teal-100">
                   No gotchas, no fine print. We only win when you win.

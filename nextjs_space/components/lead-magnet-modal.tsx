@@ -63,7 +63,7 @@ export function LeadMagnetModal({ isOpen, onClose }: LeadMagnetModalProps) {
       
       toast({
         title: "Success! Check your inbox 📧",
-        description: "Your free guide is on its way. Check your email in a few moments.",
+        description: "Your free AI Workforce Blueprint is on its way. Check your email in a few moments.",
       })
 
       // Auto-close after 3 seconds on success
@@ -100,13 +100,13 @@ export function LeadMagnetModal({ isOpen, onClose }: LeadMagnetModalProps) {
               <DialogHeader>
                 <DialogTitle className="text-2xl font-bold flex items-center gap-2">
                   <Download className="h-6 w-6" />
-                  Before You Go — Get Our Free Guide
+                  Before You Go—Get Your Free AI Workforce Blueprint
                 </DialogTitle>
                 <DialogDescription className="text-white/90 text-base mt-2">
                   <span className="font-semibold text-lg block mb-2">
-                    10 Workflows Every Small Business Should Automate First
+                    Learn How Entrepreneurs Are Reclaiming Time and Profits
                   </span>
-                  Download the guide that's helped 500+ SMBs reclaim time and profit — delivered instantly to your inbox.
+                  Discover how custom AI employees are designed for their exact workflows—delivered instantly to your inbox.
                 </DialogDescription>
               </DialogHeader>
             </div>
@@ -151,7 +151,7 @@ export function LeadMagnetModal({ isOpen, onClose }: LeadMagnetModalProps) {
                 ) : (
                   <>
                     <Download className="mr-2 h-5 w-5" />
-                    Send Me The Free Guide
+                    Send My Free Blueprint
                   </>
                 )}
               </Button>
@@ -172,7 +172,7 @@ export function LeadMagnetModal({ isOpen, onClose }: LeadMagnetModalProps) {
               Check Your Inbox! 📧
             </h3>
             <p className="text-gray-600">
-              Your free guide is on its way to <strong>{email}</strong>
+              Your free AI Workforce Blueprint is on its way to <strong>{email}</strong>
             </p>
             <p className="text-sm text-gray-500">
               (Don't forget to check your spam folder)
