@@ -47,20 +47,52 @@ const staggerContainer = {
 }
 
 export default function IntelligentAutomationPage() {
-  // Update meta tags for SEO
-  useEffect(() => {
-    document.title = "Custom Intelligent Automations for SMBs | Save 20+ Hours/Week & Cut Costs by 60–85% | QuantumLeap AI"
-    
-    const metaDescription = document.querySelector('meta[name="description"]')
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Stop losing time and profit to manual work. QuantumLeap\'s custom Intelligent Automations connect your tools, eliminate repetitive tasks, and save 20+ hours/week—without hiring. Run the free ROI scan and get your personalized automation blueprint.')
-    } else {
-      const meta = document.createElement('meta')
-      meta.name = 'description'
-      meta.content = 'Stop losing time and profit to manual work. QuantumLeap\'s custom Intelligent Automations connect your tools, eliminate repetitive tasks, and save 20+ hours/week—without hiring. Run the free ROI scan and get your personalized automation blueprint.'
-      document.head.appendChild(meta)
+  // Schema markup for SEO/AEO/AGO
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Intelligent Automation Services",
+    "description": "Custom intelligent automation solutions that save 20+ hours per week and cut costs by 60-85% for SMBs. Eliminate repetitive tasks and connect your business tools seamlessly.",
+    "provider": {
+      "@type": "Organization",
+      "name": "QuantumLeap AI",
+      "url": "https://quantumleap-io-55l56u.abacusai.app"
+    },
+    "areaServed": "United States",
+    "serviceType": "Business Process Automation"
+  }
+
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "QuantumLeap AI",
+    "url": "https://quantumleap-io-55l56u.abacusai.app",
+    "logo": "https://quantumleap-io-55l56u.abacusai.app/logo.png",
+    "description": "Custom AI solutions for SMBs: intelligent automation, cyber intelligence, background checks, and business transformation services.",
+    "founder": {
+      "@type": "Person",
+      "name": "Paras Khurana"
     }
-  }, [])
+  }
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://quantumleap-io-55l56u.abacusai.app"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Intelligent Automation",
+        "item": "https://quantumleap-io-55l56u.abacusai.app/intelligent-automation"
+      }
+    ]
+  }
 
   const [heroRef, heroInView] = useInView({ triggerOnce: true, threshold: 0.1 })
   const [costRef, costInView] = useInView({ triggerOnce: true, threshold: 0.1 })
@@ -349,6 +381,20 @@ export default function IntelligentAutomationPage() {
       }
     }
   ]
+
+  // FAQ Schema for AEO (Answer Engine Optimization)
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  }
 
   return (
     <div className="min-h-screen">
@@ -1447,6 +1493,24 @@ export default function IntelligentAutomationPage() {
             </motion.div>
           </div>
         </section>
+
+        {/* Schema Markup for SEO/AEO/AGO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
       </main>
 
       <Footer />

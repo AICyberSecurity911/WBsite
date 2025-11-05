@@ -48,6 +48,120 @@ export default function CyberIntelligencePage() {
   const [exitIntentEmail, setExitIntentEmail] = useState('')
   const [exitIntentSubmitted, setExitIntentSubmitted] = useState(false)
 
+  // Schema markup for SEO/AEO/AGO
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Cyber Intelligence & Penetration Testing",
+    "description": "Intelligence-grade cybersecurity audits and penetration testing that find and fix vulnerabilities before criminals exploit them. Custom security assessments for SMBs.",
+    "provider": {
+      "@type": "Organization",
+      "name": "QuantumLeap AI",
+      "url": "https://quantumleap-io-55l56u.abacusai.app"
+    },
+    "areaServed": "United States",
+    "serviceType": "Cybersecurity & Threat Intelligence"
+  }
+
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "QuantumLeap AI",
+    "url": "https://quantumleap-io-55l56u.abacusai.app",
+    "logo": "https://quantumleap-io-55l56u.abacusai.app/logo.png",
+    "description": "Custom AI solutions for SMBs: intelligent automation, cyber intelligence, background checks, and business transformation services."
+  }
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://quantumleap-io-55l56u.abacusai.app"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Cyber Intelligence",
+        "item": "https://quantumleap-io-55l56u.abacusai.app/cyber-intelligence"
+      }
+    ]
+  }
+
+  // SoftwareApplication schema for the breach checker tool
+  const softwareApplicationSchema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Email Breach Checker",
+    "description": "Free tool to check if your email has been compromised in known data breaches",
+    "applicationCategory": "SecurityApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+
+  // FAQ Schema
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why would hackers target my small business?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Because you're easier to breach and more likely to pay quickly. Criminals automate scans and go after weak doors. One leaked password can cascade into total system access. Your size isn't protection—it's the reason you're targeted."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will a penetration test disrupt our systems?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No—our tests are safe, controlled, and non-destructive. We simulate attacks in isolated environments and coordinate every step with your team. You'll see exactly what criminals see, without the damage."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is this different from our IT company's security scan?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most IT scans check for outdated software and open ports. We simulate full attack chains: how a criminal would chain small vulnerabilities into complete system access, test your team's response to phishing, and analyze dark-web credential exposure. We don't just scan—we think like the attacker who's planning your breach right now."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How soon will I get results?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Preliminary findings within 72 hours. Full report with prioritized remediation plan in 7-10 days. Every report is custom-built—no templates, no generic PDFs."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this affordable for a small business?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our audits cost a fraction of a typical ransom or recovery. One prevented breach pays for years of proactive security. Think of it as insurance—except we also fix the vulnerabilities before they're exploited."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if you don't find anything?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "If our first audit doesn't uncover at least three critical vulnerabilities or exposure points, you don't pay. We've never had to honor this guarantee—because every business has blind spots."
+        }
+      }
+    ]
+  }
+
   const testimonials = [
     {
       name: 'Harper Kingsley',
@@ -839,6 +953,28 @@ export default function CyberIntelligencePage() {
             </div>
           </div>
         )}
+
+        {/* Schema Markup for SEO/AEO/AGO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareApplicationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
       </main>
 
       <Footer />
