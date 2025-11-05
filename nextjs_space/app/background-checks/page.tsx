@@ -4,7 +4,7 @@ import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { Shield, AlertTriangle, Search, FileCheck, Users, TrendingUp, CheckCircle2, XCircle } from 'lucide-react'
+import { Shield, AlertTriangle, Search, FileCheck, Users, TrendingUp, CheckCircle2, XCircle, Eye, UserX, Lock, DollarSign } from 'lucide-react'
 import { useState } from 'react'
 
 export default function BackgroundChecksPage() {
@@ -26,13 +26,12 @@ export default function BackgroundChecksPage() {
               </div>
               
               <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight animate-fade-in-up">
-                Stop Hiring Mistakes<br />
-                <span className="text-red-500">Before They Cost You $118,958</span>
+                One Bad Hire Can Destroy<br />
+                <span className="text-red-500">Everything You've Built</span>
               </h1>
               
               <p className="text-xl lg:text-2xl text-gray-700 dark:text-gray-300 mb-8 max-w-4xl mx-auto animate-fade-in-up animation-delay-200">
-                Traditional background checks miss 73% of red flags. We go beyond criminal records to uncover 
-                the hidden risks that destroy businesses: fraud, workplace violence, theft, and toxic behavior.
+                Standard background checks only catch criminals who got caught. We reveal who they really are—their hidden behavior, red flags, and risks lurking beneath the surface.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animation-delay-400">
@@ -40,210 +39,383 @@ export default function BackgroundChecksPage() {
                   href="/consultation" 
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-red-500 hover:bg-red-600 rounded-lg transition transform hover:scale-105"
                 >
-                  Get Your Risk Assessment
+                  🔍 Uncover the Truth Before It Costs You Everything →
                 </a>
                 <a 
-                  href="#how-it-works" 
+                  href="/consultation" 
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold border-2 border-red-500 text-red-600 dark:text-red-400 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 transition"
                 >
-                  How It Works
+                  📋 Get My Confidential Risk Report →
                 </a>
               </div>
 
-              {/* Stats */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 max-w-4xl mx-auto">
-                {[
-                  { value: '73%', label: 'Red Flags Missed by Standard Checks' },
-                  { value: '$118K', label: 'Average Cost of a Bad Hire' },
-                  { value: '15 Days', label: 'To Complete Comprehensive Assessment' }
-                ].map((stat, idx) => (
-                  <Card key={idx} className="border-red-200 dark:border-red-800 bg-gradient-to-br from-red-50/50 to-pink-50/50 dark:from-red-950/20 dark:to-pink-950/20 hover:shadow-[0_0_30px_rgba(239,68,68,0.3)] transition-all duration-300">
-                    <CardContent className="p-6 text-center">
-                      <div className="text-4xl font-bold text-red-600 dark:text-red-400 mb-2">{stat.value}</div>
-                      <div className="text-sm text-gray-700 dark:text-gray-300 font-medium">{stat.label}</div>
-                    </CardContent>
-                  </Card>
-                ))}
+              {/* Trust Bar */}
+              <div className="mt-12 animate-fade-in-up animation-delay-600">
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-3 font-semibold">
+                  Fortune 500 Strategy | MIT & Caltech Engineering | Team That Helped Secure NASA
+                </p>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* TLDDR Box */}
+        <section className="py-16 bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-950/20 dark:to-pink-950/20">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <Card className="border-red-300 dark:border-red-700 shadow-[0_0_40px_rgba(239,68,68,0.2)]">
+              <CardContent className="p-8 lg:p-12">
+                <h3 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+                  What Is Beyond Background Checks?
+                </h3>
+                <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                  A deep investigation that reveals the complete picture of who someone really is—not just what shows up in public records. We analyze online behavior, uncover hidden identities, and expose risks that standard checks can't see.
+                </p>
+
+                <div className="bg-white dark:bg-gray-800 rounded-lg p-6 mb-6">
+                  <p className="font-bold text-xl mb-4 text-red-600 dark:text-red-400">Real Results for SMBs:</p>
+                  <ul className="space-y-3">
+                    {[
+                      { icon: '🛡️', text: '74% lower fraud risk within 90 days' },
+                      { icon: '💰', text: '$12M in prevented losses across clients' },
+                      { icon: '🎯', text: '63% fewer bad hires using behavioral intelligence' },
+                      { icon: '🔍', text: '4 of 5 cases uncover hidden data exposure' }
+                    ].map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-3 text-gray-700 dark:text-gray-300">
+                        <span className="text-2xl flex-shrink-0">{item.icon}</span>
+                        <span className="text-lg pt-1">{item.text}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="border-l-4 border-red-500 pl-6 py-2 bg-red-50 dark:bg-red-950/30 rounded-r-lg">
+                  <p className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-2">
+                    <em>Founder's Note—Paras Khurana, CEO</em>
+                  </p>
+                  <p className="font-bold text-lg text-gray-900 dark:text-white mb-1">Critical Insight:</p>
+                  <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                    "One unverified connection can collapse a company. Beyond Background Checks gives you clarity before you commit—because what you don't know will hurt you."
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </section>
 
         {/* The Problem Section */}
         <section className="py-20 bg-white dark:bg-gray-900">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                Why Traditional Background Checks <span className="text-red-500">Fail You</span>
+                The Dangerous Lie of a<br />
+                <span className="text-red-500">"Clean" Background Check</span>
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-                A clean criminal record doesn't mean a safe hire. Here's what standard checks miss:
-              </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  icon: <AlertTriangle className="w-12 h-12" />,
-                  title: 'Financial Fraud Patterns',
-                  description: 'Unreported bankruptcies, suspicious business closures, and financial misconduct that predict theft risk.',
-                  risk: '41% of employee theft goes undetected'
-                },
-                {
-                  icon: <Users className="w-12 h-12" />,
-                  title: 'Toxic Behavior History',
-                  description: 'Workplace complaints, harassment patterns, and interpersonal conflicts that destroy team morale.',
-                  risk: 'Costs $12,800 per toxic employee annually'
-                },
-                {
-                  icon: <Search className="w-12 h-12" />,
-                  title: 'Resume Fabrication',
-                  description: 'Fake credentials, inflated experience, and falsified employment history that 34% of applicants use.',
-                  risk: '34% of resumes contain lies'
-                },
-                {
-                  icon: <Shield className="w-12 h-12" />,
-                  title: 'Undisclosed Conflicts',
-                  description: 'Competitor connections, non-compete violations, and IP theft risks standard checks never catch.',
-                  risk: 'IP theft costs $300B annually'
-                },
-                {
-                  icon: <XCircle className="w-12 h-12" />,
-                  title: 'Social Media Red Flags',
-                  description: 'Discriminatory posts, violent content, and reputation risks hiding in their digital footprint.',
-                  risk: '70% have compromising social content'
-                },
-                {
-                  icon: <FileCheck className="w-12 h-12" />,
-                  title: 'License Verification',
-                  description: 'Expired certifications, revoked licenses, and professional sanctions that put you at legal risk.',
-                  risk: '23% have credential discrepancies'
-                }
-              ].map((item, idx) => (
-                <Card key={idx} className="border-red-200 dark:border-red-800 hover:border-red-400 dark:hover:border-red-600 transition-all duration-300 hover:shadow-[0_0_30px_rgba(239,68,68,0.2)]">
+            <div className="prose prose-lg dark:prose-invert max-w-none">
+              <div className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed space-y-6">
+                <p>
+                  You find a candidate who looks perfect.
+                </p>
+                
+                <p className="space-y-2">
+                  Resume? <strong>Impressive.</strong><br />
+                  Interview? <strong>Flawless.</strong><br />
+                  Standard background check? <strong className="text-red-500">"No criminal record found."</strong>
+                </p>
+
+                <p>
+                  You hire them. Six months later, you're dealing with:
+                </p>
+
+                <ul className="space-y-2 text-lg">
+                  <li>Harassment complaints from your team</li>
+                  <li>Missing funds nobody can trace</li>
+                  <li>Client relationships you can't repair</li>
+                </ul>
+
+                <p>
+                  They were never charged with a crime—just quietly pushed out from previous jobs. No arrest record means they pass standard checks every time.
+                </p>
+
+                <Card className="my-8 border-red-200 dark:border-red-800 bg-red-50/50 dark:bg-red-950/20">
                   <CardContent className="p-6">
-                    <div className="text-red-500 mb-4">{item.icon}</div>
-                    <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">{item.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-400 mb-4">{item.description}</p>
-                    <div className="text-sm font-semibold text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-950/30 px-3 py-2 rounded-lg">
-                      ⚠️ {item.risk}
-                    </div>
+                    <p className="text-xl font-bold mb-4 text-red-600 dark:text-red-400">
+                      Here's what most business owners don't know:
+                    </p>
+                    <p className="text-lg text-gray-700 dark:text-gray-300 mb-4">
+                      Standard background checks only search criminal databases and credit reports. They don't see:
+                    </p>
+                    <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                      <li>• Online behavior showing bias, aggression, or dishonesty</li>
+                      <li>• Fake identities used to hide past problems</li>
+                      <li>• Hidden connections to fraud networks</li>
+                      <li>• Lawsuits settled privately (not public record)</li>
+                      <li>• Information buried in places standard searches never look</li>
+                    </ul>
                   </CardContent>
                 </Card>
-              ))}
-            </div>
-          </div>
-        </section>
 
-        {/* How It Works Section */}
-        <section id="how-it-works" className="py-20 bg-gray-50 dark:bg-gray-800">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                Our <span className="text-red-500">3-Layer</span> Risk Assessment Process
-              </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-                We combine AI-powered analysis with human expertise to uncover what others miss
-              </p>
-            </div>
+                <p className="text-2xl font-bold text-red-600 dark:text-red-400">
+                  One bad hire can drain $200K+ in legal fees, lost clients, and reputation damage.
+                </p>
 
-            <div className="space-y-12">
-              {[
-                {
-                  step: '1',
-                  title: 'Layer 1: Deep Background Investigation',
-                  duration: '5-7 Days',
-                  items: [
-                    'Criminal records (federal, state, county)',
-                    'Civil litigation history',
-                    'Financial background (bankruptcies, liens, judgments)',
-                    'Employment verification (dates, titles, reasons for leaving)',
-                    'Education verification (degrees, institutions, dates)',
-                    'Professional license verification',
-                    'Motor vehicle records (if applicable)'
-                  ]
-                },
-                {
-                  step: '2',
-                  title: 'Layer 2: Digital Footprint Analysis',
-                  duration: '3-5 Days',
-                  items: [
-                    'Social media screening (public posts, photos, comments)',
-                    'Online reputation analysis',
-                    'Professional networking profiles',
-                    'News mentions and media coverage',
-                    'Domain registrations and business associations',
-                    'Dark web monitoring for exposed credentials'
-                  ]
-                },
-                {
-                  step: '3',
-                  title: 'Layer 3: Risk Assessment & Reference Intelligence',
-                  duration: '3-5 Days',
-                  items: [
-                    'Behavioral pattern analysis using AI',
-                    'Deep reference interviews (not just confirmations)',
-                    'Peer reputation assessment',
-                    'Cultural fit evaluation',
-                    'Red flag correlation across all data sources',
-                    'Predictive risk scoring',
-                    'Detailed written report with recommendations'
-                  ]
-                }
-              ].map((layer, idx) => (
-                <div key={idx} className="relative">
-                  <Card className="border-red-200 dark:border-red-800 bg-gradient-to-br from-white to-red-50/30 dark:from-gray-900 dark:to-red-950/10">
-                    <CardContent className="p-8">
-                      <div className="flex flex-col lg:flex-row gap-6">
-                        <div className="flex-shrink-0">
-                          <div className="w-20 h-20 rounded-full bg-red-500 text-white flex items-center justify-center text-3xl font-bold">
-                            {layer.step}
-                          </div>
-                        </div>
-                        <div className="flex-grow">
-                          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
-                            <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{layer.title}</h3>
-                            <span className="text-sm font-semibold text-red-600 dark:text-red-400 bg-red-100 dark:bg-red-950/50 px-3 py-1 rounded-full mt-2 sm:mt-0 inline-block">
-                              {layer.duration}
-                            </span>
-                          </div>
-                          <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                            {layer.items.map((item, itemIdx) => (
-                              <li key={itemIdx} className="flex items-start gap-2">
-                                <CheckCircle2 className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
-                                <span className="text-gray-700 dark:text-gray-300">{item}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              ))}
-            </div>
+                <p className="text-xl">
+                  The worst part? <strong>You won't see it coming if you rely on a database search that only shows who got caught.</strong>
+                </p>
 
-            <div className="mt-12 text-center">
-              <Card className="border-red-300 dark:border-red-700 bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-950/30 dark:to-pink-950/30 max-w-2xl mx-auto">
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">Complete Assessment: 10-15 Business Days</h3>
-                  <p className="text-gray-700 dark:text-gray-300 mb-6">
-                    Rush processing available for urgent hires (5-7 days) at additional cost
-                  </p>
+                <Card className="my-8 border-blue-200 dark:border-blue-800 bg-blue-50/50 dark:bg-blue-950/20">
+                  <CardContent className="p-6">
+                    <p className="text-lg italic text-gray-700 dark:text-gray-300">
+                      <strong className="not-italic">Think of it this way:</strong> Standard background checks are like checking someone's driver's license. It tells you if they got caught speeding—not if they're a good driver. We look at how they actually drive.
+                    </p>
+                  </CardContent>
+                </Card>
+
+                <div className="text-center py-8">
                   <Button 
                     asChild
                     className="bg-red-500 hover:bg-red-600 text-white px-8 py-6 text-lg"
                   >
-                    <a href="/consultation">Start Your Risk Assessment</a>
+                    <a href="/consultation">🔍 See What Standard Checks Are Missing About Your Candidate →</a>
                   </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Solution Section */}
+        <section id="how-it-works" className="py-20 bg-gray-50 dark:bg-gray-800">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+                The Only Background Check Built Like a<br />
+                <span className="text-red-500">Detective Investigation—Not a Database Search</span>
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto leading-relaxed">
+                Standard checks pull from databases anyone can access. We investigate like a private detective—following trails, connecting dots, and uncovering what's deliberately hidden.
+              </p>
+              <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mt-4">
+                While others search public records for 10 minutes, we spend days investigating behavior, connections, and hidden identities. We look where criminals hide information—in places most people don't even know exist.
+              </p>
+            </div>
+
+            <div className="space-y-8">
+              {/* Behavioral Pattern Analysis */}
+              <Card className="border-red-200 dark:border-red-800 hover:border-red-400 dark:hover:border-red-600 transition-all">
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-3">
+                    <span className="text-3xl">🔍</span> Behavioral Pattern Analysis
+                  </h3>
+                  <p className="text-lg text-gray-700 dark:text-gray-300 mb-4">
+                    We analyze how someone communicates online—their words, tone, and topics. This reveals biases, aggression patterns, and red flags that predict future problems.
+                  </p>
+                  <div className="bg-blue-50 dark:bg-blue-950/30 border-l-4 border-blue-500 p-4 rounded-r-lg">
+                    <p className="text-gray-700 dark:text-gray-300 italic">
+                      <strong className="not-italic text-blue-600 dark:text-blue-400">Translation:</strong> We read their social media, forum posts, and comments to see who they are when nobody's watching.
+                    </p>
+                  </div>
                 </CardContent>
               </Card>
+
+              {/* Hidden Identity Detection */}
+              <Card className="border-red-200 dark:border-red-800 hover:border-red-400 dark:hover:border-red-600 transition-all">
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-3">
+                    <span className="text-3xl">🎭</span> Hidden Identity Detection
+                  </h3>
+                  <p className="text-lg text-gray-700 dark:text-gray-300 mb-4">
+                    Criminals and problem employees often use fake names, altered birthdates, or multiple email addresses to hide their past. We connect these identities back to the real person.
+                  </p>
+                  <div className="bg-blue-50 dark:bg-blue-950/30 border-l-4 border-blue-500 p-4 rounded-r-lg">
+                    <p className="text-gray-700 dark:text-gray-300 italic">
+                      <strong className="not-italic text-blue-600 dark:text-blue-400">Translation:</strong> We find all their aliases and link them together—so you see their complete history, not just the clean version.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Deep Web Intelligence */}
+              <Card className="border-red-200 dark:border-red-800 hover:border-red-400 dark:hover:border-red-600 transition-all">
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-3">
+                    <span className="text-3xl">🕵️</span> Deep Web Intelligence <span className="text-base font-normal text-gray-500">(Explaining the "Hidden Internet" Simply)</span>
+                  </h3>
+                  <p className="text-lg text-gray-700 dark:text-gray-300 mb-4">
+                    Most people only search Google—but that's less than 4% of the internet. The other 96% is hidden from search engines. That's where leaked passwords, stolen data, and criminal networks operate.
+                  </p>
+                  <p className="text-lg text-gray-700 dark:text-gray-300 mb-4">
+                    We search these hidden areas to see if your candidate's information has been compromised or if they're connected to illegal activity.
+                  </p>
+                  <div className="bg-blue-50 dark:bg-blue-950/30 border-l-4 border-blue-500 p-4 rounded-r-lg mb-4">
+                    <p className="text-gray-700 dark:text-gray-300 italic mb-3">
+                      <strong className="not-italic text-blue-600 dark:text-blue-400">Translation:</strong> We look in places where criminals share stolen information and plan illegal activity—places standard checks never see.
+                    </p>
+                    <p className="text-gray-700 dark:text-gray-300">
+                      <strong className="text-red-600 dark:text-red-400">Why this matters:</strong> If their email or identity shows up in these areas, they're either a victim of identity theft (which creates legal problems for you) or actively involved in something they're hiding.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Civil & Financial Pattern Analysis */}
+              <Card className="border-red-200 dark:border-red-800 hover:border-red-400 dark:hover:border-red-600 transition-all">
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-3">
+                    <span className="text-3xl">📊</span> Civil & Financial Pattern Analysis
+                  </h3>
+                  <p className="text-lg text-gray-700 dark:text-gray-300 mb-4">
+                    We look beyond criminal records to find:
+                  </p>
+                  <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 mb-4">
+                    <li>Lawsuits filed or settled privately</li>
+                    <li>Business bankruptcies or closures</li>
+                    <li>Conflicts of interest with competitors</li>
+                    <li>Financial distress patterns that increase theft risk</li>
+                  </ul>
+                  <div className="bg-blue-50 dark:bg-blue-950/30 border-l-4 border-blue-500 p-4 rounded-r-lg">
+                    <p className="text-gray-700 dark:text-gray-300 italic">
+                      <strong className="not-italic text-blue-600 dark:text-blue-400">Translation:</strong> We find legal problems that never resulted in criminal charges—but still show a pattern of trouble.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Human Verification */}
+              <Card className="border-red-200 dark:border-red-800 hover:border-red-400 dark:hover:border-red-600 transition-all">
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-3">
+                    <span className="text-3xl">✅</span> Human Verification by Intelligence Experts
+                  </h3>
+                  <p className="text-lg text-gray-700 dark:text-gray-300 mb-4">
+                    Every investigation is reviewed by former intelligence analysts and cybersecurity experts—the same professionals who helped secure NASA systems.
+                  </p>
+                  <div className="bg-blue-50 dark:bg-blue-950/30 border-l-4 border-blue-500 p-4 rounded-r-lg">
+                    <p className="text-gray-700 dark:text-gray-300 italic">
+                      <strong className="not-italic text-blue-600 dark:text-blue-400">Translation:</strong> Real humans with military and government experience review everything—not just software pulling automated reports.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="mt-12 text-center">
+              <Button 
+                asChild
+                className="bg-red-500 hover:bg-red-600 text-white px-8 py-6 text-lg"
+              >
+                <a href="/consultation">🧠 I Need This Level of Investigation → Schedule My Confidential Briefing</a>
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Comparison Table Section */}
+        <section className="py-20 bg-white dark:bg-gray-900">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+                What You Actually Get:<br />
+                <span className="text-red-500">Database Search vs. Intelligence Investigation</span>
+              </h2>
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr className="bg-red-50 dark:bg-red-950/30">
+                    <th className="border border-red-200 dark:border-red-800 p-4 text-left font-bold text-gray-900 dark:text-white">Question</th>
+                    <th className="border border-red-200 dark:border-red-800 p-4 text-left font-bold text-gray-900 dark:text-white">Standard Background Check</th>
+                    <th className="border border-red-200 dark:border-red-800 p-4 text-left font-bold text-red-600 dark:text-red-400">QuantumLeap Intelligence Investigation</th>
+                  </tr>
+                </thead>
+                <tbody className="text-gray-700 dark:text-gray-300">
+                  {[
+                    {
+                      question: 'How long does it take?',
+                      standard: '10 minutes (automated)',
+                      quantum: '5–7 days (human-led investigation)'
+                    },
+                    {
+                      question: 'What does it search?',
+                      standard: 'Criminal databases, credit reports (4% of available data)',
+                      quantum: 'Online behavior, hidden identities, areas where criminals operate (96% of available data)'
+                    },
+                    {
+                      question: 'Who reviews it?',
+                      standard: 'Software algorithm',
+                      quantum: 'Former intelligence analysts and cybersecurity experts'
+                    },
+                    {
+                      question: 'What does it find?',
+                      standard: 'Arrests and charges (only if convicted or pending)',
+                      quantum: 'Behavior patterns, hidden problems, risks beneath the surface'
+                    },
+                    {
+                      question: "Does it catch people who've never been arrested?",
+                      standard: '❌ No—they\'ll show "clean"',
+                      quantum: '✅ Yes—we find problems before they result in arrests'
+                    },
+                    {
+                      question: 'Does it find fake identities?',
+                      standard: '❌ No—only searches the name provided',
+                      quantum: '✅ Yes—we connect aliases and hidden names'
+                    },
+                    {
+                      question: 'Does it analyze online behavior?',
+                      standard: '❌ No—only pulls records',
+                      quantum: '✅ Yes—we analyze communication patterns and red flags'
+                    },
+                    {
+                      question: 'Does it search where criminals hide information?',
+                      standard: '❌ No—only public databases',
+                      quantum: '✅ Yes—we search the 96% of internet criminals use'
+                    },
+                    {
+                      question: 'Can it find problems hidden under different names?',
+                      standard: '❌ No—only searches exact name match',
+                      quantum: '✅ Yes—we map all identities to the real person'
+                    },
+                    {
+                      question: 'What does "clean" mean?',
+                      standard: '"No arrest record found" (doesn\'t mean they\'re safe)',
+                      quantum: '"No concerning behavior, identities, or hidden risks found" (verified safe)'
+                    },
+                    {
+                      question: 'Typical cost',
+                      standard: '$50–$200',
+                      quantum: 'Custom pricing based on investigation depth'
+                    },
+                    {
+                      question: 'Best for',
+                      standard: 'Basic compliance (legal minimum)',
+                      quantum: 'Actually knowing who you\'re hiring'
+                    }
+                  ].map((row, idx) => (
+                    <tr key={idx} className="hover:bg-red-50/50 dark:hover:bg-red-950/10 transition-colors">
+                      <td className="border border-red-200 dark:border-red-800 p-4 font-semibold">{row.question}</td>
+                      <td className="border border-red-200 dark:border-red-800 p-4">{row.standard}</td>
+                      <td className="border border-red-200 dark:border-red-800 p-4 bg-red-50/30 dark:bg-red-950/20">{row.quantum}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="mt-12 text-center">
+              <Button 
+                asChild
+                className="bg-red-500 hover:bg-red-600 text-white px-8 py-6 text-lg"
+              >
+                <a href="/consultation">🧠 Which level of investigation do you need? → Schedule a consultation to discuss your role</a>
+              </Button>
             </div>
           </div>
         </section>
 
         {/* What You Get Section */}
-        <section className="py-20 bg-white dark:bg-gray-900">
+        <section className="py-20 bg-gray-50 dark:bg-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
@@ -304,67 +476,60 @@ export default function BackgroundChecksPage() {
           </div>
         </section>
 
-        {/* Pricing Section */}
-        <section className="py-20 bg-gray-50 dark:bg-gray-800">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Custom Pricing Section */}
+        <section className="py-20 bg-white dark:bg-gray-900">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                Investment That <span className="text-red-500">Pays For Itself</span>
+                Investment Tailored to<br />
+                <span className="text-red-500">Your Specific Needs</span>
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-                Compare $2,500 for comprehensive screening vs. $118,958 average cost of a bad hire
+                Every investigation is customized based on the role, risk level, and depth of search required. No one-size-fits-all packages—just the intelligence you need.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
               {[
                 {
-                  name: 'Essential',
-                  price: '$1,200',
-                  description: 'For entry-level and junior positions',
+                  name: 'Basic Verification',
+                  description: 'For lower-risk roles',
                   features: [
-                    'Layer 1: Deep Background Investigation',
-                    'Criminal records (all jurisdictions)',
-                    'Employment & education verification',
-                    'Basic reference checks',
-                    'Standard report',
-                    '10-12 business day turnaround'
+                    'Resume accuracy check',
+                    'Reference verification',
+                    'Basic online behavior scan',
+                    'Standard turnaround',
+                    'Good for: Contractors, vendors, entry-level'
                   ],
-                  cta: 'Get Started',
-                  popular: false
+                  cta: 'Get Custom Quote',
+                  icon: '📋'
                 },
                 {
-                  name: 'Comprehensive',
-                  price: '$2,500',
-                  description: 'For mid-level and senior hires',
+                  name: 'Standard Investigation',
+                  description: 'For managers & finance roles',
                   features: [
-                    'All Essential features',
-                    'Layer 2: Digital Footprint Analysis',
-                    'Social media screening',
-                    'Online reputation analysis',
-                    'Deep reference interviews',
-                    'Detailed risk assessment report',
-                    '10-15 business day turnaround'
+                    'Everything in Basic, plus:',
+                    'Identity and alias detection',
+                    'Hidden internet search',
+                    'Financial & legal pattern analysis',
+                    'Good for: Anyone with system access'
                   ],
-                  cta: 'Most Popular',
+                  cta: 'Get Custom Quote',
+                  icon: '🔍',
                   popular: true
                 },
                 {
-                  name: 'Executive',
-                  price: '$5,000',
-                  description: 'For executive and C-suite positions',
+                  name: 'Intelligence Investigation',
+                  description: 'For executives & high-risk roles',
                   features: [
-                    'All Comprehensive features',
-                    'Layer 3: Advanced Risk Intelligence',
-                    'Behavioral pattern analysis',
-                    'Competitive intelligence check',
-                    'Media and litigation search',
-                    'Executive consultation',
-                    'Priority 7-10 day turnaround',
-                    '90-day monitoring included'
+                    'Everything in Standard, plus:',
+                    'Deep behavioral analysis',
+                    'International background search',
+                    'Intelligence analyst review with threat assessment',
+                    'Good for: C-suite, partners, sensitive positions'
                   ],
-                  cta: 'Premium Protection',
-                  popular: false
+                  cta: 'Get Custom Quote',
+                  icon: '🧠'
                 }
               ].map((tier, idx) => (
                 <Card 
@@ -383,8 +548,9 @@ export default function BackgroundChecksPage() {
                     </div>
                   )}
                   <CardContent className="p-8">
+                    <div className="text-5xl mb-4">{tier.icon}</div>
                     <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">{tier.name}</h3>
-                    <div className="text-4xl font-bold text-red-500 mb-2">{tier.price}</div>
+                    <p className="text-gray-600 dark:text-gray-400 mb-6 text-lg font-semibold">Custom Pricing</p>
                     <p className="text-gray-600 dark:text-gray-400 mb-6">{tier.description}</p>
                     <ul className="space-y-3 mb-8">
                       {tier.features.map((feature, featureIdx) => (
@@ -409,56 +575,363 @@ export default function BackgroundChecksPage() {
               ))}
             </div>
 
+            <Card className="border-red-300 dark:border-red-700 bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-950/30 dark:to-pink-950/30">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white text-center">
+                  💡 The Real Cost Comparison
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                  <div className="text-center">
+                    <p className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                      Investigation Cost:
+                    </p>
+                    <p className="text-3xl font-bold text-red-600 dark:text-red-400 mb-2">
+                      Less than 2%
+                    </p>
+                    <p className="text-gray-600 dark:text-gray-400">
+                      of what a bad hire costs you
+                    </p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                      Bad Hire Cost:
+                    </p>
+                    <p className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                      $200K–$4M+
+                    </p>
+                    <p className="text-gray-600 dark:text-gray-400">
+                      in legal fees, losses, and reputation damage
+                    </p>
+                  </div>
+                </div>
+                <p className="text-center text-lg text-gray-700 dark:text-gray-300 mt-6 font-semibold">
+                  The question isn't "Can I afford an investigation?"<br />
+                  The question is <span className="text-red-600 dark:text-red-400">"Can I afford not to?"</span>
+                </p>
+              </CardContent>
+            </Card>
+
             <div className="mt-12 text-center">
-              <p className="text-gray-600 dark:text-gray-400">
-                <strong>Volume Discounts:</strong> Screen 10+ candidates annually and save 15-25%
+              <Button 
+                asChild
+                className="bg-red-500 hover:bg-red-600 text-white px-10 py-6 text-lg font-semibold"
+              >
+                <a href="/consultation">💰 Get Your Custom Quote for This Role → Schedule Free Consultation</a>
+              </Button>
+              <p className="text-gray-600 dark:text-gray-400 mt-4">
+                <strong>Volume Discounts Available:</strong> Screen 10+ candidates annually and save 15-25%
               </p>
             </div>
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section className="py-20 bg-white dark:bg-gray-900">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Comprehensive Educational FAQ Section */}
+        <section className="py-20 bg-gray-50 dark:bg-gray-800">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
                 Frequently Asked <span className="text-red-500">Questions</span>
               </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-400">
+                Everything you need to know about intelligence-grade background investigations
+              </p>
             </div>
 
             <div className="space-y-4">
               {[
                 {
-                  q: 'How is this different from standard background checks?',
-                  a: 'Standard checks only look at criminal records and basic employment verification. We go three layers deep: comprehensive background investigation, digital footprint analysis, and behavioral risk assessment. We uncover the 73% of red flags that traditional checks miss—financial fraud patterns, toxic behavior history, resume fabrication, and social media risks.'
+                  q: 'What is the "hidden internet" and why does it matter for background checks?',
+                  a: (
+                    <div className="space-y-4">
+                      <p>Think of the internet like an iceberg.</p>
+                      <p>The part you see (Google, social media, news sites) is only about 4% of what exists. The other 96% is hidden from regular search engines—not because it's all illegal, but because it's not indexed.</p>
+                      <p>This hidden area includes:</p>
+                      <ul className="list-disc list-inside space-y-2 ml-4">
+                        <li>Private databases and forums</li>
+                        <li>Leaked password and identity databases</li>
+                        <li>Places where criminals buy and sell stolen information</li>
+                        <li>Underground networks where people hide their real identities</li>
+                      </ul>
+                      <p className="font-bold text-red-600 dark:text-red-400">Why this matters for hiring:</p>
+                      <p>If someone has a shady past, they often hide it in these areas. Standard background checks only search the 4% you can Google. We search the 96% where people hide what they don't want you to find.</p>
+                      <div className="mt-4 text-center">
+                        <Button asChild className="bg-red-500 hover:bg-red-600 text-white">
+                          <a href="/consultation">🔍 Want to see if your candidate shows up in hidden areas? → Run the free risk assessment</a>
+                        </Button>
+                      </div>
+                    </div>
+                  )
                 },
                 {
-                  q: 'Is this legal and FCRA compliant?',
-                  a: 'Absolutely. We are fully compliant with the Fair Credit Reporting Act (FCRA), Equal Employment Opportunity Commission (EEOC) guidelines, and all state and federal laws. Every report includes legal compliance documentation, and we provide guidance on how to use findings in hiring decisions legally.'
+                  q: "What's the difference between a background check and what you do?",
+                  a: (
+                    <div className="space-y-4">
+                      <p className="font-bold">Standard background checks are database searches. They look for:</p>
+                      <ul className="list-disc list-inside space-y-2 ml-4">
+                        <li>Criminal records (only people who were arrested and charged)</li>
+                        <li>Credit reports (only debts reported to credit bureaus)</li>
+                        <li>Education verification (if the school responds)</li>
+                        <li>Employment verification (if previous employer confirms)</li>
+                      </ul>
+                      <p>They take about 10 minutes and cost $50–200.</p>
+                      <p className="font-bold mt-4">What we do is an intelligence investigation. We:</p>
+                      <ul className="list-disc list-inside space-y-2 ml-4">
+                        <li>Analyze online behavior and communication patterns</li>
+                        <li>Find all names/identities someone has used</li>
+                        <li>Search areas where criminals hide information</li>
+                        <li>Look for lawsuits, financial distress, and conflicts of interest</li>
+                        <li>Have human intelligence analysts review everything</li>
+                      </ul>
+                      <p>We take 5–7 days with custom pricing based on depth needed.</p>
+                      <p className="font-bold text-red-600 dark:text-red-400">The difference:</p>
+                      <p>Standard checks tell you if someone got caught. We tell you if someone is dangerous.</p>
+                      <div className="mt-4 text-center">
+                        <Button asChild className="bg-red-500 hover:bg-red-600 text-white">
+                          <a href="/consultation">💡 Which level of investigation do you need for this role? → Schedule a confidential consultation</a>
+                        </Button>
+                      </div>
+                    </div>
+                  )
                 },
                 {
-                  q: 'How long does the process take?',
-                  a: 'Our standard turnaround is 10-15 business days for a comprehensive assessment. We offer rush processing (5-7 days) for urgent hires at an additional cost. The Essential package takes 10-12 days, while Executive screening with priority service can be completed in 7-10 days.'
+                  q: 'Why would someone with "no criminal record" still be dangerous?',
+                  a: (
+                    <div className="space-y-4">
+                      <p>Because most problem employees never get arrested.</p>
+                      <p>They get fired quietly. References aren't checked thoroughly. They change jobs before anyone presses charges. They use different names to hide their past.</p>
+                      <p className="font-bold text-red-600 dark:text-red-400">Here are real patterns we've seen:</p>
+                      <div className="space-y-3">
+                        <div>
+                          <p className="font-bold">Pattern 1: The Serial Job-Hopper</p>
+                          <ul className="list-disc list-inside ml-4">
+                            <li>Fired from 4 companies in 3 years</li>
+                            <li>Never arrested (companies just let them go)</li>
+                            <li>Changes name slightly to hide employment gaps</li>
+                            <li>Standard check shows "clean"—because no criminal charges were filed</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <p className="font-bold">Pattern 2: The Harasser</p>
+                          <ul className="list-disc list-inside ml-4">
+                            <li>Multiple HR complaints at previous jobs</li>
+                            <li>Settled lawsuits privately (not public record)</li>
+                            <li>Aggressive, vindictive online behavior</li>
+                            <li>Standard check shows "clean"—because settlements are confidential</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <p className="font-bold">The lesson? No criminal record ≠ Safe to hire</p>
+                      <p>It just means they haven't been arrested yet.</p>
+                      <div className="mt-4 text-center">
+                        <Button asChild className="bg-red-500 hover:bg-red-600 text-white">
+                          <a href="/consultation">🛡️ See what hidden patterns exist for your candidate → Run the risk assessment</a>
+                        </Button>
+                      </div>
+                    </div>
+                  )
                 },
                 {
-                  q: 'What if the candidate refuses consent?',
-                  a: 'Candidates must provide written consent for background screening under FCRA. If a candidate refuses, that\'s often a red flag itself. We provide legally compliant consent forms and guidance on handling refusals. However, you cannot proceed with our screening without proper authorization.'
+                  q: 'Is this overkill for a small business?',
+                  a: (
+                    <div className="space-y-4">
+                      <p className="font-bold">Let's do the math.</p>
+                      <p>A $50K/year hire who turns out to be a problem costs you:</p>
+                      <ul className="list-disc list-inside space-y-2 ml-4">
+                        <li>$68K+ in salary and benefits (year 1)</li>
+                        <li>$45K to restart hiring (recruiter, lost productivity)</li>
+                        <li>$87K in legal fees (if they create HR problems)</li>
+                        <li>$120K+ in reputation damage (lost clients, reviews)</li>
+                      </ul>
+                      <p className="text-2xl font-bold text-red-600 dark:text-red-400">Total: $320K+ for one bad hire</p>
+                      <p>An intelligence investigation costs a fraction of that—typically less than 2% of what a bad hire costs you.</p>
+                      <p className="font-bold">Here's the truth: Small businesses can't afford mistakes.</p>
+                      <p>You don't have a PR department, a legal team on retainer, or cash reserves to absorb a $320K loss. One bad hire can destroy a small business.</p>
+                      <div className="mt-4 text-center">
+                        <Button asChild className="bg-red-500 hover:bg-red-600 text-white">
+                          <a href="/consultation">📊 See your specific cost-benefit breakdown → Schedule a free consultation</a>
+                        </Button>
+                      </div>
+                    </div>
+                  )
                 },
                 {
-                  q: 'Can I customize what you check?',
-                  a: 'Yes! While our three-layer packages cover the most critical areas, we can customize screening based on your specific needs, industry requirements, and position sensitivity. We also offer add-ons like drug testing coordination, international background checks, and continuous monitoring.'
+                  q: 'How long does an investigation take?',
+                  a: (
+                    <div className="space-y-4">
+                      <p><strong>Standard turnaround:</strong> 7–10 business days</p>
+                      <p><strong>Expedited (critical hires):</strong> 48 hours (additional fee)</p>
+                      <p className="font-bold">Here's the timeline:</p>
+                      <ul className="list-disc list-inside space-y-2 ml-4">
+                        <li><strong>Days 1–3:</strong> Online behavior analysis and identity mapping</li>
+                        <li><strong>Days 4–5:</strong> Hidden internet search and connection analysis</li>
+                        <li><strong>Days 6–7:</strong> Intelligence analyst review and report compilation</li>
+                        <li><strong>Day 8–10:</strong> Delivery and consultation to explain findings</li>
+                      </ul>
+                      <p>We'll give you preliminary red flags within 72 hours if we find something urgent.</p>
+                      <div className="mt-4 text-center">
+                        <Button asChild className="bg-red-500 hover:bg-red-600 text-white">
+                          <a href="/consultation">📅 Need faster results for a critical hire? → Schedule an expedited investigation</a>
+                        </Button>
+                      </div>
+                    </div>
+                  )
                 },
                 {
-                  q: 'What if negative information is found?',
-                  a: 'We provide context and risk assessment for all findings. Not all negative information disqualifies a candidate—it depends on relevance, recency, and severity. We include a 30-minute consultation to help you interpret findings and make an informed decision. We also guide you through FCRA\'s adverse action process if needed.'
+                  q: "What if you don't find anything concerning?",
+                  a: (
+                    <div className="space-y-4">
+                      <p>That's actually the best outcome—and it still gives you valuable information.</p>
+                      <p className="font-bold">A clean investigation report means:</p>
+                      <ul className="list-disc list-inside space-y-2 ml-4">
+                        <li>✓ No hidden identities or aliases</li>
+                        <li>✓ No concerning online behavior</li>
+                        <li>✓ No activity in areas where criminals operate</li>
+                        <li>✓ No undisclosed legal or financial problems</li>
+                        <li>✓ References are legitimate</li>
+                        <li>✓ Resume is accurate</li>
+                      </ul>
+                      <p className="font-bold text-red-600 dark:text-red-400">You get peace of mind backed by intelligence-grade due diligence.</p>
+                      <p>That peace of mind is worth it when you're trusting someone with your company's money, client relationships, confidential data, your reputation, and your team's safety.</p>
+                      <p>Think of it like insurance: You hope you never need it, but you're glad you have it.</p>
+                      <div className="mt-4 text-center">
+                        <Button asChild className="bg-red-500 hover:bg-red-600 text-white">
+                          <a href="/consultation">✅ Get peace of mind before your next hire → Start your investigation</a>
+                        </Button>
+                      </div>
+                    </div>
+                  )
                 },
                 {
-                  q: 'Do you offer ongoing monitoring after hire?',
-                  a: 'Yes! Our Executive package includes 90 days of monitoring. We also offer continuous monitoring subscriptions that alert you to criminal charges, financial issues, or other concerning developments for current employees in sensitive positions.'
+                  q: 'How much does it cost?',
+                  a: (
+                    <div className="space-y-4">
+                      <p>Pricing depends on the depth of investigation needed:</p>
+                      <div className="space-y-3">
+                        <div>
+                          <p className="font-bold">Basic Verification:</p>
+                          <ul className="list-disc list-inside ml-4">
+                            <li>Resume accuracy check, reference verification, basic online behavior scan</li>
+                            <li>Good for: Lower-risk roles, vendors, contractors</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <p className="font-bold">Standard Investigation:</p>
+                          <ul className="list-disc list-inside ml-4">
+                            <li>Everything in Basic, plus identity detection, hidden internet search, financial/legal analysis</li>
+                            <li>Good for: Managers, finance roles, anyone with system access</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <p className="font-bold">Comprehensive Intelligence Investigation:</p>
+                          <ul className="list-disc list-inside ml-4">
+                            <li>Everything in Standard, plus deep behavioral analysis, international search, intelligence analyst review</li>
+                            <li>Good for: Executives, partners, high-risk roles</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <p className="font-bold text-red-600 dark:text-red-400">Remember:</p>
+                      <p>One bad $50K hire costs $200K–$4M in losses. Our most comprehensive investigation is less than 2% of that cost.</p>
+                      <div className="mt-4 text-center">
+                        <Button asChild className="bg-red-500 hover:bg-red-600 text-white">
+                          <a href="/consultation">💰 Get a custom quote for your situation → Schedule a free consultation</a>
+                        </Button>
+                      </div>
+                    </div>
+                  )
                 },
                 {
-                  q: 'What\'s your accuracy guarantee?',
-                  a: 'We guarantee 100% accuracy on all factual data (criminal records, employment dates, education verification). If we miss something that a standard background check would have caught, we refund your full fee. Our AI-powered analysis and human verification process ensures the highest accuracy in the industry.'
+                  q: 'Is this legal? What about privacy?',
+                  a: (
+                    <div className="space-y-4">
+                      <p className="font-bold">Yes, completely legal—and we follow strict compliance protocols.</p>
+                      <p className="font-bold text-red-600 dark:text-red-400">What we do is legal because:</p>
+                      <ul className="list-disc list-inside space-y-2 ml-4">
+                        <li>We only access publicly available information and commercial databases</li>
+                        <li>We don't hack, breach, or access private accounts</li>
+                        <li>We comply with Fair Credit Reporting Act (FCRA) guidelines</li>
+                        <li>We operate under investigative journalism and due diligence laws</li>
+                        <li>Candidates consent to background checks when they apply (standard practice)</li>
+                      </ul>
+                      <p className="font-bold">What's public vs. private:</p>
+                      <p>✅ We CAN access: Social media posts, forum comments, court records, business filings, arrest records, online behavior, professional profiles</p>
+                      <p>❌ We CANNOT access: Private messages, medical records, sealed court records, banking details (without consent), email inboxes</p>
+                      <div className="mt-4 text-center">
+                        <Button asChild className="bg-red-500 hover:bg-red-600 text-white">
+                          <a href="/consultation">⚖️ Want to review our legal compliance documentation? → Request our compliance whitepaper</a>
+                        </Button>
+                      </div>
+                    </div>
+                  )
+                },
+                {
+                  q: 'What red flags should I look for that mean I need an investigation?',
+                  a: (
+                    <div className="space-y-4">
+                      <p className="font-bold">Trust your gut—but here are specific warning signs:</p>
+                      <div className="space-y-3">
+                        <div>
+                          <p className="font-bold text-red-600 dark:text-red-400">Resume Red Flags:</p>
+                          <ul className="list-disc list-inside ml-4">
+                            <li>Unexplained employment gaps (more than 6 months)</li>
+                            <li>Job titles that don't match company size</li>
+                            <li>Vague job descriptions</li>
+                            <li>Can't provide contact info for previous supervisors</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <p className="font-bold text-red-600 dark:text-red-400">Interview Red Flags:</p>
+                          <ul className="list-disc list-inside ml-4">
+                            <li>Stories don't add up or change between interviews</li>
+                            <li>Overly defensive about past jobs</li>
+                            <li>Blames previous employers excessively</li>
+                            <li>Too eager to start (pushing to skip standard processes)</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <p className="font-bold text-red-600 dark:text-red-400">Gut Feeling Red Flags:</p>
+                          <ul className="list-disc list-inside ml-4">
+                            <li>Something just feels "off"</li>
+                            <li>Too good to be true</li>
+                            <li>Pressure to hire quickly</li>
+                            <li>Inconsistent details</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <p className="font-bold">The rule: If you have 2+ red flags, investigate before hiring.</p>
+                      <div className="mt-4 text-center">
+                        <Button asChild className="bg-red-500 hover:bg-red-600 text-white">
+                          <a href="/consultation">🚨 Found red flags in your candidate? → Get an immediate risk assessment</a>
+                        </Button>
+                      </div>
+                    </div>
+                  )
+                },
+                {
+                  q: 'Do you offer any guarantees?',
+                  a: (
+                    <div className="space-y-4">
+                      <p className="font-bold text-red-600 dark:text-red-400">Yes. Our "Find It or Free" Guarantee.</p>
+                      <p>If our first investigation doesn't uncover at least three significant findings (beyond what a standard background check would show), you don't pay.</p>
+                      <p className="font-bold">Qualifying findings include:</p>
+                      <ul className="list-disc list-inside space-y-2 ml-4">
+                        <li>Hidden identities or aliases</li>
+                        <li>Concerning online behavior patterns</li>
+                        <li>Undisclosed legal or financial issues</li>
+                        <li>Resume inaccuracies or credential fraud</li>
+                        <li>Fake references</li>
+                        <li>Activity in areas where criminals operate</li>
+                        <li>Red flag behavioral patterns</li>
+                      </ul>
+                      <p className="font-bold">Why we offer this:</p>
+                      <p>Because in 15 years and 2,000+ investigations, we've found disqualifying information 73% of the time.</p>
+                      <p>Most candidates have something worth knowing—even if it's not disqualifying. Our job is to find it.</p>
+                      <div className="mt-4 text-center">
+                        <Button asChild className="bg-red-500 hover:bg-red-600 text-white">
+                          <a href="/consultation">🛡️ Start risk-free → Schedule your guaranteed investigation</a>
+                        </Button>
+                      </div>
+                    </div>
+                  )
                 }
               ].map((faq, idx) => (
                 <Card 
@@ -474,9 +947,9 @@ export default function BackgroundChecksPage() {
                       </div>
                     </div>
                     {openFaq === idx && (
-                      <p className="mt-4 text-gray-600 dark:text-gray-400 leading-relaxed">
+                      <div className="mt-4 text-gray-600 dark:text-gray-400 leading-relaxed">
                         {faq.a}
-                      </p>
+                      </div>
                     )}
                   </CardContent>
                 </Card>
@@ -489,10 +962,10 @@ export default function BackgroundChecksPage() {
         <section className="py-20 bg-gradient-to-br from-red-500 to-pink-600">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-white">
-              Don't Let a Bad Hire Cost You $118,958
+              Don't Let a Bad Hire Destroy Everything You've Built
             </h2>
             <p className="text-xl text-white/90 mb-8">
-              Invest $2,500 today to avoid a six-figure disaster tomorrow
+              Get intelligence-grade investigation before you make an offer—because what you don't know will hurt you
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
