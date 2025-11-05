@@ -1,8 +1,9 @@
-
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { Metadata } from 'next'
 import { Button } from '@/components/ui/button'
+import { ProfitPotentialCalculator } from '@/components/calculator/profit-potential-calculator'
+import { BusinessTransformationExitIntent } from '@/components/business-transformation-exit-intent'
 import { 
   TrendingUp, 
   Clock, 
@@ -16,10 +17,11 @@ import {
   CheckCircle2,
   AlertCircle,
   ArrowRight,
-  Briefcase,
   Settings,
   Scale,
-  TrendingDown
+  TrendingDown,
+  Brain,
+  ChevronRight
 } from 'lucide-react'
 import {
   Accordion,
@@ -27,16 +29,62 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import Image from 'next/image'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Business Transformation | Scale Without the Chaos',
-  description: 'Stuck at $1-5M revenue? Trapped working 70-hour weeks? We transform overwhelmed businesses into scalable, profitable machines in 12 months.',
+  title: 'Business Transformation | Custom Systems for $500K–$10M SMBs | QuantumLeap AI',
+  description: 'Stop being a prisoner of your business. QuantumLeap builds custom systems that let your business run profitably—without you drowning in operations. See your profit leak free.',
+  openGraph: {
+    title: 'Stop Being a Prisoner of Your Business | QuantumLeap Transformation',
+    description: 'Custom systems that let your business run profitably without you drowning in operations. See your profit leak in 60 seconds.',
+    type: 'website',
+    url: 'https://quantumleapai.io/business-transformation',
+  },
 }
 
 export default function BusinessTransformationPage() {
+  // FAQ Schema
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How is business transformation different from hiring a consultant or business coach?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Consultants deliver recommendations. Coaches hold you accountable. We embed with your team for 90-180 days and build the systems alongside you—not for you. We don't hand you a strategy deck and leave. We stay until your operations are fully rebuilt, your team is trained, and your business runs profitably without you in every decision."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does business transformation take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "90-180 days from kickoff to fully operational systems. Weeks 1-3: Profit forensics. Weeks 4-8: System design. Weeks 9-16: Implementation. Weeks 17-26: Optimization. Unlike consultants who disappear after recommendations, we stay until your systems are self-sustaining."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does business transformation cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Investment ranges from $35K-$150K depending on company size, engagement length, and number of systems being rebuilt. Typical ROI is 3-8x in Year 1 through recovered profit leaks ($80K-$400K/year), time savings (15-30 hours/week), and margin improvement (10-15 percentage points). Most clients break even in 90-120 days."
+        }
+      }
+    ]
+  }
+
   return (
     <div className="min-h-screen">
       <Header />
+      
+      {/* Schema Markup */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       
       <main>
         {/* Hero Section */}
@@ -50,31 +98,18 @@ export default function BusinessTransformationPage() {
               </div>
               
               <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
-                Scale Your Business<br />
-                <span className="text-purple-500">Without the Chaos</span>
+                Stop Being a Prisoner<br />
+                <span className="text-purple-500">of Your Business.</span><br />
+                Start Leading It.
               </h1>
               
               <p className="text-xl lg:text-2xl text-muted-foreground mb-8 max-w-4xl mx-auto">
-                Stuck at $1-5M revenue? Trapped working 70-hour weeks? Your business has become a prison. 
-                We transform overwhelmed businesses into scalable, profitable machines—average client sees 
-                2.4x revenue growth while cutting workweeks in half.
+                You didn't build a business to work 70-hour weeks. QuantumLeap transforms chaos into systems—so your business runs profitably <strong>without you drowning in operations</strong>.
               </p>
 
-              {/* Stats Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto mb-12">
-                <div className="p-6 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20">
-                  <div className="text-4xl font-bold text-purple-400 mb-2">2.4x</div>
-                  <div className="text-sm text-gray-300">Average Revenue Growth</div>
-                </div>
-                <div className="p-6 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20">
-                  <div className="text-4xl font-bold text-purple-400 mb-2">50%</div>
-                  <div className="text-sm text-gray-300">Workweek Reduction</div>
-                </div>
-                <div className="p-6 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20">
-                  <div className="text-4xl font-bold text-purple-400 mb-2">12 mo</div>
-                  <div className="text-sm text-gray-300">Complete Transformation</div>
-                </div>
-              </div>
+              <p className="text-sm text-muted-foreground mb-8 max-w-3xl mx-auto opacity-90">
+                <strong>Fortune 500 Strategy | MIT & Caltech Engineering | $170M+ Value Delivered Across 65+ Transformations | Custom-Built for Your Business—Not Templated</strong>
+              </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button 
@@ -83,7 +118,7 @@ export default function BusinessTransformationPage() {
                   className="bg-purple-500 hover:bg-purple-600 text-white text-lg px-8 py-6 h-auto"
                 >
                   <a href="#calculator">
-                    Get Your Free Business Assessment
+                    Show Me What's Draining My Profit
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </a>
                 </Button>
@@ -93,8 +128,8 @@ export default function BusinessTransformationPage() {
                   variant="outline"
                   className="text-lg px-8 py-6 h-auto border-purple-300 hover:border-purple-500"
                 >
-                  <a href="#framework">
-                    See The Framework
+                  <a href="/consultation">
+                    Book My Free Business Diagnosis
                   </a>
                 </Button>
               </div>
@@ -102,109 +137,102 @@ export default function BusinessTransformationPage() {
           </div>
         </section>
 
-        {/* The Growth Ceiling Section */}
+        {/* Problem Section - Emotional Storytelling */}
         <section className="section-padding bg-white dark:bg-gray-950">
           <div className="container max-w-6xl">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 bg-red-50 dark:bg-red-950/30 text-red-600 dark:text-red-400 px-4 py-2 rounded-full mb-4">
-                <AlertCircle className="h-4 w-4" />
-                <span className="text-sm font-semibold">The Brutal Truth</span>
-              </div>
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                Why You Hit the <span className="text-purple-500">Growth Ceiling</span>
+                You're Not Failing. <span className="text-purple-500">Your Systems Are.</span>
               </h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                You built a successful business, then it became your prison. Here's what's actually killing your growth:
+            </div>
+
+            <div className="prose prose-lg dark:prose-invert max-w-4xl mx-auto mb-12">
+              <p className="text-xl text-muted-foreground leading-relaxed">
+                Let me guess: You started this business to gain freedom. Now you're the bottleneck for every decision, approval, and fire drill.
+              </p>
+              
+              <p className="text-xl text-muted-foreground leading-relaxed">
+                Revenue is up—but so is your stress. You've hired good people—but they keep asking you questions. You work harder than ever—but profit margins keep shrinking.
+              </p>
+              
+              <p className="text-xl font-semibold text-gray-900 dark:text-white">
+                Here's the truth no one tells you: <span className="text-purple-600 dark:text-purple-400">Growth without systems creates chaos that looks like progress.</span>
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
-              {[
-                {
-                  icon: Clock,
-                  color: "text-red-500",
-                  title: "The Founder Bottleneck",
-                  description: "Every decision needs your approval. Every problem lands on your desk. You're working 70-hour weeks, and growth has stalled because there's only one of you.",
-                  stat: "87% of stuck businesses"
-                },
-                {
-                  icon: TrendingDown,
-                  color: "text-orange-500",
-                  title: "Profit Margin Erosion",
-                  description: "Revenue grows but profit doesn't. More clients = more overhead = more problems. You're making less per dollar than you did at $500K.",
-                  stat: "Average 23% margin drop"
-                },
-                {
-                  icon: Users,
-                  color: "text-yellow-500",
-                  title: "The Hiring Trap",
-                  description: "Bad hires cost 6+ months and $150K+. Good hires are impossible to find. Meanwhile, team dysfunction drains your energy and bank account.",
-                  stat: "$150K+ per bad hire"
-                },
-                {
-                  icon: Settings,
-                  color: "text-purple-500",
-                  title: "Systems That Don't Scale",
-                  description: "What worked at $500K breaks at $2M. Manual processes, spreadsheet chaos, and tribal knowledge that lives only in people's heads.",
-                  stat: "3-5x operational overhead"
-                },
-                {
-                  icon: BarChart3,
-                  color: "text-blue-500",
-                  title: "Strategic Blindness",
-                  description: "You're too busy fighting fires to see the forest. No data. No clarity. Just reacting to whatever crisis hits today.",
-                  stat: "62% lack key metrics"
-                },
-                {
-                  icon: Scale,
-                  color: "text-teal-500",
-                  title: "Personal Life Collapse",
-                  description: "Missed dinners. Cancelled vacations. Relationships strained. You built a business to create freedom, but it's destroying everything else.",
-                  stat: "83% burnout rate"
-                }
-              ].map((item, index) => (
-                <div
-                  key={index}
-                  className="group p-8 rounded-2xl border-2 border-gray-200 dark:border-gray-800 hover:border-purple-300 dark:hover:border-purple-700 transition-all duration-300 hover:shadow-xl"
-                >
-                  <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 mb-4 ${item.color}`}>
-                    <item.icon className="h-6 w-6" />
+            <div className="mb-16">
+              <h3 className="text-3xl font-bold mb-8 text-center">The Hidden Cost of "Winging It"</h3>
+              
+              <div className="grid md:grid-cols-2 gap-8">
+                {[
+                  {
+                    icon: Brain,
+                    title: "Decision Fatigue",
+                    description: "You're approving expenses, answering Slack messages at 11 PM, and micromanaging because no one else has clear authority. Every decision flows through you because there's no system to delegate it.",
+                    color: "text-red-500"
+                  },
+                  {
+                    icon: DollarSign,
+                    title: "Profit Leaks",
+                    description: "You're spending $8K/month on tools your team barely uses. You're losing 15–20% to inefficient workflows. You're writing off \"necessary\" expenses that a Fortune 500 would cut immediately.",
+                    color: "text-orange-500"
+                  },
+                  {
+                    icon: Users,
+                    title: "Team Frustration",
+                    description: "Your best people are leaving because they're tired of chaos. They want clarity, not \"figure it out as we go.\" You hired them to think—but they're spending 60% of their time asking for permission.",
+                    color: "text-yellow-500"
+                  },
+                  {
+                    icon: Scale,
+                    title: "Founder Burnout",
+                    description: "You haven't taken a real vacation in two years. You're answering emails during family dinner. Your partner asks, \"When does it get easier?\" and you don't have an answer.",
+                    color: "text-purple-500"
+                  }
+                ].map((item, index) => (
+                  <div
+                    key={index}
+                    className="p-8 rounded-2xl border-2 border-gray-200 dark:border-gray-800 hover:border-purple-300 dark:hover:border-purple-700 transition-all duration-300"
+                  >
+                    <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 mb-4 ${item.color}`}>
+                      <item.icon className="h-6 w-6" />
+                    </div>
+                    <h4 className="text-xl font-bold mb-3">{item.title}</h4>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {item.description}
+                    </p>
                   </div>
-                  <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-xl font-bold">{item.title}</h3>
-                    <span className="text-xs font-mono text-muted-foreground bg-gray-100 dark:bg-gray-900 px-2 py-1 rounded">
-                      {item.stat}
-                    </span>
-                  </div>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
 
-            <div className="mt-12 p-8 rounded-2xl bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30 border-2 border-purple-200 dark:border-purple-800">
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-purple-500 flex items-center justify-center text-white font-bold text-xl">
-                  !
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold mb-3">The Real Problem</h3>
-                  <p className="text-lg text-muted-foreground mb-4">
-                    You don't have a business problem—you have a <span className="font-semibold text-purple-600 dark:text-purple-400">systems and people problem</span>. 
-                    Your business model works. Your product/service is solid. But you're trying to run a $5M business with $500K infrastructure.
-                  </p>
-                  <p className="text-lg font-semibold text-gray-900 dark:text-white">
-                    That's exactly what we fix.
-                  </p>
-                </div>
-              </div>
+            <div className="p-8 rounded-2xl bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-950/30 dark:to-orange-950/30 border-2 border-red-200 dark:border-red-800 mb-8">
+              <h3 className="text-2xl font-bold mb-4">The Breaking Point</h3>
+              <p className="text-lg text-muted-foreground mb-4">
+                Most founders hit this wall between <strong>$500K–$3M in revenue</strong>. You're too big to wing it, but too small to afford the enterprise playbook. You're stuck in the middle—growing but not scaling.
+              </p>
+              <p className="text-xl font-bold text-red-600 dark:text-red-400">
+                And here's what keeps you up at night: <em>What if this is as good as it gets?</em>
+              </p>
+            </div>
+
+            <div className="text-center">
+              <Button 
+                asChild
+                size="lg"
+                className="bg-purple-500 hover:bg-purple-600 text-white text-lg px-8 py-6 h-auto"
+              >
+                <a href="#calculator">
+                  Find My Profit Leaks (Free Assessment)
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </a>
+              </Button>
             </div>
           </div>
         </section>
 
-        {/* The Transformation Framework */}
-        <section id="framework" className="section-padding bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
+        {/* Solution Section - Custom-Built Engineering */}
+        <section className="section-padding bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
           <div className="container max-w-6xl">
             <div className="text-center mb-16">
               <div className="inline-flex items-center gap-2 bg-purple-50 dark:bg-purple-950/30 text-purple-600 dark:text-purple-400 px-4 py-2 rounded-full mb-4">
@@ -212,115 +240,308 @@ export default function BusinessTransformationPage() {
                 <span className="text-sm font-semibold">Our Methodology</span>
               </div>
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                The 4-Phase <span className="text-purple-500">Transformation Framework</span>
+                We Don't Sell Transformation.<br />
+                <span className="text-purple-500">We Engineer It—Custom-Built for You.</span>
               </h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Battle-tested with 200+ businesses. Developed by former McKinsey consultants. 
-                Guaranteed results or you don't pay.
+                Most consultants hand you a 60-page strategy deck and disappear. We're different.<br /><br />
+                We embed with your team for 90–180 days. We map every workflow, question every expense, and rebuild your operations from the ground up—tailored to your industry, your team, and your growth stage.<br /><br />
+                <strong>This isn't a template. It's a custom build.</strong>
               </p>
             </div>
 
-            <div className="space-y-8">
-              {[
-                {
-                  phase: "Phase 1",
-                  duration: "Weeks 1-4",
-                  title: "Business Diagnosis & Quick Wins",
-                  icon: Target,
-                  color: "purple",
-                  outcomes: [
-                    "Complete operational audit revealing hidden profit leaks",
-                    "3-5 immediate improvements generating 15-30% efficiency gains",
-                    "Data infrastructure setup for real-time business intelligence",
-                    "Founder time audit identifying 20+ hours/week of wasted effort"
-                  ]
-                },
-                {
-                  phase: "Phase 2",
-                  duration: "Weeks 5-16",
-                  title: "Systems & AI Implementation",
-                  icon: Zap,
-                  color: "blue",
-                  outcomes: [
-                    "Deploy AI employees to eliminate 60-80% of repetitive work",
-                    "Automate customer acquisition, sales, and delivery processes",
-                    "Build scalable systems that work without you",
-                    "Reduce operational costs by 40-60% while improving quality"
-                  ]
-                },
-                {
-                  phase: "Phase 3",
-                  duration: "Weeks 17-32",
-                  title: "Team Restructuring & Scale",
-                  icon: Users,
-                  color: "teal",
-                  outcomes: [
-                    "Hire right people in right roles (or eliminate unnecessary positions)",
-                    "Implement performance systems that drive accountability",
-                    "Build leadership team that can run business without you",
-                    "Scale revenue 2-3x without proportional cost increase"
-                  ]
-                },
-                {
-                  phase: "Phase 4",
-                  duration: "Weeks 33-52",
-                  title: "Strategic Positioning & Exit Prep",
-                  icon: TrendingUp,
-                  color: "emerald",
-                  outcomes: [
-                    "Position business for premium valuation (4-7x EBITDA)",
-                    "Establish CEO-level strategic planning processes",
-                    "Create predictable, recurring revenue streams",
-                    "Build business that runs profitably without founder"
-                  ]
-                }
-              ].map((phase, index) => {
-                const colorClasses = {
-                  purple: "border-purple-300 dark:border-purple-700 bg-purple-50 dark:bg-purple-950/20",
-                  blue: "border-blue-300 dark:border-blue-700 bg-blue-50 dark:bg-blue-950/20",
-                  teal: "border-teal-300 dark:border-teal-700 bg-teal-50 dark:bg-teal-950/20",
-                  emerald: "border-emerald-300 dark:border-emerald-700 bg-emerald-50 dark:bg-emerald-950/20"
-                }
-                
-                return (
-                  <div
-                    key={index}
-                    className={`p-8 rounded-2xl border-2 ${colorClasses[phase.color as keyof typeof colorClasses]} transition-all duration-300 hover:shadow-2xl`}
-                  >
-                    <div className="flex items-start gap-6">
-                      <div className={`flex-shrink-0 w-16 h-16 rounded-xl bg-gradient-to-br ${
-                        phase.color === 'purple' ? 'from-purple-500 to-purple-600' :
-                        phase.color === 'blue' ? 'from-blue-500 to-blue-600' :
-                        phase.color === 'teal' ? 'from-teal-500 to-teal-600' :
-                        'from-emerald-500 to-emerald-600'
-                      } flex items-center justify-center text-white shadow-lg`}>
-                        <phase.icon className="h-8 w-8" />
-                      </div>
-                      
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-2">
-                          <span className="text-sm font-bold text-purple-600 dark:text-purple-400 uppercase tracking-wide">
-                            {phase.phase}
-                          </span>
-                          <span className="text-sm text-muted-foreground">•</span>
-                          <span className="text-sm text-muted-foreground">{phase.duration}</span>
+            <div className="mb-16">
+              <h3 className="text-3xl font-bold mb-8 text-center">What We Actually Do (No Consultant BS)</h3>
+              
+              <div className="space-y-8">
+                {[
+                  {
+                    phase: "Phase 1",
+                    duration: "Weeks 1–3",
+                    title: "Profit Forensics",
+                    icon: Target,
+                    color: "purple",
+                    description: "We audit where money and time are leaking:",
+                    outcomes: [
+                      "Which team members are your profit centers (and which are cost sinks)",
+                      "Which clients are actually profitable (spoiler: it's not who you think)",
+                      "Which tools and expenses are ROI-positive vs. \"nice to have\"",
+                      "Where decisions bottleneck and why"
+                    ],
+                    deliverable: "Complete profit map + prioritized leak list ranked by impact"
+                  },
+                  {
+                    phase: "Phase 2",
+                    duration: "Weeks 4–8",
+                    title: "System Architecture",
+                    icon: Settings,
+                    color: "blue",
+                    description: "We design the operating system your business needs to scale:",
+                    outcomes: [
+                      "Decision frameworks (who approves what, when, and why)",
+                      "Workflow automation (eliminate 30–40% of manual tasks)",
+                      "Financial controls (real-time visibility into cash, margins, burn)",
+                      "Team structure (clear roles, KPIs, and accountability rhythms)"
+                    ],
+                    deliverable: "Your custom operating manual—the rulebook your business runs on"
+                  },
+                  {
+                    phase: "Phase 3",
+                    duration: "Weeks 9–16",
+                    title: "Build + Deploy",
+                    icon: Zap,
+                    color: "teal",
+                    description: "We don't hand you a plan and leave. We implement it alongside your team:",
+                    outcomes: [
+                      "Integrate AI employees where humans shouldn't be doing repetitive work",
+                      "Build dashboards that show real-time profit, not just revenue",
+                      "Train your team on the new systems (not just tell them—train them)",
+                      "Run pilot workflows and iterate based on what actually works"
+                    ],
+                    deliverable: "Fully operational systems with your team trained and confident"
+                  },
+                  {
+                    phase: "Phase 4",
+                    duration: "Weeks 17–26",
+                    title: "Optimization + Handoff",
+                    icon: TrendingUp,
+                    color: "emerald",
+                    description: "We refine, measure, and ensure sustainability:",
+                    outcomes: [
+                      "Weekly performance reviews against your baseline",
+                      "Adjust workflows based on real data (not assumptions)",
+                      "Lock in standard operating procedures (SOPs) so anyone can execute",
+                      "Train internal champions to maintain systems after we leave"
+                    ],
+                    deliverable: "Self-sustaining operations + 90-day post-engagement support"
+                  }
+                ].map((phase, index) => {
+                  const colorClasses = {
+                    purple: "border-purple-300 dark:border-purple-700 bg-purple-50 dark:bg-purple-950/20",
+                    blue: "border-blue-300 dark:border-blue-700 bg-blue-50 dark:bg-blue-950/20",
+                    teal: "border-teal-300 dark:border-teal-700 bg-teal-50 dark:bg-teal-950/20",
+                    emerald: "border-emerald-300 dark:border-emerald-700 bg-emerald-50 dark:bg-emerald-950/20"
+                  }
+                  
+                  return (
+                    <div
+                      key={index}
+                      className={`p-8 rounded-2xl border-2 ${colorClasses[phase.color as keyof typeof colorClasses]} transition-all duration-300 hover:shadow-2xl`}
+                    >
+                      <div className="flex items-start gap-6">
+                        <div className={`flex-shrink-0 w-16 h-16 rounded-xl bg-gradient-to-br ${
+                          phase.color === 'purple' ? 'from-purple-500 to-purple-600' :
+                          phase.color === 'blue' ? 'from-blue-500 to-blue-600' :
+                          phase.color === 'teal' ? 'from-teal-500 to-teal-600' :
+                          'from-emerald-500 to-emerald-600'
+                        } flex items-center justify-center text-white shadow-lg`}>
+                          <phase.icon className="h-8 w-8" />
                         </div>
                         
-                        <h3 className="text-2xl font-bold mb-4">{phase.title}</h3>
-                        
-                        <div className="space-y-3">
-                          {phase.outcomes.map((outcome, i) => (
-                            <div key={i} className="flex items-start gap-3">
-                              <CheckCircle2 className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
-                              <p className="text-muted-foreground">{outcome}</p>
-                            </div>
-                          ))}
+                        <div className="flex-1">
+                          <div className="flex items-center gap-3 mb-2">
+                            <span className="text-sm font-bold text-purple-600 dark:text-purple-400 uppercase tracking-wide">
+                              {phase.phase}
+                            </span>
+                            <span className="text-sm text-muted-foreground">•</span>
+                            <span className="text-sm text-muted-foreground">{phase.duration}</span>
+                          </div>
+                          
+                          <h3 className="text-2xl font-bold mb-3">{phase.title}</h3>
+                          <p className="text-muted-foreground mb-4">{phase.description}</p>
+                          
+                          <div className="space-y-2 mb-4">
+                            {phase.outcomes.map((outcome, i) => (
+                              <div key={i} className="flex items-start gap-3">
+                                <CheckCircle2 className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                                <p className="text-muted-foreground text-sm">{outcome}</p>
+                              </div>
+                            ))}
+                          </div>
+
+                          <div className="p-4 rounded-lg bg-white/50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800">
+                            <p className="text-sm font-semibold text-gray-900 dark:text-white">
+                              <strong>Deliverable:</strong> {phase.deliverable}
+                            </p>
+                          </div>
+
+                          <div className="mt-4">
+                            <Button asChild variant="outline" size="sm">
+                              <a href="/consultation">
+                                See How This Would Work for My Business
+                                <ChevronRight className="ml-1 h-4 w-4" />
+                              </a>
+                            </Button>
+                          </div>
                         </div>
                       </div>
                     </div>
+                  )
+                })}
+              </div>
+            </div>
+
+            {/* Comparison Table */}
+            <div className="mb-12">
+              <h3 className="text-3xl font-bold mb-8 text-center">Why This Isn't Like Hiring a Consultant</h3>
+              
+              <div className="overflow-x-auto">
+                <table className="w-full border-collapse">
+                  <thead>
+                    <tr className="border-b-2 border-gray-300 dark:border-gray-700">
+                      <th className="text-left p-4 font-bold text-lg">Traditional Consulting</th>
+                      <th className="text-left p-4 font-bold text-lg text-purple-600 dark:text-purple-400">QuantumLeap Transformation</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      ["Expensive strategy decks", "Hands-on implementation with your team"],
+                      ["Generic frameworks from MBA textbooks", "Custom-built for your industry and stage"],
+                      ["Exit after recommendations", "Stay until systems are fully operational"],
+                      ["Focus on revenue growth", "Focus on profit growth and founder freedom"],
+                      ["Deliver reports", "Deliver working systems"],
+                      ["Work above your team", "Work with your team (embed, don't observe)"]
+                    ].map((row, index) => (
+                      <tr key={index} className="border-b border-gray-200 dark:border-gray-800">
+                        <td className="p-4 text-muted-foreground">{row[0]}</td>
+                        <td className="p-4 font-semibold text-gray-900 dark:text-white">{row[1]}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              <p className="text-center text-xl font-bold mt-8 text-purple-600 dark:text-purple-400">
+                We don't tell you what to do. We do it with you—and train your team so it lasts after we leave.
+              </p>
+            </div>
+
+            <div className="text-center">
+              <Button 
+                asChild
+                size="lg"
+                className="bg-purple-500 hover:bg-purple-600 text-white text-lg px-8 py-6 h-auto"
+              >
+                <a href="/consultation">
+                  Book My Business Diagnosis Call
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </a>
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Profit Calculator Section */}
+        <section id="calculator" className="section-padding bg-white dark:bg-gray-950">
+          <div className="container max-w-7xl">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 bg-purple-50 dark:bg-purple-950/30 text-purple-600 dark:text-purple-400 px-4 py-2 rounded-full mb-4">
+                <BarChart3 className="h-4 w-4" />
+                <span className="text-sm font-semibold">Interactive Tool</span>
+              </div>
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+                How Much Profit Is Hiding in<br />
+                <span className="text-purple-500">Your Business Right Now?</span>
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                Most businesses leak 15–35% of revenue to inefficiency. In 60 seconds, see how much you could recover—and what it would mean for your freedom.
+              </p>
+            </div>
+
+            <ProfitPotentialCalculator />
+          </div>
+        </section>
+
+        {/* Testimonials Section - Carousel Format */}
+        <section className="section-padding bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
+          <div className="container max-w-6xl">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+                Real Founders. <span className="text-purple-500">Real Freedom.</span>
+              </h2>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              {[
+                {
+                  name: "Peter Fernandes",
+                  company: "AAA Construction Services",
+                  quote: "After 7 years, I finally took a vacation with my family—without checking email once.",
+                  before: "70-hour weeks, invoice errors every month, couldn't delegate because systems didn't exist",
+                  after: "73% revenue growth + $15K in overcharges recovered + 40+ hours/month reclaimed",
+                  whatChanged: "Automated bookkeeping, clear decision frameworks, financial dashboards that show profit (not just revenue)",
+                  testimonial: "QuantumLeap didn't just fix my processes. They gave me my life back."
+                },
+                {
+                  name: "Masoud Nasserie",
+                  company: "Blueprint Realty Inc.",
+                  quote: "My business used to depend on me being available 24/7. Now it runs whether I'm at my desk or not.",
+                  before: "Lost leads after 5 PM, manual follow-ups, no sales system",
+                  after: "34% revenue increase in 3 months + zero missed leads + automated client nurture",
+                  whatChanged: "AI-powered lead response system, sales workflow automation, client CRM that actually works",
+                  testimonial: "I wake up to booked appointments instead of chaos. That's what systems do."
+                },
+                {
+                  name: "Sukant Trivedi",
+                  company: "Trivedi Overseas Group",
+                  quote: "I was doing $391K worth of manual work annually. QuantumLeap automated it for $21K. I got my life back.",
+                  before: "Operational overload, team asking permission for everything, no visibility into cash flow",
+                  after: "$369K annual savings + systemized operations + team empowered to make decisions",
+                  whatChanged: "Decision authority matrix, workflow automation across 7 departments, real-time financial dashboard",
+                  testimonial: "The ROI paid for itself in 6 weeks. Everything after that is pure profit."
+                },
+                {
+                  name: "Darlene Lee",
+                  company: "E-Commerce Brand Founder",
+                  quote: "I used to work until 2 a.m. processing orders and answering emails. Now my AI team handles it while I sleep.",
+                  before: "Emails and orders until 2 a.m., constant firefighting, burnout",
+                  after: "18 hours/week saved + family time restored + business scaled 40% without adding stress",
+                  whatChanged: "AI employees for customer service and order processing, automated inventory alerts, clear SOPs",
+                  testimonial: "I thought scaling meant working more. QuantumLeap showed me how to scale by working smarter."
+                }
+              ].map((testimonial, index) => (
+                <div
+                  key={index}
+                  className="p-8 rounded-2xl border-2 border-gray-200 dark:border-gray-800 hover:border-purple-300 dark:hover:border-purple-700 transition-all duration-300 bg-white dark:bg-gray-950"
+                >
+                  <div className="mb-6">
+                    <p className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                      "{testimonial.quote}"
+                    </p>
                   </div>
-                )
-              })}
+
+                  <div className="space-y-4 mb-6">
+                    <div className="p-4 rounded-lg bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-800">
+                      <p className="text-sm font-semibold text-red-600 dark:text-red-400 mb-1">Before:</p>
+                      <p className="text-sm text-muted-foreground">{testimonial.before}</p>
+                    </div>
+
+                    <div className="p-4 rounded-lg bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-800">
+                      <p className="text-sm font-semibold text-green-600 dark:text-green-400 mb-1">After:</p>
+                      <p className="text-sm text-muted-foreground">{testimonial.after}</p>
+                    </div>
+
+                    <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800">
+                      <p className="text-sm font-semibold text-blue-600 dark:text-blue-400 mb-1">What Changed:</p>
+                      <p className="text-sm text-muted-foreground">{testimonial.whatChanged}</p>
+                    </div>
+                  </div>
+
+                  <p className="text-lg font-semibold text-purple-600 dark:text-purple-400 italic mb-4">
+                    "{testimonial.testimonial}"
+                  </p>
+
+                  <div className="flex items-center gap-3 pt-4 border-t border-gray-200 dark:border-gray-800">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold">
+                      {testimonial.name.charAt(0)}
+                    </div>
+                    <div>
+                      <div className="font-semibold text-gray-900 dark:text-white">{testimonial.name}</div>
+                      <div className="text-sm text-muted-foreground">{testimonial.company}</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
 
             <div className="mt-12 text-center">
@@ -329,8 +550,8 @@ export default function BusinessTransformationPage() {
                 size="lg"
                 className="bg-purple-500 hover:bg-purple-600 text-white text-lg px-8 py-6 h-auto"
               >
-                <a href="#calculator">
-                  Start Your Transformation
+                <a href="/consultation">
+                  I Want Results Like These — Show Me How
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </a>
               </Button>
@@ -338,362 +559,570 @@ export default function BusinessTransformationPage() {
           </div>
         </section>
 
-        {/* Before/After Comparison */}
+        {/* Strategic Blog Post Section */}
         <section className="section-padding bg-white dark:bg-gray-950">
-          <div className="container max-w-6xl">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                What Actually <span className="text-purple-500">Changes</span>
+          <div className="container max-w-4xl">
+            <article className="prose prose-lg dark:prose-invert max-w-none">
+              <h2 className="text-4xl font-bold mb-6 text-center">
+                The Day I Realized My Business Was Running Me<br />
+                <span className="text-purple-500">(And How I Finally Took It Back)</span>
               </h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Real transformations from businesses just like yours
+
+              <div className="text-muted-foreground mb-12 text-center">
+                <p className="text-sm">A founder's journey from burnout to freedom</p>
+              </div>
+
+              <p className="text-xl leading-relaxed">
+                I'll never forget the moment I realized I'd built myself a very expensive prison.
               </p>
-            </div>
 
-            <div className="grid lg:grid-cols-2 gap-8">
-              {/* Before Column */}
-              <div className="space-y-6">
-                <div className="text-center mb-6">
-                  <div className="inline-flex items-center gap-2 bg-red-50 dark:bg-red-950/30 text-red-600 dark:text-red-400 px-4 py-2 rounded-full">
-                    <TrendingDown className="h-4 w-4" />
-                    <span className="font-semibold">Before Transformation</span>
-                  </div>
-                </div>
+              <p>
+                It was 11:47 PM on a Thursday. I was sitting in my home office—again—approving expense reports because "only I could do it." My daughter had asked me to read her a bedtime story three hours earlier. I'd said, "Five more minutes, sweetie."
+              </p>
 
-                {[
-                  {
-                    metric: "Revenue",
-                    value: "$2.3M/year",
-                    note: "Stagnant for 18 months"
-                  },
-                  {
-                    metric: "Founder Hours",
-                    value: "72 hours/week",
-                    note: "Burnout imminent"
-                  },
-                  {
-                    metric: "Profit Margin",
-                    value: "12%",
-                    note: "Shrinking yearly"
-                  },
-                  {
-                    metric: "Team Size",
-                    value: "23 employees",
-                    note: "High turnover, low productivity"
-                  },
-                  {
-                    metric: "Customer Acquisition",
-                    value: "$847",
-                    note: "Rising costs"
-                  },
-                  {
-                    metric: "Systems",
-                    value: "Manual chaos",
-                    note: "15+ tools, no integration"
-                  }
-                ].map((item, index) => (
-                  <div
-                    key={index}
-                    className="p-6 rounded-xl border-2 border-red-200 dark:border-red-900 bg-red-50/50 dark:bg-red-950/10"
-                  >
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
-                        {item.metric}
-                      </span>
-                      <span className="text-xs text-red-600 dark:text-red-400 bg-red-100 dark:bg-red-950/50 px-2 py-1 rounded">
-                        {item.note}
-                      </span>
-                    </div>
-                    <div className="text-2xl font-bold text-gray-900 dark:text-white">
-                      {item.value}
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <p>
+                She was asleep now. I'd missed it. Again.
+              </p>
 
-              {/* After Column */}
-              <div className="space-y-6">
-                <div className="text-center mb-6">
-                  <div className="inline-flex items-center gap-2 bg-green-50 dark:bg-green-950/30 text-green-600 dark:text-green-400 px-4 py-2 rounded-full">
-                    <TrendingUp className="h-4 w-4" />
-                    <span className="font-semibold">After 12 Months</span>
-                  </div>
-                </div>
+              <p>
+                My business was doing $2.1M a year. From the outside, I looked successful. From the inside, I was drowning.
+              </p>
 
-                {[
-                  {
-                    metric: "Revenue",
-                    value: "$5.7M/year",
-                    note: "2.5x growth",
-                    change: "+148%"
-                  },
-                  {
-                    metric: "Founder Hours",
-                    value: "28 hours/week",
-                    note: "Strategic work only",
-                    change: "-61%"
-                  },
-                  {
-                    metric: "Profit Margin",
-                    value: "31%",
-                    note: "Industry-leading",
-                    change: "+158%"
-                  },
-                  {
-                    metric: "Team Size",
-                    value: "12 people + AI",
-                    note: "High performance culture",
-                    change: "-48% cost"
-                  },
-                  {
-                    metric: "Customer Acquisition",
-                    value: "$124",
-                    note: "Automated funnel",
-                    change: "-85%"
-                  },
-                  {
-                    metric: "Systems",
-                    value: "Fully automated",
-                    note: "AI-powered operations",
-                    change: "90% automated"
-                  }
-                ].map((item, index) => (
-                  <div
-                    key={index}
-                    className="p-6 rounded-xl border-2 border-green-200 dark:border-green-900 bg-green-50/50 dark:bg-green-950/10 relative overflow-hidden"
-                  >
-                    <div className="absolute top-2 right-2">
-                      <div className="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">
-                        {item.change}
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
-                        {item.metric}
-                      </span>
-                      <span className="text-xs text-green-600 dark:text-green-400 bg-green-100 dark:bg-green-950/50 px-2 py-1 rounded">
-                        {item.note}
-                      </span>
-                    </div>
-                    <div className="text-2xl font-bold text-gray-900 dark:text-white">
-                      {item.value}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+              <p>
+                I worked 70-hour weeks. I had 14 employees who were good at their jobs—but still needed me for every decision. I couldn't take a vacation because "what if something goes wrong?" I couldn't hire someone to replace me because "no one understands the business like I do."
+              </p>
 
-            <div className="mt-12 p-8 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 text-white">
-              <div className="max-w-3xl mx-auto text-center">
-                <h3 className="text-2xl font-bold mb-4">Real Business, Real Results</h3>
-                <p className="text-lg mb-6 opacity-90">
-                  "I was drowning. 70-hour weeks, declining margins, team chaos. QuantumLeap didn't just fix my business—they gave me my life back. 
-                  Revenue doubled, I work 30 hours a week, and I actually enjoy running my company again."
+              <p>
+                The worst part? I didn't know how to fix it.
+              </p>
+
+              <p>
+                So I did what every overwhelmed founder does: I worked harder. Longer hours. More caffeine. Less sleep. I told myself, "Once we hit $3M, it'll get easier."
+              </p>
+
+              <p className="text-xl font-bold">
+                Spoiler: It didn't.
+              </p>
+
+              <h3 className="text-3xl font-bold mt-12 mb-6">The Lie We Tell Ourselves</h3>
+
+              <p>
+                Most founders believe the same lie I did:
+              </p>
+
+              <p className="text-xl italic pl-6 border-l-4 border-purple-500">
+                "If I just work harder, push a little longer, hire one more person—then I'll finally have time to think, to plan, to breathe."
+              </p>
+
+              <p>
+                But here's the brutal truth: <strong>Hard work doesn't scale. Systems do.</strong>
+              </p>
+
+              <p>
+                I learned this the hard way when I hit my breaking point.
+              </p>
+
+              <p>
+                It was during our busiest quarter. Revenue was up 40% year-over-year. We were winning. Except I was losing.
+              </p>
+
+              <p>
+                I'd gained 22 pounds from stress eating. My marriage was strained. My doctor used the word "burnout" at my annual checkup. And my best employee—the one person I trusted to think like an owner—quit.
+              </p>
+
+              <p>
+                Her exit interview destroyed me.
+              </p>
+
+              <p className="pl-6 border-l-4 border-gray-300 dark:border-gray-700">
+                "I love this company," she said. "But I can't keep working in chaos. Nothing is documented. Every process changes based on your mood that day. I need structure. I need to know what success looks like without asking you first."
+              </p>
+
+              <p>
+                She was right.
+              </p>
+
+              <p>
+                I'd built a business that couldn't run without me—not because I was essential, but because I'd never built systems to replace me.
+              </p>
+
+              <h3 className="text-3xl font-bold mt-12 mb-6">What "Systems" Actually Means (And Why Most Founders Get It Wrong)</h3>
+
+              <p>
+                When I started looking for help, everyone told me the same thing: "You need systems."
+              </p>
+
+              <p>
+                Cool. But what does that actually <em>mean</em>?
+              </p>
+
+              <p>
+                I tried:
+              </p>
+
+              <ul className="list-disc pl-6 space-y-2">
+                <li>Buying a CRM (we used 30% of it, then abandoned it)</li>
+                <li>Hiring a COO (who spent six months asking me how I wanted things done)</li>
+                <li>Reading business books (great ideas, zero implementation)</li>
+                <li>Taking a $15K course on "scaling" (learned frameworks I had no time to deploy)</li>
+              </ul>
+
+              <p>
+                Nothing stuck. Because I was treating "systems" like a product I could buy instead of what it actually is: <strong className="text-purple-600 dark:text-purple-400">the operating system that runs your business when you're not in the room.</strong>
+              </p>
+
+              <p>
+                Here's what I finally learned:
+              </p>
+
+              <p className="text-xl font-bold text-purple-600 dark:text-purple-400">
+                Systems = Documented Decisions + Automated Workflows + Clear Accountability
+              </p>
+
+              <p>
+                Not software. Not consultants. Not courses.
+              </p>
+
+              <p className="text-xl font-bold">
+                Systems are the answer to: "What happens when I'm not here?"
+              </p>
+
+              <h3 className="text-3xl font-bold mt-12 mb-6">The Transformation I Didn't Know I Needed</h3>
+
+              <p>
+                I almost didn't hire QuantumLeap.
+              </p>
+
+              <p>
+                I'd been burned by consultants before—the kind who charge $25K for a pretty PowerPoint deck, pat you on the back, and disappear. I didn't want another strategy document gathering dust.
+              </p>
+
+              <p>
+                But my advisor (who'd built and sold two companies) said: "They're different. They don't just tell you what to do—they build it with you."
+              </p>
+
+              <p>
+                So I took the call.
+              </p>
+
+              <p>
+                The first thing they said: "We're not going to fix your business. We're going to teach your business how to run without you."
+              </p>
+
+              <p>
+                I was skeptical. But desperate.
+              </p>
+
+              <h3 className="text-3xl font-bold mt-12 mb-6">What Actually Happened (The Messy, Honest Truth)</h3>
+
+              <p className="font-bold">
+                Week 1: They embedded with my team.
+              </p>
+
+              <p>
+                Not in conference rooms—on the floor. Watching how we actually worked, not how I <em>thought</em> we worked.
+              </p>
+
+              <p>
+                What they found:
+              </p>
+
+              <ul className="list-disc pl-6 space-y-2">
+                <li>I was the approval bottleneck for 83 decisions per week</li>
+                <li>My team spent 12 hours/week in meetings that produced zero outcomes</li>
+                <li>We had $9,400/month in tools we barely used (some we forgot we were paying for)</li>
+                <li>40% of our client projects were unprofitable because we never measured time-to-completion</li>
+              </ul>
+
+              <p>
+                I felt sick. This was my business, and I didn't actually understand how it worked.
+              </p>
+
+              <p className="font-bold mt-8">
+                Week 4: They showed me the "profit forensics" report.
+              </p>
+
+              <p>
+                <strong>The Good News:</strong> We were making money.
+              </p>
+
+              <p>
+                <strong>The Bad News:</strong> We were leaking $180K/year to inefficiency.
+              </p>
+
+              <ul className="list-disc pl-6 space-y-2">
+                <li>$43K in wasted tools and redundant software</li>
+                <li>$67K in unprofitable client work we kept accepting because "we need the revenue"</li>
+                <li>$38K in team hours spent on manual tasks that could be automated</li>
+                <li>$32K in decision delays (projects stalled waiting for my approval)</li>
+              </ul>
+
+              <p>
+                They didn't sugarcoat it: "You're not running a business. You're running an expensive hobby with revenue attached."
+              </p>
+
+              <p>
+                Ouch. But true.
+              </p>
+
+              <p className="font-bold mt-8">
+                Week 16: I took a vacation.
+              </p>
+
+              <p>
+                For the first time in seven years, I turned off Slack, put my phone in the hotel safe, and spent a week with my family.
+              </p>
+
+              <p>
+                And nothing broke.
+              </p>
+
+              <p>
+                My team handled a client emergency without me. They made a hiring decision. They closed two deals.
+              </p>
+
+              <p>
+                When I got back, my COO said: "We missed you. But we didn't <em>need</em> you. And that's the best compliment I can give."
+              </p>
+
+              <p>
+                She was right. That's when I knew the transformation was real.
+              </p>
+
+              <h3 className="text-3xl font-bold mt-12 mb-6">The Real ROI (That No One Talks About)</h3>
+
+              <p>
+                Everyone focuses on the financial ROI. And yes, that matters:
+              </p>
+
+              <ul className="list-disc pl-6 space-y-2">
+                <li><strong>$180K/year</strong> in recovered profit</li>
+                <li><strong>$21K</strong> investment in automation (paid back in 6 weeks)</li>
+                <li><strong>23% margin</strong> (up from 11%)</li>
+              </ul>
+
+              <p className="mt-6">
+                But the ROI that changed my life?
+              </p>
+
+              <p className="text-2xl font-bold text-purple-600 dark:text-purple-400">
+                Freedom.
+              </p>
+
+              <ul className="list-disc pl-6 space-y-2">
+                <li>I sleep through the night now</li>
+                <li>I don't check Slack at 11 PM</li>
+                <li>I took my daughter to her soccer game last Tuesday (and didn't bring my laptop)</li>
+                <li>My marriage is better because I'm present again</li>
+                <li>I'm thinking about the future instead of firefighting the present</li>
+              </ul>
+
+              <p>
+                That's what transformation actually looks like. Not a new org chart. Not a CRM. <strong>A life where your business serves you—not the other way around.</strong>
+              </p>
+
+              <h3 className="text-3xl font-bold mt-12 mb-6">The Question Every Founder Should Ask</h3>
+
+              <p>
+                Here's what I wish someone had asked me three years ago:
+              </p>
+
+              <p className="text-xl italic pl-6 border-l-4 border-purple-500">
+                "If you disappeared for 30 days, would your business grow, survive, or collapse?"
+              </p>
+
+              <p>
+                Be honest.
+              </p>
+
+              <p>
+                If the answer is "collapse" or even "survive"—you don't have a business. You have a job you can't quit.
+              </p>
+
+              <p>
+                And the scariest part? The longer you wait to fix it, the harder it gets.
+              </p>
+
+              <p>
+                Because as your business grows, the chaos compounds. More revenue = more complexity = more decisions = more bottlenecks.
+              </p>
+
+              <p className="text-xl font-bold">
+                Growth without systems doesn't set you free. It traps you deeper.
+              </p>
+
+              <div className="my-12 p-8 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 text-white">
+                <h3 className="text-3xl font-bold mb-4">See How Much Freedom You're Leaving on the Table</h3>
+                <p className="text-lg mb-6">
+                  Take 60 seconds to see:
                 </p>
-                <div className="flex items-center justify-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-white/20"></div>
-                  <div className="text-left">
-                    <div className="font-semibold">Michael R.</div>
-                    <div className="text-sm opacity-75">SaaS Company Founder, $5.7M ARR</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Investment & Pricing */}
-        <section className="section-padding bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
-          <div className="container max-w-6xl">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 bg-purple-50 dark:bg-purple-950/30 text-purple-600 dark:text-purple-400 px-4 py-2 rounded-full mb-4">
-                <DollarSign className="h-4 w-4" />
-                <span className="text-sm font-semibold">Transformation Investment</span>
-              </div>
-              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                Transparent <span className="text-purple-500">Pricing</span>
-              </h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Choose the engagement level that matches your growth ambitions. 
-                All packages include our results guarantee.
-              </p>
-            </div>
-
-            <div className="grid lg:grid-cols-3 gap-8">
-              {[
-                {
-                  name: "Accelerator",
-                  price: "$15K",
-                  duration: "3 months",
-                  bestFor: "Quick wins & foundation",
-                  features: [
-                    "Business diagnosis & audit",
-                    "Quick win implementation",
-                    "Core AI employee deployment",
-                    "Systems documentation",
-                    "Monthly strategy sessions",
-                    "Email & Slack support"
-                  ],
-                  cta: "Start Accelerator",
-                  popular: false
-                },
-                {
-                  name: "Transformation",
-                  price: "$45K",
-                  duration: "12 months",
-                  bestFor: "Complete business overhaul",
-                  features: [
-                    "Everything in Accelerator",
-                    "Full 4-phase transformation",
-                    "Unlimited AI employee deployment",
-                    "Team restructuring & hiring",
-                    "Weekly coaching calls",
-                    "24/7 priority support",
-                    "Dedicated transformation manager"
-                  ],
-                  cta: "Start Transformation",
-                  popular: true
-                },
-                {
-                  name: "Partnership",
-                  price: "Custom",
-                  duration: "12-24 months",
-                  bestFor: "Equity & revenue share",
-                  features: [
-                    "Everything in Transformation",
-                    "Fractional C-suite executives",
-                    "Private equity partnership",
-                    "Exit strategy & preparation",
-                    "On-demand consulting",
-                    "Board-level advisory"
-                  ],
-                  cta: "Discuss Partnership",
-                  popular: false
-                }
-              ].map((tier, index) => (
-                <div
-                  key={index}
-                  className={`relative p-8 rounded-2xl border-2 transition-all duration-300 hover:shadow-2xl ${
-                    tier.popular
-                      ? 'border-purple-400 dark:border-purple-600 bg-gradient-to-b from-purple-50 to-white dark:from-purple-950/30 dark:to-gray-950 shadow-xl scale-105'
-                      : 'border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950'
-                  }`}
+                <ul className="list-disc pl-6 space-y-2 mb-6">
+                  <li>How much profit is leaking from your business right now</li>
+                  <li>How many hours/week you could reclaim</li>
+                  <li>What your "Freedom Score" looks like</li>
+                </ul>
+                <Button 
+                  asChild
+                  size="lg"
+                  className="bg-white text-purple-700 hover:bg-gray-100 text-lg px-8 py-6 h-auto font-semibold"
                 >
-                  {tier.popular && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                      <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-1 rounded-full text-sm font-bold shadow-lg">
-                        MOST POPULAR
-                      </div>
-                    </div>
-                  )}
-
-                  <div className="text-center mb-6">
-                    <h3 className="text-2xl font-bold mb-2">{tier.name}</h3>
-                    <div className="mb-2">
-                      <span className="text-4xl font-bold">{tier.price}</span>
-                      <span className="text-muted-foreground ml-2">/ {tier.duration}</span>
-                    </div>
-                    <p className="text-sm text-muted-foreground">{tier.bestFor}</p>
-                  </div>
-
-                  <div className="space-y-3 mb-8">
-                    {tier.features.map((feature, i) => (
-                      <div key={i} className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-muted-foreground">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <Button
-                    asChild
-                    size="lg"
-                    className={`w-full ${
-                      tier.popular
-                        ? 'bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white'
-                        : 'bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900'
-                    }`}
-                  >
-                    <a href="#calculator">
-                      {tier.cta}
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </a>
-                  </Button>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-12 p-8 rounded-2xl border-2 border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-950/20">
-              <div className="flex items-start gap-4">
-                <Shield className="h-8 w-8 text-green-600 dark:text-green-400 flex-shrink-0" />
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Our Results Guarantee</h3>
-                  <p className="text-muted-foreground mb-4">
-                    We're so confident in our methodology that we offer a simple guarantee: If you don't see measurable improvement 
-                    in revenue, profit, or founder time within 90 days, we'll refund 100% of your investment—no questions asked.
-                  </p>
-                  <div className="grid md:grid-cols-3 gap-4 text-sm">
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
-                      <span>90-day money-back guarantee</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
-                      <span>No long-term contracts</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
-                      <span>Cancel anytime</span>
-                    </div>
-                  </div>
-                </div>
+                  <a href="#calculator">
+                    Run Your Free Profit Assessment
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </a>
+                </Button>
               </div>
-            </div>
+
+              <p className="text-lg">
+                Then let's talk about what it would take to build the business you actually wanted—before chaos took over.
+              </p>
+
+              <div className="text-center mt-8">
+                <Button 
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="text-lg px-8 py-6 h-auto"
+                >
+                  <a href="/consultation">
+                    Book Your Free Business Diagnosis
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </a>
+                </Button>
+              </div>
+            </article>
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section className="section-padding bg-white dark:bg-gray-950">
+        {/* FAQ Section with CTAs */}
+        <section className="section-padding bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
           <div className="container max-w-4xl">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                Frequently Asked <span className="text-purple-500">Questions</span>
+                What Founders Ask <span className="text-purple-500">Before Starting</span>
               </h2>
             </div>
 
             <Accordion type="single" collapsible className="space-y-4">
               {[
                 {
-                  question: "How is this different from traditional business consulting?",
-                  answer: "Traditional consultants give you a 100-page report and disappear. We roll up our sleeves and implement everything alongside your team. You get actual results, not just recommendations. Plus, our AI-first approach means you're not just optimizing old processes—you're leapfrogging to the future of business operations."
+                  question: "How is this different from hiring a consultant or business coach?",
+                  answer: (
+                    <>
+                      <p className="mb-4">
+                        Consultants deliver recommendations. Coaches hold you accountable. We do neither.
+                      </p>
+                      <p className="mb-4">
+                        We <strong>embed with your team</strong> for 90–180 days and build the systems alongside you—not for you. We don't hand you a strategy deck and leave. We stay until your operations are fully rebuilt, your team is trained, and your business runs profitably without you in every decision.
+                      </p>
+                      <p className="mb-6">
+                        Think of us as the engineering team for your business operating system.
+                      </p>
+                      <Button asChild>
+                        <a href="/consultation">
+                          See How We'd Rebuild Your Operations
+                          <ChevronRight className="ml-1 h-4 w-4" />
+                        </a>
+                      </Button>
+                    </>
+                  )
                 },
                 {
-                  question: "What if I don't have a technical team?",
-                  answer: "Perfect—that's our specialty. We handle all technical implementation, AI deployment, and systems integration. Your team doesn't need any technical expertise. We train them on the new systems and ensure smooth adoption. Most clients have zero technical background."
+                  question: "Do I need to be at a certain revenue level for this to work?",
+                  answer: (
+                    <>
+                      <p className="mb-4">
+                        No. But there's a sweet spot where transformation has the highest ROI: <strong>$500K–$10M in annual revenue.</strong>
+                      </p>
+                      <p className="mb-4">
+                        Below $500K, you're still figuring out product-market fit. Above $10M, you likely already have systems (even if they're messy).
+                      </p>
+                      <p className="mb-4">
+                        Between those numbers? You're big enough that chaos is expensive—but small enough that systems unlock exponential growth.
+                      </p>
+                      <p className="mb-6">
+                        That said, we've worked with companies as small as $300K and as large as $50M. The question isn't size—it's readiness.
+                      </p>
+                      <Button asChild>
+                        <a href="#calculator">
+                          Find Out If You're Ready
+                          <ChevronRight className="ml-1 h-4 w-4" />
+                        </a>
+                      </Button>
+                    </>
+                  )
                 },
                 {
-                  question: "How quickly will I see results?",
-                  answer: "Phase 1 delivers measurable quick wins within the first 30 days—typically 15-30% efficiency improvements and 10-20 hours/week saved immediately. Full transformation takes 12 months, but you'll see compounding improvements every quarter."
+                  question: "How long does transformation take?",
+                  answer: (
+                    <>
+                      <p className="mb-4">
+                        <strong>90–180 days</strong> from kickoff to fully operational systems.
+                      </p>
+                      <p className="mb-4">
+                        Here's the breakdown:
+                      </p>
+                      <ul className="list-disc pl-6 space-y-1 mb-4">
+                        <li><strong>Weeks 1–3:</strong> Profit forensics (find the leaks)</li>
+                        <li><strong>Weeks 4–8:</strong> System design (custom-build your operating manual)</li>
+                        <li><strong>Weeks 9–16:</strong> Implementation (deploy with your team)</li>
+                        <li><strong>Weeks 17–26:</strong> Optimization (refine, measure, lock in SOPs)</li>
+                      </ul>
+                      <p className="mb-6">
+                        Unlike consultants who disappear after recommendations, we stay until your systems are self-sustaining.
+                      </p>
+                      <Button asChild>
+                        <a href="/consultation">
+                          Map Out My 90-Day Transformation Plan
+                          <ChevronRight className="ml-1 h-4 w-4" />
+                        </a>
+                      </Button>
+                    </>
+                  )
                 },
                 {
-                  question: "What industries do you work with?",
-                  answer: "We specialize in service-based businesses, SaaS companies, professional services, and B2B companies doing $1-10M in revenue. Industries include: consulting, agencies, software, finance, legal, healthcare services, and manufacturing. If you have operational complexity and human-heavy processes, we can help."
+                  question: "Will I need to hire new people or replace my current team?",
+                  answer: (
+                    <>
+                      <p className="mb-4">
+                        No. Most teams are better than their systems.
+                      </p>
+                      <p className="mb-4">
+                        We work with your existing team and train them on the new operating model. In fact, most founders find their team performs <em>better</em> after transformation—because they finally have clarity, authority, and workflows that make sense.
+                      </p>
+                      <p className="mb-4">
+                        That said, we'll help you identify if you have the <em>right</em> people in the <em>right</em> roles. Sometimes a great salesperson is stuck doing admin work. Transformation fixes that without firing anyone.
+                      </p>
+                      <Button asChild>
+                        <a href="/consultation">
+                          Assess My Team Structure
+                          <ChevronRight className="ml-1 h-4 w-4" />
+                        </a>
+                      </Button>
+                    </>
+                  )
                 },
                 {
-                  question: "Will you need full access to our business systems?",
-                  answer: "Yes, for the diagnosis phase we need visibility into operations, finances, and systems. We sign comprehensive NDAs and take data security seriously. After diagnosis, we only need access to the specific areas we're transforming. Many clients are surprised by how non-invasive the process is."
+                  question: "What if I've tried process improvement before and it didn't stick?",
+                  answer: (
+                    <>
+                      <p className="mb-4">
+                        You're not alone. Most transformation attempts fail for one of three reasons:
+                      </p>
+                      <ol className="list-decimal pl-6 space-y-2 mb-4">
+                        <li><strong>Too generic:</strong> Off-the-shelf frameworks don't fit your unique business</li>
+                        <li><strong>No implementation support:</strong> Strategy decks gather dust without execution</li>
+                        <li><strong>No team buy-in:</strong> Systems imposed top-down get quietly ignored</li>
+                      </ol>
+                      <p className="mb-4">
+                        We solve all three:
+                      </p>
+                      <ul className="list-disc pl-6 space-y-1 mb-6">
+                        <li><strong>Custom-built</strong> (no templates)</li>
+                        <li><strong>We implement with you</strong> (not just tell you what to do)</li>
+                        <li><strong>We train your team</strong> (they help design it, so they own it)</li>
+                      </ul>
+                      <p className="mb-6">
+                        The difference? Our systems last because your team built them alongside us.
+                      </p>
+                      <Button asChild>
+                        <a href="/consultation">
+                          See Why Our Approach Sticks
+                          <ChevronRight className="ml-1 h-4 w-4" />
+                        </a>
+                      </Button>
+                    </>
+                  )
                 },
                 {
-                  question: "What happens if my business isn't a good fit?",
-                  answer: "We'll tell you upfront in the discovery call. Not every business is ready for transformation—some need different solutions first. If we're not confident we can deliver 2x+ ROI, we won't take your money. We'd rather build long-term relationships than force-fit clients."
+                  question: "How much does business transformation cost?",
+                  answer: (
+                    <>
+                      <p className="mb-4">
+                        Investment ranges from <strong>$35K–$150K</strong> depending on:
+                      </p>
+                      <ul className="list-disc pl-6 space-y-1 mb-4">
+                        <li>Company size (team, revenue, complexity)</li>
+                        <li>Engagement length (90 days vs. 180 days)</li>
+                        <li>Number of systems we're rebuilding (just finance? or finance + ops + sales + team structure?)</li>
+                      </ul>
+                      <p className="mb-4">
+                        That said, the typical ROI is <strong>3–8x in Year 1</strong> through:
+                      </p>
+                      <ul className="list-disc pl-6 space-y-1 mb-4">
+                        <li>Recovered profit leaks (usually $80K–$400K/year)</li>
+                        <li>Time savings (15–30 hours/week for the founder)</li>
+                        <li>Margin improvement (10–15 percentage points)</li>
+                      </ul>
+                      <p className="mb-6">
+                        Most clients break even in 90–120 days. Everything after that is compounding gains.
+                      </p>
+                      <Button asChild>
+                        <a href="#calculator">
+                          See What Your ROI Would Look Like
+                          <ChevronRight className="ml-1 h-4 w-4" />
+                        </a>
+                      </Button>
+                    </>
+                  )
                 },
                 {
-                  question: "Can I start with a smaller pilot project?",
-                  answer: "Absolutely. The Accelerator package (3 months) is designed exactly for this. You get quick wins, see our methodology in action, and decide if you want the full transformation. About 80% of Accelerator clients upgrade to the full program."
+                  question: "What happens after the 90–180 days?",
+                  answer: (
+                    <>
+                      <p className="mb-4">
+                        You keep running—without us.
+                      </p>
+                      <p className="mb-4">
+                        Our goal is to make ourselves obsolete. By the end of engagement:
+                      </p>
+                      <ul className="list-disc pl-6 space-y-1 mb-4">
+                        <li>Your systems are documented and operational</li>
+                        <li>Your team is trained and confident</li>
+                        <li>Your business runs profitably without you in every decision</li>
+                      </ul>
+                      <p className="mb-4">
+                        We include <strong>90 days of post-engagement support</strong> (monthly check-ins, Q&A access, system refinements). After that, you're fully self-sufficient.
+                      </p>
+                      <p className="mb-6">
+                        Some clients bring us back annually for optimization sprints. But you'll never <em>need</em> us again—because your systems are built to last.
+                      </p>
+                      <Button asChild>
+                        <a href="/consultation">
+                          See What 'Self-Sufficient' Looks Like
+                          <ChevronRight className="ml-1 h-4 w-4" />
+                        </a>
+                      </Button>
+                    </>
+                  )
                 },
                 {
-                  question: "What kind of ongoing support do you provide?",
-                  answer: "Transformation package includes weekly coaching calls, 24/7 Slack/email support, quarterly business reviews, and a dedicated transformation manager. Even after the formal engagement ends, you get 6 months of transition support to ensure everything sticks."
+                  question: "Can you guarantee results?",
+                  answer: (
+                    <>
+                      <p className="mb-4">
+                        We guarantee you'll see measurable improvement in one or more of these within 90 days:
+                      </p>
+                      <ul className="list-disc pl-6 space-y-1 mb-4">
+                        <li><strong>Profit margins</strong> (increase by 5+ percentage points)</li>
+                        <li><strong>Founder time</strong> (reclaim 10+ hours/week)</li>
+                        <li><strong>Decision bottlenecks</strong> (reduce by 50%+)</li>
+                        <li><strong>Team efficiency</strong> (documented via time tracking)</li>
+                      </ul>
+                      <p className="mb-6">
+                        If you don't hit at least one of those benchmarks, we extend the engagement at no cost until you do.
+                      </p>
+                      <p className="mb-6 font-bold text-lg">
+                        Because transformation isn't theoretical. It's measurable.
+                      </p>
+                      <Button asChild>
+                        <a href="/consultation">
+                          Lock In My Guaranteed Outcome
+                          <ChevronRight className="ml-1 h-4 w-4" />
+                        </a>
+                      </Button>
+                    </>
+                  )
                 }
               ].map((item, index) => (
                 <AccordionItem 
@@ -710,6 +1139,86 @@ export default function BusinessTransformationPage() {
                 </AccordionItem>
               ))}
             </Accordion>
+          </div>
+        </section>
+
+        {/* Guarantee Section */}
+        <section className="section-padding bg-white dark:bg-gray-950">
+          <div className="container max-w-4xl">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+                The Only <span className="text-purple-500">Risk-Free</span><br />
+                Business Transformation You'll Ever Make
+              </h2>
+            </div>
+
+            <div className="p-8 rounded-2xl border-2 border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-950/20">
+              <div className="flex items-start gap-4 mb-6">
+                <Shield className="h-12 w-12 text-green-600 dark:text-green-400 flex-shrink-0" />
+                <div>
+                  <p className="text-lg text-muted-foreground mb-4">
+                    Here's our promise: Within the first 90 days, you'll see measurable improvement in profit margins, reclaimed time, or operational efficiency—or we keep working until you do. <strong>At no additional cost.</strong>
+                  </p>
+                  <p className="text-lg text-muted-foreground mb-4">
+                    We're not consultants who deliver a report and disappear. We're engineers who build systems that last.
+                  </p>
+                  <p className="text-lg text-muted-foreground mb-4">
+                    If your business isn't running more profitably and more predictably by the end of our engagement, we failed—not you.
+                  </p>
+                  <p className="text-xl font-bold text-gray-900 dark:text-white">
+                    And we don't get paid for failure.
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-6 pt-6 border-t border-green-300 dark:border-green-700">
+                <p className="text-sm text-muted-foreground mb-4">
+                  In 8 years and 65+ transformations, we've never had to extend an engagement at our cost. Not because we're lucky—because we only take on clients we know we can transform.
+                </p>
+                
+                <div className="flex justify-center">
+                  <Button 
+                    asChild
+                    size="lg"
+                    className="bg-green-600 hover:bg-green-700 text-white text-lg px-8 py-6 h-auto"
+                  >
+                    <a href="/consultation">
+                      Start My Risk-Free Transformation
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Trusted By Section - Enhanced */}
+        <section className="section-padding bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
+          <div className="container max-w-6xl">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+                Trusted by Organizations That <span className="text-purple-500">Demand Excellence</span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                Our team has served in strategic roles at Fortune 500 companies and built systems that processed billions in transactions. We bring that enterprise rigor to ambitious SMBs—<strong>custom-built for your business, not templated from a playbook.</strong>
+              </p>
+            </div>
+
+            <div className="grid grid-cols-3 md:grid-cols-5 gap-8 items-center opacity-60 hover:opacity-100 transition-opacity">
+              {['ibm', 'deloitte', 'bmo', 'cibc', 'ge', 'scotiabank', 'nasa', 'allianz', 'hsbc', 'husky', 'rim', 'ing', 'ciis', 'icici', 'ucol'].map((logo, index) => (
+                <div key={index} className="flex items-center justify-center">
+                  <div className="relative w-24 h-12">
+                    <Image
+                      src={`/company-logos/${logo}.png`}
+                      alt={`${logo} logo`}
+                      fill
+                      className="object-contain filter grayscale hover:grayscale-0 transition-all"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -730,7 +1239,7 @@ export default function BusinessTransformationPage() {
                 className="bg-white text-purple-700 hover:bg-gray-100 text-lg px-8 py-6 h-auto font-semibold"
               >
                 <a href="#calculator">
-                  Get Your Free Business Assessment
+                  See My Profit Potential
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </a>
               </Button>
@@ -757,6 +1266,7 @@ export default function BusinessTransformationPage() {
       </main>
 
       <Footer />
+      <BusinessTransformationExitIntent />
     </div>
   )
 }
