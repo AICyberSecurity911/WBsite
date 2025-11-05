@@ -11,6 +11,137 @@ import { BackgroundChecksExitIntent } from '@/components/background-checks-exit-
 export default function BackgroundChecksPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
 
+  // Schema markup for SEO/AEO/AGO
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Beyond Background Checks - Intelligence-Grade Investigations",
+    "description": "Intelligence-grade background investigations that reveal hidden behavior, red flags, and risks that standard background checks miss. Custom investigations for SMB hiring decisions.",
+    "provider": {
+      "@type": "Organization",
+      "name": "QuantumLeap AI",
+      "url": "https://quantumleap-io-55l56u.abacusai.app"
+    },
+    "areaServed": "United States",
+    "serviceType": "Background Investigation Services"
+  }
+
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "QuantumLeap AI",
+    "url": "https://quantumleap-io-55l56u.abacusai.app",
+    "logo": "https://quantumleap-io-55l56u.abacusai.app/logo.png",
+    "description": "Custom AI solutions for SMBs: intelligent automation, cyber intelligence, background checks, and business transformation services."
+  }
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://quantumleap-io-55l56u.abacusai.app"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Background Checks",
+        "item": "https://quantumleap-io-55l56u.abacusai.app/background-checks"
+      }
+    ]
+  }
+
+  // FAQ Schema - extracting text content from FAQ items
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the hidden internet and why does it matter for background checks?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The internet is like an iceberg. The visible part (Google, social media, news sites) is only about 4% of what exists. The other 96% is hidden from regular search engines and includes private databases, leaked password databases, places where criminals buy and sell stolen information, and underground networks where people hide their real identities. If someone has a shady past, they often hide it in these areas. Standard background checks only search the 4% you can Google. We search the 96% where people hide what they don't want you to find."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What's the difference between a background check and what you do?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Standard background checks are database searches that look for criminal records, credit reports, education verification, and employment verification. They take about 10 minutes and cost $50-200. Our intelligence investigations analyze online behavior and communication patterns, find all names/identities someone has used, search areas where criminals hide information, look for lawsuits and financial distress, and have human intelligence analysts review everything. We take 5-7 days with custom pricing. The difference: Standard checks tell you if someone got caught. We tell you if someone is dangerous."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why would someone with no criminal record still be dangerous?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Because most problem employees never get arrested. They get fired quietly, references aren't checked thoroughly, they change jobs before anyone presses charges, or they use different names to hide their past. No criminal record doesn't mean safe to hire—it just means they haven't been arrested yet."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this overkill for a small business?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A $50K/year hire who turns out to be a problem costs you $68K+ in salary and benefits, $45K to restart hiring, $87K in legal fees if they create HR problems, and $120K+ in reputation damage for a total of $320K+ for one bad hire. An intelligence investigation costs a fraction of that—typically less than 2% of what a bad hire costs you. Small businesses can't afford mistakes because one bad hire can destroy a small business."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does an investigation take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Standard turnaround is 7-10 business days. Expedited service for critical hires is available in 48 hours with an additional fee. We provide preliminary red flags within 72 hours if we find something urgent."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if you don't find anything concerning?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A clean investigation report means no hidden identities, no concerning online behavior, no activity in criminal areas, no undisclosed legal or financial problems, legitimate references, and an accurate resume. You get peace of mind backed by intelligence-grade due diligence when you're trusting someone with your company's money, clients, data, reputation, and team safety."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does it cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pricing depends on the depth of investigation needed: Basic Verification (resume accuracy, reference verification, basic online behavior scan) for lower-risk roles; Standard Investigation (identity detection, hidden internet search, financial/legal analysis) for managers and finance roles; Comprehensive Intelligence Investigation (deep behavioral analysis, international search, intelligence analyst review) for executives and high-risk roles. One bad $50K hire costs $200K-$4M in losses. Our most comprehensive investigation is less than 2% of that cost."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this legal? What about privacy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, completely legal. We follow strict compliance protocols and only access publicly available information and commercial databases. We don't hack, breach, or access private accounts. We comply with Fair Credit Reporting Act (FCRA) guidelines and operate under investigative journalism and due diligence laws. Candidates consent to background checks when they apply."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What red flags should I look for that mean I need an investigation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Resume red flags include unexplained employment gaps (more than 6 months), job titles that don't match company size, vague job descriptions, and inability to provide contact info for previous supervisors. Interview red flags include stories that don't add up or change between interviews, overly defensive about past jobs, blames previous employers excessively, and too eager to start. Gut feeling red flags include something feels off, too good to be true, pressure to hire quickly, and inconsistent details. The rule: If you have 2+ red flags, investigate before hiring."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer any guarantees?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Our Find It or Free Guarantee. If our first investigation doesn't uncover at least three significant findings beyond what a standard background check would show, you don't pay. In 15 years and 2,000+ investigations, we've found disqualifying information 73% of the time."
+        }
+      }
+    ]
+  }
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -1159,6 +1290,24 @@ export default function BackgroundChecksPage() {
             </div>
           </div>
         </section>
+
+        {/* Schema Markup for SEO/AEO/AGO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
       </main>
 
       <Footer />

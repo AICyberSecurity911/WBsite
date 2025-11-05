@@ -44,6 +44,55 @@ export const metadata: Metadata = {
 }
 
 export default function BusinessTransformationPage() {
+  // Service Schema for SEO/AGO
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Business Transformation Services",
+    "description": "Custom systems that let your business run profitably without you drowning in operations. 90-180 day transformation programs for $500K-$10M SMBs.",
+    "provider": {
+      "@type": "Organization",
+      "name": "QuantumLeap AI",
+      "url": "https://quantumleap-io-55l56u.abacusai.app"
+    },
+    "areaServed": "United States",
+    "serviceType": "Business Consulting & Transformation"
+  }
+
+  // Organization Schema
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "QuantumLeap AI",
+    "url": "https://quantumleap-io-55l56u.abacusai.app",
+    "logo": "https://quantumleap-io-55l56u.abacusai.app/logo.png",
+    "description": "Custom AI solutions for SMBs: intelligent automation, cyber intelligence, background checks, and business transformation services.",
+    "founder": {
+      "@type": "Person",
+      "name": "Paras Khurana"
+    }
+  }
+
+  // Breadcrumb Schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://quantumleap-io-55l56u.abacusai.app"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Business Transformation",
+        "item": "https://quantumleap-io-55l56u.abacusai.app/business-transformation"
+      }
+    ]
+  }
+
   // FAQ Schema
   const faqSchema = {
     "@context": "https://schema.org",
@@ -80,7 +129,19 @@ export default function BusinessTransformationPage() {
     <div className="min-h-screen">
       <Header />
       
-      {/* Schema Markup */}
+      {/* Schema Markup for SEO/AEO/AGO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

@@ -1,30 +1,32 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Beyond Background Checks | Uncover Hidden Risks Before Hiring | QuantumLeap AI',
-  description: 'Standard background checks miss the truth. QuantumLeap\'s intelligence-grade investigations reveal hidden behavior, fake identities, and risks lurking beneath the surface—before they destroy your business.',
-  keywords: [
-    'background check alternatives',
-    'deep background investigation',
-    'hire verification service',
-    'employee vetting service',
-    'pre-employment investigation',
-    'hidden identity detection',
-    'behavioral background check',
-    'intelligence investigation',
-    'fraud prevention hiring',
-    'risk assessment before hiring'
-  ],
+  title: 'Beyond Background Checks | Intelligence-Grade Investigations | QuantumLeap AI',
+  description: 'One bad hire can destroy everything you built. Beyond Background Checks reveals who they really are—hidden behavior, red flags, and risks beneath the surface. Get your risk report.',
+  keywords: 'background checks, intelligence investigations, deep background checks, hiring verification, pre-employment screening, candidate screening, SMB hiring',
   openGraph: {
-    title: 'Beyond Background Checks | Uncover Hidden Risks Before Hiring',
-    description: 'Intelligence-grade investigations that reveal what standard checks miss—hidden behavior, fake identities, and risks that could destroy your business.',
+    title: 'Beyond Background Checks | Reveal Hidden Risks Before Hiring',
+    description: 'Standard checks only catch criminals who got caught. We reveal who they really are. Get your confidential risk report.',
     type: 'website',
+    url: 'https://quantumleap-io-55l56u.abacusai.app/background-checks',
+    images: [
+      {
+        url: 'https://quantumleap-io-55l56u.abacusai.app/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'QuantumLeap AI - Beyond Background Checks',
+      }
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Beyond Background Checks | Uncover Hidden Risks Before Hiring',
-    description: 'Standard background checks only catch criminals who got caught. We reveal who they really are.',
+    title: 'Beyond Background Checks | Reveal Hidden Risks',
+    description: 'Standard checks miss what matters. Get your risk report.',
+    images: ['https://quantumleap-io-55l56u.abacusai.app/og-image.png'],
   },
+  alternates: {
+    canonical: 'https://quantumleap-io-55l56u.abacusai.app/background-checks',
+  }
 }
 
 export default function BackgroundChecksLayout({
