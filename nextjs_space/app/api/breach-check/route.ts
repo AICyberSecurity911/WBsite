@@ -57,15 +57,26 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    // Check if API key is configured
+    const apiKey = process.env.HIBP_API_KEY
+    if (!apiKey) {
+      return NextResponse.json(
+        { 
+          error: 'Service not configured. Please contact support.',
+          remaining: rateLimit.remaining 
+        },
+        { status: 503 }
+      )
+    }
+
     // Call Have I Been Pwned API
     const response = await fetch(
       `https://haveibeenpwned.com/api/v3/breachedaccount/${encodeURIComponent(email)}?truncateResponse=false`,
       {
         headers: {
           'User-Agent': 'QuantumLeap-Cyber-Intelligence-Tool',
-          'Accept': 'application/json',
-          // Note: For production use, add API key here for higher rate limits
-          // 'hibp-api-key': process.env.HIBP_API_KEY || ''
+          'hibp-api-key': apiKey,
+          'Accept': 'application/json'
         }
       }
     )
@@ -77,6 +88,18 @@ export async function POST(request: NextRequest) {
         message: 'Good news! This email was not found in any known data breaches.',
         remaining: rateLimit.remaining
       })
+    }
+
+    if (response.status === 401) {
+      // Invalid or missing API key
+      console.error('HIBP API key is invalid or expired')
+      return NextResponse.json(
+        { 
+          error: 'Service authentication failed. Please contact support.',
+          remaining: rateLimit.remaining 
+        },
+        { status: 503 }
+      )
     }
 
     if (response.status === 429) {
