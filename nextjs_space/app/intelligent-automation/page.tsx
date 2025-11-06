@@ -1,6 +1,5 @@
 'use client'
 
-import { useEffect } from 'react'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { motion } from 'framer-motion'
@@ -19,17 +18,19 @@ import {
   Workflow,
   Target,
   BarChart3,
-  Shield
+  Shield,
+  ArrowRight,
+  CheckCircle2
 } from 'lucide-react'
-import Image from 'next/image'
-import { AITeamCalculator } from '@/components/calculator/ai-team-calculator'
-import { AIEmployeesSection } from '@/components/sections/ai-employees-section'
+import Link from 'next/link'
+import { AutomationCalculator } from '@/components/calculator/automation-calculator'
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import { Button } from '@/components/ui/button'
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -52,11 +53,11 @@ export default function IntelligentAutomationPage() {
     "@context": "https://schema.org",
     "@type": "Service",
     "name": "Intelligent Automation Services",
-    "description": "Custom intelligent automation solutions that save 20+ hours per week and cut costs by 60-85% for SMBs. Eliminate repetitive tasks and connect your business tools seamlessly.",
+    "description": "Save 20+ hours a week and cut costs by 60-85% with QuantumLeap's Intelligent Automations. Connect your tools, eliminate repetitive tasks, and work 24/7 without hiring.",
     "provider": {
       "@type": "Organization",
       "name": "QuantumLeap AI",
-      "url": "https://quantumleap-io-55l56u.abacusai.app"
+      "url": "https://quantumleapai.abacusai.app"
     },
     "areaServed": "United States",
     "serviceType": "Business Process Automation"
@@ -66,9 +67,9 @@ export default function IntelligentAutomationPage() {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "QuantumLeap AI",
-    "url": "https://quantumleap-io-55l56u.abacusai.app",
-    "logo": "https://quantumleap-io-55l56u.abacusai.app/logo.png",
-    "description": "Custom AI solutions for SMBs: intelligent automation, cyber intelligence, background checks, and business transformation services.",
+    "url": "https://quantumleapai.abacusai.app",
+    "logo": "https://quantumleapai.abacusai.app/logo.png",
+    "description": "Intelligent automations, AI workforce solutions, cyber intelligence, and business transformation for SMBs.",
     "founder": {
       "@type": "Person",
       "name": "Paras Khurana"
@@ -83,21 +84,127 @@ export default function IntelligentAutomationPage() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://quantumleap-io-55l56u.abacusai.app"
+        "item": "https://quantumleapai.abacusai.app"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Intelligent Automation",
-        "item": "https://quantumleap-io-55l56u.abacusai.app/intelligent-automation"
+        "item": "https://quantumleapai.abacusai.app/intelligent-automation"
+      }
+    ]
+  }
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How fast can I see results from automation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most businesses see measurable results within 14–30 days. Once your automation is set up, it starts working immediately. Clients often report saving 15–25 hours per week in the first month. Book a complimentary consultation to see your 30-day ROI timeline."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will automation replace my team?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No — automation replaces repetitive work, not people. Your automated workflows handle data entry, emails, and routine tasks so your human team can focus on clients and strategy. Most teams become more productive and less stressed with automation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my data secure with automation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — your automations are built by the same engineers who secured NASA's systems. Your data is encrypted end-to-end (AES-256) and protected by enterprise-grade security protocols. Book a call with our deployment team for a security walk-through."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does intelligent automation cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Each automation starts at $199–$499/month, all-inclusive. That's about 60–85% less than hiring additional staff, with zero training, benefits, or turnover costs. Use the free Automation ROI Calculator to see your potential savings."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to switch my current tools?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Your automations integrate directly with your existing stack — Gmail, Outlook, QuickBooks, HubSpot, Salesforce, ClickUp, Shopify, and more. We make it fit your current system, not the other way around."
+        }
       }
     ]
   }
 
   const [heroRef, heroInView] = useInView({ triggerOnce: true, threshold: 0.1 })
-  const [costRef, costInView] = useInView({ triggerOnce: true, threshold: 0.1 })
+  const [tlddrRef, tlddrInView] = useInView({ triggerOnce: true, threshold: 0.1 })
   const [problemRef, problemInView] = useInView({ triggerOnce: true, threshold: 0.1 })
-  const [processRef, processInView] = useInView({ triggerOnce: true, threshold: 0.1 })
+  const [solutionRef, solutionInView] = useInView({ triggerOnce: true, threshold: 0.1 })
+  const [testimonialsRef, testimonialsInView] = useInView({ triggerOnce: true, threshold: 0.1 })
+  const [calculatorRef, calculatorInView] = useInView({ triggerOnce: true, threshold: 0.1 })
+  const [blogRef, blogInView] = useInView({ triggerOnce: true, threshold: 0.1 })
+  const [faqRef, faqInView] = useInView({ triggerOnce: true, threshold: 0.1 })
+  const [guaranteeRef, guaranteeInView] = useInView({ triggerOnce: true, threshold: 0.1 })
+
+  const automations = [
+    { name: 'LeadFlow', description: 'Captures and routes leads from every source', price: 299, icon: Target },
+    { name: 'InvoiceIQ', description: 'Auto-creates invoices & follow-ups', price: 399, icon: FileText },
+    { name: 'MailPilot', description: 'Reads, tags & auto-responds to emails', price: 299, icon: Mail },
+    { name: 'OpsSync', description: 'Links CRMs, Sheets & project apps into one flow', price: 499, icon: Workflow },
+    { name: 'ClientPulse', description: 'Automated feedback & retention loops', price: 399, icon: TrendingUp },
+    { name: 'DataBridge', description: 'Syncs apps—no manual imports ever', price: 299, icon: Database },
+    { name: 'FormFlow', description: 'Auto-processes forms & PDFs', price: 199, icon: FileText },
+    { name: 'SmartDocs', description: 'Auto-routes and summarizes reports', price: 299, icon: FileText }
+  ]
+
+  const testimonials = [
+    {
+      name: 'Peter Fernandes',
+      company: 'AAA Construction Services',
+      before: '7 days/month on invoicing; late payments',
+      after: 'InvoiceIQ + OpsSync automated billing & reminders',
+      result: '12 hours/week saved, 62% faster collections, +$45K cash-flow gain',
+      roles: 'InvoiceIQ + OpsSync'
+    },
+    {
+      name: 'Tiffany Duncan',
+      company: 'Talent Leap AI',
+      title: 'Director',
+      before: '6 platforms to track leads and follow-ups',
+      after: 'LeadFlow + MailPilot centralized and nurtured automatically',
+      result: '+34% revenue; 2 extra client slots/month',
+      roles: 'LeadFlow + MailPilot'
+    },
+    {
+      name: 'Gurpreet Sandhu',
+      company: 'Real Estate Vision',
+      title: 'Broker',
+      before: 'Manual listing updates across CRM, MLS, and ads',
+      after: 'OpsSync + DataBridge synced all channels',
+      result: '18 hours/week saved; errors down 97%; ~$61K annual savings',
+      roles: 'OpsSync + DataBridge'
+    },
+    {
+      name: 'Lydia V. Penrose',
+      company: 'Code Vibe Studio',
+      title: 'Co-Founder',
+      before: 'Clients waited days for reports',
+      after: 'SmartDocs compiled insights overnight',
+      result: 'Turnaround cut from 72h to 6h; retention up 29%',
+      roles: 'SmartDocs'
+    }
+  ]
+
+  const [heroRef, heroInView] = useInView({ triggerOnce: true, threshold: 0.1 })
+  const [tlddrRef, tlddrInView] = useInView({ triggerOnce: true, threshold: 0.1 })
+  const [problemRef, problemInView] = useInView({ triggerOnce: true, threshold: 0.1 })
+  const [solutionRef, solutionInView] = useInView({ triggerOnce: true, threshold: 0.1 })
   const [delivRef, delivInView] = useInView({ triggerOnce: true, threshold: 0.1 })
   const [calcRef, calcInView] = useInView({ triggerOnce: true, threshold: 0.1 })
   const [pricingRef, pricingInView] = useInView({ triggerOnce: true, threshold: 0.1 })
