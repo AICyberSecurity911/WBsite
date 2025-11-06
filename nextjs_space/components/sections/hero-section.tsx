@@ -58,7 +58,7 @@ export function HeroSection() {
       {/* Subtle Grid Pattern Overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:64px_64px]" />
 
-      <div className="container relative z-10 flex min-h-screen items-center py-20 lg:py-0">
+      <div className="container relative z-10 flex min-h-screen items-center pt-24 pb-20 lg:pt-28 lg:pb-16">
         <div className="grid items-center gap-16 lg:grid-cols-2">
           {/* Left Content */}
           <motion.div
