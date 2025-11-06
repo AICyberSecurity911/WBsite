@@ -25,16 +25,38 @@ export function HeroSection() {
   }
 
   return (
-    <section ref={ref} className="relative min-h-screen overflow-hidden gradient-bg">
-      {/* Animated Background Pattern */}
+    <section ref={ref} className="relative min-h-[90vh] sm:min-h-screen overflow-hidden gradient-bg">
+      {/* Enhanced Animated Background Pattern */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-1/2 -left-1/4 h-[1000px] w-[1000px] rounded-full bg-gradient-to-br from-teal-400/20 to-emerald-400/20 blur-3xl" />
-        <div className="absolute -bottom-1/2 -right-1/4 h-[1000px] w-[1000px] rounded-full bg-gradient-to-tl from-emerald-400/20 to-teal-400/20 blur-3xl" />
-        <div className="absolute top-1/4 left-1/3 h-96 w-96 rounded-full bg-gradient-to-r from-teal-300/10 to-transparent blur-2xl" />
+        <motion.div 
+          animate={{ 
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3]
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -top-1/2 -left-1/4 h-[1000px] w-[1000px] rounded-full bg-gradient-to-br from-teal-400/20 to-emerald-400/20 blur-3xl" 
+        />
+        <motion.div 
+          animate={{ 
+            scale: [1, 1.3, 1],
+            opacity: [0.3, 0.5, 0.3]
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute -bottom-1/2 -right-1/4 h-[1000px] w-[1000px] rounded-full bg-gradient-to-tl from-emerald-400/20 to-teal-400/20 blur-3xl" 
+        />
+        <motion.div 
+          animate={{ 
+            x: [0, 50, 0],
+            y: [0, 30, 0],
+            opacity: [0.2, 0.4, 0.2]
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute top-1/4 left-1/3 h-96 w-96 rounded-full bg-gradient-to-r from-teal-300/10 to-transparent blur-2xl" 
+        />
       </div>
 
-      {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:64px_64px]" />
+      {/* Subtle Grid Pattern Overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:64px_64px]" />
 
       <div className="container relative z-10 flex min-h-screen items-center py-20 lg:py-0">
         <div className="grid items-center gap-16 lg:grid-cols-2">
@@ -61,13 +83,12 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="mb-6 text-5xl font-extrabold leading-[1.1] tracking-tight text-gray-900 dark:text-white sm:text-6xl lg:text-7xl"
+              className="mb-6 text-hero text-gray-900 dark:text-white"
             >
-              <span className="text-gradient">Fire Your Biggest Headache.</span>
-              <br />
+              <span className="text-gradient block">Fire Your Biggest Headache.</span>
               <span className="mt-2 block">Hire Your Most</span>
               <span className="mt-2 block">Reliable Employee.</span>
-              <span className="mt-2 block bg-gradient-to-r from-teal-600 to-emerald-600 bg-clip-text text-transparent">Same Day.</span>
+              <span className="mt-2 block text-gradient">Same Day.</span>
             </motion.h1>
 
             {/* Subheadline */}
@@ -75,7 +96,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="mb-10 text-xl leading-relaxed text-gray-600 dark:text-gray-300 sm:text-2xl"
+              className="mb-10 text-body-large text-gray-600 dark:text-gray-300"
             >
               Hire digital employees that work 24/7, cost 85% less than humans, and never miss a task.{' '}
               <strong className="font-semibold text-gray-900 dark:text-white">Free yourself from busywork and finally run a business that runs without you.</strong>
@@ -88,18 +109,14 @@ export function HeroSection() {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="mb-12 flex flex-col gap-4 sm:flex-row sm:items-center"
             >
-              <Button asChild size="lg" className="btn-primary text-lg">
-                <Link href="#calculator">
-                  Calculate My Savings in 60s
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
+              <Link href="#calculator" className="btn-premium-primary touch-target group">
+                Calculate My Savings in 60s
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Link>
               
-              <Button asChild variant="outline" size="lg" className="btn-secondary text-lg">
-                <Link href="#ai-employees">
-                  See AI Employees
-                </Link>
-              </Button>
+              <Link href="#ai-employees" className="btn-premium-secondary touch-target">
+                See AI Employees
+              </Link>
             </motion.div>
 
             {/* Credibility Line */}
@@ -125,18 +142,26 @@ export function HeroSection() {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-600 dark:text-gray-400 lg:justify-start"
             >
-              <div className="flex items-center gap-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-100 dark:bg-teal-900/50">
-                  <Users className="h-4 w-4 text-teal-600 dark:text-teal-400" />
+              <motion.div 
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.2 }}
+                className="flex items-center gap-3 rounded-xl bg-gradient-to-r from-teal-50 to-emerald-50 dark:from-teal-900/20 dark:to-emerald-900/20 px-4 py-3 shadow-sm border border-teal-100 dark:border-teal-800/50"
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-teal-500 to-emerald-500 shadow-md">
+                  <Users className="h-5 w-5 text-white" />
                 </div>
-                <span className="font-medium">200+ Businesses Transformed</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-100 dark:bg-purple-900/50">
-                  <CheckCircle className="h-4 w-4 text-purple-600 dark:text-purple-400" />
+                <span className="font-semibold text-gray-900 dark:text-white">200+ Businesses Transformed</span>
+              </motion.div>
+              <motion.div 
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.2 }}
+                className="flex items-center gap-3 rounded-xl bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 px-4 py-3 shadow-sm border border-purple-100 dark:border-purple-800/50"
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 shadow-md">
+                  <Shield className="h-5 w-5 text-white" />
                 </div>
-                <span className="font-medium">Money Back Guarantee</span>
-              </div>
+                <span className="font-semibold text-gray-900 dark:text-white">Money Back Guarantee</span>
+              </motion.div>
             </motion.div>
           </motion.div>
 
@@ -147,79 +172,99 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="relative"
           >
-            {/* Main Visual Card - Removed placeholder content */}
-            <div className="relative">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-gradient-to-br from-teal-500 via-emerald-500 to-teal-600 p-8 shadow-2xl shadow-teal-600/30">
-                {/* Decorative elements */}
-                <div className="absolute -right-12 -top-12 h-48 w-48 rounded-full bg-white/10 blur-2xl" />
-                <div className="absolute -bottom-8 -left-8 h-32 w-32 rounded-full bg-emerald-400/30 blur-xl" />
+            {/* Main Visual Card - Premium Design */}
+            <div className="relative group">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-gradient-to-br from-teal-500 via-emerald-500 to-teal-600 p-8 shadow-2xl shadow-teal-600/30 hover:shadow-[0_0_60px_rgba(20,184,166,0.4)] transition-all duration-500">
+                {/* Animated decorative elements */}
+                <motion.div 
+                  animate={{ 
+                    scale: [1, 1.2, 1],
+                    opacity: [0.1, 0.2, 0.1]
+                  }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -right-12 -top-12 h-48 w-48 rounded-full bg-white blur-2xl" 
+                />
+                <motion.div 
+                  animate={{ 
+                    scale: [1, 1.3, 1],
+                    opacity: [0.3, 0.4, 0.3]
+                  }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                  className="absolute -bottom-8 -left-8 h-32 w-32 rounded-full bg-emerald-400 blur-xl" 
+                />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
                 
-                {/* Enhanced visual elements */}
+                {/* Enhanced visual elements with better styling */}
                 <div className="relative flex h-full items-center justify-center">
                   <div className="grid grid-cols-2 gap-4 w-full">
-                    {/* Animated stat blocks */}
+                    {/* Animated stat blocks with premium styling */}
                     <motion.div
                       animate={{ y: [0, -10, 0] }}
                       transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                      className="rounded-2xl bg-white/20 backdrop-blur-sm p-4 text-white"
+                      whileHover={{ scale: 1.05 }}
+                      className="rounded-2xl bg-white/25 backdrop-blur-md p-6 text-white shadow-lg hover:shadow-xl transition-all border border-white/30"
                     >
-                      <div className="text-3xl font-bold">24/7</div>
-                      <div className="text-sm opacity-90">Uptime</div>
+                      <div className="text-4xl font-bold mb-1">24/7</div>
+                      <div className="text-sm font-medium opacity-90">Uptime</div>
                     </motion.div>
                     
                     <motion.div
                       animate={{ y: [0, 10, 0] }}
                       transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                      className="rounded-2xl bg-white/20 backdrop-blur-sm p-4 text-white"
+                      whileHover={{ scale: 1.05 }}
+                      className="rounded-2xl bg-white/25 backdrop-blur-md p-6 text-white shadow-lg hover:shadow-xl transition-all border border-white/30"
                     >
-                      <div className="text-3xl font-bold">99%</div>
-                      <div className="text-sm opacity-90">Accurate</div>
+                      <div className="text-4xl font-bold mb-1">99%</div>
+                      <div className="text-sm font-medium opacity-90">Accurate</div>
                     </motion.div>
                     
                     <motion.div
                       animate={{ y: [0, 10, 0] }}
                       transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                      className="rounded-2xl bg-white/20 backdrop-blur-sm p-4 text-white"
+                      whileHover={{ scale: 1.05 }}
+                      className="rounded-2xl bg-white/25 backdrop-blur-md p-6 text-white shadow-lg hover:shadow-xl transition-all border border-white/30"
                     >
-                      <div className="text-3xl font-bold">87%</div>
-                      <div className="text-sm opacity-90">Savings</div>
+                      <div className="text-4xl font-bold mb-1">87%</div>
+                      <div className="text-sm font-medium opacity-90">Savings</div>
                     </motion.div>
                     
                     <motion.div
                       animate={{ y: [0, -10, 0] }}
                       transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-                      className="rounded-2xl bg-white/20 backdrop-blur-sm p-4 text-white"
+                      whileHover={{ scale: 1.05 }}
+                      className="rounded-2xl bg-white/25 backdrop-blur-md p-6 text-white shadow-lg hover:shadow-xl transition-all border border-white/30"
                     >
-                      <div className="text-3xl font-bold">8</div>
-                      <div className="text-sm opacity-90">AI Roles</div>
+                      <div className="text-4xl font-bold mb-1">8</div>
+                      <div className="text-sm font-medium opacity-90">AI Roles</div>
                     </motion.div>
                   </div>
                 </div>
               </div>
 
-              {/* Floating Stats Cards */}
+              {/* Floating Stats Cards - Premium Design */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8, y: 20 }}
                 animate={inView ? { opacity: 1, scale: 1, y: 0 } : {}}
+                whileHover={{ scale: 1.05, y: -5 }}
                 transition={{ duration: 0.6, delay: 0.9, type: "spring" }}
-                className="absolute -bottom-8 -left-8 rounded-2xl bg-gradient-to-br from-teal-50 to-cyan-100 dark:from-teal-950/50 dark:to-cyan-950/50 p-5 shadow-2xl border-2 border-teal-200 dark:border-teal-800 hover:shadow-[0_0_30px_rgba(20,184,166,0.6)] dark:hover:shadow-[0_0_30px_rgba(45,212,191,0.5)] transition-all duration-300 lg:-left-12"
+                className="absolute -bottom-8 -left-8 rounded-2xl bg-gradient-to-br from-white via-teal-50 to-cyan-50 dark:from-gray-900 dark:via-teal-950/50 dark:to-cyan-950/50 p-6 shadow-2xl border border-teal-200/50 dark:border-teal-800/50 hover:shadow-[0_0_40px_rgba(20,184,166,0.5)] dark:hover:shadow-[0_0_40px_rgba(45,212,191,0.4)] transition-all duration-300 lg:-left-12 backdrop-blur-sm"
               >
                 <div className="text-center">
-                  <div className="mb-1 text-3xl font-bold text-teal-600 dark:text-teal-400">87%</div>
-                  <div className="text-sm font-medium text-gray-700 dark:text-gray-300">Cost Savings</div>
+                  <div className="mb-2 text-4xl font-bold bg-gradient-to-r from-teal-600 to-cyan-600 dark:from-teal-400 dark:to-cyan-400 bg-clip-text text-transparent">87%</div>
+                  <div className="text-sm font-semibold text-gray-700 dark:text-gray-300">Cost Savings</div>
                 </div>
               </motion.div>
 
               <motion.div
                 initial={{ opacity: 0, scale: 0.8, y: 20 }}
                 animate={inView ? { opacity: 1, scale: 1, y: 0 } : {}}
+                whileHover={{ scale: 1.05, y: -5 }}
                 transition={{ duration: 0.6, delay: 1.1, type: "spring" }}
-                className="absolute -right-8 -top-8 rounded-2xl bg-gradient-to-br from-emerald-50 to-green-100 dark:from-emerald-950/50 dark:to-green-950/50 p-5 shadow-2xl border-2 border-emerald-200 dark:border-emerald-800 hover:shadow-[0_0_30px_rgba(16,185,129,0.6)] dark:hover:shadow-[0_0_30px_rgba(52,211,153,0.5)] transition-all duration-300 lg:-right-12"
+                className="absolute -right-8 -top-8 rounded-2xl bg-gradient-to-br from-white via-emerald-50 to-green-50 dark:from-gray-900 dark:via-emerald-950/50 dark:to-green-950/50 p-6 shadow-2xl border border-emerald-200/50 dark:border-emerald-800/50 hover:shadow-[0_0_40px_rgba(16,185,129,0.5)] dark:hover:shadow-[0_0_40px_rgba(52,211,153,0.4)] transition-all duration-300 lg:-right-12 backdrop-blur-sm"
               >
                 <div className="text-center">
-                  <div className="mb-1 text-3xl font-bold text-emerald-600 dark:text-emerald-400">99.2%</div>
-                  <div className="text-sm font-medium text-gray-700 dark:text-gray-300">Accuracy Rate</div>
+                  <div className="mb-2 text-4xl font-bold bg-gradient-to-r from-emerald-600 to-green-600 dark:from-emerald-400 dark:to-green-400 bg-clip-text text-transparent">99.2%</div>
+                  <div className="text-sm font-semibold text-gray-700 dark:text-gray-300">Accuracy Rate</div>
                 </div>
               </motion.div>
 
