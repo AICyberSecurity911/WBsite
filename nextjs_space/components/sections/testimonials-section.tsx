@@ -220,24 +220,7 @@ export function TestimonialsSection() {
             </div>
           </motion.div>
 
-          {/* Trust Badges */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 1.2 }}
-            className="mt-16 text-center"
-          >
-            <p className="mb-6 text-gray-600 dark:text-gray-400">
-              Trusted by businesses across industries
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-8 opacity-60 grayscale">
-              {/* Company logos would go here */}
-              <div className="h-12 w-32 rounded-lg bg-gray-200 dark:bg-gray-700" />
-              <div className="h-12 w-32 rounded-lg bg-gray-200 dark:bg-gray-700" />
-              <div className="h-12 w-32 rounded-lg bg-gray-200 dark:bg-gray-700" />
-              <div className="h-12 w-32 rounded-lg bg-gray-200 dark:bg-gray-700" />
-            </div>
-          </motion.div>
+
         </motion.div>
       </div>
     </section>
