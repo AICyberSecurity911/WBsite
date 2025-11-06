@@ -156,7 +156,7 @@
   }
 
   .section-padding {
-    @apply py-12 sm:py-16 lg:py-20;
+    @apply py-16 sm:py-20 lg:py-24;
   }
 
   .gradient-bg {
@@ -216,13 +216,13 @@
 
   /* Unified Card System with Animations */
   .card {
-    @apply relative rounded-2xl border border-border bg-card p-6 
-    shadow-sm
-    transition-all duration-500 ease-out
+    @apply relative rounded-2xl border border-border bg-card p-8 
+    shadow-md
+    transition-all duration-300 ease-out
     hover:shadow-xl hover:-translate-y-1
     before:absolute before:inset-0 before:rounded-2xl before:border-2 before:border-teal-500/0
     hover:before:border-teal-500/20
-    before:transition-all before:duration-500;
+    before:transition-all before:duration-300;
   }
 
   .card-interactive {
