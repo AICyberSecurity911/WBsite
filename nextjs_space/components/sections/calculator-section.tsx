@@ -41,10 +41,10 @@ export function CalculatorSection() {
             </motion.h2>
             
             <motion.p
-              initial={{ opacity: 0.8, y: 20 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="mx-auto max-w-2xl text-lg text-gray-700 dark:text-gray-300"
+              className="mx-auto max-w-2xl text-lg font-medium text-gray-900 dark:text-gray-100"
             >
               See exactly how much time and money you could save—get your free estimate in 2 minutes
             </motion.p>
