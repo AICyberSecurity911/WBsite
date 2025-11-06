@@ -174,7 +174,7 @@ export function TestimonialsSection() {
                         <div className="text-3xl font-bold text-gray-900 dark:text-white">
                           {metric.value}
                         </div>
-                        <div className="text-sm text-gray-600 dark:text-gray-400">
+                        <div className="text-sm font-medium text-gray-700 dark:text-gray-300">
                           {metric.label}
                         </div>
                       </div>

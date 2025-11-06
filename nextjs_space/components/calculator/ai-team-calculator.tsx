@@ -6,12 +6,13 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowLeft, ArrowRight, CheckCircle, Mail, Calculator, TrendingUp, Clock } from 'lucide-react'
+import { ArrowLeft, ArrowRight, CheckCircle, Mail, Calculator, TrendingUp, Clock, Zap, Shield, ExternalLink } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { useToast } from '@/hooks/use-toast'
-import { calculatorQuestions, type AIEmployee } from '@/lib/calculator'
+import { calculatorQuestions, type AIEmployee, type ServiceRecommendation } from '@/lib/calculator'
+import Link from 'next/link'
 
 // Form validation schemas
 const calculatorSchema = yup.object({
@@ -27,6 +28,7 @@ const leadCaptureSchema = yup.object({
 
 interface CalculatorResults {
   recommendations: AIEmployee[]
+  serviceRecommendations?: ServiceRecommendation[]
   estimatedROI: any
   priority: string
   deploymentTimeline: string
@@ -272,46 +274,126 @@ export function AITeamCalculator() {
             animate={{ opacity: 1, y: 0 }}
             className="space-y-6"
           >
-            {/* Results Preview */}
-            <div className="card bg-gradient-to-r from-teal-50 to-emerald-50 dark:from-teal-950 dark:to-emerald-950">
-              <h3 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
-                🎉 Your AI Workforce Plan is Ready!
-              </h3>
-              
-              <div className="grid gap-4 sm:grid-cols-3">
-                <div className="text-center">
-                  <div className="mb-2 text-2xl font-bold text-teal-600">
-                    {results.recommendations.length}
+            {/* Results Preview - When AI Employees are recommended */}
+            {results.recommendations.length > 0 && (
+              <div className="card bg-gradient-to-r from-teal-50 to-emerald-50 dark:from-teal-950 dark:to-emerald-950">
+                <h3 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
+                  🎉 Your AI Workforce Plan is Ready!
+                </h3>
+                
+                <div className="grid gap-4 sm:grid-cols-3">
+                  <div className="text-center">
+                    <div className="mb-2 text-2xl font-bold text-teal-600">
+                      {results.recommendations.length}
+                    </div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">
+                      Recommended AI Employees
+                    </div>
                   </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">
-                    Recommended AI Employees
+                  <div className="text-center">
+                    <div className="mb-2 text-2xl font-bold text-emerald-600">
+                      {results.estimatedROI?.monthlySavings ? `$${Math.round(results.estimatedROI.monthlySavings)}` : '$0'}
+                    </div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">
+                      Monthly Savings
+                    </div>
                   </div>
-                </div>
-                <div className="text-center">
-                  <div className="mb-2 text-2xl font-bold text-emerald-600">
-                    {results.estimatedROI?.monthlySavings ? `$${Math.round(results.estimatedROI.monthlySavings)}` : 'TBD'}
-                  </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">
-                    Monthly Savings
-                  </div>
-                </div>
-                <div className="text-center">
-                  <div className="mb-2 text-2xl font-bold text-purple-600">
-                    {results.deploymentTimeline}
-                  </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">
-                    Time to Deploy
+                  <div className="text-center">
+                    <div className="mb-2 text-2xl font-bold text-purple-600">
+                      {results.deploymentTimeline}
+                    </div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">
+                      Time to Deploy
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            )}
+
+            {/* Service Recommendations - When NO AI Employees match */}
+            {results.recommendations.length === 0 && results.serviceRecommendations && results.serviceRecommendations.length > 0 && (
+              <div className="card bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-blue-950 dark:via-purple-950 dark:to-pink-950">
+                <div className="mb-4">
+                  <h3 className="mb-2 text-2xl font-bold text-gray-900 dark:text-white">
+                    💡 We Have Better Solutions For You
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    Based on your answers, AI employees might not be the best fit right now. 
+                    However, we identified services that can deliver immediate impact for your business:
+                  </p>
+                </div>
+
+                <div className="space-y-4">
+                  {results.serviceRecommendations.slice(0, 3).map((service, index) => {
+                    const IconComponent = service.icon === 'Zap' ? Zap : service.icon === 'Shield' ? Shield : TrendingUp
+                    return (
+                      <motion.div
+                        key={service.id}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                        className="rounded-xl border-2 border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800"
+                      >
+                        <div className="flex items-start gap-4">
+                          <div className="rounded-lg bg-gradient-to-br from-teal-500 to-emerald-500 p-3">
+                            <IconComponent className="h-6 w-6 text-white" />
+                          </div>
+                          <div className="flex-1">
+                            <div className="mb-1 flex items-center gap-2">
+                              <h4 className="text-lg font-bold text-gray-900 dark:text-white">
+                                {service.name}
+                              </h4>
+                              <span className="rounded-full bg-teal-100 px-2 py-0.5 text-xs font-semibold text-teal-700 dark:bg-teal-900 dark:text-teal-300">
+                                {service.relevanceScore}% Match
+                              </span>
+                            </div>
+                            <p className="mb-3 text-sm text-gray-600 dark:text-gray-300">
+                              {service.description}
+                            </p>
+                            <div className="mb-3 space-y-1">
+                              <p className="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400">
+                                Why this is perfect for you:
+                              </p>
+                              {service.reasons.slice(0, 2).map((reason, idx) => (
+                                <p key={idx} className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300">
+                                  <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-teal-600" />
+                                  {reason}
+                                </p>
+                              ))}
+                            </div>
+                            <Link href={service.url}>
+                              <Button
+                                className="btn-primary group w-full sm:w-auto"
+                                size="sm"
+                              >
+                                {service.ctaText}
+                                <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                              </Button>
+                            </Link>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )
+                  })}
+                </div>
+
+                <div className="mt-6 rounded-lg border-2 border-teal-200 bg-teal-50 p-4 dark:border-teal-800 dark:bg-teal-950">
+                  <p className="text-sm text-teal-900 dark:text-teal-100">
+                    <strong>💬 Want to discuss which solution is right for you?</strong> Book a free consultation below and let's find the perfect fit for your business goals.
+                  </p>
+                </div>
+              </div>
+            )}
 
             {/* Email Form */}
             <div className="card">
               <div className="mb-4 flex items-center gap-3">
                 <Mail className="h-6 w-6 text-teal-600" />
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                  Get Your Custom AI Workforce Plan
+                  {results.recommendations.length > 0 
+                    ? 'Get Your Custom AI Workforce Plan'
+                    : 'Book Your Free Consultation'
+                  }
                 </h3>
               </div>
 
@@ -371,8 +453,10 @@ export function AITeamCalculator() {
                 <div className="rounded-lg bg-blue-50 p-4 dark:bg-blue-950">
                   <p className="text-sm text-blue-800 dark:text-blue-200">
                     📧 <strong>What happens next:</strong> Check your email for a confirmation link. 
-                    Once confirmed, you'll receive your detailed AI workforce recommendations and 
-                    implementation roadmap within 5 minutes.
+                    Once confirmed, you'll receive {results.recommendations.length > 0 
+                      ? 'your detailed AI workforce recommendations and implementation roadmap'
+                      : 'a personalized consultation link to discuss the best solutions for your business'
+                    } within 5 minutes.
                   </p>
                 </div>
 
@@ -389,7 +473,10 @@ export function AITeamCalculator() {
                     </>
                   ) : (
                     <>
-                      Get My Custom AI Workforce Plan
+                      {results.recommendations.length > 0 
+                        ? 'Get My Custom AI Workforce Plan'
+                        : 'Book My Free Consultation'
+                      }
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </>
                   )}

@@ -1,7 +1,7 @@
 
 import { NextRequest, NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase'
-import { calculateRecommendations, calculateROI } from '@/lib/calculator'
+import { calculateRecommendations, calculateROI, getServiceRecommendations } from '@/lib/calculator'
 
 export const dynamic = 'force-dynamic'
 
@@ -17,9 +17,12 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Generate recommendations based on answers
+    // Generate AI employee recommendations based on answers
     const recommendations = calculateRecommendations(answers)
     const roi = calculateROI(answers, recommendations)
+    
+    // Get service recommendations (for cross-selling when AI employees = 0)
+    const serviceRecommendations = getServiceRecommendations(answers)
     
     // Determine priority based on answers
     let priority = 'medium'
@@ -50,9 +53,10 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       recommendations,
+      serviceRecommendations,
       priority,
       estimatedROI: roi,
-      deploymentTimeline: '1-5 business days',
+      deploymentTimeline: recommendations.length > 0 ? '1-5 business days' : 'N/A',
       calculatorResponseId: data?.id
     })
 
