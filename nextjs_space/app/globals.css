@@ -222,7 +222,7 @@
     hover:shadow-xl hover:-translate-y-1
     before:absolute before:inset-0 before:rounded-2xl before:border-2 before:border-teal-500/0
     hover:before:border-teal-500/20
-    before:transition-all before:duration-300;
+    before:transition-all before:duration-300 before:pointer-events-none;
   }
 
   .card-interactive {
