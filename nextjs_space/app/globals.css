@@ -36,31 +36,46 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 47% 11%;
+    /* QuantumLeap AI Brand Colors - Electric Teal + Coral */
+    --background: 215 20% 97%;
+    --foreground: 222 82% 11%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 47% 11%;
+    --card-foreground: 222 82% 11%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 47% 11%;
-    --primary: 173 80% 40%;
+    --popover-foreground: 222 82% 11%;
+    
+    /* Primary - Electric Teal #00c2b3 */
+    --primary: 175 100% 38%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 220 14.3% 95.9%;
-    --secondary-foreground: 220 9% 46%;
-    --muted: 220 14.3% 95.9%;
+    
+    /* Secondary - Coral Orange #ff7043 */
+    --secondary: 14 100% 63%;
+    --secondary-foreground: 0 0% 100%;
+    
+    /* Navy for emphasis #071230 */
+    --navy: 222 82% 11%;
+    
+    /* Muted/Subtle Elements */
+    --muted: 215 20% 97%;
     --muted-foreground: 220 9% 46%;
-    --accent: 220 14.3% 95.9%;
-    --accent-foreground: 222.2 47% 11%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    
+    --accent: 215 20% 97%;
+    --accent-foreground: 222 82% 11%;
+    
+    --destructive: 14 100% 63%;
+    --destructive-foreground: 0 0% 100%;
+    
     --border: 220 13% 91%;
     --input: 220 13% 91%;
-    --ring: 173 80% 40%;
-    --radius: 0.75rem;
-    --chart-1: 173 58% 39%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 142 69% 58%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    --ring: 175 100% 38%;
+    --radius: 1.5rem;
+    
+    /* Chart colors - Teal and Coral variations */
+    --chart-1: 175 100% 38%;
+    --chart-2: 14 100% 63%;
+    --chart-3: 220 9% 46%;
+    --chart-4: 222 82% 11%;
+    --chart-5: 175 80% 50%;
     
     /* Enhanced shadows for depth */
     --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
@@ -72,30 +87,40 @@
   }
 
   .dark {
-    --background: 222.2 47% 4%;
+    --background: 0 0% 12%;
     --foreground: 210 40% 98%;
-    --card: 222.2 47% 8%;
+    --card: 0 0% 16%;
     --card-foreground: 210 40% 98%;
-    --popover: 222.2 47% 8%;
+    --popover: 0 0% 16%;
     --popover-foreground: 210 40% 98%;
-    --primary: 173 80% 40%;
+    
+    /* Primary - Darker Teal #00a3a3 */
+    --primary: 180 100% 32%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 217.2 32.6% 15%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 15%;
-    --muted-foreground: 215 20.2% 65%;
-    --accent: 217.2 32.6% 15%;
+    
+    /* Secondary - Softer Coral #e57373 */
+    --secondary: 0 70% 67%;
+    --secondary-foreground: 0 0% 100%;
+    
+    --muted: 0 0% 16%;
+    --muted-foreground: 0 0% 63%;
+    
+    --accent: 0 0% 16%;
     --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 50%;
+    
+    --destructive: 0 70% 67%;
     --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 18%;
-    --input: 217.2 32.6% 18%;
-    --ring: 173 80% 40%;
-    --chart-1: 173 58% 39%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 142 69% 58%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    
+    --border: 0 0% 23%;
+    --input: 0 0% 23%;
+    --ring: 180 100% 32%;
+    
+    /* Chart colors */
+    --chart-1: 180 100% 32%;
+    --chart-2: 0 70% 67%;
+    --chart-3: 0 0% 63%;
+    --chart-4: 210 40% 98%;
+    --chart-5: 180 80% 40%;
     
     /* Enhanced shadows for dark mode */
     --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.3);
@@ -155,11 +180,17 @@
   }
 
   .text-gradient {
-    @apply bg-gradient-to-r from-teal-600 via-emerald-600 to-teal-600 bg-clip-text text-transparent;
+    background: linear-gradient(135deg, #00c2b3 0%, #ff7043 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   .text-gradient-subtle {
-    @apply bg-gradient-to-r from-teal-700 via-emerald-700 to-teal-700 bg-clip-text text-transparent dark:from-teal-400 dark:via-emerald-400 dark:to-teal-400;
+    background: linear-gradient(135deg, #00a3a3 0%, #e57373 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   .glass-effect {
@@ -167,19 +198,53 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-teal-600 to-emerald-600 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-teal-600/25 transition-all duration-300 hover:shadow-xl hover:shadow-teal-600/40 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-8 py-4 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+    background: linear-gradient(135deg, #00c2b3 0%, #ff7043 100%);
+    box-shadow: 0 10px 25px -5px rgba(0, 194, 179, 0.25);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 20px 35px -5px rgba(0, 194, 179, 0.4);
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl border-2 border-teal-600 bg-transparent px-8 py-4 text-base font-semibold text-teal-600 transition-all duration-300 hover:bg-teal-50 hover:scale-[1.02] dark:hover:bg-teal-950/30 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border-2 bg-transparent px-8 py-4 text-base font-semibold transition-all duration-300 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+    border-color: #00c2b3;
+    color: #00c2b3;
+  }
+
+  .btn-secondary:hover {
+    background-color: rgba(0, 194, 179, 0.05);
+  }
+
+  .dark .btn-secondary:hover {
+    background-color: rgba(0, 194, 179, 0.15);
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-transparent px-8 py-4 text-base font-semibold text-teal-600 transition-all duration-300 hover:bg-teal-50 hover:scale-[1.02] dark:hover:bg-teal-950/30 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-transparent px-8 py-4 text-base font-semibold transition-all duration-300 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+    color: #00c2b3;
+  }
+
+  .btn-ghost:hover {
+    background-color: rgba(0, 194, 179, 0.05);
+  }
+
+  .dark .btn-ghost:hover {
+    background-color: rgba(0, 194, 179, 0.15);
   }
 
   .card {
-    @apply relative rounded-2xl border bg-card p-6 shadow-sm transition-all duration-300 hover:shadow-xl hover:scale-[1.02] hover:border-teal-200 dark:hover:border-teal-800;
+    @apply relative rounded-2xl border bg-card p-6 shadow-sm transition-all duration-300 hover:shadow-xl hover:scale-[1.02];
+    border-color: rgba(0, 194, 179, 0.2);
+  }
+
+  .card:hover {
+    border-color: rgba(0, 194, 179, 0.5);
+  }
+
+  .dark .card:hover {
+    border-color: rgba(0, 163, 163, 0.5);
   }
 
   .card-premium {
@@ -191,50 +256,76 @@
     transition-all duration-500 ease-out
     hover:-translate-y-1
     before:absolute before:inset-0 before:rounded-2xl
-    before:bg-gradient-to-br before:from-teal-500/10 before:via-transparent before:to-transparent
     before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500;
+  }
+
+  .card-premium::before {
+    background: linear-gradient(135deg, rgba(0, 194, 179, 0.1) 0%, transparent 50%);
   }
 
   .btn-premium-primary {
     @apply relative inline-flex items-center justify-center gap-2
     px-8 py-4 text-lg font-semibold text-white
-    bg-gradient-to-r from-teal-600 to-emerald-600
-    rounded-xl shadow-lg shadow-teal-600/30
+    rounded-xl shadow-lg
     transition-all duration-300 ease-out
-    hover:shadow-xl hover:shadow-teal-600/50 hover:scale-[1.02]
+    hover:shadow-xl hover:scale-[1.02]
     active:scale-[0.98]
-    focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2
+    focus:outline-none focus:ring-2 focus:ring-offset-2
     disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100
     overflow-hidden
     before:absolute before:inset-0 before:rounded-xl
     before:bg-white/20 before:opacity-0 hover:before:opacity-100
     before:transition-opacity before:duration-300;
+    background: linear-gradient(135deg, #00c2b3 0%, #ff7043 100%);
+    box-shadow: 0 10px 25px -5px rgba(0, 194, 179, 0.3);
+  }
+
+  .btn-premium-primary:hover {
+    box-shadow: 0 20px 35px -5px rgba(0, 194, 179, 0.5);
   }
 
   .btn-premium-secondary {
     @apply relative inline-flex items-center justify-center gap-2
     px-8 py-4 text-lg font-semibold
-    text-teal-600 dark:text-teal-400
-    bg-transparent border-2 border-teal-600 dark:border-teal-400
+    bg-transparent border-2
     rounded-xl shadow-sm
     transition-all duration-300 ease-out
-    hover:bg-teal-50 dark:hover:bg-teal-950/30
     hover:scale-[1.02] hover:shadow-md
     active:scale-[0.98]
-    focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2
+    focus:outline-none focus:ring-2 focus:ring-offset-2
     disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
+    color: #00c2b3;
+    border-color: #00c2b3;
+  }
+
+  .btn-premium-secondary:hover {
+    background-color: rgba(0, 194, 179, 0.05);
+  }
+
+  .dark .btn-premium-secondary {
+    color: #00c2b3;
+    border-color: #00c2b3;
+  }
+
+  .dark .btn-premium-secondary:hover {
+    background-color: rgba(0, 194, 179, 0.15);
   }
 
   .icon-wrapper-premium {
     @apply relative w-14 h-14 rounded-xl
-    bg-gradient-to-br from-teal-500 to-emerald-500
     flex items-center justify-center
-    shadow-lg shadow-teal-500/30
+    shadow-lg
     transition-all duration-300
-    group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-teal-500/50
+    group-hover:scale-110 group-hover:shadow-xl
     before:absolute before:inset-0 before:rounded-xl
     before:bg-white/20 before:opacity-0 group-hover:before:opacity-100
     before:transition-opacity before:duration-300;
+    background: linear-gradient(135deg, #00c2b3 0%, #ff7043 100%);
+    box-shadow: 0 10px 25px -5px rgba(0, 194, 179, 0.3);
+  }
+
+  .icon-wrapper-premium:hover {
+    box-shadow: 0 20px 35px -5px rgba(0, 194, 179, 0.5);
   }
 
   .animate-float {
