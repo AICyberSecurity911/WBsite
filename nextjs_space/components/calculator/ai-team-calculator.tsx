@@ -180,100 +180,88 @@ export function AITeamCalculator() {
       </div>
 
       {/* Question Content */}
-      <AnimatePresence mode="wait">
-        {!isLoading && !showEmailForm && (
-          <motion.div
-            key={currentStep}
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            transition={{ duration: 0.3 }}
-            className="card"
-          >
-            <div className="mb-6">
-              <h3 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
-                {currentQuestion.question}
-              </h3>
+      {!isLoading && !showEmailForm && (
+        <div className="card">
+          <div className="mb-6">
+            <h3 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
+              {currentQuestion.question}
+            </h3>
 
-              <div className="space-y-3">
-                {currentQuestion.options?.map((option, index) => (
-                  <motion.button
-                    key={index}
-                    className={`w-full rounded-xl border-2 p-5 text-left transition-all duration-200 hover:shadow-md ${
-                      answers[currentQuestion.id] === option
-                        ? 'border-teal-500 bg-teal-50 dark:bg-teal-900/30 shadow-lg'
-                        : 'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 hover:border-teal-400'
-                    }`}
-                    onClick={() => handleAnswer(currentQuestion.id, option)}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span className="font-medium text-gray-900 dark:text-white">{option}</span>
-                      {answers[currentQuestion.id] === option && (
-                        <CheckCircle className="h-6 w-6 text-teal-600 dark:text-teal-400" />
-                      )}
-                    </div>
-                  </motion.button>
-                ))}
-              </div>
+            <div className="space-y-3">
+              {currentQuestion.options?.map((option, index) => (
+                <button
+                  key={`${currentQuestion.id}-${index}`}
+                  type="button"
+                  className={`w-full rounded-xl border-2 p-5 text-left transition-all duration-200 hover:shadow-md cursor-pointer hover:scale-[1.01] ${
+                    answers[currentQuestion.id] === option
+                      ? 'border-teal-500 bg-teal-50 dark:bg-teal-900/30 shadow-lg'
+                      : 'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 hover:border-teal-400'
+                  }`}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    console.log('Button clicked:', option)
+                    handleAnswer(currentQuestion.id, option)
+                  }}
+                >
+                  <div className="flex items-center justify-between pointer-events-none">
+                    <span className="font-medium text-gray-900 dark:text-white">{option}</span>
+                    {answers[currentQuestion.id] === option && (
+                      <CheckCircle className="h-6 w-6 text-teal-600 dark:text-teal-400" />
+                    )}
+                  </div>
+                </button>
+              ))}
             </div>
+          </div>
 
-            {/* Navigation Buttons */}
-            <div className="flex justify-between mt-6">
+          {/* Navigation Buttons */}
+          <div className="flex justify-between mt-6">
+            <Button
+              variant="outline"
+              onClick={() => goToStep(currentStep - 1)}
+              disabled={currentStep === 0}
+              className="flex items-center gap-2 border-2 hover:bg-gray-100 dark:hover:bg-gray-800"
+              size="lg"
+            >
+              <ArrowLeft className="h-5 w-5" />
+              Previous
+            </Button>
+
+            {answers[currentQuestion.id] && currentStep < totalSteps - 1 && (
               <Button
-                variant="outline"
-                onClick={() => goToStep(currentStep - 1)}
-                disabled={currentStep === 0}
-                className="flex items-center gap-2 border-2 hover:bg-gray-100 dark:hover:bg-gray-800"
+                onClick={() => goToStep(currentStep + 1)}
+                className="flex items-center gap-2 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white shadow-lg"
                 size="lg"
               >
-                <ArrowLeft className="h-5 w-5" />
-                Previous
+                Next
+                <ArrowRight className="h-5 w-5" />
               </Button>
+            )}
+          </div>
+        </div>
+      )}
 
-              {answers[currentQuestion.id] && currentStep < totalSteps - 1 && (
-                <Button
-                  onClick={() => goToStep(currentStep + 1)}
-                  className="flex items-center gap-2 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white shadow-lg"
-                  size="lg"
-                >
-                  Next
-                  <ArrowRight className="h-5 w-5" />
-                </Button>
-              )}
+      {/* Loading State */}
+      {isLoading && (
+        <div className="card text-center">
+          <div className="flex flex-col items-center gap-4">
+            <div className="h-16 w-16 animate-spin rounded-full border-4 border-teal-500 border-t-transparent" />
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                Calculating Your Results...
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400">
+                Analyzing your responses to find the perfect AI employees for your business.
+              </p>
             </div>
-          </motion.div>
-        )}
+          </div>
+        </div>
+      )}
 
-        {/* Loading State */}
-        {isLoading && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="card text-center"
-          >
-            <div className="flex flex-col items-center gap-4">
-              <div className="h-16 w-16 animate-spin rounded-full border-4 border-teal-500 border-t-transparent" />
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                  Calculating Your Results...
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Analyzing your responses to find the perfect AI employees for your business.
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        )}
-
-        {/* Email Capture Form */}
-        {showEmailForm && results && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="space-y-6"
-          >
+      {/* Email Capture Form */}
+      {showEmailForm && results && (
+        <div className="space-y-6">
             {/* Results Preview - When AI Employees are recommended */}
             {results.recommendations.length > 0 && (
               <div className="card bg-gradient-to-r from-teal-50 to-emerald-50 dark:from-teal-950 dark:to-emerald-950">
@@ -483,9 +471,8 @@ export function AITeamCalculator() {
                 </Button>
               </form>
             </div>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
     </div>
   )
 }
