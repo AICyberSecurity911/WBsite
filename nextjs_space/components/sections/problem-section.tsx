@@ -134,11 +134,11 @@ export function ProblemSection() {
                   <div className="flex items-center justify-between">
                     <div>
                       <span className="text-lg font-bold text-red-900 dark:text-red-100">TOTAL ACTUAL COST</span>
-                      <p className="text-sm text-red-700 dark:text-red-300">Per employee, per year</p>
+                      <p className="text-sm text-red-800 dark:text-red-200 font-semibold">Per employee, per year</p>
                     </div>
                     <div className="text-right">
-                      <span className="text-3xl font-bold text-red-600">${totalCost.toLocaleString()}</span>
-                      <p className="text-sm text-red-700 dark:text-red-300">138% more than expected</p>
+                      <span className="text-3xl font-bold text-red-600 dark:text-red-400">${totalCost.toLocaleString()}</span>
+                      <p className="text-sm text-red-800 dark:text-red-200 font-semibold">138% more than expected</p>
                     </div>
                   </div>
                 </motion.div>
