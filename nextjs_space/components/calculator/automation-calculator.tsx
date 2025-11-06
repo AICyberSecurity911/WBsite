@@ -14,7 +14,7 @@ export function AutomationCalculator() {
     invoicingHours: 0,
     reportingHours: 0,
     projectCoordHours: 0,
-    hourlyRate: 75,
+    hourlyRate: 0,
     email: '',
     name: ''
   })
@@ -159,11 +159,12 @@ export function AutomationCalculator() {
             </label>
             <Input
               type="number"
-              value={form.hourlyRate}
-              onChange={(e) => updateForm('hourlyRate', Number(e.target.value))}
+              value={form.hourlyRate || ''}
+              onChange={(e) => updateForm('hourlyRate', Number(e.target.value) || 0)}
               className="w-full"
               min="1"
               step="5"
+              placeholder="e.g., 75"
             />
             <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
               What your time is truly worth per hour
