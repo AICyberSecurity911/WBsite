@@ -327,13 +327,10 @@ export function AITeamCalculator() {
                             <IconComponent className="h-6 w-6 text-white" />
                           </div>
                           <div className="flex-1">
-                            <div className="mb-1 flex items-center gap-2">
+                            <div className="mb-1">
                               <h4 className="text-lg font-bold text-gray-900 dark:text-white">
                                 {service.name}
                               </h4>
-                              <span className="rounded-full bg-teal-100 px-2 py-0.5 text-xs font-semibold text-teal-700 dark:bg-teal-900 dark:text-teal-300">
-                                {service.relevanceScore}% Match
-                              </span>
                             </div>
                             <p className="mb-3 text-sm text-gray-600 dark:text-gray-300">
                               {service.description}
