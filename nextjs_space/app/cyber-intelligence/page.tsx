@@ -44,7 +44,7 @@ export default function CyberIntelligencePage() {
   const [breachResult, setBreachResult] = useState<any>(null)
   const [breachLoading, setBreachLoading] = useState(false)
   const [breachError, setBreachError] = useState('')
-  const [checksRemaining, setChecksRemaining] = useState(4)
+  const [checksRemaining, setChecksRemaining] = useState(10)
   const [showExitIntent, setShowExitIntent] = useState(false)
   const [exitIntentEmail, setExitIntentEmail] = useState('')
   const [exitIntentSubmitted, setExitIntentSubmitted] = useState(false)
@@ -577,7 +577,7 @@ export default function CyberIntelligencePage() {
                 </div>
                 
                 <p className="text-sm text-muted-foreground mt-2">
-                  Checks remaining: {checksRemaining}/4
+                  Checks remaining: {checksRemaining}/10 per hour
                 </p>
               </form>
 

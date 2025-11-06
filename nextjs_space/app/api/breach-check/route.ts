@@ -94,20 +94,24 @@ export async function POST(request: NextRequest) {
 
     const data = await response.json()
 
-    // XposedOrNot returns data in this format:
+    // XposedOrNot API returns data in this format:
     // {
-    //   "email": "...",
-    //   "breaches_details": [...],
-    //   "metrics": {
-    //     "breaches": X,
-    //     "pastes": Y
+    //   "BreachMetrics": { ... },
+    //   "BreachesSummary": { "site": "..." },
+    //   "ExposedBreaches": {
+    //     "breaches_details": [...]
     //   }
     // }
 
-    const breaches = data.breaches_details || []
-    const breachCount = data.metrics?.breaches || breaches.length || 0
+    // Check if there are any breaches
+    const breachesData = data.ExposedBreaches?.breaches_details || []
+    const breachCount = breachesData.length
+    
+    // Also check the BreachesSummary for site list
+    const siteSummary = data.BreachesSummary?.site || ''
+    const siteCount = siteSummary ? siteSummary.split(';').length : 0
 
-    if (breachCount === 0) {
+    if (breachCount === 0 && siteCount === 0) {
       return NextResponse.json({
         exposed: false,
         message: 'Good news! This email was not found in any known data breaches.',
@@ -115,25 +119,38 @@ export async function POST(request: NextRequest) {
       })
     }
 
+    // Use the higher count (sometimes siteSummary has more complete data)
+    const actualBreachCount = Math.max(breachCount, siteCount)
+
     // Process breach data
-    const breachNames = breaches.map((b: any) => b.breach || b.name || 'Unknown').slice(0, 10)
-    const mostRecentBreach = breaches.length > 0 ? breaches.reduce((latest: any, current: any) => {
-      const latestDate = new Date(latest.breach_date || latest.date || '1970-01-01')
-      const currentDate = new Date(current.breach_date || current.date || '1970-01-01')
-      return currentDate > latestDate ? current : latest
-    }, breaches[0]) : null
+    const breachNames = breachesData
+      .map((b: any) => b.breach || 'Unknown')
+      .slice(0, 10)
+    
+    const mostRecentBreach = breachesData.length > 0 
+      ? breachesData.reduce((latest: any, current: any) => {
+          const latestDate = new Date(latest.xposed_date || '1970')
+          const currentDate = new Date(current.xposed_date || '1970')
+          return currentDate > latestDate ? current : latest
+        }, breachesData[0])
+      : null
+
+    // Get risk score from BreachMetrics
+    const riskData = data.BreachMetrics?.risk?.[0] || { risk_label: 'Unknown', risk_score: 0 }
 
     return NextResponse.json({
       exposed: true,
-      breachCount,
+      breachCount: actualBreachCount,
       breachNames,
-      totalAccounts: data.metrics?.pastes || 0,
+      riskScore: riskData.risk_score,
+      riskLabel: riskData.risk_label,
       mostRecentBreach: mostRecentBreach ? {
-        name: mostRecentBreach.breach || mostRecentBreach.name || 'Unknown',
-        date: mostRecentBreach.breach_date || mostRecentBreach.date || 'Unknown',
-        dataClasses: mostRecentBreach.exposed_data || mostRecentBreach.data_classes || []
+        name: mostRecentBreach.breach || 'Unknown',
+        date: mostRecentBreach.xposed_date || 'Unknown',
+        dataClasses: mostRecentBreach.xposed_data ? mostRecentBreach.xposed_data.split(';') : [],
+        records: mostRecentBreach.xposed_records || 0
       } : null,
-      message: `Warning! This email appeared in ${breachCount} known data breach${breachCount > 1 ? 'es' : ''}.`,
+      message: `Warning! This email appeared in ${actualBreachCount} known data breach${actualBreachCount !== 1 ? 'es' : ''}.`,
       remaining: rateLimit.remaining
     })
 
