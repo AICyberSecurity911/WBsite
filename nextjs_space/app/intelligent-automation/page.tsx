@@ -14,13 +14,19 @@ import {
   Calendar, 
   Database,
   CheckCircle,
+  CheckCircle2,
   AlertCircle,
   Workflow,
   Target,
   BarChart3,
   Shield,
   ArrowRight,
-  CheckCircle2
+  Users,
+  Lock,
+  Award,
+  LightbulbIcon,
+  Timer,
+  Building
 } from 'lucide-react'
 import Link from 'next/link'
 import { AutomationCalculator } from '@/components/calculator/automation-calculator'
@@ -34,7 +40,7 @@ import { Button } from '@/components/ui/button'
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
 }
 
 const staggerContainer = {
@@ -52,8 +58,8 @@ export default function IntelligentAutomationPage() {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "Intelligent Automation Services",
-    "description": "Save 20+ hours a week and cut costs by 60-85% with QuantumLeap's Intelligent Automations. Connect your tools, eliminate repetitive tasks, and work 24/7 without hiring.",
+    "name": "Intelligent Automations for SMBs",
+    "description": "Stop losing time and profit to manual work. QuantumLeap's Intelligent Automations connect your tools, eliminate repetitive tasks, and save 20+ hours/week—without hiring.",
     "provider": {
       "@type": "Organization",
       "name": "QuantumLeap AI",
@@ -101,42 +107,34 @@ export default function IntelligentAutomationPage() {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "How fast can I see results from automation?",
+        "name": "Isn't automation expensive or complicated?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Most businesses see measurable results within 14–30 days. Once your automation is set up, it starts working immediately. Clients often report saving 15–25 hours per week in the first month. Book a complimentary consultation to see your 30-day ROI timeline."
+          "text": "No. Intelligent Automations are modular and plug directly into your existing tools. Most clients see ROI within the first month."
         }
       },
       {
         "@type": "Question",
-        "name": "Will automation replace my team?",
+        "name": "Will automation replace my employees?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No — automation replaces repetitive work, not people. Your automated workflows handle data entry, emails, and routine tasks so your human team can focus on clients and strategy. Most teams become more productive and less stressed with automation."
+          "text": "Not at all. It replaces tasks, not people. Your team spends less time clicking and more time creating value."
         }
       },
       {
         "@type": "Question",
-        "name": "Is my data secure with automation?",
+        "name": "How secure is it?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes — your automations are built by the same engineers who secured NASA's systems. Your data is encrypted end-to-end (AES-256) and protected by enterprise-grade security protocols. Book a call with our deployment team for a security walk-through."
+          "text": "Every integration is built on encrypted APIs and monitored 24/7 by a team that's helped secure NASA systems."
         }
       },
       {
         "@type": "Question",
-        "name": "How much does intelligent automation cost?",
+        "name": "What if I don't know where to start?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Each automation starts at $199–$499/month, all-inclusive. That's about 60–85% less than hiring additional staff, with zero training, benefits, or turnover costs. Use the free Automation ROI Calculator to see your potential savings."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do I need to switch my current tools?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. Your automations integrate directly with your existing stack — Gmail, Outlook, QuickBooks, HubSpot, Salesforce, ClickUp, Shopify, and more. We make it fit your current system, not the other way around."
+          "text": "That's exactly why we built the calculator and free audit. You'll get a clear roadmap tailored to your business."
         }
       }
     ]
@@ -170,7 +168,7 @@ export default function IntelligentAutomationPage() {
       before: '7 days/month on invoicing; late payments',
       after: 'InvoiceIQ + OpsSync automated billing & reminders',
       result: '12 hours/week saved, 62% faster collections, +$45K cash-flow gain',
-      roles: 'InvoiceIQ + OpsSync'
+      image: '/company-logos/allianz.png'
     },
     {
       name: 'Tiffany Duncan',
@@ -179,7 +177,7 @@ export default function IntelligentAutomationPage() {
       before: '6 platforms to track leads and follow-ups',
       after: 'LeadFlow + MailPilot centralized and nurtured automatically',
       result: '+34% revenue; 2 extra client slots/month',
-      roles: 'LeadFlow + MailPilot'
+      image: '/company-logos/ibm.png'
     },
     {
       name: 'Gurpreet Sandhu',
@@ -188,7 +186,7 @@ export default function IntelligentAutomationPage() {
       before: 'Manual listing updates across CRM, MLS, and ads',
       after: 'OpsSync + DataBridge synced all channels',
       result: '18 hours/week saved; errors down 97%; ~$61K annual savings',
-      roles: 'OpsSync + DataBridge'
+      image: '/company-logos/deloitte.png'
     },
     {
       name: 'Lydia V. Penrose',
@@ -197,1430 +195,985 @@ export default function IntelligentAutomationPage() {
       before: 'Clients waited days for reports',
       after: 'SmartDocs compiled insights overnight',
       result: 'Turnaround cut from 72h to 6h; retention up 29%',
-      roles: 'SmartDocs'
+      image: '/company-logos/ge.png'
+    },
+    {
+      name: 'Harper Kingsley',
+      company: 'Adroit Infosystems',
+      title: 'VP',
+      before: 'Overwhelmed inbox; missed deals',
+      after: 'MailPilot handled 75% of inbound messages',
+      result: 'Team stress ↓ 68%; close rate ↑ 41%',
+      image: '/company-logos/hsbc.png'
     }
   ]
 
-  const [heroRef, heroInView] = useInView({ triggerOnce: true, threshold: 0.1 })
-  const [tlddrRef, tlddrInView] = useInView({ triggerOnce: true, threshold: 0.1 })
-  const [problemRef, problemInView] = useInView({ triggerOnce: true, threshold: 0.1 })
-  const [solutionRef, solutionInView] = useInView({ triggerOnce: true, threshold: 0.1 })
-  const [delivRef, delivInView] = useInView({ triggerOnce: true, threshold: 0.1 })
-  const [calcRef, calcInView] = useInView({ triggerOnce: true, threshold: 0.1 })
-  const [pricingRef, pricingInView] = useInView({ triggerOnce: true, threshold: 0.1 })
-  const [faqRef, faqInView] = useInView({ triggerOnce: true, threshold: 0.1 })
-
-  const timeWasteStats = [
-    { icon: Clock, value: '21.8 hrs', label: 'Weekly Time Waste', color: 'text-red-500' },
-    { icon: DollarSign, value: '$47K', label: 'Annual Cost per Employee', color: 'text-amber-500' },
-    { icon: TrendingUp, value: '68%', label: 'Productivity Loss', color: 'text-orange-500' }
-  ]
-
-  const problemAreas = [
-    {
-      icon: Mail,
-      title: 'Email & Communication Chaos',
-      problem: 'Spending 3+ hours daily sorting emails, scheduling meetings, and managing communications',
-      impact: '~750 hours/year wasted',
-      solution: 'Automated email sorting, smart scheduling, and response templates'
-    },
-    {
-      icon: FileText,
-      title: 'Manual Data Entry Hell',
-      problem: 'Copy-pasting data between systems, updating spreadsheets, and reconciling records',
-      impact: '~500 hours/year wasted',
-      solution: 'Automated data sync between all your business tools'
-    },
-    {
-      icon: Calendar,
-      title: 'Scheduling Nightmares',
-      problem: 'Back-and-forth emails coordinating meetings, following up on appointments',
-      impact: '~200 hours/year wasted',
-      solution: 'Self-scheduling tools with automated reminders'
-    },
-    {
-      icon: Database,
-      title: 'Report Generation Drudgery',
-      problem: 'Manually compiling reports, pulling data from multiple sources',
-      impact: '~300 hours/year wasted',
-      solution: 'Automated real-time dashboards and scheduled reports'
-    },
-    {
-      icon: FileText,
-      title: 'Invoice & Payment Chasing',
-      problem: 'Creating invoices manually, sending payment reminders, tracking receivables',
-      impact: '~250 hours/year wasted',
-      solution: 'Automated invoicing and payment follow-up systems'
-    },
-    {
-      icon: Workflow,
-      title: 'Repetitive Task Loops',
-      problem: 'Doing the same tasks over and over: file organization, data backups, status updates',
-      impact: '~400 hours/year wasted',
-      solution: 'Intelligent workflows that run on autopilot'
+  const scrollToCalculator = () => {
+    const calc = document.getElementById('calculator')
+    if (calc) {
+      calc.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
-  ]
-
-  const automationProcess = [
-    {
-      phase: 'Phase 1',
-      title: 'Time Audit',
-      duration: '1-2 Days',
-      description: 'We shadow your team to identify the biggest time drains and automation opportunities',
-      deliverables: ['Task inventory', 'Time waste analysis', 'Priority matrix', 'Quick-win identification']
-    },
-    {
-      phase: 'Phase 2',
-      title: 'Automation Design',
-      duration: '2-3 Days',
-      description: 'We design simple, bulletproof workflows that eliminate your repetitive tasks',
-      deliverables: ['Workflow diagrams', 'Tool integration plan', 'Error prevention protocols', 'Training materials']
-    },
-    {
-      phase: 'Phase 3',
-      title: 'Implementation',
-      duration: '3-5 Days',
-      description: 'We build and test your automations, ensuring they work flawlessly',
-      deliverables: ['Configured workflows', 'Tested integrations', 'Documentation', 'Emergency rollback plan']
-    },
-    {
-      phase: 'Phase 4',
-      title: 'Optimization',
-      duration: 'Ongoing',
-      description: 'We monitor performance and continuously improve your automations',
-      deliverables: ['Weekly performance reports', 'Optimization recommendations', 'New automation opportunities', 'Priority support']
-    }
-  ]
-
-  const deliverables = [
-    {
-      title: 'Custom Automation Workflows',
-      description: 'Tailored to your exact business processes, not generic templates',
-      icon: Workflow
-    },
-    {
-      title: 'System Integration',
-      description: 'Connect all your tools: CRM, email, accounting, project management',
-      icon: Database
-    },
-    {
-      title: 'Error Prevention',
-      description: 'Built-in safeguards to catch mistakes before they become problems',
-      icon: Shield
-    },
-    {
-      title: 'Performance Dashboard',
-      description: 'Real-time visibility into time saved, errors prevented, and ROI',
-      icon: BarChart3
-    },
-    {
-      title: 'Training & Documentation',
-      description: 'Step-by-step guides so your team can use and maintain the automations',
-      icon: FileText
-    },
-    {
-      title: 'Ongoing Support',
-      description: '30-day money-back guarantee + priority support to ensure everything runs smoothly',
-      icon: Target
-    }
-  ]
-
-  const pricingTiers = [
-    {
-      name: 'Starter',
-      price: '$2,997',
-      description: 'Perfect for solo entrepreneurs and micro-businesses',
-      features: [
-        'Up to 3 automation workflows',
-        '2 system integrations',
-        'Email & calendar automation',
-        'Basic reporting dashboard',
-        '1 month support',
-        '2-week implementation'
-      ],
-      ideal: 'Ideal for: Solopreneurs, freelancers, 1-2 person teams',
-      cta: 'Start Automating',
-      popular: false
-    },
-    {
-      name: 'Growth',
-      price: '$7,497',
-      description: 'Best for small teams ready to scale',
-      features: [
-        'Up to 10 automation workflows',
-        '5 system integrations',
-        'Complete email & communication suite',
-        'Advanced reporting & analytics',
-        'Data sync & backup automation',
-        'Invoice & payment automation',
-        '3 months support',
-        '1-week implementation',
-        'Priority support'
-      ],
-      ideal: 'Ideal for: 3-15 person teams, growing businesses',
-      cta: 'Scale Your Business',
-      popular: true
-    },
-    {
-      name: 'Enterprise',
-      price: 'Custom',
-      description: 'For established businesses with complex needs',
-      features: [
-        'Unlimited automation workflows',
-        'Unlimited system integrations',
-        'Custom API development',
-        'Advanced security & compliance',
-        'Dedicated automation engineer',
-        'White-glove onboarding',
-        '12 months support',
-        'Custom implementation timeline',
-        '24/7 priority support'
-      ],
-      ideal: 'Ideal for: 15+ person teams, complex operations',
-      cta: 'Schedule Consultation',
-      popular: false
-    }
-  ]
-
-  const faqs = [
-    {
-      question: "Do you provide plug-and-play automation, or do you build custom?",
-      answer: "We custom-build every automation to fit your exact tools, workflows, and business logic. You're not buying a pre-built template—you're getting intelligent workflows designed specifically for how you operate. The automation types you see on this page (LeadFlow, InvoiceIQ, etc.) are examples from past client projects. Your solution will be tailored to your unique tech stack and processes.",
-      cta: {
-        text: "⚙️ Ready to see what custom automation would look like for your business? Book your free discovery call →",
-        link: "/consultation"
-      }
-    },
-    {
-      question: "Isn't automation expensive or complicated?",
-      answer: "No. Intelligent Automations are modular and plug directly into your existing tools—no rip-and-replace required. We design each workflow to start simple and scale as you grow. Most clients see ROI within the first month because we focus on high-impact, low-complexity wins first. The average SMB loses $93,000/year to manual work. Our automations typically cost a fraction of that—and pay for themselves in weeks, not months.",
-      cta: {
-        text: "🟢 Show me my ROI → Run the free automation scan or book a consultation",
-        link: "#calculator"
-      }
-    },
-    {
-      question: "Will automation replace my employees?",
-      answer: "Not at all. Automation replaces tasks, not people. Your team spends less time clicking, copying, and chasing—and more time creating value. We've seen teams become more engaged (not less) because they finally have bandwidth for strategic work. Custom automation makes your team more productive, not redundant.",
-      cta: {
-        text: "🟢 See how automation would complement your team → Book a free consultation",
-        link: "/consultation"
-      }
-    },
-    {
-      question: "How secure is it?",
-      answer: "Every integration is built on encrypted APIs and monitored 24/7 by a team that's helped secure NASA systems. We follow enterprise-grade security protocols: End-to-end encryption (AES-256), SOC2-compliant data handling, Zero-storage of sensitive credentials, and Audit logs for every automated action. Your data is more secure than most manual processes—because humans make mistakes, automation doesn't.",
-      cta: {
-        text: "🔒 Want to see how we secure your data? Request a security walkthrough →",
-        link: "/consultation"
-      }
-    },
-    {
-      question: "What if I don't know where to start?",
-      answer: "That's exactly why we built the calculator and free audit. You'll get a clear roadmap showing: Which workflows are costing you the most time, Which automations deliver the fastest ROI, and A 30-day deployment plan tailored to your business. No guesswork. No overwhelm. Just a prioritized plan you can act on immediately.",
-      cta: {
-        text: "🧭 Get your custom roadmap → Start your free audit or run the calculator",
-        link: "#calculator"
-      }
-    },
-    {
-      question: "How long does it take to see results?",
-      answer: "Preliminary findings within 72 hours. Full deployment in 7–14 days. Because we're building custom workflows (not installing templates), the timeline depends on complexity. But we prioritize quick wins first—so you start seeing time savings within the first week of deployment.",
-      cta: {
-        text: "📅 Want to see your deployment timeline? Book a free scoping call →",
-        link: "/consultation"
-      }
-    },
-    {
-      question: "What if my tools are unique or niche?",
-      answer: "Perfect. That's what we're built for. Most automation vendors only work with the top 20 SaaS tools. We've integrated with hundreds of platforms—from mainstream (HubSpot, Salesforce) to niche industry software. If your tools have APIs (or even just CSV exports), we can automate them. If they don't, we'll find creative workarounds.",
-      cta: {
-        text: "💡 Curious if your stack is compatible? Book a technical review call →",
-        link: "/consultation"
-      }
-    },
-    {
-      question: "Is this affordable for SMBs?",
-      answer: "Yes. Our automations cost a fraction of a typical hire—and far less than the profit you're losing to manual work. Example: A custom DataBridge automation (syncing 3 tools) costs ~$299–499/mo. That's less than one day of an employee's salary—but it works 24/7 and never makes mistakes. Most clients save 10–20x the cost of automation in recovered productivity and reduced errors.",
-      cta: {
-        text: "💰 See your cost-benefit breakdown → Run the free ROI scan",
-        link: "#calculator"
-      }
-    },
-    {
-      question: "What happens after deployment?",
-      answer: "You get ongoing monitoring, optimization, and monthly ROI reports. We don't just 'set and forget.' Your dedicated success manager: Monitors performance 24/7, Optimizes workflows based on usage patterns, Reports monthly time/cost savings, and Handles any tweaks or expansions. You'll always have real human support—not chatbots.",
-      cta: {
-        text: "🙌 Want to meet your potential success manager? Book your free consultation →",
-        link: "/consultation"
-      }
-    },
-    {
-      question: "Can I start small and scale later?",
-      answer: "Absolutely. That's our recommended approach. Most founders start with 1–2 high-impact automations (usually invoice processing or lead routing). Once you see the ROI, you expand. We design every automation to be modular—so you can add, adjust, or scale without rebuilding from scratch.",
-      cta: {
-        text: "🎯 Start small. Scale smart. Book your free scoping call →",
-        link: "/consultation"
-      }
-    },
-    {
-      question: "What if it breaks or stops working?",
-      answer: "We monitor 24/7 and fix issues proactively—usually before you even notice. If an integration changes (like when a SaaS tool updates its API), we handle the update automatically. If something unexpected happens, we're alerted instantly and resolve it. Our average response time is under 2 hours. Most issues are resolved in under 30 minutes.",
-      cta: {
-        text: "🛡️ See our uptime guarantee → Request service level agreement details →",
-        link: "/consultation"
-      }
-    },
-    {
-      question: "How is this different from Zapier or Make?",
-      answer: "Great question. Zapier and Make are DIY automation tools—you build and maintain everything yourself. They're powerful, but they require technical knowledge, ongoing maintenance, and troubleshooting when things break. QuantumLeap is a done-for-you service. We: Design the automation logic, Build and test the workflows, Monitor performance 24/7, Optimize and troubleshoot automatically, and Provide human support when you need it. Think of it this way: Zapier is like buying lumber to build a house. QuantumLeap is hiring an architect and construction crew.",
-      cta: {
-        text: "🧠 Want to see the difference in action? Book a live demo →",
-        link: "/consultation"
-      }
-    },
-    {
-      question: "How do I get started?",
-      answer: "Simple: 1) Run the free automation scan (2 minutes) to see where you're losing time, 2) Book a complimentary strategy call (30 minutes) to review your results, 3) Get your custom 30-day automation plan (delivered within 48 hours), 4) Deploy your first automation (7–14 days from approval). No obligation. No pressure. Just clarity on what's possible for your business.",
-      cta: {
-        text: "🚀 Start your free automation scan → or Book your strategy call →",
-        link: "#calculator"
-      }
-    }
-  ]
-
-  // FAQ Schema for AEO (Answer Engine Optimization)
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map(faq => ({
-      "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.answer
-      }
-    }))
   }
 
   return (
-    <div className="min-h-screen">
+    <>
+      {/* Schema Markup */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
       <Header />
-      
-      <main>
-        {/* Hero Section */}
-        <section ref={heroRef} className="relative min-h-screen overflow-hidden flex items-center">
-          {/* Background Image */}
-          <div className="absolute inset-0 z-0">
-            <Image
-              src="/automation-hero-bg.jpg"
-              alt="Automation Background"
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-background" />
-          </div>
 
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <motion.div
-              initial="hidden"
-              animate={heroInView ? "visible" : "hidden"}
-              variants={staggerContainer}
-              className="text-center"
-            >
-              <motion.h1 variants={fadeInUp} className="text-5xl lg:text-7xl font-bold mb-6 leading-tight text-white">
-                Save 20+ Hours a Week and Cut Costs by 60–85%—<br />
-                <span className="text-brand-teal-400">Automate the Busywork That's Holding You Back</span>
-              </motion.h1>
+      <main className="min-h-screen bg-white dark:bg-zinc-950">
+        
+        {/* HERO SECTION */}
+        <section 
+          ref={heroRef}
+          className="relative overflow-hidden bg-gradient-to-br from-white via-teal-50/30 to-white dark:from-zinc-950 dark:via-teal-950/10 dark:to-zinc-950 py-20 lg:py-32"
+        >
+          <div className="absolute inset-0 bg-grid-pattern opacity-[0.03]" />
+          
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            animate={heroInView ? "visible" : "hidden"}
+            className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+          >
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
               
-              <motion.p variants={fadeInUp} className="text-xl lg:text-2xl text-gray-200 mb-12 max-w-4xl mx-auto leading-relaxed">
-                Your time drives growth. Our custom Intelligent Automations connect your tools, remove repetitive tasks, and work 24/7—so you can do the work that moves the needle.
-              </motion.p>
-              
-              <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <a 
-                  href="#calculator" 
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-brand-teal-500 hover:bg-brand-teal-600 rounded-lg transition shadow-lg shadow-brand-teal-500/50"
-                >
-                  🟢 Reveal My Hidden Hours & Savings
-                </a>
-                <a 
-                  href="/consultation" 
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold border-2 border-white text-white rounded-lg hover:bg-white/10 transition"
-                >
-                  ⚙️ Show Me What I Can Automate (Free Audit)
-                </a>
-              </motion.div>
-              
-              <motion.p variants={fadeInUp} className="text-sm text-teal-100 mb-4">
-                See how much time and money you can free up this month.
-              </motion.p>
-
-              {/* Trust Bar */}
-              <motion.div variants={fadeInUp} className="text-center mb-12">
-                <p className="text-sm font-semibold text-teal-100 tracking-wide">
-                  Fortune 500 Strategy | MIT & Caltech Engineering | Team That Secured NASA
-                </p>
-              </motion.div>
-
-              {/* Core Results Stat Bar */}
-              <motion.div variants={fadeInUp} className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4 max-w-6xl mx-auto">
-                {[
-                  { value: '200+', label: 'Businesses Transformed' },
-                  { value: 'Money Back', label: 'Guarantee' },
-                  { value: '24/7', label: 'Uptime' },
-                  { value: '99.2%', label: 'Accuracy Rate' },
-                  { value: '87%', label: 'Cost Savings' },
-                  { value: '8', label: 'AI Roles' },
-                  { value: '24-48h', label: 'Deployment' },
-                  { value: '$499', label: 'Starting From' }
-                ].map((stat, index) => (
-                  <motion.div
-                    key={index}
-                    variants={fadeInUp}
-                    className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4"
-                  >
-                    <div className="text-2xl font-bold text-brand-teal-300 mb-1">{stat.value}</div>
-                    <div className="text-xs text-gray-300 leading-tight">{stat.label}</div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* TLDDR Box Section */}
-        <section className="py-16 bg-background border-b border-border">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="bg-gradient-to-br from-brand-teal-50 to-emerald-50 dark:from-brand-teal-950/30 dark:to-emerald-950/30 rounded-2xl p-8 border-2 border-brand-teal-200 dark:border-brand-teal-800"
-            >
-              <div className="flex items-start gap-4 mb-6">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-brand-teal-500 to-emerald-500 flex items-center justify-center flex-shrink-0">
-                  <span className="text-2xl font-bold text-white">PK</span>
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold mb-2">What is QuantumLeap Intelligent Automations?</h3>
-                  <p className="text-sm text-brand-teal-700 dark:text-brand-teal-300 font-semibold">
-                    From the Desk of Paras Khurana, Founder & CEO
-                  </p>
-                </div>
-              </div>
-              
-              <div className="prose prose-lg dark:prose-invert max-w-none">
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-                  A custom-learning automation layer that links your CRM, email, finance, and operations tools—then takes over the repeatable work. Built for your business, not copied from a template.
-                </p>
+              {/* Left Column: Copy */}
+              <motion.div variants={fadeInUp} className="space-y-8">
                 
-                <div className="mb-6">
-                  <h4 className="font-bold text-gray-900 dark:text-white mb-3">Typical Outcomes:</h4>
-                  <ul className="space-y-2 text-gray-700 dark:text-gray-300">
-                    <li className="flex items-start gap-2">
-                      <span className="text-brand-teal-500 flex-shrink-0">⏱</span>
-                      <span>Reclaim 15–25 hours per week per employee</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-brand-teal-500 flex-shrink-0">💵</span>
-                      <span>Reduce manual labor costs by 60–85%</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-brand-teal-500 flex-shrink-0">⚙️</span>
-                      <span>Deploy in ≤14 days (no code required)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-brand-teal-500 flex-shrink-0">🔒</span>
-                      <span>Built by the team that secured NASA systems</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <p className="text-sm text-gray-600 dark:text-gray-400 italic mb-4">
-                  <em>From the desk of Paras Khurana, Founder & CEO</em>
-                </p>
-
-                <div className="bg-white dark:bg-gray-900 rounded-xl p-6 border-l-4 border-brand-teal-500 mt-6">
-                  <p className="text-sm font-semibold text-brand-teal-700 dark:text-brand-teal-300 uppercase tracking-wide mb-2">
-                    💡 Critical Insight (from 250+ years combined experience)
-                  </p>
-                  <p className="text-gray-900 dark:text-gray-100 font-semibold text-lg">
-                    Every manual workflow is a hidden expense center. Find it, automate it, and your margins expand.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* The Manual Trap: Problem Section */}
-        <section ref={costRef} className="py-24 bg-gradient-to-b from-background to-muted">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial="hidden"
-              animate={costInView ? "visible" : "hidden"}
-              variants={staggerContainer}
-            >
-              <motion.div variants={fadeInUp} className="text-center mb-16">
-                <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                  The Manual Trap—<span className="text-brand-teal-500">Where Profits Go to Die</span>
-                </h2>
-                <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                  You didn't start a business to babysit spreadsheets
-                </p>
-              </motion.div>
-
-              <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-                <motion.div variants={fadeInUp}>
-                  <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
-                    <Image
-                      src="/manual-tasks-burden.jpg"
-                      alt="Manual Tasks Burden"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                </motion.div>
-
-                <motion.div variants={staggerContainer} className="space-y-6">
-                  <motion.div variants={fadeInUp}>
-                    <div className="bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-950/30 dark:to-orange-950/30 rounded-2xl p-8 border-2 border-red-200 dark:border-red-800">
-                      <p className="text-xl text-gray-800 dark:text-gray-200 leading-relaxed mb-6">
-                        You didn't start a business to babysit spreadsheets. But today you:
-                      </p>
-                      <ul className="space-y-4 text-lg text-gray-700 dark:text-gray-300 mb-6">
-                        <li className="flex items-start gap-3">
-                          <span className="text-red-500 font-bold">•</span>
-                          <span>Copy/paste data between CRMs and sheets</span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                          <span className="text-red-500 font-bold">•</span>
-                          <span>Manually chase invoices and follow-ups</span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                          <span className="text-red-500 font-bold">•</span>
-                          <span>Spend weekends "catching up" on reports</span>
-                        </li>
-                      </ul>
-                      <p className="text-lg text-gray-800 dark:text-gray-200 leading-relaxed mb-4 font-semibold">
-                        Reality: The average SMB loses ~1,200 hours/year to manual tasks—that's ~$93,000 in hidden waste.
-                      </p>
-                      <p className="text-lg text-gray-800 dark:text-gray-200 leading-relaxed">
-                        <strong>Result:</strong> Burnout, errors, slow cash flow, missed sales.
-                      </p>
-                      <p className="text-xl text-brand-teal-700 dark:text-brand-teal-300 font-bold mt-6">
-                        Every manual step is a leak in your profit pipe. And most owners never see it until they calculate the real cost.
-                      </p>
-                    </div>
-                    <div className="mt-6 text-center">
-                      <a
-                        href="#calculator"
-                        className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-brand-teal-500 hover:bg-brand-teal-600 rounded-lg transition shadow-lg"
-                      >
-                        🔍 Calculate My Hidden Waste Now →
-                      </a>
-                    </div>
-                  </motion.div>
-                </motion.div>
-              </div>
-
-              {/* Hidden Manual Task Costs */}
-              <motion.div variants={fadeInUp} className="max-w-5xl mx-auto mt-16">
-                <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-2xl border-2 border-brand-teal-200 dark:border-brand-teal-800">
-                  <h3 className="text-3xl font-bold text-center mb-8 text-brand-teal-600 dark:text-brand-teal-400">
-                    Hidden Cost of Manual Work (Per Year)
-                  </h3>
-                  <div className="space-y-4">
-                    {[
-                      { item: 'Data Entry & Copy/Paste (8h/week)', amount: '$20,800' },
-                      { item: 'Email Management & Triage (6h/week)', amount: '$15,600' },
-                      { item: 'Invoice Creation & Follow-ups (4h/week)', amount: '$10,400' },
-                      { item: 'Report Compilation (4h/week)', amount: '$10,400' },
-                      { item: 'Calendar & Meeting Scheduling (3h/week)', amount: '$7,800' },
-                      { item: 'Customer Follow-ups (4h/week)', amount: '$10,400' },
-                      { item: 'Errors & Rework (3h/week)', amount: '$15,600' },
-                      { item: 'Opportunity Cost (Lost Sales)', amount: '$12,000' }
-                    ].map((cost, index) => (
-                      <motion.div
-                        key={index}
-                        variants={fadeInUp}
-                        className="flex justify-between items-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg"
-                      >
-                        <span className="font-medium text-gray-900 dark:text-gray-100">{cost.item}</span>
-                        <span className="text-xl font-bold text-red-600 dark:text-red-400">{cost.amount}</span>
-                      </motion.div>
-                    ))}
-                    <div className="border-t-4 border-brand-teal-500 pt-6 mt-6">
-                      <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-                        <span className="text-2xl font-bold text-gray-900 dark:text-gray-100">TOTAL ANNUAL COST:</span>
-                        <span className="text-4xl font-extrabold text-red-600 dark:text-red-400">$93,000+</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Impact Stats */}
-              <motion.div variants={fadeInUp} className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mt-16">
-                <div className="bg-red-50 dark:bg-red-950/30 rounded-xl p-6 border border-red-200 dark:border-red-800 text-center">
-                  <div className="text-4xl font-bold text-red-600 dark:text-red-400 mb-2">1,200+</div>
-                  <p className="text-sm text-red-800 dark:text-red-200 font-medium">hours wasted yearly on manual tasks</p>
-                </div>
-                <div className="bg-amber-50 dark:bg-amber-950/30 rounded-xl p-6 border border-amber-200 dark:border-amber-800 text-center">
-                  <div className="text-4xl font-bold text-amber-600 dark:text-amber-400 mb-2">68%</div>
-                  <p className="text-sm text-amber-800 dark:text-amber-200 font-medium">productivity loss from context switching</p>
-                </div>
-                <div className="bg-orange-50 dark:bg-orange-950/30 rounded-xl p-6 border border-orange-200 dark:border-orange-800 text-center">
-                  <div className="text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2">3-7x</div>
-                  <p className="text-sm text-orange-800 dark:text-orange-200 font-medium">error rate in manual processes</p>
-                </div>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* What's Stealing Your Time Section */}
-        <section id="solution" ref={problemRef} className="py-24 bg-muted">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial="hidden"
-              animate={problemInView ? "visible" : "hidden"}
-              variants={staggerContainer}
-            >
-              <motion.div variants={fadeInUp} className="text-center mb-16">
-                <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                  You're Working Harder Than Ever—<br /><span className="text-brand-teal-500">But Getting Less Time Back</span>
-                </h2>
-                <div className="max-w-3xl mx-auto space-y-4">
-                  <p className="text-xl text-gray-800 dark:text-gray-200 leading-relaxed">
-                    You built your business to gain freedom.<br />
-                    Now you're the owner, assistant, and accountant—all before lunch.
-                  </p>
-                  <p className="text-lg text-gray-700 dark:text-gray-300">
-                    Every email, invoice, and customer follow-up takes your focus away from growth.<br />
-                    Hiring help means $68K+ salaries and training delays.<br />
-                    Doing it yourself means burnout.
-                  </p>
-                  <p className="text-xl text-brand-teal-700 dark:text-brand-teal-300 font-bold">
-                    If growth depends on you doing everything, you're not scaling—you're stalling.
-                  </p>
-                </div>
-              </motion.div>
-
-              <motion.div variants={staggerContainer} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {problemAreas.map((area, index) => {
-                  const Icon = area.icon
-                  return (
-                    <motion.div
-                      key={index}
-                      variants={fadeInUp}
-                      className="group relative bg-background rounded-xl p-6 border-2 border-border hover:border-brand-teal-500 transition-all duration-300 hover:shadow-[0_0_30px_rgba(20,184,166,0.3)]"
-                    >
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="p-3 rounded-lg bg-brand-teal-50 dark:bg-brand-teal-950/30 group-hover:bg-brand-teal-100 dark:group-hover:bg-brand-teal-900/50 transition-colors">
-                          <Icon className="w-6 h-6 text-brand-teal-600" />
-                        </div>
-                        <h3 className="font-bold text-lg">{area.title}</h3>
-                      </div>
-                      
-                      <p className="text-sm text-muted-foreground mb-4">{area.problem}</p>
-                      
-                      <div className="flex items-center gap-2 mb-4 pb-4 border-b border-border">
-                        <Clock className="w-4 h-4 text-red-500" />
-                        <span className="text-sm font-semibold text-red-600 dark:text-red-400">{area.impact}</span>
-                      </div>
-                      
-                      <div className="flex items-start gap-2">
-                        <CheckCircle className="w-5 h-5 text-brand-teal-500 mt-0.5 flex-shrink-0" />
-                        <p className="text-sm font-medium text-brand-teal-700 dark:text-brand-teal-300">
-                          {area.solution}
-                        </p>
-                      </div>
-                    </motion.div>
-                  )
-                })}
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Critical Decision & Solution Section */}
-        <section className="py-24 bg-gradient-to-br from-brand-teal-50 to-emerald-50 dark:from-brand-teal-950/30 dark:to-emerald-950/30">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={staggerContainer}
-            >
-              <motion.div variants={fadeInUp} className="text-center mb-16">
-                <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                  You started a business to create <span className="text-brand-teal-600 dark:text-brand-teal-400">freedom and wealth</span>
-                </h2>
-                <p className="text-2xl text-gray-800 dark:text-gray-200 max-w-4xl mx-auto mb-8">
-                  Instead, you're spending 60% of your time managing people, fixing their mistakes, and dealing with HR drama.
-                </p>
-                <p className="text-3xl font-bold text-brand-teal-600 dark:text-brand-teal-400 max-w-3xl mx-auto">
-                  Imagine employees who never quit, never make mistakes, and cost 87% less…
-                </p>
-              </motion.div>
-
-              <motion.div variants={fadeInUp} className="max-w-5xl mx-auto mb-16">
-                <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-2xl border-4 border-brand-teal-500">
-                  <h3 className="text-3xl font-bold text-center mb-8">Bottom Line:</h3>
-                  <p className="text-xl text-gray-800 dark:text-gray-200 leading-relaxed text-center mb-8">
-                    Traditional hiring is broken, expensive, and unreliable. AI employees work 24/7, never quit, never complain, and cost 87% less than human employees.
-                  </p>
-                </div>
-              </motion.div>
-
-              {/* Benefits Grid */}
-              <motion.div variants={staggerContainer} className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {[
-                  {
-                    title: 'Immediate Deployment',
-                    description: 'AI employees start working the moment you deploy them. No weeks of training, no onboarding drama.',
-                    icon: Zap
-                  },
-                  {
-                    title: 'Guaranteed Accuracy',
-                    description: '99.2% accuracy rate with built-in error detection and self-correction capabilities.',
-                    icon: Target
-                  },
-                  {
-                    title: 'Massive Cost Savings',
-                    description: 'Average 87% cost reduction compared to traditional employees when factoring in salary, benefits, and overhead.',
-                    icon: DollarSign
-                  },
-                  {
-                    title: 'Zero Management Overhead',
-                    description: 'No sick days, no drama, no HR issues. Just consistent, reliable performance every single day.',
-                    icon: CheckCircle
-                  }
-                ].map((benefit, index) => {
-                  const Icon = benefit.icon
-                  return (
-                    <motion.div
-                      key={index}
-                      variants={fadeInUp}
-                      className="bg-white dark:bg-gray-900 rounded-xl p-6 border-2 border-brand-teal-200 dark:border-brand-teal-800 hover:border-brand-teal-500 transition-all duration-300 hover:shadow-[0_0_30px_rgba(20,184,166,0.3)]"
-                    >
-                      <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-brand-teal-500 to-emerald-500 flex items-center justify-center mb-4">
-                        <Icon className="w-7 h-7 text-white" />
-                      </div>
-                      <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">{benefit.title}</h3>
-                      <p className="text-gray-600 dark:text-gray-300">{benefit.description}</p>
-                    </motion.div>
-                  )
-                })}
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Custom Automation Solutions Section */}
-        <section className="py-24 bg-gradient-to-b from-background to-muted">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={staggerContainer}
-            >
-              <motion.div variants={fadeInUp} className="text-center mb-8">
-                <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                  The Intelligent Automation Suite—<span className="text-brand-teal-500">Custom-Built to Connect Your Exact Tools and Workflows</span>
-                </h2>
-              </motion.div>
-              
-              <motion.div variants={fadeInUp} className="max-w-4xl mx-auto text-center mb-12">
-                <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                  We don't sell you off-the-shelf automation. We map your current stack, identify the friction points costing you time and money, then build intelligent workflows that run in the background—24/7, error-free.
-                </p>
-                <p className="text-lg text-gray-600 dark:text-gray-400">
-                  Below are examples of automation types we've deployed for clients. Your solution will be tailored to your unique processes, tools, and goals.
-                </p>
-              </motion.div>
-
-              <motion.div variants={staggerContainer} className="grid md:grid-cols-2 gap-8">
-                <motion.div
-                  variants={fadeInUp}
-                  className="group relative bg-background rounded-2xl p-8 border-2 border-border hover:border-brand-teal-500 transition-all duration-300 hover:shadow-[0_0_30px_rgba(20,184,166,0.3)]"
-                >
-                  <div className="absolute top-6 right-6 bg-gradient-to-r from-brand-teal-500 to-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full">
-                    PROPRIETARY
-                  </div>
-                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-brand-teal-500 to-emerald-500 flex items-center justify-center mb-6">
-                    <DollarSign className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-3">InvoiceIQ™</h3>
-                  <p className="text-muted-foreground mb-6">
-                    Auto-creates invoices based on your triggers and sends smart follow-ups on your schedule. Custom-built for your billing workflow—never chase payments manually again.
-                  </p>
-                  <ul className="space-y-2">
-                    <li className="flex items-start gap-2 text-sm">
-                      <CheckCircle className="w-5 h-5 text-brand-teal-500 mt-0.5 flex-shrink-0" />
-                      <span>Automated invoice generation and delivery</span>
-                    </li>
-                    <li className="flex items-start gap-2 text-sm">
-                      <CheckCircle className="w-5 h-5 text-brand-teal-500 mt-0.5 flex-shrink-0" />
-                      <span>Smart payment reminders and follow-ups</span>
-                    </li>
-                    <li className="flex items-start gap-2 text-sm">
-                      <CheckCircle className="w-5 h-5 text-brand-teal-500 mt-0.5 flex-shrink-0" />
-                      <span>Real-time payment tracking and reporting</span>
-                    </li>
-                  </ul>
-                </motion.div>
-
-                <motion.div
-                  variants={fadeInUp}
-                  className="group relative bg-background rounded-2xl p-8 border-2 border-border hover:border-brand-teal-500 transition-all duration-300 hover:shadow-[0_0_30px_rgba(20,184,166,0.3)]"
-                >
-                  <div className="absolute top-6 right-6 bg-gradient-to-r from-brand-teal-500 to-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full">
-                    PROPRIETARY
-                  </div>
-                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-brand-teal-500 to-emerald-500 flex items-center justify-center mb-6">
-                    <Zap className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-3">LeadFlow™</h3>
-                  <p className="text-muted-foreground mb-6">
-                    Custom-captures and routes leads from every source you use—web forms, email, calls, chat. Ensures every prospect gets immediate attention with personalized follow-up sequences.
-                  </p>
-                  <ul className="space-y-2">
-                    <li className="flex items-start gap-2 text-sm">
-                      <CheckCircle className="w-5 h-5 text-brand-teal-500 mt-0.5 flex-shrink-0" />
-                      <span>Instant lead capture and qualification</span>
-                    </li>
-                    <li className="flex items-start gap-2 text-sm">
-                      <CheckCircle className="w-5 h-5 text-brand-teal-500 mt-0.5 flex-shrink-0" />
-                      <span>Personalized email sequences and nurturing</span>
-                    </li>
-                    <li className="flex items-start gap-2 text-sm">
-                      <CheckCircle className="w-5 h-5 text-brand-teal-500 mt-0.5 flex-shrink-0" />
-                      <span>Automated task creation for your sales team</span>
-                    </li>
-                  </ul>
-                </motion.div>
-
-                <motion.div
-                  variants={fadeInUp}
-                  className="group relative bg-background rounded-2xl p-8 border-2 border-border hover:border-brand-teal-500 transition-all duration-300 hover:shadow-[0_0_30px_rgba(20,184,166,0.3)]"
-                >
-                  <div className="absolute top-6 right-6 bg-gradient-to-r from-brand-teal-500 to-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full">
-                    PROPRIETARY
-                  </div>
-                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-brand-teal-500 to-emerald-500 flex items-center justify-center mb-6">
-                    <Target className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-3">ClientPulse™</h3>
-                  <p className="text-muted-foreground mb-6">
-                    Automated feedback loops and retention triggers tailored to your customer lifecycle. Creates a VIP experience for every customer without manual intervention.
-                  </p>
-                  <ul className="space-y-2">
-                    <li className="flex items-start gap-2 text-sm">
-                      <CheckCircle className="w-5 h-5 text-brand-teal-500 mt-0.5 flex-shrink-0" />
-                      <span>Automated welcome sequences and onboarding</span>
-                    </li>
-                    <li className="flex items-start gap-2 text-sm">
-                      <CheckCircle className="w-5 h-5 text-brand-teal-500 mt-0.5 flex-shrink-0" />
-                      <span>Smart document collection and setup</span>
-                    </li>
-                    <li className="flex items-start gap-2 text-sm">
-                      <CheckCircle className="w-5 h-5 text-brand-teal-500 mt-0.5 flex-shrink-0" />
-                      <span>Progress tracking and milestone notifications</span>
-                    </li>
-                  </ul>
-                </motion.div>
-
-                <motion.div
-                  variants={fadeInUp}
-                  className="group relative bg-background rounded-2xl p-8 border-2 border-border hover:border-brand-teal-500 transition-all duration-300 hover:shadow-[0_0_30px_rgba(20,184,166,0.3)]"
-                >
-                  <div className="absolute top-6 right-6 bg-gradient-to-r from-brand-teal-500 to-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full">
-                    PROPRIETARY
-                  </div>
-                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-brand-teal-500 to-emerald-500 flex items-center justify-center mb-6">
-                    <BarChart3 className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-3">SmartDocs™</h3>
-                  <p className="text-muted-foreground mb-6">
-                    Auto-routes and summarizes reports based on your business logic. Compiles data from all your sources into real-time, actionable insights—no more manual spreadsheets.
-                  </p>
-                  <ul className="space-y-2">
-                    <li className="flex items-start gap-2 text-sm">
-                      <CheckCircle className="w-5 h-5 text-brand-teal-500 mt-0.5 flex-shrink-0" />
-                      <span>Automated data aggregation and reporting</span>
-                    </li>
-                    <li className="flex items-start gap-2 text-sm">
-                      <CheckCircle className="w-5 h-5 text-brand-teal-500 mt-0.5 flex-shrink-0" />
-                      <span>Real-time dashboards and visualizations</span>
-                    </li>
-                    <li className="flex items-start gap-2 text-sm">
-                      <CheckCircle className="w-5 h-5 text-brand-teal-500 mt-0.5 flex-shrink-0" />
-                      <span>Scheduled reports delivered to your inbox</span>
-                    </li>
-                  </ul>
-                </motion.div>
-              </motion.div>
-
-              <motion.div variants={fadeInUp} className="mt-12 text-center">
-                <p className="text-sm text-gray-600 dark:text-gray-400 italic mb-6">
-                  *Sample automation types. Your solution will be custom-designed for your business.
-                </p>
-                <a
-                  href="/consultation"
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-brand-teal-500 hover:bg-brand-teal-600 rounded-lg transition shadow-lg"
-                >
-                  🟢 Build My Custom Automation Plan (Free)
-                </a>
-                <p className="text-sm text-gray-600 dark:text-gray-400 mt-3">
-                  Pinpoint the top 3 workflows to automate first and the ROI you can expect.
-                </p>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* AI Employees Section */}
-        <AIEmployeesSection />
-
-        {/* How We Automate Section */}
-        <section ref={processRef} className="py-24 bg-gradient-to-b from-background to-muted">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial="hidden"
-              animate={processInView ? "visible" : "hidden"}
-              variants={staggerContainer}
-            >
-              <motion.div variants={fadeInUp} className="text-center mb-16">
-                <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                  Our <span className="text-brand-teal-500">4-Phase</span> Automation Framework
-                </h2>
-                <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                  A proven process that delivers results fast—without disrupting your operations.
-                </p>
-              </motion.div>
-
-              {/* Visual Process Diagram */}
-              <motion.div variants={fadeInUp} className="mb-16">
-                <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl">
-                  <Image
-                    src="/automation-workflow.jpg"
-                    alt="Automation Workflow"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </motion.div>
-
-              {/* Phase Cards */}
-              <motion.div variants={staggerContainer} className="grid md:grid-cols-2 gap-8">
-                {automationProcess.map((phase, index) => (
-                  <motion.div
-                    key={index}
-                    variants={fadeInUp}
-                    className="bg-background rounded-xl p-8 border-2 border-border hover:border-brand-teal-500 transition-all duration-300 hover:shadow-[0_0_30px_rgba(20,184,166,0.3)]"
-                  >
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-r from-brand-teal-500 to-emerald-500 flex items-center justify-center text-white font-bold text-lg">
-                        {index + 1}
-                      </div>
-                      <div>
-                        <div className="text-sm text-brand-teal-600 dark:text-brand-teal-400 font-semibold">{phase.phase}</div>
-                        <h3 className="text-2xl font-bold">{phase.title}</h3>
-                      </div>
-                      <div className="ml-auto text-sm font-semibold text-muted-foreground">{phase.duration}</div>
-                    </div>
-                    
-                    <p className="text-muted-foreground mb-6">{phase.description}</p>
-                    
-                    <div>
-                      <h4 className="font-semibold mb-3 text-sm uppercase tracking-wide">Deliverables:</h4>
-                      <ul className="space-y-2">
-                        {phase.deliverables.map((deliverable, idx) => (
-                          <li key={idx} className="flex items-center gap-2 text-sm">
-                            <CheckCircle className="w-4 h-4 text-brand-teal-500 flex-shrink-0" />
-                            <span>{deliverable}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* What You Receive Section */}
-        <section ref={delivRef} className="py-24 bg-muted">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial="hidden"
-              animate={delivInView ? "visible" : "hidden"}
-              variants={staggerContainer}
-            >
-              <motion.div variants={fadeInUp} className="text-center mb-16">
-                <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                  What You <span className="text-brand-teal-500">Actually Get</span>
-                </h2>
-                <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                  Not just technology—a complete system that transforms how your business operates.
-                </p>
-              </motion.div>
-
-              <motion.div variants={staggerContainer} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {deliverables.map((item, index) => {
-                  const Icon = item.icon
-                  return (
-                    <motion.div
-                      key={index}
-                      variants={fadeInUp}
-                      className="bg-background rounded-xl p-6 border-2 border-border hover:border-brand-teal-500 transition-all duration-300"
-                    >
-                      <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-brand-teal-500 to-emerald-500 flex items-center justify-center mb-4">
-                        <Icon className="w-7 h-7 text-white" />
-                      </div>
-                      <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                      <p className="text-muted-foreground">{item.description}</p>
-                    </motion.div>
-                  )
-                })}
-              </motion.div>
-
-              {/* Success Visual */}
-              <motion.div variants={fadeInUp} className="mt-16">
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl max-w-3xl mx-auto">
-                  <Image
-                    src="/time-savings-visual.jpg"
-                    alt="Time Savings Success"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Calculator Section */}
-        <section id="calculator" ref={calcRef} className="py-24 bg-gradient-to-b from-background to-muted">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial="hidden"
-              animate={calcInView ? "visible" : "hidden"}
-              variants={staggerContainer}
-            >
-              <motion.div variants={fadeInUp} className="text-center mb-12">
-                <div className="inline-block bg-brand-teal-100 dark:bg-brand-teal-900/30 rounded-full px-4 py-2 mb-4">
-                  <span className="text-sm font-semibold text-brand-teal-700 dark:text-brand-teal-300 uppercase tracking-wide">
-                    Interactive Assessment
+                {/* Trust Bar Badge */}
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-teal-100 dark:bg-teal-900/30 rounded-full">
+                  <Shield className="w-4 h-4 text-teal-600 dark:text-teal-400" />
+                  <span className="text-sm font-semibold text-teal-700 dark:text-teal-300">
+                    Fortune 500 Strategy | MIT & Caltech Engineering | NASA-Recognized Security
                   </span>
                 </div>
-                <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                  See How Much Your Time Is Really Worth—<br /><span className="text-brand-teal-500">And What We Could Custom-Build to Save It</span>
-                </h2>
-                <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mb-4">
-                  Answer a few questions to see how much money you're losing to manual work—and which custom AI roles could eliminate it.
+                
+                {/* Main Headline */}
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
+                  Save 20+ Hours a Week and Cut Costs by{' '}
+                  <span className="text-teal-600 dark:text-teal-400">60–85%</span>
+                  {' '}— Automate the Busywork That's Holding You Back
+                </h1>
+                
+                {/* Subheadline */}
+                <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
+                  Your time drives growth. Our Intelligent Automations connect your tools, remove repetitive tasks, and work 24/7—so you can do the work that moves the needle.
                 </p>
-                <p className="text-lg text-brand-teal-700 dark:text-brand-teal-300 font-semibold max-w-3xl mx-auto">
-                  Based on your inputs, here's what a custom AI workforce could do for your business:
-                </p>
-              </motion.div>
-
-              <motion.div variants={fadeInUp}>
-                <AITeamCalculator />
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Testimonials Section */}
-        <section className="py-24 bg-gradient-to-b from-muted to-background">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={staggerContainer}
-            >
-              <motion.div variants={fadeInUp} className="text-center mb-16">
-                <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                  Real Results from <span className="text-brand-teal-500">Real Business Owners</span>
-                </h2>
-                <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                  See how AI employees transformed these businesses
-                </p>
-              </motion.div>
-
-              <motion.div variants={staggerContainer} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {[
-                  {
-                    before: "7 days/month on invoicing; late payments bleeding cash.",
-                    after: "InvoiceIQ + OpsSync automated billing & reminders.",
-                    result: "12 hours/week saved, 62% faster collections, +$45K cash-flow gain.",
-                    quote: "I used to dread month-end. Now everything closes by the 3rd—automatically.",
-                    author: "Peter Fernandes",
-                    company: "AAA Construction Services"
-                  },
-                  {
-                    before: "6 platforms to track leads and follow-ups; deals falling through cracks.",
-                    after: "LeadFlow + MailPilot centralized and nurtured automatically.",
-                    result: "+34% revenue; 2 extra client slots/month.",
-                    quote: "We went from reactive chaos to proactive growth—without adding headcount.",
-                    author: "Tiffany Duncan",
-                    company: "Director, Talent Leap AI"
-                  },
-                  {
-                    before: "Manual listing updates across CRM, MLS, and ads—18 hours/week.",
-                    after: "OpsSync + DataBridge synced all channels in real-time.",
-                    result: "18 hours/week saved; errors down 97%; ~$61K annual savings.",
-                    quote: "I got my weekends back. And my team stopped making costly mistakes.",
-                    author: "Gurpreet Sandhu",
-                    company: "Broker, Real Estate Vision"
-                  },
-                  {
-                    before: "Clients waited days for reports; manual compilation killed velocity.",
-                    after: "SmartDocs compiled insights overnight.",
-                    result: "Turnaround cut from 72h to 6h; retention up 29%.",
-                    quote: "Our clients think we're psychic. We're just automated.",
-                    author: "Lydia V. Penrose",
-                    company: "Co-Founder, Code Vibe Studio"
-                  },
-                  {
-                    before: "Overwhelmed inbox; missed deals; team drowning in triage.",
-                    after: "MailPilot handled 75% of inbound messages.",
-                    result: "Team stress ↓68%; close rate ↑41%.",
-                    quote: "MailPilot didn't replace us—it freed us to do our actual jobs.",
-                    author: "Harper Kingsley",
-                    company: "VP, Adroit Infosystems"
-                  },
-                  {
-                    before: "Invoice chasing consumed 10+ hours/week; cash flow unpredictable.",
-                    after: "InvoiceIQ + ClientPulse automated billing and payment reminders.",
-                    result: "10 hours/week recovered; payment time cut by 55%.",
-                    quote: "I finally have predictable cash flow. Game changer.",
-                    author: "Michael Torres",
-                    company: "Torres Consulting Group"
-                  }
-                ].map((testimonial, index) => (
-                  <motion.div
-                    key={index}
-                    variants={fadeInUp}
-                    className="bg-white dark:bg-gray-900 rounded-2xl p-6 border-2 border-border hover:border-brand-teal-500 transition-all duration-300 hover:shadow-[0_0_30px_rgba(20,184,166,0.3)]"
+                
+                {/* CTA Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button 
+                    size="lg"
+                    onClick={scrollToCalculator}
+                    className="bg-teal-600 hover:bg-teal-700 text-white font-semibold px-8 py-6 text-lg group"
                   >
-                    <div className="mb-4">
-                      <div className="inline-block bg-red-100 dark:bg-red-900/30 rounded-full px-3 py-1 text-xs font-semibold text-red-700 dark:text-red-300 mb-2">
-                        BEFORE
-                      </div>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
-                        {testimonial.before}
-                      </p>
-                    </div>
-                    
-                    <div className="mb-4">
-                      <div className="inline-block bg-amber-100 dark:bg-amber-900/30 rounded-full px-3 py-1 text-xs font-semibold text-amber-700 dark:text-amber-300 mb-2">
-                        AFTER
-                      </div>
-                      <p className="text-sm text-gray-600 dark:text-gray-400 font-medium">
-                        {testimonial.after}
-                      </p>
-                    </div>
-                    
-                    <div className="mb-4">
-                      <div className="inline-block bg-emerald-100 dark:bg-emerald-900/30 rounded-full px-3 py-1 text-xs font-semibold text-emerald-700 dark:text-emerald-300 mb-2">
-                        RESULT
-                      </div>
-                      <p className="text-sm text-brand-teal-700 dark:text-brand-teal-300 font-semibold">
-                        {testimonial.result}
-                      </p>
-                    </div>
-                    
-                    <div className="mb-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                      <p className="text-sm text-gray-700 dark:text-gray-300 italic">
-                        "{testimonial.quote}"
-                      </p>
-                    </div>
-                    
-                    <div className="pt-6 border-t border-border">
-                      <p className="font-semibold text-gray-900 dark:text-white">{testimonial.author}</p>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">{testimonial.company}</p>
-                    </div>
-                  </motion.div>
-                ))}
+                    <Timer className="w-5 h-5 mr-2" />
+                    Reveal My Hidden Hours & Savings
+                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                  <Button 
+                    size="lg"
+                    variant="outline"
+                    asChild
+                    className="border-2 border-teal-600 text-teal-700 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950/30 px-8 py-6 text-lg font-semibold"
+                  >
+                    <Link href="#solution">
+                      <Workflow className="w-5 h-5 mr-2" />
+                      Show Me What I Can Automate
+                    </Link>
+                  </Button>
+                </div>
+                
               </motion.div>
               
-              <motion.div variants={fadeInUp} className="mt-12 text-center">
-                <a
-                  href="#calculator"
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-brand-teal-500 hover:bg-brand-teal-600 rounded-lg transition shadow-lg"
-                >
-                  🟢 I Want Results Like These—Show Me My Automation ROI →
-                </a>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Pricing Section */}
-        <section ref={pricingRef} className="py-24 bg-muted">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial="hidden"
-              animate={pricingInView ? "visible" : "hidden"}
-              variants={staggerContainer}
-            >
-              <motion.div variants={fadeInUp} className="text-center mb-16">
-                <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                  Simple, Transparent <span className="text-brand-teal-500">Pricing</span>
-                </h2>
-                <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                  One-time investment. Lifetime of savings. Choose the package that fits your needs.
-                </p>
-              </motion.div>
-
-              <motion.div variants={staggerContainer} className="grid md:grid-cols-3 gap-8">
-                {pricingTiers.map((tier, index) => (
-                  <motion.div
-                    key={index}
-                    variants={fadeInUp}
-                    className={`relative bg-background rounded-2xl p-8 border-2 ${
-                      tier.popular 
-                        ? 'border-brand-teal-500 shadow-[0_0_30px_rgba(20,184,166,0.3)]' 
-                        : 'border-border hover:border-brand-teal-500'
-                    } transition-all duration-300`}
-                  >
-                    {tier.popular && (
-                      <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-brand-teal-500 to-emerald-500 text-white px-6 py-2 rounded-full text-sm font-bold">
-                        MOST POPULAR
-                      </div>
-                    )}
-
-                    <div className="text-center mb-8">
-                      <h3 className="text-2xl font-bold mb-2">{tier.name}</h3>
-                      <div className="text-4xl font-bold mb-2">{tier.price}</div>
-                      <p className="text-sm text-muted-foreground">{tier.description}</p>
-                    </div>
-
-                    <ul className="space-y-3 mb-8">
-                      {tier.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-start gap-3">
-                          <CheckCircle className="w-5 h-5 text-brand-teal-500 mt-0.5 flex-shrink-0" />
-                          <span className="text-sm">{feature}</span>
-                        </li>
+              {/* Right Column: Illustration/Stats */}
+              <motion.div variants={fadeInUp} className="relative">
+                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-teal-100 to-emerald-100 dark:from-teal-900/20 dark:to-emerald-900/20 p-8 border border-teal-200 dark:border-teal-800 shadow-2xl">
+                  
+                  {/* Automation Icons Flow */}
+                  <div className="relative h-full flex items-center justify-center">
+                    <div className="grid grid-cols-3 gap-6">
+                      {[Mail, FileText, Database, Workflow, Target, TrendingUp, Calendar, BarChart3, CheckCircle2].map((Icon, i) => (
+                        <motion.div
+                          key={i}
+                          initial={{ opacity: 0, scale: 0 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: i * 0.1, duration: 0.5 }}
+                          className="w-16 h-16 bg-white dark:bg-zinc-900 rounded-xl flex items-center justify-center shadow-lg border border-gray-200 dark:border-zinc-800"
+                        >
+                          <Icon className="w-8 h-8 text-teal-600 dark:text-teal-400" />
+                        </motion.div>
                       ))}
-                    </ul>
-
-                    <div className="mb-6 p-4 bg-muted rounded-lg">
-                      <p className="text-sm font-medium text-center">{tier.ideal}</p>
                     </div>
-
-                    <a
-                      href="/consultation"
-                      className={`block w-full text-center py-4 rounded-lg font-semibold transition ${
-                        tier.popular
-                          ? 'bg-brand-teal-500 text-white hover:bg-brand-teal-600'
-                          : 'bg-muted border-2 border-border hover:border-brand-teal-500 hover:bg-brand-teal-50 dark:hover:bg-brand-teal-950/30'
-                      }`}
-                    >
-                      {tier.cta}
-                    </a>
+                  </div>
+                  
+                  {/* Floating Stats */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8 }}
+                    className="absolute -bottom-4 -left-4 bg-white dark:bg-zinc-900 rounded-xl shadow-xl p-4 border border-gray-200 dark:border-zinc-800"
+                  >
+                    <div className="text-3xl font-bold text-teal-600 dark:text-teal-400">20+</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">Hours Saved/Week</div>
                   </motion.div>
-                ))}
+                  
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1 }}
+                    className="absolute -top-4 -right-4 bg-white dark:bg-zinc-900 rounded-xl shadow-xl p-4 border border-gray-200 dark:border-zinc-800"
+                  >
+                    <div className="text-3xl font-bold text-emerald-600 dark:text-emerald-400">60-85%</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">Cost Reduction</div>
+                  </motion.div>
+                </div>
               </motion.div>
-
-              <motion.div variants={fadeInUp} className="mt-12 text-center">
-                <p className="text-muted-foreground">
-                  💡 <strong>Not sure which package is right for you?</strong> Take the{' '}
-                  <a href="#calculator" className="text-brand-teal-500 hover:underline">
-                    AI Workforce Calculator
-                  </a>{' '}
-                  above for a personalized recommendation.
-                </p>
-              </motion.div>
-            </motion.div>
-          </div>
+              
+            </div>
+          </motion.div>
         </section>
 
-        {/* Money-Back Guarantee Section */}
-        <section className="py-24 bg-gradient-to-r from-brand-teal-600 to-emerald-600">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="text-center"
-            >
-              <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-white/20 backdrop-blur-sm mb-8">
-                <Shield className="w-12 h-12 text-white" />
+        {/* TL;DR SECTION (AEO/AGO Optimized) */}
+        <section 
+          ref={tlddrRef}
+          className="py-16 bg-gray-50 dark:bg-zinc-900/50"
+        >
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            animate={tlddrInView ? "visible" : "hidden"}
+            className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
+          >
+            <div className="bg-white dark:bg-zinc-900 rounded-2xl border-2 border-teal-200 dark:border-teal-800 p-8 shadow-lg">
+              
+              {/* Header */}
+              <div className="flex items-start gap-4 mb-6">
+                <div className="flex-shrink-0 w-12 h-12 bg-teal-100 dark:bg-teal-900/30 rounded-xl flex items-center justify-center">
+                  <LightbulbIcon className="w-6 h-6 text-teal-600 dark:text-teal-400" />
+                </div>
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+                    What is QuantumLeap Intelligent Automations?
+                  </h2>
+                  <p className="text-gray-600 dark:text-gray-400">
+                    The executive summary for decision-makers
+                  </p>
+                </div>
               </div>
               
-              <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+              {/* Bottom Line */}
+              <div className="bg-teal-50 dark:bg-teal-900/20 rounded-lg p-6 mb-6">
+                <p className="text-gray-900 dark:text-gray-100 leading-relaxed">
+                  A self-learning automation layer that links your CRM, email, finance, and operations tools—then takes over the repeatable work.
+                </p>
+              </div>
+              
+              {/* Key Outcomes */}
+              <div className="mb-6">
+                <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-4">
+                  Outcomes (typical):
+                </h3>
+                <ul className="space-y-3">
+                  {[
+                    { icon: Clock, text: 'Reclaim 15–25 hours per week per employee' },
+                    { icon: DollarSign, text: 'Reduce manual labor costs by 60–85%' },
+                    { icon: Zap, text: 'Deploy in ≤ 14 days (no code)' },
+                    { icon: Shield, text: 'Built by the team that secured NASA systems' }
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <item.icon className="w-5 h-5 text-teal-600 dark:text-teal-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700 dark:text-gray-300">
+                        {item.text}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              
+              {/* Founder Quote */}
+              <div className="bg-gray-50 dark:bg-zinc-800 rounded-lg p-6 mb-6">
+                <p className="text-gray-900 dark:text-gray-100 italic mb-3">
+                  "Automation doesn't replace people. It replaces the repetitive grind that keeps them from doing their best work."
+                </p>
+                <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                  — Paras Khurana, Founder & CEO
+                </p>
+              </div>
+              
+              {/* Critical Insight */}
+              <div className="border-l-4 border-amber-500 pl-6 mb-6">
+                <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">
+                  Critical Insight (250+ years combined experience):
+                </h4>
+                <p className="text-gray-700 dark:text-gray-300">
+                  Every manual workflow is a hidden expense center. Find it, automate it, and your margins expand.
+                </p>
+              </div>
+              
+              {/* CTA */}
+              <div className="text-center">
+                <Button
+                  size="lg"
+                  onClick={scrollToCalculator}
+                  className="bg-teal-600 hover:bg-teal-700 text-white font-semibold"
+                >
+                  Take the 90-Second Assessment
+                </Button>
+              </div>
+              
+            </div>
+          </motion.div>
+        </section>
+
+
+        {/* PROBLEM SECTION */}
+        <section 
+          ref={problemRef}
+          className="py-20 bg-white dark:bg-zinc-950"
+        >
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            animate={problemInView ? "visible" : "hidden"}
+            className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+          >
+            
+            {/* Section Header */}
+            <motion.div variants={fadeInUp} className="text-center mb-16">
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+                The Manual Trap
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                You didn't start a business to babysit spreadsheets
+              </p>
+            </motion.div>
+            
+            {/* Problem Cards */}
+            <motion.div variants={fadeInUp} className="max-w-4xl mx-auto space-y-6 mb-12">
+              <div className="bg-gradient-to-r from-red-50 to-amber-50 dark:from-red-950/20 dark:to-amber-950/20 border border-red-200 dark:border-red-800 rounded-xl p-8">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+                  But today you:
+                </h3>
+                <ul className="space-y-3">
+                  {[
+                    'Copy/paste data between CRMs and sheets',
+                    'Manually chase invoices and follow-ups',
+                    'Spend weekends "catching up" on reports'
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <AlertCircle className="w-5 h-5 text-red-600 dark:text-red-400 flex-shrink-0 mt-1" />
+                      <span className="text-gray-800 dark:text-gray-200 text-lg">
+                        {item}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              
+              <div className="bg-amber-50 dark:bg-amber-950/20 border-l-4 border-amber-500 rounded-lg p-6">
+                <p className="text-lg text-gray-900 dark:text-gray-100 font-semibold mb-2">
+                  Reality:
+                </p>
+                <p className="text-gray-800 dark:text-gray-200">
+                  The average SMB loses <strong>~1,200 hours/year</strong> to manual tasks—that's{' '}
+                  <strong className="text-amber-600 dark:text-amber-400">~$93,000 in hidden waste</strong>.
+                </p>
+              </div>
+              
+              <div className="bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-800 rounded-lg p-6">
+                <p className="text-lg text-gray-900 dark:text-gray-100 font-semibold mb-2">
+                  Result:
+                </p>
+                <p className="text-gray-800 dark:text-gray-200">
+                  Burnout, errors, slow cash flow, missed sales.
+                </p>
+              </div>
+            </motion.div>
+            
+            {/* CTA */}
+            <motion.div variants={fadeInUp} className="text-center">
+              <p className="text-xl text-gray-700 dark:text-gray-300 mb-6">
+                There's a better way. Let automation handle the grind while you focus on growth.
+              </p>
+              <Button
+                size="lg"
+                onClick={scrollToCalculator}
+                className="bg-teal-600 hover:bg-teal-700 text-white font-semibold"
+              >
+                <Zap className="w-5 h-5 mr-2" />
+                See What You Can Automate
+              </Button>
+            </motion.div>
+            
+          </motion.div>
+        </section>
+
+        {/* SOLUTION SECTION */}
+        <section 
+          id="solution"
+          ref={solutionRef}
+          className="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-zinc-900/50 dark:to-zinc-950"
+        >
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            animate={solutionInView ? "visible" : "hidden"}
+            className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+          >
+            
+            {/* Section Header */}
+            <motion.div variants={fadeInUp} className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-teal-100 dark:bg-teal-900/30 rounded-full mb-6">
+                <Workflow className="w-4 h-4 text-teal-600 dark:text-teal-400" />
+                <span className="text-sm font-semibold text-teal-700 dark:text-teal-300">
+                  THE INTELLIGENT AUTOMATION SUITE
+                </span>
+              </div>
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+                Your Automated Business Backbone
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                Each automation plugs directly into your existing tools and works 24/7—no coding required
+              </p>
+            </motion.div>
+            
+            {/* Automation Cards Grid */}
+            <motion.div variants={fadeInUp} className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+              {automations.map((auto, i) => {
+                const Icon = auto.icon
+                return (
+                  <motion.div
+                    key={i}
+                    whileHover={{ y: -4, scale: 1.02 }}
+                    className="bg-white dark:bg-zinc-900 rounded-xl border border-gray-200 dark:border-zinc-800 p-6 shadow-sm hover:shadow-xl transition-all group"
+                  >
+                    <div className="w-14 h-14 bg-teal-100 dark:bg-teal-900/30 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                      <Icon className="w-7 h-7 text-teal-600 dark:text-teal-400" />
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+                      {auto.name}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm">
+                      {auto.description}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                        Starts at
+                      </span>
+                      <span className="text-2xl font-bold text-teal-600 dark:text-teal-400">
+                        ${auto.price}<span className="text-sm">/mo</span>
+                      </span>
+                    </div>
+                  </motion.div>
+                )
+              })}
+            </motion.div>
+            
+            {/* CTA */}
+            <motion.div variants={fadeInUp} className="text-center bg-gradient-to-r from-teal-50 to-emerald-50 dark:from-teal-900/20 dark:to-emerald-900/20 rounded-2xl p-8 border border-teal-200 dark:border-teal-800">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+                Build My Automated Business Plan (Free)
+              </h3>
+              <p className="text-gray-700 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
+                Pinpoint the top 3 workflows to automate first and the ROI you can expect.
+              </p>
+              <Button
+                size="lg"
+                onClick={scrollToCalculator}
+                className="bg-teal-600 hover:bg-teal-700 text-white font-semibold"
+              >
+                <BarChart3 className="w-5 h-5 mr-2" />
+                Get My Free Automation Plan
+              </Button>
+            </motion.div>
+            
+          </motion.div>
+        </section>
+
+        {/* TESTIMONIALS SECTION */}
+        <section 
+          ref={testimonialsRef}
+          className="py-20 bg-white dark:bg-zinc-950"
+        >
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            animate={testimonialsInView ? "visible" : "hidden"}
+            className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+          >
+            
+            {/* Section Header */}
+            <motion.div variants={fadeInUp} className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-teal-100 dark:bg-teal-900/30 rounded-full mb-6">
+                <Award className="w-4 h-4 text-teal-600 dark:text-teal-400" />
+                <span className="text-sm font-semibold text-teal-700 dark:text-teal-300">
+                  REAL BEFORE/AFTER RESULTS
+                </span>
+              </div>
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+                Results That Speak for Themselves
+              </h2>
+            </motion.div>
+            
+            {/* Testimonials Grid */}
+            <motion.div variants={fadeInUp} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+              {testimonials.map((test, i) => (
+                <div
+                  key={i}
+                  className="bg-gradient-to-br from-gray-50 to-teal-50 dark:from-zinc-900 dark:to-teal-950/10 border border-gray-200 dark:border-zinc-800 rounded-xl p-6 hover:shadow-lg transition-shadow"
+                >
+                  <div className="mb-4">
+                    <h4 className="font-bold text-lg text-gray-900 dark:text-gray-100">
+                      {test.name}
+                    </h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      {test.title && `${test.title}, `}{test.company}
+                    </p>
+                  </div>
+                  
+                  <div className="space-y-3 mb-4">
+                    <div className="flex items-start gap-2">
+                      <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <p className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">
+                          Before:
+                        </p>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                          {test.before}
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-teal-600 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <p className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">
+                          After:
+                        </p>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                          {test.after}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800 rounded-lg p-3">
+                    <p className="text-xs font-semibold text-emerald-700 dark:text-emerald-300 mb-1">
+                      Result:
+                    </p>
+                    <p className="text-sm font-bold text-emerald-600 dark:text-emerald-400">
+                      {test.result}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+            
+            {/* CTA */}
+            <motion.div variants={fadeInUp} className="text-center">
+              <Button
+                size="lg"
+                onClick={scrollToCalculator}
+                className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold"
+              >
+                <TrendingUp className="w-5 h-5 mr-2" />
+                I Want Results Like These
+              </Button>
+            </motion.div>
+            
+          </motion.div>
+        </section>
+
+        {/* CALCULATOR SECTION */}
+        <section 
+          id="calculator"
+          ref={calculatorRef}
+          className="py-20 bg-gradient-to-br from-teal-50 via-emerald-50 to-teal-50 dark:from-teal-950/20 dark:via-emerald-950/20 dark:to-teal-950/20"
+        >
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            animate={calculatorInView ? "visible" : "hidden"}
+            className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
+          >
+            
+            {/* Section Header */}
+            <div className="text-center mb-12">
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+                You're Not Just "Busy." You're Leaking Profit.
+              </h2>
+              <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
+                In under 2 minutes, this free scan shows how many hours manual work is stealing each month, 
+                how much money that equals at your rate, and which automations recover the most time and cost first.
+              </p>
+            </div>
+            
+            {/* Calculator Component */}
+            <AutomationCalculator />
+            
+          </motion.div>
+        </section>
+
+
+        {/* STRATEGIC BLOG SECTION */}
+        <section 
+          ref={blogRef}
+          className="py-20 bg-white dark:bg-zinc-950"
+        >
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            animate={blogInView ? "visible" : "hidden"}
+            className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
+          >
+            
+            {/* Blog Article */}
+            <motion.article variants={fadeInUp} className="prose prose-lg dark:prose-invert max-w-none">
+              
+              <div className="text-center mb-12">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-teal-100 dark:bg-teal-900/30 rounded-full mb-6">
+                  <FileText className="w-4 h-4 text-teal-600 dark:text-teal-400" />
+                  <span className="text-sm font-semibold text-teal-700 dark:text-teal-300">
+                    STRATEGIC INSIGHT
+                  </span>
+                </div>
+                <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+                  When Busy Feels Productive — The Hidden Cost of Doing Everything Manually
+                </h2>
+              </div>
+              
+              <div className="bg-gray-50 dark:bg-zinc-900 rounded-xl p-8 mb-8 border border-gray-200 dark:border-zinc-800">
+                <p className="text-lg leading-relaxed">
+                  Mark thought he was productive. He ran a small design agency, worked 12-hour days, and never missed a deadline.
+                </p>
+                <p className="text-lg leading-relaxed">
+                  But he was constantly copying leads from email into his CRM, manually sending invoices, and checking Slack at midnight to see if a client approved a mockup.
+                </p>
+                <p className="text-lg leading-relaxed font-semibold text-gray-900 dark:text-gray-100">
+                  On paper, he was "busy." In reality, he was stuck in maintenance mode — running the business instead of growing it.
+                </p>
+              </div>
+              
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-10 mb-4 flex items-center gap-2">
+                <AlertCircle className="w-6 h-6 text-amber-600" />
+                The Myth of "I'll Just Do It Myself"
+              </h3>
+              
+              <p>Most entrepreneurs start with this mindset. It feels smart at first:</p>
+              
+              <blockquote className="border-l-4 border-teal-500 pl-6 my-6 italic text-gray-700 dark:text-gray-300">
+                "Why pay for tools or help when I can just do it myself?"
+              </blockquote>
+              
+              <p>But over time, every "quick manual fix" becomes a brick in a wall that traps your time.</p>
+              
+              <div className="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800 rounded-xl p-6 my-8">
+                <h4 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+                  Here's what it really costs:
+                </h4>
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-700 dark:text-gray-300">Copying leads/emails</span>
+                    <span className="font-bold text-amber-600 dark:text-amber-400">312 hrs/year</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-700 dark:text-gray-300">Creating invoices</span>
+                    <span className="font-bold text-amber-600 dark:text-amber-400">208 hrs/year</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-700 dark:text-gray-300">Updating reports</span>
+                    <span className="font-bold text-amber-600 dark:text-amber-400">156 hrs/year</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-700 dark:text-gray-300">Managing projects manually</span>
+                    <span className="font-bold text-amber-600 dark:text-amber-400">260 hrs/year</span>
+                  </div>
+                  <div className="border-t-2 border-amber-300 dark:border-amber-700 pt-3 mt-3 flex justify-between items-center">
+                    <span className="font-bold text-gray-900 dark:text-gray-100">Total</span>
+                    <span className="text-2xl font-bold text-amber-600 dark:text-amber-400">936 hrs/year</span>
+                  </div>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 italic pt-2">
+                    That's almost 24 work weeks — on things a simple automation could do in the background.
+                  </p>
+                </div>
+              </div>
+              
+              <p className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                So when you say, "I don't have time to automate," what you're really saying is: 
+                <em className="text-teal-600 dark:text-teal-400"> "I'd rather spend six months every year on tasks a bot can do."</em>
+              </p>
+              
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-10 mb-4 flex items-center gap-2">
+                <Zap className="w-6 h-6 text-teal-600" />
+                The Automation Effect: Turning Chaos into Flow
+              </h3>
+              
+              <p>When Mark finally automated, the change was instant.</p>
+              
+              <ul className="space-y-2 my-6">
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-teal-600 flex-shrink-0 mt-1" />
+                  <span><strong>LeadFlow</strong> captured every web inquiry and tagged it in his CRM.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-teal-600 flex-shrink-0 mt-1" />
+                  <span><strong>InvoiceIQ</strong> generated and sent invoices automatically after client approvals.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-teal-600 flex-shrink-0 mt-1" />
+                  <span><strong>OpsSync</strong> updated tasks across ClickUp, Slack, and Google Sheets without him touching a thing.</span>
+                </li>
+              </ul>
+              
+              <p>He didn't add new staff. He added systems that never sleep.</p>
+              
+              <div className="bg-emerald-50 dark:bg-emerald-950/20 border-2 border-emerald-500 rounded-xl p-6 my-8">
+                <h4 className="text-xl font-bold text-emerald-700 dark:text-emerald-300 mb-4">
+                  The result?
+                </h4>
+                <ul className="space-y-2">
+                  <li className="flex items-center gap-2">
+                    <Clock className="w-5 h-5 text-emerald-600" />
+                    <span className="font-semibold text-gray-900 dark:text-gray-100">19 hours a week freed</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <DollarSign className="w-5 h-5 text-emerald-600" />
+                    <span className="font-semibold text-gray-900 dark:text-gray-100">$48,000 in recovered productivity</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+                    <span className="font-semibold text-gray-900 dark:text-gray-100">Zero "forgotten" client follow-ups</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Users className="w-5 h-5 text-emerald-600" />
+                    <span className="font-semibold text-gray-900 dark:text-gray-100">And his evenings — finally quiet</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <p className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                Mark realized something powerful: automation didn't make him less human. It made his business more intelligent.
+              </p>
+              
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-10 mb-4">
+                Why Automation Pays for Itself
+              </h3>
+              
+              <p>Let's talk numbers — because entrepreneurs respect math.</p>
+              
+              <p>
+                If your effective hourly value is <strong>$75/hour</strong> (what your time's truly worth), 
+                and you spend even <strong>10 hours/week</strong> on manual admin, 
+                that's <strong className="text-red-600 dark:text-red-400">$39,000 a year</strong> burned on low-value tasks.
+              </p>
+              
+              <div className="bg-teal-50 dark:bg-teal-900/20 border border-teal-200 dark:border-teal-800 rounded-xl p-6 my-8">
+                <p className="text-lg text-gray-900 dark:text-gray-100">
+                  QuantumLeap's Intelligent Automations start at just <strong className="text-teal-600 dark:text-teal-400">$299/month</strong>, 
+                  which means the first automation typically <strong>pays for itself in under two weeks</strong>.
+                </p>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mt-3">
+                  That's not "nice to have." That's profit recovery.
+                </p>
+              </div>
+              
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-10 mb-4 flex items-center gap-2">
+                <Building className="w-6 h-6 text-gray-600" />
+                The QuantumLeap Difference
+              </h3>
+              
+              <p>Other automation agencies sell complexity — custom scripts, long onboarding, or "digital transformation" buzzwords.</p>
+              
+              <p className="font-semibold text-gray-900 dark:text-gray-100">
+                QuantumLeap's Intelligent Automations are built differently:
+              </p>
+              
+              <ul className="space-y-3 my-6">
+                <li className="flex items-start gap-3">
+                  <Zap className="w-5 h-5 text-teal-600 flex-shrink-0 mt-1" />
+                  <div>
+                    <strong className="text-gray-900 dark:text-gray-100">No-Code Deployments:</strong>
+                    <span className="text-gray-700 dark:text-gray-300"> Launch within 14 days.</span>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Clock className="w-5 h-5 text-teal-600 flex-shrink-0 mt-1" />
+                  <div>
+                    <strong className="text-gray-900 dark:text-gray-100">24/7 Monitoring:</strong>
+                    <span className="text-gray-700 dark:text-gray-300"> Runs in the background, silently.</span>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <TrendingUp className="w-5 h-5 text-teal-600 flex-shrink-0 mt-1" />
+                  <div>
+                    <strong className="text-gray-900 dark:text-gray-100">Scalable:</strong>
+                    <span className="text-gray-700 dark:text-gray-300"> Start with one workflow and grow to enterprise-grade.</span>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Shield className="w-5 h-5 text-teal-600 flex-shrink-0 mt-1" />
+                  <div>
+                    <strong className="text-gray-900 dark:text-gray-100">Secure:</strong>
+                    <span className="text-gray-700 dark:text-gray-300"> Built by the team that helped secure NASA systems.</span>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Award className="w-5 h-5 text-teal-600 flex-shrink-0 mt-1" />
+                  <div>
+                    <strong className="text-gray-900 dark:text-gray-100">World's best:</strong>
+                    <span className="text-gray-700 dark:text-gray-300"> Team from MIT, Caltech, and leading tech institutes.</span>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Users className="w-5 h-5 text-teal-600 flex-shrink-0 mt-1" />
+                  <div>
+                    <strong className="text-gray-900 dark:text-gray-100">Expertise:</strong>
+                    <span className="text-gray-700 dark:text-gray-300"> 250+ years of combined experience.</span>
+                  </div>
+                </li>
+              </ul>
+              
+              <div className="bg-gradient-to-r from-teal-50 to-emerald-50 dark:from-teal-900/20 dark:to-emerald-900/20 border-2 border-teal-300 dark:border-teal-700 rounded-xl p-8 my-8 text-center">
+                <p className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
+                  Your only job? Tell us what drains your time.
+                </p>
+                <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
+                  We'll automate it and show you exactly how much it's worth.
+                </p>
+                <Button
+                  size="lg"
+                  onClick={scrollToCalculator}
+                  className="bg-teal-600 hover:bg-teal-700 text-white font-semibold"
+                >
+                  <BarChart3 className="w-5 h-5 mr-2" />
+                  Reveal My Hidden Hours & Savings
+                </Button>
+              </div>
+              
+              <div className="border-t-2 border-gray-200 dark:border-zinc-800 pt-8 mt-12">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+                  The Bottom Line
+                </h3>
+                <p className="text-lg">
+                  Automation isn't about robots taking over. It's about reclaiming what matters — your time, focus, and sanity.
+                </p>
+                <p className="text-lg font-semibold text-teal-600 dark:text-teal-400 mt-4">
+                  You can't scale chaos. But you can automate it.
+                </p>
+              </div>
+              
+            </motion.article>
+            
+          </motion.div>
+        </section>
+
+
+        {/* FAQ SECTION */}
+        <section 
+          ref={faqRef}
+          className="py-20 bg-gray-50 dark:bg-zinc-900/50"
+        >
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            animate={faqInView ? "visible" : "hidden"}
+            className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
+          >
+            
+            {/* Section Header */}
+            <motion.div variants={fadeInUp} className="text-center mb-12">
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+                Frequently Asked Questions
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300">
+                Get answers to common questions about intelligent automation
+              </p>
+            </motion.div>
+            
+            {/* FAQ Accordion */}
+            <motion.div variants={fadeInUp}>
+              <Accordion type="single" collapsible className="space-y-4">
+                
+                <AccordionItem value="faq-1" className="bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-lg px-6">
+                  <AccordionTrigger className="text-left text-lg font-semibold text-gray-900 dark:text-gray-100 hover:text-teal-600 dark:hover:text-teal-400">
+                    Isn't automation expensive or complicated?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-700 dark:text-gray-300 pt-4">
+                    <p className="mb-4">
+                      No. Intelligent Automations are modular and plug directly into your existing tools. Most clients see ROI within the first month.
+                    </p>
+                    <Button
+                      size="sm"
+                      onClick={scrollToCalculator}
+                      variant="outline"
+                      className="border-teal-600 text-teal-700 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950/30"
+                    >
+                      Show Me My ROI
+                    </Button>
+                  </AccordionContent>
+                </AccordionItem>
+                
+                <AccordionItem value="faq-2" className="bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-lg px-6">
+                  <AccordionTrigger className="text-left text-lg font-semibold text-gray-900 dark:text-gray-100 hover:text-teal-600 dark:hover:text-teal-400">
+                    Will automation replace my employees?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-700 dark:text-gray-300 pt-4">
+                    <p className="mb-4">
+                      Not at all. It replaces tasks, not people. Your team spends less time clicking and more time creating value.
+                    </p>
+                    <Button
+                      size="sm"
+                      asChild
+                      variant="outline"
+                      className="border-teal-600 text-teal-700 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950/30"
+                    >
+                      <Link href="#solution">
+                        Automate the Repetitive Work
+                      </Link>
+                    </Button>
+                  </AccordionContent>
+                </AccordionItem>
+                
+                <AccordionItem value="faq-3" className="bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-lg px-6">
+                  <AccordionTrigger className="text-left text-lg font-semibold text-gray-900 dark:text-gray-100 hover:text-teal-600 dark:hover:text-teal-400">
+                    How secure is it?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-700 dark:text-gray-300 pt-4">
+                    <p className="mb-4">
+                      Every integration is built on encrypted APIs and monitored 24/7 by a team that's helped secure NASA systems.
+                    </p>
+                    <Button
+                      size="sm"
+                      asChild
+                      variant="outline"
+                      className="border-teal-600 text-teal-700 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950/30"
+                    >
+                      <Link href="/">
+                        Learn More About Security
+                      </Link>
+                    </Button>
+                  </AccordionContent>
+                </AccordionItem>
+                
+                <AccordionItem value="faq-4" className="bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-lg px-6">
+                  <AccordionTrigger className="text-left text-lg font-semibold text-gray-900 dark:text-gray-100 hover:text-teal-600 dark:hover:text-teal-400">
+                    What if I don't know where to start?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-700 dark:text-gray-300 pt-4">
+                    <p className="mb-4">
+                      That's exactly why we built the calculator and free audit. You'll get a clear roadmap tailored to your business.
+                    </p>
+                    <Button
+                      size="sm"
+                      onClick={scrollToCalculator}
+                      variant="outline"
+                      className="border-teal-600 text-teal-700 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950/30"
+                    >
+                      Get My 30-Day Efficiency Plan
+                    </Button>
+                  </AccordionContent>
+                </AccordionItem>
+                
+              </Accordion>
+            </motion.div>
+            
+          </motion.div>
+        </section>
+
+        {/* GUARANTEE SECTION */}
+        <section 
+          ref={guaranteeRef}
+          className="py-20 bg-gradient-to-br from-teal-600 to-emerald-600 text-white relative overflow-hidden"
+        >
+          <div className="absolute inset-0 bg-grid-pattern opacity-10" />
+          
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            animate={guaranteeInView ? "visible" : "hidden"}
+            className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+          >
+            
+            <motion.div variants={fadeInUp} className="mb-8">
+              <div className="inline-flex items-center justify-center w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full mb-6">
+                <Shield className="w-10 h-10 text-white" />
+              </div>
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
                 Our 60-Day "Time-Back" Guarantee
               </h2>
-              
-              <div className="bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-2xl p-8 mb-8">
-                <p className="text-2xl text-white leading-relaxed mb-6">
-                  If you don't save at least <span className="font-bold text-teal-200">10 hours a week</span> or see measurable ROI within 60 days, we'll continue optimizing your automations free until you do.
-                </p>
-                <p className="text-xl text-teal-100">
-                  Because confidence shouldn't be a risk.
-                </p>
-              </div>
-
-              <div className="grid md:grid-cols-3 gap-6 text-white">
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                  <CheckCircle className="w-10 h-10 mx-auto mb-3 text-teal-200" />
-                  <h3 className="font-bold mb-2">Zero Risk</h3>
-                  <p className="text-sm text-teal-100">Your investment is protected by our guarantee</p>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                  <Target className="w-10 h-10 mx-auto mb-3 text-teal-200" />
-                  <h3 className="font-bold mb-2">Results Guaranteed</h3>
-                  <p className="text-sm text-teal-100">Measurable time savings or we keep working</p>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                  <Workflow className="w-10 h-10 mx-auto mb-3 text-teal-200" />
-                  <h3 className="font-bold mb-2">Continuous Support</h3>
-                  <p className="text-sm text-teal-100">We optimize until you see the results you need</p>
-                </div>
-              </div>
-
-              <a
-                href="/consultation"
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-white/20 hover:bg-white/30 rounded-lg transition shadow-lg mt-8 border-2 border-white/30"
+              <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+                If you don't save at least 10 hours a week or see measurable ROI in 60 days, 
+                we'll continue optimizing your automations free until you do.
+              </p>
+            </motion.div>
+            
+            <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                size="lg"
+                onClick={scrollToCalculator}
+                className="bg-white text-teal-700 hover:bg-gray-100 font-semibold px-8 py-6 text-lg shadow-xl"
               >
-                🟢 Get My Free Automation Blueprint—Start Risk-Free →
-              </a>
-              
-              <p className="mt-6 text-sm text-teal-100">
-                * Terms and conditions apply. See our full guarantee policy for details.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* FAQ Section */}
-        <section ref={faqRef} className="py-24 bg-gradient-to-b from-background to-muted">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial="hidden"
-              animate={faqInView ? "visible" : "hidden"}
-              variants={staggerContainer}
-            >
-              <motion.div variants={fadeInUp} className="text-center mb-16">
-                <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                  Frequently Asked <span className="text-brand-teal-500">Questions</span>
-                </h2>
-                <p className="text-xl text-muted-foreground">
-                  Everything you need to know about automation for your business.
-                </p>
-              </motion.div>
-
-              <motion.div variants={fadeInUp}>
-                <Accordion type="single" collapsible className="space-y-4">
-                  {faqs.map((faq, index) => (
-                    <AccordionItem 
-                      key={index} 
-                      value={`item-${index}`}
-                      className="bg-background border-2 border-border rounded-xl px-6 hover:border-brand-teal-500 transition-colors"
-                    >
-                      <AccordionTrigger className="text-left font-semibold hover:text-brand-teal-500">
-                        {faq.question}
-                      </AccordionTrigger>
-                      <AccordionContent className="text-muted-foreground">
-                        <p className="mb-4">{faq.answer}</p>
-                        {faq.cta && (
-                          <a
-                            href={faq.cta.link}
-                            className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white bg-brand-teal-500 hover:bg-brand-teal-600 rounded-lg transition shadow-md hover:shadow-lg"
-                          >
-                            {faq.cta.text}
-                          </a>
-                        )}
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-
-                {/* Contact Support Button */}
-                <motion.div variants={fadeInUp} className="mt-8 text-center">
-                  <p className="text-muted-foreground mb-4">
-                    Still have questions? We're here to help!
-                  </p>
-                  <a
-                    href="/intelligent-automation/contact"
-                    className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-brand-teal-500 hover:bg-brand-teal-600 rounded-lg transition shadow-lg hover:shadow-xl"
-                  >
-                    Contact Support
-                  </a>
-                </motion.div>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Final CTA Section */}
-        <section className="py-24 bg-gradient-to-r from-brand-teal-600 to-emerald-600 text-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                Ready to Reclaim Your Time?
-              </h2>
-              <p className="text-xl mb-8 text-teal-50">
-                Stop wasting 21.8 hours per week on busywork. Let's build automations that actually work.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="#calculator"
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold bg-white text-brand-teal-600 rounded-lg hover:bg-gray-100 transition shadow-lg"
+                <BarChart3 className="w-5 h-5 mr-2" />
+                Get My Free Automation Blueprint
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                asChild
+                className="border-2 border-white text-white hover:bg-white/10 backdrop-blur-sm px-8 py-6 text-lg font-semibold"
+              >
+                <a 
+                  href={process.env.NEXT_PUBLIC_TIDYCAL_BOOK_URL || '#'}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  Calculate Your Savings
-                </a>
-                <a
-                  href="/consultation"
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold border-2 border-white text-white rounded-lg hover:bg-white/10 transition"
-                >
+                  <Calendar className="w-5 h-5 mr-2" />
                   Schedule Free Consultation
                 </a>
-              </div>
-              <p className="mt-6 text-sm text-teal-100">
-                🔒 No credit card required • Money Back Guarantee • Free time audit
-              </p>
+              </Button>
             </motion.div>
-          </div>
+            
+            <motion.div variants={fadeInUp} className="mt-12 pt-8 border-t border-white/20">
+              <div className="grid md:grid-cols-3 gap-8 text-center">
+                <div>
+                  <div className="text-4xl font-bold mb-2">14</div>
+                  <div className="text-white/80">Days to Deploy</div>
+                </div>
+                <div>
+                  <div className="text-4xl font-bold mb-2">60-85%</div>
+                  <div className="text-white/80">Cost Savings</div>
+                </div>
+                <div>
+                  <div className="text-4xl font-bold mb-2">24/7</div>
+                  <div className="text-white/80">Always Working</div>
+                </div>
+              </div>
+            </motion.div>
+            
+          </motion.div>
         </section>
 
-        {/* Schema Markup for SEO/AEO/AGO */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
       </main>
 
       <Footer />
-    </div>
+    </>
   )
 }
