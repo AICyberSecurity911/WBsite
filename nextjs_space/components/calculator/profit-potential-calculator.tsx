@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Slider } from '@/components/ui/slider'
 import { Card } from '@/components/ui/card'
-import { DollarSign, Clock, TrendingUp, Zap, ArrowRight, Loader2 } from 'lucide-react'
+import { DollarSign, Clock, TrendingUp, Zap, ArrowRight, Loader2, Shield, CheckCircle } from 'lucide-react'
 import { toast } from 'sonner'
 
 export function ProfitPotentialCalculator() {
@@ -301,6 +301,77 @@ export function ProfitPotentialCalculator() {
               </p>
             </div>
           </div>
+
+          {/* Service Recommendations - When Freedom Score is low or leak is high */}
+          {showResults && (results.freedomScore < 50 || results.leakPercentage > 25) && (
+            <div className="mt-6 space-y-4">
+              <div className="p-4 rounded-xl bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-blue-950 dark:via-purple-950 dark:to-pink-950 border-2 border-purple-200 dark:border-purple-800">
+                <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
+                  💡 Based on Your Results:
+                </h4>
+                <p className="text-sm text-gray-700 dark:text-gray-300 mb-4">
+                  {results.freedomScore < 40 
+                    ? "Your business is overwhelming you. These services can help you regain control:"
+                    : "You're making progress, but these solutions can accelerate your transformation:"
+                  }
+                </p>
+
+                <div className="space-y-3">
+                  {/* Intelligent Automation Recommendation */}
+                  {results.leakPercentage > 20 && (
+                    <div className="rounded-lg border-2 border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800">
+                      <div className="flex items-start gap-3">
+                        <div className="rounded-lg bg-gradient-to-br from-teal-500 to-emerald-500 p-2">
+                          <Zap className="h-5 w-5 text-white" />
+                        </div>
+                        <div className="flex-1">
+                          <h5 className="font-bold text-gray-900 dark:text-white text-sm mb-1">
+                            Intelligent Automation
+                          </h5>
+                          <p className="text-xs text-gray-600 dark:text-gray-300 mb-2">
+                            You're leaking {results.leakPercentage.toFixed(1)}% to inefficiency. Automation can eliminate 30-40% of manual tasks.
+                          </p>
+                          <a href="/intelligent-automation">
+                            <Button size="sm" className="w-full sm:w-auto text-xs bg-teal-600 hover:bg-teal-700 text-white">
+                              Explore Automation →
+                            </Button>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Cyber Intelligence Recommendation */}
+                  {parseInt(revenue) > 1000000 && (
+                    <div className="rounded-lg border-2 border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800">
+                      <div className="flex items-start gap-3">
+                        <div className="rounded-lg bg-gradient-to-br from-blue-500 to-indigo-500 p-2">
+                          <Shield className="h-5 w-5 text-white" />
+                        </div>
+                        <div className="flex-1">
+                          <h5 className="font-bold text-gray-900 dark:text-white text-sm mb-1">
+                            Cyber Intelligence
+                          </h5>
+                          <p className="text-xs text-gray-600 dark:text-gray-300 mb-2">
+                            At {formatCurrency(parseInt(revenue))} revenue, you're a high-value target. One breach could cost more than your profit leak.
+                          </p>
+                          <a href="/cyber-intelligence">
+                            <Button size="sm" className="w-full sm:w-auto text-xs bg-blue-600 hover:bg-blue-700 text-white">
+                              Secure Your Business →
+                            </Button>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                <div className="mt-3 text-xs text-center text-purple-900 dark:text-purple-100 italic">
+                  💬 Not sure which fits best? Book a free consultation below.
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Email Gate */}
           {showEmailGate && (

@@ -25,7 +25,8 @@ import {
   ChevronLeft,
   ChevronRight,
   Loader2,
-  X
+  X,
+  Zap
 } from 'lucide-react'
 import { 
   Accordion,
@@ -645,6 +646,52 @@ export default function CyberIntelligencePage() {
                           Schedule My Security Audit
                         </a>
                       </div>
+
+                      {/* Cross-sell recommendations for breached emails */}
+                      <div className="mt-6 pt-6 border-t border-red-500/30">
+                        <h4 className="font-bold text-lg mb-3">💡 Recommended Next Steps:</h4>
+                        <div className="space-y-3">
+                          {/* Background Checks */}
+                          <div className="p-4 rounded-lg bg-white dark:bg-gray-800 border border-red-200 dark:border-red-800">
+                            <div className="flex items-start gap-3">
+                              <div className="rounded-lg bg-gradient-to-br from-red-500 to-pink-500 p-2">
+                                <Shield className="h-5 w-5 text-white" />
+                              </div>
+                              <div className="flex-1">
+                                <h5 className="font-bold text-sm mb-1">Beyond Background Checks</h5>
+                                <p className="text-xs text-muted-foreground mb-2">
+                                  If this is an employee email, verify their identity hasn't been compromised
+                                </p>
+                                <a href="/background-checks">
+                                  <button className="text-xs px-3 py-1 bg-red-500 hover:bg-red-600 text-white rounded-lg transition">
+                                    Learn More →
+                                  </button>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Intelligent Automation */}
+                          <div className="p-4 rounded-lg bg-white dark:bg-gray-800 border border-teal-200 dark:border-teal-800">
+                            <div className="flex items-start gap-3">
+                              <div className="rounded-lg bg-gradient-to-br from-teal-500 to-emerald-500 p-2">
+                                <Zap className="h-5 w-5 text-white" />
+                              </div>
+                              <div className="flex-1">
+                                <h5 className="font-bold text-sm mb-1">Intelligent Automation</h5>
+                                <p className="text-xs text-muted-foreground mb-2">
+                                  Automate security monitoring and credential rotation
+                                </p>
+                                <a href="/intelligent-automation">
+                                  <button className="text-xs px-3 py-1 bg-teal-500 hover:bg-teal-600 text-white rounded-lg transition">
+                                    Explore Solutions →
+                                  </button>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   ) : (
                     <div>
@@ -663,6 +710,52 @@ export default function CyberIntelligencePage() {
                         >
                           Get a Comprehensive Audit
                         </a>
+                      </div>
+
+                      {/* Cross-sell recommendations for clean emails */}
+                      <div className="mt-6 pt-6 border-t border-green-500/30">
+                        <h4 className="font-bold text-lg mb-3">💡 Stay Protected:</h4>
+                        <div className="space-y-3">
+                          {/* Business Transformation */}
+                          <div className="p-4 rounded-lg bg-white dark:bg-gray-800 border border-purple-200 dark:border-purple-800">
+                            <div className="flex items-start gap-3">
+                              <div className="rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 p-2">
+                                <TrendingUp className="h-5 w-5 text-white" />
+                              </div>
+                              <div className="flex-1">
+                                <h5 className="font-bold text-sm mb-1">Business Transformation</h5>
+                                <p className="text-xs text-muted-foreground mb-2">
+                                  Build security into your business systems from the ground up
+                                </p>
+                                <a href="/business-transformation">
+                                  <button className="text-xs px-3 py-1 bg-purple-500 hover:bg-purple-600 text-white rounded-lg transition">
+                                    Transform Your Business →
+                                  </button>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Background Checks */}
+                          <div className="p-4 rounded-lg bg-white dark:bg-gray-800 border border-red-200 dark:border-red-800">
+                            <div className="flex items-start gap-3">
+                              <div className="rounded-lg bg-gradient-to-br from-red-500 to-pink-500 p-2">
+                                <Shield className="h-5 w-5 text-white" />
+                              </div>
+                              <div className="flex-1">
+                                <h5 className="font-bold text-sm mb-1">Beyond Background Checks</h5>
+                                <p className="text-xs text-muted-foreground mb-2">
+                                  Prevent insider threats before they happen
+                                </p>
+                                <a href="/background-checks">
+                                  <button className="text-xs px-3 py-1 bg-red-500 hover:bg-red-600 text-white rounded-lg transition">
+                                    Learn More →
+                                  </button>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   )}

@@ -7,6 +7,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Shield, AlertTriangle, Search, FileCheck, Users, TrendingUp, CheckCircle2, XCircle, Eye, UserX, Lock, DollarSign } from 'lucide-react'
 import { useState } from 'react'
 import { BackgroundChecksExitIntent } from '@/components/background-checks-exit-intent'
+import { HiringRiskCalculator } from '@/components/calculator/hiring-risk-calculator'
 
 export default function BackgroundChecksPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -450,6 +451,28 @@ export default function BackgroundChecksPage() {
                 <a href="/consultation">🧠 I Need This Level of Investigation → Schedule My Confidential Briefing</a>
               </Button>
             </div>
+          </div>
+        </section>
+
+        {/* Hiring Risk Calculator Section */}
+        <section id="risk-calculator" className="py-20 bg-gray-50 dark:bg-gray-800">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <div className="inline-block bg-red-100 dark:bg-red-900/30 rounded-full px-4 py-2 mb-4">
+                <span className="text-sm font-semibold text-red-700 dark:text-red-300 uppercase tracking-wide">
+                  Interactive Tool
+                </span>
+              </div>
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+                How Much is a Bad Hire<br />
+                <span className="text-red-500">Costing Your Business?</span>
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                One bad hire can cost $200K-$4M in losses. Calculate your actual risk and see how intelligence-grade investigations protect your business.
+              </p>
+            </div>
+
+            <HiringRiskCalculator />
           </div>
         </section>
 
