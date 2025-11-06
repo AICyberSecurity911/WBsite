@@ -211,7 +211,7 @@ export function ProfitPotentialCalculator() {
 
             <Button
               onClick={handleCalculate}
-              className="w-full bg-purple-500 hover:bg-purple-600 text-white text-lg py-6 h-auto"
+              className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold text-lg py-6 h-auto shadow-lg hover:shadow-xl transition-all duration-200"
             >
               Calculate My Profit Potential
               <ArrowRight className="ml-2 h-5 w-5" />

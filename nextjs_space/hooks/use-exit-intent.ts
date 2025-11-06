@@ -57,9 +57,10 @@ export function useExitIntent({
     if (!enabled || !exitIntentEnabled || hasBeenShown) return
 
     const handleMouseMove = (e: MouseEvent) => {
-      // Detect if mouse is moving towards the top of the viewport to close the window
-      // Trigger only when cursor is in the top 50px and moving upward
-      if (e.clientY <= 50 && e.movementY < 0) {
+      // Detect if mouse is moving towards the close button at the very top
+      // Trigger ONLY when cursor is in the top 10px and moving upward (movementY < 0)
+      // This ensures it only triggers when user is truly trying to close the tab/window
+      if (e.clientY <= 10 && e.movementY < 0) {
         triggerModal()
       }
     }

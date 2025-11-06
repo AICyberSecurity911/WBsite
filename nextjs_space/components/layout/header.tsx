@@ -52,10 +52,10 @@ export function Header() {
           : 'bg-transparent'
       }`}
     >
-      <nav className="container flex h-16 items-center justify-between">
+      <nav className="container flex h-16 items-center justify-between px-4 sm:px-6">
         {/* Logo */}
-        <Link href="/" className="flex items-center space-x-3">
-          <div className="relative h-10 w-10">
+        <Link href="/" className="flex items-center space-x-2 flex-shrink-0">
+          <div className="relative h-8 w-8 sm:h-9 sm:w-9">
             <Image
               src="/logo.png"
               alt="QuantumLeap AI Logo"
@@ -64,13 +64,13 @@ export function Header() {
               priority
             />
           </div>
-          <span className="text-xl font-bold text-gray-900 dark:text-white">
+          <span className="text-base sm:text-lg font-bold text-gray-900 dark:text-white whitespace-nowrap">
             QuantumLeap <span className="ai-pulse text-orange-500">AI</span>
           </span>
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden items-center gap-6 lg:flex">
+        <div className="hidden items-center gap-4 xl:gap-6 lg:flex">
           {navigation.map((item) => (
             item.hasDropdown ? (
               <div key={item.name} className="relative">
@@ -78,10 +78,10 @@ export function Header() {
                   href={item.href}
                   onMouseEnter={() => setServicesOpen(true)}
                   onMouseLeave={() => setServicesOpen(false)}
-                  className="flex items-center gap-1 text-sm font-medium text-gray-700 transition-colors hover:text-teal-600 dark:text-gray-300 dark:hover:text-teal-400"
+                  className="flex items-center gap-1 text-sm font-medium text-gray-700 transition-colors hover:text-teal-600 dark:text-gray-300 dark:hover:text-teal-400 whitespace-nowrap"
                 >
                   {item.name}
-                  <ChevronDown className="h-3.5 w-3.5" />
+                  <ChevronDown className="h-4 w-4" />
                 </Link>
                 {servicesOpen && (
                   <div
@@ -140,32 +140,33 @@ export function Header() {
           <Button 
             asChild
             size="sm"
-            className="btn-primary rounded-full px-5 shadow-lg hover:shadow-xl transition-shadow"
+            className="btn-primary rounded-full px-4 xl:px-5 shadow-lg hover:shadow-xl transition-shadow text-sm"
           >
             <Link href="#calculator">
-              Get Started
+              Start Free
             </Link>
           </Button>
         </div>
 
         {/* Mobile menu button */}
-        <div className="flex items-center space-x-2 md:hidden">
+        <div className="flex items-center gap-2 lg:hidden">
           <Button
             variant="ghost"
-            size="sm"
+            size="icon"
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="h-8 w-8 p-0"
+            className="h-9 w-9"
           >
             {theme === 'dark' ? (
-              <Sun className="h-4 w-4" />
+              <Sun className="h-5 w-5" />
             ) : (
-              <Moon className="h-4 w-4" />
+              <Moon className="h-5 w-5" />
             )}
           </Button>
           
           <Button
             variant="ghost"
-            className="h-8 w-8 p-0"
+            size="icon"
+            className="h-9 w-9"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? (
@@ -219,10 +220,10 @@ export function Header() {
                 ))}
               </div>
 
-              <div className="pt-6">
-                <Button asChild className="btn-primary w-full rounded-full shadow-lg">
+              <div className="pt-4 border-t border-gray-200 dark:border-gray-800 mt-4">
+                <Button asChild className="btn-primary w-full rounded-full shadow-lg text-base py-6">
                   <Link href="#calculator" onClick={() => setMobileMenuOpen(false)}>
-                    Get Started
+                    Start Free
                   </Link>
                 </Button>
               </div>

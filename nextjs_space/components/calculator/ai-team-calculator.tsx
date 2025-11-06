@@ -197,19 +197,19 @@ export function AITeamCalculator() {
                 {currentQuestion.options?.map((option, index) => (
                   <motion.button
                     key={index}
-                    className={`w-full rounded-lg border p-4 text-left transition-all duration-200 hover:border-teal-500 hover:bg-teal-50 dark:hover:bg-teal-950 ${
+                    className={`w-full rounded-xl border-2 p-5 text-left transition-all duration-200 hover:shadow-md ${
                       answers[currentQuestion.id] === option
-                        ? 'border-teal-500 bg-teal-50 dark:bg-teal-950'
-                        : 'border-gray-200 dark:border-gray-700'
+                        ? 'border-teal-500 bg-teal-50 dark:bg-teal-900/30 shadow-lg'
+                        : 'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 hover:border-teal-400'
                     }`}
                     onClick={() => handleAnswer(currentQuestion.id, option)}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-gray-900 dark:text-white">{option}</span>
+                      <span className="font-medium text-gray-900 dark:text-white">{option}</span>
                       {answers[currentQuestion.id] === option && (
-                        <CheckCircle className="h-5 w-5 text-teal-600" />
+                        <CheckCircle className="h-6 w-6 text-teal-600 dark:text-teal-400" />
                       )}
                     </div>
                   </motion.button>
@@ -218,24 +218,26 @@ export function AITeamCalculator() {
             </div>
 
             {/* Navigation Buttons */}
-            <div className="flex justify-between">
+            <div className="flex justify-between mt-6">
               <Button
                 variant="outline"
                 onClick={() => goToStep(currentStep - 1)}
                 disabled={currentStep === 0}
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 border-2 hover:bg-gray-100 dark:hover:bg-gray-800"
+                size="lg"
               >
-                <ArrowLeft className="h-4 w-4" />
+                <ArrowLeft className="h-5 w-5" />
                 Previous
               </Button>
 
               {answers[currentQuestion.id] && currentStep < totalSteps - 1 && (
                 <Button
                   onClick={() => goToStep(currentStep + 1)}
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-2 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white shadow-lg"
+                  size="lg"
                 >
                   Next
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="h-5 w-5" />
                 </Button>
               )}
             </div>
