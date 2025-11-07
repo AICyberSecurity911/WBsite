@@ -5,279 +5,253 @@ import { useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { motion } from 'framer-motion'
 import { 
-  Calculator, 
-  User, 
-  TrendingUp, 
+  UserCheck, 
   MessageSquare, 
-  Users, 
-  Share2,
-  Calendar,
-  BarChart3,
-  ArrowRight,
-  Clock,
+  Calculator, 
+  TrendingUp, 
+  BarChart, 
   Target,
-  CheckCircle,
-  X
+  Layers,
+  ArrowRight,
+  Check,
+  ChevronDown,
+  DollarSign
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import Link from 'next/link'
 
 interface AIEmployee {
   id: string
   title: string
+  name: string
+  badge: string
+  badgeColor: string
   tagline: string
-  description: string
+  customBuiltFor: string
+  realResults: string[]
+  technicalDetails: string[]
+  customizationOptions: string[]
+  pricing: string
   icon: any
-  problemSolved: string
-  features: string[]
-  metrics: {
-    accuracy: string
-    timeSaved: string
-    costSavings: string
-  }
-  testimonial: {
-    quote: string
-    author: string
-    company: string
-  }
-  deploymentTime: string
-  integrations: string[]
   color: string
 }
 
 const aiEmployees: AIEmployee[] = [
   {
-    id: 'bookkeeper',
-    title: 'AI Bookkeeper — from $499/month',
-    tagline: 'Tired of month-end chaos and missed invoices? Stop stressful accounting forever and focus on growing your business.',
-    description: 'Automates your entire accounting workflow with 99.7% accuracy',
-    icon: Calculator,
-    problemSolved: 'Eliminates bookkeeping errors, late tax filings, and financial blind spots',
-    features: [
-      'Automated transaction categorization',
-      'Real-time financial reporting',
-      'Tax preparation assistance',
-      'Cash flow forecasting',
-      'Expense tracking and approval',
-      'Invoice generation and follow-ups'
+    id: 'ava',
+    name: 'AVA',
+    title: 'AI Virtual Administrator',
+    badge: 'Most Requested',
+    badgeColor: 'bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300',
+    tagline: 'Handles emails, scheduling, expense approvals, and reporting—reclaim 40+ hours/month',
+    customBuiltFor: 'Construction company owner drowning in admin work—missing family dinners to approve expenses',
+    realResults: [
+      '40+ hours/month reclaimed',
+      '$15K billing errors recovered',
+      '73% revenue growth',
+      'First vacation in 7 years'
     ],
-    metrics: {
-      accuracy: '99.7%',
-      timeSaved: '15 hours/week',
-      costSavings: '87%'
-    },
-    testimonial: {
-      quote: "Our books are perfect every month now. I sleep better at night.",
-      author: "Peter Fernandes",
-      company: "Fernandes Construction"
-    },
-    deploymentTime: '3-5 business days',
-    integrations: ['QuickBooks', 'Xero', 'FreshBooks', 'Wave'],
-    color: 'from-blue-500 to-indigo-600'
+    technicalDetails: [
+      'Gmail/Outlook integration with smart prioritization',
+      'Automated expense approval workflows (rules-based)',
+      'Calendar management with conflict detection',
+      'Weekly executive summary reports (auto-generated)'
+    ],
+    customizationOptions: [
+      'Your specific email patterns and client communication style',
+      'Your approval hierarchies and spending limits',
+      'Your meeting preferences and scheduling constraints',
+      'Your reporting needs and KPI dashboards'
+    ],
+    pricing: '$399/month',
+    icon: UserCheck,
+    color: 'from-teal-500 to-teal-600'
   },
   {
-    id: 'executive-assistant',
-    title: 'AI Executive Assistant — from $499/month',
-    tagline: 'Sick of drowning in calls and endless small tasks? Get more time back and finally close important deals.',
-    description: 'Manages your schedule, emails, and administrative tasks flawlessly',
-    icon: User,
-    problemSolved: 'Eliminates scheduling conflicts, missed opportunities, and administrative overwhelm',
-    features: [
-      'Calendar management and scheduling',
-      'Email filtering and responses',
-      'Meeting preparation and notes',
-      'Travel arrangement coordination',
-      'Document organization',
-      'Follow-up reminders'
+    id: 'ace',
+    name: 'ACE',
+    title: 'AI Customer Engagement',
+    badge: '24/7 Revenue Generator',
+    badgeColor: 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300',
+    tagline: 'Responds to leads instantly (even at 3 AM), qualifies prospects, books appointments—never miss a sale',
+    customBuiltFor: 'Real estate broker losing 30% of leads because they came in after business hours',
+    realResults: [
+      '34% revenue increase in 3 months',
+      'Zero missed leads (90-sec response time)',
+      'Automated lead qualification',
+      'Wakes up to booked appointments'
     ],
-    metrics: {
-      accuracy: '98.5%',
-      timeSaved: '20 hours/week',
-      costSavings: '78%'
-    },
-    testimonial: {
-      quote: "It's like having the perfect assistant who never takes a day off.",
-      author: "Sofia Delacroix",
-      company: "Delacroix Marketing"
-    },
-    deploymentTime: '1-2 business days',
-    integrations: ['Google Calendar', 'Outlook', 'Slack', 'Teams'],
-    color: 'from-emerald-500 to-teal-600'
-  },
-  {
-    id: 'sales-rep',
-    title: 'AI Sales Rep — from $599/month',
-    tagline: 'Never miss another hot lead or follow-up. Boost your sales and let your AI close deals while you work on your business.',
-    description: 'Manages leads, follows up consistently, and closes deals 24/7',
-    icon: TrendingUp,
-    problemSolved: 'Eliminates inconsistent follow-ups and missed sales opportunities',
-    features: [
-      'Lead qualification and scoring',
-      'Automated follow-up sequences',
-      'Meeting scheduling and prep',
-      'Proposal generation',
-      'Pipeline management',
-      'Performance analytics'
+    technicalDetails: [
+      'CRM integration (HubSpot/Salesforce/custom)',
+      'Natural language processing for lead qualification',
+      'Multi-channel engagement (email, SMS, web chat)',
+      'Smart scheduling based on urgency and calendar availability',
+      'Follow-up sequences customized to lead temperature'
     ],
-    metrics: {
-      accuracy: '96.8%',
-      timeSaved: '25 hours/week',
-      costSavings: '82%'
-    },
-    testimonial: {
-      quote: "Our sales pipeline has never been more organized and productive.",
-      author: "Marcus Chen",
-      company: "TechFlow Solutions"
-    },
-    deploymentTime: '5-7 business days',
-    integrations: ['Salesforce', 'HubSpot', 'Pipedrive', 'Zoom'],
-    color: 'from-orange-500 to-red-600'
-  },
-  {
-    id: 'customer-service',
-    title: 'AI Customer Service Rep — from $499/month',
-    tagline: 'Never lose another client after hours. Your customers get fast replies, you get more sales and better sleep.',
-    description: 'Handles customer inquiries with empathy and accuracy',
+    customizationOptions: [
+      'Your industry-specific qualification criteria',
+      'Your brand voice and communication style',
+      'Your booking preferences and availability windows',
+      'Your CRM and tech stack integration'
+    ],
+    pricing: '$399/month',
     icon: MessageSquare,
-    problemSolved: 'Eliminates long response times and inconsistent customer experiences',
-    features: [
-      '24/7 customer support coverage',
-      'Multi-channel communication',
-      'Issue escalation protocols',
-      'Knowledge base management',
-      'Satisfaction tracking',
-      'Sentiment analysis'
-    ],
-    metrics: {
-      accuracy: '94.3%',
-      timeSaved: '30 hours/week',
-      costSavings: '89%'
-    },
-    testimonial: {
-      quote: "Customer satisfaction scores increased 40% since deployment.",
-      author: "Lisa Rodriguez",
-      company: "HomeComfort Services"
-    },
-    deploymentTime: '4-6 business days',
-    integrations: ['Zendesk', 'Intercom', 'Freshdesk', 'LiveChat'],
-    color: 'from-purple-500 to-pink-600'
+    color: 'from-green-500 to-green-600'
   },
   {
-    id: 'recruiter',
-    title: 'AI Recruiter — from $599/month',
-    tagline: 'Eliminate hiring headaches. Screen, onboard, and manage paperwork automatically, so you can focus on people—not paperwork.',
-    description: 'Sources, screens, and schedules candidates automatically',
-    icon: Users,
-    problemSolved: 'Eliminates bad hires, lengthy processes, and recruitment costs',
-    features: [
-      'Candidate sourcing and matching',
-      'Resume screening and ranking',
-      'Interview scheduling',
-      'Background check coordination',
-      'Offer letter generation',
-      'Onboarding automation'
+    id: 'bookie',
+    name: 'BOOKIE',
+    title: 'AI Bookkeeper',
+    badge: 'Fastest ROI',
+    badgeColor: 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300',
+    tagline: 'Syncs with QuickBooks/Xero, categorizes transactions, reconciles accounts—99.2% accuracy, books closed by the 3rd',
+    customBuiltFor: 'E-commerce founder spending 18 hours/month on bookkeeping with errors every quarter',
+    realResults: [
+      '$50K+ annual savings vs. hiring',
+      '99.2% accuracy (vs. ~94% manual)',
+      'Books closed by 3rd (was 12 days)',
+      '18 hours/week freed for growth'
     ],
-    metrics: {
-      accuracy: '91.7%',
-      timeSaved: '18 hours/week',
-      costSavings: '76%'
-    },
-    testimonial: {
-      quote: "We've hired 5 great employees in half the time it used to take.",
-      author: "David Kim",
-      company: "GreenTech Manufacturing"
-    },
-    deploymentTime: '7-10 business days',
-    integrations: ['LinkedIn', 'Indeed', 'Workday', 'BambooHR'],
-    color: 'from-green-500 to-emerald-600'
+    technicalDetails: [
+      'QuickBooks/Xero API integration',
+      'Machine learning categorization (learns from patterns)',
+      'Anomaly detection (flags duplicates, unusual amounts)',
+      'Bank reconciliation automation',
+      'Month-end close checklist with smart validation'
+    ],
+    customizationOptions: [
+      'Your chart of accounts and categorization rules',
+      'Your bank accounts and payment processors',
+      'Your reconciliation requirements and approval workflows',
+      'Your reporting format and frequency'
+    ],
+    pricing: '$499/month',
+    icon: Calculator,
+    color: 'from-purple-500 to-purple-600'
   },
   {
-    id: 'social-media-manager',
-    title: 'AI Social Media Manager — from $599/month',
-    tagline: 'Grow your brand while you sleep. No more posts left unfinished or lost sales from missed opportunities.',
-    description: 'Creates, schedules, and optimizes your social media presence',
-    icon: Share2,
-    problemSolved: 'Eliminates inconsistent posting and poor engagement rates',
-    features: [
-      'Content creation and curation',
-      'Multi-platform scheduling',
-      'Engagement monitoring',
-      'Hashtag optimization',
-      'Analytics and reporting',
-      'Brand voice consistency'
+    id: 'finn',
+    name: 'FINN',
+    title: 'AI Financial Analyst',
+    badge: 'Strategic Advantage',
+    badgeColor: 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300',
+    tagline: 'Monitors cash flow in real-time, forecasts burn rate, models scenarios—alerts you to risks before they become crises',
+    customBuiltFor: "Consulting firm that didn't realize 40% of clients were unprofitable until tax season",
+    realResults: [
+      'Identified $127K in unprofitable work',
+      'Real-time cash visibility (no surprises)',
+      '6-month runway forecasting (±3% accuracy)',
+      'Confident financial decisions'
     ],
-    metrics: {
-      accuracy: '93.2%',
-      timeSaved: '12 hours/week',
-      costSavings: '84%'
-    },
-    testimonial: {
-      quote: "Our social media engagement tripled in just 2 months.",
-      author: "Amanda Foster",
-      company: "Boutique Fashion Co."
-    },
-    deploymentTime: '2-3 business days',
-    integrations: ['Facebook', 'Instagram', 'LinkedIn', 'Twitter'],
-    color: 'from-pink-500 to-purple-600'
+    technicalDetails: [
+      'Multi-source data aggregation (QuickBooks, bank feeds, contracts)',
+      'Profitability analysis by client/project/service line',
+      'Cash flow forecasting with scenario modeling',
+      'Automated alerts for covenant violations or low runway',
+      'Executive dashboard with drag-and-drop customization'
+    ],
+    customizationOptions: [
+      'Your revenue model and cost structure',
+      'Your client contracts and billing cycles',
+      'Your financial KPIs and reporting needs',
+      'Your risk thresholds and alert preferences'
+    ],
+    pricing: '$499/month',
+    icon: TrendingUp,
+    color: 'from-blue-500 to-blue-600'
   },
   {
-    id: 'project-manager',
-    title: 'AI Project Manager — from $599/month',
-    tagline: 'No more fire-fighting—your AI keeps projects, staff, and vendors on track. Run smoother and stress less.',
-    description: 'Coordinates teams, tracks progress, and ensures deadlines are met',
-    icon: Calendar,
-    problemSolved: 'Eliminates project delays, miscommunication, and scope creep',
-    features: [
-      'Project planning and scheduling',
-      'Resource allocation',
-      'Progress tracking and reporting',
-      'Risk assessment and mitigation',
-      'Team coordination',
-      'Budget monitoring'
+    id: 'mark',
+    name: 'MARK',
+    title: 'AI Marketing Manager',
+    badge: 'Consistent Growth Engine',
+    badgeColor: 'bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300',
+    tagline: 'Plans campaigns, schedules content, tracks analytics, optimizes spend—marketing happens consistently, not in bursts',
+    customBuiltFor: 'SaaS startup whose "strategy" was founder posting on LinkedIn when they remembered',
+    realResults: [
+      'Consistent content (3x/week vs. sporadic)',
+      '41% increase in qualified leads (90 days)',
+      'Marketing attribution clarity',
+      '15 hours/week saved'
     ],
-    metrics: {
-      accuracy: '97.1%',
-      timeSaved: '22 hours/week',
-      costSavings: '79%'
-    },
-    testimonial: {
-      quote: "Project delivery times improved by 35% with zero stress.",
-      author: "Robert Johnson",
-      company: "Apex Consulting"
-    },
-    deploymentTime: '5-7 business days',
-    integrations: ['Asana', 'Monday', 'Trello', 'Jira'],
-    color: 'from-indigo-500 to-blue-600'
+    technicalDetails: [
+      'Content calendar with AI-assisted writing (brand voice)',
+      'Multi-channel scheduling (LinkedIn, email, blog, ads)',
+      'Analytics aggregation (GA, LinkedIn, Meta, email platforms)',
+      'A/B testing automation',
+      'ROI dashboards by channel and campaign'
+    ],
+    customizationOptions: [
+      'Your target audience and messaging strategy',
+      'Your content types and distribution channels',
+      'Your brand guidelines and approval workflows',
+      'Your attribution model and success metrics'
+    ],
+    pricing: '$499/month',
+    icon: BarChart,
+    color: 'from-orange-500 to-orange-600'
   },
   {
-    id: 'financial-analyst',
-    title: 'AI Financial Analyst — from $599/month',
-    tagline: 'Stop guessing about your cash flow. Get instant, actionable insights and make smarter business decisions.',
-    description: 'Analyzes financial data and provides strategic recommendations',
-    icon: BarChart3,
-    problemSolved: 'Eliminates gut-based decisions and financial blind spots',
-    features: [
-      'Financial modeling and forecasting',
-      'Performance analysis',
-      'Cost optimization recommendations',
-      'Investment analysis',
-      'Risk assessment',
-      'Strategic planning support'
+    id: 'sal',
+    name: 'SAL',
+    title: 'AI Sales Development Rep',
+    badge: 'Pipeline Multiplier',
+    badgeColor: 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300',
+    tagline: 'Qualifies inbound leads, researches prospects, personalizes outreach, books meetings—your closers focus on closing',
+    customBuiltFor: 'B2B services company where founder was both salesperson and delivery team—leads fell through cracks',
+    realResults: [
+      'Pipeline increased 3x in 60 days',
+      'Consistent 7-touch follow-up (zero manual)',
+      'Only qualified prospects reach calendar',
+      'Close rate jumped 18% → 31%'
     ],
-    metrics: {
-      accuracy: '98.9%',
-      timeSaved: '16 hours/week',
-      costSavings: '81%'
-    },
-    testimonial: {
-      quote: "Finally have the financial insights I need to grow strategically.",
-      author: "Sarah Williams",
-      company: "Williams Architecture"
-    },
-    deploymentTime: '4-6 business days',
-    integrations: ['Excel', 'Tableau', 'Power BI', 'QuickBooks'],
-    color: 'from-yellow-500 to-orange-600'
+    technicalDetails: [
+      'Lead scoring based on custom criteria (size, budget, engagement)',
+      'Automated research (LinkedIn, company data, recent news)',
+      'Personalized email sequences (uses prospect data + templates)',
+      'CRM hygiene (auto-updates fields, tags, status)',
+      'Meeting scheduling with qualification gates'
+    ],
+    customizationOptions: [
+      'Your ideal customer profile and qualification criteria',
+      'Your sales process and handoff points',
+      'Your outreach templates and brand voice',
+      'Your CRM and sales tool stack'
+    ],
+    pricing: '$499/month',
+    icon: Target,
+    color: 'from-emerald-500 to-emerald-600'
+  },
+  {
+    id: 'aria',
+    name: 'ARIA',
+    title: 'AI Project Manager',
+    badge: 'Delivery Excellence',
+    badgeColor: 'bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300',
+    tagline: 'Plans projects, assigns tasks, tracks progress, manages dependencies—deliveries on-time and on-budget',
+    customBuiltFor: 'Digital agency where projects consistently ran 30% over budget due to tracking gaps',
+    realResults: [
+      'Project delivery time reduced 22%',
+      'Budget overruns eliminated (30% over → 2% under)',
+      'Team utilization visibility',
+      'Client satisfaction scores up 18%'
+    ],
+    technicalDetails: [
+      'Project planning with dependency mapping',
+      'Resource allocation and utilization tracking',
+      'Automated task assignment based on skills and availability',
+      'Bottleneck detection and escalation alerts',
+      'Client status updates (auto-generated, customizable frequency)'
+    ],
+    customizationOptions: [
+      'Your project types and delivery methodology (Agile, Waterfall, hybrid)',
+      'Your team structure and capacity',
+      'Your client communication preferences',
+      'Your project management tools and workflows'
+    ],
+    pricing: '$499/month',
+    icon: Layers,
+    color: 'from-indigo-500 to-indigo-600'
   }
 ]
 
@@ -287,215 +261,167 @@ export function AIEmployeesSection() {
     threshold: 0.1
   })
 
-  const [selectedEmployee, setSelectedEmployee] = useState<AIEmployee | null>(null)
+  const [expandedCards, setExpandedCards] = useState<{ [key: string]: { tech: boolean; custom: boolean } }>({})
+
+  const toggleSection = (employeeId: string, section: 'tech' | 'custom') => {
+    setExpandedCards(prev => ({
+      ...prev,
+      [employeeId]: {
+        ...(prev[employeeId] || { tech: false, custom: false }),
+        [section]: !prev[employeeId]?.[section]
+      }
+    }))
+  }
 
   return (
-    <section id="ai-employees" ref={ref} className="section-padding">
-      <div className="container">
+    <section id="ai-employees" ref={ref} className="py-16 md:py-24 bg-slate-50 dark:bg-slate-900/50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-12 text-center"
+          className="text-center mb-16"
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={inView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-6 inline-flex items-center gap-2 rounded-full bg-teal-100 px-4 py-2 text-sm font-semibold text-teal-800 dark:bg-teal-900 dark:text-teal-200"
-          >
-            <Users className="h-4 w-4" />
-            Meet Your AI Workforce
-          </motion.div>
-          
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4"
           >
-            Meet Your AI Workforce—Custom-Built For Your Business, Not Copied From a Template
+            Meet Your AI Workforce—Custom-Built Digital Employees That Never Sleep
           </motion.h2>
           
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="mx-auto max-w-3xl text-lg text-gray-800 dark:text-gray-200 mb-4"
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto"
           >
-            Each AI employee is engineered by MIT & Caltech graduates and trained by strategists who've advised global enterprises and scrappy SMBs. We don't sell you a one-size-fits-all bot—we build digital team members tailored to your workflows, tools, and goals.
-          </motion.p>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="mx-auto max-w-3xl text-base text-gray-700 dark:text-gray-300 font-medium"
-          >
-            Below are examples of AI roles we've designed for clients. Your business is unique—so we'll craft roles that fit your exact needs.
+            Each AI employee below was custom-engineered by MIT & Caltech graduates for real businesses with real challenges. <strong>These aren't products—they're examples of what we build from scratch for you.</strong>
           </motion.p>
         </motion.div>
 
-        {/* AI Employee Grid */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {aiEmployees.map((employee, index) => {
-            // Define unique background colors for each card with better contrast
-            const cardBackgrounds = [
-              'bg-gradient-to-br from-blue-100 via-indigo-100 to-blue-200 dark:from-blue-900/50 dark:via-indigo-900/50 dark:to-blue-800/50',
-              'bg-gradient-to-br from-emerald-100 via-teal-100 to-emerald-200 dark:from-emerald-900/50 dark:via-teal-900/50 dark:to-emerald-800/50',
-              'bg-gradient-to-br from-orange-100 via-red-100 to-orange-200 dark:from-orange-900/50 dark:via-red-900/50 dark:to-orange-800/50',
-              'bg-gradient-to-br from-purple-100 via-pink-100 to-purple-200 dark:from-purple-900/50 dark:via-pink-900/50 dark:to-purple-800/50',
-              'bg-gradient-to-br from-green-100 via-emerald-100 to-green-200 dark:from-green-900/50 dark:via-emerald-900/50 dark:to-green-800/50',
-              'bg-gradient-to-br from-pink-100 via-purple-100 to-pink-200 dark:from-pink-900/50 dark:via-purple-900/50 dark:to-pink-800/50',
-              'bg-gradient-to-br from-indigo-100 via-blue-100 to-indigo-200 dark:from-indigo-900/50 dark:via-blue-900/50 dark:to-indigo-800/50',
-              'bg-gradient-to-br from-yellow-100 via-orange-100 to-yellow-200 dark:from-yellow-900/50 dark:via-orange-900/50 dark:to-yellow-800/50'
-            ]
-            
-            const borderColors = [
-              'border-blue-300 dark:border-blue-600',
-              'border-emerald-300 dark:border-emerald-600',
-              'border-orange-300 dark:border-orange-600',
-              'border-purple-300 dark:border-purple-600',
-              'border-green-300 dark:border-green-600',
-              'border-pink-300 dark:border-pink-600',
-              'border-indigo-300 dark:border-indigo-600',
-              'border-yellow-300 dark:border-yellow-600'
-            ]
+        {/* Cards Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {aiEmployees.map((employee, index) => (
+            <motion.div
+              key={employee.id}
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+              className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all group"
+            >
+              {/* Badge */}
+              <div className={`inline-block ${employee.badgeColor} text-xs font-semibold px-3 py-1 rounded-full mb-4`}>
+                {employee.badge}
+              </div>
 
-            const glowColors = [
-              'group-hover:shadow-[0_0_40px_rgba(59,130,246,0.7),0_0_80px_rgba(99,102,241,0.4)] group-hover:border-blue-400 dark:group-hover:shadow-[0_0_40px_rgba(96,165,250,0.6),0_0_80px_rgba(129,140,248,0.3)] dark:group-hover:border-blue-400',
-              'group-hover:shadow-[0_0_40px_rgba(16,185,129,0.7),0_0_80px_rgba(20,184,166,0.4)] group-hover:border-emerald-400 dark:group-hover:shadow-[0_0_40px_rgba(52,211,153,0.6),0_0_80px_rgba(45,212,191,0.3)] dark:group-hover:border-emerald-400',
-              'group-hover:shadow-[0_0_40px_rgba(249,115,22,0.7),0_0_80px_rgba(239,68,68,0.4)] group-hover:border-orange-400 dark:group-hover:shadow-[0_0_40px_rgba(251,146,60,0.6),0_0_80px_rgba(248,113,113,0.3)] dark:group-hover:border-orange-400',
-              'group-hover:shadow-[0_0_40px_rgba(168,85,247,0.7),0_0_80px_rgba(236,72,153,0.4)] group-hover:border-purple-400 dark:group-hover:shadow-[0_0_40px_rgba(192,132,252,0.6),0_0_80px_rgba(244,114,182,0.3)] dark:group-hover:border-purple-400',
-              'group-hover:shadow-[0_0_40px_rgba(34,197,94,0.7),0_0_80px_rgba(16,185,129,0.4)] group-hover:border-green-400 dark:group-hover:shadow-[0_0_40px_rgba(74,222,128,0.6),0_0_80px_rgba(52,211,153,0.3)] dark:group-hover:border-green-400',
-              'group-hover:shadow-[0_0_40px_rgba(236,72,153,0.7),0_0_80px_rgba(168,85,247,0.4)] group-hover:border-pink-400 dark:group-hover:shadow-[0_0_40px_rgba(244,114,182,0.6),0_0_80px_rgba(192,132,252,0.3)] dark:group-hover:border-pink-400',
-              'group-hover:shadow-[0_0_40px_rgba(99,102,241,0.7),0_0_80px_rgba(59,130,246,0.4)] group-hover:border-indigo-400 dark:group-hover:shadow-[0_0_40px_rgba(129,140,248,0.6),0_0_80px_rgba(96,165,250,0.3)] dark:group-hover:border-indigo-400',
-              'group-hover:shadow-[0_0_40px_rgba(234,179,8,0.7),0_0_80px_rgba(249,115,22,0.4)] group-hover:border-yellow-400 dark:group-hover:shadow-[0_0_40px_rgba(250,204,21,0.6),0_0_80px_rgba(251,146,60,0.3)] dark:group-hover:border-yellow-400'
-            ]
-            
-            return (
-              <motion.div
-                key={employee.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-                whileHover={{ 
-                  scale: 1.05,
-                  y: -8,
-                  rotateX: 5,
-                  transition: { duration: 0.3 }
-                }}
-                className={`group relative overflow-hidden rounded-2xl p-6 cursor-pointer transition-all duration-500 border-2 shadow-lg ${cardBackgrounds[index]} ${borderColors[index]} ${glowColors[index]}`}
-                style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}
-                onClick={() => setSelectedEmployee(employee)}
-              >
-                {/* Animated gradient overlay on hover */}
-                <motion.div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{
-                    background: `radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.2), transparent 50%)`
-                  }}
-                />
+              {/* Icon */}
+              <div className={`w-14 h-14 bg-gradient-to-br ${employee.color} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                <employee.icon className="w-7 h-7 text-white" />
+              </div>
 
-                {/* Animated border glow */}
-                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
-                     style={{
-                       background: 'linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%)',
-                       animation: 'shimmer 2s infinite',
-                       backgroundSize: '200% 200%'
-                     }} 
-                />
+              {/* Title */}
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
+                {employee.name} — {employee.title}
+              </h3>
 
-                {/* Icon with enhanced 3D effect */}
-                <motion.div 
-                  className={`mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-r ${employee.color} text-white shadow-2xl relative z-10`}
-                  whileHover={{ 
-                    scale: 1.1, 
-                    rotate: [0, -5, 5, -5, 0],
-                    transition: { duration: 0.5 }
-                  }}
-                  style={{ 
-                    boxShadow: '0 10px 30px rgba(0,0,0,0.3), 0 1px 8px rgba(0,0,0,0.2)'
-                  }}
-                >
-                  <employee.icon className="h-7 w-7" />
-                </motion.div>
+              {/* Tagline */}
+              <p className="text-slate-600 dark:text-slate-400 mb-4">
+                {employee.tagline}
+              </p>
 
-                {/* Content with relative positioning */}
-                <div className="relative z-10">
-                  <h3 className="mb-2 text-lg font-bold text-gray-900 dark:text-white group-hover:text-gray-950 dark:group-hover:text-white transition-colors">
-                    {employee.title}
-                  </h3>
-                  <p className="mb-4 text-sm text-gray-800 dark:text-gray-200 leading-relaxed">
-                    {employee.tagline}
-                  </p>
+              {/* Divider */}
+              <div className="border-t border-slate-200 dark:border-slate-700 my-4"></div>
 
-                  {/* Metrics with enhanced styling */}
-                  <div className="mb-4 grid grid-cols-3 gap-2 text-xs">
-                    <div className="text-center bg-white/40 dark:bg-black/20 rounded-lg p-2 backdrop-blur-sm">
-                      <div className="font-bold text-teal-700 dark:text-teal-300 text-base">{employee.metrics.accuracy}</div>
-                      <div className="text-gray-800 dark:text-gray-200 font-medium">Accuracy</div>
-                    </div>
-                    <div className="text-center bg-white/40 dark:bg-black/20 rounded-lg p-2 backdrop-blur-sm">
-                      <div className="font-bold text-emerald-700 dark:text-emerald-300 text-base">{employee.metrics.timeSaved}</div>
-                      <div className="text-gray-800 dark:text-gray-200 font-medium">Saved</div>
-                    </div>
-                    <div className="text-center bg-white/40 dark:bg-black/20 rounded-lg p-2 backdrop-blur-sm">
-                      <div className="font-bold text-purple-700 dark:text-purple-300 text-base">{employee.metrics.costSavings}</div>
-                      <div className="text-gray-800 dark:text-gray-200 font-medium">Less Cost</div>
-                    </div>
-                  </div>
-
-                  {/* Disclaimer */}
-                  <div className="mt-4 pt-3 border-t border-gray-300 dark:border-gray-600">
-                    <p className="text-xs text-gray-600 dark:text-gray-400 italic">
-                      *Sample role. Your AI employee will be custom-built for your workflows and tools.
-                    </p>
-                  </div>
-
-                  {/* CTA with animated arrow */}
-                  <motion.div 
-                    className="flex items-center gap-2 text-sm font-semibold text-teal-700 group-hover:text-teal-900 dark:text-teal-300 dark:group-hover:text-teal-100 transition-colors mt-2"
-                    whileHover={{ x: 5 }}
-                  >
-                    <span>Learn More</span>
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-2" />
-                  </motion.div>
+              {/* Custom-Built For */}
+              <div className="mb-4">
+                <div className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-2">
+                  Custom-Built For
                 </div>
+                <p className="text-sm text-slate-700 dark:text-slate-300">
+                  {employee.customBuiltFor}
+                </p>
+              </div>
 
-                {/* Decorative corner glow */}
-                <div className="absolute -top-10 -right-10 h-32 w-32 rounded-full bg-white/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute -bottom-10 -left-10 h-32 w-32 rounded-full bg-white/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              </motion.div>
-            )
-          })}
+              {/* Real Result */}
+              <div className="mb-4">
+                <div className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-2">
+                  Real Result
+                </div>
+                <ul className="space-y-2 text-sm">
+                  {employee.realResults.map((result, i) => (
+                    <li key={i} className="flex items-start space-x-2">
+                      <Check className="w-4 h-4 text-teal-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-slate-700 dark:text-slate-300">{result}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Expandable Technical Details */}
+              <details className="mb-4 group/details">
+                <summary className="cursor-pointer text-sm font-semibold text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 flex items-center gap-2">
+                  What We Built (Technical)
+                  <ChevronDown className="w-4 h-4 group-open/details:rotate-180 transition-transform" />
+                </summary>
+                <ul className="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                  {employee.technicalDetails.map((detail, i) => (
+                    <li key={i}>• {detail}</li>
+                  ))}
+                </ul>
+              </details>
+
+              {/* Expandable Customization Options */}
+              <details className="mb-6 group/details">
+                <summary className="cursor-pointer text-sm font-semibold text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 flex items-center gap-2">
+                  This Could Be Customized For You
+                  <ChevronDown className="w-4 h-4 group-open/details:rotate-180 transition-transform" />
+                </summary>
+                <ul className="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                  {employee.customizationOptions.map((option, i) => (
+                    <li key={i}>• {option}</li>
+                  ))}
+                </ul>
+              </details>
+
+              {/* Pricing */}
+              <div className="flex items-baseline space-x-2 mb-4">
+                <DollarSign className="w-5 h-5 text-slate-500" />
+                <span className="text-2xl font-bold text-slate-900 dark:text-white">{employee.pricing.replace('$', '')}</span>
+                <span className="text-slate-500 dark:text-slate-400">monthly</span>
+              </div>
+
+              {/* CTA */}
+              <Link 
+                href="#calculator" 
+                className="block w-full text-center bg-teal-600 hover:bg-teal-700 text-white py-3 rounded-xl font-semibold transition-all group-hover:shadow-lg"
+              >
+                See How {employee.name} Would Work for Me →
+              </Link>
+            </motion.div>
+          ))}
         </div>
-
-        <style jsx>{`
-          @keyframes shimmer {
-            0% { background-position: -200% -200%; }
-            100% { background-position: 200% 200%; }
-          }
-        `}</style>
 
         {/* CTA Section */}
         <motion.div
-          initial={{ opacity: 0.8, y: 30 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 1.2 }}
           className="mt-12 text-center"
         >
-          <p className="mb-6 text-lg text-gray-900 dark:text-gray-200 font-medium">
+          <p className="mb-6 text-lg text-slate-900 dark:text-slate-200 font-medium">
             Want to see what a custom AI workforce would look like for your business?
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="btn-primary">
+            <Button asChild size="lg" className="bg-teal-600 hover:bg-teal-700 text-white">
               <Link href="#calculator">
                 Take the Free Assessment
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-2">
+            <Button asChild size="lg" variant="outline" className="border-2 border-slate-300 dark:border-slate-600">
               <Link href="/consultation">
                 Book Free Consultation
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -504,116 +430,6 @@ export function AIEmployeesSection() {
           </div>
         </motion.div>
       </div>
-
-      {/* Employee Detail Modal */}
-      <Dialog open={!!selectedEmployee} onOpenChange={() => setSelectedEmployee(null)}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
-          {selectedEmployee && (
-            <>
-              <DialogHeader>
-                <div className="flex items-center gap-4">
-                  <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-r ${selectedEmployee.color} text-white`}>
-                    <selectedEmployee.icon className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <DialogTitle className="text-2xl">{selectedEmployee.title}</DialogTitle>
-                    <p className="text-muted-foreground">{selectedEmployee.tagline}</p>
-                  </div>
-                </div>
-              </DialogHeader>
-
-              <div className="grid gap-6 lg:grid-cols-2">
-                {/* Left Column */}
-                <div className="space-y-6">
-                  {/* Problem Solved */}
-                  <div>
-                    <h4 className="mb-2 font-semibold text-gray-900 dark:text-white">Problem Solved</h4>
-                    <p className="text-gray-600 dark:text-gray-300">{selectedEmployee.problemSolved}</p>
-                  </div>
-
-                  {/* Features */}
-                  <div>
-                    <h4 className="mb-3 font-semibold text-gray-900 dark:text-white">Key Capabilities</h4>
-                    <ul className="space-y-2">
-                      {selectedEmployee.features.map((feature, index) => (
-                        <li key={index} className="flex items-start gap-2">
-                          <CheckCircle className="mt-0.5 h-4 w-4 text-teal-600" />
-                          <span className="text-sm text-gray-600 dark:text-gray-300">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Integrations */}
-                  <div>
-                    <h4 className="mb-3 font-semibold text-gray-900 dark:text-white">Integrations</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {selectedEmployee.integrations.map((integration, index) => (
-                        <span 
-                          key={index}
-                          className="rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-700 dark:bg-gray-700 dark:text-gray-300"
-                        >
-                          {integration}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Right Column */}
-                <div className="space-y-6">
-                  {/* Metrics */}
-                  <div>
-                    <h4 className="mb-3 font-semibold text-gray-900 dark:text-white">Performance Metrics</h4>
-                    <div className="grid grid-cols-3 gap-4">
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-teal-600">{selectedEmployee.metrics.accuracy}</div>
-                        <div className="text-sm text-gray-500">Accuracy Rate</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-emerald-600">{selectedEmployee.metrics.timeSaved}</div>
-                        <div className="text-sm text-gray-500">Time Saved</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-purple-600">{selectedEmployee.metrics.costSavings}</div>
-                        <div className="text-sm text-gray-500">Cost Reduction</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Deployment */}
-                  <div className="rounded-lg bg-teal-50 p-4 dark:bg-teal-950">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Clock className="h-4 w-4 text-teal-600" />
-                      <span className="font-semibold text-teal-900 dark:text-teal-100">Deployment Time</span>
-                    </div>
-                    <p className="text-teal-800 dark:text-teal-200">{selectedEmployee.deploymentTime}</p>
-                  </div>
-
-                  {/* Testimonial */}
-                  <div className="rounded-lg bg-gray-50 p-4 dark:bg-gray-800">
-                    <blockquote className="mb-3 italic text-gray-600 dark:text-gray-300">
-                      "{selectedEmployee.testimonial.quote}"
-                    </blockquote>
-                    <div className="text-sm">
-                      <div className="font-semibold text-gray-900 dark:text-white">{selectedEmployee.testimonial.author}</div>
-                      <div className="text-gray-500">{selectedEmployee.testimonial.company}</div>
-                    </div>
-                  </div>
-
-                  {/* CTA */}
-                  <Button asChild className="w-full btn-primary">
-                    <Link href="#calculator">
-                      Get Personalized Recommendation
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
-                </div>
-              </div>
-            </>
-          )}
-        </DialogContent>
-      </Dialog>
     </section>
   )
 }
