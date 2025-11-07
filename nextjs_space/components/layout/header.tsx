@@ -9,7 +9,7 @@ import { Menu, X, Sun, Moon, ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 const services = [
-  { name: 'AI Workforce', href: '/', description: 'AI employees for your business' },
+  { name: 'AI Workforce', href: '/ai-workforce', description: 'AI employees for your business' },
   { name: 'Intelligent Automation', href: '/intelligent-automation', description: 'Eliminate busywork' },
   { name: 'Beyond Background Checks™', href: '/background-checks', description: 'Hiring risk assessment' },
   { name: 'Cyber Intelligence', href: '/cyber-intelligence', description: 'NASA-grade security' },
@@ -18,8 +18,8 @@ const services = [
 
 const navigation = [
   { name: 'Services', href: '/', hasDropdown: true },
-  { name: 'Calculator', href: '#calculator' },
-  { name: 'About', href: '#about' },
+  { name: 'About', href: '/#about' },
+  { name: 'Book Consultation', href: '/consultation' },
 ]
 
 export function Header() {

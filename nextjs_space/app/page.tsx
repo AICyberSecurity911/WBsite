@@ -1,36 +1,30 @@
 
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
-import { HeroSection } from '@/components/sections/hero-section'
+import { SplitHeroSection } from '@/components/sections/split-hero-section'
 import { TrustBarSection } from '@/components/sections/trust-bar-section'
-import { ProblemSection } from '@/components/sections/problem-section'
-import { TLDDRSection } from '@/components/sections/tlddr-section'
-import { AIEmployeesSection } from '@/components/sections/ai-employees-section'
-import { CalculatorSection } from '@/components/sections/calculator-section'
-import { TestimonialsSection } from '@/components/sections/testimonials-section'
-import { GuaranteeSection } from '@/components/sections/guarantee-section'
-import { FAQSection } from '@/components/sections/faq-section'
-import { BlogSection } from '@/components/sections/blog-section'
-import { ExitIntentProvider } from '@/components/exit-intent-provider'
+import { FounderStorySection } from '@/components/sections/founder-story-section'
 
-export default function HomePage() {
+export const metadata = {
+  title: 'AI Solutions for Business Growth & Enterprise Security | QuantumLeap AI',
+  description: 'QuantumLeap AI delivers transformative AI solutions. We help SMBs escape the 70-hour work week and enable Enterprises to turn operational risks into a competitive edge.',
+  openGraph: {
+    title: 'AI Solutions for Business Growth & Enterprise Security | QuantumLeap AI',
+    description: 'QuantumLeap AI delivers transformative AI solutions. We help SMBs escape the 70-hour work week and enable Enterprises to turn operational risks into a competitive edge.',
+    images: ['/og-image.png'],
+  },
+}
+
+export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-slate-950">
       <Header />
       <main>
-        <HeroSection />
+        <SplitHeroSection />
         <TrustBarSection />
-        <ProblemSection />
-        <TLDDRSection />
-        <AIEmployeesSection />
-        <CalculatorSection />
-        <TestimonialsSection />
-        <GuaranteeSection />
-        <FAQSection />
-        <BlogSection />
+        <FounderStorySection />
       </main>
       <Footer />
-      <ExitIntentProvider />
     </div>
   )
 }
