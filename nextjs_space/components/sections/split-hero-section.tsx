@@ -15,7 +15,7 @@ export function SplitHeroSection() {
       <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10" />
       
       {/* Split Panels Container */}
-      <div className="relative h-screen flex flex-col lg:flex-row">
+      <div className="relative h-screen flex flex-col md:flex-row">
         
         {/* LEFT PANEL - SMB Focus */}
         <motion.div
@@ -107,7 +107,7 @@ export function SplitHeroSection() {
         </motion.div>
 
         {/* DIVIDER LINE */}
-        <div className="w-px lg:w-1 h-1 lg:h-full bg-gradient-to-b from-transparent via-white/30 to-transparent" />
+        <div className="w-full md:w-1 h-px md:h-full bg-gradient-to-r md:bg-gradient-to-b from-transparent via-white/30 to-transparent" />
 
         {/* RIGHT PANEL - Enterprise Focus */}
         <motion.div
