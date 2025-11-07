@@ -139,6 +139,22 @@ export default function BackgroundChecksPage() {
           "@type": "Answer",
           "text": "Yes. Our Find It or Free Guarantee. If our first investigation doesn't uncover at least three significant findings beyond what a standard background check would show, you don't pay. In 15 years and 2,000+ investigations, we've found disqualifying information 73% of the time."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you investigate current employees, not just candidates?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Many clients use us to investigate current employees showing concerning behavior, partners or investors before signing agreements, vendors or contractors with access to systems, romantic partners (personal investigations), and board members before appointments. If someone will have access to your money, data, or reputation—you should know who they really are."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What kinds of businesses use this service?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Any business where trust matters: small businesses hiring first employees, finance and accounting firms handling client money, real estate brokerages where reputation is everything, construction companies, medical practices, law firms, tech startups protecting IP, and family businesses with generational legacy at stake. Personal clients include parents vetting romantic partners for their children, high-net-worth individuals protecting family wealth, and executives protecting personal reputation. If one wrong person can destroy what you've built, you're our ideal client."
+        }
       }
     ]
   }
@@ -953,6 +969,449 @@ export default function BackgroundChecksPage() {
           </div>
         </section>
 
+        {/* Testimonials Carousel Section */}
+        <section className="py-20 bg-white dark:bg-gray-900">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+                Real Stories from <span className="text-red-500">People We Protected</span>
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                These aren't hypothetical scenarios—these are real investigations that prevented disaster
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {/* Testimonial 1: Fortune 500 CEO */}
+              <Card className="border-red-200 dark:border-red-800 hover:shadow-[0_0_30px_rgba(239,68,68,0.2)] transition-all">
+                <CardContent className="p-8">
+                  <div className="mb-6">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-pink-600 rounded-full flex items-center justify-center text-white text-xl font-bold">
+                        F
+                      </div>
+                      <div>
+                        <p className="font-bold text-gray-900 dark:text-white">Fortune 500 CEO</p>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">(Name withheld for privacy)</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+                    <p className="italic text-lg">
+                      "He seemed perfect for our daughter—polished, respectful, successful. We ran a standard background check; it came back clean."
+                    </p>
+                    <p>
+                      Still, something felt off.
+                    </p>
+                    <p>
+                      QuantumLeap dug deeper and <strong className="text-red-600 dark:text-red-400">uncovered a stolen identity linked to an international criminal network</strong>. He wasn't who he claimed to be. He had come for money, not for our daughter.
+                    </p>
+                    <p className="text-xl font-bold text-red-600 dark:text-red-400">
+                      QuantumLeap didn't just protect our assets—they protected our family.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Testimonial 2: Code Vibe Studio */}
+              <Card className="border-red-200 dark:border-red-800 hover:shadow-[0_0_30px_rgba(239,68,68,0.2)] transition-all">
+                <CardContent className="p-8">
+                  <div className="mb-6">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-pink-600 rounded-full flex items-center justify-center text-white text-xl font-bold">
+                        LP
+                      </div>
+                      <div>
+                        <p className="font-bold text-gray-900 dark:text-white">Lydia V. Penrose</p>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">Co-Founder, Code Vibe Studio</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+                    <p className="italic text-lg">
+                      "We hired a CTO who looked like a dream candidate on paper. Within months, he nearly destroyed two client projects through incompetence and hostile behavior."
+                    </p>
+                    <p>
+                      QuantumLeap's investigation found he'd been <strong className="text-red-600 dark:text-red-400">fired from three previous companies (under a different name)</strong> and his online presence showed a pattern of hate-filled posts and links to extremist groups.
+                    </p>
+                    <p>
+                      None of this appeared on any standard check because he'd never been arrested. He just kept getting hired—and fired—under different identities.
+                    </p>
+                    <p className="text-xl font-bold text-red-600 dark:text-red-400">
+                      Result: Avoided $250K in losses, saved our reputation, and prevented a toxic culture disaster.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Testimonial 3: Real Estate Vision */}
+              <Card className="border-red-200 dark:border-red-800 hover:shadow-[0_0_30px_rgba(239,68,68,0.2)] transition-all">
+                <CardContent className="p-8">
+                  <div className="mb-6">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-pink-600 rounded-full flex items-center justify-center text-white text-xl font-bold">
+                        GS
+                      </div>
+                      <div>
+                        <p className="font-bold text-gray-900 dark:text-white">Gurpreet Sandhu</p>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">Broker, Real Estate Vision</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+                    <p className="italic text-lg">
+                      "In real estate, trust is everything. I was about to sign a partnership agreement when something told me to dig deeper."
+                    </p>
+                    <p>
+                      QuantumLeap flagged <strong className="text-red-600 dark:text-red-400">hidden legal issues abroad, fake shell companies, and financial patterns showing distress</strong>. He was planning to use my license to run schemes.
+                    </p>
+                    <p>
+                      Standard check said "clear." QuantumLeap said "run."
+                    </p>
+                    <p className="text-xl font-bold text-red-600 dark:text-red-400">
+                      Result: Saved $250K and 100 hours of legal hell. Worth every penny.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Testimonial 4: Sarah Martinez - The Hacker Story */}
+              <Card className="border-red-200 dark:border-red-800 hover:shadow-[0_0_30px_rgba(239,68,68,0.2)] transition-all">
+                <CardContent className="p-8">
+                  <div className="mb-6">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-pink-600 rounded-full flex items-center justify-center text-white text-xl font-bold">
+                        SM
+                      </div>
+                      <div>
+                        <p className="font-bold text-gray-900 dark:text-white">Sarah Martinez</p>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">Operations Manager</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+                    <p className="italic text-lg">
+                      "I hired someone who passed every standard check. Three months later, he <strong className="text-red-600 dark:text-red-400">locked down our entire network and demanded $4 million in cryptocurrency</strong> to release the data he'd encrypted himself."
+                    </p>
+                    <p>
+                      The FBI called it "an inside job." He was a former ethical hacker who'd turned rogue—and he passed every standard background check in the book.
+                    </p>
+                    <p className="text-xl font-bold text-red-600 dark:text-red-400">
+                      If I'd known about QuantumLeap before, I would've discovered his alias activity in underground hacking forums. That investigation would've cost $5K. My mistake cost $4 million.
+                    </p>
+                    <p className="font-bold">
+                      The lesson? The cost of knowing is small. The cost of guessing is everything.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="mt-12 text-center">
+              <Button 
+                asChild
+                className="bg-red-500 hover:bg-red-600 text-white px-8 py-6 text-lg"
+              >
+                <a href="/consultation">🛡️ I Can't Afford This Kind of Mistake → Run My Risk Assessment Now</a>
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Strategic Blog Section - The Complete Hacker Story */}
+        <section className="py-20 bg-gray-50 dark:bg-gray-800">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <div className="inline-block bg-red-100 dark:bg-red-900/30 rounded-full px-4 py-2 mb-4">
+                <span className="text-sm font-semibold text-red-700 dark:text-red-300 uppercase tracking-wide">
+                  📖 Real Investigation Case Study
+                </span>
+              </div>
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+                The Hacker Who Passed Every Background Check—<br />
+                <span className="text-red-500">And Held a Company Hostage for $4 Million</span>
+              </h2>
+            </div>
+
+            <Card className="border-red-200 dark:border-red-800">
+              <CardContent className="p-8 lg:p-12">
+                <div className="prose prose-lg dark:prose-invert max-w-none">
+                  {/* The Hook */}
+                  <div className="space-y-4 mb-8">
+                    <p className="text-xl leading-relaxed">
+                      Sarah Martinez thought she'd finally made it.
+                    </p>
+                    <p className="text-xl leading-relaxed">
+                      After five years running her consulting business alone, she was ready to hire an operations manager. She found the perfect candidate—smart, charismatic, experienced. His background check came back clean: no criminal record, good credit, verified education.
+                    </p>
+                    <p className="text-2xl font-bold text-red-600 dark:text-red-400 leading-relaxed">
+                      Three months after hiring him, he locked down the entire company network and demanded $4 million in cryptocurrency to release the data he'd encrypted himself.
+                    </p>
+                    <p className="text-xl leading-relaxed">
+                      The FBI called it "an inside job." He was a former ethical hacker who'd turned rogue—and he passed every standard background check in the book.
+                    </p>
+                  </div>
+
+                  {/* The Cost Breakdown */}
+                  <div className="my-8 bg-red-50 dark:bg-red-950/30 rounded-lg p-6">
+                    <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">The Real Numbers</h3>
+                    <p className="mb-4">When Sarah added up the real numbers, this "clean hire" had cost:</p>
+                    <div className="space-y-2 text-lg">
+                      <div className="flex justify-between border-b border-red-200 dark:border-red-800 pb-2">
+                        <span>Direct Ransom Payment:</span>
+                        <span className="font-bold">$0 (she refused to pay)</span>
+                      </div>
+                      <div className="flex justify-between border-b border-red-200 dark:border-red-800 pb-2">
+                        <span>FBI Investigation Costs:</span>
+                        <span className="font-bold">$47,000</span>
+                      </div>
+                      <div className="flex justify-between border-b border-red-200 dark:border-red-800 pb-2">
+                        <span>Cybersecurity Remediation:</span>
+                        <span className="font-bold">$83,000</span>
+                      </div>
+                      <div className="flex justify-between border-b border-red-200 dark:border-red-800 pb-2">
+                        <span>Lost Business (3 months down):</span>
+                        <span className="font-bold">$312,000</span>
+                      </div>
+                      <div className="flex justify-between border-b border-red-200 dark:border-red-800 pb-2">
+                        <span>Legal Fees:</span>
+                        <span className="font-bold">$76,000</span>
+                      </div>
+                      <div className="flex justify-between border-b border-red-200 dark:border-red-800 pb-2">
+                        <span>Reputation Recovery:</span>
+                        <span className="font-bold">$220,000</span>
+                      </div>
+                      <div className="flex justify-between border-b border-red-200 dark:border-red-800 pb-2">
+                        <span>Staff Turnover (fear-based):</span>
+                        <span className="font-bold">$108,000</span>
+                      </div>
+                      <div className="flex justify-between pt-2 text-2xl">
+                        <span className="font-bold text-red-600 dark:text-red-400">Total:</span>
+                        <span className="font-bold text-red-600 dark:text-red-400">$846,000</span>
+                      </div>
+                    </div>
+                    <p className="mt-4 text-gray-600 dark:text-gray-400 italic">
+                      And that doesn't count the emotional toll—sleepless nights, client relationships destroyed, years of trust-building erased.
+                    </p>
+                  </div>
+
+                  {/* What Went Wrong */}
+                  <div className="my-8">
+                    <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">What Went Wrong: The Gap Standard Checks Leave</h3>
+                    
+                    <div className="bg-green-50 dark:bg-green-950/30 rounded-lg p-6 mb-6">
+                      <p className="font-bold text-green-700 dark:text-green-400 mb-3">Here's what standard background checks actually do:</p>
+                      <ul className="space-y-2">
+                        <li className="flex items-start gap-2">
+                          <span className="text-green-600 dark:text-green-400">✓</span>
+                          <span>Search criminal databases (only people who were arrested and charged)</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-green-600 dark:text-green-400">✓</span>
+                          <span>Pull credit reports (only financial problems reported to bureaus)</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-green-600 dark:text-green-400">✓</span>
+                          <span>Verify education (if the school responds)</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-green-600 dark:text-green-400">✓</span>
+                          <span>Check references (if they're real—often they're not)</span>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div className="bg-red-50 dark:bg-red-950/30 rounded-lg p-6 mb-6">
+                      <p className="font-bold text-red-700 dark:text-red-400 mb-3">Here's what they DON'T do:</p>
+                      <ul className="space-y-2">
+                        <li className="flex items-start gap-2">
+                          <span className="text-red-600 dark:text-red-400">✗</span>
+                          <span>Look for behavior patterns online</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-red-600 dark:text-red-400">✗</span>
+                          <span>Search for multiple identities or fake names</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-red-600 dark:text-red-400">✗</span>
+                          <span>Check areas of the internet where criminals operate</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-red-600 dark:text-red-400">✗</span>
+                          <span>Analyze communication style for red flags</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-red-600 dark:text-red-400">✗</span>
+                          <span>Verify if "references" are actually friends posing as managers</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-red-600 dark:text-red-400">✗</span>
+                          <span>Find lawsuits that were settled (not public)</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-red-600 dark:text-red-400">✗</span>
+                          <span>Detect financial distress that doesn't show on credit reports</span>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <p className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+                      Sarah's hire had no criminal record because he'd never been caught.
+                    </p>
+                    <p className="text-lg mb-4">
+                      But if someone had looked in the right places, they would have found:
+                    </p>
+                    <ul className="space-y-2 text-lg list-disc list-inside ml-4">
+                      <li>An alias username in underground hacking forums</li>
+                      <li>Posts bragging about "getting revenge" on former employers</li>
+                      <li>Patterns of accessing systems he shouldn't have touched</li>
+                      <li>Conversations about exploiting company weaknesses</li>
+                    </ul>
+                    <p className="text-lg mt-4 font-bold text-red-600 dark:text-red-400">
+                      All of this was visible—just not in the databases that standard checks search.
+                    </p>
+                  </div>
+
+                  {/* The Investigation That Could Have Prevented This */}
+                  <div className="my-8 bg-blue-50 dark:bg-blue-950/30 rounded-lg p-6">
+                    <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+                      The Investigation That Could Have Prevented This
+                    </h3>
+                    <p className="text-lg mb-6">
+                      QuantumLeap's investigation would have taken 5–7 days and cost about $5,000.
+                    </p>
+                    <p className="font-bold mb-4">Here's what we would have found:</p>
+                    
+                    <div className="space-y-4">
+                      <div>
+                        <p className="font-bold text-blue-600 dark:text-blue-400">Day 1–2: Online Behavior Analysis</p>
+                        <p>We would have analyzed his social media, forum posts, and online communications. His writing patterns showed aggression, vindictiveness, and detailed knowledge of hacking techniques—red flags hiding in plain sight.</p>
+                      </div>
+                      
+                      <div>
+                        <p className="font-bold text-blue-600 dark:text-blue-400">Day 3–4: Identity & Alias Detection</p>
+                        <p>We would have discovered his hacker alias (different from his legal name) actively posting in underground forums about "teaching companies lessons."</p>
+                      </div>
+                      
+                      <div>
+                        <p className="font-bold text-blue-600 dark:text-blue-400">Day 5: Hidden Internet Search</p>
+                        <p>We would have searched areas of the internet where criminals operate (the 96% that Google doesn't index). His alias appeared in conversations about ransomware tactics.</p>
+                      </div>
+                      
+                      <div>
+                        <p className="font-bold text-blue-600 dark:text-blue-400">Day 6–7: Intelligence Analyst Review</p>
+                        <p>A former intelligence analyst would have reviewed all findings and flagged him as high-risk with behavioral indicators of revenge motivation.</p>
+                      </div>
+                    </div>
+
+                    <div className="mt-6 grid grid-cols-3 gap-4 text-center">
+                      <div>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">Cost</p>
+                        <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">$5,000</p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">Time</p>
+                        <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">7 days</p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">Result</p>
+                        <p className="text-2xl font-bold text-red-600 dark:text-red-400">Do Not Hire</p>
+                      </div>
+                    </div>
+
+                    <p className="mt-6 text-xl font-bold text-center">
+                      Instead, Sarah learned this lesson the $846,000 way.
+                    </p>
+                  </div>
+
+                  {/* Why This Keeps Happening */}
+                  <div className="my-8">
+                    <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+                      Why This Keeps Happening
+                    </h3>
+                    <p className="text-lg mb-4">
+                      Most business owners don't know there's a difference between:
+                    </p>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+                      <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-6">
+                        <p className="font-bold text-xl mb-3 text-gray-900 dark:text-white">Database Checks</p>
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">(what most people buy)</p>
+                        <p className="mb-4">Searches only public criminal records and credit reports.</p>
+                        <div className="space-y-2 text-sm">
+                          <p><strong>Takes:</strong> 10 minutes</p>
+                          <p><strong>Costs:</strong> $50–200</p>
+                          <p><strong>Tells you:</strong> If someone got caught</p>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-red-50 dark:bg-red-950/30 rounded-lg p-6 border-2 border-red-500">
+                        <p className="font-bold text-xl mb-3 text-red-600 dark:text-red-400">Intelligence Investigations</p>
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">(what we do)</p>
+                        <p className="mb-4">Analyzes behavior, finds hidden identities, searches areas criminals use, reviewed by human experts.</p>
+                        <div className="space-y-2 text-sm">
+                          <p><strong>Takes:</strong> Days</p>
+                          <p><strong>Costs:</strong> Thousands</p>
+                          <p><strong>Tells you:</strong> If someone is dangerous</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <p className="text-xl font-bold text-center my-6 text-gray-900 dark:text-white">
+                      The problem? Most people think a "clean background check" means someone is safe.
+                    </p>
+                    <p className="text-xl text-center mb-6">
+                      It doesn't. <span className="font-bold text-red-600 dark:text-red-400">It just means they haven't been arrested yet.</span>
+                    </p>
+                    <p className="text-lg text-center">
+                      And by the time you discover the truth, the damage is done.
+                    </p>
+                  </div>
+
+                  {/* The Bottom Line */}
+                  <div className="my-8 bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-950/30 dark:to-pink-950/30 rounded-lg p-8 text-center">
+                    <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">The Bottom Line</h3>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                      <div>
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">Standard background check:</p>
+                        <p className="text-3xl font-bold text-gray-900 dark:text-white">$50–200</p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">Intelligence investigation:</p>
+                        <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">$3,000–7,500</p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">Cost of one bad hire:</p>
+                        <p className="text-3xl font-bold text-red-600 dark:text-red-400">$200K–$4M+</p>
+                      </div>
+                    </div>
+
+                    <p className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+                      The question isn't "Can I afford an investigation?"
+                    </p>
+                    <p className="text-2xl font-bold text-red-600 dark:text-red-400">
+                      The question is "Can I afford not to?"
+                    </p>
+                  </div>
+
+                  <div className="text-center mt-8">
+                    <Button 
+                      asChild
+                      className="bg-red-500 hover:bg-red-600 text-white px-8 py-6 text-lg"
+                    >
+                      <a href="/consultation">🔍 See What Standard Checks Are Missing → Run Free Risk Assessment</a>
+                    </Button>
+                    <p className="mt-4 text-gray-600 dark:text-gray-400">
+                      or <a href="/consultation" className="text-red-600 dark:text-red-400 underline hover:text-red-700 dark:hover:text-red-300">Schedule Confidential Investigation Briefing → Speak with Intelligence Analyst</a>
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
 
         {/* Comprehensive Educational FAQ Section */}
         <section className="py-20 bg-gray-50 dark:bg-gray-800">
@@ -1257,6 +1716,77 @@ export default function BackgroundChecksPage() {
                       <div className="mt-4 text-center">
                         <Button asChild className="bg-red-500 hover:bg-red-600 text-white">
                           <a href="/consultation">🛡️ Start risk-free → Schedule your guaranteed investigation</a>
+                        </Button>
+                      </div>
+                    </div>
+                  )
+                },
+                {
+                  q: 'Can you investigate current employees, not just candidates?',
+                  a: (
+                    <div className="space-y-4">
+                      <p className="font-bold">Yes. Many clients use us to investigate:</p>
+                      <ul className="list-disc list-inside space-y-2 ml-4">
+                        <li><strong>Current employees</strong> showing concerning behavior</li>
+                        <li><strong>Partners or investors</strong> before signing agreements</li>
+                        <li><strong>Vendors or contractors</strong> with access to systems</li>
+                        <li><strong>Romantic partners</strong> (personal investigations—very common)</li>
+                        <li><strong>Board members</strong> before appointments</li>
+                      </ul>
+                      <p className="mt-4 font-bold text-red-600 dark:text-red-400">
+                        If someone will have access to your money, data, or reputation—you should know who they really are.
+                      </p>
+                      <p className="font-bold mt-4">Common scenarios:</p>
+                      <ul className="list-disc list-inside space-y-2 ml-4 italic">
+                        <li>"My bookkeeper's behavior has changed—something feels off"</li>
+                        <li>"I'm about to give this partner access to our accounts"</li>
+                        <li>"My daughter is dating someone who seems too good to be true"</li>
+                        <li>"I'm promoting someone to CFO—want to verify they're trustworthy"</li>
+                      </ul>
+                      <div className="mt-4 text-center">
+                        <Button asChild className="bg-red-500 hover:bg-red-600 text-white">
+                          <a href="/consultation">🕵️ Need to investigate someone already in your life? → Schedule a confidential consultation</a>
+                        </Button>
+                      </div>
+                    </div>
+                  )
+                },
+                {
+                  q: 'What kinds of businesses use this service?',
+                  a: (
+                    <div className="space-y-4">
+                      <p className="font-bold">Any business where trust matters:</p>
+                      
+                      <div className="my-4">
+                        <p className="font-bold text-red-600 dark:text-red-400">Most common clients:</p>
+                        <ul className="list-disc list-inside space-y-2 ml-4">
+                          <li><strong>Small businesses</strong> hiring first employees (can't afford mistakes)</li>
+                          <li><strong>Finance and accounting firms</strong> (handling client money)</li>
+                          <li><strong>Real estate brokerages</strong> (reputation is everything)</li>
+                          <li><strong>Construction companies</strong> (site access and equipment)</li>
+                          <li><strong>Medical practices</strong> (patient safety and HIPAA)</li>
+                          <li><strong>Law firms</strong> (client confidentiality)</li>
+                          <li><strong>Tech startups</strong> (protecting IP and code)</li>
+                          <li><strong>Family businesses</strong> (generational legacy at stake)</li>
+                        </ul>
+                      </div>
+
+                      <div className="my-4">
+                        <p className="font-bold text-red-600 dark:text-red-400">Personal clients:</p>
+                        <ul className="list-disc list-inside space-y-2 ml-4">
+                          <li>Parents vetting romantic partners for their children</li>
+                          <li>High-net-worth individuals protecting family wealth</li>
+                          <li>Executives protecting personal reputation</li>
+                        </ul>
+                      </div>
+
+                      <p className="text-xl font-bold text-center my-4">
+                        If one wrong person can destroy what you've built, you're our ideal client.
+                      </p>
+
+                      <div className="mt-4 text-center">
+                        <Button asChild className="bg-red-500 hover:bg-red-600 text-white">
+                          <a href="/consultation">📋 See how others in your industry use this service → Read case studies</a>
                         </Button>
                       </div>
                     </div>
