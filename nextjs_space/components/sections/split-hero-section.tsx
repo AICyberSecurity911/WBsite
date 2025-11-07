@@ -30,7 +30,7 @@ export function SplitHeroSection() {
   }, [mouseX, mouseY])
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden">
+    <section className="relative w-full overflow-hidden" style={{ height: 'calc(100vh - 4rem)' }}>
       {/* Animated Gradient Mesh Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
         <div className="gradient-mesh-overlay" />
@@ -70,7 +70,7 @@ export function SplitHeroSection() {
       </div>
       
       {/* Split Panels Container */}
-      <div className="relative h-screen flex flex-col md:flex-row">
+      <div className="relative h-full flex flex-col md:flex-row">
         
         {/* LEFT PANEL - SMB Focus */}
         <motion.div

@@ -150,7 +150,7 @@ export function TrustBarSection() {
                       src={logo.logo}
                       alt={`${logo.name} logo`}
                       fill
-                      className="object-contain opacity-70 grayscale hover:opacity-100 hover:grayscale-0 transition-all"
+                      className="object-contain opacity-90 hover:opacity-100 transition-all"
                       sizes="128px"
                     />
                   </div>
@@ -168,7 +168,7 @@ export function TrustBarSection() {
                         src={logo.logo}
                         alt=""
                         fill
-                        className="object-contain opacity-70 grayscale hover:opacity-100 hover:grayscale-0 transition-all"
+                        className="object-contain opacity-90 hover:opacity-100 transition-all"
                         sizes="128px"
                         loading="lazy"
                       />

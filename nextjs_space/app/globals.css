@@ -842,3 +842,312 @@ input[type="number"] {
     display: none !important;
   }
 }
+
+/* ============================================
+   🌐 CROSS-BROWSER COMPATIBILITY
+   Optimized for Chrome, Edge, Safari, Firefox, Brave, DuckDuckGo, and AI browsers (Comet, Atlas)
+   ============================================ */
+
+/* Reset and normalize for all browsers */
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Prevent horizontal scrolling on all devices */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Ensure proper text wrapping on all browsers */
+p, h1, h2, h3, h4, h5, h6, span, div {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+}
+
+/* Fix for Safari and iOS */
+@supports (-webkit-touch-callout: none) {
+  body {
+    /* Prevent bounce scroll on iOS */
+    position: fixed;
+    width: 100%;
+  }
+}
+
+/* Flexbox fixes for older browsers */
+.flex, [class*="flex"] {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* Grid fixes for older browsers */
+.grid, [class*="grid"] {
+  display: -ms-grid;
+  display: grid;
+}
+
+/* Transform fixes for all browsers */
+[class*="transform"], [class*="translate"], [class*="scale"], [class*="rotate"] {
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Smooth scrolling for all browsers */
+html {
+  scroll-behavior: smooth;
+  -webkit-scroll-behavior: smooth;
+  -moz-scroll-behavior: smooth;
+  -ms-scroll-behavior: smooth;
+}
+
+/* Backdrop filter support for all browsers */
+[class*="backdrop-blur"], .glass-effect, .glass-premium, .glass-card-depth {
+  -webkit-backdrop-filter: blur(var(--blur, 16px));
+  backdrop-filter: blur(var(--blur, 16px));
+}
+
+/* Gradient support for all browsers */
+[class*="gradient"] {
+  background: -webkit-linear-gradient(var(--gradient-angle, 135deg), var(--gradient-from), var(--gradient-to));
+  background: -moz-linear-gradient(var(--gradient-angle, 135deg), var(--gradient-from), var(--gradient-to));
+  background: -o-linear-gradient(var(--gradient-angle, 135deg), var(--gradient-from), var(--gradient-to));
+  background: linear-gradient(var(--gradient-angle, 135deg), var(--gradient-from), var(--gradient-to));
+}
+
+/* Animation support for all browsers */
+@-webkit-keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@-moz-keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@-o-keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ============================================
+   📱 RESPONSIVE DESIGN - MOBILE FIRST
+   Breakpoints: Mobile (320px+), Tablet (768px+), Desktop (1024px+), Large (1440px+)
+   ============================================ */
+
+/* Base mobile styles (320px+) */
+@media (min-width: 320px) {
+  .container {
+    @apply px-4;
+  }
+  
+  h1 { @apply text-3xl; }
+  h2 { @apply text-2xl; }
+  h3 { @apply text-xl; }
+  h4 { @apply text-lg; }
+  
+  .section-padding {
+    @apply py-12;
+  }
+}
+
+/* Tablet styles (768px+) */
+@media (min-width: 768px) {
+  .container {
+    @apply px-6;
+  }
+  
+  h1 { @apply text-4xl; }
+  h2 { @apply text-3xl; }
+  h3 { @apply text-2xl; }
+  h4 { @apply text-xl; }
+  
+  .section-padding {
+    @apply py-16;
+  }
+}
+
+/* Desktop styles (1024px+) */
+@media (min-width: 1024px) {
+  .container {
+    @apply px-8;
+  }
+  
+  h1 { @apply text-5xl; }
+  h2 { @apply text-4xl; }
+  h3 { @apply text-3xl; }
+  h4 { @apply text-2xl; }
+  
+  .section-padding {
+    @apply py-20;
+  }
+}
+
+/* Large desktop styles (1440px+) */
+@media (min-width: 1440px) {
+  h1 { @apply text-6xl; }
+  h2 { @apply text-5xl; }
+  
+  .section-padding {
+    @apply py-24;
+  }
+}
+
+/* ============================================
+   🎨 CONSISTENCY SYSTEM
+   Standardized fonts, colors, spacing, and interactive elements
+   ============================================ */
+
+/* Typography Consistency */
+body {
+  font-family: var(--font-inter, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+/* Button Consistency */
+button, .button, [role="button"], input[type="submit"], input[type="button"] {
+  @apply font-semibold rounded-xl transition-all duration-300 ease-out;
+  @apply focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2;
+  @apply disabled:opacity-50 disabled:cursor-not-allowed;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+button:hover:not(:disabled), .button:hover:not(:disabled) {
+  @apply scale-[1.02] -translate-y-0.5;
+}
+
+button:active:not(:disabled), .button:active:not(:disabled) {
+  @apply scale-[0.98];
+}
+
+/* Card Consistency */
+.card, [class*="card-"] {
+  @apply rounded-2xl border transition-all duration-500;
+  @apply hover:shadow-2xl hover:-translate-y-2;
+}
+
+/* Input Consistency */
+input, textarea, select {
+  @apply rounded-lg border border-gray-300 dark:border-gray-600;
+  @apply px-4 py-2.5 text-base;
+  @apply focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent;
+  @apply transition-all duration-300;
+  @apply bg-white dark:bg-gray-800;
+  @apply text-gray-900 dark:text-white;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+input::placeholder, textarea::placeholder {
+  @apply text-gray-400 dark:text-gray-500;
+}
+
+/* Link Consistency */
+a {
+  @apply text-teal-600 dark:text-teal-400 transition-colors duration-300;
+  @apply hover:text-teal-700 dark:hover:text-teal-300;
+  @apply focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 rounded;
+}
+
+/* Icon Consistency */
+svg {
+  @apply inline-block;
+  vertical-align: middle;
+}
+
+/* Image Consistency */
+img {
+  @apply max-w-full h-auto;
+  display: block;
+}
+
+/* ============================================
+   ⚡ PERFORMANCE OPTIMIZATIONS
+   ============================================ */
+
+/* GPU acceleration for animations */
+.animate-\[.*\], [class*="animate-"] {
+  will-change: transform;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* Reduce animations on slower devices */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================
+   🔧 UTILITY CLASSES FOR CONSISTENCY
+   ============================================ */
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+.overflow-safe {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.truncate-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.truncate-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
