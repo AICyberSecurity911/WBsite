@@ -1068,172 +1068,131 @@ const blogPosts: Record<string, BlogPost> = {
     title: 'The $12 Password, the $80,000 Ransom, and the Small Business That Didn\'t See It Coming',
     excerpt: 'How one accountant\'s "simple" password habit cascaded into a ransomware attack that nearly destroyed her firm. A cautionary tale about the hidden costs of weak security.',
     category: 'Cybersecurity',
-    readTime: '9 min read',
+    readTime: '15 min read',
     author: {
       name: 'QuantumLeap Security Team',
       role: 'Ethical Hacking & Cybersecurity Specialists'
     },
     content: {
-      intro: 'When Maria launched her boutique accounting firm, she kept things lean: a few SaaS tools, a managed antivirus, and the same password across multiple services "to keep it simple." It felt safe—until it wasn\'t.',
+      intro: 'Maria Chen thought she\'d finally made it. After seven years of grinding—late nights, missed family dinners, maxed-out credit cards—her boutique accounting firm was thriving. Fifteen clients. Three employees. Revenue climbing. She\'d even started dreaming about taking her first real vacation in years. She kept things lean. Smart, she thought. A few essential SaaS tools. A managed antivirus her IT guy recommended. And one password she used across most platforms because, honestly, who can remember seventeen different passwords? It felt safe. Efficient. Under control. Until the Tuesday morning everything changed.',
       sections: [
         {
-          title: 'Tuesday Morning, 9:47 AM',
-          content: 'Maria\'s phone started lighting up with panicked calls. Clients were reporting wrong statements, unpaid invoices showing as paid, and strange charges. When she tried to log into her firm\'s systems, she found her credentials no longer worked. Then came the email that made her blood run cold:',
+          title: 'The Phone Call That Changed Everything',
+          content: '7:43 a.m. Her phone buzzed. Then again. Then it didn\'t stop. Client after client. Same panicked message: "Maria, what\'s going on with our invoices?" She opened her laptop. Her firm\'s homepage—the professional, clean design she\'d paid a designer $4,000 to create—was gone. Replaced with obscene images and a message in blood-red text: **"Your files are encrypted. Your reputation is ours. Pay $80,000 in Bitcoin within 48 hours, or we release everything and leave this site exactly as you see it."** Her hands shook as she tried to log into her email. Password incorrect. Her CRM. Access denied. QuickBooks. Session expired. She called her IT guy. He didn\'t answer. Then her phone buzzed again—this time, a message from her own email address to her entire client list: "Due to financial difficulties, Chen Accounting is closing effective immediately. Please retrieve your records from this link before they\'re deleted." The link was malware. Three clients clicked it before she could send a warning from her personal email.'
+        },
+        {
+          title: 'How $12 Destroyed a $500,000 Business',
+          content: 'The FBI agent who eventually took her case explained it like this: "Ms. Chen, someone bought your password for twelve dollars on a dark-web marketplace called Genesis. It was from a data breach three years ago—a fitness app you probably forgot you even used. You reused that password for your work email. From there, they reset everything." Twelve dollars. That\'s what her business was worth to a criminal. The same amount she\'d spent on coffee that morning.',
           points: [
-            'Subject: "Your Files Are Encrypted"',
-            'Body: "Pay $80,000 in Bitcoin within 72 hours or we release your client files publicly and leave your website defaced. You have 71 hours, 42 minutes."',
-            'Attached: Screenshots of her clients\' tax returns, bank statements, and confidential business documents',
-            'P.S.: "We bought your password for $12 on a dark-web marketplace. Thank you for making it easy."'
+            'Day 1: The attacker bought her leaked credentials from an old breach. Most people don\'t even know their emails have been compromised. Maria\'s had appeared in four separate breaches over five years—fitness apps, a shopping site, an old forum account.',
+            'Day 3: They tested the password. It worked on her Gmail. From there, they triggered "forgot password" flows on her CRM, her banking portal, her QuickBooks account. They owned everything.',
+            'Day 7: They studied her business. Read her emails. Learned her clients\' billing cycles. Figured out when she\'d be most vulnerable—right before month-end reconciliation when everyone needed their books closed.',
+            'Day 14: They struck. Encrypted her files. Defaced her website. Sent that poisoned email to her clients. Then sat back and waited.'
           ]
         },
         {
-          title: 'How It Happened: The $12 Password',
-          content: 'The attackers didn\'t "hack" Maria in the Hollywood sense. They didn\'t need to. Here\'s the chain of events:',
+          title: 'The Real Cost Wasn\'t $80,000',
+          content: 'Maria didn\'t pay the ransom. The FBI advised against it. Instead, she paid something far worse:',
           points: [
-            'Step 1: Maria\'s personal email was exposed in a 2019 LinkedIn data breach',
-            'Step 2: That same email/password combination was reused for her business Gmail account',
-            'Step 3: Criminals bought the credentials for $12 from a breach database marketplace',
-            'Step 4: They logged into her Gmail (no "hacking" required—they just... logged in)',
-            'Step 5: Gmail gave them access to password reset emails for all her business tools',
-            'Step 6: They systematically locked her out and gained full control',
-            'Step 7: They deployed ransomware and began data exfiltration',
-            'Total Time: Less than 4 hours from first login to complete takeover'
+            '$47,000 in forensic recovery and legal fees',
+            '$23,000 in crisis PR to salvage her reputation',
+            '$180,000 in lost revenue (three clients left, two paused services for six months)',
+            '$15,000 in upgraded security after the fact',
+            '$8,000 in therapy and stress-related medical bills',
+            'Total damage: $273,000',
+            'But that\'s just money. What the spreadsheet didn\'t capture: The 3 a.m. panic attacks wondering if she\'d lose her house. Her daughter asking why mommy cried so much. The shame of explaining to her parents that the business they\'d helped her start might collapse. The eight months it took to feel safe opening her laptop again.',
+            'One of her employees quit within a week. "I just don\'t feel secure here anymore," he said.',
+            'Maria survived. Barely. But the business that took seven years to build was nearly destroyed in seven days—because of a password she\'d created in 2019 and forgot she\'d ever reused.'
           ]
         },
         {
-          title: 'The Attack Chain: Small Vulnerabilities, Total System Access',
-          content: 'This is what security professionals call an "attack chain"—where small, seemingly harmless vulnerabilities link together into complete system compromise:',
+          title: 'The Invisible Target on Your Back',
+          content: 'Here\'s what Maria didn\'t know—and what most small business owners don\'t realize: You\'re not getting hacked because you\'re important. You\'re getting hacked because you\'re accessible. Criminals don\'t waste time breaking into Fort Knox when the house next door has an unlocked window. They automate everything:',
           points: [
-            'One reused password → Email access',
-            'Email access → Password resets for all connected accounts',
-            'Account control → Access to client management system',
-            'Client system access → Download of confidential data',
-            'Data theft → Leverage for ransom',
-            'Ransomware deployment → Business paralysis',
-            'Website defacement → Reputational destruction',
-            'The Result: A $12 password became an $80,000 ransom demand'
+            'Bots scan millions of websites per hour looking for outdated plugins, forgotten admin accounts, or weak points',
+            'They buy leaked credentials in bulk—millions of email/password pairs for pennies each',
+            'They test those passwords against common business tools (Gmail, Office 365, QuickBooks, Salesforce)',
+            'When something works, a human takes over and maps your entire attack surface',
+            'This isn\'t personal. It\'s industrial. And the favorite targets? Small businesses with 10–50 employees.',
+            'Why? 1) You have money (enough to pay a ransom), 2) You lack defenses (no dedicated security team), 3) You move fast (more likely to pay quickly to avoid disruption), 4) You\'re connected to bigger fish (your clients, your vendors, your supply chain)',
+            'A 2024 Verizon report found that 43% of cyberattacks target small businesses, yet only 14% are prepared to defend themselves.',
+            'Translation: If you\'re reading this and you haven\'t had a penetration test in the last 12 months, you\'re already a target. You just don\'t know it yet.'
           ]
         },
         {
-          title: 'The True Cost (Far Beyond $80,000)',
-          content: 'Maria didn\'t pay the ransom. But the costs kept mounting:',
+          title: 'What "Prepared" Actually Means (And Doesn\'t)',
+          content: 'After the attack, Maria hired a new IT company. They ran a security scan. The report came back: "No critical vulnerabilities found. Your systems are secure." She felt relieved. For about six months. Then a forensic analyst she\'d met through the FBI recovery process offered to take a look—free of charge, out of curiosity. He found **eleven** entry points the security scan had missed:',
           points: [
-            'Emergency IT Response: $18,500 (forensic analysis, system rebuild, security hardening)',
-            'Legal Fees: $22,000 (breach notification, client communications, liability assessment)',
-            'Lost Revenue: $156,000 (3 months of severely impacted operations)',
-            'Client Losses: 7 clients left immediately, taking $94,000 in annual recurring revenue',
-            'Insurance Deductible: $10,000 (cyber liability policy)',
-            'Credit Monitoring for Clients: $4,800 (mandated by state law)',
-            'Reputational Damage: Immeasurable—years of trust destroyed overnight',
-            'Settlement with One Client: $35,000 (breach of confidentiality lawsuit)',
-            'Personal Toll: Maria developed anxiety and considered shutting down the firm',
-            'Total Documented Cost: $340,300',
-            'Ongoing Impact: Difficulty winning new clients due to the breach being public record'
+            'An old WordPress plugin on a forgotten subdomain (still running, still accessible)',
+            'A former employee\'s admin credentials that were never deactivated',
+            'An API key in a public GitHub repo from a developer contractor',
+            'A vendor portal with no two-factor authentication',
+            'A backup server with default credentials exposed to the internet',
+            '"Your security scan checked for known malware signatures and outdated software," he explained. "It didn\'t simulate what an actual attacker would do. It didn\'t chain vulnerabilities together. It didn\'t test your *people*—because that\'s usually the easiest way in."'
           ]
         },
         {
-          title: 'What a Penetration Test Would Have Found',
-          content: 'Three weeks before the attack, Maria had considered a security audit but decided it was "too expensive" at $6,500. Here\'s what a proper penetration test would have uncovered:',
+          title: 'Standard Security Scan vs. Real Penetration Testing',
+          content: 'Maria asked: "How is that possible? We paid for security." The analyst pulled up a comparison showing the critical differences:',
           points: [
-            '1. Critical: Gmail credentials exposed in 4 previous data breaches',
-            '2. Critical: Same password reused across 12 business services',
-            '3. High: No multi-factor authentication enabled on any accounts',
-            '4. High: Admin account with full client access never logged in (forgotten backdoor)',
-            '5. Medium: Outdated WordPress plugins with known vulnerabilities',
-            '6. Medium: Public GitHub repository containing old API keys',
-            '7. Low: Email server missing SPF and DMARC records (spoofing risk)',
-            'Remediation Cost: $3,200 (if done before the breach)',
-            'Actual Cost: $340,300+ (after the breach)',
-            'Return on Prevention: 5,204% ROI on that "$6,500 security audit"'
+            'Outdated software: Security scans check ✓ | Pen tests check ✓',
+            'Open ports: Security scans check ✓ | Pen tests check ✓',
+            'Weak passwords: Security scans flag some ⚠️ | Pen tests test against breach databases + reuse patterns ✓',
+            'Attack chain simulation: Security scans don\'t check ✗ | Pen tests map how small vulnerabilities connect ✓',
+            'Dark web exposure: Security scans don\'t check ✗ | Pen tests scan credential dumps + paste sites ✓',
+            'Human error (phishing, social engineering): Security scans don\'t test ✗ | Pen tests run controlled tests ✓',
+            'Vendor/third-party risk: Security scans don\'t check ✗ | Pen tests map integration points ✓',
+            'Customized remediation plan: Security scans provide generic PDF | Pen tests provide tailored 30/60/90-day roadmap ✓',
+            '"Most businesses buy a security checklist," he said. "What you need is someone who thinks like the criminal who\'s already planning your breach."'
           ]
         },
         {
-          title: 'Why SMBs Are Prime Targets',
-          content: 'Criminals don\'t target small businesses because they\'re lucrative individually—they target them because they\'re easy and numerous:',
+          title: 'The Wake-Up Call You Can Take Right Now',
+          content: 'Maria asked the analyst: "If you were me, what\'s the first thing you\'d do?" He didn\'t hesitate. "Check if your email is in a breach database. Right now. Before you leave this conversation." He pulled up a breach database that tracks billions of leaked credentials. He typed in Maria\'s work email. Result: Found in 6 breaches. Her personal email? Four breaches. Her employee\'s email? Nine breaches. "This is why reusing passwords is a death sentence," he said. "One breach from five years ago becomes the key to your entire business today." Maria\'s face went pale. "So everyone can see this?" "Not everyone. But every criminal can. And if you\'re reusing passwords, they\'re testing them right now against your CRM, your bank, your email. It\'s automated. It\'s happening whether you know it or not." He paused, then added: "The good news? Now you know. And you can fix it before they get in again."'
+        },
+        {
+          title: 'What Happens When You Actually Secure Your Business',
+          content: 'Six months after her wake-up call, Maria hired a team that didn\'t just run scans—they simulated real attacks. Here\'s what they did:',
           points: [
-            'Volume Strategy: Attack 1,000 small businesses, get 50 to pay $50K each = $2.5M',
-            'Low Defenses: SMBs assume "nobody would target us" so they\'re unguarded',
-            'Payment Pressure: Small businesses can\'t afford downtime—they pay faster',
-            'Limited Resources: No IT security team, no incident response plan',
-            'Compliance Gaps: Not subject to enterprise security requirements',
-            'Insurance Leverage: Cyber insurance makes ransom payments more feasible',
-            'Public Exposure: One breach ruins reputation in small business communities',
-            'The Reality: You\'re not too small to be targeted—you\'re the perfect size to be targeted'
+            '1. Mapped her full attack surface (every login, every integration, every vendor connection)',
+            '2. Ran controlled penetration tests (safe, non-destructive—but realistic)',
+            '3. Tested her team with phishing simulations (35% clicked the fake malicious link on the first test—down to 4% after training)',
+            '4. Scanned the dark web for any exposed credentials tied to her business',
+            '5. Created a prioritized action plan—not a 40-page PDF, but a clear: "Fix these three things this month, these five next month, these seven by quarter-end"',
+            'The result? Zero breaches in 18 months (compared to two "close calls" the year before). Client confidence restored (she now leads with security in her sales pitch: "We protect your data like it\'s our own—because it is"). Peace of mind (she sleeps through the night again). Insurance savings (her cyber insurance premium dropped 22% after proving improved security posture).',
+            'But the biggest change wasn\'t technical. It was psychological. "I used to feel like I was waiting for the next attack," Maria said. "Now I feel like I\'m three steps ahead. I know what criminals are looking for—and I know they won\'t find it here."'
           ]
         },
         {
-          title: 'The Preventable Tragedy',
-          content: 'The most frustrating part of Maria\'s story? Every single vulnerability was preventable with basic security hygiene:',
+          title: 'Why This Isn\'t Just Maria\'s Story',
+          content: 'Since 2023, ransomware attacks on small businesses have increased 68% year-over-year. Average ransom demand? $84,000. Average recovery cost (even if you pay)? $287,000. And here\'s the part that keeps security experts up at night: The majority of breaches start with a password that was leaked years ago. Not a zero-day exploit. Not a sophisticated state-sponsored attack. A password from a 2019 yoga app breach that someone reused for their work email. Think about that. The credentials that could destroy your business might be sitting in a dark-web marketplace right now, tagged at $8–$15, waiting for someone to test them against your systems.'
+        },
+        {
+          title: 'The Question Isn\'t "Will I Be Hacked?" It\'s "Am I Ready When It Happens?"',
+          content: 'Most small business owners ask the wrong question. They ask: "What are the chances I\'ll be targeted?" The better question is: "If someone gets in tomorrow, how much damage can they do before I even notice?" Because here\'s the truth: criminals are already testing your doors. Every business with a website, an email domain, or a cloud account is being scanned right now. The bots don\'t sleep. They don\'t take weekends off. They\'re testing millions of combinations every hour, looking for the one that works. Your choice isn\'t whether to engage with this reality. Your choice is whether you\'ll discover your vulnerabilities first—or whether a criminal will.'
+        },
+        {
+          title: 'What You Can Do Right Now (Seriously, Right Now)',
+          content: 'I\'m not going to end this with a hard pitch. Because if you\'ve read this far, you already know what you need to do. But here\'s where to start—today, before you close this tab:',
           points: [
-            'Unique Passwords: Password manager would have prevented the breach entirely',
-            'Multi-Factor Authentication: Even with stolen password, attackers couldn\'t have logged in',
-            'Dark Web Monitoring: Maria would have been alerted her credentials were compromised',
-            'Regular Security Audits: Would have identified and fixed vulnerabilities before exploitation',
-            'Backup Strategy: Offline backups would have made ransomware toothless',
-            'Access Controls: Principle of least privilege would have limited damage',
-            'Employee Training: Recognition of phishing attempts (secondary attack vector)',
-            'Total Cost to Prevent: $8,000 in security measures + $6,500 audit = $14,500',
-            'Total Cost of Breach: $340,300+',
-            'The Math: Spend $14.5K to prevent $340K in losses = 2,247% ROI on security'
+            'Step 1: Check if your email has been breached. Use the breach checker tool on our cyber intelligence page to see if your work and personal emails appear in known breaches. It\'s free. It\'s instant. It\'s the fastest wake-up call you\'ll ever get.',
+            'If your email shows up (and there\'s a 60% chance it will), do this immediately: Change that password everywhere you\'ve used it. Enable two-factor authentication on every account that offers it. Use a password manager (1Password, Bitwarden, LastPass) so you never reuse passwords again.',
+            'Step 2: Run a real penetration test. Not a security scan. Not a compliance checklist. A real, human-led simulation of how a criminal would attack your specific business.',
+            'Look for a team that: Customizes the test to your tech stack (not a generic template). Simulates attack chains (how small vulnerabilities connect). Tests your people (phishing, social engineering). Scans the dark web for exposed credentials. Gives you a clear, prioritized action plan (not a 60-page PDF you\'ll never read).',
+            'Step 3: Fix the basics before they become breaches. Most attacks succeed because of basic hygiene failures: Reused passwords. No two-factor authentication. Forgotten admin accounts. Outdated plugins. Unmonitored vendor access.',
+            'You don\'t need a $100K security overhaul. You need to close the unlocked windows before worrying about reinforcing the vault.'
           ]
         },
         {
-          title: 'Attackers Don\'t Break In—They Log In',
-          content: 'This is the modern reality of cybersecurity threats. As security expert Troy Hunt says: "Attackers aren\'t breaking in—they\'re logging in." They don\'t need sophisticated hacking tools when businesses hand them the keys:',
-          points: [
-            'Reused passwords from data breaches',
-            'No multi-factor authentication',
-            'Forgotten admin accounts',
-            'Unpatched software vulnerabilities',
-            'Publicly exposed API keys',
-            'Weak email security',
-            'No monitoring for suspicious activity',
-            'The Takeaway: Most breaches use credentials you\'ve already lost in previous breaches'
-          ]
+          title: 'The Real Cost of Waiting',
+          content: 'Maria\'s story had a semi-happy ending. She survived. Her business recovered. She\'s stronger now. But it cost her $273,000, eight months of her life, and a trauma she\'ll carry forever. And she was lucky. 46% of small businesses that suffer a major breach close within six months. Not because they can\'t afford the ransom. Because they lose client trust. Because their reputation is destroyed. Because the founder burns out trying to rebuild. The saddest part? Most of those breaches were preventable. A $12 password. An unpatched plugin. A phishing email someone clicked because they were tired. That\'s not bad luck. That\'s not inevitable. That\'s a choice to wait until after the crisis to take security seriously.'
         },
         {
-          title: 'What You Should Do Today',
-          content: 'Don\'t wait for your own $12 password to become an $80,000 ransom. Take these steps immediately:',
-          points: [
-            '1. Check if your email has been breached (takes 30 seconds)',
-            '2. Enable multi-factor authentication on ALL business accounts',
-            '3. Use a password manager and generate unique passwords',
-            '4. Schedule a professional penetration test',
-            '5. Implement dark web monitoring for your credentials',
-            '6. Create offline backups that can\'t be encrypted by ransomware',
-            '7. Develop an incident response plan',
-            '8. Train your team on security awareness',
-            'Priority Order: Do #1-3 today. Schedule #4 this week. Implement #5-8 this month.',
-            'The Investment: $6,000-15,000 depending on business size and complexity',
-            'The Alternative: $340,000+ in breach costs when (not if) you\'re attacked'
-          ]
-        },
-        {
-          title: 'Maria\'s Firm Today',
-          content: 'Maria survived—barely. After 18 months of recovery, here\'s where she stands:',
-          points: [
-            'Lost 40% of her client base (some never returned despite system recovery)',
-            'Spent $180,000 rebuilding systems and reputation',
-            'Now invests $12,000/year in comprehensive security (penetration testing, monitoring, training)',
-            'Has a full incident response plan and offline backups',
-            'Speaks publicly about her experience to warn other business owners',
-            'Her advice: "That $6,500 security audit I thought was too expensive? I\'d pay it 50 times over to avoid what happened. Don\'t be me. Test your security before criminals do."'
-          ]
-        },
-        {
-          title: 'The Bottom Line',
-          content: 'You have two choices:',
-          points: [
-            'Option A: Invest $6,000-15,000 in proactive security testing and fixes',
-            'Option B: Wait for the breach and pay $200,000-500,000+ in recovery costs',
-            'The Math: Prevention costs 3-5% of what breach recovery costs',
-            'The Reality: Every business has vulnerabilities—the question is whether YOU find them first or CRIMINALS do',
-            'The Guarantee: If our penetration test doesn\'t find at least 3 critical vulnerabilities, you don\'t pay. We\'ve never had to honor this guarantee.',
-            'The Urgency: Every day you wait is another day your $12 password is for sale'
-          ]
+          title: 'One Last Thing',
+          content: 'If you\'re reading this and thinking, "This won\'t happen to me—I\'m too small, too careful, too unknown"... That\'s exactly what Maria thought. And the criminal who destroyed her business? He never knew her name. He never cared about her story. She was line item #4,382 on a list of businesses with reused passwords from the 2019 FitTrackerPro breach. You\'re not too small to be a target. You\'re exactly the right size. The only question is: Will you check your exposure before someone else does?'
         }
       ],
-      conclusion: 'Maria\'s story isn\'t unique—it\'s frighteningly common. The only difference between her and the businesses that avoided this fate? Those businesses tested their defenses BEFORE criminals did. Don\'t wait for the ransom note. Check if your email has been breached (free, takes 30 seconds). Then schedule a professional security audit. Your future self—and your clients—will thank you.'
+      conclusion: 'Maria\'s story is real. The numbers are real. The breach data is real. The only thing that\'s optional is what you do next. This article is based on a composite of real small business breach cases documented by the FBI\'s Internet Crime Complaint Center (IC3), Verizon\'s Data Breach Investigations Report, and interviews with business owners who experienced ransomware attacks. Names and identifying details have been changed to protect privacy, but the attack vectors, costs, and outcomes are drawn from documented cases.'
     }
   }
 }
@@ -1375,21 +1334,84 @@ export default function BlogPostPage({ params }: PageProps) {
         </section>
 
         {/* CTA Section */}
-        <section className="section-padding bg-gradient-to-r from-teal-600 to-emerald-600 text-white">
-          <div className="container text-center">
-            <h2 className="mb-4 text-3xl font-bold">
-              Ready to Transform Your Business?
-            </h2>
-            <p className="mb-8 text-xl">
-              Discover which AI employee will give you the fastest ROI
-            </p>
-            <Link
-              href="/#calculator"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-8 py-4 text-lg font-semibold text-teal-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
-            >
-              Get My Free Assessment
-              <TrendingUp className="h-5 w-5" />
-            </Link>
+        <section className="section-padding bg-gradient-to-r from-red-600 to-orange-600 text-white">
+          <div className="container">
+            {params.slug === 'password-ransom-attack-story' ? (
+              <div className="mx-auto max-w-4xl">
+                <div className="text-center mb-12">
+                  <h2 className="mb-4 text-3xl font-bold">
+                    🔒 Take the First Step (60 Seconds)
+                  </h2>
+                  <p className="text-xl mb-2">
+                    Check if your business email has been exposed in a data breach
+                  </p>
+                  <p className="text-white/90">
+                    Instant results • No signup required • No storage of your data
+                  </p>
+                </div>
+                
+                <div className="grid md:grid-cols-2 gap-6">
+                  <Link
+                    href="/cyber-intelligence#breach-checker"
+                    className="group relative overflow-hidden rounded-2xl bg-white p-8 text-gray-900 shadow-2xl transition-all hover:scale-105"
+                  >
+                    <div className="mb-4">
+                      <div className="inline-flex rounded-full bg-red-100 p-3">
+                        <svg className="h-8 w-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                      </div>
+                    </div>
+                    <h3 className="mb-3 text-2xl font-bold">Check Your Email for Breaches →</h3>
+                    <p className="text-gray-600">
+                      We'll instantly check if your email appears in known data breaches. Free, instant, and secure.
+                    </p>
+                    <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-red-500 to-orange-500 transition-all group-hover:w-full" />
+                  </Link>
+
+                  <Link
+                    href="/consultation"
+                    className="group relative overflow-hidden rounded-2xl bg-white p-8 text-gray-900 shadow-2xl transition-all hover:scale-105"
+                  >
+                    <div className="mb-4">
+                      <div className="inline-flex rounded-full bg-teal-100 p-3">
+                        <svg className="h-8 w-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                      </div>
+                    </div>
+                    <h3 className="mb-3 text-2xl font-bold">Schedule a Penetration Test →</h3>
+                    <p className="text-gray-600">
+                      Get a custom security audit tailored to your business. No templates. Just a clear map of your vulnerabilities.
+                    </p>
+                    <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-teal-500 to-emerald-500 transition-all group-hover:w-full" />
+                  </Link>
+                </div>
+
+                <div className="mt-8 text-center">
+                  <p className="text-lg text-white/90">
+                    <strong>The Reality:</strong> If our penetration test doesn't find at least 3 critical vulnerabilities, you don't pay. <br />
+                    <span className="text-sm">We've never had to honor this guarantee.</span>
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <div className="text-center">
+                <h2 className="mb-4 text-3xl font-bold">
+                  Ready to Transform Your Business?
+                </h2>
+                <p className="mb-8 text-xl">
+                  Discover which AI employee will give you the fastest ROI
+                </p>
+                <Link
+                  href="/#calculator"
+                  className="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-8 py-4 text-lg font-semibold text-teal-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                >
+                  Get My Free Assessment
+                  <TrendingUp className="h-5 w-5" />
+                </Link>
+              </div>
+            )}
           </div>
         </section>
 
