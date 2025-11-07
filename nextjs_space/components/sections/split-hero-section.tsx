@@ -130,28 +130,6 @@ export function SplitHeroSection() {
                   Tired of being trapped in your own business?
                 </p>
 
-                {/* Social Proof Avatars */}
-                <motion.div 
-                  className="flex items-center justify-center gap-3"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 1.2 }}
-                >
-                  <div className="flex -space-x-3">
-                    {[1, 2, 3, 4].map((i) => (
-                      <motion.div 
-                        key={i} 
-                        className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-300 to-rose-500 border-2 border-white shadow-lg"
-                        whileHover={{ scale: 1.1, zIndex: 10 }}
-                        transition={{ type: "spring", stiffness: 400 }}
-                      />
-                    ))}
-                  </div>
-                  <span className="text-sm lg:text-base text-white font-medium">
-                    Join 200+ owners who escaped the burnout trap
-                  </span>
-                </motion.div>
-
                 {/* Urgency Badge */}
                 <motion.div 
                   className="inline-flex items-center gap-3 px-5 py-3 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl text-white font-bold text-sm lg:text-base shadow-lg shadow-orange-500/30 animate-glow-pulse"
