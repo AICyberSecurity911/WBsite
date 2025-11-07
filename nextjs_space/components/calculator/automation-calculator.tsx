@@ -204,10 +204,15 @@ export function AutomationCalculator() {
       {/* Results */}
       {result && (
         <div className="mt-8 border-t border-gray-200 dark:border-zinc-800 pt-8">
-          <h3 className="text-xl font-bold mb-6 text-center text-gray-900 dark:text-gray-100 flex items-center justify-center gap-2">
-            <TrendingUp className="w-6 h-6 text-teal-600" />
-            Your Automation Snapshot
-          </h3>
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-gray-100 flex items-center justify-center gap-2">
+              <TrendingUp className="w-6 h-6 text-teal-600" />
+              Your Automation Snapshot
+            </h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Based on your inputs, here's what a custom automation suite could do for your business:
+            </p>
+          </div>
 
           {/* Stats Grid */}
           <div className="grid md:grid-cols-3 gap-4 mb-8">
@@ -242,10 +247,13 @@ export function AutomationCalculator() {
           {/* Recommendations */}
           {result.recommendations && result.recommendations.length > 0 && (
             <div className="mb-8">
-              <h4 className="font-bold text-lg mb-4 text-gray-900 dark:text-gray-100 flex items-center gap-2">
+              <h4 className="font-bold text-lg mb-2 text-gray-900 dark:text-gray-100 flex items-center gap-2">
                 <Zap className="w-5 h-5 text-teal-600" />
-                Top Automation Wins for You
+                Custom Automation Recommendations for Your Workflow
               </h4>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-4 italic">
+                These are the custom automations we'd prioritize for your business. Each one is designed around your specific tools and processes—not a template.
+              </p>
               <div className="space-y-3">
                 {result.recommendations.map((rec, i) => (
                   <div
@@ -292,7 +300,7 @@ export function AutomationCalculator() {
                 Get Your 30-Day Automation Plan + ROI Report
               </h5>
               <p className="text-sm text-gray-700 dark:text-gray-300 mb-4">
-                We'll email your personalized blueprint and open our calendar to map your first month of wins.
+                We'll email your personalized blueprint and open our calendar to map your first month of wins—tailored to your business.
               </p>
               
               <div className="grid md:grid-cols-3 gap-3">
