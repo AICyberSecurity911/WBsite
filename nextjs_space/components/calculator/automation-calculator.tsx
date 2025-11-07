@@ -293,6 +293,95 @@ export function AutomationCalculator() {
             </div>
           )}
 
+          {/* Cross-Sell Recommendations */}
+          {(() => {
+            const crossSellServices = []
+            
+            // Business Transformation - if spending 15+ hrs/wk on manual work OR hourly rate >$100
+            if (totalHours >= 15 || form.hourlyRate >= 100) {
+              crossSellServices.push({
+                title: 'Business Transformation',
+                description: `You're spending ${totalHours} hrs/wk on manual tasks. That's costing your business ${Math.round(totalHours * (form.hourlyRate || 75) * 52 / 1000)}K annually in lost strategic time.`,
+                benefit: 'Transform your entire operation—not just automate tasks. Restructure workflows, eliminate bottlenecks, and build scalable systems.',
+                link: '/business-transformation',
+                color: 'blue',
+                icon: '🚀'
+              })
+            }
+            
+            // Cyber Intelligence - if hourly rate suggests high-value business
+            if (form.hourlyRate >= 75 || totalHours >= 20) {
+              crossSellServices.push({
+                title: 'Cyber Intelligence',
+                description: 'Automation creates more attack surface. Every integrated tool is a potential breach point.',
+                benefit: 'Protect your automated systems with 24/7 threat monitoring, breach detection, and security hardening.',
+                link: '/cyber-intelligence',
+                color: 'purple',
+                icon: '🛡️'
+              })
+            }
+            
+            // Background Checks - if lots of email/coordination hours (suggests team management)
+            if (form.emailHours >= 8 || form.projectCoordHours >= 6) {
+              crossSellServices.push({
+                title: 'Background Checks',
+                description: `${form.emailHours + form.projectCoordHours} hrs/wk on coordination suggests you manage a team. One bad hire costs 2.5x their salary.`,
+                benefit: 'Screen candidates in 48 hours with enterprise-grade checks—before they become expensive mistakes.',
+                link: '/background-checks',
+                color: 'amber',
+                icon: '🔍'
+              })
+            }
+            
+            return crossSellServices.length > 0 ? (
+              <div className="mb-8 border-t border-gray-200 dark:border-zinc-800 pt-8">
+                <h4 className="font-bold text-lg mb-4 text-gray-900 dark:text-gray-100">
+                  Complete Your Growth Stack
+                </h4>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                  Based on your inputs, these services would amplify your automation results:
+                </p>
+                <div className="grid md:grid-cols-2 gap-4">
+                  {crossSellServices.slice(0, 2).map((service, i) => (
+                    <div
+                      key={i}
+                      className={`p-5 rounded-xl border-2 ${
+                        service.color === 'blue' ? 'border-blue-200 dark:border-blue-800 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20' :
+                        service.color === 'purple' ? 'border-purple-200 dark:border-purple-800 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/20 dark:to-pink-950/20' :
+                        'border-amber-200 dark:border-amber-800 bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/20 dark:to-orange-950/20'
+                      } hover:shadow-lg transition-shadow`}
+                    >
+                      <div className="flex items-start gap-3 mb-3">
+                        <span className="text-2xl">{service.icon}</span>
+                        <div className="flex-1">
+                          <h5 className="font-bold text-gray-900 dark:text-gray-100 mb-1">
+                            {service.title}
+                          </h5>
+                          <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">
+                            {service.description}
+                          </p>
+                          <p className="text-xs text-gray-600 dark:text-gray-400 italic mb-3">
+                            → {service.benefit}
+                          </p>
+                          <a
+                            href={service.link}
+                            className={`inline-flex items-center gap-1 text-sm font-semibold ${
+                              service.color === 'blue' ? 'text-blue-600 dark:text-blue-400 hover:text-blue-700' :
+                              service.color === 'purple' ? 'text-purple-600 dark:text-purple-400 hover:text-purple-700' :
+                              'text-amber-600 dark:text-amber-400 hover:text-amber-700'
+                            } transition-colors`}
+                          >
+                            Learn More →
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : null
+          })()}
+
           {/* Lead Capture */}
           {!captured ? (
             <div className="bg-gradient-to-br from-teal-50 to-emerald-50 dark:from-teal-900/20 dark:to-emerald-900/20 p-6 rounded-xl border-2 border-teal-200 dark:border-teal-800">

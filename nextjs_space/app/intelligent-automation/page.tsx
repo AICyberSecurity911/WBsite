@@ -30,6 +30,7 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 import { AutomationCalculator } from '@/components/calculator/automation-calculator'
+import { AutomationExitIntent } from '@/components/automation-exit-intent'
 import {
   Accordion,
   AccordionContent,
@@ -229,7 +230,7 @@ export default function IntelligentAutomationPage() {
     { name: 'LeadFlow', description: 'Custom-captures and routes leads from every source you use—web forms, email, calls, chat', price: 'Custom pricing', icon: Target },
     { name: 'InvoiceIQ', description: 'Auto-creates invoices based on your triggers and sends smart follow-ups on your schedule', price: 'Custom pricing', icon: FileText },
     { name: 'MailPilot', description: 'Reads, tags, prioritizes, and auto-responds to emails using your tone and rules', price: 'Custom pricing', icon: Mail },
-    { name: 'OpsSync', description: 'Links your CRMs, Sheets, and project apps into one seamless flow—no manual imports ever', price: 'Custom pricing', icon: Workflow },
+    { name: 'OpsSync', description: 'Links your CRMs, Sheets, and project apps into one unified system—no manual imports, ever', price: 'Custom pricing', icon: Workflow },
     { name: 'ClientPulse', description: 'Automated feedback loops and retention triggers tailored to your customer lifecycle', price: 'Custom pricing', icon: TrendingUp },
     { name: 'DataBridge', description: 'Syncs your apps in real-time—custom-built for your exact software stack', price: 'Custom pricing', icon: Database },
     { name: 'FormFlow', description: 'Auto-processes forms and PDFs, routing data exactly where you need it', price: 'Custom pricing', icon: FileText },
@@ -383,24 +384,64 @@ export default function IntelligentAutomationPage() {
                 
               </motion.div>
               
-              {/* Right Column: Illustration/Stats */}
+              {/* Right Column: Hero Video */}
               <motion.div variants={fadeInUp} className="relative">
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-teal-100 to-emerald-100 dark:from-teal-900/20 dark:to-emerald-900/20 p-8 border border-teal-200 dark:border-teal-800 shadow-2xl">
+                <div className="relative aspect-video rounded-2xl overflow-hidden bg-gradient-to-br from-teal-100 to-emerald-100 dark:from-teal-900/20 dark:to-emerald-900/20 border-2 border-teal-300 dark:border-teal-700 shadow-2xl group cursor-pointer">
                   
-                  {/* Automation Icons Flow */}
-                  <div className="relative h-full flex items-center justify-center">
-                    <div className="grid grid-cols-3 gap-6">
-                      {[Mail, FileText, Database, Workflow, Target, TrendingUp, Calendar, BarChart3, CheckCircle2].map((Icon, i) => (
-                        <motion.div
-                          key={i}
-                          initial={{ opacity: 0, scale: 0 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: i * 0.1, duration: 0.5 }}
-                          className="w-16 h-16 bg-white dark:bg-zinc-900 rounded-xl flex items-center justify-center shadow-lg border border-gray-200 dark:border-zinc-800"
-                        >
-                          <Icon className="w-8 h-8 text-teal-600 dark:text-teal-400" />
-                        </motion.div>
-                      ))}
+                  {/* Video Placeholder with Play Button */}
+                  <div className="relative h-full flex items-center justify-center bg-gradient-to-br from-teal-600 via-emerald-600 to-teal-700">
+                    
+                    {/* Transformation Story Visual */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center text-white px-6">
+                        <div className="mb-6 space-y-3">
+                          {/* Before State */}
+                          <motion.div
+                            initial={{ opacity: 1, x: 0 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 2, repeat: Infinity, repeatDelay: 6 }}
+                            className="text-left"
+                          >
+                            <div className="text-sm font-semibold text-teal-200 mb-1">BEFORE</div>
+                            <div className="text-lg font-bold">12-hour days. Manual chaos. Burnout.</div>
+                          </motion.div>
+                          
+                          {/* Arrow */}
+                          <motion.div
+                            animate={{ scale: [1, 1.2, 1] }}
+                            transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 6.5 }}
+                            className="flex items-center justify-center"
+                          >
+                            <ArrowRight className="w-8 h-8 text-white" />
+                          </motion.div>
+                          
+                          {/* After State */}
+                          <motion.div
+                            initial={{ opacity: 1, x: 0 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 2, repeat: Infinity, repeatDelay: 6, delay: 4 }}
+                            className="text-right"
+                          >
+                            <div className="text-sm font-semibold text-emerald-200 mb-1">AFTER</div>
+                            <div className="text-lg font-bold">20+ hours freed. Systems running 24/7.</div>
+                          </motion.div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Play Button Overlay */}
+                    <motion.div
+                      whileHover={{ scale: 1.1 }}
+                      className="absolute inset-0 flex items-center justify-center bg-black/30 backdrop-blur-[2px] group-hover:bg-black/40 transition-all"
+                    >
+                      <div className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center shadow-xl group-hover:bg-white transition-colors">
+                        <div className="w-0 h-0 border-l-[20px] border-l-teal-600 border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent ml-1" />
+                      </div>
+                    </motion.div>
+                    
+                    {/* Video Coming Soon Badge */}
+                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-semibold text-gray-700 shadow-lg">
+                      🎬 8-Second Story
                     </div>
                   </div>
                   
@@ -425,6 +466,11 @@ export default function IntelligentAutomationPage() {
                     <div className="text-sm text-gray-600 dark:text-gray-400">Cost Reduction</div>
                   </motion.div>
                 </div>
+                
+                {/* Video Caption */}
+                <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-4 italic">
+                  Watch: From overwhelmed to automated in 8 seconds
+                </p>
               </motion.div>
               
             </div>
@@ -462,7 +508,7 @@ export default function IntelligentAutomationPage() {
               {/* Bottom Line */}
               <div className="bg-teal-50 dark:bg-teal-900/20 rounded-lg p-6 mb-6">
                 <p className="text-gray-900 dark:text-gray-100 leading-relaxed">
-                  A self-learning automation layer that links your CRM, email, finance, and operations tools—then takes over the repeatable work.
+                  An automation layer that connects your CRM, email, finance, and ops tools—then handles the repetitive work automatically.
                 </p>
               </div>
               
@@ -523,6 +569,137 @@ export default function IntelligentAutomationPage() {
           </motion.div>
         </section>
 
+        {/* COMPARISON TABLE SECTION */}
+        <section className="py-20 bg-white dark:bg-zinc-950">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            {/* Section Header */}
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-100 dark:bg-amber-900/30 rounded-full mb-6">
+                <AlertCircle className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+                <span className="text-sm font-semibold text-amber-700 dark:text-amber-300">
+                  WHY QUANTUMLEAP WINS
+                </span>
+              </div>
+              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+                QuantumLeap vs. DIY Automation Tools
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                Zapier and Make are powerful—but they're <em>tools you maintain yourself</em>. QuantumLeap is a done-for-you service with 24/7 support.
+              </p>
+            </div>
+
+            {/* Comparison Table */}
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden shadow-xl">
+                <thead>
+                  <tr className="bg-gradient-to-r from-gray-100 to-gray-200 dark:from-zinc-800 dark:to-zinc-700">
+                    <th className="p-4 text-left font-bold text-gray-900 dark:text-gray-100 border-r border-gray-300 dark:border-zinc-600">
+                      Feature
+                    </th>
+                    <th className="p-4 text-center font-bold text-gray-600 dark:text-gray-300">
+                      Zapier/Make
+                    </th>
+                    <th className="p-4 text-center font-bold bg-gradient-to-r from-teal-600 to-emerald-600 text-white">
+                      QuantumLeap
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    {
+                      feature: 'Who builds it?',
+                      zapier: 'You do (DIY)',
+                      quantumleap: 'We design & build for you'
+                    },
+                    {
+                      feature: 'Custom logic & workflows',
+                      zapier: 'Limited by templates',
+                      quantumleap: 'Fully custom to your business'
+                    },
+                    {
+                      feature: 'Deployment time',
+                      zapier: 'Weeks to months (your time)',
+                      quantumleap: '7-14 days (done-for-you)'
+                    },
+                    {
+                      feature: '24/7 monitoring',
+                      zapier: '❌ You monitor & fix issues',
+                      quantumleap: '✅ Proactive 24/7 monitoring'
+                    },
+                    {
+                      feature: 'Expert support',
+                      zapier: 'Community forums',
+                      quantumleap: 'Dedicated success manager'
+                    },
+                    {
+                      feature: 'Troubleshooting',
+                      zapier: 'Figure it out yourself',
+                      quantumleap: 'We fix it (avg <2hr response)'
+                    },
+                    {
+                      feature: 'Security & compliance',
+                      zapier: 'Your responsibility',
+                      quantumleap: 'Enterprise-grade (NASA-level)'
+                    },
+                    {
+                      feature: 'Scaling & optimization',
+                      zapier: 'Manual rebuild required',
+                      quantumleap: 'Modular & auto-optimized'
+                    },
+                    {
+                      feature: 'Monthly ROI reports',
+                      zapier: '❌ No reporting',
+                      quantumleap: '✅ Detailed ROI tracking'
+                    },
+                    {
+                      feature: 'Best for',
+                      zapier: 'Tech-savvy teams with time',
+                      quantumleap: 'Busy founders who need results'
+                    }
+                  ].map((row, i) => (
+                    <tr
+                      key={i}
+                      className={`border-t border-gray-200 dark:border-zinc-800 ${
+                        i % 2 === 0 ? 'bg-gray-50 dark:bg-zinc-900/50' : 'bg-white dark:bg-zinc-900'
+                      }`}
+                    >
+                      <td className="p-4 font-semibold text-gray-900 dark:text-gray-100 border-r border-gray-200 dark:border-zinc-800">
+                        {row.feature}
+                      </td>
+                      <td className="p-4 text-center text-gray-600 dark:text-gray-400 text-sm">
+                        {row.zapier}
+                      </td>
+                      <td className="p-4 text-center font-semibold text-teal-700 dark:text-teal-300 text-sm bg-teal-50/50 dark:bg-teal-950/20">
+                        {row.quantumleap}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Bottom Line */}
+            <div className="mt-10 bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-950/20 dark:to-orange-950/20 border-2 border-amber-300 dark:border-amber-700 rounded-2xl p-8 text-center">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+                The Bottom Line
+              </h3>
+              <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mb-6">
+                Zapier and Make are great <em>if you have the time and technical skill to maintain them</em>. 
+                QuantumLeap is for founders who want automation <strong>done right, without becoming IT managers</strong>.
+              </p>
+              <Button
+                size="lg"
+                onClick={scrollToCalculator}
+                className="bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-semibold"
+              >
+                <Zap className="w-5 h-5 mr-2" />
+                See What We'd Automate for You
+              </Button>
+            </div>
+
+          </div>
+        </section>
 
         {/* PROBLEM SECTION */}
         <section 
@@ -628,14 +805,14 @@ export default function IntelligentAutomationPage() {
                 </span>
               </div>
               <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
-                The Intelligent Automation Suite—Custom-Built to Connect Your Exact Tools and Workflows
+                The Intelligent Automation Suite—Built Around Your Tools & Workflows
               </h2>
               <div className="max-w-3xl mx-auto space-y-4">
                 <p className="text-xl text-gray-600 dark:text-gray-300">
-                  We don't sell you off-the-shelf automation. We map your current stack, identify the friction points costing you time and money, then build intelligent workflows that run in the background—24/7, error-free.
+                  We don't sell templates. We map your tech stack, find what's bleeding time and money, then build custom workflows that run 24/7 in the background.
                 </p>
                 <p className="text-lg text-gray-500 dark:text-gray-400 italic">
-                  Below are examples of automation types we've deployed for clients. Your solution will be tailored to your unique processes, tools, and goals.
+                  Below are examples from past clients. Your solution will be custom-built for how you operate.
                 </p>
               </div>
             </motion.div>
@@ -979,6 +1156,24 @@ export default function IntelligentAutomationPage() {
                 Mark realized something powerful: automation didn't make him less human. It made his business more intelligent.
               </p>
               
+              {/* Related Services Callout */}
+              <div className="bg-blue-50 dark:bg-blue-950/20 border-l-4 border-blue-500 rounded-lg p-6 my-8">
+                <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-3 flex items-center gap-2">
+                  <Building className="w-5 h-5 text-blue-600" />
+                  Ready to Transform Your Entire Business?
+                </h4>
+                <p className="text-gray-700 dark:text-gray-300 mb-3">
+                  Automation is powerful—but it's just one piece. If you're also dealing with burnout, growth plateaus, or operational chaos, explore our{' '}
+                  <Link href="/business-transformation" className="text-blue-600 dark:text-blue-400 font-semibold hover:underline">
+                    Business Transformation services
+                  </Link>
+                  . We'll restructure your entire operation for sustainable growth.
+                </p>
+                <p className="text-sm text-gray-600 dark:text-gray-400 italic">
+                  Think of it this way: automation handles the tasks. Transformation redesigns the system.
+                </p>
+              </div>
+              
               <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-10 mb-4">
                 Why Automation Pays for Itself
               </h3>
@@ -1038,7 +1233,11 @@ export default function IntelligentAutomationPage() {
                   <Shield className="w-5 h-5 text-teal-600 flex-shrink-0 mt-1" />
                   <div>
                     <strong className="text-gray-900 dark:text-gray-100">Secure:</strong>
-                    <span className="text-gray-700 dark:text-gray-300"> Built by the team that helped secure NASA systems.</span>
+                    <span className="text-gray-700 dark:text-gray-300"> Built by the team that helped secure NASA systems. Need additional protection?{' '}
+                      <Link href="/cyber-intelligence" className="text-teal-600 dark:text-teal-400 font-semibold hover:underline whitespace-nowrap">
+                        Explore Cyber Intelligence →
+                      </Link>
+                    </span>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
@@ -1052,10 +1251,36 @@ export default function IntelligentAutomationPage() {
                   <Users className="w-5 h-5 text-teal-600 flex-shrink-0 mt-1" />
                   <div>
                     <strong className="text-gray-900 dark:text-gray-100">Expertise:</strong>
-                    <span className="text-gray-700 dark:text-gray-300"> 250+ years of combined experience.</span>
+                    <span className="text-gray-700 dark:text-gray-300"> 250+ years of combined experience. Building a team?{' '}
+                      <Link href="/background-checks" className="text-teal-600 dark:text-teal-400 font-semibold hover:underline whitespace-nowrap">
+                        See our Background Checks →
+                      </Link>
+                    </span>
                   </div>
                 </li>
               </ul>
+              
+              {/* Security & Hiring Callout */}
+              <div className="bg-purple-50 dark:bg-purple-950/20 border-l-4 border-purple-500 rounded-lg p-6 my-8">
+                <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-3 flex items-center gap-2">
+                  <Lock className="w-5 h-5 text-purple-600" />
+                  Automation + Security = Peace of Mind
+                </h4>
+                <p className="text-gray-700 dark:text-gray-300 mb-3">
+                  More integrations mean more attack surface. That's why we recommend pairing automation with our{' '}
+                  <Link href="/cyber-intelligence" className="text-purple-600 dark:text-purple-400 font-semibold hover:underline">
+                    Cyber Intelligence services
+                  </Link>
+                  —24/7 threat monitoring, breach detection, and penetration testing to keep your automated systems safe.
+                </p>
+                <p className="text-gray-700 dark:text-gray-300">
+                  And if you're hiring to scale? Our{' '}
+                  <Link href="/background-checks" className="text-purple-600 dark:text-purple-400 font-semibold hover:underline">
+                    Background Check services
+                  </Link>
+                  {' '}screen candidates in 48 hours—so you hire with confidence.
+                </p>
+              </div>
               
               <div className="bg-gradient-to-r from-teal-50 to-emerald-50 dark:from-teal-900/20 dark:to-emerald-900/20 border-2 border-teal-300 dark:border-teal-700 rounded-xl p-8 my-8 text-center">
                 <p className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
@@ -1603,6 +1828,9 @@ export default function IntelligentAutomationPage() {
       </main>
 
       <Footer />
+      
+      {/* Exit Intent Popup */}
+      <AutomationExitIntent />
     </>
   )
 }
