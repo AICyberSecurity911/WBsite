@@ -39,27 +39,34 @@ export function SplitHeroSection() {
 
       {/* Floating Particles Effect */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-teal-400/20 rounded-full"
-            initial={{
-              x: Math.random() * window.innerWidth,
-              y: window.innerHeight + 100,
-              scale: Math.random() * 0.5 + 0.5
-            }}
-            animate={{
-              y: -100,
-              x: Math.random() * window.innerWidth,
-            }}
-            transition={{
-              duration: Math.random() * 10 + 10,
-              repeat: Infinity,
-              ease: "linear",
-              delay: Math.random() * 5
-            }}
-          />
-        ))}
+        {[...Array(20)].map((_, i) => {
+          const isClient = typeof window !== 'undefined'
+          const initialX = isClient ? Math.random() * window.innerWidth : Math.random() * 1920
+          const initialY = isClient ? window.innerHeight + 100 : 1080 + 100
+          const animateX = isClient ? Math.random() * window.innerWidth : Math.random() * 1920
+          
+          return (
+            <motion.div
+              key={i}
+              className="absolute w-2 h-2 bg-teal-400/20 rounded-full"
+              initial={{
+                x: initialX,
+                y: initialY,
+                scale: Math.random() * 0.5 + 0.5
+              }}
+              animate={{
+                y: -100,
+                x: animateX,
+              }}
+              transition={{
+                duration: Math.random() * 10 + 10,
+                repeat: Infinity,
+                ease: "linear",
+                delay: Math.random() * 5
+              }}
+            />
+          )
+        })}
       </div>
       
       {/* Split Panels Container */}

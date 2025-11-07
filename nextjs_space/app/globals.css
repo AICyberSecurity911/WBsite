@@ -286,26 +286,26 @@
   }
 
   .glass-premium {
-    @apply relative overflow-hidden backdrop-blur-2xl 
+    @apply relative overflow-hidden backdrop-blur-2xl rounded-2xl
     bg-gradient-to-br from-white/80 via-white/60 to-white/40
     dark:from-gray-900/80 dark:via-gray-900/60 dark:to-gray-900/40
     border border-white/30 dark:border-white/10
     shadow-2xl shadow-black/10
-    before:absolute before:inset-0 before:rounded-inherit
+    before:absolute before:inset-0 before:rounded-2xl
     before:bg-gradient-to-br before:from-white/40 before:to-transparent before:opacity-50
     before:pointer-events-none;
   }
 
   .glass-card-depth {
-    @apply relative backdrop-blur-2xl 
+    @apply relative backdrop-blur-2xl rounded-2xl
     bg-gradient-to-br from-white/90 via-white/70 to-teal-50/20
     dark:from-gray-900/90 dark:via-gray-900/70 dark:to-teal-950/20
     border border-teal-500/10 shadow-[0_8px_32px_rgba(20,184,166,0.1)]
-    before:absolute before:inset-0 before:rounded-inherit
+    before:absolute before:inset-0 before:rounded-2xl
     before:bg-gradient-to-br before:from-teal-400/5 before:to-transparent
     before:opacity-0 hover:before:opacity-100
     before:transition-all before:duration-500
-    after:absolute after:inset-0 after:rounded-inherit
+    after:absolute after:inset-0 after:rounded-2xl
     after:border after:border-teal-500/0 hover:after:border-teal-500/20
     after:transition-all after:duration-500;
   }
@@ -418,7 +418,7 @@
      ============================================ */
   .card {
     @apply relative rounded-2xl border border-border bg-card p-8 
-    shadow-md group
+    shadow-md
     transition-all duration-500 ease-out
     hover:shadow-2xl hover:-translate-y-2
     before:absolute before:inset-0 before:rounded-2xl 
@@ -438,7 +438,7 @@
   }
 
   .card-premium {
-    @apply relative rounded-2xl overflow-hidden group
+    @apply relative rounded-2xl overflow-hidden
     bg-gradient-to-br from-white via-white to-teal-50/30 
     dark:from-gray-900 dark:via-gray-900 dark:to-teal-950/30
     border border-gray-200/50 dark:border-gray-700/50
