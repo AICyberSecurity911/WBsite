@@ -329,7 +329,8 @@ export default function BusinessTransformationPage() {
                       "Which tools and expenses are ROI-positive vs. \"nice to have\"",
                       "Where decisions bottleneck and why"
                     ],
-                    deliverable: "Complete profit map + prioritized leak list ranked by impact"
+                    deliverable: "Complete profit map + prioritized leak list ranked by impact",
+                    serviceLinks: false
                   },
                   {
                     phase: "Phase 2",
@@ -344,7 +345,8 @@ export default function BusinessTransformationPage() {
                       "Financial controls (real-time visibility into cash, margins, burn)",
                       "Team structure (clear roles, KPIs, and accountability rhythms)"
                     ],
-                    deliverable: "Your custom operating manual—the rulebook your business runs on"
+                    deliverable: "Your custom operating manual—the rulebook your business runs on",
+                    serviceLinks: false
                   },
                   {
                     phase: "Phase 3",
@@ -359,7 +361,8 @@ export default function BusinessTransformationPage() {
                       "Train your team on the new systems (not just tell them—train them)",
                       "Run pilot workflows and iterate based on what actually works"
                     ],
-                    deliverable: "Fully operational systems with your team trained and confident"
+                    deliverable: "Fully operational systems with your team trained and confident",
+                    serviceLinks: true
                   },
                   {
                     phase: "Phase 4",
@@ -374,7 +377,8 @@ export default function BusinessTransformationPage() {
                       "Lock in standard operating procedures (SOPs) so anyone can execute",
                       "Train internal champions to maintain systems after we leave"
                     ],
-                    deliverable: "Self-sustaining operations + 90-day post-engagement support"
+                    deliverable: "Self-sustaining operations + 90-day post-engagement support",
+                    serviceLinks: false
                   }
                 ].map((phase, index) => {
                   const colorClasses = {
@@ -425,6 +429,30 @@ export default function BusinessTransformationPage() {
                               <strong>Deliverable:</strong> {phase.deliverable}
                             </p>
                           </div>
+
+                          {phase.serviceLinks && (
+                            <div className="mt-4 p-4 rounded-lg bg-teal-50 dark:bg-teal-950/20 border border-teal-200 dark:border-teal-800">
+                              <p className="text-sm text-muted-foreground">
+                                <strong>How we do it:</strong> We integrate{' '}
+                                <Link href="/intelligent-automation" className="text-teal-600 dark:text-teal-400 hover:underline font-semibold">
+                                  AI employees
+                                </Link>
+                                {' '}where humans shouldn't be doing repetitive work, deploy{' '}
+                                <Link href="/intelligent-automation" className="text-teal-600 dark:text-teal-400 hover:underline font-semibold">
+                                  intelligent automations
+                                </Link>
+                                {' '}to eliminate manual tasks, and ensure{' '}
+                                <Link href="/cyber-intelligence" className="text-teal-600 dark:text-teal-400 hover:underline font-semibold">
+                                  cyber intelligence
+                                </Link>
+                                {' '}protects what you've built. We also help verify your partners with{' '}
+                                <Link href="/background-checks" className="text-teal-600 dark:text-teal-400 hover:underline font-semibold">
+                                  thorough background checks
+                                </Link>
+                                {' '}before you commit.
+                              </p>
+                            </div>
+                          )}
 
                           <div className="mt-4">
                             <Button asChild variant="outline" size="sm">

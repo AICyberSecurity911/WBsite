@@ -150,29 +150,32 @@ export function TrustBarSection() {
                       src={logo.logo}
                       alt={`${logo.name} logo`}
                       fill
-                      className="object-contain"
+                      className="object-contain opacity-70 grayscale hover:opacity-100 hover:grayscale-0 transition-all"
                       sizes="128px"
                     />
                   </div>
                 </div>
               ))}
-              {/* Duplicate set for seamless loop */}
-              {companyLogos.map((logo, idx) => (
-                <div
-                  key={`logo-2-${idx}`}
-                  className="flex h-16 w-32 flex-shrink-0 items-center justify-center transition-all duration-300"
-                >
-                  <div className="relative h-full w-full">
-                    <Image
-                      src={logo.logo}
-                      alt={`${logo.name} logo`}
-                      fill
-                      className="object-contain"
-                      sizes="128px"
-                    />
+              {/* Duplicate set for seamless loop - hidden from accessibility tree */}
+              <div aria-hidden="true" className="contents">
+                {companyLogos.map((logo, idx) => (
+                  <div
+                    key={`logo-2-${idx}`}
+                    className="flex h-16 w-32 flex-shrink-0 items-center justify-center transition-all duration-300"
+                  >
+                    <div className="relative h-full w-full">
+                      <Image
+                        src={logo.logo}
+                        alt=""
+                        fill
+                        className="object-contain opacity-70 grayscale hover:opacity-100 hover:grayscale-0 transition-all"
+                        sizes="128px"
+                        loading="lazy"
+                      />
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </motion.div>
           </div>
         </motion.div>

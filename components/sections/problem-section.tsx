@@ -27,7 +27,7 @@ export function ProblemSection() {
   }, 0)
 
   return (
-    <section ref={ref} className="section-padding bg-red-50 dark:bg-red-950/10">
+    <section ref={ref} className="py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-red-50/50 via-red-50 to-white dark:from-red-950/5 dark:via-red-950/10 dark:to-gray-950">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -41,7 +41,8 @@ export function ProblemSection() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="mb-6 inline-flex items-center gap-2 rounded-full bg-red-100 px-4 py-2 text-sm font-semibold text-red-900 dark:bg-red-900 dark:text-red-100"
+              whileHover={{ scale: 1.05 }}
+              className="mb-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-red-100 to-rose-100 dark:from-red-900/40 dark:to-rose-900/40 px-5 py-2.5 text-sm font-semibold text-red-900 dark:text-red-100 shadow-md border border-red-200 dark:border-red-800"
             >
               <AlertTriangle className="h-4 w-4" />
               The Hidden Reality
@@ -51,7 +52,7 @@ export function ProblemSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.25 }}
-              className="mb-3 text-xl font-semibold text-gray-700 dark:text-gray-300"
+              className="mb-3 text-xl sm:text-2xl font-semibold text-gray-700 dark:text-gray-300"
             >
               What's Breaking You?
             </motion.p>
@@ -60,10 +61,10 @@ export function ProblemSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl"
+              className="mb-4 text-section-title text-gray-900 dark:text-white"
             >
               You're Working Harder Than Ever, But Getting Less Time Back
-              <span className="block mt-2 text-red-700 dark:text-red-400 font-extrabold">Why That "$50K Employee" Just Bankrupted Your Q4</span>
+              <span className="block mt-3 bg-gradient-to-r from-red-700 via-red-600 to-rose-600 dark:from-red-400 dark:via-red-300 dark:to-rose-300 bg-clip-text text-transparent font-extrabold">Why That "$50K Employee" Just Bankrupted Your Q4</span>
             </motion.h2>
           </div>
 
@@ -71,25 +72,31 @@ export function ProblemSection() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
+            whileHover={{ y: -5 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="mb-8 rounded-2xl bg-gradient-to-br from-slate-50 to-gray-100 dark:from-slate-950/30 dark:to-gray-950/30 p-6 shadow-lg border-2 border-slate-200 dark:border-slate-800 hover:shadow-[0_0_30px_rgba(148,163,184,0.5)] dark:hover:shadow-[0_0_30px_rgba(203,213,225,0.4)] transition-all duration-300"
+            className="mb-10 rounded-3xl bg-gradient-to-br from-white via-slate-50/50 to-gray-50 dark:from-gray-900 dark:via-slate-950/50 dark:to-gray-950 p-8 shadow-2xl border border-slate-200/50 dark:border-slate-800/50 hover:shadow-[0_0_40px_rgba(148,163,184,0.4)] dark:hover:shadow-[0_0_40px_rgba(203,213,225,0.3)] transition-all duration-500 backdrop-blur-sm"
           >
-            <div className="mb-4 flex items-center gap-3">
-              <div className="h-12 w-12 rounded-full bg-gradient-to-r from-red-500 to-pink-600" />
+            <div className="mb-5 flex items-center gap-4">
+              <motion.div 
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                className="h-14 w-14 rounded-full bg-gradient-to-r from-red-500 to-pink-600 shadow-lg flex items-center justify-center text-white font-bold text-xl"
+              >
+                J
+              </motion.div>
               <div>
-                <h3 className="font-semibold text-gray-900 dark:text-white">Jennifer's Story</h3>
-                <p className="text-sm text-gray-700 dark:text-gray-300">Restaurant Owner, Austin TX</p>
+                <h3 className="font-bold text-lg text-gray-900 dark:text-white">Jennifer's Story</h3>
+                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Restaurant Owner, Austin TX</p>
               </div>
             </div>
-            <blockquote className="text-gray-800 dark:text-gray-200">
-              <p className="mb-4">
+            <blockquote className="text-gray-800 dark:text-gray-200 space-y-4">
+              <p className="text-lg leading-relaxed">
                 "I hired Sarah as my bookkeeper for '$50K' thinking I was getting a great deal. Three months later, 
                 I discovered $23,000 in uncategorized expenses, missed tax deadlines, and she quit via text message 
                 during our busiest season."
               </p>
-              <p className="font-medium">
+              <p className="text-lg font-semibold leading-relaxed">
                 "By the time I calculated recruitment, training, mistakes, and replacement costs, that '$50K employee' 
-                actually cost me <span className="text-red-800 font-extrabold dark:text-red-400">$118,958</span>."
+                actually cost me <span className="text-2xl text-red-800 font-extrabold dark:text-red-400 bg-red-100 dark:bg-red-900/30 px-2 py-1 rounded">$118,958</span>."
               </p>
             </blockquote>
           </motion.div>
@@ -99,16 +106,16 @@ export function ProblemSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="mb-8"
+            className="mb-10"
           >
-            <h3 className="mb-6 text-center text-2xl font-bold text-red-900 dark:text-red-100">
+            <h3 className="mb-8 text-center text-subsection-title bg-gradient-to-r from-red-900 via-red-700 to-rose-700 dark:from-red-100 dark:via-red-300 dark:to-rose-300 bg-clip-text text-transparent">
               The "$50,000 Salary" Lie
             </h3>
             
-            <div className="overflow-hidden rounded-2xl bg-white shadow-lg dark:bg-gray-800">
-              <div className="bg-gradient-to-r from-red-500 to-pink-600 px-6 py-4 text-white">
-                <h4 className="text-lg font-semibold">TRUE Cost Breakdown</h4>
-                <p className="text-sm opacity-90">What that "affordable" employee actually costs</p>
+            <div className="overflow-hidden rounded-3xl bg-white shadow-2xl dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+              <div className="bg-gradient-to-r from-red-600 via-red-500 to-pink-600 px-8 py-6 text-white">
+                <h4 className="text-xl font-bold mb-1">TRUE Cost Breakdown</h4>
+                <p className="text-sm font-medium opacity-95">What that "affordable" employee actually costs</p>
               </div>
               
               <div className="divide-y divide-gray-200 dark:divide-gray-700">
@@ -117,28 +124,30 @@ export function ProblemSection() {
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
                     animate={inView ? { opacity: 1, x: 0 } : {}}
+                    whileHover={{ x: 5, backgroundColor: 'rgba(254, 242, 242, 0.5)' }}
                     transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-                    className="flex items-center justify-between px-6 py-4"
+                    className="flex items-center justify-between px-8 py-5 hover:bg-red-50/50 dark:hover:bg-red-950/20 transition-colors"
                   >
-                    <span className="font-bold text-gray-900 dark:text-gray-100">{item.item}</span>
-                    <span className="font-bold text-red-800 dark:text-red-300">{item.amount}</span>
+                    <span className="font-semibold text-gray-900 dark:text-gray-100">{item.item}</span>
+                    <span className="font-bold text-lg text-red-800 dark:text-red-300">{item.amount}</span>
                   </motion.div>
                 ))}
                 
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={inView ? { opacity: 1, scale: 1 } : {}}
+                  whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.6, delay: 1.6 }}
-                  className="bg-red-50 px-6 py-6 dark:bg-red-950/20"
+                  className="bg-gradient-to-r from-red-50 via-rose-50 to-red-50 dark:from-red-950/30 dark:via-rose-950/30 dark:to-red-950/30 px-8 py-8"
                 >
                   <div className="flex items-center justify-between">
                     <div>
-                      <span className="text-lg font-bold text-red-900 dark:text-red-100">TOTAL ACTUAL COST</span>
-                      <p className="text-sm text-red-700 dark:text-red-300">Per employee, per year</p>
+                      <span className="text-xl font-extrabold bg-gradient-to-r from-red-900 to-red-700 dark:from-red-100 dark:to-red-300 bg-clip-text text-transparent">TOTAL ACTUAL COST</span>
+                      <p className="text-sm text-red-800 dark:text-red-200 font-semibold mt-1">Per employee, per year</p>
                     </div>
                     <div className="text-right">
-                      <span className="text-3xl font-bold text-red-600">${totalCost.toLocaleString()}</span>
-                      <p className="text-sm text-red-700 dark:text-red-300">138% more than expected</p>
+                      <span className="text-4xl font-extrabold bg-gradient-to-r from-red-600 to-rose-600 dark:from-red-400 dark:to-rose-400 bg-clip-text text-transparent">${totalCost.toLocaleString()}</span>
+                      <p className="text-sm text-red-800 dark:text-red-200 font-bold mt-1">138% more than expected</p>
                     </div>
                   </div>
                 </motion.div>
@@ -151,7 +160,7 @@ export function ProblemSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 1.8 }}
-            className="mb-8 grid gap-4 md:grid-cols-3"
+            className="mb-10 grid gap-6 md:grid-cols-3"
           >
             {[
               {
@@ -159,9 +168,11 @@ export function ProblemSection() {
                 title: 'Week 1-4',
                 problem: 'Training & Onboarding',
                 description: 'Reduced productivity while learning systems and processes',
-                bgClass: 'bg-gradient-to-br from-amber-50 to-yellow-100 dark:from-amber-950/30 dark:to-yellow-950/30 border-2 border-amber-200 dark:border-amber-800 hover:shadow-[0_0_25px_rgba(245,158,11,0.5)] dark:hover:shadow-[0_0_25px_rgba(251,191,36,0.4)]',
-                iconBg: 'bg-amber-100 dark:bg-amber-900',
-                iconColor: 'text-amber-700 dark:text-amber-400',
+                bgClass: 'bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-950/20 dark:to-yellow-950/20',
+                borderClass: 'border-amber-200/50 dark:border-amber-800/50 hover:border-amber-300 dark:hover:border-amber-700',
+                shadowClass: 'hover:shadow-[0_0_30px_rgba(245,158,11,0.3)] dark:hover:shadow-[0_0_30px_rgba(251,191,36,0.2)]',
+                iconBg: 'bg-gradient-to-br from-amber-500 to-yellow-500',
+                iconColor: 'text-white',
                 textColor: 'text-amber-700 dark:text-amber-400'
               },
               {
@@ -169,9 +180,11 @@ export function ProblemSection() {
                 title: 'Month 2-6',
                 problem: 'Mistakes & Corrections',
                 description: 'Errors in critical business operations causing revenue loss',
-                bgClass: 'bg-gradient-to-br from-rose-50 to-red-100 dark:from-rose-950/30 dark:to-red-950/30 border-2 border-rose-200 dark:border-rose-800 hover:shadow-[0_0_25px_rgba(244,63,94,0.5)] dark:hover:shadow-[0_0_25px_rgba(251,113,133,0.4)]',
-                iconBg: 'bg-rose-100 dark:bg-rose-900',
-                iconColor: 'text-rose-700 dark:text-rose-400',
+                bgClass: 'bg-gradient-to-br from-rose-50 to-red-50 dark:from-rose-950/20 dark:to-red-950/20',
+                borderClass: 'border-rose-200/50 dark:border-rose-800/50 hover:border-rose-300 dark:hover:border-rose-700',
+                shadowClass: 'hover:shadow-[0_0_30px_rgba(244,63,94,0.3)] dark:hover:shadow-[0_0_30px_rgba(251,113,133,0.2)]',
+                iconBg: 'bg-gradient-to-br from-rose-500 to-red-500',
+                iconColor: 'text-white',
                 textColor: 'text-rose-700 dark:text-rose-400'
               },
               {
@@ -179,24 +192,30 @@ export function ProblemSection() {
                 title: 'Month 6+',
                 problem: 'Turnover & Replacement',
                 description: 'Average employee stays 18 months, restart entire process',
-                bgClass: 'bg-gradient-to-br from-red-50 to-orange-100 dark:from-red-950/30 dark:to-orange-950/30 border-2 border-red-200 dark:border-red-800 hover:shadow-[0_0_25px_rgba(239,68,68,0.5)] dark:hover:shadow-[0_0_25px_rgba(248,113,113,0.4)]',
-                iconBg: 'bg-red-100 dark:bg-red-900',
-                iconColor: 'text-red-700 dark:text-red-400',
+                bgClass: 'bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-950/20 dark:to-orange-950/20',
+                borderClass: 'border-red-200/50 dark:border-red-800/50 hover:border-red-300 dark:hover:border-red-700',
+                shadowClass: 'hover:shadow-[0_0_30px_rgba(239,68,68,0.3)] dark:hover:shadow-[0_0_30px_rgba(248,113,113,0.2)]',
+                iconBg: 'bg-gradient-to-br from-red-500 to-orange-500',
+                iconColor: 'text-white',
                 textColor: 'text-red-700 dark:text-red-400'
               }
             ].map((item, index) => (
-              <div key={index} className={`rounded-lg p-6 shadow-md transition-all duration-300 ${item.bgClass}`}>
-                <div className="mb-3 flex items-center gap-3">
-                  <div className={`flex h-10 w-10 items-center justify-center rounded-full ${item.iconBg}`}>
-                    <item.icon className={`h-5 w-5 ${item.iconColor}`} />
+              <motion.div 
+                key={index} 
+                whileHover={{ y: -5 }}
+                className={`rounded-2xl p-7 shadow-lg border transition-all duration-300 ${item.bgClass} ${item.borderClass} ${item.shadowClass}`}
+              >
+                <div className="mb-4 flex items-center gap-3">
+                  <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${item.iconBg} shadow-md`}>
+                    <item.icon className={`h-6 w-6 ${item.iconColor}`} />
                   </div>
                   <div>
-                    <div className={`text-sm font-semibold ${item.textColor}`}>{item.title}</div>
-                    <div className="font-bold text-gray-900 dark:text-white">{item.problem}</div>
+                    <div className={`text-sm font-bold ${item.textColor}`}>{item.title}</div>
+                    <div className="font-bold text-lg text-gray-900 dark:text-white">{item.problem}</div>
                   </div>
                 </div>
-                <p className="text-sm font-medium text-gray-800 dark:text-gray-300">{item.description}</p>
-              </div>
+                <p className="text-base font-medium leading-relaxed text-gray-700 dark:text-gray-300">{item.description}</p>
+              </motion.div>
             ))}
           </motion.div>
 
@@ -204,27 +223,37 @@ export function ProblemSection() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
+            whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.6, delay: 2 }}
-            className="rounded-2xl bg-gradient-to-r from-gray-900 to-black p-8 text-white"
+            className="rounded-3xl bg-gradient-to-br from-gray-900 via-gray-800 to-black p-10 text-white shadow-2xl border border-gray-700"
           >
-            <h3 className="mb-4 text-2xl font-bold">The Breaking Point</h3>
-            <p className="mb-6 text-lg opacity-90">
+            <h3 className="mb-5 text-subsection-title bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">The Breaking Point</h3>
+            <p className="mb-8 text-xl leading-relaxed opacity-95">
               You started a business to create freedom and wealth. Instead, you're spending 60% of your time 
               managing people, fixing their mistakes, and dealing with HR drama.
             </p>
-            <div className="grid gap-4 sm:grid-cols-3">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-red-400">73%</div>
-                <div className="text-sm opacity-75">of small business owners work weekends</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-red-400">$12K</div>
-                <div className="text-sm opacity-75">average cost of a bad hire</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-red-400">18 mo</div>
-                <div className="text-sm opacity-75">average employee tenure</div>
-              </div>
+            <div className="grid gap-6 sm:grid-cols-3">
+              <motion.div 
+                whileHover={{ y: -5 }}
+                className="text-center p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10"
+              >
+                <div className="text-4xl font-extrabold bg-gradient-to-r from-red-400 to-rose-400 bg-clip-text text-transparent mb-2">73%</div>
+                <div className="text-sm font-medium opacity-80">of small business owners work weekends</div>
+              </motion.div>
+              <motion.div 
+                whileHover={{ y: -5 }}
+                className="text-center p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10"
+              >
+                <div className="text-4xl font-extrabold bg-gradient-to-r from-red-400 to-rose-400 bg-clip-text text-transparent mb-2">$12K</div>
+                <div className="text-sm font-medium opacity-80">average cost of a bad hire</div>
+              </motion.div>
+              <motion.div 
+                whileHover={{ y: -5 }}
+                className="text-center p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10"
+              >
+                <div className="text-4xl font-extrabold bg-gradient-to-r from-red-400 to-rose-400 bg-clip-text text-transparent mb-2">18 mo</div>
+                <div className="text-sm font-medium opacity-80">average employee tenure</div>
+              </motion.div>
             </div>
           </motion.div>
 

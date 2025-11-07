@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Slider } from '@/components/ui/slider'
 import { Card } from '@/components/ui/card'
-import { DollarSign, Clock, TrendingUp, Zap, ArrowRight, Loader2 } from 'lucide-react'
+import { DollarSign, Clock, TrendingUp, Zap, ArrowRight, Loader2, Shield, CheckCircle } from 'lucide-react'
 import { toast } from 'sonner'
 
 export function ProfitPotentialCalculator() {
@@ -211,7 +211,7 @@ export function ProfitPotentialCalculator() {
 
             <Button
               onClick={handleCalculate}
-              className="w-full bg-purple-500 hover:bg-purple-600 text-white text-lg py-6 h-auto"
+              className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold text-lg py-6 h-auto shadow-lg hover:shadow-xl transition-all duration-200"
             >
               Calculate My Profit Potential
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -301,6 +301,118 @@ export function ProfitPotentialCalculator() {
               </p>
             </div>
           </div>
+
+          {/* Intelligent Service Recommendations */}
+          {showResults && (
+            <div className="mt-6 space-y-4">
+              <div className="p-4 rounded-xl bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-blue-950 dark:via-purple-950 dark:to-pink-950 border-2 border-purple-200 dark:border-purple-800">
+                <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
+                  💡 Recommended Solutions for Your Business
+                </h4>
+                <p className="text-sm text-gray-700 dark:text-gray-300 mb-4">
+                  {results.freedomScore < 40 
+                    ? "Your business is overwhelming you. These services can help you regain control:"
+                    : results.freedomScore < 70
+                    ? "You're making progress, but these solutions can accelerate your transformation:"
+                    : "You're doing well! These services can help you scale further:"
+                  }
+                </p>
+
+                <div className="space-y-3">
+                  {/* Intelligent Automation - Show if efficiency < 4 OR leak > 20% OR monthly cost > $100k */}
+                  {(efficiency[0] < 4 || results.leakPercentage > 20 || parseInt(monthlyCost) > 100000) && (
+                    <div className="rounded-lg border-2 border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800">
+                      <div className="flex items-start gap-3">
+                        <div className="rounded-lg bg-gradient-to-br from-teal-500 to-emerald-500 p-2">
+                          <Zap className="h-5 w-5 text-white" />
+                        </div>
+                        <div className="flex-1">
+                          <h5 className="font-bold text-gray-900 dark:text-white text-sm mb-1">
+                            Intelligent Automation
+                          </h5>
+                          <p className="text-xs text-gray-600 dark:text-gray-300 mb-2">
+                            {efficiency[0] < 3 
+                              ? `Your efficiency level (${efficiency[0]}/5) suggests heavy manual processes. Automation can save you ${results.timeReclaimed}+ hours/week.`
+                              : results.leakPercentage > 25
+                              ? `You're leaking ${results.leakPercentage.toFixed(1)}% to inefficiency. Automation can eliminate 30-40% of manual tasks.`
+                              : `With ${formatCurrency(parseInt(monthlyCost))}/month in costs, automation could reduce expenses by 25-35%.`
+                            }
+                          </p>
+                          <a href="/intelligent-automation">
+                            <Button size="sm" className="w-full sm:w-auto text-xs bg-teal-600 hover:bg-teal-700 text-white">
+                              Explore Automation →
+                            </Button>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Background Checks - Show if team size > 10 OR efficiency < 3 */}
+                  {(parseInt(teamSize) > 10 || efficiency[0] < 3) && (
+                    <div className="rounded-lg border-2 border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800">
+                      <div className="flex items-start gap-3">
+                        <div className="rounded-lg bg-gradient-to-br from-amber-500 to-orange-500 p-2">
+                          <Shield className="h-5 w-5 text-white" />
+                        </div>
+                        <div className="flex-1">
+                          <h5 className="font-bold text-gray-900 dark:text-white text-sm mb-1">
+                            AI-Powered Background Checks
+                          </h5>
+                          <p className="text-xs text-gray-600 dark:text-gray-300 mb-2">
+                            {parseInt(teamSize) > 20
+                              ? `With ${teamSize} employees, one bad hire costs $240K+. Verify candidates in minutes, not weeks.`
+                              : efficiency[0] < 3
+                              ? `Low efficiency often stems from wrong-fit hires. Screen candidates thoroughly to build the right team.`
+                              : `With ${teamSize} team members, protect your culture and reduce hiring risk with instant verification.`
+                            }
+                          </p>
+                          <a href="/background-checks">
+                            <Button size="sm" className="w-full sm:w-auto text-xs bg-amber-600 hover:bg-amber-700 text-white">
+                              Verify Your Hires →
+                            </Button>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Cyber Intelligence - Show if revenue > $800k OR team size > 15 */}
+                  {(parseInt(revenue) > 800000 || parseInt(teamSize) > 15) && (
+                    <div className="rounded-lg border-2 border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800">
+                      <div className="flex items-start gap-3">
+                        <div className="rounded-lg bg-gradient-to-br from-blue-500 to-indigo-500 p-2">
+                          <Shield className="h-5 w-5 text-white" />
+                        </div>
+                        <div className="flex-1">
+                          <h5 className="font-bold text-gray-900 dark:text-white text-sm mb-1">
+                            Cyber Intelligence & Protection
+                          </h5>
+                          <p className="text-xs text-gray-600 dark:text-gray-300 mb-2">
+                            {parseInt(revenue) > 2000000
+                              ? `At ${formatCurrency(parseInt(revenue))} revenue, you're a prime target. One breach costs $4.45M on average.`
+                              : parseInt(teamSize) > 20
+                              ? `With ${teamSize} employees, your attack surface is growing. Each person is a potential vulnerability.`
+                              : `Your business size makes you a target. Proactive security costs less than reactive damage control.`
+                            }
+                          </p>
+                          <a href="/cyber-intelligence">
+                            <Button size="sm" className="w-full sm:w-auto text-xs bg-blue-600 hover:bg-blue-700 text-white">
+                              Secure Your Business →
+                            </Button>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                <div className="mt-3 text-xs text-center text-purple-900 dark:text-purple-100 italic">
+                  💬 Not sure which fits best? Book a free consultation below.
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Email Gate */}
           {showEmailGate && (

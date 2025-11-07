@@ -77,8 +77,8 @@ export function TLDDRSection() {
                   <item.icon className="h-4 w-4 text-teal-600" />
                 </div>
                 <div>
-                  <h3 className="mb-1 font-semibold text-gray-900 dark:text-white">{item.title}</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">{item.description}</p>
+                  <h3 className="mb-1 font-bold text-gray-900 dark:text-white">{item.title}</h3>
+                  <p className="text-sm font-medium text-gray-800 dark:text-gray-300">{item.description}</p>
                 </div>
               </motion.div>
             ))}

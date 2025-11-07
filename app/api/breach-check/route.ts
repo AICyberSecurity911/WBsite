@@ -57,15 +57,13 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Call Have I Been Pwned API
+    // Call XposedOrNot API (free, no API key needed)
     const response = await fetch(
-      `https://haveibeenpwned.com/api/v3/breachedaccount/${encodeURIComponent(email)}?truncateResponse=false`,
+      `https://api.xposedornot.com/v1/breach-analytics?email=${encodeURIComponent(email)}`,
       {
         headers: {
           'User-Agent': 'QuantumLeap-Cyber-Intelligence-Tool',
-          'Accept': 'application/json',
-          // Note: For production use, add API key here for higher rate limits
-          // 'hibp-api-key': process.env.HIBP_API_KEY || ''
+          'Accept': 'application/json'
         }
       }
     )
@@ -80,7 +78,7 @@ export async function POST(request: NextRequest) {
     }
 
     if (response.status === 429) {
-      // Rate limited by HIBP
+      // Rate limited by XposedOrNot
       return NextResponse.json(
         { 
           error: 'Service temporarily unavailable. Please try again in a few minutes.',
@@ -91,32 +89,68 @@ export async function POST(request: NextRequest) {
     }
 
     if (!response.ok) {
-      throw new Error(`HIBP API error: ${response.status}`)
+      throw new Error(`XposedOrNot API error: ${response.status}`)
     }
 
-    const breaches = await response.json()
+    const data = await response.json()
+
+    // XposedOrNot API returns data in this format:
+    // {
+    //   "BreachMetrics": { ... },
+    //   "BreachesSummary": { "site": "..." },
+    //   "ExposedBreaches": {
+    //     "breaches_details": [...]
+    //   }
+    // }
+
+    // Check if there are any breaches
+    const breachesData = data.ExposedBreaches?.breaches_details || []
+    const breachCount = breachesData.length
+    
+    // Also check the BreachesSummary for site list
+    const siteSummary = data.BreachesSummary?.site || ''
+    const siteCount = siteSummary ? siteSummary.split(';').length : 0
+
+    if (breachCount === 0 && siteCount === 0) {
+      return NextResponse.json({
+        exposed: false,
+        message: 'Good news! This email was not found in any known data breaches.',
+        remaining: rateLimit.remaining
+      })
+    }
+
+    // Use the higher count (sometimes siteSummary has more complete data)
+    const actualBreachCount = Math.max(breachCount, siteCount)
 
     // Process breach data
-    const breachCount = breaches.length
-    const breachNames = breaches.map((b: any) => b.Name).slice(0, 10) // First 10
-    const totalAccounts = breaches.reduce((sum: number, b: any) => sum + (b.PwnCount || 0), 0)
-    const mostRecentBreach = breaches.reduce((latest: any, current: any) => {
-      const latestDate = new Date(latest.BreachDate)
-      const currentDate = new Date(current.BreachDate)
-      return currentDate > latestDate ? current : latest
-    }, breaches[0])
+    const breachNames = breachesData
+      .map((b: any) => b.breach || 'Unknown')
+      .slice(0, 10)
+    
+    const mostRecentBreach = breachesData.length > 0 
+      ? breachesData.reduce((latest: any, current: any) => {
+          const latestDate = new Date(latest.xposed_date || '1970')
+          const currentDate = new Date(current.xposed_date || '1970')
+          return currentDate > latestDate ? current : latest
+        }, breachesData[0])
+      : null
+
+    // Get risk score from BreachMetrics
+    const riskData = data.BreachMetrics?.risk?.[0] || { risk_label: 'Unknown', risk_score: 0 }
 
     return NextResponse.json({
       exposed: true,
-      breachCount,
+      breachCount: actualBreachCount,
       breachNames,
-      totalAccounts,
-      mostRecentBreach: {
-        name: mostRecentBreach.Name,
-        date: mostRecentBreach.BreachDate,
-        dataClasses: mostRecentBreach.DataClasses
-      },
-      message: `Warning! This email appeared in ${breachCount} known data breach${breachCount > 1 ? 'es' : ''}.`,
+      riskScore: riskData.risk_score,
+      riskLabel: riskData.risk_label,
+      mostRecentBreach: mostRecentBreach ? {
+        name: mostRecentBreach.breach || 'Unknown',
+        date: mostRecentBreach.xposed_date || 'Unknown',
+        dataClasses: mostRecentBreach.xposed_data ? mostRecentBreach.xposed_data.split(';') : [],
+        records: mostRecentBreach.xposed_records || 0
+      } : null,
+      message: `Warning! This email appeared in ${actualBreachCount} known data breach${actualBreachCount !== 1 ? 'es' : ''}.`,
       remaining: rateLimit.remaining
     })
 

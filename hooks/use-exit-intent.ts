@@ -18,8 +18,8 @@ const COOKIE_NAME = 'lead_magnet_shown'
 export function useExitIntent({
   enabled = true,
   exitIntentEnabled = true,
-  scrollDepthEnabled = true,
-  idleEnabled = true,
+  scrollDepthEnabled = false,
+  idleEnabled = false,
   scrollDepthPercentage = 70,
   idleTimeSeconds = 45,
   cookieExpiryDays = 7,
@@ -52,19 +52,21 @@ export function useExitIntent({
     document.cookie = `${COOKIE_NAME}=true; expires=${expires.toUTCString()}; path=/`
   }, [enabled, hasBeenShown, cookieExpiryDays])
 
-  // Exit Intent Detection
+  // Exit Intent Detection - Only when cursor moves to close the window/tab
   useEffect(() => {
     if (!enabled || !exitIntentEnabled || hasBeenShown) return
 
-    const handleMouseLeave = (e: MouseEvent) => {
-      // Detect if mouse is leaving from the top of the viewport
-      if (e.clientY <= 0) {
+    const handleMouseMove = (e: MouseEvent) => {
+      // Detect if mouse is moving towards the close button at the very top
+      // Trigger ONLY when cursor is in the top 10px and moving upward (movementY < 0)
+      // This ensures it only triggers when user is truly trying to close the tab/window
+      if (e.clientY <= 10 && e.movementY < 0) {
         triggerModal()
       }
     }
 
-    document.addEventListener('mouseleave', handleMouseLeave)
-    return () => document.removeEventListener('mouseleave', handleMouseLeave)
+    document.addEventListener('mousemove', handleMouseMove)
+    return () => document.removeEventListener('mousemove', handleMouseMove)
   }, [enabled, exitIntentEnabled, hasBeenShown, triggerModal])
 
   // Scroll Depth Detection

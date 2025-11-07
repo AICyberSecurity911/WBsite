@@ -211,7 +211,29 @@ export function calculateRecommendations(answers: Record<string, any>): AIEmploy
   return recommendations.slice(0, 3) // Return top 3 recommendations
 }
 
+export interface ServiceRecommendation {
+  id: string
+  name: string
+  description: string
+  icon: string
+  url: string
+  ctaText: string
+  relevanceScore: number
+  reasons: string[]
+}
+
 export function calculateROI(answers: Record<string, any>, recommendations: AIEmployee[]): any {
+  // If no AI employees recommended, return zero savings
+  if (!recommendations || recommendations.length === 0) {
+    return {
+      weeklyHoursSaved: 0,
+      monthlySavings: 0,
+      annualSavings: 0,
+      paybackPeriod: 'N/A',
+      roi: '0%'
+    }
+  }
+  
   // Calculate estimated savings based on answers and recommendations
   const hourlyRate = 25 // Average hourly rate assumption
   let weeklyHours = 10
@@ -233,4 +255,201 @@ export function calculateROI(answers: Record<string, any>, recommendations: AIEm
     paybackPeriod: '2-3 months',
     roi: '385%'
   }
+}
+
+export function getServiceRecommendations(answers: Record<string, any>): ServiceRecommendation[] {
+  const recommendations: ServiceRecommendation[] = []
+  
+  // Intelligent Automation recommendations
+  const automationScore = calculateAutomationScore(answers)
+  if (automationScore > 0) {
+    recommendations.push({
+      id: 'intelligent-automation',
+      name: 'Intelligent Automation',
+      description: 'Transform repetitive workflows into automated systems that run 24/7',
+      icon: 'Zap',
+      url: '/intelligent-automation',
+      ctaText: 'Explore Automation Solutions',
+      relevanceScore: automationScore,
+      reasons: getAutomationReasons(answers)
+    })
+  }
+  
+  // Business Transformation recommendations
+  const transformationScore = calculateTransformationScore(answers)
+  if (transformationScore > 0) {
+    recommendations.push({
+      id: 'business-transformation',
+      name: 'Business Transformation',
+      description: 'Optimize operations, scale efficiently, and achieve sustainable growth',
+      icon: 'TrendingUp',
+      url: '/business-transformation',
+      ctaText: 'Start Your Transformation',
+      relevanceScore: transformationScore,
+      reasons: getTransformationReasons(answers)
+    })
+  }
+  
+  // Cyber Intelligence recommendations
+  const cyberScore = calculateCyberScore(answers)
+  if (cyberScore > 0) {
+    recommendations.push({
+      id: 'cyber-intelligence',
+      name: 'Cyber Intelligence',
+      description: 'Protect your business from threats with AI-powered security monitoring',
+      icon: 'Shield',
+      url: '/cyber-intelligence',
+      ctaText: 'Secure Your Business',
+      relevanceScore: cyberScore,
+      reasons: getCyberReasons(answers)
+    })
+  }
+  
+  // Sort by relevance score (highest first)
+  return recommendations.sort((a, b) => b.relevanceScore - a.relevanceScore)
+}
+
+function calculateAutomationScore(answers: Record<string, any>): number {
+  let score = 0
+  
+  // High score for repetitive task hours
+  if (answers.repetitive_hours === 'More than 40 hours') score += 40
+  else if (answers.repetitive_hours === '30-40 hours') score += 35
+  else if (answers.repetitive_hours === '20-30 hours') score += 30
+  else if (answers.repetitive_hours === '10-20 hours') score += 20
+  
+  // Time drains that benefit from automation
+  const automationDrains = [
+    'Administrative tasks and paperwork',
+    'Project management and coordination',
+    'Bookkeeping and financial management'
+  ]
+  if (automationDrains.includes(answers.biggest_time_drain)) score += 25
+  
+  // Business bottlenecks that automation solves
+  const automationBottlenecks = [
+    'Project delays and miscommunication',
+    'Inconsistent marketing efforts',
+    'Poor customer response times'
+  ]
+  if (automationBottlenecks.includes(answers.biggest_bottleneck)) score += 20
+  
+  // Goal alignment
+  if (answers.primary_goal === 'Reduce operational costs') score += 15
+  
+  return score
+}
+
+function getAutomationReasons(answers: Record<string, any>): string[] {
+  const reasons: string[] = []
+  
+  if (answers.repetitive_hours && answers.repetitive_hours !== 'Less than 10 hours') {
+    reasons.push(`You're spending ${answers.repetitive_hours.toLowerCase()} on repetitive tasks`)
+  }
+  
+  if (answers.biggest_time_drain === 'Administrative tasks and paperwork') {
+    reasons.push('Administrative work can be automated to save significant time')
+  }
+  
+  if (answers.biggest_bottleneck === 'Project delays and miscommunication') {
+    reasons.push('Automated workflows eliminate bottlenecks and delays')
+  }
+  
+  if (answers.primary_goal === 'Reduce operational costs') {
+    reasons.push('Automation directly reduces costs by eliminating manual work')
+  }
+  
+  return reasons.length > 0 ? reasons : ['Automation can streamline your operations']
+}
+
+function calculateTransformationScore(answers: Record<string, any>): number {
+  let score = 0
+  
+  // Team size indicates need for better systems
+  if (answers.team_size === '16-50 employees') score += 30
+  else if (answers.team_size === '51-100 employees') score += 35
+  else if (answers.team_size === 'More than 100') score += 40
+  else if (answers.team_size === '6-15 employees') score += 25
+  
+  // Growth-related goals
+  if (answers.primary_goal === 'Increase revenue by 25%+') score += 30
+  else if (answers.primary_goal === 'Scale the team efficiently') score += 30
+  else if (answers.primary_goal === 'Expand to new markets') score += 25
+  
+  // Bottlenecks that require transformation
+  const transformationBottlenecks = [
+    'Difficulty finding good employees',
+    'Cash flow management',
+    'Not enough qualified leads'
+  ]
+  if (transformationBottlenecks.includes(answers.biggest_bottleneck)) score += 20
+  
+  return score
+}
+
+function getTransformationReasons(answers: Record<string, any>): string[] {
+  const reasons: string[] = []
+  
+  if (answers.team_size && !['Just me (solo)', '2-5 employees'].includes(answers.team_size)) {
+    reasons.push(`With ${answers.team_size.toLowerCase()}, you need scalable systems`)
+  }
+  
+  if (answers.primary_goal === 'Increase revenue by 25%+') {
+    reasons.push('Aggressive growth requires operational transformation')
+  }
+  
+  if (answers.primary_goal === 'Scale the team efficiently') {
+    reasons.push('Efficient scaling needs optimized processes and structure')
+  }
+  
+  if (answers.biggest_bottleneck === 'Cash flow management') {
+    reasons.push('Better systems improve financial visibility and control')
+  }
+  
+  return reasons.length > 0 ? reasons : ['Transform your operations for sustainable growth']
+}
+
+function calculateCyberScore(answers: Record<string, any>): number {
+  let score = 0
+  
+  // Industries with higher security needs
+  const highSecurityIndustries = [
+    'Healthcare',
+    'Professional Services',
+    'Technology',
+    'Real Estate'
+  ]
+  if (highSecurityIndustries.includes(answers.industry)) score += 30
+  
+  // Team size indicates more security risk
+  if (answers.team_size === '16-50 employees') score += 20
+  else if (answers.team_size === '51-100 employees') score += 25
+  else if (answers.team_size === 'More than 100') score += 30
+  else if (answers.team_size === '6-15 employees') score += 15
+  
+  // Using tools means having data to protect
+  if (answers.current_tools && Array.isArray(answers.current_tools) && answers.current_tools.length > 0) {
+    score += 20
+  }
+  
+  return score
+}
+
+function getCyberReasons(answers: Record<string, any>): string[] {
+  const reasons: string[] = []
+  
+  const highSecurityIndustries = ['Healthcare', 'Professional Services', 'Technology', 'Real Estate']
+  if (highSecurityIndustries.includes(answers.industry)) {
+    reasons.push(`${answers.industry} businesses are prime targets for cyber attacks`)
+  }
+  
+  if (answers.team_size && answers.team_size !== 'Just me (solo)') {
+    reasons.push('More employees means greater security vulnerabilities')
+  }
+  
+  if (answers.current_tools && Array.isArray(answers.current_tools) && answers.current_tools.length > 0) {
+    reasons.push('Multiple tools increase your attack surface')
+  }
+  
+  return reasons.length > 0 ? reasons : ['Protect your business from cyber threats']
 }

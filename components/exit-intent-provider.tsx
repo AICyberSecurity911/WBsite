@@ -8,8 +8,8 @@ export function ExitIntentProvider() {
   const { shouldShow, closeModal } = useExitIntent({
     enabled: true,
     exitIntentEnabled: true,
-    scrollDepthEnabled: true,
-    idleEnabled: true,
+    scrollDepthEnabled: false,
+    idleEnabled: false,
     scrollDepthPercentage: 70,
     idleTimeSeconds: 45,
     cookieExpiryDays: 7,

@@ -18,7 +18,7 @@ const services = [
 
 const navigation = [
   { name: 'Services', href: '/', hasDropdown: true },
-  { name: 'How It Works', href: '#how-it-works' },
+  { name: 'Calculator', href: '#calculator' },
   { name: 'About', href: '#about' },
 ]
 
@@ -52,10 +52,10 @@ export function Header() {
           : 'bg-transparent'
       }`}
     >
-      <nav className="container flex h-16 items-center justify-between">
+      <nav className="container flex h-16 items-center justify-between px-4 sm:px-6">
         {/* Logo */}
-        <Link href="/" className="flex items-center space-x-3">
-          <div className="relative h-10 w-10">
+        <Link href="/" className="flex items-center space-x-2 flex-shrink-0">
+          <div className="relative h-8 w-8 sm:h-9 sm:w-9">
             <Image
               src="/logo.png"
               alt="QuantumLeap AI Logo"
@@ -64,13 +64,13 @@ export function Header() {
               priority
             />
           </div>
-          <span className="text-xl font-bold text-gray-900 dark:text-white">
+          <span className="text-base sm:text-lg font-bold text-gray-900 dark:text-white whitespace-nowrap">
             QuantumLeap <span className="ai-pulse text-orange-500">AI</span>
           </span>
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden items-center space-x-8 md:flex">
+        <div className="hidden items-center gap-4 xl:gap-6 lg:flex">
           {navigation.map((item) => (
             item.hasDropdown ? (
               <div key={item.name} className="relative">
@@ -78,29 +78,30 @@ export function Header() {
                   href={item.href}
                   onMouseEnter={() => setServicesOpen(true)}
                   onMouseLeave={() => setServicesOpen(false)}
-                  className="flex items-center text-sm font-medium text-gray-700 transition-colors hover:text-teal-600 dark:text-gray-300 dark:hover:text-teal-400"
+                  className="flex items-center gap-1 text-sm font-medium text-gray-700 transition-colors hover:text-teal-600 dark:text-gray-300 dark:hover:text-teal-400 whitespace-nowrap"
                 >
                   {item.name}
-                  <ChevronDown className="ml-1 h-4 w-4" />
+                  <ChevronDown className="h-4 w-4" />
                 </Link>
                 {servicesOpen && (
                   <div
                     onMouseEnter={() => setServicesOpen(true)}
                     onMouseLeave={() => setServicesOpen(false)}
-                    className="absolute left-0 top-full pt-2 w-72"
+                    className="absolute left-0 top-full z-50 pt-2 w-80"
                   >
-                    <div className="rounded-lg bg-white p-4 shadow-xl dark:bg-gray-900 dark:border dark:border-gray-800"
+                    <div className="rounded-xl bg-white p-2 shadow-xl dark:bg-gray-900 dark:border dark:border-gray-800"
                     >
                       {services.map((service) => (
                         <Link
                           key={service.name}
                           href={service.href}
-                          className="block rounded-md p-3 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800"
+                          onClick={() => setServicesOpen(false)}
+                          className="block rounded-lg p-3 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800"
                         >
-                          <div className="font-semibold text-gray-900 dark:text-white">
+                          <div className="font-semibold text-gray-900 dark:text-white text-sm">
                             {service.name}
                           </div>
-                          <div className="text-sm text-gray-500 dark:text-gray-400">
+                          <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
                             {service.description}
                           </div>
                         </Link>
@@ -113,7 +114,7 @@ export function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm font-medium text-gray-700 transition-colors hover:text-teal-600 dark:text-gray-300 dark:hover:text-teal-400"
+                className="text-sm font-medium text-gray-700 transition-colors hover:text-teal-600 dark:text-gray-300 dark:hover:text-teal-400 whitespace-nowrap"
               >
                 {item.name}
               </Link>
@@ -125,7 +126,7 @@ export function Header() {
             variant="ghost"
             size="sm"
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="h-8 w-8 p-0"
+            className="h-9 w-9 p-0 rounded-full"
           >
             {theme === 'dark' ? (
               <Sun className="h-4 w-4" />
@@ -138,32 +139,34 @@ export function Header() {
           {/* CTA Button */}
           <Button 
             asChild
-            className="btn-primary"
+            size="sm"
+            className="btn-primary rounded-full px-4 xl:px-5 shadow-lg hover:shadow-xl transition-shadow text-sm"
           >
             <Link href="#calculator">
-              Free Assessment
+              Start Free
             </Link>
           </Button>
         </div>
 
         {/* Mobile menu button */}
-        <div className="flex items-center space-x-2 md:hidden">
+        <div className="flex items-center gap-2 lg:hidden">
           <Button
             variant="ghost"
-            size="sm"
+            size="icon"
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="h-8 w-8 p-0"
+            className="h-9 w-9"
           >
             {theme === 'dark' ? (
-              <Sun className="h-4 w-4" />
+              <Sun className="h-5 w-5" />
             ) : (
-              <Moon className="h-4 w-4" />
+              <Moon className="h-5 w-5" />
             )}
           </Button>
           
           <Button
             variant="ghost"
-            className="h-8 w-8 p-0"
+            size="icon"
+            className="h-9 w-9"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? (
@@ -177,46 +180,50 @@ export function Header() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="absolute left-0 right-0 top-16 z-40 border-t bg-white dark:bg-gray-900 md:hidden max-h-[calc(100vh-4rem)] overflow-y-auto">
-            <div className="container space-y-1 py-4">
+          <div className="absolute left-0 right-0 top-16 z-40 border-t bg-white dark:bg-gray-900 lg:hidden max-h-[calc(100vh-4rem)] overflow-y-auto shadow-xl">
+            <div className="container space-y-1 py-6">
               {/* Services Section */}
               <div className="mb-4">
-                <div className="px-3 py-2 text-sm font-semibold text-gray-500 dark:text-gray-400">
+                <div className="px-3 py-2 text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
                   Services
                 </div>
-                {services.map((service) => (
+                <div className="space-y-1">
+                  {services.map((service) => (
+                    <Link
+                      key={service.name}
+                      href={service.href}
+                      className="block rounded-lg px-3 py-3 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <div className="font-semibold text-gray-900 dark:text-white text-sm">
+                        {service.name}
+                      </div>
+                      <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                        {service.description}
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Other Navigation */}
+              <div className="space-y-1 pt-2">
+                {navigation.filter(item => !item.hasDropdown).map((item) => (
                   <Link
-                    key={service.name}
-                    href={service.href}
-                    className="block rounded-md px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800"
+                    key={item.name}
+                    href={item.href}
+                    className="block rounded-lg px-3 py-3 text-sm font-semibold text-gray-700 hover:bg-gray-50 hover:text-teal-600 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-teal-400 transition-colors"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    <div className="font-medium text-gray-900 dark:text-white">
-                      {service.name}
-                    </div>
-                    <div className="text-sm text-gray-500 dark:text-gray-400">
-                      {service.description}
-                    </div>
+                    {item.name}
                   </Link>
                 ))}
               </div>
 
-              {/* Other Navigation */}
-              {navigation.filter(item => !item.hasDropdown).map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-teal-600 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-teal-400"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
-
-              <div className="pt-4">
-                <Button asChild className="btn-primary w-full">
+              <div className="pt-4 border-t border-gray-200 dark:border-gray-800 mt-4">
+                <Button asChild className="btn-primary w-full rounded-full shadow-lg text-base py-6">
                   <Link href="#calculator" onClick={() => setMobileMenuOpen(false)}>
-                    Free Assessment
+                    Start Free
                   </Link>
                 </Button>
               </div>
