@@ -422,7 +422,7 @@ export default function CyberIntelligencePage() {
                     <tr>
                       <td className="px-6 py-4 font-medium">Dark Web</td>
                       <td className="px-6 py-4 text-sm text-muted-foreground">Ignored</td>
-                      <td className="px-6 py-4 text-sm bg-blue-500/5"><strong>Exposure & credential intelligence</strong> (XON + analyst validation)</td>
+                      <td className="px-6 py-4 text-sm bg-blue-500/5"><strong>Exposure & credential intelligence</strong> (breach database + analyst validation)</td>
                     </tr>
                     <tr>
                       <td className="px-6 py-4 font-medium">Human Error</td>
@@ -445,7 +445,7 @@ export default function CyberIntelligencePage() {
               <div className="grid md:grid-cols-2 gap-4">
                 {[
                   'External & internal penetration testing (customized to your systems)',
-                  'Dark-web exposure & credential intelligence (Have I Been Pwned + human analyst validation)',
+                  'Dark-web exposure & credential intelligence (breach database + human analyst validation)',
                   'Cloud & email configuration audits (unique to your infrastructure)',
                   'Controlled phishing & human-engineering tests (designed for your team)',
                   'Vendor & API access risk assessment (based on your actual integrations)',
@@ -542,7 +542,7 @@ export default function CyberIntelligencePage() {
                 Check If Your Email Has Been <span className="text-red-500">Exposed</span> in a Data Breach
               </h2>
               <p className="text-lg text-muted-foreground">
-                We securely query Have I Been Pwned's trusted breach database. Instant results. No storage.
+                We securely query breach database. Instant results. No storage.
               </p>
             </div>
 
