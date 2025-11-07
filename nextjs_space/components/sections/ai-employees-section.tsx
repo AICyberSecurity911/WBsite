@@ -310,7 +310,7 @@ export function AIEmployeesSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-              className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all group"
+              className="bg-gradient-to-br from-white via-teal-50/30 to-emerald-50/30 dark:from-slate-800 dark:via-teal-950/20 dark:to-emerald-950/20 rounded-2xl p-6 shadow-lg border-2 border-teal-200/50 dark:border-teal-800/50 hover:shadow-xl hover:border-teal-300 dark:hover:border-teal-700 transition-all group"
             >
               {/* Badge */}
               <div className={`inline-block ${employee.badgeColor} text-xs font-semibold px-3 py-1 rounded-full mb-4`}>

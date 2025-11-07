@@ -30,43 +30,11 @@ export function SplitHeroSection() {
   }, [mouseX, mouseY])
 
   return (
-    <section className="relative w-full overflow-hidden" style={{ height: 'calc(100vh - 4rem)' }}>
+    <section className="relative w-full overflow-hidden bg-slate-950" style={{ height: 'calc(100vh - 4rem)' }}>
       {/* Animated Gradient Mesh Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
         <div className="gradient-mesh-overlay" />
         <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10" />
-      </div>
-
-      {/* Floating Particles Effect */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => {
-          const isClient = typeof window !== 'undefined'
-          const initialX = isClient ? Math.random() * window.innerWidth : Math.random() * 1920
-          const initialY = isClient ? window.innerHeight + 100 : 1080 + 100
-          const animateX = isClient ? Math.random() * window.innerWidth : Math.random() * 1920
-          
-          return (
-            <motion.div
-              key={i}
-              className="absolute w-2 h-2 bg-teal-400/20 rounded-full"
-              initial={{
-                x: initialX,
-                y: initialY,
-                scale: Math.random() * 0.5 + 0.5
-              }}
-              animate={{
-                y: -100,
-                x: animateX,
-              }}
-              transition={{
-                duration: Math.random() * 10 + 10,
-                repeat: Infinity,
-                ease: "linear",
-                delay: Math.random() * 5
-              }}
-            />
-          )
-        })}
       </div>
       
       {/* Split Panels Container */}
@@ -78,14 +46,11 @@ export function SplitHeroSection() {
           className="relative flex-1 group cursor-pointer overflow-hidden"
           onHoverStart={() => setHoveredPanel('smb')}
           onHoverEnd={() => setHoveredPanel(null)}
-          animate={{
-            flex: hoveredPanel === 'smb' ? 1.2 : hoveredPanel === 'enterprise' ? 0.8 : 1,
-            opacity: hoveredPanel === 'enterprise' ? 0.7 : 1
-          }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          whileHover={{ scale: 1.02 }}
+          transition={{ duration: 0.3 }}
         >
           {/* Gradient Overlay with Depth */}
-          <div className="absolute inset-0 bg-gradient-to-br from-teal-600/95 via-teal-700/90 to-cyan-900/95" />
+          <div className="absolute inset-0 bg-gradient-to-br from-teal-600 via-teal-700 to-cyan-900" />
           
           {/* Animated Background with Blob Morphing */}
           <div className="absolute inset-0 opacity-30">
@@ -119,14 +84,14 @@ export function SplitHeroSection() {
               </motion.div>
 
               <motion.h1 
-                className="text-4xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight"
+                className="text-4xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight text-white"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
               >
                 Stop Working{' '}
                 <span className="relative inline-block">
-                  <span className="text-shimmer">70-Hour Weeks</span>
+                  <span className="text-white font-extrabold">70-Hour Weeks</span>
                   <motion.div
                     className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-cyan-300 to-transparent"
                     initial={{ scaleX: 0 }}
@@ -201,38 +166,19 @@ export function SplitHeroSection() {
               {/* Enhanced CTA Button */}
               <Link href="/business-transformation">
                 <motion.button
-                  className="relative mt-8 px-10 py-5 bg-white text-teal-700 rounded-2xl font-bold text-base lg:text-lg shadow-2xl hover:shadow-cyan-300/60 transition-all flex items-center gap-3 mx-auto group overflow-hidden"
+                  className="relative mt-8 px-10 py-5 bg-white text-teal-900 rounded-2xl font-bold text-base lg:text-lg shadow-2xl hover:shadow-cyan-300/60 hover:bg-cyan-50 transition-all flex items-center gap-3 mx-auto group overflow-hidden"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.4 }}
                 >
-                  <span className="relative z-10">Stop the Burnout – Get My Freedom Back</span>
-                  <ArrowRight className="relative z-10 w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
-                  
-                  {/* Animated Background */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-cyan-50 to-teal-50"
-                    initial={{ x: '-100%' }}
-                    whileHover={{ x: 0 }}
-                    transition={{ duration: 0.3 }}
-                  />
+                  <span className="relative z-10 text-teal-900 font-bold">Stop the Burnout – Get My Freedom Back</span>
+                  <ArrowRight className="relative z-10 w-5 h-5 text-teal-900 group-hover:translate-x-2 transition-transform duration-300" />
                 </motion.button>
               </Link>
             </motion.div>
           </div>
-
-          {/* Hover Expansion Indicator */}
-          <motion.div
-            className="absolute bottom-8 left-1/2 -translate-x-1/2"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: hoveredPanel === 'smb' ? 1 : 0 }}
-          >
-            <div className="text-white text-sm animate-bounce">
-              Click to explore →
-            </div>
-          </motion.div>
         </motion.div>
 
         {/* DIVIDER LINE */}
@@ -244,14 +190,11 @@ export function SplitHeroSection() {
           className="relative flex-1 group cursor-pointer overflow-hidden"
           onHoverStart={() => setHoveredPanel('enterprise')}
           onHoverEnd={() => setHoveredPanel(null)}
-          animate={{
-            flex: hoveredPanel === 'enterprise' ? 1.2 : hoveredPanel === 'smb' ? 0.8 : 1,
-            opacity: hoveredPanel === 'smb' ? 0.7 : 1
-          }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          whileHover={{ scale: 1.02 }}
+          transition={{ duration: 0.3 }}
         >
           {/* Gradient Overlay with Depth */}
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/95 via-indigo-900/90 to-purple-900/95" />
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900" />
           
           {/* Animated Background with Blob Morphing */}
           <div className="absolute inset-0 opacity-30">
@@ -306,27 +249,16 @@ export function SplitHeroSection() {
 
               <Link href="/consultation">
                 <motion.button
-                  className="mt-6 px-8 py-4 bg-white text-indigo-700 rounded-xl font-bold text-lg shadow-2xl hover:shadow-blue-500/50 transition-all flex items-center gap-3 mx-auto group"
+                  className="mt-6 px-8 py-4 bg-white text-indigo-900 rounded-xl font-bold text-lg shadow-2xl hover:shadow-blue-500/50 hover:bg-blue-50 transition-all flex items-center gap-3 mx-auto group"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Secure Your Market Advantage Now
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <span className="text-indigo-900 font-bold">Secure Your Market Advantage Now</span>
+                  <ArrowRight className="w-5 h-5 text-indigo-900 group-hover:translate-x-1 transition-transform" />
                 </motion.button>
               </Link>
             </motion.div>
           </div>
-
-          {/* Hover Expansion Indicator */}
-          <motion.div
-            className="absolute bottom-8 left-1/2 -translate-x-1/2"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: hoveredPanel === 'enterprise' ? 1 : 0 }}
-          >
-            <div className="text-white text-sm animate-bounce">
-              Click to explore →
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>
