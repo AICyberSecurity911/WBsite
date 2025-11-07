@@ -55,7 +55,6 @@ export function TrustBarSection() {
     { name: 'CIBC', logo: '/company-logos/cibc.png' },
     { name: 'ING', logo: '/company-logos/ing.png' },
     { name: 'Husky', logo: '/company-logos/husky.png' },
-    { name: 'Allianz', logo: '/company-logos/allianz.png' },
     { name: 'UCOL', logo: '/company-logos/ucol.png' },
     { name: 'CIIS', logo: '/company-logos/ciis.png' },
     { name: 'Scotiabank', logo: '/company-logos/scotiabank.png' },
