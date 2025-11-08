@@ -3,6 +3,7 @@ import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { CoralReefHero } from '@/components/sections/coral-reef-hero'
 import { TrustBarSection } from '@/components/sections/trust-bar-section'
+import { HomeTestimonialsCarousel } from '@/components/sections/home-testimonials-carousel'
 import { ValuePropositionSection } from '@/components/sections/value-proposition-section'
 import { FounderStorySection } from '@/components/sections/founder-story-section'
 import AdvisoryBoardSection from '@/components/sections/advisory-board-section'
@@ -25,6 +26,7 @@ export default function LandingPage() {
       <main>
         <CoralReefHero />
         <TrustBarSection />
+        <HomeTestimonialsCarousel />
         <ValuePropositionSection />
         <FounderStorySection />
         <AdvisoryBoardSection />
