@@ -20,70 +20,70 @@ const boardMembers: BoardMember[] = [
     title: "Strategic Advisor, Brand & Marketing",
     claimToFame: "TedX Speaker and Senior Vice President of Marketing",
     bio: "Jasrita is a master brand-builder with a track record of driving growth for major corporations. Her expertise ensures our AI solutions are leveraged not just for efficiency, but to create powerful market positioning and lasting customer loyalty.",
-    image: "/board-members/jasrita-dhir.jpg"
+    image: "/board-members/jasrita-dhir.png"
   },
   {
     name: "Karen Mousseau",
     title: "Strategic Advisor, Talent Acquisition",
     claimToFame: "Senior Talent Acquisition Strategist",
     bio: "Karen is a recruitment powerhouse with deep roots in technical and corporate hiring at IBM, BMO and Accenture. She builds elite teams that drive AI innovations, business shifts, and cybersecurity defenses forward.",
-    image: "/board-members/karen-mousseau.jpg"
+    image: "/board-members/karen-mousseau.png"
   },
   {
     name: "Neil Dhawan, CPA",
     title: "Strategic Advisor, Finance & Business Transformation",
     claimToFame: "Regional Manager, with over a decade in senior financial management roles across diverse industries.",
     bio: "Neil is a seasoned finance strategist adept at navigating complex global environments, driving change management, and optimizing financial operations. His expertise strengthens our AI-driven business transformations, ensuring robust financial frameworks and cybersecurity-aligned strategies for sustainable growth.",
-    image: "/board-members/neil-dhawan.jpg"
+    image: "/board-members/neil-dhawan.png"
   },
   {
     name: "Senthil Parthiban",
     title: "Strategic Advisor, Data & Business Intelligence",
     claimToFame: "Data consultant across healthcare, utilities, insurance, and finance, mastering Microsoft BI stack (ADF, SSIS, Power BI), ETL, data warehousing, and machine learning.",
     bio: "Senthil transforms raw data into strategic gold through BI and ML expertise. His work unlocks powerful insights for our AI platforms, fueling secure and efficient business transformations.",
-    image: "/board-members/senthil-parthiban.jpg"
+    image: "/board-members/senthil-parthiban.png"
   },
   {
     name: "Andrea Morris",
     title: "Strategic Advisor, Product & Audience Innovation",
     claimToFame: "President & Founder, AM-FM Productions",
     bio: "As a successful entrepreneur who has navigated the music industry for 25 years, Andrea is an expert in identifying 'the next big thing. She brings this 'star-making' intuition to our innovation process, guiding our team and our clients on how to cut through the noise, captivate an audience, and build products that truly stand out.",
-    image: "/board-members/andrea-morris.jpg"
+    image: "/board-members/andrea-morris.png"
   },
   {
     name: "Guneet Chhabra",
     title: "Strategic Advisor, Digital Transformation",
     claimToFame: "Founder and CEO of Adroit Infosystems",
     bio: "Guneet is a visionary digital entrepreneur who transforms emerging tech into scalable global successes. He empowers our clients to navigate AI-driven changes with seamless business transformations and ironclad cybersecurity measures.",
-    image: "/board-members/guneet-chhabra.jpg"
+    image: "/board-members/guneet-chhabra.png"
   },
   {
     name: "Leonard Kuek",
     title: "Strategic Advisor, AI Talent & Automation",
     claimToFame: "Senior Talent Acquisition Consultant specializing in Technology",
     bio: "Leonard is an expert talent acquisition strategist, with a focus on automating recruitment workflows. Leonard brings over 2 decades of expertise honed through clients like Marriott International, T-Mobile, BMO etc. His strategies ensure that teams and clients assemble top-tier expertise for technology & innovation.",
-    image: "/board-members/leonard-kuek.jpg"
+    image: "/board-members/leonard-kuek.png"
   },
   {
     name: "Dr Sukhi Pritam",
     title: "Strategic Advisor, Healthcare & Technology",
     claimToFame: "Deployment Leader at Alberta Health Services, specializing in emergency and critical care systems.",
     bio: "Sukhi excels in high-stakes communications and deployment in healthcare, ensuring seamless crisis response. He advises us on AI tools for resilient transformations in mission-critical sectors.",
-    image: "/board-members/sukhi-pritam.jpg"
+    image: "/board-members/sukhi-pritam.png"
   },
   {
     name: "Tapan Jha",
     title: "Strategic Advisor, Cybersecurity",
     claimToFame: "Ranked as Top 10 Cyber Forensic Solution Provider",
     bio: "Tapan is a pioneer in cybersecurity forensics and emergency response, with a proven track record in innovative tech development. His guidance fortifies our cybersecurity frameworks, ensuring secure AI deployments and resilient business transformations.",
-    image: "/board-members/tapan-jha.jpg"
+    image: "/board-members/tapan-jha.png"
   },
   {
     name: "Marlon Gibbs",
     title: "Strategic Advisor, Talent Acquisition & Recruitment",
     claimToFame: "Senior Talent Acquisition Consultant at Stantec; former recruitment leader at Bell, Hatch, Ceridian, and IBM, with over a decade of expertise in full-cycle recruitment across technical and corporate roles.",
     bio: "Marlon is a recruitment powerhouse, adept at sourcing elite talent for complex technical and business roles. His strategic approach to talent acquisition, honed at top-tier firms, ensures AI-driven transformations and cybersecurity initiatives are powered by the best teams, delivering unmatched results.",
-    image: "/board-members/marlon-gibbs.jpg"
+    image: "/board-members/marlon-gibbs.png"
   }
 ];
 
