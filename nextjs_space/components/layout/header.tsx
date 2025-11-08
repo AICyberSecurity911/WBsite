@@ -18,7 +18,7 @@ const services = [
 
 const navigation = [
   { name: 'Services', href: '/', hasDropdown: true },
-  { name: 'About', href: '/#about' },
+  { name: 'About Us', href: '/about-us' },
   { name: 'Book Consultation', href: '/consultation' },
 ]
 
