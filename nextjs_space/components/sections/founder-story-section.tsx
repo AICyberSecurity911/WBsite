@@ -88,9 +88,9 @@ export function FounderStorySection() {
               transition={{ delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-teal-100 dark:bg-teal-900/30 rounded-full mb-4">
-                <Zap className="w-4 h-4 text-teal-600 dark:text-teal-400" />
-                <span className="text-sm font-semibold text-teal-700 dark:text-teal-300">Meet the Founder</span>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent-cyan/20 rounded-full mb-4">
+                <Zap className="w-4 h-4 text-accent-cyan" />
+                <span className="text-sm font-semibold text-slate-900 dark:text-white">Meet the Founder</span>
               </div>
 
               <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white leading-tight">
@@ -109,7 +109,7 @@ export function FounderStorySection() {
               transition={{ delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <blockquote className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed border-l-4 border-teal-500 pl-6 italic">
+              <blockquote className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed border-l-4 border-primary-accent pl-6 italic">
                 "I've spent 20 years building systems for Fortune 500s — and I've also been the exhausted small-business owner doing payroll at midnight. I founded QuantumLeap AI to bridge that gap: bringing enterprise-level power to everyday entrepreneurs. When you partner with us, you don't just get AI and Security— you get freedom, clarity, and a team that never quits."
               </blockquote>
 
@@ -131,43 +131,43 @@ export function FounderStorySection() {
               transition={{ delay: 0.3 }}
               viewport={{ once: true }}
             >
-              <div className="flex items-start gap-3 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl">
+              <div className="flex items-start gap-3 p-4 bg-secondary-bg/80 dark:bg-secondary-bg rounded-xl transition-all duration-300 hover:ring-2 hover:ring-accent-cyan hover:scale-[1.03]">
                 <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-400 to-pink-600 flex items-center justify-center flex-shrink-0">
                   <Award className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-slate-900 dark:text-white">MIT & Caltech</div>
-                  <div className="text-xs text-slate-600 dark:text-slate-400">Alumni</div>
+                  <div className="text-sm font-semibold text-white">MIT & Caltech</div>
+                  <div className="text-xs text-slate-400">Alumni</div>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl">
+              <div className="flex items-start gap-3 p-4 bg-secondary-bg/80 dark:bg-secondary-bg rounded-xl transition-all duration-300 hover:ring-2 hover:ring-accent-cyan hover:scale-[1.03]">
                 <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center flex-shrink-0">
                   <TrendingUp className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-slate-900 dark:text-white">$170M+</div>
-                  <div className="text-xs text-slate-600 dark:text-slate-400">Business Value</div>
+                  <div className="text-sm font-semibold text-white">$170M+</div>
+                  <div className="text-xs text-slate-400">Business Value</div>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl">
+              <div className="flex items-start gap-3 p-4 bg-secondary-bg/80 dark:bg-secondary-bg rounded-xl transition-all duration-300 hover:ring-2 hover:ring-accent-cyan hover:scale-[1.03]">
                 <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center flex-shrink-0">
                   <Users className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-slate-900 dark:text-white">65+</div>
-                  <div className="text-xs text-slate-600 dark:text-slate-400">Transformations</div>
+                  <div className="text-sm font-semibold text-white">65+</div>
+                  <div className="text-xs text-slate-400">Transformations</div>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl">
+              <div className="flex items-start gap-3 p-4 bg-secondary-bg/80 dark:bg-secondary-bg rounded-xl transition-all duration-300 hover:ring-2 hover:ring-accent-cyan hover:scale-[1.03]">
                 <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-orange-400 to-red-600 flex items-center justify-center flex-shrink-0">
                   <Zap className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-slate-900 dark:text-white">75+</div>
-                  <div className="text-xs text-slate-600 dark:text-slate-400">Products Launched</div>
+                  <div className="text-sm font-semibold text-white">75+</div>
+                  <div className="text-xs text-slate-400">Products Launched</div>
                 </div>
               </div>
             </motion.div>

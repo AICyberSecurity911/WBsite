@@ -221,17 +221,15 @@ export function CoralReefHero() {
         {/* Floating Stats Cards */}
         <div className="absolute bottom-8 left-8 right-8 grid grid-cols-2 gap-4">
           <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-            className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-4"
+            whileHover={{ scale: 1.03 }}
+            className="bg-secondary-bg backdrop-blur-sm border border-white/20 rounded-2xl p-4 transition-all duration-300 hover:ring-2 hover:ring-accent-cyan cursor-pointer"
           >
             <p className="text-primary-accent font-bold text-2xl">87%</p>
             <p className="text-white/80 text-sm">Cost Savings</p>
           </motion.div>
           <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-            className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-4"
+            whileHover={{ scale: 1.03 }}
+            className="bg-secondary-bg backdrop-blur-sm border border-white/20 rounded-2xl p-4 transition-all duration-300 hover:ring-2 hover:ring-accent-cyan cursor-pointer"
           >
             <p className="text-primary-accent font-bold text-2xl">99.2%</p>
             <p className="text-white/80 text-sm">Accuracy Rate</p>

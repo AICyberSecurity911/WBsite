@@ -18,7 +18,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-secondary-bg text-white">
       <div className="container">
         {/* Main Footer Content */}
         <div className="grid gap-12 py-16 lg:grid-cols-4">
