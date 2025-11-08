@@ -13,25 +13,24 @@ export function ValuePropositionSection() {
   })
 
   return (
-    <section ref={ref} className="relative overflow-hidden py-20 lg:py-32">
+    <section ref={ref} className="relative overflow-hidden">
       {/* SEO H1 - Hidden but accessible */}
       <h1 className="sr-only">
         AI-Powered Business Transformation and Cybersecurity Solutions for Growth-Focused Companies
       </h1>
 
-      <div className="container px-4">
-        <div className="grid gap-0 lg:grid-cols-2">
-          {/* LEFT PANEL - ENTREPRENEUR (SMB) */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="relative overflow-hidden bg-gradient-to-br from-orange-600 via-blue-600 to-amber-500 p-8 lg:p-12 xl:p-16"
-          >
-            {/* Decorative Elements */}
-            <div className="absolute inset-0 bg-black/20" />
-            <div className="absolute right-0 top-0 h-64 w-64 bg-orange-400/20 blur-3xl" />
-            <div className="absolute bottom-0 left-0 h-64 w-64 bg-blue-400/20 blur-3xl" />
+      <div className="flex min-h-screen flex-col md:flex-row">
+        {/* LEFT PANEL - ENTREPRENEUR (SMB) */}
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={inView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="relative flex w-full flex-1 items-center justify-center overflow-hidden bg-gradient-to-br from-orange-500 via-blue-500 to-amber-400 p-8 md:w-1/2 lg:p-12 xl:p-16"
+        >
+          {/* Decorative Elements */}
+          <div className="absolute inset-0 bg-black/10" />
+          <div className="absolute right-0 top-0 h-96 w-96 bg-orange-300/30 blur-3xl" />
+          <div className="absolute bottom-0 left-0 h-96 w-96 bg-blue-300/30 blur-3xl" />
 
             <div className="relative z-10 flex min-h-[500px] flex-col justify-between text-white">
               {/* Content */}
@@ -85,17 +84,17 @@ export function ValuePropositionSection() {
             </div>
           </motion.div>
 
-          {/* RIGHT PANEL - ENTERPRISE */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="relative overflow-hidden bg-gradient-to-br from-red-900 via-blue-900 to-emerald-800 p-8 lg:p-12 xl:p-16"
-          >
-            {/* Decorative Elements */}
-            <div className="absolute inset-0 bg-black/30" />
-            <div className="absolute right-0 top-0 h-64 w-64 bg-blue-500/20 blur-3xl" />
-            <div className="absolute bottom-0 left-0 h-64 w-64 bg-emerald-500/20 blur-3xl" />
+        {/* RIGHT PANEL - ENTERPRISE */}
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          animate={inView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="relative flex w-full flex-1 items-center justify-center overflow-hidden bg-gradient-to-br from-red-600 via-blue-600 to-emerald-500 p-8 md:w-1/2 lg:p-12 xl:p-16"
+        >
+          {/* Decorative Elements */}
+          <div className="absolute inset-0 bg-black/10" />
+          <div className="absolute right-0 top-0 h-96 w-96 bg-red-300/30 blur-3xl" />
+          <div className="absolute bottom-0 left-0 h-96 w-96 bg-emerald-300/30 blur-3xl" />
 
             <div className="relative z-10 flex min-h-[500px] flex-col justify-between text-white">
               {/* Content */}
@@ -141,7 +140,6 @@ export function ValuePropositionSection() {
               </div>
             </div>
           </motion.div>
-        </div>
       </div>
     </section>
   )
