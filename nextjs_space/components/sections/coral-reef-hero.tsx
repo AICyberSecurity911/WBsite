@@ -140,20 +140,33 @@ export function CoralReefHero() {
                   Stop doing everything yourself. Get the AI workforce and intelligence protection that billion-dollar companies use, at prices that make sense for your business.
                 </motion.p>
 
-                {/* CTA Button */}
+                {/* CTA Buttons */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6, duration: 0.6 }}
-                  className="pt-4"
+                  className="pt-4 space-y-3"
                 >
-                  <Link href="/business-transformation">
+                  {/* Primary CTA - View Small Business Solutions */}
+                  <Link href="/smb">
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       className="bg-primary-accent text-white font-bold text-sm md:text-base lg:text-lg px-4 sm:px-6 md:px-8 lg:px-10 py-3 sm:py-4 md:py-5 rounded-full shadow-2xl hover:shadow-primary-accent/50 transition-all duration-300 hover:ring-4 hover:ring-primary-accent/30 focus-visible:ring-4 focus-visible:ring-primary-accent focus-visible:outline-none group flex items-center justify-center gap-2 md:gap-3 w-full"
                     >
                       <span>View Small Business Solutions</span>
+                      <ArrowRight className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 group-hover:translate-x-1 transition-transform" />
+                    </motion.button>
+                  </Link>
+
+                  {/* Secondary CTA - Stop the Burnout */}
+                  <Link href="/smb">
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="bg-accent-cyan/20 border-2 border-accent-cyan text-white font-bold text-sm md:text-base lg:text-lg px-4 sm:px-6 md:px-8 lg:px-10 py-3 sm:py-4 md:py-5 rounded-full shadow-xl hover:shadow-accent-cyan/50 hover:bg-accent-cyan/30 transition-all duration-300 hover:ring-4 hover:ring-accent-cyan/30 focus-visible:ring-4 focus-visible:ring-accent-cyan focus-visible:outline-none group flex items-center justify-center gap-2 md:gap-3 w-full"
+                    >
+                      <span>Stop the Burnout—Get My Freedom Back</span>
                       <ArrowRight className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 group-hover:translate-x-1 transition-transform" />
                     </motion.button>
                   </Link>
