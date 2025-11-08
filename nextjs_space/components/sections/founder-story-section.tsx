@@ -51,7 +51,7 @@ export function FounderStorySection() {
             >
               {/* Card 1: MIT & Caltech Alumni */}
               <motion.div 
-                className="group relative p-5 bg-secondary-bg rounded-xl transition-all duration-300 hover:ring-2 hover:ring-accent-cyan hover:scale-[1.05] shadow-lg hover:shadow-accent-cyan/50"
+                className="group relative p-5 bg-gradient-to-br from-purple-500 via-purple-600 to-pink-600 rounded-xl transition-all duration-300 hover:ring-2 hover:ring-accent-cyan hover:scale-[1.05] shadow-lg hover:shadow-purple-500/50"
                 whileHover={{ 
                   rotateY: 5,
                   rotateX: 5,
@@ -63,7 +63,7 @@ export function FounderStorySection() {
                 }}
               >
                 <div className="flex flex-col items-center text-center gap-2">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-400 to-pink-600 flex items-center justify-center flex-shrink-0 shadow-lg">
+                  <div className="w-12 h-12 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center flex-shrink-0 shadow-lg">
                     <Award className="w-6 h-6 text-white" />
                   </div>
                   <div className="text-sm font-bold text-white">MIT & Caltech Alumni</div>
@@ -72,7 +72,7 @@ export function FounderStorySection() {
 
               {/* Card 2: $170M+ Business Value */}
               <motion.div 
-                className="group relative p-5 bg-secondary-bg rounded-xl transition-all duration-300 hover:ring-2 hover:ring-accent-cyan hover:scale-[1.05] shadow-lg hover:shadow-accent-cyan/50"
+                className="group relative p-5 bg-gradient-to-br from-green-400 via-emerald-500 to-emerald-600 rounded-xl transition-all duration-300 hover:ring-2 hover:ring-accent-cyan hover:scale-[1.05] shadow-lg hover:shadow-emerald-500/50"
                 whileHover={{ 
                   rotateY: 5,
                   rotateX: 5,
@@ -84,7 +84,7 @@ export function FounderStorySection() {
                 }}
               >
                 <div className="flex flex-col items-center text-center gap-2">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center flex-shrink-0 shadow-lg">
+                  <div className="w-12 h-12 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center flex-shrink-0 shadow-lg">
                     <TrendingUp className="w-6 h-6 text-white" />
                   </div>
                   <div className="text-sm font-bold text-white">Delivered $170M+ Business Value</div>
@@ -93,7 +93,7 @@ export function FounderStorySection() {
 
               {/* Card 3: 65+ Epic Transformations */}
               <motion.div 
-                className="group relative p-5 bg-secondary-bg rounded-xl transition-all duration-300 hover:ring-2 hover:ring-accent-cyan hover:scale-[1.05] shadow-lg hover:shadow-accent-cyan/50"
+                className="group relative p-5 bg-gradient-to-br from-blue-400 via-blue-500 to-indigo-600 rounded-xl transition-all duration-300 hover:ring-2 hover:ring-accent-cyan hover:scale-[1.05] shadow-lg hover:shadow-blue-500/50"
                 whileHover={{ 
                   rotateY: 5,
                   rotateX: 5,
@@ -105,7 +105,7 @@ export function FounderStorySection() {
                 }}
               >
                 <div className="flex flex-col items-center text-center gap-2">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center flex-shrink-0 shadow-lg">
+                  <div className="w-12 h-12 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center flex-shrink-0 shadow-lg">
                     <Users className="w-6 h-6 text-white" />
                   </div>
                   <div className="text-sm font-bold text-white">Orchestrated 65+ Epic Transformations</div>
@@ -114,7 +114,7 @@ export function FounderStorySection() {
 
               {/* Card 4: 75+ Game-Changing Products */}
               <motion.div 
-                className="group relative p-5 bg-secondary-bg rounded-xl transition-all duration-300 hover:ring-2 hover:ring-accent-cyan hover:scale-[1.05] shadow-lg hover:shadow-accent-cyan/50"
+                className="group relative p-5 bg-gradient-to-br from-orange-400 via-orange-500 to-red-600 rounded-xl transition-all duration-300 hover:ring-2 hover:ring-accent-cyan hover:scale-[1.05] shadow-lg hover:shadow-orange-500/50"
                 whileHover={{ 
                   rotateY: 5,
                   rotateX: 5,
@@ -126,7 +126,7 @@ export function FounderStorySection() {
                 }}
               >
                 <div className="flex flex-col items-center text-center gap-2">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-orange-400 to-red-600 flex items-center justify-center flex-shrink-0 shadow-lg">
+                  <div className="w-12 h-12 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center flex-shrink-0 shadow-lg">
                     <Rocket className="w-6 h-6 text-white" />
                   </div>
                   <div className="text-sm font-bold text-white">Ignited 75+ Game-Changing Products</div>
