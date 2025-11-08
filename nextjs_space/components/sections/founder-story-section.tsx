@@ -25,7 +25,7 @@ export function FounderStorySection() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           
-          {/* LEFT COLUMN: Image + Credential Cards Below */}
+          {/* LEFT COLUMN: Image Only */}
           <motion.div 
             className="space-y-8"
             style={{ y: imageY }}
@@ -40,102 +40,9 @@ export function FounderStorySection() {
                 priority
               />
             </div>
-
-            {/* 4 Credential Cards in 2x2 Grid with 3D Effect */}
-            <motion.div
-              className="grid grid-cols-2 gap-4"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              viewport={{ once: true }}
-            >
-              {/* Card 1: MIT & Caltech Alumni */}
-              <motion.div 
-                className="group relative p-5 bg-gradient-to-br from-purple-500 via-purple-600 to-pink-600 rounded-xl transition-all duration-300 hover:ring-2 hover:ring-accent-cyan hover:scale-[1.05] shadow-lg hover:shadow-purple-500/50"
-                whileHover={{ 
-                  rotateY: 5,
-                  rotateX: 5,
-                  z: 50
-                }}
-                style={{
-                  transformStyle: 'preserve-3d',
-                  perspective: '1000px'
-                }}
-              >
-                <div className="flex flex-col items-center text-center gap-2">
-                  <div className="w-12 h-12 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center flex-shrink-0 shadow-lg">
-                    <Award className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="text-sm font-bold text-white">MIT & Caltech Alumni</div>
-                </div>
-              </motion.div>
-
-              {/* Card 2: $170M+ Business Value */}
-              <motion.div 
-                className="group relative p-5 bg-gradient-to-br from-green-400 via-emerald-500 to-emerald-600 rounded-xl transition-all duration-300 hover:ring-2 hover:ring-accent-cyan hover:scale-[1.05] shadow-lg hover:shadow-emerald-500/50"
-                whileHover={{ 
-                  rotateY: 5,
-                  rotateX: 5,
-                  z: 50
-                }}
-                style={{
-                  transformStyle: 'preserve-3d',
-                  perspective: '1000px'
-                }}
-              >
-                <div className="flex flex-col items-center text-center gap-2">
-                  <div className="w-12 h-12 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center flex-shrink-0 shadow-lg">
-                    <TrendingUp className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="text-sm font-bold text-white">Delivered $170M+ Business Value</div>
-                </div>
-              </motion.div>
-
-              {/* Card 3: 65+ Epic Transformations */}
-              <motion.div 
-                className="group relative p-5 bg-gradient-to-br from-blue-400 via-blue-500 to-indigo-600 rounded-xl transition-all duration-300 hover:ring-2 hover:ring-accent-cyan hover:scale-[1.05] shadow-lg hover:shadow-blue-500/50"
-                whileHover={{ 
-                  rotateY: 5,
-                  rotateX: 5,
-                  z: 50
-                }}
-                style={{
-                  transformStyle: 'preserve-3d',
-                  perspective: '1000px'
-                }}
-              >
-                <div className="flex flex-col items-center text-center gap-2">
-                  <div className="w-12 h-12 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center flex-shrink-0 shadow-lg">
-                    <Users className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="text-sm font-bold text-white">Orchestrated 65+ Epic Transformations</div>
-                </div>
-              </motion.div>
-
-              {/* Card 4: 75+ Game-Changing Products */}
-              <motion.div 
-                className="group relative p-5 bg-gradient-to-br from-orange-400 via-orange-500 to-red-600 rounded-xl transition-all duration-300 hover:ring-2 hover:ring-accent-cyan hover:scale-[1.05] shadow-lg hover:shadow-orange-500/50"
-                whileHover={{ 
-                  rotateY: 5,
-                  rotateX: 5,
-                  z: 50
-                }}
-                style={{
-                  transformStyle: 'preserve-3d',
-                  perspective: '1000px'
-                }}
-              >
-                <div className="flex flex-col items-center text-center gap-2">
-                  <div className="w-12 h-12 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center flex-shrink-0 shadow-lg">
-                    <Rocket className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="text-sm font-bold text-white">Ignited 75+ Game-Changing Products</div>
-                </div>
-              </motion.div>
-            </motion.div>
           </motion.div>
 
-          {/* RIGHT COLUMN: Quote and Content */}
+          {/* RIGHT COLUMN: Quote, Name/Title, and Credential Cards */}
           <motion.div 
             className="space-y-6 lg:pt-12"
             style={{ y: textY }}
@@ -161,7 +68,7 @@ export function FounderStorySection() {
             </motion.div>
 
             <motion.div
-              className="space-y-4"
+              className="space-y-6"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -171,13 +78,116 @@ export function FounderStorySection() {
                 "I've spent 20 years building systems for Fortune 500s — and I've also been the exhausted small-business owner doing payroll at midnight. I founded QuantumLeap AI to bridge that gap: bringing enterprise-level power to everyday entrepreneurs. When you partner with us, you don't just get AI and Security— you get freedom, clarity, and a team that never quits."
               </blockquote>
 
-              <div className="pt-4">
+              <div className="pt-4 pb-6">
                 <div className="text-xl font-bold text-slate-900 dark:text-white">
                   — Paras Khurana
                 </div>
                 <div className="text-base text-teal-600 dark:text-teal-400 font-semibold">
                   Founder & CEO
                 </div>
+              </div>
+
+              {/* 4 Credential Cards in 2x2 Grid - Slide in from Right */}
+              <div className="grid grid-cols-2 gap-4 pt-2">
+                {/* Card 1: MIT & Caltech Alumni */}
+                <motion.div 
+                  className="group relative p-5 bg-gradient-to-br from-purple-500 via-purple-600 to-pink-600 rounded-xl transition-all duration-300 hover:ring-2 hover:ring-accent-cyan hover:scale-[1.05] shadow-lg hover:shadow-purple-500/50"
+                  initial={{ opacity: 0, x: 100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
+                  viewport={{ once: true }}
+                  whileHover={{ 
+                    rotateY: 5,
+                    rotateX: 5,
+                    z: 50
+                  }}
+                  style={{
+                    transformStyle: 'preserve-3d',
+                    perspective: '1000px'
+                  }}
+                >
+                  <div className="flex flex-col items-center text-center gap-2">
+                    <div className="w-12 h-12 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center flex-shrink-0 shadow-lg">
+                      <Award className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="text-sm font-bold text-white">MIT & Caltech Alumni</div>
+                  </div>
+                </motion.div>
+
+                {/* Card 2: $170M+ Business Value */}
+                <motion.div 
+                  className="group relative p-5 bg-gradient-to-br from-green-400 via-emerald-500 to-emerald-600 rounded-xl transition-all duration-300 hover:ring-2 hover:ring-accent-cyan hover:scale-[1.05] shadow-lg hover:shadow-emerald-500/50"
+                  initial={{ opacity: 0, x: 100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.4, duration: 0.6, ease: "easeOut" }}
+                  viewport={{ once: true }}
+                  whileHover={{ 
+                    rotateY: 5,
+                    rotateX: 5,
+                    z: 50
+                  }}
+                  style={{
+                    transformStyle: 'preserve-3d',
+                    perspective: '1000px'
+                  }}
+                >
+                  <div className="flex flex-col items-center text-center gap-2">
+                    <div className="w-12 h-12 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center flex-shrink-0 shadow-lg">
+                      <TrendingUp className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="text-sm font-bold text-white">Delivered $170M+ Business Value</div>
+                  </div>
+                </motion.div>
+
+                {/* Card 3: 65+ Epic Transformations */}
+                <motion.div 
+                  className="group relative p-5 bg-gradient-to-br from-blue-400 via-blue-500 to-indigo-600 rounded-xl transition-all duration-300 hover:ring-2 hover:ring-accent-cyan hover:scale-[1.05] shadow-lg hover:shadow-blue-500/50"
+                  initial={{ opacity: 0, x: 100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.5, duration: 0.6, ease: "easeOut" }}
+                  viewport={{ once: true }}
+                  whileHover={{ 
+                    rotateY: 5,
+                    rotateX: 5,
+                    z: 50
+                  }}
+                  style={{
+                    transformStyle: 'preserve-3d',
+                    perspective: '1000px'
+                  }}
+                >
+                  <div className="flex flex-col items-center text-center gap-2">
+                    <div className="w-12 h-12 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center flex-shrink-0 shadow-lg">
+                      <Users className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="text-sm font-bold text-white">Orchestrated 65+ Epic Transformations</div>
+                  </div>
+                </motion.div>
+
+                {/* Card 4: 75+ Game-Changing Products */}
+                <motion.div 
+                  className="group relative p-5 bg-gradient-to-br from-orange-400 via-orange-500 to-red-600 rounded-xl transition-all duration-300 hover:ring-2 hover:ring-accent-cyan hover:scale-[1.05] shadow-lg hover:shadow-orange-500/50"
+                  initial={{ opacity: 0, x: 100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.6, duration: 0.6, ease: "easeOut" }}
+                  viewport={{ once: true }}
+                  whileHover={{ 
+                    rotateY: 5,
+                    rotateX: 5,
+                    z: 50
+                  }}
+                  style={{
+                    transformStyle: 'preserve-3d',
+                    perspective: '1000px'
+                  }}
+                >
+                  <div className="flex flex-col items-center text-center gap-2">
+                    <div className="w-12 h-12 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center flex-shrink-0 shadow-lg">
+                      <Rocket className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="text-sm font-bold text-white">Ignited 75+ Game-Changing Products</div>
+                  </div>
+                </motion.div>
               </div>
             </motion.div>
           </motion.div>
