@@ -212,50 +212,55 @@ export default function AdvisoryBoardSection() {
                 {getCurrentMembers().map((member, idx) => (
                   <motion.div
                     key={member.name}
-                    className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-slate-200 dark:border-slate-700 group"
+                    className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-slate-200 dark:border-slate-700 group h-full"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: idx * 0.1 }}
                     whileHover={{ y: -8 }}
                   >
                     {/* Horizontal Layout with Small Circular Image */}
-                    <div className="p-6 flex flex-col sm:flex-row gap-6">
+                    <div className="p-6 sm:p-8 flex flex-col sm:flex-row gap-6 h-full min-h-[320px] sm:min-h-[280px]">
                       {/* Circular Image */}
-                      <div className="flex-shrink-0 mx-auto sm:mx-0">
-                        <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden ring-4 ring-blue-100 dark:ring-blue-900/30 group-hover:ring-blue-300 dark:group-hover:ring-blue-700 transition-all duration-300">
+                      <div className="flex-shrink-0 mx-auto sm:mx-0 sm:self-start">
+                        <div className="relative w-32 h-32 sm:w-36 sm:h-36 rounded-full overflow-hidden ring-4 ring-blue-100 dark:ring-blue-900/30 group-hover:ring-blue-300 dark:group-hover:ring-blue-700 transition-all duration-300 shadow-lg">
                           <Image
                             src={member.image}
                             alt={`${member.name} - ${member.title}`}
                             fill
                             className="object-cover group-hover:scale-110 transition-transform duration-500"
-                            sizes="120px"
+                            sizes="144px"
+                            priority={idx < 2}
                           />
                         </div>
                       </div>
 
                       {/* Content Section */}
-                      <div className="flex-1 space-y-3 text-center sm:text-left">
-                        <div>
-                          <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                      <div className="flex-1 flex flex-col space-y-4 text-center sm:text-left">
+                        {/* Name and Title */}
+                        <div className="space-y-2">
+                          <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-tight">
                             {member.name}
                           </h3>
-                          <p className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">
+                          <p className="text-sm sm:text-base font-semibold text-blue-600 dark:text-blue-400 leading-snug">
                             {member.title}
                           </p>
                         </div>
 
-                        <div className="space-y-2">
-                          <div className="flex items-start gap-2 justify-center sm:justify-start">
-                            <div className="mt-1 w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 flex-shrink-0" />
-                            <p className="text-xs font-medium text-slate-700 dark:text-slate-300 italic text-left">
-                              {member.claimToFame}
-                            </p>
-                          </div>
-                          
-                          <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed line-clamp-3">
-                            {member.bio}
+                        {/* Divider */}
+                        <div className="h-px bg-gradient-to-r from-transparent via-slate-300 dark:via-slate-600 to-transparent" />
+
+                        {/* Claim to Fame */}
+                        <div className="flex items-start gap-3 justify-center sm:justify-start">
+                          <div className="mt-1.5 w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 flex-shrink-0" />
+                          <p className="text-sm font-medium text-slate-700 dark:text-slate-300 italic text-left leading-relaxed">
+                            {member.claimToFame}
                           </p>
                         </div>
+                        
+                        {/* Bio */}
+                        <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed text-left flex-1">
+                          {member.bio}
+                        </p>
                       </div>
                     </div>
                   </motion.div>
