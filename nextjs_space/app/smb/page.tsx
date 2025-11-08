@@ -40,13 +40,8 @@ const staggerContainer = {
 }
 
 export default function SMBLandingPage() {
-  const [mounted, setMounted] = useState(false)
   const [servicesRef, servicesInView] = useInView({ threshold: 0.1, triggerOnce: true })
   const [testimonialsRef, testimonialsInView] = useInView({ threshold: 0.1, triggerOnce: true })
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
 
   // Schema markup for SEO/AEO/AGO
   const pageSchema = {
@@ -74,10 +69,6 @@ export default function SMBLandingPage() {
         "priceCurrency": "USD"
       }
     ]
-  }
-
-  if (!mounted) {
-    return null
   }
 
   return (
