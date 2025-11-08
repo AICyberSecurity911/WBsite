@@ -155,7 +155,7 @@ export default function AdvisoryBoardSection() {
           transition={{ duration: 0.6 }}
         >
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent"
+            className="text-4xl md:text-5xl font-bold mb-6 text-slate-900 dark:text-white"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -218,40 +218,44 @@ export default function AdvisoryBoardSection() {
                     transition={{ delay: idx * 0.1 }}
                     whileHover={{ y: -8 }}
                   >
-                    {/* Image Section */}
-                    <div className="relative aspect-square bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-slate-700 dark:to-slate-600 overflow-hidden">
-                      <Image
-                        src={member.image}
-                        alt={`${member.name} - ${member.title}`}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    </div>
-
-                    {/* Content Section */}
-                    <div className="p-6 space-y-4">
-                      <div>
-                        <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                          {member.name}
-                        </h3>
-                        <p className="text-sm font-semibold text-blue-600 dark:text-blue-400 mb-3">
-                          {member.title}
-                        </p>
+                    {/* Horizontal Layout with Small Circular Image */}
+                    <div className="p-6 flex flex-col sm:flex-row gap-6">
+                      {/* Circular Image */}
+                      <div className="flex-shrink-0 mx-auto sm:mx-0">
+                        <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden ring-4 ring-blue-100 dark:ring-blue-900/30 group-hover:ring-blue-300 dark:group-hover:ring-blue-700 transition-all duration-300">
+                          <Image
+                            src={member.image}
+                            alt={`${member.name} - ${member.title}`}
+                            fill
+                            className="object-cover group-hover:scale-110 transition-transform duration-500"
+                            sizes="120px"
+                          />
+                        </div>
                       </div>
 
-                      <div className="space-y-3">
-                        <div className="flex items-start gap-2">
-                          <div className="mt-1 w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 flex-shrink-0" />
-                          <p className="text-sm font-medium text-slate-700 dark:text-slate-300 italic">
-                            {member.claimToFame}
+                      {/* Content Section */}
+                      <div className="flex-1 space-y-3 text-center sm:text-left">
+                        <div>
+                          <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                            {member.name}
+                          </h3>
+                          <p className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">
+                            {member.title}
                           </p>
                         </div>
-                        
-                        <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed line-clamp-4">
-                          {member.bio}
-                        </p>
+
+                        <div className="space-y-2">
+                          <div className="flex items-start gap-2 justify-center sm:justify-start">
+                            <div className="mt-1 w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 flex-shrink-0" />
+                            <p className="text-xs font-medium text-slate-700 dark:text-slate-300 italic text-left">
+                              {member.claimToFame}
+                            </p>
+                          </div>
+                          
+                          <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed line-clamp-3">
+                            {member.bio}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </motion.div>
