@@ -5,6 +5,18 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Coral Reef Palette CSS Variables */
+:root {
+  --accent-coral-rgb: 255, 127, 80;
+  --accent-cyan-rgb: 64, 224, 208;
+  --accent-purple-rgb: 167, 85, 248;
+  --accent-gold-rgb: 255, 193, 7;
+  --accent-lime-rgb: 198, 255, 0;
+  --accent-pink-rgb: 245, 0, 87;
+  --accent-teal-rgb: 38, 166, 154;
+  --accent-white-rgb: 255, 255, 255;
+}
+
 /* ============================================
    🎨 2025 AWARD-WINNING ANIMATIONS
    ============================================ */
