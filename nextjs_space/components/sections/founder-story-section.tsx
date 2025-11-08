@@ -4,7 +4,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import Image from 'next/image'
-import { Award, TrendingUp, Users, Zap } from 'lucide-react'
+import { Award, TrendingUp, Users, Rocket } from 'lucide-react'
 
 export function FounderStorySection() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -23,17 +23,17 @@ export function FounderStorySection() {
       <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5" />
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           
-          {/* Image with Parallax Effect */}
+          {/* LEFT COLUMN: Image + Credential Cards Below */}
           <motion.div 
-            className="relative"
+            className="space-y-8"
             style={{ y: imageY }}
           >
-            <div className="relative aspect-square lg:aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
-              <div className="absolute inset-0 bg-gradient-to-br from-teal-500/20 to-blue-500/20 mix-blend-overlay z-10" />
+            {/* Founder Image */}
+            <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/founder-paras-khurana.jpg"
+                src="/founder-paras-khurana-new.jpg"
                 alt="Paras Khurana, Founder & CEO of QuantumLeap AI"
                 fill
                 className="object-cover"
@@ -41,45 +41,103 @@ export function FounderStorySection() {
               />
             </div>
 
-            {/* Floating Credential Cards */}
+            {/* 4 Credential Cards in 2x2 Grid with 3D Effect */}
             <motion.div
-              className="absolute -top-6 -right-6 bg-white dark:bg-slate-800 rounded-xl shadow-xl p-4 border border-slate-200 dark:border-slate-700"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              className="grid grid-cols-2 gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
+              viewport={{ once: true }}
             >
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-400 to-cyan-600 flex items-center justify-center">
-                  <Award className="w-5 h-5 text-white" />
+              {/* Card 1: MIT & Caltech Alumni */}
+              <motion.div 
+                className="group relative p-5 bg-secondary-bg rounded-xl transition-all duration-300 hover:ring-2 hover:ring-accent-cyan hover:scale-[1.05] shadow-lg hover:shadow-accent-cyan/50"
+                whileHover={{ 
+                  rotateY: 5,
+                  rotateX: 5,
+                  z: 50
+                }}
+                style={{
+                  transformStyle: 'preserve-3d',
+                  perspective: '1000px'
+                }}
+              >
+                <div className="flex flex-col items-center text-center gap-2">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-400 to-pink-600 flex items-center justify-center flex-shrink-0 shadow-lg">
+                    <Award className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="text-sm font-bold text-white">MIT & Caltech Alumni</div>
                 </div>
-                <div>
-                  <div className="text-2xl font-bold text-slate-900 dark:text-white">$170M+</div>
-                  <div className="text-xs text-slate-600 dark:text-slate-400">Business Value</div>
-                </div>
-              </div>
-            </motion.div>
+              </motion.div>
 
-            <motion.div
-              className="absolute -bottom-6 -left-6 bg-white dark:bg-slate-800 rounded-xl shadow-xl p-4 border border-slate-200 dark:border-slate-700"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.5 }}
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center">
-                  <Users className="w-5 h-5 text-white" />
+              {/* Card 2: $170M+ Business Value */}
+              <motion.div 
+                className="group relative p-5 bg-secondary-bg rounded-xl transition-all duration-300 hover:ring-2 hover:ring-accent-cyan hover:scale-[1.05] shadow-lg hover:shadow-accent-cyan/50"
+                whileHover={{ 
+                  rotateY: 5,
+                  rotateX: 5,
+                  z: 50
+                }}
+                style={{
+                  transformStyle: 'preserve-3d',
+                  perspective: '1000px'
+                }}
+              >
+                <div className="flex flex-col items-center text-center gap-2">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center flex-shrink-0 shadow-lg">
+                    <TrendingUp className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="text-sm font-bold text-white">Delivered $170M+ Business Value</div>
                 </div>
-                <div>
-                  <div className="text-2xl font-bold text-slate-900 dark:text-white">65+</div>
-                  <div className="text-xs text-slate-600 dark:text-slate-400">Transformations</div>
+              </motion.div>
+
+              {/* Card 3: 65+ Epic Transformations */}
+              <motion.div 
+                className="group relative p-5 bg-secondary-bg rounded-xl transition-all duration-300 hover:ring-2 hover:ring-accent-cyan hover:scale-[1.05] shadow-lg hover:shadow-accent-cyan/50"
+                whileHover={{ 
+                  rotateY: 5,
+                  rotateX: 5,
+                  z: 50
+                }}
+                style={{
+                  transformStyle: 'preserve-3d',
+                  perspective: '1000px'
+                }}
+              >
+                <div className="flex flex-col items-center text-center gap-2">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center flex-shrink-0 shadow-lg">
+                    <Users className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="text-sm font-bold text-white">Orchestrated 65+ Epic Transformations</div>
                 </div>
-              </div>
+              </motion.div>
+
+              {/* Card 4: 75+ Game-Changing Products */}
+              <motion.div 
+                className="group relative p-5 bg-secondary-bg rounded-xl transition-all duration-300 hover:ring-2 hover:ring-accent-cyan hover:scale-[1.05] shadow-lg hover:shadow-accent-cyan/50"
+                whileHover={{ 
+                  rotateY: 5,
+                  rotateX: 5,
+                  z: 50
+                }}
+                style={{
+                  transformStyle: 'preserve-3d',
+                  perspective: '1000px'
+                }}
+              >
+                <div className="flex flex-col items-center text-center gap-2">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-orange-400 to-red-600 flex items-center justify-center flex-shrink-0 shadow-lg">
+                    <Rocket className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="text-sm font-bold text-white">Ignited 75+ Game-Changing Products</div>
+                </div>
+              </motion.div>
             </motion.div>
           </motion.div>
 
-          {/* Content with Parallax Effect */}
+          {/* RIGHT COLUMN: Quote and Content */}
           <motion.div 
-            className="space-y-6"
+            className="space-y-6 lg:pt-12"
             style={{ y: textY }}
           >
             <motion.div
@@ -89,7 +147,7 @@ export function FounderStorySection() {
               viewport={{ once: true }}
             >
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent-cyan/20 rounded-full mb-4">
-                <Zap className="w-4 h-4 text-accent-cyan" />
+                <Award className="w-4 h-4 text-accent-cyan" />
                 <span className="text-sm font-semibold text-slate-900 dark:text-white">Meet the Founder</span>
               </div>
 
@@ -119,55 +177,6 @@ export function FounderStorySection() {
                 </div>
                 <div className="text-base text-teal-600 dark:text-teal-400 font-semibold">
                   Founder & CEO
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Credentials Grid */}
-            <motion.div
-              className="grid grid-cols-2 gap-4 pt-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              viewport={{ once: true }}
-            >
-              <div className="flex items-start gap-3 p-4 bg-secondary-bg/80 dark:bg-secondary-bg rounded-xl transition-all duration-300 hover:ring-2 hover:ring-accent-cyan hover:scale-[1.03]">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-400 to-pink-600 flex items-center justify-center flex-shrink-0">
-                  <Award className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <div className="text-sm font-semibold text-white">MIT & Caltech</div>
-                  <div className="text-xs text-slate-400">Alumni</div>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 p-4 bg-secondary-bg/80 dark:bg-secondary-bg rounded-xl transition-all duration-300 hover:ring-2 hover:ring-accent-cyan hover:scale-[1.03]">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center flex-shrink-0">
-                  <TrendingUp className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <div className="text-sm font-semibold text-white">$170M+</div>
-                  <div className="text-xs text-slate-400">Business Value</div>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 p-4 bg-secondary-bg/80 dark:bg-secondary-bg rounded-xl transition-all duration-300 hover:ring-2 hover:ring-accent-cyan hover:scale-[1.03]">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center flex-shrink-0">
-                  <Users className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <div className="text-sm font-semibold text-white">65+</div>
-                  <div className="text-xs text-slate-400">Transformations</div>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 p-4 bg-secondary-bg/80 dark:bg-secondary-bg rounded-xl transition-all duration-300 hover:ring-2 hover:ring-accent-cyan hover:scale-[1.03]">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-orange-400 to-red-600 flex items-center justify-center flex-shrink-0">
-                  <Zap className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <div className="text-sm font-semibold text-white">75+</div>
-                  <div className="text-xs text-slate-400">Products Launched</div>
                 </div>
               </div>
             </motion.div>
