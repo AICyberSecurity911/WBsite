@@ -36,83 +36,56 @@ export function SplitHeroSection() {
             transition={{ duration: 0.8 }}
             className="relative w-full h-full"
           >
-            {/* Video Container with Split Text Overlays */}
-            <div className="relative w-full h-full flex flex-col md:flex-row">
-              
-              {/* LEFT PANEL - Video with "Entrepreneur" Overlay */}
-              <div className="relative flex-1 overflow-hidden">
-                <video
-                  ref={videoRef}
-                  className="absolute inset-0 w-full h-full object-cover"
-                  muted
-                  playsInline
-                  autoPlay
-                  onEnded={handleVideoEnd}
-                  style={{ 
-                    objectFit: 'cover',
-                    width: '100%',
-                    height: '100%',
+            {/* Single Full-Width Video */}
+            <video
+              ref={videoRef}
+              className="absolute inset-0 w-full h-full object-cover"
+              muted
+              playsInline
+              autoPlay
+              onEnded={handleVideoEnd}
+              style={{ 
+                objectFit: 'cover',
+                width: '100%',
+                height: '100%',
+              }}
+            >
+              <source src="/hero-video.mp4" type="video/mp4" />
+            </video>
+            
+            {/* Dark Overlay for Text Contrast */}
+            <div className="absolute inset-0 bg-black/30" />
+            
+            {/* Text Overlays Container */}
+            <div className="absolute inset-0 flex flex-col md:flex-row">
+              {/* LEFT - "Entrepreneur" Overlay */}
+              <div className="relative flex-1 flex items-start justify-center pt-6 md:pt-8 lg:pt-10">
+                <motion.h1
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5, duration: 0.8 }}
+                  className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white drop-shadow-2xl"
+                  style={{
+                    textShadow: '0 4px 20px rgba(0,0,0,0.9), 0 0 40px rgba(255,255,255,0.4)'
                   }}
                 >
-                  <source src="/hero-video.mp4" type="video/mp4" />
-                </video>
-                
-                {/* Dark Overlay for Text Contrast */}
-                <div className="absolute inset-0 bg-black/40" />
-                
-                {/* "Entrepreneur" Text Overlay */}
-                <div className="absolute inset-0 flex items-start justify-center pt-12 md:pt-16 lg:pt-20">
-                  <motion.h1
-                    initial={{ opacity: 0, y: -30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5, duration: 0.8 }}
-                    className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-white drop-shadow-2xl"
-                    style={{
-                      textShadow: '0 4px 20px rgba(0,0,0,0.8), 0 0 40px rgba(255,255,255,0.3)'
-                    }}
-                  >
-                    Entrepreneur
-                  </motion.h1>
-                </div>
+                  Entrepreneur
+                </motion.h1>
               </div>
 
-              {/* DIVIDER LINE */}
-              <div className="w-full md:w-1 h-px md:h-full bg-gradient-to-r md:bg-gradient-to-b from-transparent via-white/60 to-transparent z-10" />
-
-              {/* RIGHT PANEL - Video with "Enterprise" Overlay */}
-              <div className="relative flex-1 overflow-hidden">
-                {/* Same video mirrored/cloned for right panel */}
-                <video
-                  className="absolute inset-0 w-full h-full object-cover"
-                  muted
-                  playsInline
-                  autoPlay
-                  style={{ 
-                    objectFit: 'cover',
-                    width: '100%',
-                    height: '100%',
+              {/* RIGHT - "Enterprise" Overlay */}
+              <div className="relative flex-1 flex items-start justify-center pt-6 md:pt-8 lg:pt-10">
+                <motion.h1
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5, duration: 0.8 }}
+                  className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white drop-shadow-2xl"
+                  style={{
+                    textShadow: '0 4px 20px rgba(0,0,0,0.9), 0 0 40px rgba(255,255,255,0.4)'
                   }}
                 >
-                  <source src="/hero-video.mp4" type="video/mp4" />
-                </video>
-                
-                {/* Dark Overlay for Text Contrast */}
-                <div className="absolute inset-0 bg-black/40" />
-                
-                {/* "Enterprise" Text Overlay */}
-                <div className="absolute inset-0 flex items-start justify-center pt-12 md:pt-16 lg:pt-20">
-                  <motion.h1
-                    initial={{ opacity: 0, y: -30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5, duration: 0.8 }}
-                    className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-white drop-shadow-2xl"
-                    style={{
-                      textShadow: '0 4px 20px rgba(0,0,0,0.8), 0 0 40px rgba(255,255,255,0.3)'
-                    }}
-                  >
-                    Enterprise
-                  </motion.h1>
-                </div>
+                  Enterprise
+                </motion.h1>
               </div>
             </div>
           </motion.div>
@@ -189,7 +162,7 @@ export function SplitHeroSection() {
             {/* DIVIDER LINE */}
             <div className="w-full md:w-1 h-px md:h-full bg-gradient-to-r md:bg-gradient-to-b from-transparent via-white/30 to-transparent" />
 
-            {/* RIGHT PANEL - Enterprises (Gray Background) */}
+            {/* RIGHT PANEL - Enterprises (Dark Gray Background) */}
             <motion.div
               className="relative flex-1 group cursor-pointer overflow-hidden"
               onHoverStart={() => setHoveredPanel('enterprise')}
@@ -197,14 +170,14 @@ export function SplitHeroSection() {
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
-              {/* Gray Gradient Background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-700 via-gray-800 to-gray-900" />
+              {/* Dark Gray Gradient Background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-900 to-black" />
               
               {/* Animated Background Effects */}
               <div className="absolute inset-0 opacity-20">
-                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-gray-600/30 to-slate-700/30 animate-blob" />
-                <div className="absolute top-10 left-10 w-96 h-96 bg-slate-500/20 rounded-full blur-3xl animate-morph" />
-                <div className="absolute bottom-10 right-10 w-80 h-80 bg-gray-600/20 rounded-full blur-3xl animate-pulse" />
+                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-gray-700/30 to-slate-800/30 animate-blob" />
+                <div className="absolute top-10 left-10 w-96 h-96 bg-slate-600/20 rounded-full blur-3xl animate-morph" />
+                <div className="absolute bottom-10 right-10 w-80 h-80 bg-gray-700/20 rounded-full blur-3xl animate-pulse" />
               </div>
 
               {/* Content */}
