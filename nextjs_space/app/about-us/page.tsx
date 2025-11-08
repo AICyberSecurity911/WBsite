@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Award, Shield, TrendingUp, Users, Rocket, CheckCircle2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import AdvisoryBoardSection from '@/components/sections/advisory-board-section'
 
 export const metadata: Metadata = {
   title: 'About Us - Elite Expertise for Your Competitive Advantage | QuantumLeap AI',
@@ -281,9 +282,18 @@ export default function AboutUsPage() {
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            {/* CTA Section */}
-            <div className="mt-16 text-center">
+      {/* Strategic Advisory Board Section */}
+      <AdvisoryBoardSection />
+
+      {/* CTA Section */}
+      <section className="py-20 md:py-28 relative">
+        <div className="container relative z-10 px-4">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center">
               <div className="bg-gradient-to-br from-primary-accent/10 via-accent-cyan/10 to-accent-purple/10 border border-accent-cyan/30 rounded-2xl p-8 md:p-12">
                 <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
                   Ready to Work with Elite Expertise?
