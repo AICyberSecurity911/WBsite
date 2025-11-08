@@ -34,7 +34,7 @@ export function CoralReefHero() {
     <section
       className="relative w-full overflow-hidden"
       style={{ 
-        height: 'calc(100vh - 64px)',
+        height: 'calc(100vh - 26px)', // Increased by 1cm (38px)
         marginTop: '64px'
       }}
     >
@@ -52,7 +52,11 @@ export function CoralReefHero() {
             {/* Full-Width Video */}
             <video
               ref={videoRef}
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full"
+              style={{
+                objectFit: 'contain', // Fit entire video without cropping
+                backgroundColor: '#000' // Black background for letterboxing
+              }}
               muted
               playsInline
               autoPlay
@@ -95,13 +99,13 @@ export function CoralReefHero() {
             </div>
           </motion.div>
         ) : (
-          // SLIDE PANELS PHASE - After Video Ends
+          // SLIDE PANELS PHASE - After Video Ends (ALWAYS SPLIT SCREEN LEFT/RIGHT)
           <motion.div
             key="slides-phase"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, ease: 'easeInOut' }}
-            className="relative h-full grid grid-cols-1 lg:grid-cols-2"
+            className="relative h-full grid grid-cols-2"
           >
 
             {/* LEFT SLIDE: Small Business Edition (Deep Forest Teal #004D40) */}
@@ -109,7 +113,7 @@ export function CoralReefHero() {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
-              className="relative bg-primary-bg flex items-center justify-center p-6 sm:p-8 lg:p-12 xl:p-16 h-full"
+              className="relative bg-primary-bg flex items-center justify-center p-4 sm:p-6 md:p-8 lg:p-12 h-full"
             >
               {/* Background Pattern */}
               <div className="absolute inset-0 opacity-5">
@@ -117,14 +121,14 @@ export function CoralReefHero() {
               </div>
 
               {/* Content Container */}
-              <div className="relative z-10 max-w-xl space-y-6">
+              <div className="relative z-10 max-w-xl space-y-4 md:space-y-6">
                 {/* Headline */}
                 <motion.h1
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4, duration: 0.6 }}
                   className="font-display font-bold text-white leading-[1.15]"
-                  style={{ fontSize: 'clamp(2rem, 4.5vw, 3.5rem)' }}
+                  style={{ fontSize: 'clamp(1.5rem, 4vw, 3rem)' }}
                 >
                   Finally Compete with Fortune 500s—
                   <span className="text-primary-accent">Without Their Budget</span>
@@ -135,7 +139,7 @@ export function CoralReefHero() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.6 }}
-                  className="text-lg sm:text-xl text-teal-100 leading-relaxed"
+                  className="text-sm sm:text-base md:text-lg text-teal-100 leading-relaxed"
                 >
                   Stop doing everything yourself. Get the AI workforce and intelligence protection that billion-dollar companies use, at prices that make sense for your business.
                 </motion.p>
@@ -151,10 +155,10 @@ export function CoralReefHero() {
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="bg-primary-accent text-white font-bold text-lg px-10 py-5 rounded-full shadow-2xl hover:shadow-primary-accent/50 transition-all duration-300 hover:ring-4 hover:ring-primary-accent/30 focus-visible:ring-4 focus-visible:ring-primary-accent focus-visible:outline-none group flex items-center justify-center gap-3 w-full sm:w-auto"
+                      className="bg-primary-accent text-white font-bold text-sm md:text-base lg:text-lg px-4 sm:px-6 md:px-8 lg:px-10 py-3 sm:py-4 md:py-5 rounded-full shadow-2xl hover:shadow-primary-accent/50 transition-all duration-300 hover:ring-4 hover:ring-primary-accent/30 focus-visible:ring-4 focus-visible:ring-primary-accent focus-visible:outline-none group flex items-center justify-center gap-2 md:gap-3 w-full"
                     >
-                      <span>Enter Small Business Edition</span>
-                      <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                      <span>View Small Business Solutions</span>
+                      <ArrowRight className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 group-hover:translate-x-1 transition-transform" />
                     </motion.button>
                   </Link>
                 </motion.div>
@@ -166,7 +170,7 @@ export function CoralReefHero() {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
-              className="relative bg-secondary-bg flex items-center justify-center p-6 sm:p-8 lg:p-12 xl:p-16 h-full"
+              className="relative bg-secondary-bg flex items-center justify-center p-4 sm:p-6 md:p-8 lg:p-12 h-full"
             >
               {/* Background Pattern */}
               <div className="absolute inset-0 opacity-5">
@@ -177,14 +181,14 @@ export function CoralReefHero() {
               <div className="absolute inset-0 bg-gradient-radial from-primary-accent/10 via-transparent to-transparent opacity-30" />
 
               {/* Content Container */}
-              <div className="relative z-10 max-w-xl space-y-6">
+              <div className="relative z-10 max-w-xl space-y-4 md:space-y-6">
                 {/* Headline */}
                 <motion.h1
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4, duration: 0.6 }}
                   className="font-display font-bold text-white leading-[1.15]"
-                  style={{ fontSize: 'clamp(2rem, 4.5vw, 3.5rem)' }}
+                  style={{ fontSize: 'clamp(1.5rem, 4vw, 3rem)' }}
                 >
                   Enterprise AI That Turns{' '}
                   <span className="text-primary-accent">Risk Into Profit</span>
@@ -195,7 +199,7 @@ export function CoralReefHero() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.6 }}
-                  className="text-lg sm:text-xl text-gray-300 leading-relaxed"
+                  className="text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed"
                 >
                   Stop gambling with AI experiments. Scale automation with intelligence-grade security to capture 30% efficiency gains while competitors fail.
                 </motion.p>
@@ -211,10 +215,10 @@ export function CoralReefHero() {
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="bg-primary-accent text-white font-bold text-lg px-10 py-5 rounded-full shadow-2xl hover:shadow-primary-accent/50 transition-all duration-300 hover:ring-4 hover:ring-primary-accent/30 focus-visible:ring-4 focus-visible:ring-primary-accent focus-visible:outline-none group flex items-center justify-center gap-3 w-full sm:w-auto"
+                      className="bg-primary-accent text-white font-bold text-sm md:text-base lg:text-lg px-4 sm:px-6 md:px-8 lg:px-10 py-3 sm:py-4 md:py-5 rounded-full shadow-2xl hover:shadow-primary-accent/50 transition-all duration-300 hover:ring-4 hover:ring-primary-accent/30 focus-visible:ring-4 focus-visible:ring-primary-accent focus-visible:outline-none group flex items-center justify-center gap-2 md:gap-3 w-full"
                     >
-                      <span>Enter Enterprise Edition</span>
-                      <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                      <span>View Enterprise Solutions</span>
+                      <ArrowRight className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 group-hover:translate-x-1 transition-transform" />
                     </motion.button>
                   </Link>
                 </motion.div>
