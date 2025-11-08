@@ -24,7 +24,7 @@ export function SplitHeroSection() {
   }, [])
 
   return (
-    <section className="relative w-full overflow-hidden bg-slate-950" style={{ height: 'calc(100vh - 4rem)' }}>
+    <section className="relative w-full overflow-hidden bg-slate-950 mt-16" style={{ height: 'calc(100vh - 4rem)' }}>
       <AnimatePresence mode="wait">
         {!videoEnded ? (
           // VIDEO PHASE
@@ -59,12 +59,12 @@ export function SplitHeroSection() {
             {/* Text Overlays Container */}
             <div className="absolute inset-0 flex flex-col md:flex-row">
               {/* LEFT - "Entrepreneur" Overlay */}
-              <div className="relative flex-1 flex items-start justify-center pt-6 md:pt-8 lg:pt-10">
+              <div className="relative flex-1 flex items-start justify-center pt-3 md:pt-4 lg:pt-5">
                 <motion.h1
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.8 }}
-                  className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white drop-shadow-2xl"
+                  className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white drop-shadow-2xl"
                   style={{
                     textShadow: '0 4px 20px rgba(0,0,0,0.9), 0 0 40px rgba(255,255,255,0.4)'
                   }}
@@ -74,12 +74,12 @@ export function SplitHeroSection() {
               </div>
 
               {/* RIGHT - "Enterprise" Overlay */}
-              <div className="relative flex-1 flex items-start justify-center pt-6 md:pt-8 lg:pt-10">
+              <div className="relative flex-1 flex items-start justify-center pt-3 md:pt-4 lg:pt-5">
                 <motion.h1
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.8 }}
-                  className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white drop-shadow-2xl"
+                  className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white drop-shadow-2xl"
                   style={{
                     textShadow: '0 4px 20px rgba(0,0,0,0.9), 0 0 40px rgba(255,255,255,0.4)'
                   }}
