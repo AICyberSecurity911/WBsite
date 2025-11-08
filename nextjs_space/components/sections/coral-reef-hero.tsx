@@ -1,17 +1,14 @@
-
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { motion, useInView, AnimatePresence } from 'framer-motion'
-import { ArrowRight, Shield, Zap, Clock } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
 export function CoralReefHero() {
   const [mounted, setMounted] = useState(false)
   const [videoEnded, setVideoEnded] = useState(false)
-  const ref = useRef(null)
   const videoRef = useRef<HTMLVideoElement>(null)
-  const isInView = useInView(ref, { once: true, amount: 0.3 })
 
   useEffect(() => {
     setMounted(true)
@@ -19,7 +16,7 @@ export function CoralReefHero() {
     if (videoRef.current) {
       videoRef.current.play().catch(err => {
         console.log('Autoplay prevented:', err)
-        // If autoplay fails, just show the panels
+        // If autoplay fails, just show the slides
         setVideoEnded(true)
       })
     }
@@ -35,7 +32,6 @@ export function CoralReefHero() {
 
   return (
     <section
-      ref={ref}
       className="relative w-full overflow-hidden"
       style={{ 
         height: 'calc(100vh - 64px)',
@@ -44,7 +40,7 @@ export function CoralReefHero() {
     >
       <AnimatePresence mode="wait">
         {!videoEnded ? (
-          // VIDEO PHASE
+          // VIDEO PHASE - Full Screen Split Video with Text Overlays
           <motion.div
             key="video-phase"
             initial={{ opacity: 0 }}
@@ -65,18 +61,15 @@ export function CoralReefHero() {
               <source src="/hero-video.mp4" type="video/mp4" />
             </video>
             
-            {/* Dark Overlay for Text Contrast */}
-            <div className="absolute inset-0 bg-black/30" />
-            
-            {/* Text Overlays Container */}
+            {/* Text Overlays Container - Split Screen Format */}
             <div className="absolute inset-0 flex flex-col md:flex-row">
               {/* LEFT - "Entrepreneur" Overlay */}
-              <div className="relative flex-1 flex items-start justify-center pt-8 md:pt-12 lg:pt-16">
+              <div className="relative flex-1 flex items-start justify-start pt-4 pl-6 md:pt-6 md:pl-8 lg:pt-8 lg:pl-12">
                 <motion.h1
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5, duration: 0.8 }}
-                  className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white drop-shadow-2xl"
+                  transition={{ delay: 0.3, duration: 0.8 }}
+                  className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white drop-shadow-2xl"
                   style={{
                     textShadow: '0 4px 20px rgba(0,0,0,0.9), 0 0 40px rgba(255,255,255,0.4)'
                   }}
@@ -86,12 +79,12 @@ export function CoralReefHero() {
               </div>
 
               {/* RIGHT - "Enterprise" Overlay */}
-              <div className="relative flex-1 flex items-start justify-center pt-8 md:pt-12 lg:pt-16">
+              <div className="relative flex-1 flex items-start justify-start pt-4 pl-6 md:pt-6 md:pl-8 lg:pt-8 lg:pl-12">
                 <motion.h1
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5, duration: 0.8 }}
-                  className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white drop-shadow-2xl"
+                  transition={{ delay: 0.3, duration: 0.8 }}
+                  className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white drop-shadow-2xl"
                   style={{
                     textShadow: '0 4px 20px rgba(0,0,0,0.9), 0 0 40px rgba(255,255,255,0.4)'
                   }}
@@ -102,16 +95,16 @@ export function CoralReefHero() {
             </div>
           </motion.div>
         ) : (
-          // SPLIT PANELS PHASE
+          // SLIDE PANELS PHASE - After Video Ends
           <motion.div
-            key="panels-phase"
+            key="slides-phase"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, ease: 'easeInOut' }}
             className="relative h-full grid grid-cols-1 lg:grid-cols-2"
           >
 
-            {/* LEFT PANEL: Content (Deep Forest Teal #004D40) */}
+            {/* LEFT SLIDE: Small Business Edition (Deep Forest Teal #004D40) */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -124,200 +117,106 @@ export function CoralReefHero() {
               </div>
 
               {/* Content Container */}
-              <div className="relative z-10 max-w-xl space-y-8">
-                {/* Eyebrow */}
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4, duration: 0.6 }}
-                  className="flex items-center gap-2"
-                >
-                  <div className="h-px w-8 bg-primary-accent" />
-                  <span className="text-sm font-medium tracking-wider uppercase text-primary-accent">
-                    AI-Powered Business Transformation
-                  </span>
-                </motion.div>
-
+              <div className="relative z-10 max-w-xl space-y-6">
                 {/* Headline */}
                 <motion.h1
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5, duration: 0.6 }}
-                  className="font-display font-bold text-white leading-[1.1]"
-                  style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}
+                  transition={{ delay: 0.4, duration: 0.6 }}
+                  className="font-display font-bold text-white leading-[1.15]"
+                  style={{ fontSize: 'clamp(2rem, 4.5vw, 3.5rem)' }}
                 >
-                  Fire Your Biggest{' '}
-                  <span className="text-primary-accent">Operational Risks</span>
-                  <br />
-                  Hire Your Most{' '}
-                  <span className="text-white">
-                    Reliable Employees
-                  </span>
+                  Finally Compete with Fortune 500s—
+                  <span className="text-primary-accent">Without Their Budget</span>
                 </motion.h1>
 
                 {/* Subheadline */}
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6, duration: 0.6 }}
+                  transition={{ delay: 0.5, duration: 0.6 }}
                   className="text-lg sm:text-xl text-teal-100 leading-relaxed"
                 >
-                  Deploy battle-tested AI employees trained on 10,000+ hours. Zero interviews. 
-                  Zero drama. <span className="text-white font-semibold">87% cost savings</span>, 
-                  <span className="text-white font-semibold"> 99.2% accuracy rate</span>.
+                  Stop doing everything yourself. Get the AI workforce and intelligence protection that billion-dollar companies use, at prices that make sense for your business.
                 </motion.p>
 
-                {/* CTA Buttons */}
+                {/* CTA Button */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.7, duration: 0.6 }}
-                  className="flex flex-col sm:flex-row gap-4"
+                  transition={{ delay: 0.6, duration: 0.6 }}
+                  className="pt-4"
                 >
-                  {/* Primary CTA: Coral Background */}
                   <Link href="/business-transformation">
                     <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="bg-primary-accent text-white font-semibold text-base px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:ring-2 hover:ring-primary-accent hover:ring-offset-2 hover:ring-offset-primary-bg focus-visible:ring-2 focus-visible:ring-primary-accent focus-visible:outline-none group flex items-center justify-center gap-2"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="bg-primary-accent text-white font-bold text-lg px-10 py-5 rounded-full shadow-2xl hover:shadow-primary-accent/50 transition-all duration-300 hover:ring-4 hover:ring-primary-accent/30 focus-visible:ring-4 focus-visible:ring-primary-accent focus-visible:outline-none group flex items-center justify-center gap-3 w-full sm:w-auto"
                     >
-                      <span>Get Started Free</span>
-                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                      <span>Enter Small Business Edition</span>
+                      <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                     </motion.button>
                   </Link>
-
-                  {/* Secondary CTA: White Background with Teal Text */}
-                  <Link href="/consultation">
-                    <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="bg-white text-primary-bg font-semibold text-base px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:ring-2 hover:ring-white hover:ring-offset-2 hover:ring-offset-primary-bg focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none flex items-center justify-center gap-2"
-                    >
-                      <span>Book a Call</span>
-                    </motion.button>
-                  </Link>
-                </motion.div>
-
-                {/* Trust Indicators */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.8, duration: 0.6 }}
-                  className="flex flex-wrap items-center gap-6 pt-4"
-                >
-                  <div className="flex items-center gap-2">
-                    <Shield className="w-5 h-5 text-primary-accent" />
-                    <span className="text-sm text-teal-100">99.2% Uptime</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Zap className="w-5 h-5 text-primary-accent" />
-                    <span className="text-sm text-teal-100">Deploy in Minutes</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-primary-accent" />
-                    <span className="text-sm text-teal-100">24/7 Support</span>
-                  </div>
                 </motion.div>
               </div>
             </motion.div>
 
-            {/* RIGHT PANEL: Visual (Almost Black #121212) */}
+            {/* RIGHT SLIDE: Enterprise Edition (Almost Black #121212) */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
-              className="relative bg-secondary-bg flex items-center justify-center p-8 lg:p-12 h-full"
+              className="relative bg-secondary-bg flex items-center justify-center p-6 sm:p-8 lg:p-12 xl:p-16 h-full"
             >
-              {/* Ambient Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-radial from-primary-accent/10 via-transparent to-transparent opacity-40" />
-              
-              {/* Hero Visual Container */}
-              <div className="relative w-full max-w-lg aspect-square">
-                {/* Floating Orb Animation */}
-                <motion.div
-                  animate={{
-                    y: [0, -20, 0],
-                    scale: [1, 1.05, 1],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: 'easeInOut'
-                  }}
-                  className="absolute inset-0 flex items-center justify-center"
-                >
-                  {/* Central Orb */}
-                  <div className="relative w-64 h-64 lg:w-80 lg:h-80">
-                    {/* Outer Ring */}
-                    <motion.div
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                      className="absolute inset-0 rounded-full border-2 border-primary-accent/30"
-                    />
-                    
-                    {/* Middle Ring */}
-                    <motion.div
-                      animate={{ rotate: -360 }}
-                      transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
-                      className="absolute inset-4 rounded-full border-2 border-primary-accent/20"
-                    />
-                    
-                    {/* Inner Glow */}
-                    <div className="absolute inset-8 rounded-full bg-gradient-to-br from-primary-accent/50 via-primary-accent/30 to-primary-accent/10 blur-3xl" />
-                    
-                    {/* Core */}
-                    <div className="absolute inset-12 rounded-full bg-gradient-to-br from-primary-accent to-primary-accent/80 flex items-center justify-center shadow-2xl">
-                      <Zap className="w-16 h-16 text-white" strokeWidth={2} />
-                    </div>
-                  </div>
-                </motion.div>
-
-                {/* Floating Accent Dots */}
-                {[
-                  { x: -100, y: -50, delay: 0 },
-                  { x: 100, y: -80, delay: 1 },
-                  { x: 120, y: 60, delay: 2 },
-                  { x: -120, y: 80, delay: 1.5 },
-                ].map((dot, i) => (
-                  <motion.div
-                    key={i}
-                    animate={{
-                      y: [0, -15, 0],
-                      opacity: [0.4, 0.8, 0.4]
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      delay: dot.delay,
-                      ease: 'easeInOut'
-                    }}
-                    className="absolute"
-                    style={{
-                      left: '50%',
-                      top: '50%',
-                      transform: `translate(${dot.x}px, ${dot.y}px)`,
-                    }}
-                  >
-                    <div className="w-3 h-3 rounded-full bg-primary-accent shadow-lg shadow-primary-accent/50" />
-                  </motion.div>
-                ))}
+              {/* Background Pattern */}
+              <div className="absolute inset-0 opacity-5">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,127,80,0.1)_1px,transparent_1px)] bg-[length:32px_32px]" />
               </div>
 
-              {/* Floating Stats Cards */}
-              <div className="absolute bottom-8 left-8 right-8 grid grid-cols-2 gap-4">
-                <motion.div
-                  whileHover={{ scale: 1.03 }}
-                  className="bg-secondary-bg backdrop-blur-sm border border-white/20 rounded-2xl p-4 transition-all duration-300 hover:ring-2 hover:ring-accent-cyan cursor-pointer"
+              {/* Ambient Glow Effect */}
+              <div className="absolute inset-0 bg-gradient-radial from-primary-accent/10 via-transparent to-transparent opacity-30" />
+
+              {/* Content Container */}
+              <div className="relative z-10 max-w-xl space-y-6">
+                {/* Headline */}
+                <motion.h1
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4, duration: 0.6 }}
+                  className="font-display font-bold text-white leading-[1.15]"
+                  style={{ fontSize: 'clamp(2rem, 4.5vw, 3.5rem)' }}
                 >
-                  <p className="text-primary-accent font-bold text-2xl">87%</p>
-                  <p className="text-white/80 text-sm">Cost Savings</p>
-                </motion.div>
-                <motion.div
-                  whileHover={{ scale: 1.03 }}
-                  className="bg-secondary-bg backdrop-blur-sm border border-white/20 rounded-2xl p-4 transition-all duration-300 hover:ring-2 hover:ring-accent-cyan cursor-pointer"
+                  Enterprise AI That Turns{' '}
+                  <span className="text-primary-accent">Risk Into Profit</span>
+                </motion.h1>
+
+                {/* Subheadline */}
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5, duration: 0.6 }}
+                  className="text-lg sm:text-xl text-gray-300 leading-relaxed"
                 >
-                  <p className="text-primary-accent font-bold text-2xl">99.2%</p>
-                  <p className="text-white/80 text-sm">Accuracy Rate</p>
+                  Stop gambling with AI experiments. Scale automation with intelligence-grade security to capture 30% efficiency gains while competitors fail.
+                </motion.p>
+
+                {/* CTA Button */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6, duration: 0.6 }}
+                  className="pt-4"
+                >
+                  <Link href="/consultation">
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="bg-primary-accent text-white font-bold text-lg px-10 py-5 rounded-full shadow-2xl hover:shadow-primary-accent/50 transition-all duration-300 hover:ring-4 hover:ring-primary-accent/30 focus-visible:ring-4 focus-visible:ring-primary-accent focus-visible:outline-none group flex items-center justify-center gap-3 w-full sm:w-auto"
+                    >
+                      <span>Enter Enterprise Edition</span>
+                      <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                    </motion.button>
+                  </Link>
                 </motion.div>
               </div>
             </motion.div>
