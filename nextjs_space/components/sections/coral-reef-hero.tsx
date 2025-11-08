@@ -135,7 +135,7 @@ export function CoralReefHero() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.6 }}
-                  className="text-sm sm:text-base md:text-lg text-teal-100 leading-relaxed"
+                  className="text-sm sm:text-base md:text-lg text-white leading-relaxed"
                 >
                   Stop doing everything yourself. Get the AI workforce and intelligence protection that billion-dollar companies use, at prices that make sense for your business.
                 </motion.p>
@@ -195,7 +195,7 @@ export function CoralReefHero() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.6 }}
-                  className="text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed"
+                  className="text-sm sm:text-base md:text-lg text-white leading-relaxed"
                 >
                   Stop gambling with AI experiments. Scale automation with intelligence-grade security to capture 30% efficiency gains while competitors fail.
                 </motion.p>

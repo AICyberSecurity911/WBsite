@@ -51,7 +51,7 @@ export function TrustBarSection() {
           className="relative overflow-hidden"
         >
           <div className="mb-4 text-center">
-            <p className="text-sm font-semibold text-gray-600 dark:text-gray-400">
+            <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">
               Trusted by companies that demand Perfection
             </p>
           </div>

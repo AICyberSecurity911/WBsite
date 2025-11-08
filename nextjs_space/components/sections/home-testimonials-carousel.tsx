@@ -121,7 +121,7 @@ export function HomeTestimonialsCarousel() {
             </span>
           </h2>
           
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+          <p className="text-lg text-slate-700 dark:text-gray-200 max-w-2xl mx-auto">
             See how businesses like yours transformed operations, reclaimed their time, and secured their growth
           </p>
         </motion.div>
@@ -180,7 +180,7 @@ export function HomeTestimonialsCarousel() {
                         <div className="w-2 h-2 rounded-full bg-red-500" />
                         <span className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">Before</span>
                       </div>
-                      <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{testimonial.before}</p>
+                      <p className="text-sm text-slate-700 dark:text-gray-200 leading-relaxed">{testimonial.before}</p>
                     </div>
                     
                     <div className="space-y-2">
@@ -188,7 +188,7 @@ export function HomeTestimonialsCarousel() {
                         <div className="w-2 h-2 rounded-full bg-green-500" />
                         <span className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">After</span>
                       </div>
-                      <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{testimonial.after}</p>
+                      <p className="text-sm text-slate-700 dark:text-gray-200 leading-relaxed">{testimonial.after}</p>
                     </div>
                   </div>
 
@@ -198,7 +198,7 @@ export function HomeTestimonialsCarousel() {
                       <div className="font-bold text-lg text-slate-900 dark:text-white">
                         {testimonial.author}
                       </div>
-                      <div className="text-sm text-slate-600 dark:text-slate-400">
+                      <div className="text-sm text-slate-700 dark:text-gray-200">
                         {testimonial.title}, {testimonial.company}
                       </div>
                     </div>
@@ -249,7 +249,7 @@ export function HomeTestimonialsCarousel() {
             Get Your Free Assessment
             <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
           </a>
-          <p className="text-sm text-slate-600 dark:text-slate-400 mt-3">
+          <p className="text-sm text-slate-700 dark:text-gray-200 mt-3">
             See your potential ROI in 3 minutes
           </p>
         </motion.div>

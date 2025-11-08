@@ -75,7 +75,7 @@ export function FounderStorySection() {
               transition={{ delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <blockquote className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed border-l-4 border-primary-accent pl-6 italic">
+              <blockquote className="text-lg text-slate-800 dark:text-gray-100 leading-relaxed border-l-4 border-primary-accent pl-6 italic">
                 "I've spent 20 years building systems for Fortune 500s — and I've also been the exhausted small-business owner doing payroll at midnight. I founded QuantumLeap AI to bridge that gap: bringing enterprise-level power to everyday entrepreneurs. When you partner with us, you don't just get AI and Security— you get freedom, clarity, and a team that never quits."
               </blockquote>
 
