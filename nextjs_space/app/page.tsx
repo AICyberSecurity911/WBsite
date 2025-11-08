@@ -4,6 +4,7 @@ import { Footer } from '@/components/layout/footer'
 import { SplitHeroSection } from '@/components/sections/split-hero-section'
 import { TrustBarSection } from '@/components/sections/trust-bar-section'
 import { FounderStorySection } from '@/components/sections/founder-story-section'
+import AdvisoryBoardSection from '@/components/sections/advisory-board-section'
 
 export const metadata = {
   title: 'AI Solutions for Business Growth & Enterprise Security | QuantumLeap AI',
@@ -23,6 +24,7 @@ export default function LandingPage() {
         <SplitHeroSection />
         <TrustBarSection />
         <FounderStorySection />
+        <AdvisoryBoardSection />
       </main>
       <Footer />
     </div>
