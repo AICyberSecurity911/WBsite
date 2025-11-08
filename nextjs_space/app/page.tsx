@@ -1,7 +1,7 @@
 
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
-import { SplitHeroSection } from '@/components/sections/split-hero-section'
+import { CoralReefHero } from '@/components/sections/coral-reef-hero'
 import { TrustBarSection } from '@/components/sections/trust-bar-section'
 import { ValuePropositionSection } from '@/components/sections/value-proposition-section'
 import { FounderStorySection } from '@/components/sections/founder-story-section'
@@ -23,7 +23,7 @@ export default function LandingPage() {
     <div className="min-h-screen bg-white dark:bg-slate-950">
       <Header />
       <main>
-        <SplitHeroSection />
+        <CoralReefHero />
         <TrustBarSection />
         <ValuePropositionSection />
         <FounderStorySection />
