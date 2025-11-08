@@ -52,11 +52,7 @@ export function CoralReefHero() {
             {/* Full-Width Video */}
             <video
               ref={videoRef}
-              className="absolute inset-0 w-full h-full"
-              style={{
-                objectFit: 'contain', // Fit entire video without cropping
-                backgroundColor: '#000' // Black background for letterboxing
-              }}
+              className="absolute inset-0 w-full h-full object-cover"
               muted
               playsInline
               autoPlay
