@@ -63,8 +63,8 @@ export function CoralReefHero() {
             
             {/* Text Overlays Container - Split Screen Format */}
             <div className="absolute inset-0 flex flex-col md:flex-row">
-              {/* LEFT - "Entrepreneur" Overlay */}
-              <div className="relative flex-1 flex items-start justify-start pt-4 pl-6 md:pt-6 md:pl-8 lg:pt-8 lg:pl-12">
+              {/* LEFT - "Entrepreneur" Overlay - 3mm (11px) top margin */}
+              <div className="relative flex-1 flex items-start justify-start pl-6 md:pl-8 lg:pl-12" style={{ paddingTop: '11px' }}>
                 <motion.h1
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -78,8 +78,8 @@ export function CoralReefHero() {
                 </motion.h1>
               </div>
 
-              {/* RIGHT - "Enterprise" Overlay */}
-              <div className="relative flex-1 flex items-start justify-start pt-4 pl-6 md:pt-6 md:pl-8 lg:pt-8 lg:pl-12">
+              {/* RIGHT - "Enterprise" Overlay - 3mm (11px) top margin */}
+              <div className="relative flex-1 flex items-start justify-start pl-6 md:pl-8 lg:pl-12" style={{ paddingTop: '11px' }}>
                 <motion.h1
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
