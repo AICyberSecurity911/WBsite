@@ -94,11 +94,11 @@ export default function AdvisoryBoardSection() {
   const itemsPerPage = 2;
   const totalPages = Math.ceil(boardMembers.length / itemsPerPage);
 
-  // Auto-rotate every 4 seconds
+  // Auto-rotate every 6 seconds
   React.useEffect(() => {
     const interval = setInterval(() => {
       handleNext();
-    }, 4000);
+    }, 6000);
 
     return () => clearInterval(interval);
   }, [currentIndex]);
@@ -120,7 +120,7 @@ export default function AdvisoryBoardSection() {
 
   const slideVariants = {
     enter: (direction: number) => ({
-      x: direction > 0 ? 1000 : -1000,
+      x: direction > 0 ? 300 : -300,
       opacity: 0
     }),
     center: {
@@ -130,7 +130,7 @@ export default function AdvisoryBoardSection() {
     },
     exit: (direction: number) => ({
       zIndex: 0,
-      x: direction < 0 ? 1000 : -1000,
+      x: direction < 0 ? 300 : -300,
       opacity: 0
     })
   };
@@ -204,8 +204,8 @@ export default function AdvisoryBoardSection() {
                 animate="center"
                 exit="exit"
                 transition={{
-                  x: { type: "spring", stiffness: 300, damping: 30 },
-                  opacity: { duration: 0.2 }
+                  x: { type: "spring", stiffness: 200, damping: 35 },
+                  opacity: { duration: 0.4 }
                 }}
                 className="grid md:grid-cols-2 gap-8"
               >
@@ -218,9 +218,9 @@ export default function AdvisoryBoardSection() {
                     transition={{ delay: idx * 0.1 }}
                     whileHover={{ y: -8 }}
                   >
-                    <div className="p-6 sm:p-8 flex flex-col gap-6 h-full min-h-[360px]">
-                      {/* Top Section: Image + Name/Title */}
-                      <div className="flex items-start gap-4 sm:gap-6">
+                    <div className="p-6 sm:p-8 flex flex-col gap-6 h-full min-h-[380px]">
+                      {/* Top Section: Image + Name Only */}
+                      <div className="flex items-center gap-4 sm:gap-6">
                         {/* Circular Image */}
                         <div className="flex-shrink-0">
                           <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden ring-4 ring-blue-100 dark:ring-blue-900/30 group-hover:ring-blue-300 dark:group-hover:ring-blue-700 transition-all duration-300 shadow-lg">
@@ -235,22 +235,24 @@ export default function AdvisoryBoardSection() {
                           </div>
                         </div>
 
-                        {/* Name and Title (Right of Image) */}
-                        <div className="flex-1 space-y-2 pt-1">
+                        {/* Name Only (Right of Image) */}
+                        <div className="flex-1">
                           <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-tight">
                             {member.name}
                           </h3>
-                          <p className="text-sm sm:text-base font-semibold text-blue-600 dark:text-blue-400 leading-snug">
-                            {member.title}
-                          </p>
                         </div>
                       </div>
 
                       {/* Divider */}
                       <div className="h-px bg-gradient-to-r from-transparent via-slate-300 dark:via-slate-600 to-transparent" />
 
-                      {/* Bottom Section: Centered Content */}
-                      <div className="flex-1 flex flex-col items-center justify-center space-y-4 text-center px-2">
+                      {/* Bottom Section: Title + Centered Content */}
+                      <div className="flex-1 flex flex-col items-center justify-start space-y-4 text-center px-2">
+                        {/* Title */}
+                        <p className="text-sm sm:text-base font-semibold text-blue-600 dark:text-blue-400 leading-snug">
+                          {member.title}
+                        </p>
+
                         {/* Claim to Fame */}
                         <div className="flex items-start gap-3 justify-center max-w-prose">
                           <div className="mt-1.5 w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 flex-shrink-0" />
