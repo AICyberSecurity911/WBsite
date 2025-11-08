@@ -3,6 +3,10 @@
 
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
+import { ThemeProvider } from '@/components/smb/theme-context'
+import { ThemeToggle } from '@/components/smb/theme-toggle'
+import { HeroSection } from '@/components/smb/hero-section'
+import { ScrollProgress } from '@/components/smb/scroll-progress'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { 
@@ -37,19 +41,11 @@ const staggerContainer = {
 
 export default function SMBLandingPage() {
   const [mounted, setMounted] = useState(false)
-  const videoRef = useRef<HTMLVideoElement>(null)
-  const [heroRef, heroInView] = useInView({ threshold: 0.1, triggerOnce: true })
   const [servicesRef, servicesInView] = useInView({ threshold: 0.1, triggerOnce: true })
   const [testimonialsRef, testimonialsInView] = useInView({ threshold: 0.1, triggerOnce: true })
 
   useEffect(() => {
     setMounted(true)
-    // Autoplay video on mount
-    if (videoRef.current) {
-      videoRef.current.play().catch(err => {
-        console.log('Autoplay prevented:', err)
-      })
-    }
   }, [])
 
   // Schema markup for SEO/AEO/AGO
@@ -85,106 +81,28 @@ export default function SMBLandingPage() {
   }
 
   return (
-    <>
+    <ThemeProvider>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
       />
       
-      <div className="min-h-screen bg-secondary-bg">
-        <Header />
+      <ScrollProgress />
+      
+      <div className="min-h-screen transition-colors duration-300 dark:bg-[#0A0E27] bg-white">
+        {/* Header with Theme Toggle */}
+        <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/80 dark:bg-[#0A0E27]/80 border-b border-gray-200 dark:border-white/10">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-16">
+              <Header />
+              <ThemeToggle />
+            </div>
+          </div>
+        </header>
         
         <main>
-          {/* Hero Section with Video */}
-          <section 
-            ref={heroRef}
-            className="relative w-full overflow-hidden"
-            style={{ 
-              minHeight: 'calc(100vh - 64px)',
-              marginTop: '64px'
-            }}
-          >
-            {/* Background Video */}
-            <div className="absolute inset-0 w-full h-full">
-              <video
-                ref={videoRef}
-                className="absolute inset-0 w-full h-full object-cover"
-                muted
-                loop
-                playsInline
-                autoPlay
-              >
-                <source src="/smb-hero-video.mp4" type="video/mp4" />
-              </video>
-              {/* Dark overlay for text readability */}
-              <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/80" />
-            </div>
-
-            {/* Content Overlay */}
-            <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
-              <motion.div
-                initial="hidden"
-                animate={heroInView ? "visible" : "hidden"}
-                variants={staggerContainer}
-                className="max-w-4xl mx-auto text-center py-20 md:py-32"
-              >
-                {/* Badge */}
-                <motion.div variants={fadeInUp} className="inline-block mb-6">
-                  <span className="inline-flex items-center px-4 py-2 rounded-full bg-accent-cyan/20 border border-accent-cyan text-accent-cyan text-sm font-semibold">
-                    <Zap className="w-4 h-4 mr-2" />
-                    Small Business Edition
-                  </span>
-                </motion.div>
-
-                {/* Headline */}
-                <motion.h1 
-                  variants={fadeInUp}
-                  className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight"
-                >
-                  Finally Compete with Fortune 500s—
-                  <span className="text-primary-accent"> Without Their Budget</span>
-                </motion.h1>
-
-                {/* Subheadline */}
-                <motion.p 
-                  variants={fadeInUp}
-                  className="text-xl md:text-2xl text-gray-200 mb-10 max-w-3xl mx-auto leading-relaxed"
-                >
-                  Stop doing everything yourself. Get the AI workforce and intelligence protection that billion-dollar companies use, at prices that make sense for your business.
-                </motion.p>
-
-                {/* CTA Button */}
-                <motion.div variants={fadeInUp}>
-                  <Link 
-                    href="/consultation"
-                    className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary-accent to-accent-coral hover:from-accent-coral hover:to-primary-accent text-white text-lg font-bold rounded-xl shadow-2xl hover:shadow-primary-accent/50 transition-all duration-300 transform hover:scale-105"
-                  >
-                    Enter Small Business Edition
-                    <ArrowRight className="w-5 h-5" />
-                  </Link>
-                </motion.div>
-
-                {/* Trust indicators */}
-                <motion.div 
-                  variants={fadeInUp}
-                  className="mt-12 flex flex-wrap justify-center gap-8 text-gray-300"
-                >
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-accent-lime" />
-                    <span className="text-sm">No credit card required</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-accent-lime" />
-                    <span className="text-sm">Setup in 48 hours</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-accent-lime" />
-                    <span className="text-sm">Cancel anytime</span>
-                  </div>
-                </motion.div>
-              </motion.div>
-            </div>
-          </section>
+          {/* Hero Section - NEW DESIGN */}
+          <HeroSection />
 
           {/* Services Preview Section */}
           <section 
@@ -563,6 +481,6 @@ export default function SMBLandingPage() {
 
         <Footer />
       </div>
-    </>
+    </ThemeProvider>
   )
 }
