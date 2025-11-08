@@ -218,26 +218,25 @@ export default function AdvisoryBoardSection() {
                     transition={{ delay: idx * 0.1 }}
                     whileHover={{ y: -8 }}
                   >
-                    {/* Horizontal Layout with Small Circular Image */}
-                    <div className="p-6 sm:p-8 flex flex-col sm:flex-row gap-6 h-full min-h-[320px] sm:min-h-[280px]">
-                      {/* Circular Image */}
-                      <div className="flex-shrink-0 mx-auto sm:mx-0 sm:self-start">
-                        <div className="relative w-32 h-32 sm:w-36 sm:h-36 rounded-full overflow-hidden ring-4 ring-blue-100 dark:ring-blue-900/30 group-hover:ring-blue-300 dark:group-hover:ring-blue-700 transition-all duration-300 shadow-lg">
-                          <Image
-                            src={member.image}
-                            alt={`${member.name} - ${member.title}`}
-                            fill
-                            className="object-cover group-hover:scale-110 transition-transform duration-500"
-                            sizes="144px"
-                            priority={idx < 2}
-                          />
+                    <div className="p-6 sm:p-8 flex flex-col gap-6 h-full min-h-[360px]">
+                      {/* Top Section: Image + Name/Title */}
+                      <div className="flex items-start gap-4 sm:gap-6">
+                        {/* Circular Image */}
+                        <div className="flex-shrink-0">
+                          <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden ring-4 ring-blue-100 dark:ring-blue-900/30 group-hover:ring-blue-300 dark:group-hover:ring-blue-700 transition-all duration-300 shadow-lg">
+                            <Image
+                              src={member.image}
+                              alt={`${member.name} - ${member.title}`}
+                              fill
+                              className="object-cover group-hover:scale-110 transition-transform duration-500"
+                              sizes="112px"
+                              priority={idx < 2}
+                            />
+                          </div>
                         </div>
-                      </div>
 
-                      {/* Content Section */}
-                      <div className="flex-1 flex flex-col space-y-4 text-center sm:text-left">
-                        {/* Name and Title */}
-                        <div className="space-y-2">
+                        {/* Name and Title (Right of Image) */}
+                        <div className="flex-1 space-y-2 pt-1">
                           <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-tight">
                             {member.name}
                           </h3>
@@ -245,20 +244,23 @@ export default function AdvisoryBoardSection() {
                             {member.title}
                           </p>
                         </div>
+                      </div>
 
-                        {/* Divider */}
-                        <div className="h-px bg-gradient-to-r from-transparent via-slate-300 dark:via-slate-600 to-transparent" />
+                      {/* Divider */}
+                      <div className="h-px bg-gradient-to-r from-transparent via-slate-300 dark:via-slate-600 to-transparent" />
 
+                      {/* Bottom Section: Centered Content */}
+                      <div className="flex-1 flex flex-col items-center justify-center space-y-4 text-center px-2">
                         {/* Claim to Fame */}
-                        <div className="flex items-start gap-3 justify-center sm:justify-start">
+                        <div className="flex items-start gap-3 justify-center max-w-prose">
                           <div className="mt-1.5 w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 flex-shrink-0" />
-                          <p className="text-sm font-medium text-slate-700 dark:text-slate-300 italic text-left leading-relaxed">
+                          <p className="text-sm font-medium text-slate-700 dark:text-slate-300 italic leading-relaxed text-left">
                             {member.claimToFame}
                           </p>
                         </div>
                         
                         {/* Bio */}
-                        <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed text-left flex-1">
+                        <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed text-justify max-w-prose">
                           {member.bio}
                         </p>
                       </div>
