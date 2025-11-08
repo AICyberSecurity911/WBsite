@@ -98,7 +98,7 @@ export function SplitHeroSection() {
             transition={{ duration: 1, ease: 'easeInOut' }}
             className="relative h-full flex flex-col md:flex-row"
           >
-            {/* LEFT PANEL - Entrepreneurs (Teal Background) */}
+            {/* LEFT PANEL - Entrepreneurs (Deep Forest Teal Background) */}
             <motion.div
               className="relative flex-1 group cursor-pointer overflow-hidden"
               onHoverStart={() => setHoveredPanel('smb')}
@@ -106,14 +106,14 @@ export function SplitHeroSection() {
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
-              {/* Teal Gradient Background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-teal-600 via-teal-700 to-teal-800" />
+              {/* Deep Forest Teal Gradient Background (#004D40) */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#004D40] via-[#00695C] to-[#00423A]" />
               
               {/* Animated Background Effects */}
               <div className="absolute inset-0 opacity-20">
-                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-teal-400/30 to-cyan-600/30 animate-blob" />
-                <div className="absolute top-10 right-10 w-96 h-96 bg-teal-400/20 rounded-full blur-3xl animate-morph" />
-                <div className="absolute bottom-10 left-10 w-80 h-80 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" />
+                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#00796B]/30 to-[#004D40]/30 animate-blob" />
+                <div className="absolute top-10 right-10 w-96 h-96 bg-[#00796B]/20 rounded-full blur-3xl animate-morph" />
+                <div className="absolute bottom-10 left-10 w-80 h-80 bg-[#00695C]/20 rounded-full blur-3xl animate-pulse" />
               </div>
 
               {/* Content */}
@@ -125,7 +125,7 @@ export function SplitHeroSection() {
                   transition={{ delay: 0.3, duration: 0.8 }}
                 >
                   <motion.h2 
-                    className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-white drop-shadow-lg"
+                    className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white drop-shadow-lg"
                     initial={{ scale: 0.9 }}
                     animate={{ scale: 1 }}
                     transition={{ delay: 0.5, type: 'spring', stiffness: 200 }}
@@ -134,7 +134,7 @@ export function SplitHeroSection() {
                   </motion.h2>
 
                   <motion.p
-                    className="text-xl md:text-2xl lg:text-3xl font-light text-teal-50 max-w-md mx-auto"
+                    className="text-xl md:text-2xl lg:text-3xl font-light text-white max-w-md mx-auto"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.7 }}
@@ -144,15 +144,15 @@ export function SplitHeroSection() {
 
                   <Link href="/business-transformation">
                     <motion.button
-                      className="mt-8 px-10 py-5 bg-white text-teal-900 rounded-2xl font-bold text-lg md:text-xl shadow-2xl hover:shadow-teal-300/60 hover:bg-teal-50 transition-all flex items-center gap-3 mx-auto group"
+                      className="mt-8 px-10 py-5 bg-white text-[#004D40] rounded-2xl font-bold text-lg md:text-xl shadow-2xl hover:shadow-teal-300/60 hover:bg-teal-50 transition-all flex items-center gap-3 mx-auto group"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.9 }}
                       whileHover={{ scale: 1.05, y: -2 }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      <span className="text-teal-900 font-bold">Enter Here</span>
-                      <ArrowRight className="w-6 h-6 text-teal-900 group-hover:translate-x-2 transition-transform duration-300" />
+                      <span className="text-[#004D40] font-bold">Enter Here</span>
+                      <ArrowRight className="w-6 h-6 text-[#004D40] group-hover:translate-x-2 transition-transform duration-300" />
                     </motion.button>
                   </Link>
                 </motion.div>
@@ -162,7 +162,7 @@ export function SplitHeroSection() {
             {/* DIVIDER LINE */}
             <div className="w-full md:w-1 h-px md:h-full bg-gradient-to-r md:bg-gradient-to-b from-transparent via-white/30 to-transparent" />
 
-            {/* RIGHT PANEL - Enterprises (Dark Gray Background) */}
+            {/* RIGHT PANEL - Enterprises (Vibrant Coral Background) */}
             <motion.div
               className="relative flex-1 group cursor-pointer overflow-hidden"
               onHoverStart={() => setHoveredPanel('enterprise')}
@@ -170,14 +170,14 @@ export function SplitHeroSection() {
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
-              {/* Dark Gray Gradient Background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-900 to-black" />
+              {/* Vibrant Coral Gradient Background (#FF7F50) */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#FF7F50] via-[#FF6347] to-[#FF4500]" />
               
               {/* Animated Background Effects */}
               <div className="absolute inset-0 opacity-20">
-                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-gray-700/30 to-slate-800/30 animate-blob" />
-                <div className="absolute top-10 left-10 w-96 h-96 bg-slate-600/20 rounded-full blur-3xl animate-morph" />
-                <div className="absolute bottom-10 right-10 w-80 h-80 bg-gray-700/20 rounded-full blur-3xl animate-pulse" />
+                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#FF8C69]/30 to-[#FF6347]/30 animate-blob" />
+                <div className="absolute top-10 left-10 w-96 h-96 bg-[#FF8C69]/20 rounded-full blur-3xl animate-morph" />
+                <div className="absolute bottom-10 right-10 w-80 h-80 bg-[#FF7F50]/20 rounded-full blur-3xl animate-pulse" />
               </div>
 
               {/* Content */}
@@ -189,7 +189,7 @@ export function SplitHeroSection() {
                   transition={{ delay: 0.3, duration: 0.8 }}
                 >
                   <motion.h2 
-                    className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-white drop-shadow-lg"
+                    className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white drop-shadow-lg"
                     initial={{ scale: 0.9 }}
                     animate={{ scale: 1 }}
                     transition={{ delay: 0.5, type: 'spring', stiffness: 200 }}
@@ -198,7 +198,7 @@ export function SplitHeroSection() {
                   </motion.h2>
 
                   <motion.p
-                    className="text-xl md:text-2xl lg:text-3xl font-light text-gray-50 max-w-md mx-auto"
+                    className="text-xl md:text-2xl lg:text-3xl font-light text-white max-w-md mx-auto"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.7 }}
@@ -208,15 +208,15 @@ export function SplitHeroSection() {
 
                   <Link href="/consultation">
                     <motion.button
-                      className="mt-8 px-10 py-5 bg-white text-gray-900 rounded-2xl font-bold text-lg md:text-xl shadow-2xl hover:shadow-gray-300/60 hover:bg-gray-50 transition-all flex items-center gap-3 mx-auto group"
+                      className="mt-8 px-10 py-5 bg-white text-[#FF4500] rounded-2xl font-bold text-lg md:text-xl shadow-2xl hover:shadow-orange-300/60 hover:bg-orange-50 transition-all flex items-center gap-3 mx-auto group"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.9 }}
                       whileHover={{ scale: 1.05, y: -2 }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      <span className="text-gray-900 font-bold">Enter Here</span>
-                      <ArrowRight className="w-6 h-6 text-gray-900 group-hover:translate-x-2 transition-transform duration-300" />
+                      <span className="text-[#FF4500] font-bold">Enter Here</span>
+                      <ArrowRight className="w-6 h-6 text-[#FF4500] group-hover:translate-x-2 transition-transform duration-300" />
                     </motion.button>
                   </Link>
                 </motion.div>
