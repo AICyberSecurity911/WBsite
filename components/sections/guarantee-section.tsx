@@ -14,7 +14,7 @@ export function GuaranteeSection() {
   })
 
   return (
-    <section id="guarantee" ref={ref} className="section-padding bg-gradient-to-b from-gray-50 to-white dark:from-gray-900/50 dark:to-dark-bg">
+    <section id="guarantee" ref={ref} className="py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900/50 dark:to-dark-bg">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -69,7 +69,7 @@ export function GuaranteeSection() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.4 + idx * 0.1 }}
-                className="rounded-2xl bg-white p-8 text-center shadow-lg dark:bg-gray-800"
+                className="rounded-2xl bg-gradient-to-br from-teal-50 to-emerald-50 dark:from-teal-950/30 dark:to-emerald-950/30 p-8 text-center shadow-lg border-2 border-teal-200 dark:border-teal-800"
               >
                 <div className={`mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r ${feature.color}`}>
                   <feature.icon className="h-8 w-8 text-white" />
@@ -77,7 +77,7 @@ export function GuaranteeSection() {
                 <h3 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400">
+                <p className="text-gray-700 dark:text-gray-200">
                   {feature.description}
                 </p>
               </motion.div>

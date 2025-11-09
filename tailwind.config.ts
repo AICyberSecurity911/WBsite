@@ -17,11 +17,19 @@ const config: Config = {
       },
     },
     extend: {
+      backgroundSize: {
+        'size-200': '200% 200%',
+      },
+      backgroundPosition: {
+        'pos-0': '0% 50%',
+        'pos-100': '100% 50%',
+      },
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
-        display: ['var(--font-cal-sans)', 'var(--font-inter)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-manrope)', 'var(--font-inter)', 'system-ui', 'sans-serif'],
       },
       colors: {
+        // Shadcn UI Base Colors
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -55,15 +63,33 @@ const config: Config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
-        // Custom QuantumLeap colors - Electric Teal + Coral
+        
+        // 🌊 CORAL REEF PALETTE - Dark Mode First
+        'primary-bg': '#004D40',      // Deep Forest Teal
+        'secondary-bg': '#121212',    // Almost Black
+        'primary-accent': '#FF7F50',  // Vibrant Coral
+        'text-primary': '#FFFFFF',    // White
+        'text-secondary': '#B0BFC6',  // Light Grey
+        
+        // Extended 8-Card Accent Palette
+        'accent-coral': '#FF7F50',    // Vibrant Coral
+        'accent-cyan': '#40E0D0',     // Bright Cyan
+        'accent-purple': '#A755F8',   // Vibrant Purple
+        'accent-gold': '#FFC107',     // Bright Gold
+        'accent-lime': '#C6FF00',     // Lime Green
+        'accent-pink': '#F50057',     // Hot Pink
+        'accent-teal': '#26A69A',     // Bright Teal
+        'accent-white': '#FFFFFF',    // White
+        
+        // Legacy QuantumLeap colors (preserved for backward compatibility)
         teal: {
           50: '#e6faf8',
           100: '#ccf5f1',
           200: '#99ebe3',
           300: '#66e1d5',
           400: '#33d7c7',
-          500: '#00c2b3', // Primary Electric Teal
-          600: '#00a3a3', // Dark mode teal
+          500: '#00c2b3',
+          600: '#00a3a3',
           700: '#008585',
           800: '#006666',
           900: '#004848',
@@ -75,8 +101,8 @@ const config: Config = {
           200: '#ffd1c1',
           300: '#ffb9a2',
           400: '#ffa283',
-          500: '#ff7043', // Primary Coral
-          600: '#e57373', // Dark mode coral
+          500: '#ff7043',
+          600: '#e57373',
           700: '#cc5544',
           800: '#b33333',
           900: '#991122',
@@ -88,7 +114,7 @@ const config: Config = {
           200: '#99a7c3',
           300: '#667ba5',
           400: '#334f87',
-          500: '#071230', // Deep Navy
+          500: '#071230',
           600: '#060e26',
           700: '#050b1d',
           800: '#040813',

@@ -18,7 +18,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-secondary-bg text-white">
       <div className="container">
         {/* Main Footer Content */}
         <div className="grid gap-12 py-16 lg:grid-cols-4">
@@ -31,7 +31,7 @@ export function Footer() {
               <span className="text-xl font-bold">QuantumLeap AI</span>
             </div>
             
-            <p className="mb-6 text-gray-300 lg:max-w-md">
+            <p className="mb-6 text-gray-200 lg:max-w-md">
               Deploy battle-tested AI employees trained on 10,000+ hours of real business operations. 
               Zero interviews. Zero drama. Immediate relief.
             </p>
@@ -42,7 +42,7 @@ export function Footer() {
                 <Mail className="h-4 w-4 text-teal-400" />
                 <a 
                   href="mailto:hello@quantumleap.io"
-                  className="text-gray-300 hover:text-white transition-colors"
+                  className="text-gray-200 hover:text-white transition-colors"
                 >
                   hello@quantumleap.io
                 </a>
@@ -51,7 +51,7 @@ export function Footer() {
                 <Phone className="h-4 w-4 text-teal-400" />
                 <a 
                   href="tel:+1-555-123-4567"
-                  className="text-gray-300 hover:text-white transition-colors"
+                  className="text-gray-200 hover:text-white transition-colors"
                 >
                   (555) 123-4567
                 </a>
@@ -62,15 +62,15 @@ export function Footer() {
             <div className="mt-8 flex items-center gap-6">
               <div className="text-center">
                 <div className="text-2xl font-bold text-teal-400">200+</div>
-                <div className="text-xs text-gray-400">Businesses</div>
+                <div className="text-xs text-gray-200">Businesses</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-emerald-400">99.2%</div>
-                <div className="text-xs text-gray-400">Accuracy</div>
+                <div className="text-xs text-gray-200">Accuracy</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-purple-400">87%</div>
-                <div className="text-xs text-gray-400">Cost Savings</div>
+                <div className="text-xs text-gray-200">Cost Savings</div>
               </div>
             </div>
           </div>
@@ -82,7 +82,7 @@ export function Footer() {
               <li>
                 <Link 
                   href="#ai-employees" 
-                  className="text-gray-300 hover:text-white transition-colors"
+                  className="text-gray-200 hover:text-white transition-colors"
                 >
                   AI Workforce
                 </Link>
@@ -90,7 +90,7 @@ export function Footer() {
               <li>
                 <Link 
                   href="#calculator" 
-                  className="text-gray-300 hover:text-white transition-colors"
+                  className="text-gray-200 hover:text-white transition-colors"
                 >
                   Free Assessment
                 </Link>
@@ -98,7 +98,7 @@ export function Footer() {
               <li>
                 <Link 
                   href="#testimonials" 
-                  className="text-gray-300 hover:text-white transition-colors"
+                  className="text-gray-200 hover:text-white transition-colors"
                 >
                   Success Stories
                 </Link>
@@ -106,7 +106,7 @@ export function Footer() {
               <li>
                 <Link 
                   href="#faq" 
-                  className="text-gray-300 hover:text-white transition-colors"
+                  className="text-gray-200 hover:text-white transition-colors"
                 >
                   FAQ
                 </Link>
@@ -117,7 +117,7 @@ export function Footer() {
           {/* Newsletter Signup */}
           <div>
             <h4 className="mb-4 text-lg font-semibold">Stay Updated</h4>
-            <p className="mb-4 text-sm text-gray-300">
+            <p className="mb-4 text-sm text-gray-200">
               Get the latest insights on AI workforce automation
             </p>
             
@@ -141,20 +141,20 @@ export function Footer() {
         {/* Bottom Footer */}
         <div className="border-t border-gray-800 py-8">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="text-sm text-gray-400">
+            <div className="text-sm text-gray-300">
               © {new Date().getFullYear()} QuantumLeap AI. All rights reserved.
             </div>
             
             <div className="flex gap-6 text-sm">
               <Link 
                 href="/privacy" 
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-300 hover:text-white transition-colors"
               >
                 Privacy Policy
               </Link>
               <Link 
                 href="/terms" 
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-300 hover:text-white transition-colors"
               >
                 Terms of Service
               </Link>
@@ -162,7 +162,7 @@ export function Footer() {
           </div>
 
           {/* Security Badges */}
-          <div className="mt-6 flex items-center justify-center gap-4 text-xs text-gray-500">
+          <div className="mt-6 flex items-center justify-center gap-4 text-xs text-gray-300">
             <div className="flex items-center gap-2">
               <div className="h-2 w-2 rounded-full bg-green-500"></div>
               <span>NASA-recognized security</span>

@@ -1,36 +1,37 @@
 
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
-import { HeroSection } from '@/components/sections/hero-section'
+import { CoralReefHero } from '@/components/sections/coral-reef-hero'
 import { TrustBarSection } from '@/components/sections/trust-bar-section'
-import { ProblemSection } from '@/components/sections/problem-section'
-import { TLDDRSection } from '@/components/sections/tlddr-section'
-import { AIEmployeesSection } from '@/components/sections/ai-employees-section'
-import { CalculatorSection } from '@/components/sections/calculator-section'
-import { TestimonialsSection } from '@/components/sections/testimonials-section'
-import { GuaranteeSection } from '@/components/sections/guarantee-section'
-import { FAQSection } from '@/components/sections/faq-section'
-import { BlogSection } from '@/components/sections/blog-section'
-import { ExitIntentProvider } from '@/components/exit-intent-provider'
+import { HomeTestimonialsCarousel } from '@/components/sections/home-testimonials-carousel'
+import { ValuePropositionSection } from '@/components/sections/value-proposition-section'
+import { FounderStorySection } from '@/components/sections/founder-story-section'
+import AdvisoryBoardSection from '@/components/sections/advisory-board-section'
 
-export default function HomePage() {
+export const metadata = {
+  title: 'AI Business Transformation | Reclaim Your Time & Secure Your Growth | QuantumLeap AI',
+  description: 'Stop working 70-hour weeks or losing millions to preventable risks. Get Fortune 500 AI power and NASA-recognized security for your business. Free assessment in 3 minutes.',
+  keywords: 'AI business automation, small business AI solutions, enterprise AI transformation, cybersecurity for businesses, business process automation, AI workforce solutions',
+  openGraph: {
+    title: 'AI Business Transformation | Reclaim Your Time & Secure Your Growth | QuantumLeap AI',
+    description: 'Stop working 70-hour weeks or losing millions to preventable risks. Get Fortune 500 AI power and NASA-recognized security for your business. Free assessment in 3 minutes.',
+    images: ['/og-image.png'],
+  },
+}
+
+export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-slate-950">
       <Header />
       <main>
-        <HeroSection />
+        <CoralReefHero />
         <TrustBarSection />
-        <ProblemSection />
-        <TLDDRSection />
-        <AIEmployeesSection />
-        <CalculatorSection />
-        <TestimonialsSection />
-        <GuaranteeSection />
-        <FAQSection />
-        <BlogSection />
+        <HomeTestimonialsCarousel />
+        <ValuePropositionSection />
+        <FounderStorySection />
+        <AdvisoryBoardSection />
       </main>
       <Footer />
-      <ExitIntentProvider />
     </div>
   )
 }

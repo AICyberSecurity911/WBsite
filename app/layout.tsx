@@ -1,5 +1,5 @@
 
-import { Inter } from 'next/font/google'
+import { Inter, Manrope } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from '@/components/ui/toaster'
@@ -7,7 +7,14 @@ import { Toaster as SonnerToaster } from '@/components/ui/sonner'
 
 const inter = Inter({ 
   subsets: ['latin'],
-  variable: '--font-inter'
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+const manrope = Manrope({ 
+  subsets: ['latin'],
+  variable: '--font-manrope',
+  display: 'swap',
 })
 
 export const dynamic = 'force-dynamic'
@@ -82,7 +89,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${manrope.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
