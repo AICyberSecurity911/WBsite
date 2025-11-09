@@ -142,7 +142,7 @@ export function Header() {
             size="sm"
             className="btn-primary rounded-full px-4 xl:px-5 shadow-lg hover:shadow-xl transition-shadow text-sm"
           >
-            <Link href="#calculator">
+            <Link href="/consultation">
               Start Free
             </Link>
           </Button>

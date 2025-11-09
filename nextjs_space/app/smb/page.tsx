@@ -107,7 +107,10 @@ const testimonials = [
 // Testimonials Carousel Component
 function TestimonialsCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [isPlaying, setIsPlaying] = useState(true)
+  const [isHovered, setIsHovered] = useState(false)
   const { theme } = useTheme()
+  const intervalRef = useRef<NodeJS.Timeout | null>(null)
 
   const nextTestimonial = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length)
@@ -121,6 +124,29 @@ function TestimonialsCarousel() {
     setCurrentIndex(index)
   }
 
+  const togglePlayPause = () => {
+    setIsPlaying(!isPlaying)
+  }
+
+  // Auto-rotation effect
+  useEffect(() => {
+    if (isPlaying && !isHovered) {
+      intervalRef.current = setInterval(() => {
+        nextTestimonial()
+      }, 5000)
+    } else {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+      }
+    }
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+      }
+    }
+  }, [isPlaying, isHovered, currentIndex])
+
   const currentTestimonial = testimonials[currentIndex]
 
   return (
@@ -133,6 +159,8 @@ function TestimonialsCarousel() {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -100 }}
           transition={{ duration: 0.5 }}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
           className={`
             rounded-2xl p-8 md:p-12 border
             ${theme === 'dark'
@@ -142,20 +170,15 @@ function TestimonialsCarousel() {
             shadow-2xl
           `}
         >
-          {/* Top Section: Initials + Name + Title */}
+          {/* Top Section: Name + Title (NO INITIALS) */}
           <div className="flex flex-col items-center text-center mb-8">
-            {/* Initials Badge */}
-            <div className={`w-20 h-20 rounded-full bg-gradient-to-br ${currentTestimonial.gradient} flex items-center justify-center text-white text-3xl font-bold mb-4 shadow-lg`}>
-              {currentTestimonial.initials}
-            </div>
-            
-            {/* Name */}
-            <h4 className={`text-2xl font-bold mb-2 ${theme === 'dark' ? 'text-white' : 'text-[#111111]'}`}>
+            {/* Full Name - Prominent */}
+            <h4 className={`text-3xl font-bold mb-3 ${theme === 'dark' ? 'text-white' : 'text-[#111111]'}`}>
               {currentTestimonial.name}
             </h4>
             
-            {/* Title | Company */}
-            <p className={`text-lg ${theme === 'dark' ? 'text-accent-cyan' : 'text-[#14b8a6]'}`}>
+            {/* Title | Company - Smaller, Colored */}
+            <p className={`text-lg font-semibold ${theme === 'dark' ? 'text-accent-cyan' : 'text-[#14b8a6]'}`}>
               {currentTestimonial.title} | {currentTestimonial.company}
             </p>
           </div>
@@ -261,6 +284,34 @@ function TestimonialsCarousel() {
             aria-label={`Go to testimonial ${index + 1}`}
           />
         ))}
+      </div>
+
+      {/* Play/Pause Button */}
+      <div className="flex items-center justify-center mt-6">
+        <button
+          onClick={togglePlayPause}
+          className={`
+            px-6 py-3 rounded-full flex items-center gap-2 font-semibold
+            transition-all duration-300 hover:scale-105
+            ${theme === 'dark'
+              ? 'bg-accent-cyan/20 hover:bg-accent-cyan/30 text-accent-cyan border border-accent-cyan/50'
+              : 'bg-[#14b8a6]/20 hover:bg-[#14b8a6]/30 text-[#14b8a6] border border-[#14b8a6]/50'
+            }
+          `}
+          aria-label={isPlaying ? 'Pause auto-rotation' : 'Play auto-rotation'}
+        >
+          {isPlaying ? (
+            <>
+              <span className="text-lg">⏸️</span>
+              <span className="text-sm">Pause</span>
+            </>
+          ) : (
+            <>
+              <span className="text-lg">▶️</span>
+              <span className="text-sm">Play</span>
+            </>
+          )}
+        </button>
       </div>
     </div>
   )
@@ -575,7 +626,14 @@ export default function SMBLandingPage() {
       
       <ScrollProgress />
       
-      <div className="min-h-screen transition-colors duration-300 dark:bg-[#0A0E27] bg-[#f3f3f3]">
+      {/* Hide Header's built-in toggle on SMB page */}
+      <style jsx global>{`
+        .smb-page header button[aria-label="Toggle theme"] {
+          display: none !important;
+        }
+      `}</style>
+      
+      <div className="smb-page min-h-screen transition-colors duration-300 dark:bg-[#0A0E27] bg-[#f3f3f3]">
         {/* Header with Theme Toggle */}
         <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-[#f3f3f3]/80 dark:bg-[#0A0E27]/80 border-b border-gray-300 dark:border-white/10">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -612,129 +670,149 @@ export default function SMBLandingPage() {
                   </p>
                 </motion.div>
 
-                {/* Services Grid - ALL CARDS UNIFORM */}
+                {/* Services Grid - ALL CARDS UNIFORM WITH COLORED BACKGROUNDS */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-                  {/* Card 1: AI Workforce */}
+                  {/* Card 1: AI Workforce - Deep Purple */}
                   <motion.div variants={fadeInUp}>
                     <Link href="/ai-workforce" className="block group h-full">
-                      <div className="relative dark:bg-gradient-to-br dark:from-accent-cyan/10 dark:to-accent-teal/10 bg-white border dark:border-accent-cyan/30 border-gray-300 rounded-2xl p-8 hover:border-accent-cyan dark:hover:border-accent-cyan transition-all duration-300 hover:shadow-xl dark:hover:shadow-accent-cyan/20 hover:shadow-lg h-full flex flex-col">
-                        <div className="flex items-start gap-4 mb-4">
-                          <div className="p-3 bg-accent-cyan/20 rounded-xl flex-shrink-0">
-                            <Users className="w-8 h-8 text-accent-cyan" />
-                          </div>
-                          <div className="flex-1">
-                            <h3 className="text-2xl font-bold dark:text-white text-[#008080] mb-2 group-hover:text-accent-cyan transition-colors">
-                              AI Workforce
-                            </h3>
-                            <p className="dark:text-gray-300 text-[#111111] text-lg font-semibold">
-                              Your on-demand team of experts.
-                            </p>
-                          </div>
-                          <ArrowRight className="w-6 h-6 text-accent-cyan opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
+                      <div className="relative bg-gradient-to-br from-[#6366f1] to-[#4f46e5] hover:from-[#7c7ff6] hover:to-[#6366f1] border border-[#6366f1]/50 hover:border-[#8b8ff8] rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:shadow-[#6366f1]/30 h-full flex flex-col">
+                        {/* Icon with proper spacing */}
+                        <div className="p-3 bg-white/20 rounded-xl w-fit mb-4">
+                          <Users className="w-8 h-8 text-white" />
                         </div>
-                        <p className="dark:text-gray-400 text-[#111111] leading-relaxed">
+                        
+                        {/* Title with proper spacing */}
+                        <h3 className="text-2xl font-bold text-white mb-3 group-hover:scale-105 transition-transform">
+                          AI Workforce
+                        </h3>
+                        
+                        {/* Subtitle with proper spacing */}
+                        <p className="text-white/90 text-lg font-semibold mb-4">
+                          Your on-demand team of experts.
+                        </p>
+                        
+                        {/* Description with proper spacing */}
+                        <p className="text-white/80 leading-relaxed">
                           Need a marketing manager? Data analyst? Customer service team? Get AI employees who work 24/7, never call in sick, and cost less than hiring one intern.
                         </p>
+                        
+                        <ArrowRight className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity absolute top-8 right-8" />
                       </div>
                     </Link>
                   </motion.div>
 
-                  {/* Card 2: Intelligent Automation */}
+                  {/* Card 2: Intelligent Automation - Teal */}
                   <motion.div variants={fadeInUp}>
                     <Link href="/intelligent-automation" className="block group h-full">
-                      <div className="relative dark:bg-gradient-to-br dark:from-accent-cyan/10 dark:to-accent-teal/10 bg-white border dark:border-accent-cyan/30 border-gray-300 rounded-2xl p-8 hover:border-accent-cyan dark:hover:border-accent-cyan transition-all duration-300 hover:shadow-xl dark:hover:shadow-accent-cyan/20 hover:shadow-lg h-full flex flex-col">
-                        <div className="flex items-start gap-4 mb-4">
-                          <div className="p-3 bg-accent-cyan/20 rounded-xl flex-shrink-0">
-                            <Zap className="w-8 h-8 text-accent-cyan" />
-                          </div>
-                          <div className="flex-1">
-                            <h3 className="text-2xl font-bold dark:text-white text-[#008080] mb-2 group-hover:text-accent-cyan transition-colors">
-                              Intelligent Automation
-                            </h3>
-                            <p className="dark:text-gray-300 text-[#111111] text-lg font-semibold">
-                              Save hours every week, automatically.
-                            </p>
-                          </div>
-                          <ArrowRight className="w-6 h-6 text-accent-cyan opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
+                      <div className="relative bg-gradient-to-br from-[#14b8a6] to-[#0d9488] hover:from-[#2dd4bf] hover:to-[#14b8a6] border border-[#14b8a6]/50 hover:border-[#2dd4bf] rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:shadow-[#14b8a6]/30 h-full flex flex-col">
+                        {/* Icon with proper spacing */}
+                        <div className="p-3 bg-white/20 rounded-xl w-fit mb-4">
+                          <Zap className="w-8 h-8 text-white" />
                         </div>
-                        <p className="dark:text-gray-400 text-[#111111] leading-relaxed">
+                        
+                        {/* Title with proper spacing */}
+                        <h3 className="text-2xl font-bold text-white mb-3 group-hover:scale-105 transition-transform">
+                          Intelligent Automation
+                        </h3>
+                        
+                        {/* Subtitle with proper spacing */}
+                        <p className="text-white/90 text-lg font-semibold mb-4">
+                          Save hours every week, automatically.
+                        </p>
+                        
+                        {/* Description with proper spacing */}
+                        <p className="text-white/80 leading-relaxed">
                           Stop copying data between systems, chasing invoices, and sending the same emails over and over. Let automation handle the boring stuff while you focus on growth.
                         </p>
+                        
+                        <ArrowRight className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity absolute top-8 right-8" />
                       </div>
                     </Link>
                   </motion.div>
 
-                  {/* Card 3: Beyond Background Checks */}
+                  {/* Card 3: Beyond Background Checks - Blue */}
                   <motion.div variants={fadeInUp}>
                     <Link href="/background-checks" className="block group h-full">
-                      <div className="relative dark:bg-gradient-to-br dark:from-accent-cyan/10 dark:to-accent-teal/10 bg-white border dark:border-accent-cyan/30 border-gray-300 rounded-2xl p-8 hover:border-accent-cyan dark:hover:border-accent-cyan transition-all duration-300 hover:shadow-xl dark:hover:shadow-accent-cyan/20 hover:shadow-lg h-full flex flex-col">
-                        <div className="flex items-start gap-4 mb-4">
-                          <div className="p-3 bg-accent-cyan/20 rounded-xl flex-shrink-0">
-                            <Shield className="w-8 h-8 text-accent-cyan" />
-                          </div>
-                          <div className="flex-1">
-                            <h3 className="text-2xl font-bold dark:text-white text-[#008080] mb-2 group-hover:text-accent-cyan transition-colors">
-                              Beyond Background Checks™
-                            </h3>
-                            <p className="dark:text-gray-300 text-[#111111] text-lg font-semibold">
-                              Avoid disastrous hires with deep vetting.
-                            </p>
-                          </div>
-                          <ArrowRight className="w-6 h-6 text-accent-cyan opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
+                      <div className="relative bg-gradient-to-br from-[#3b82f6] to-[#2563eb] hover:from-[#60a5fa] hover:to-[#3b82f6] border border-[#3b82f6]/50 hover:border-[#60a5fa] rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:shadow-[#3b82f6]/30 h-full flex flex-col">
+                        {/* Icon with proper spacing */}
+                        <div className="p-3 bg-white/20 rounded-xl w-fit mb-4">
+                          <Shield className="w-8 h-8 text-white" />
                         </div>
-                        <p className="dark:text-gray-400 text-[#111111] leading-relaxed">
+                        
+                        {/* Title with proper spacing */}
+                        <h3 className="text-2xl font-bold text-white mb-3 group-hover:scale-105 transition-transform">
+                          Beyond Background Checks™
+                        </h3>
+                        
+                        {/* Subtitle with proper spacing */}
+                        <p className="text-white/90 text-lg font-semibold mb-4">
+                          Avoid disastrous hires with deep vetting.
+                        </p>
+                        
+                        {/* Description with proper spacing */}
+                        <p className="text-white/80 leading-relaxed">
                           Standard background checks miss the red flags that cost you everything. Find out what they're hiding before they join your team—not after they destroy it.
                         </p>
+                        
+                        <ArrowRight className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity absolute top-8 right-8" />
                       </div>
                     </Link>
                   </motion.div>
 
-                  {/* Card 4: Cyber Intelligence */}
+                  {/* Card 4: Cyber Intelligence - Indigo */}
                   <motion.div variants={fadeInUp}>
                     <Link href="/cyber-intelligence" className="block group h-full">
-                      <div className="relative dark:bg-gradient-to-br dark:from-accent-cyan/10 dark:to-accent-teal/10 bg-white border dark:border-accent-cyan/30 border-gray-300 rounded-2xl p-8 hover:border-accent-cyan dark:hover:border-accent-cyan transition-all duration-300 hover:shadow-xl dark:hover:shadow-accent-cyan/20 hover:shadow-lg h-full flex flex-col">
-                        <div className="flex items-start gap-4 mb-4">
-                          <div className="p-3 bg-accent-cyan/20 rounded-xl flex-shrink-0">
-                            <Award className="w-8 h-8 text-accent-cyan" />
-                          </div>
-                          <div className="flex-1">
-                            <h3 className="text-2xl font-bold dark:text-white text-[#008080] mb-2 group-hover:text-accent-cyan transition-colors">
-                              Cyber Intelligence
-                            </h3>
-                            <p className="dark:text-gray-300 text-[#111111] text-lg font-semibold">
-                              NASA-trusted protection at a small business price.
-                            </p>
-                          </div>
-                          <ArrowRight className="w-6 h-6 text-accent-cyan opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
+                      <div className="relative bg-gradient-to-br from-[#4f46e5] to-[#4338ca] hover:from-[#6366f1] hover:to-[#4f46e5] border border-[#4f46e5]/50 hover:border-[#6366f1] rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:shadow-[#4f46e5]/30 h-full flex flex-col">
+                        {/* Icon with proper spacing */}
+                        <div className="p-3 bg-white/20 rounded-xl w-fit mb-4">
+                          <Award className="w-8 h-8 text-white" />
                         </div>
-                        <p className="dark:text-gray-400 text-[#111111] leading-relaxed">
+                        
+                        {/* Title with proper spacing */}
+                        <h3 className="text-2xl font-bold text-white mb-3 group-hover:scale-105 transition-transform">
+                          Cyber Intelligence
+                        </h3>
+                        
+                        {/* Subtitle with proper spacing */}
+                        <p className="text-white/90 text-lg font-semibold mb-4">
+                          NASA-trusted protection at a small business price.
+                        </p>
+                        
+                        {/* Description with proper spacing */}
+                        <p className="text-white/80 leading-relaxed">
                           Think you're too small for hackers? Think again. Get the same intelligence protection trusted by NASA and Fortune 500s—before a cyberattack wipes you out.
                         </p>
+                        
+                        <ArrowRight className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity absolute top-8 right-8" />
                       </div>
                     </Link>
                   </motion.div>
 
-                  {/* Card 5: Business Transformation */}
+                  {/* Card 5: Business Transformation - Green */}
                   <motion.div variants={fadeInUp} className="md:col-span-2">
                     <Link href="/business-transformation" className="block group h-full">
-                      <div className="relative dark:bg-gradient-to-br dark:from-accent-cyan/10 dark:to-accent-teal/10 bg-white border dark:border-accent-cyan/30 border-gray-300 rounded-2xl p-8 hover:border-accent-cyan dark:hover:border-accent-cyan transition-all duration-300 hover:shadow-xl dark:hover:shadow-accent-cyan/20 hover:shadow-lg h-full flex flex-col">
-                        <div className="flex items-start gap-4 mb-4">
-                          <div className="p-3 bg-accent-cyan/20 rounded-xl flex-shrink-0">
-                            <TrendingUp className="w-8 h-8 text-accent-cyan" />
-                          </div>
-                          <div className="flex-1">
-                            <h3 className="text-2xl font-bold dark:text-white text-[#008080] mb-2 group-hover:text-accent-cyan transition-colors">
-                              Business Transformation
-                            </h3>
-                            <p className="dark:text-gray-300 text-[#111111] text-lg font-semibold">
-                              The roadmap to scale your business without the chaos.
-                            </p>
-                          </div>
-                          <ArrowRight className="w-6 h-6 text-accent-cyan opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
+                      <div className="relative bg-gradient-to-br from-[#10b981] to-[#059669] hover:from-[#34d399] hover:to-[#10b981] border border-[#10b981]/50 hover:border-[#34d399] rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:shadow-[#10b981]/30 h-full flex flex-col">
+                        {/* Icon with proper spacing */}
+                        <div className="p-3 bg-white/20 rounded-xl w-fit mb-4">
+                          <TrendingUp className="w-8 h-8 text-white" />
                         </div>
-                        <p className="dark:text-gray-400 text-[#111111] leading-relaxed">
+                        
+                        {/* Title with proper spacing */}
+                        <h3 className="text-2xl font-bold text-white mb-3 group-hover:scale-105 transition-transform">
+                          Business Transformation
+                        </h3>
+                        
+                        {/* Subtitle with proper spacing */}
+                        <p className="text-white/90 text-lg font-semibold mb-4">
+                          The roadmap to scale your business without the chaos.
+                        </p>
+                        
+                        {/* Description with proper spacing */}
+                        <p className="text-white/80 leading-relaxed">
                           Struggling to grow without burning out? Get a proven, step-by-step plan to scale profitably—without working more hours or hiring a massive team.
                         </p>
+                        
+                        <ArrowRight className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity absolute top-8 right-8" />
                       </div>
                     </Link>
                   </motion.div>
