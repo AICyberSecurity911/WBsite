@@ -59,7 +59,7 @@ export function HeroSection() {
         relative min-h-screen flex items-center overflow-hidden
         ${theme === 'dark' 
           ? 'bg-gradient-to-br from-[#0A0E27] via-[#151B3D] to-[#0A0E27]' 
-          : 'bg-gradient-to-br from-white via-[#F8F9FA] to-white'
+          : 'bg-gradient-to-br from-[#f3f3f3] via-[#e5e7eb] to-[#f3f3f3]'
         }
       `}
       style={{ marginTop: '64px' }}
