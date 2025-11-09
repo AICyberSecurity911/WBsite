@@ -48,8 +48,7 @@ export function HeroSection() {
     }
   }
 
-  const headline = "Stop Working 70-Hour Weeks"
-  const subheadline = "AI Automation That Actually Saves Small Business Owners Time"
+  const headline = "Stop Working 70-Hour Weeks: AI Automation That Actually Saves Small Business Owners Time"
   const words = headline.split(' ')
 
   return (
@@ -93,9 +92,9 @@ export function HeroSection() {
             </span>
           </motion.div>
 
-          {/* Headline with word-by-word animation */}
+          {/* Headline (H1) with word-by-word animation */}
           <div className="mb-6">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
               {words.map((word, i) => (
                 <motion.span
                   key={i}
@@ -104,7 +103,7 @@ export function HeroSection() {
                   animate={inView && !shouldReduceMotion ? "visible" : "hidden"}
                   variants={!shouldReduceMotion ? wordVariants : { hidden: {}, visible: {} }}
                   className={`
-                    inline-block mr-4
+                    inline-block mr-3
                     ${theme === 'dark' ? 'text-white' : 'text-[#0A0E27]'}
                   `}
                 >
@@ -115,7 +114,7 @@ export function HeroSection() {
           </div>
 
           {/* Subheadline */}
-          <motion.h2
+          <motion.p
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
             variants={{
@@ -123,28 +122,11 @@ export function HeroSection() {
               visible: { ...fadeInUp.visible, transition: { ...fadeInUp.visible.transition, delay: shouldReduceMotion ? 0 : 0.8 } }
             }}
             className={`
-              text-2xl sm:text-3xl md:text-4xl font-bold mb-4
-              bg-gradient-to-r from-[#FF6B6B] to-[#20C997] bg-clip-text text-transparent
-            `}
-          >
-            {subheadline}
-          </motion.h2>
-
-          {/* Supporting text */}
-          <motion.p
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            variants={{
-              ...fadeInUp,
-              visible: { ...fadeInUp.visible, transition: { ...fadeInUp.visible.transition, delay: shouldReduceMotion ? 0 : 1.0 } }
-            }}
-            className={`
-              text-lg sm:text-xl md:text-2xl mb-12 max-w-3xl mx-auto
+              text-lg sm:text-xl md:text-2xl mb-12 max-w-4xl mx-auto leading-relaxed
               ${theme === 'dark' ? 'text-[#E5E7EB]' : 'text-[#1F2937]'}
             `}
           >
-            Get back <span className="font-bold text-[#FF6B6B]">25 hours every week</span>. 
-            No tech skills needed. Setup in 48 hours.
+            Automate the busywork drowning you. Protect what you've built. Reclaim <span className="font-bold text-[#FF6B6B]">25+ hours every week</span>—without hiring more staff or learning complex tech. Over <span className="font-bold text-[#20C997]">200 small businesses</span> already transformed.
           </motion.p>
 
           {/* CTA Button */}
@@ -256,28 +238,43 @@ export function HeroSection() {
             </div>
           </motion.div>
 
-          {/* Additional Trust Elements */}
+          {/* Microcopy under button */}
           <motion.div
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
             variants={{
               ...fadeInUp,
-              visible: { ...fadeInUp.visible, transition: { ...fadeInUp.visible.transition, delay: shouldReduceMotion ? 0 : 1.8 } }
+              visible: { ...fadeInUp.visible, transition: { ...fadeInUp.visible.transition, delay: shouldReduceMotion ? 0 : 1.4 } }
             }}
-            className={`mt-10 flex flex-wrap justify-center gap-6 text-sm ${theme === 'dark' ? 'text-[#E5E7EB]' : 'text-[#1F2937]'}`}
+            className={`flex flex-wrap justify-center gap-6 text-sm mb-12 ${theme === 'dark' ? 'text-[#E5E7EB]' : 'text-[#1F2937]'}`}
           >
             <div className="flex items-center gap-2">
               <CheckCircle className="w-5 h-5 text-[#10B981]" />
-              <span>No credit card required</span>
+              <span>Free 15-minute assessment</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle className="w-5 h-5 text-[#10B981]" />
-              <span>Setup in 48 hours</span>
+              <span>Live in 48 hours</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle className="w-5 h-5 text-[#10B981]" />
               <span>30-day money-back guarantee</span>
             </div>
+          </motion.div>
+
+          {/* Trust Badge Bar */}
+          <motion.div
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            variants={{
+              ...fadeInUp,
+              visible: { ...fadeInUp.visible, transition: { ...fadeInUp.visible.transition, delay: shouldReduceMotion ? 0 : 1.6 } }
+            }}
+            className={`py-4 text-center border-t border-b ${theme === 'dark' ? 'border-white/10' : 'border-gray-300'}`}
+          >
+            <p className={`text-sm font-semibold ${theme === 'dark' ? 'text-[#E5E7EB]' : 'text-[#1F2937]'}`}>
+              Trusted by <span className="text-[#20C997] font-bold">200+ Small Businesses</span> | <span className="text-[#F59E0B] font-bold">4.9/5 Rating</span>
+            </p>
           </motion.div>
         </div>
       </div>

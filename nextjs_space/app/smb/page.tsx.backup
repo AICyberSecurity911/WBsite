@@ -25,8 +25,7 @@ import {
   ChevronDown,
   BookOpen,
   DollarSign,
-  Calculator,
-  Lock as LockIcon
+  Calculator
 } from 'lucide-react'
 import Link from 'next/link'
 import { useState, useEffect, useRef } from 'react'
@@ -47,60 +46,60 @@ const staggerContainer = {
   }
 }
 
-// Testimonials Data - 6 SPECIFIC TESTIMONIALS FROM REQUIREMENTS
+// Testimonials Data
 const testimonials = [
   {
-    name: "Peter Fernandes",
-    title: "Owner",
-    company: "AAA Construction Services",
-    quote: "The AI bookkeeper caught a $15,000 accounting error our human bookkeeper missed three times. It paid for itself in the first month.",
-    before: "70-hour weeks, constantly behind, growth stalled at $750K.",
-    after: "Revenue hit $1.3M, work ON the business now, weekends off.",
+    name: "Harper L. Kingsley",
+    title: "Founder",
+    company: "Adroit",
+    initials: "HK",
+    before: "Working 65-hour weeks, drowning in admin tasks. My family barely saw me. Growth was stalled because I couldn't focus on strategy.",
+    after: "QuantumLeap AI cut my admin time in half. I have my weekends back, and revenue is up 28%. My team actually enjoys coming to work now because we're not constantly firefighting.",
     gradient: "from-accent-cyan to-accent-teal"
   },
   {
-    name: "Harper L. Kingsley",
-    title: "VP",
-    company: "Adroit",
-    quote: "Our AI assistant handles 80% of routine inquiries, freeing our human staff to focus on complex customer needs. Response times went from hours to seconds.",
-    before: "Working 65-hour weeks, drowning in admin. My family barely saw me.",
-    after: "Admin time cut in half. Revenue up 28%. I have my weekends back.",
+    name: "Lydia V. Penrose",
+    title: "CTO",
+    company: "Code Vibe Studio",
+    initials: "LP",
+    before: "We thought we were too small for a cyberattack. No security plan, no backups, just hoping for the best.",
+    after: "QuantumLeap found 19 vulnerabilities we fixed immediately. That peace of mind is priceless. Now I sleep at night knowing our clients' data is actually protected.",
     gradient: "from-accent-purple to-accent-pink"
   },
   {
-    name: "Lydia V. Penrose",
-    title: "Co-Founder",
-    company: "Code Vibe Studio",
-    quote: "We thought we were too small to be attacked. QuantumLeap found 19 vulnerabilities we fixed immediately. Three months later, we blocked a ransomware attack that would've cost us $500K.",
-    before: "No security plan, no backups, just hoping for the best.",
-    after: "Sleep at night knowing our data is actually protected. Avoided a $500K disaster.",
+    name: "Tiffany Duncan",
+    title: "CEO",
+    company: "Talent Leap AI",
+    initials: "TD",
+    before: "I nearly hired someone with a hidden history of fraud that a standard background check missed completely. My gut said something was off, but the paperwork looked clean.",
+    after: "QuantumLeap flagged it instantly and saved us from a disaster. They found court records under a different name, social media posts bragging about scams—stuff no regular check would catch. Worth every penny.",
     gradient: "from-primary-accent to-accent-coral"
   },
   {
-    name: "Gaurav Arora",
-    title: "CEO",
-    company: "Rudraksh Marketing",
-    quote: "Our AI marketing manager handles social media scheduling, campaign tracking, and client reporting. What used to take my team 25 hours now runs automatically—and clients actually get reports faster.",
-    before: "Junior staff burned out doing repetitive tasks, client reports always late, couldn't take on more accounts.",
-    after: "Team focuses on strategy instead of busywork, reports delivered same-day, took on 4 new clients without hiring.",
+    name: "Marcus Chen",
+    title: "Operations Director",
+    company: "Swift Logistics",
+    initials: "MC",
+    before: "Manual data entry was eating 15 hours of my week. We were making costly errors and missing shipment deadlines.",
+    after: "Their automation handles everything now. Zero errors, instant updates, and I finally have time to focus on growing the business instead of putting out fires.",
     gradient: "from-accent-gold to-accent-lime"
   },
   {
-    name: "Tiffany Duncan",
-    title: "Director",
-    company: "Talent Leap AI",
-    quote: "Standard background check was clean. QuantumLeap's investigation revealed the candidate was tied to criminal groups and active on the Dark Web. We dodged a bullet that would've cost us major client relationships.",
-    before: "Nearly hired someone with hidden fraud history that standard checks missed.",
-    after: "Saved us from a $200K+ disaster. Found court records under a different name.",
+    name: "Sarah Mitchell",
+    title: "Founder",
+    company: "Bloom Marketing",
+    initials: "SM",
+    before: "Juggling 8 clients manually meant I was working nights and weekends. Couldn't take on more business without hiring expensive staff.",
+    after: "With QuantumLeap's AI workforce, I've doubled my client capacity without hiring anyone. My profit margins went from 20% to 45% in 4 months.",
     gradient: "from-accent-teal to-accent-cyan"
   },
   {
-    name: "Dr. Mann",
+    name: "James Rodriguez",
     title: "Owner",
-    company: "Sterling Dentistry",
-    quote: "The AI assistant handles appointment scheduling, insurance verification, and patient follow-ups 24/7. We're booking patients at 9 PM on Sundays—times we used to lose business.",
-    before: "Missing calls after hours, losing patients to competitors who answered first, front desk always behind.",
-    after: "Never miss a patient call, booking rate up 34%, front desk finally has time for in-office patients.",
+    company: "Rodriguez Construction",
+    initials: "JR",
+    before: "Losing track of projects, missed invoices, constant communication breakdowns with my crew. It was chaos.",
+    after: "Everything's centralized and automated now. My crew knows what to do, invoices go out on time, and I can actually take a vacation without everything falling apart.",
     gradient: "from-accent-purple to-accent-gold"
   }
 ]
@@ -185,17 +184,10 @@ function TestimonialsCarousel() {
           </div>
 
           {/* Stars Rating */}
-          <div className="flex items-center justify-center gap-1 mb-6">
+          <div className="flex items-center justify-center gap-1 mb-8">
             {[...Array(5)].map((_, i) => (
               <Star key={i} className="w-6 h-6 text-accent-gold fill-accent-gold" />
             ))}
-          </div>
-
-          {/* Quote Section - Prominent */}
-          <div className="mb-8">
-            <blockquote className={`text-xl md:text-2xl font-semibold italic text-center leading-relaxed ${theme === 'dark' ? 'text-white' : 'text-[#111111]'}`}>
-              "{currentTestimonial.quote}"
-            </blockquote>
           </div>
 
           {/* Before/After Sections */}
@@ -671,10 +663,10 @@ export default function SMBLandingPage() {
                 {/* Section Header */}
                 <motion.div variants={fadeInUp} className="text-center mb-16">
                   <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold dark:text-white text-[#008080] mb-4">
-                    5 Ways AI Automation Helps Small Businesses Stop Drowning in Busywork
+                    Your Complete Small Business Toolkit
                   </h2>
                   <p className="text-lg dark:text-gray-300 text-[#111111] max-w-2xl mx-auto">
-                    Pick what's bleeding the most time and money. Start there. Add more as you grow.
+                    Everything you need to run your business like the big players—without the enterprise price tag.
                   </p>
                 </motion.div>
 
@@ -691,38 +683,20 @@ export default function SMBLandingPage() {
                         
                         {/* Title with proper spacing */}
                         <h3 className="text-2xl font-bold text-white mb-3 group-hover:scale-105 transition-transform">
-                          Stop Doing Everything Yourself with AI Employees
+                          AI Workforce
                         </h3>
                         
-                        {/* Description with proper spacing */}
-                        <p className="text-white/90 leading-relaxed mb-4">
-                          Your AI team handles bookkeeping, lead follow-up, scheduling, and customer service—24/7. No hiring. No training. No drama. Just reliable help that costs 87% less than one employee.
+                        {/* Subtitle with proper spacing */}
+                        <p className="text-white/90 text-lg font-semibold mb-4">
+                          Your on-demand team of experts.
                         </p>
                         
-                        {/* Key Benefits */}
-                        <ul className="space-y-2 mb-4">
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                            <span>24/7 availability (never miss a lead)</span>
-                          </li>
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                            <span>99.2% accuracy rate</span>
-                          </li>
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                            <span>87% cost savings vs. human employees</span>
-                          </li>
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                            <span>Deploys in 48 hours</span>
-                          </li>
-                        </ul>
+                        {/* Description with proper spacing */}
+                        <p className="text-white/80 leading-relaxed">
+                          Need a marketing manager? Data analyst? Customer service team? Get AI employees who work 24/7, never call in sick, and cost less than hiring one intern.
+                        </p>
                         
-                        <div className="mt-auto pt-4 flex items-center gap-2 text-white font-semibold">
-                          <span>Learn More About AI Workforce</span>
-                          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                        </div>
+                        <ArrowRight className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity absolute top-8 right-8" />
                       </div>
                     </Link>
                   </motion.div>
@@ -738,38 +712,20 @@ export default function SMBLandingPage() {
                         
                         {/* Title with proper spacing */}
                         <h3 className="text-2xl font-bold text-white mb-3 group-hover:scale-105 transition-transform">
-                          Eliminate Repetitive Tasks That Waste 20+ Hours Weekly
+                          Intelligent Automation
                         </h3>
                         
-                        {/* Description with proper spacing */}
-                        <p className="text-white/90 leading-relaxed mb-4">
-                          Stop copying data between spreadsheets. Stop chasing invoices. Stop sending the same emails 50 times. Automation handles it while you sleep. Average savings: 20+ hours per week.
+                        {/* Subtitle with proper spacing */}
+                        <p className="text-white/90 text-lg font-semibold mb-4">
+                          Save hours every week, automatically.
                         </p>
                         
-                        {/* Key Benefits */}
-                        <ul className="space-y-2 mb-4">
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                            <span>Connects all your business tools</span>
-                          </li>
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                            <span>Eliminates manual data entry</span>
-                          </li>
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                            <span>Automates invoice follow-ups</span>
-                          </li>
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                            <span>Saves 20+ hours weekly</span>
-                          </li>
-                        </ul>
+                        {/* Description with proper spacing */}
+                        <p className="text-white/80 leading-relaxed">
+                          Stop copying data between systems, chasing invoices, and sending the same emails over and over. Let automation handle the boring stuff while you focus on growth.
+                        </p>
                         
-                        <div className="mt-auto pt-4 flex items-center gap-2 text-white font-semibold">
-                          <span>Learn More About Business Automation</span>
-                          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                        </div>
+                        <ArrowRight className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity absolute top-8 right-8" />
                       </div>
                     </Link>
                   </motion.div>
@@ -785,38 +741,20 @@ export default function SMBLandingPage() {
                         
                         {/* Title with proper spacing */}
                         <h3 className="text-2xl font-bold text-white mb-3 group-hover:scale-105 transition-transform">
-                          Avoid Hiring Mistakes That Cost $200K+ in Damage
+                          Beyond Background Checks™
                         </h3>
                         
-                        {/* Description with proper spacing */}
-                        <p className="text-white/90 leading-relaxed mb-4">
-                          Standard background checks only catch criminals who got caught. We find the liars, fraudsters, and problem employees BEFORE they cost you $200K in damage. One check can save your business.
+                        {/* Subtitle with proper spacing */}
+                        <p className="text-white/90 text-lg font-semibold mb-4">
+                          Avoid disastrous hires with deep vetting.
                         </p>
                         
-                        {/* Key Benefits */}
-                        <ul className="space-y-2 mb-4">
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                            <span>Finds hidden criminal records</span>
-                          </li>
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                            <span>Detects fake credentials</span>
-                          </li>
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                            <span>Uncovers dark web activity</span>
-                          </li>
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                            <span>Prevents disastrous hires</span>
-                          </li>
-                        </ul>
+                        {/* Description with proper spacing */}
+                        <p className="text-white/80 leading-relaxed">
+                          Standard background checks miss the red flags that cost you everything. Find out what they're hiding before they join your team—not after they destroy it.
+                        </p>
                         
-                        <div className="mt-auto pt-4 flex items-center gap-2 text-white font-semibold">
-                          <span>Learn More About Deep Background Checks</span>
-                          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                        </div>
+                        <ArrowRight className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity absolute top-8 right-8" />
                       </div>
                     </Link>
                   </motion.div>
@@ -827,43 +765,25 @@ export default function SMBLandingPage() {
                       <div className="relative bg-gradient-to-br from-[#4f46e5] to-[#4338ca] hover:from-[#6366f1] hover:to-[#4f46e5] border border-[#4f46e5]/50 hover:border-[#6366f1] rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:shadow-[#4f46e5]/30 h-full flex flex-col">
                         {/* Icon with proper spacing */}
                         <div className="p-3 bg-white/20 rounded-xl w-fit mb-4">
-                          <LockIcon className="w-8 h-8 text-white" />
+                          <Award className="w-8 h-8 text-white" />
                         </div>
                         
                         {/* Title with proper spacing */}
                         <h3 className="text-2xl font-bold text-white mb-3 group-hover:scale-105 transition-transform">
-                          Protect Your Small Business Before Hackers Hold It Hostage
+                          Cyber Intelligence
                         </h3>
                         
-                        {/* Description with proper spacing */}
-                        <p className="text-white/90 leading-relaxed mb-4">
-                          Hackers target small businesses because you're unguarded. One breach = $80K+ ransom, lost clients, destroyed reputation. We find and fix vulnerabilities before criminals exploit them.
+                        {/* Subtitle with proper spacing */}
+                        <p className="text-white/90 text-lg font-semibold mb-4">
+                          NASA-trusted protection at a small business price.
                         </p>
                         
-                        {/* Key Benefits */}
-                        <ul className="space-y-2 mb-4">
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                            <span>NASA-recognized security protocols</span>
-                          </li>
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                            <span>Finds vulnerabilities before hackers do</span>
-                          </li>
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                            <span>Prevents $80K+ ransomware attacks</span>
-                          </li>
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                            <span>Custom security for your business</span>
-                          </li>
-                        </ul>
+                        {/* Description with proper spacing */}
+                        <p className="text-white/80 leading-relaxed">
+                          Think you're too small for hackers? Think again. Get the same intelligence protection trusted by NASA and Fortune 500s—before a cyberattack wipes you out.
+                        </p>
                         
-                        <div className="mt-auto pt-4 flex items-center gap-2 text-white font-semibold">
-                          <span>Learn More About Cybersecurity</span>
-                          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                        </div>
+                        <ArrowRight className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity absolute top-8 right-8" />
                       </div>
                     </Link>
                   </motion.div>
@@ -879,38 +799,20 @@ export default function SMBLandingPage() {
                         
                         {/* Title with proper spacing */}
                         <h3 className="text-2xl font-bold text-white mb-3 group-hover:scale-105 transition-transform">
-                          Build Systems That Let Your Business Run Without You
+                          Business Transformation
                         </h3>
                         
-                        {/* Description with proper spacing */}
-                        <p className="text-white/90 leading-relaxed mb-4">
-                          Revenue growing but you're still the bottleneck? We build the systems, workflows, and automations that let you scale profitably—without working more hours or micromanaging everything.
+                        {/* Subtitle with proper spacing */}
+                        <p className="text-white/90 text-lg font-semibold mb-4">
+                          The roadmap to scale your business without the chaos.
                         </p>
                         
-                        {/* Key Benefits */}
-                        <ul className="space-y-2 mb-4">
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                            <span>Custom operational systems</span>
-                          </li>
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                            <span>Eliminate decision bottlenecks</span>
-                          </li>
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                            <span>Scale without working more</span>
-                          </li>
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                            <span>90-180 day transformation</span>
-                          </li>
-                        </ul>
+                        {/* Description with proper spacing */}
+                        <p className="text-white/80 leading-relaxed">
+                          Struggling to grow without burning out? Get a proven, step-by-step plan to scale profitably—without working more hours or hiring a massive team.
+                        </p>
                         
-                        <div className="mt-auto pt-4 flex items-center gap-2 text-white font-semibold">
-                          <span>Learn More About Business Transformation</span>
-                          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                        </div>
+                        <ArrowRight className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity absolute top-8 right-8" />
                       </div>
                     </Link>
                   </motion.div>
@@ -934,10 +836,10 @@ export default function SMBLandingPage() {
                 {/* Section Header */}
                 <motion.div variants={fadeInUp} className="text-center mb-16">
                   <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold dark:text-white text-[#008080] mb-4">
-                    Real Small Business Owners Share How AI Automation Gave Them Their Lives Back
+                    Join 200+ Business Owners Who Escaped the 70-Hour Work Week
                   </h2>
                   <p className="text-lg dark:text-gray-300 text-[#111111] max-w-2xl mx-auto">
-                    See what happens when you stop doing everything yourself. Real results from real entrepreneurs in your position.
+                    Real entrepreneurs. Real results. Real freedom.
                   </p>
                 </motion.div>
 
