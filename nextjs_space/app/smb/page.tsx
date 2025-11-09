@@ -165,7 +165,7 @@ function TestimonialsCarousel() {
             rounded-2xl p-8 md:p-12 border
             ${theme === 'dark'
               ? 'bg-gradient-to-br from-secondary-bg to-primary-bg border-accent-cyan/30'
-              : 'bg-white border-gray-300'
+              : 'bg-[#f3f3f3] border-gray-400'
             }
             shadow-2xl
           `}
@@ -201,7 +201,7 @@ function TestimonialsCarousel() {
               }
             `}>
               <div className="flex items-center gap-2 mb-3">
-                <span className={`px-3 py-1 rounded-full text-xs font-bold ${theme === 'dark' ? 'bg-red-500/20 text-red-400' : 'bg-red-200 text-red-700'}`}>
+                <span className={`px-3 py-1 rounded-full text-xs font-bold ${theme === 'dark' ? 'bg-red-500/20 text-red-400' : 'bg-[#ffcd38] text-[#111111]'}`}>
                   BEFORE
                 </span>
               </div>
@@ -219,7 +219,7 @@ function TestimonialsCarousel() {
               }
             `}>
               <div className="flex items-center gap-2 mb-3">
-                <span className={`px-3 py-1 rounded-full text-xs font-bold ${theme === 'dark' ? 'bg-accent-lime/20 text-accent-lime' : 'bg-green-200 text-green-700'}`}>
+                <span className={`px-3 py-1 rounded-full text-xs font-bold ${theme === 'dark' ? 'bg-accent-lime/20 text-accent-lime' : 'bg-[#ffcd38] text-[#111111]'}`}>
                   AFTER
                 </span>
               </div>
@@ -487,7 +487,7 @@ function FAQSection() {
           className={`border rounded-xl overflow-hidden transition-all duration-300
             ${theme === 'dark'
               ? 'bg-gradient-to-br from-secondary-bg to-primary-bg border-accent-cyan/30 hover:border-accent-cyan'
-              : 'bg-white border-gray-300 hover:border-[#14b8a6]'
+              : 'bg-[#f3f3f3] border-gray-400 hover:border-[#14b8a6]'
             }`}
         >
           <button
@@ -554,7 +554,7 @@ function BlogSection() {
           <div className={`h-full border rounded-2xl p-8 transition-all duration-300 hover:shadow-xl
             ${theme === 'dark'
               ? 'bg-gradient-to-br from-secondary-bg to-primary-bg border-accent-cyan/30 hover:border-accent-cyan hover:shadow-accent-cyan/20'
-              : 'bg-white border-gray-300 hover:border-[#14b8a6] hover:shadow-lg'
+              : 'bg-[#f3f3f3] border-gray-400 hover:border-[#14b8a6] hover:shadow-lg'
             }`}
           >
             <div className="flex items-center gap-3 mb-4">
@@ -789,7 +789,7 @@ export default function SMBLandingPage() {
                   </motion.div>
 
                   {/* Card 5: Business Transformation - Green */}
-                  <motion.div variants={fadeInUp} className="md:col-span-2">
+                  <motion.div variants={fadeInUp}>
                     <Link href="/business-transformation" className="block group h-full">
                       <div className="relative bg-gradient-to-br from-[#10b981] to-[#059669] hover:from-[#34d399] hover:to-[#10b981] border border-[#10b981]/50 hover:border-[#34d399] rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:shadow-[#10b981]/30 h-full flex flex-col">
                         {/* Icon with proper spacing */}
@@ -862,7 +862,7 @@ export default function SMBLandingPage() {
                   </p>
                 </div>
 
-                <div className="dark:bg-gradient-to-br dark:from-secondary-bg dark:to-primary-bg bg-white border dark:border-accent-cyan/30 border-gray-300 rounded-2xl p-8 md:p-12 shadow-2xl">
+                <div className="dark:bg-gradient-to-br dark:from-secondary-bg dark:to-primary-bg bg-[#f3f3f3] border dark:border-accent-cyan/30 border-gray-400 rounded-2xl p-8 md:p-12 shadow-2xl">
                   <ROICalculator />
                 </div>
               </div>
@@ -938,17 +938,17 @@ export default function SMBLandingPage() {
                   variants={fadeInUp}
                   className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
                 >
-                  <div className="dark:bg-secondary-bg/80 bg-white border dark:border-accent-cyan/30 border-gray-300 rounded-xl p-6 shadow-lg">
+                  <div className="dark:bg-secondary-bg/80 bg-[#f3f3f3] border dark:border-accent-cyan/30 border-gray-400 rounded-xl p-6 shadow-lg">
                     <CheckCircle className="w-8 h-8 dark:text-accent-lime text-green-600 mx-auto mb-3" />
                     <p className="dark:text-white text-[#111111] font-semibold mb-1">Fast Setup</p>
                     <p className="dark:text-gray-400 text-[#111111] text-sm">Live in 48 hours</p>
                   </div>
-                  <div className="dark:bg-secondary-bg/80 bg-white border dark:border-accent-purple/30 border-gray-300 rounded-xl p-6 shadow-lg">
+                  <div className="dark:bg-secondary-bg/80 bg-[#f3f3f3] border dark:border-accent-purple/30 border-gray-400 rounded-xl p-6 shadow-lg">
                     <Target className="w-8 h-8 dark:text-accent-purple text-[#14b8a6] mx-auto mb-3" />
                     <p className="dark:text-white text-[#111111] font-semibold mb-1">Zero Risk</p>
                     <p className="dark:text-gray-400 text-[#111111] text-sm">30-day guarantee</p>
                   </div>
-                  <div className="dark:bg-secondary-bg/80 bg-white border dark:border-primary-accent/30 border-gray-300 rounded-xl p-6 shadow-lg">
+                  <div className="dark:bg-secondary-bg/80 bg-[#f3f3f3] border dark:border-primary-accent/30 border-gray-400 rounded-xl p-6 shadow-lg">
                     <Award className="w-8 h-8 dark:text-primary-accent text-[#ff5440] mx-auto mb-3" />
                     <p className="dark:text-white text-[#111111] font-semibold mb-1">Real Results</p>
                     <p className="dark:text-gray-400 text-[#111111] text-sm">Proven ROI</p>
