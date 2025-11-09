@@ -7,6 +7,7 @@ import { ThemeProvider } from '@/components/smb/theme-context'
 import { ThemeToggle } from '@/components/smb/theme-toggle'
 import { HeroSection } from '@/components/smb/hero-section'
 import { ScrollProgress } from '@/components/smb/scroll-progress'
+import { TrustBarSection } from '@/components/sections/trust-bar-section'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { 
@@ -25,8 +26,10 @@ import {
   ChevronDown,
   BookOpen,
   DollarSign,
-  Calculator,
-  Lock as LockIcon
+  Lock as LockIcon,
+  Clipboard,
+  BarChart3,
+  Rocket
 } from 'lucide-react'
 import Link from 'next/link'
 import { useState, useEffect, useRef } from 'react'
@@ -320,136 +323,6 @@ function TestimonialsCarousel() {
             </>
           )}
         </button>
-      </div>
-    </div>
-  )
-}
-
-// ROI Calculator Component
-function ROICalculator() {
-  const { theme } = useTheme()
-  const [hoursPerWeek, setHoursPerWeek] = useState(20)
-  const [hourlyRate, setHourlyRate] = useState(50)
-  const [teamSize, setTeamSize] = useState(1)
-
-  const weeklyTimeSaved = hoursPerWeek * 0.7 // 70% time savings
-  const weeklyCostSavings = weeklyTimeSaved * hourlyRate * teamSize
-  const yearlyCostSavings = weeklyCostSavings * 52
-
-  return (
-    <div className="space-y-8">
-      {/* Input Fields */}
-      <div className="space-y-6">
-        <div>
-          <label className={`block text-sm font-semibold mb-2 ${theme === 'dark' ? 'text-white' : 'text-[#111111]'}`}>
-            Hours spent on admin per week
-          </label>
-          <input
-            type="range"
-            min="5"
-            max="60"
-            value={hoursPerWeek}
-            onChange={(e) => setHoursPerWeek(Number(e.target.value))}
-            className="w-full h-2 bg-gray-300 dark:bg-gray-600 rounded-lg appearance-none cursor-pointer accent-[#ff5440]"
-          />
-          <div className={`text-right mt-1 text-2xl font-bold ${theme === 'dark' ? 'text-accent-cyan' : 'text-[#ff5440]'}`}>
-            {hoursPerWeek} hours
-          </div>
-        </div>
-
-        <div>
-          <label className={`block text-sm font-semibold mb-2 ${theme === 'dark' ? 'text-white' : 'text-[#111111]'}`}>
-            Your hourly rate ($)
-          </label>
-          <input
-            type="range"
-            min="25"
-            max="200"
-            step="5"
-            value={hourlyRate}
-            onChange={(e) => setHourlyRate(Number(e.target.value))}
-            className="w-full h-2 bg-gray-300 dark:bg-gray-600 rounded-lg appearance-none cursor-pointer accent-[#ff5440]"
-          />
-          <div className={`text-right mt-1 text-2xl font-bold ${theme === 'dark' ? 'text-accent-cyan' : 'text-[#ff5440]'}`}>
-            ${hourlyRate}/hr
-          </div>
-        </div>
-
-        <div>
-          <label className={`block text-sm font-semibold mb-2 ${theme === 'dark' ? 'text-white' : 'text-[#111111]'}`}>
-            Team size
-          </label>
-          <input
-            type="range"
-            min="1"
-            max="20"
-            value={teamSize}
-            onChange={(e) => setTeamSize(Number(e.target.value))}
-            className="w-full h-2 bg-gray-300 dark:bg-gray-600 rounded-lg appearance-none cursor-pointer accent-[#ff5440]"
-          />
-          <div className={`text-right mt-1 text-2xl font-bold ${theme === 'dark' ? 'text-accent-cyan' : 'text-[#ff5440]'}`}>
-            {teamSize} {teamSize === 1 ? 'person' : 'people'}
-          </div>
-        </div>
-      </div>
-
-      {/* Results */}
-      <div className={`border-t-2 pt-8 ${theme === 'dark' ? 'border-accent-cyan/30' : 'border-[#14b8a6]/30'}`}>
-        <h3 className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-[#008080]'}`}>
-          Your Potential Savings
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className={`p-6 rounded-xl ${theme === 'dark' ? 'bg-accent-cyan/10 border border-accent-cyan/30' : 'bg-[#14b8a6]/10 border border-[#14b8a6]/30'}`}>
-            <div className="flex items-center gap-2 mb-2">
-              <Clock className={`w-5 h-5 ${theme === 'dark' ? 'text-accent-cyan' : 'text-[#14b8a6]'}`} />
-              <p className={`text-sm font-semibold ${theme === 'dark' ? 'text-gray-300' : 'text-[#111111]'}`}>
-                Time Saved/Week
-              </p>
-            </div>
-            <p className={`text-3xl font-bold ${theme === 'dark' ? 'text-accent-cyan' : 'text-[#ff5440]'}`}>
-              {weeklyTimeSaved.toFixed(1)} hrs
-            </p>
-          </div>
-
-          <div className={`p-6 rounded-xl ${theme === 'dark' ? 'bg-primary-accent/10 border border-primary-accent/30' : 'bg-[#ff5440]/10 border border-[#ff5440]/30'}`}>
-            <div className="flex items-center gap-2 mb-2">
-              <DollarSign className={`w-5 h-5 ${theme === 'dark' ? 'text-primary-accent' : 'text-[#ff5440]'}`} />
-              <p className={`text-sm font-semibold ${theme === 'dark' ? 'text-gray-300' : 'text-[#111111]'}`}>
-                Money Saved/Week
-              </p>
-            </div>
-            <p className={`text-3xl font-bold ${theme === 'dark' ? 'text-primary-accent' : 'text-[#ff5440]'}`}>
-              ${weeklyCostSavings.toLocaleString()}
-            </p>
-          </div>
-
-          <div className={`p-6 rounded-xl ${theme === 'dark' ? 'bg-accent-lime/10 border border-accent-lime/30' : 'bg-green-100 border border-green-300'}`}>
-            <div className="flex items-center gap-2 mb-2">
-              <TrendingUp className={`w-5 h-5 ${theme === 'dark' ? 'text-accent-lime' : 'text-green-600'}`} />
-              <p className={`text-sm font-semibold ${theme === 'dark' ? 'text-gray-300' : 'text-[#111111]'}`}>
-                Money Saved/Year
-              </p>
-            </div>
-            <p className={`text-3xl font-bold ${theme === 'dark' ? 'text-accent-lime' : 'text-green-600'}`}>
-              ${yearlyCostSavings.toLocaleString()}
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* CTA */}
-      <div className="text-center pt-4">
-        <Link 
-          href="/consultation"
-          className={`inline-flex items-center gap-3 px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg
-            ${theme === 'dark'
-              ? 'bg-gradient-to-r from-primary-accent to-accent-coral text-white hover:shadow-primary-accent/50'
-              : 'bg-gradient-to-r from-[#ff5440] to-[#ff6b6b] text-white hover:shadow-lg'
-            }`}
-        >
-          <Calculator className="w-6 h-6" />
-          Start Saving Now
-        </Link>
       </div>
     </div>
   )
@@ -919,6 +792,229 @@ export default function SMBLandingPage() {
             </div>
           </section>
 
+          {/* Trust Bar Section */}
+          <TrustBarSection />
+
+          {/* How It Works Section */}
+          <section className="py-20 md:py-32 dark:bg-gradient-to-b dark:from-primary-bg/10 dark:to-secondary-bg bg-gradient-to-b from-[#e5e7eb] to-[#f3f3f3]">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="max-w-6xl mx-auto">
+                {/* Section Header */}
+                <div className="text-center mb-16">
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold dark:text-white text-[#008080] mb-4">
+                    How Small Businesses Automate in 3 Simple Steps
+                  </h2>
+                  <p className="text-xl dark:text-gray-300 text-[#111111] mb-2">
+                    (From Overwhelmed to Automated in 14 Days)
+                  </p>
+                  <p className="text-lg dark:text-gray-400 text-[#111111] max-w-3xl mx-auto mt-4">
+                    Getting started with business automation doesn't require technical skills or weeks of implementation. Our proven 3-step process has helped over 200 small businesses reclaim 25+ hours per week. Here's exactly how it works:
+                  </p>
+                </div>
+
+                {/* 3 Steps Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+                  {/* Step 1 */}
+                  <div className="relative">
+                    {/* Icon */}
+                    <div className="flex justify-center mb-6">
+                      <div className={`p-6 rounded-2xl ${
+                        useTheme().theme === 'dark' 
+                          ? 'bg-accent-cyan/10 border border-accent-cyan/30' 
+                          : 'bg-[#14b8a6]/10 border border-[#14b8a6]/30'
+                      }`}>
+                        <Clipboard className={`w-12 h-12 ${
+                          useTheme().theme === 'dark' ? 'text-accent-cyan' : 'text-[#14b8a6]'
+                        }`} />
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="text-center mb-6">
+                      <h3 className="text-2xl font-bold dark:text-white text-[#008080] mb-4">
+                        Step 1: Free Business Automation Assessment
+                      </h3>
+                      <p className="text-sm dark:text-gray-400 text-gray-600 mb-4">
+                        (15 Minutes)
+                      </p>
+                      <p className="text-base dark:text-gray-300 text-[#111111] leading-relaxed mb-6">
+                        We analyze where you're losing the most time and money in your business operations. Zero pressure. Zero sales pitch. Just honest insights into what's actually costing you hours every week.
+                      </p>
+                    </div>
+
+                    {/* What Happens Box */}
+                    <div className={`p-6 rounded-xl ${
+                      useTheme().theme === 'dark'
+                        ? 'bg-secondary-bg/50 border border-accent-cyan/20'
+                        : 'bg-white border border-gray-300'
+                    }`}>
+                      <h4 className="text-sm font-bold dark:text-accent-cyan text-[#14b8a6] mb-3">
+                        What happens:
+                      </h4>
+                      <ul className="space-y-2 text-sm dark:text-gray-400 text-[#111111]">
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-accent-cyan text-[#14b8a6]" />
+                          <span>Video call with automation specialist</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-accent-cyan text-[#14b8a6]" />
+                          <span>We map your current workflows</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-accent-cyan text-[#14b8a6]" />
+                          <span>Identify top 3 time-drains</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-accent-cyan text-[#14b8a6]" />
+                          <span>Show potential time savings</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* Step 2 */}
+                  <div className="relative">
+                    {/* Icon */}
+                    <div className="flex justify-center mb-6">
+                      <div className={`p-6 rounded-2xl ${
+                        useTheme().theme === 'dark' 
+                          ? 'bg-primary-accent/10 border border-primary-accent/30' 
+                          : 'bg-[#ff5440]/10 border border-[#ff5440]/30'
+                      }`}>
+                        <BarChart3 className={`w-12 h-12 ${
+                          useTheme().theme === 'dark' ? 'text-primary-accent' : 'text-[#ff5440]'
+                        }`} />
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="text-center mb-6">
+                      <h3 className="text-2xl font-bold dark:text-white text-[#008080] mb-4">
+                        Step 2: Custom Automation Blueprint
+                      </h3>
+                      <p className="text-sm dark:text-gray-400 text-gray-600 mb-4">
+                        (Delivered in 48 Hours)
+                      </p>
+                      <p className="text-base dark:text-gray-300 text-[#111111] leading-relaxed mb-6">
+                        We create a detailed plan showing exactly what to automate first for maximum ROI. You see the timeline, the cost, and the expected time savings before you approve anything.
+                      </p>
+                    </div>
+
+                    {/* What You Get Box */}
+                    <div className={`p-6 rounded-xl ${
+                      useTheme().theme === 'dark'
+                        ? 'bg-secondary-bg/50 border border-primary-accent/20'
+                        : 'bg-white border border-gray-300'
+                    }`}>
+                      <h4 className="text-sm font-bold dark:text-primary-accent text-[#ff5440] mb-3">
+                        What you get:
+                      </h4>
+                      <ul className="space-y-2 text-sm dark:text-gray-400 text-[#111111]">
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-primary-accent text-[#ff5440]" />
+                          <span>Priority automation list</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-primary-accent text-[#ff5440]" />
+                          <span>Cost breakdown</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-primary-accent text-[#ff5440]" />
+                          <span>Expected time savings</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-primary-accent text-[#ff5440]" />
+                          <span>Implementation timeline</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-primary-accent text-[#ff5440]" />
+                          <span>Nothing starts without your approval</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* Step 3 */}
+                  <div className="relative">
+                    {/* Icon */}
+                    <div className="flex justify-center mb-6">
+                      <div className={`p-6 rounded-2xl ${
+                        useTheme().theme === 'dark' 
+                          ? 'bg-accent-lime/10 border border-accent-lime/30' 
+                          : 'bg-green-100 border border-green-300'
+                      }`}>
+                        <Rocket className={`w-12 h-12 ${
+                          useTheme().theme === 'dark' ? 'text-accent-lime' : 'text-green-600'
+                        }`} />
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="text-center mb-6">
+                      <h3 className="text-2xl font-bold dark:text-white text-[#008080] mb-4">
+                        Step 3: Build, Test, Launch
+                      </h3>
+                      <p className="text-sm dark:text-gray-400 text-gray-600 mb-4">
+                        (Live Within 2 Weeks)
+                      </p>
+                      <p className="text-base dark:text-gray-300 text-[#111111] leading-relaxed mb-6">
+                        We handle all the technical work. You and your team get trained on the new systems. Most clients see time savings in the first week.
+                      </p>
+                    </div>
+
+                    {/* What We Do Box */}
+                    <div className={`p-6 rounded-xl ${
+                      useTheme().theme === 'dark'
+                        ? 'bg-secondary-bg/50 border border-accent-lime/20'
+                        : 'bg-white border border-gray-300'
+                    }`}>
+                      <h4 className="text-sm font-bold dark:text-accent-lime text-green-600 mb-3">
+                        What we do:
+                      </h4>
+                      <ul className="space-y-2 text-sm dark:text-gray-400 text-[#111111]">
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-accent-lime text-green-600" />
+                          <span>Build automations</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-accent-lime text-green-600" />
+                          <span>Test everything</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-accent-lime text-green-600" />
+                          <span>Train your team</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-accent-lime text-green-600" />
+                          <span>Monitor for 30 days</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-accent-lime text-green-600" />
+                          <span>Ongoing optimization</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* CTA Button */}
+                <div className="text-center mt-16">
+                  <Link 
+                    href="/consultation"
+                    className={`inline-flex items-center gap-3 px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg ${
+                      useTheme().theme === 'dark'
+                        ? 'bg-gradient-to-r from-primary-accent to-accent-coral text-white hover:shadow-primary-accent/50'
+                        : 'bg-gradient-to-r from-[#ff5440] to-[#ff6b6b] text-white hover:shadow-lg'
+                    }`}
+                  >
+                    Start My Free Assessment
+                    <ArrowRight className="w-6 h-6" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* Testimonials Carousel Section */}
           <section 
             ref={testimonialsRef}
@@ -947,25 +1043,6 @@ export default function SMBLandingPage() {
             </div>
           </section>
 
-          {/* ROI Calculator Section */}
-          <section className="py-20 md:py-32 dark:bg-gradient-to-b dark:from-primary-bg/10 dark:to-secondary-bg bg-gradient-to-b from-[#e5e7eb] to-[#f3f3f3]">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="max-w-4xl mx-auto">
-                <div className="text-center mb-12">
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold dark:text-white text-[#008080] mb-4">
-                    Calculate Your Time Savings
-                  </h2>
-                  <p className="text-lg dark:text-gray-300 text-[#111111]">
-                    See how much time and money you could save with AI automation
-                  </p>
-                </div>
-
-                <div className="dark:bg-gradient-to-br dark:from-secondary-bg dark:to-primary-bg bg-[#f3f3f3] border dark:border-accent-cyan/30 border-gray-400 rounded-2xl p-8 md:p-12 shadow-2xl">
-                  <ROICalculator />
-                </div>
-              </div>
-            </div>
-          </section>
 
           {/* FAQ Section */}
           <section className="py-20 md:py-32 dark:bg-gradient-to-b dark:from-secondary-bg dark:to-primary-bg/10 bg-gradient-to-b from-[#f3f3f3] to-[#e5e7eb]">
