@@ -8,6 +8,7 @@ type Theme = 'light' | 'dark'
 interface ThemeContextType {
   theme: Theme
   toggleTheme: () => void
+  mounted: boolean
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
@@ -17,12 +18,12 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    setMounted(true)
-    // Load theme from localStorage
+    // Load theme from localStorage on mount
     const savedTheme = localStorage.getItem('smb-theme') as Theme | null
     if (savedTheme) {
       setTheme(savedTheme)
     }
+    setMounted(true)
   }, [])
 
   useEffect(() => {
@@ -39,10 +40,10 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setTheme(prev => prev === 'dark' ? 'light' : 'dark')
   }
 
-  // Always provide the context, even before mounted
+  // Always render children, but provide mounted state for conditional rendering
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {mounted ? children : null}
+    <ThemeContext.Provider value={{ theme, toggleTheme, mounted }}>
+      {children}
     </ThemeContext.Provider>
   )
 }

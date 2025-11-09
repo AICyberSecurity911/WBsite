@@ -466,9 +466,11 @@ function BlogSection() {
   )
 }
 
-export default function SMBLandingPage() {
+// Main content component that uses theme
+function SMBLandingPageContent() {
   const [servicesRef, servicesInView] = useInView({ threshold: 0.1, triggerOnce: true })
   const [testimonialsRef, testimonialsInView] = useInView({ threshold: 0.1, triggerOnce: true })
+  const { theme } = useTheme()
 
   // Schema markup for SEO/AEO/AGO
   const pageSchema = {
@@ -499,7 +501,7 @@ export default function SMBLandingPage() {
   }
 
   return (
-    <ThemeProvider>
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
@@ -819,12 +821,12 @@ export default function SMBLandingPage() {
                     {/* Icon */}
                     <div className="flex justify-center mb-6">
                       <div className={`p-6 rounded-2xl ${
-                        useTheme().theme === 'dark' 
+                        theme === 'dark' 
                           ? 'bg-accent-cyan/10 border border-accent-cyan/30' 
                           : 'bg-[#14b8a6]/10 border border-[#14b8a6]/30'
                       }`}>
                         <Clipboard className={`w-12 h-12 ${
-                          useTheme().theme === 'dark' ? 'text-accent-cyan' : 'text-[#14b8a6]'
+                          theme === 'dark' ? 'text-accent-cyan' : 'text-[#14b8a6]'
                         }`} />
                       </div>
                     </div>
@@ -844,7 +846,7 @@ export default function SMBLandingPage() {
 
                     {/* What Happens Box */}
                     <div className={`p-6 rounded-xl ${
-                      useTheme().theme === 'dark'
+                      theme === 'dark'
                         ? 'bg-secondary-bg/50 border border-accent-cyan/20'
                         : 'bg-white border border-gray-300'
                     }`}>
@@ -877,12 +879,12 @@ export default function SMBLandingPage() {
                     {/* Icon */}
                     <div className="flex justify-center mb-6">
                       <div className={`p-6 rounded-2xl ${
-                        useTheme().theme === 'dark' 
+                        theme === 'dark' 
                           ? 'bg-primary-accent/10 border border-primary-accent/30' 
                           : 'bg-[#ff5440]/10 border border-[#ff5440]/30'
                       }`}>
                         <BarChart3 className={`w-12 h-12 ${
-                          useTheme().theme === 'dark' ? 'text-primary-accent' : 'text-[#ff5440]'
+                          theme === 'dark' ? 'text-primary-accent' : 'text-[#ff5440]'
                         }`} />
                       </div>
                     </div>
@@ -902,7 +904,7 @@ export default function SMBLandingPage() {
 
                     {/* What You Get Box */}
                     <div className={`p-6 rounded-xl ${
-                      useTheme().theme === 'dark'
+                      theme === 'dark'
                         ? 'bg-secondary-bg/50 border border-primary-accent/20'
                         : 'bg-white border border-gray-300'
                     }`}>
@@ -939,12 +941,12 @@ export default function SMBLandingPage() {
                     {/* Icon */}
                     <div className="flex justify-center mb-6">
                       <div className={`p-6 rounded-2xl ${
-                        useTheme().theme === 'dark' 
+                        theme === 'dark' 
                           ? 'bg-accent-lime/10 border border-accent-lime/30' 
                           : 'bg-green-100 border border-green-300'
                       }`}>
                         <Rocket className={`w-12 h-12 ${
-                          useTheme().theme === 'dark' ? 'text-accent-lime' : 'text-green-600'
+                          theme === 'dark' ? 'text-accent-lime' : 'text-green-600'
                         }`} />
                       </div>
                     </div>
@@ -964,7 +966,7 @@ export default function SMBLandingPage() {
 
                     {/* What We Do Box */}
                     <div className={`p-6 rounded-xl ${
-                      useTheme().theme === 'dark'
+                      theme === 'dark'
                         ? 'bg-secondary-bg/50 border border-accent-lime/20'
                         : 'bg-white border border-gray-300'
                     }`}>
@@ -1002,7 +1004,7 @@ export default function SMBLandingPage() {
                   <Link 
                     href="/consultation"
                     className={`inline-flex items-center gap-3 px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg ${
-                      useTheme().theme === 'dark'
+                      theme === 'dark'
                         ? 'bg-gradient-to-r from-primary-accent to-accent-coral text-white hover:shadow-primary-accent/50'
                         : 'bg-gradient-to-r from-[#ff5440] to-[#ff6b6b] text-white hover:shadow-lg'
                     }`}
@@ -1150,6 +1152,15 @@ export default function SMBLandingPage() {
 
         <Footer />
       </div>
+    </>
+  )
+}
+
+// Wrapper component that provides ThemeProvider
+export default function SMBLandingPage() {
+  return (
+    <ThemeProvider>
+      <SMBLandingPageContent />
     </ThemeProvider>
   )
 }
