@@ -141,7 +141,7 @@ export function BlogSection() {
                   {/* Image */}
                   <div className="relative aspect-video overflow-hidden bg-[#0c0c12]">
                     {/* Placeholder gradient - replace with actual images */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-teal-400 to-emerald-500 opacity-80 transition-opacity group-hover:opacity-100" />
+                    <div className="absolute inset-0 bg-gradient-to-br linear-gradient(135deg, var(--primary), var(--accent)) opacity-80 transition-opacity group-hover:opacity-100" />
                     <div className="absolute inset-0 flex items-center justify-center">
                       <BookOpen className="h-16 w-16 text-qgd-fg opacity-50" />
                     </div>

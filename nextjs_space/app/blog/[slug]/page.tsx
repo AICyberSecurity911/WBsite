@@ -1263,7 +1263,7 @@ export default function BlogPostPage({ params }: PageProps) {
                 </span>
               </div>
               
-              <h1 className="mb-6 text-4xl font-bold text-gray-900 dark:text-white lg:text-5xl">
+              <h1 className="mb-6 text-4xl font-bold text-[var(--fg)] dark:text-white lg:text-5xl">
                 {post.title}
               </h1>
               
@@ -1271,7 +1271,7 @@ export default function BlogPostPage({ params }: PageProps) {
                 <div className="flex items-center gap-4">
                   <div className="h-12 w-12 rounded-full bg-gradient-to-r from-teal-400 to-emerald-500" />
                   <div>
-                    <div className="font-semibold text-gray-900 dark:text-white">
+                    <div className="font-semibold text-[var(--fg)] dark:text-white">
                       {post.author.name}
                     </div>
                     <div className="text-sm text-gray-600 dark:text-gray-400">
@@ -1281,7 +1281,7 @@ export default function BlogPostPage({ params }: PageProps) {
                 </div>
                 
                 <button
-                  className="flex items-center gap-2 rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
+                  className="flex items-center gap-2 rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-[var(--muted)] transition-colors hover:bg-[var(--bg)] dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
                   onClick={handleShare}
                 >
                   <Share2 className="h-4 w-4" />
@@ -1293,26 +1293,26 @@ export default function BlogPostPage({ params }: PageProps) {
         </section>
 
         {/* Content Section */}
-        <section className="section-padding bg-white dark:bg-dark-bg">
+        <section className="section-padding bg-[var(--card)]">
           <div className="container">
             <article className="prose prose-lg mx-auto max-w-4xl dark:prose-invert">
-              <p className="text-xl leading-relaxed text-gray-700 dark:text-gray-300">
+              <p className="text-xl leading-relaxed text-[var(--muted)] dark:text-gray-300">
                 {post.content.intro}
               </p>
 
               {post.content.sections.map((section, idx) => (
                 <div key={idx} className="mt-12">
-                  <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white">
+                  <h2 className="mb-4 text-3xl font-bold text-[var(--fg)] dark:text-white">
                     {section.title}
                   </h2>
-                  <p className="mb-6 text-gray-700 dark:text-gray-300">
+                  <p className="mb-6 text-[var(--muted)] dark:text-gray-300">
                     {section.content}
                   </p>
                   
                   {section.points && (
                     <ul className="space-y-3">
                       {section.points.map((point, pointIdx) => (
-                        <li key={pointIdx} className="text-gray-700 dark:text-gray-300">
+                        <li key={pointIdx} className="text-[var(--muted)] dark:text-gray-300">
                           {point}
                         </li>
                       ))}
@@ -1322,10 +1322,10 @@ export default function BlogPostPage({ params }: PageProps) {
               ))}
 
               <div className="mt-12 rounded-2xl bg-gradient-to-r from-teal-50 to-emerald-50 p-8 dark:from-teal-950/30 dark:to-emerald-950/30">
-                <h3 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
+                <h3 className="mb-4 text-2xl font-bold text-[var(--fg)] dark:text-white">
                   Conclusion
                 </h3>
-                <p className="text-lg text-gray-700 dark:text-gray-300">
+                <p className="text-lg text-[var(--muted)] dark:text-gray-300">
                   {post.content.conclusion}
                 </p>
               </div>
@@ -1353,7 +1353,7 @@ export default function BlogPostPage({ params }: PageProps) {
                 <div className="grid md:grid-cols-2 gap-6">
                   <Link
                     href="/cyber-intelligence#breach-checker"
-                    className="group relative overflow-hidden rounded-2xl bg-white p-8 text-gray-900 shadow-2xl transition-all hover:scale-105"
+                    className="group relative overflow-hidden rounded-2xl bg-white p-8 text-[var(--fg)] shadow-2xl transition-all hover:scale-105"
                   >
                     <div className="mb-4">
                       <div className="inline-flex rounded-full bg-red-100 p-3">
@@ -1371,7 +1371,7 @@ export default function BlogPostPage({ params }: PageProps) {
 
                   <Link
                     href="/consultation"
-                    className="group relative overflow-hidden rounded-2xl bg-white p-8 text-gray-900 shadow-2xl transition-all hover:scale-105"
+                    className="group relative overflow-hidden rounded-2xl bg-white p-8 text-[var(--fg)] shadow-2xl transition-all hover:scale-105"
                   >
                     <div className="mb-4">
                       <div className="inline-flex rounded-full bg-teal-100 p-3">
@@ -1416,9 +1416,9 @@ export default function BlogPostPage({ params }: PageProps) {
         </section>
 
         {/* Related Posts */}
-        <section className="section-padding bg-gray-50 dark:bg-gray-900/50">
+        <section className="section-padding bg-[var(--bg)]/50">
           <div className="container">
-            <h2 className="mb-8 text-center text-3xl font-bold text-gray-900 dark:text-white">
+            <h2 className="mb-8 text-center text-3xl font-bold text-[var(--fg)] dark:text-white">
               Continue Reading
             </h2>
             <div className="grid gap-6 md:grid-cols-3">
@@ -1434,7 +1434,7 @@ export default function BlogPostPage({ params }: PageProps) {
                     <span className="mb-3 inline-block rounded-full bg-teal-100 px-3 py-1 text-xs font-semibold text-teal-700 dark:bg-teal-900 dark:text-teal-300">
                       {relatedPost.category}
                     </span>
-                    <h3 className="mb-2 text-lg font-bold text-gray-900 transition-colors group-hover:text-teal-600 dark:text-white dark:group-hover:text-teal-400">
+                    <h3 className="mb-2 text-lg font-bold text-[var(--fg)] transition-colors group-hover:text-teal-600 dark:text-white dark:group-hover:text-teal-400">
                       {relatedPost.title}
                     </h3>
                     <p className="mb-3 text-sm text-gray-600 dark:text-gray-400">

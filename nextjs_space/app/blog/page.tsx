@@ -105,7 +105,7 @@ export default function BlogPage() {
               Strategic Insights
             </div>
             
-            <h1 className="mb-6 text-4xl font-bold text-gray-900 dark:text-white sm:text-5xl lg:text-6xl">
+            <h1 className="mb-6 text-4xl font-bold text-[var(--fg)] dark:text-white sm:text-5xl lg:text-6xl">
               AI Workforce Insights & Case Studies
             </h1>
             
@@ -116,9 +116,9 @@ export default function BlogPage() {
         </section>
 
         {/* Featured Posts */}
-        <section className="section-padding bg-white dark:bg-dark-bg">
+        <section className="section-padding bg-[var(--card)]">
           <div className="container">
-            <h2 className="mb-12 text-center text-3xl font-bold text-gray-900 dark:text-white">
+            <h2 className="mb-12 text-center text-3xl font-bold text-[var(--fg)] dark:text-white">
               Featured Articles
             </h2>
             
@@ -138,7 +138,7 @@ export default function BlogPage() {
                       
                       {/* Category Badge */}
                       <div className="absolute left-4 top-4">
-                        <span className="rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-gray-900 backdrop-blur-sm">
+                        <span className="rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-[var(--fg)] backdrop-blur-sm">
                           {post.category}
                         </span>
                       </div>
@@ -151,7 +151,7 @@ export default function BlogPage() {
                         {post.readTime}
                       </div>
                       
-                      <h3 className="mb-3 text-xl font-bold text-gray-900 transition-colors group-hover:text-teal-600 dark:text-white dark:group-hover:text-teal-400">
+                      <h3 className="mb-3 text-xl font-bold text-[var(--fg)] transition-colors group-hover:text-teal-600 dark:text-white dark:group-hover:text-teal-400">
                         {post.title}
                       </h3>
                       
@@ -172,9 +172,9 @@ export default function BlogPage() {
         </section>
 
         {/* All Posts */}
-        <section className="section-padding bg-gray-50 dark:bg-gray-900/50">
+        <section className="section-padding bg-[var(--bg)]/50">
           <div className="container">
-            <h2 className="mb-12 text-center text-3xl font-bold text-gray-900 dark:text-white">
+            <h2 className="mb-12 text-center text-3xl font-bold text-[var(--fg)] dark:text-white">
               More Articles
             </h2>
             
@@ -195,7 +195,7 @@ export default function BlogPage() {
                       </span>
                     </div>
                     
-                    <h3 className="mb-2 text-lg font-bold text-gray-900 transition-colors group-hover:text-teal-600 dark:text-white dark:group-hover:text-teal-400">
+                    <h3 className="mb-2 text-lg font-bold text-[var(--fg)] transition-colors group-hover:text-teal-600 dark:text-white dark:group-hover:text-teal-400">
                       {post.title}
                     </h3>
                     

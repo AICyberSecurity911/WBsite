@@ -5,6 +5,7 @@ import { useInView } from 'react-intersection-observer'
 import { motion } from 'framer-motion'
 import { Shield, CheckCircle, Clock, TrendingUp, DollarSign, ArrowRight, Phone, Mail } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { FlameBorder } from '@/components/ui/flame-border'
 import Link from 'next/link'
 
 export function GuaranteeSection() {
@@ -14,7 +15,7 @@ export function GuaranteeSection() {
   })
 
   return (
-    <section id="guarantee" ref={ref} className="py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900/50 dark:to-dark-bg">
+    <section id="guarantee" ref={ref} className="py-12 sm:py-16 lg:py-20" style={{ background: 'var(--bg)' }}>
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -29,8 +30,8 @@ export function GuaranteeSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mb-12 text-center"
           >
-            <div className="mx-auto mb-8 flex h-32 w-32 items-center justify-center rounded-full bg-gradient-to-br from-teal-500 to-emerald-600 shadow-2xl shadow-teal-500/30">
-              <Shield className="h-16 w-16 text-qgd-fg" />
+            <div className="mx-auto mb-8 flex h-32 w-32 items-center justify-center rounded-full" style={{ background: 'linear-gradient(135deg, var(--primary), var(--accent))' }}>
+              <Shield className="h-16 w-16 text-qgd-fg" style={{ filter: 'drop-shadow(0 0 10px rgba(124, 58, 237, 0.5))' }} />
             </div>
             
             <h2 className="mb-4 text-4xl font-bold text-[#f6f7ff] sm:text-5xl">
@@ -49,19 +50,16 @@ export function GuaranteeSection() {
                 icon: DollarSign,
                 title: 'Free Until It Works',
                 description: 'Your plan is free until you save time',
-                color: 'from-green-500 to-emerald-600'
               },
               {
                 icon: Clock,
                 title: '30 Days to Prove It',
                 description: 'Fast results or we keep working for free',
-                color: 'from-blue-500 to-cyan-600'
               },
               {
                 icon: CheckCircle,
                 title: 'Zero Risk Promise',
                 description: 'We only win when you win',
-                color: 'from-purple-500 to-pink-600'
               }
             ].map((feature, idx) => (
               <motion.div
@@ -69,17 +67,20 @@ export function GuaranteeSection() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.4 + idx * 0.1 }}
-                className="rounded-2xl bg-gradient-to-br from-teal-50 to-emerald-50 dark:from-teal-950/30 dark:to-emerald-950/30 p-8 text-center shadow-lg border-2 border-teal-200 dark:border-teal-800"
+                className="relative rounded-2xl qgd-card qgd-card-hover p-8 text-center overflow-hidden"
               >
-                <div className={`mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r ${feature.color}`}>
-                  <feature.icon className="h-8 w-8 text-qgd-fg" />
+                <FlameBorder />
+                <div className="relative z-20">
+                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl" style={{ background: 'var(--primary)' }}>
+                    <feature.icon className="h-8 w-8 text-qgd-fg" />
+                  </div>
+                  <h3 className="mb-2 text-xl font-bold text-[#f6f7ff]">
+                    {feature.title}
+                  </h3>
+                  <p className="text-[#b8b6c9]">
+                    {feature.description}
+                  </p>
                 </div>
-                <h3 className="mb-2 text-xl font-bold text-[#f6f7ff]">
-                  {feature.title}
-                </h3>
-                <p className="text-[#b8b6c9]">
-                  {feature.description}
-                </p>
               </motion.div>
             ))}
           </div>
@@ -89,58 +90,62 @@ export function GuaranteeSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.7 }}
-            className="mb-12 rounded-2xl bg-gradient-to-r from-teal-600 to-emerald-600 p-8 text-qgd-fg lg:p-12"
+            className="mb-12 relative rounded-2xl qgd-card qgd-card-hover p-8 text-qgd-fg lg:p-12 overflow-hidden"
+            style={{ background: 'linear-gradient(135deg, var(--primary), var(--accent))' }}
           >
-            <h3 className="mb-6 text-center text-2xl font-bold lg:text-3xl">
-              Why We Can Confidently Offer This Guarantee
-            </h3>
-            
-            <div className="grid gap-6 md:grid-cols-2">
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0">
-                  <CheckCircle className="h-6 w-6" />
-                </div>
-                <div>
-                  <h4 className="mb-2 font-semibold">Proven Track Record</h4>
-                  <p className="text-qgd-ring50">
-                    93% of our clients see measurable time savings within the first 30 days. Most save 15-20 hours per week immediately.
-                  </p>
-                </div>
-              </div>
+            <FlameBorder />
+            <div className="relative z-20">
+              <h3 className="mb-6 text-center text-2xl font-bold lg:text-3xl">
+                Why We Can Confidently Offer This Guarantee
+              </h3>
               
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0">
-                  <CheckCircle className="h-6 w-6" />
+              <div className="grid gap-6 md:grid-cols-2">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0">
+                    <CheckCircle className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <h4 className="mb-2 font-semibold">Proven Track Record</h4>
+                    <p className="text-qgd-fg/80">
+                      93% of our clients see measurable time savings within the first 30 days. Most save 15-20 hours per week immediately.
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="mb-2 font-semibold">Battle-Tested Technology</h4>
-                  <p className="text-qgd-ring50">
-                    Our AI employees are trained on 10,000+ hours of real business operations. They've already made and learned from millions of decisions.
-                  </p>
+                
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0">
+                    <CheckCircle className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <h4 className="mb-2 font-semibold">Battle-Tested Technology</h4>
+                    <p className="text-qgd-fg/80">
+                      Our AI employees are trained on 10,000+ hours of real business operations. They've already made and learned from millions of decisions.
+                    </p>
+                  </div>
                 </div>
-              </div>
-              
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0">
-                  <CheckCircle className="h-6 w-6" />
+                
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0">
+                    <CheckCircle className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <h4 className="mb-2 font-semibold">Dedicated Support</h4>
+                    <p className="text-qgd-fg/80">
+                      You're not alone. Our team provides white-glove onboarding and ongoing optimization to ensure you start saving time fast.
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="mb-2 font-semibold">Dedicated Support</h4>
-                  <p className="text-qgd-ring50">
-                    You're not alone. Our team provides white-glove onboarding and ongoing optimization to ensure you start saving time fast.
-                  </p>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0">
-                  <CheckCircle className="h-6 w-6" />
-                </div>
-                <div>
-                  <h4 className="mb-2 font-semibold">Measurable Results</h4>
-                  <p className="text-qgd-ring50">
-                    Every AI employee comes with built-in time tracking. You'll see exactly how many hours you're getting back, in real-time.
-                  </p>
+                
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0">
+                    <CheckCircle className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <h4 className="mb-2 font-semibold">Measurable Results</h4>
+                    <p className="text-qgd-fg/80">
+                      Every AI employee comes with built-in time tracking. You'll see exactly how many hours you're getting back, in real-time.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -151,16 +156,17 @@ export function GuaranteeSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.9 }}
-            className="mb-12 grid gap-6 rounded-2xl bg-qgd-card p-8 dark:bg-qgd-card/50 md:grid-cols-4"
+            className="mb-12 relative grid gap-6 rounded-2xl qgd-card qgd-card-hover p-8 md:grid-cols-4 overflow-hidden"
           >
+            <FlameBorder />
             {[
               { value: '97%', label: 'Client Success Rate' },
               { value: '30 days', label: 'Average Time to ROI' },
               { value: '200+', label: 'Businesses Transformed' },
               { value: '$47K', label: 'Average Annual Savings' }
             ].map((stat, idx) => (
-              <div key={idx} className="text-center">
-                <div className="mb-2 text-3xl font-bold text-qgd-ring600 dark:text-qgd-ring400">
+              <div key={idx} className="text-center relative z-20">
+                <div className="mb-2 text-3xl font-bold" style={{ color: 'var(--ring)' }}>
                   {stat.value}
                 </div>
                 <div className="text-sm text-[#b8b6c9]">

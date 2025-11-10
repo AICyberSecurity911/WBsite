@@ -84,7 +84,7 @@ export default function ConsultationPage() {
               </div>
             </div>
 
-            <h1 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white">
+            <h1 className="mb-4 text-3xl font-bold text-[var(--fg)] dark:text-white">
               Consultation Requested!
             </h1>
 
@@ -141,7 +141,7 @@ export default function ConsultationPage() {
       <div className="container section-padding">
         <div className="mx-auto max-w-2xl">
           <div className="mb-12 text-center">
-            <h1 className="mb-4 text-4xl font-bold text-gray-900 dark:text-white">
+            <h1 className="mb-4 text-4xl font-bold text-[var(--fg)] dark:text-white">
               Schedule Your Free Consultation
             </h1>
             <p className="text-lg text-gray-600 dark:text-gray-300">
@@ -209,7 +209,7 @@ export default function ConsultationPage() {
                   {...register('message')}
                   id="message"
                   rows={4}
-                  className="mt-1 flex w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm ring-offset-white placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-800 dark:bg-gray-950 dark:ring-offset-gray-950 dark:placeholder:text-gray-400 dark:focus-visible:ring-teal-400"
+                  className="mt-1 flex w-full rounded-lg border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-sm text-[var(--fg)] ring-offset-white placeholder:text-[var(--muted)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 border-[var(--border)] bg-[var(--card)] dark:ring-offset-gray-950 dark:placeholder:text-gray-400 dark:focus-visible:ring-teal-400"
                   placeholder="What challenges are you facing? What processes take up most of your time? What are your main business goals?"
                 />
                 {errors.message && (

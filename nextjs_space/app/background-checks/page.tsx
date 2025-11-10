@@ -187,13 +187,13 @@ export default function BackgroundChecksPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animation-delay-400">
                 <a 
                   href="/consultation" 
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-qgd-fg bg-red-500 hover:bg-red-600 rounded-lg transition transform hover:scale-105"
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-qgd-fg bg-[var(--card)]0 hover:bg-red-600 rounded-lg transition transform hover:scale-105"
                 >
                   🔍 Uncover the Truth Before It Costs You Everything →
                 </a>
                 <a 
                   href="/consultation" 
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold border-2 border-red-500 text-red-600 dark:text-red-400 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 transition"
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold border-2 border-red-500 text-[var(--accent)] dark:text-red-400 rounded-lg hover:bg-[var(--card)] dark:hover:bg-red-900/20 transition"
                 >
                   📋 Get My Confidential Risk Report →
                 </a>
@@ -222,7 +222,7 @@ export default function BackgroundChecksPage() {
                 </p>
 
                 <div className="bg-[#0c0c12] rounded-lg p-6 mb-6">
-                  <p className="font-bold text-xl mb-4 text-red-600 dark:text-red-400">Real Results for SMBs:</p>
+                  <p className="font-bold text-xl mb-4 text-[var(--accent)] dark:text-red-400">Real Results for SMBs:</p>
                   <ul className="space-y-3">
                     {[
                       { icon: '🛡️', text: '74% lower fraud risk within 90 days' },
@@ -238,7 +238,7 @@ export default function BackgroundChecksPage() {
                   </ul>
                 </div>
 
-                <div className="border-l-4 border-red-500 pl-6 py-2 bg-red-50 dark:bg-red-950/30 rounded-r-lg">
+                <div className="border-l-4 border-red-500 pl-6 py-2 bg-[var(--card)] dark:bg-red-950/30 rounded-r-lg">
                   <p className="text-sm font-semibold text-[#b8b6c9] dark:text-[#b8b6c9] mb-2">
                     <em>Founder's Note—Paras Khurana, CEO</em>
                   </p>
@@ -291,9 +291,9 @@ export default function BackgroundChecksPage() {
                   They were never charged with a crime—just quietly pushed out from previous jobs. No arrest record means they pass standard checks every time.
                 </p>
 
-                <Card className="my-8 border-red-200 dark:border-red-800 bg-red-50/50 dark:bg-red-950/20">
+                <Card className="my-8 border-red-200 dark:border-red-800 bg-[var(--card)]/50 dark:bg-red-950/20">
                   <CardContent className="p-6">
-                    <p className="text-xl font-bold mb-4 text-red-600 dark:text-red-400">
+                    <p className="text-xl font-bold mb-4 text-[var(--accent)] dark:text-red-400">
                       Here's what most business owners don't know:
                     </p>
                     <p className="text-lg text-[#b8b6c9] dark:text-qgd-fg mb-4">
@@ -309,7 +309,7 @@ export default function BackgroundChecksPage() {
                   </CardContent>
                 </Card>
 
-                <p className="text-2xl font-bold text-red-600 dark:text-red-400">
+                <p className="text-2xl font-bold text-[var(--accent)] dark:text-red-400">
                   One bad hire can drain $200K+ in legal fees, lost clients, and reputation damage.
                 </p>
 
@@ -332,7 +332,7 @@ export default function BackgroundChecksPage() {
                 <div className="text-center py-8">
                   <Button 
                     asChild
-                    className="bg-red-500 hover:bg-red-600 text-qgd-fg px-8 py-6 text-lg"
+                    className="bg-[var(--card)]0 hover:bg-red-600 text-qgd-fg px-8 py-6 text-lg"
                   >
                     <a href="/consultation">🔍 See What Standard Checks Are Missing About Your Candidate →</a>
                   </Button>
@@ -413,7 +413,7 @@ export default function BackgroundChecksPage() {
                       <strong className="not-italic text-blue-600 dark:text-blue-400">Translation:</strong> We look in places where criminals share stolen information and plan illegal activity—places standard checks never see.
                     </p>
                     <p className="text-[#b8b6c9] dark:text-qgd-fg">
-                      <strong className="text-red-600 dark:text-red-400">Why this matters:</strong> If this person will have access to your company's <a href="/cyber-intelligence" className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 underline">financial systems or sensitive data</a>, you need to know if their credentials are floating around in criminal networks. Identity theft victims create legal liability—and active criminals create catastrophic risk.
+                      <strong className="text-[var(--accent)] dark:text-red-400">Why this matters:</strong> If this person will have access to your company's <a href="/cyber-intelligence" className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 underline">financial systems or sensitive data</a>, you need to know if their credentials are floating around in criminal networks. Identity theft victims create legal liability—and active criminals create catastrophic risk.
                     </p>
                   </div>
                 </CardContent>
@@ -463,7 +463,7 @@ export default function BackgroundChecksPage() {
             <div className="mt-12 text-center">
               <Button 
                 asChild
-                className="bg-red-500 hover:bg-red-600 text-qgd-fg px-8 py-6 text-lg"
+                className="bg-[var(--card)]0 hover:bg-red-600 text-qgd-fg px-8 py-6 text-lg"
               >
                 <a href="/consultation">🧠 I Need This Level of Investigation → Schedule My Confidential Briefing</a>
               </Button>
@@ -506,10 +506,10 @@ export default function BackgroundChecksPage() {
             <div className="overflow-x-auto">
               <table className="w-full border-collapse">
                 <thead>
-                  <tr className="bg-red-50 dark:bg-red-950/30">
+                  <tr className="bg-[var(--card)] dark:bg-red-950/30">
                     <th className="border border-red-200 dark:border-red-800 p-4 text-left font-bold text-[#f6f7ff]">Question</th>
                     <th className="border border-red-200 dark:border-red-800 p-4 text-left font-bold text-[#f6f7ff]">Standard Background Check</th>
-                    <th className="border border-red-200 dark:border-red-800 p-4 text-left font-bold text-red-600 dark:text-red-400">QuantumLeap Intelligence Investigation</th>
+                    <th className="border border-red-200 dark:border-red-800 p-4 text-left font-bold text-[var(--accent)] dark:text-red-400">QuantumLeap Intelligence Investigation</th>
                   </tr>
                 </thead>
                 <tbody className="text-[#b8b6c9] dark:text-qgd-fg">
@@ -575,10 +575,10 @@ export default function BackgroundChecksPage() {
                       quantum: 'Actually knowing who you\'re hiring'
                     }
                   ].map((row, idx) => (
-                    <tr key={idx} className="hover:bg-red-50/50 dark:hover:bg-red-950/10 transition-colors">
+                    <tr key={idx} className="hover:bg-[var(--card)]/50 dark:hover:bg-red-950/10 transition-colors">
                       <td className="border border-red-200 dark:border-red-800 p-4 font-semibold">{row.question}</td>
                       <td className="border border-red-200 dark:border-red-800 p-4">{row.standard}</td>
-                      <td className="border border-red-200 dark:border-red-800 p-4 bg-red-50/30 dark:bg-red-950/20">{row.quantum}</td>
+                      <td className="border border-red-200 dark:border-red-800 p-4 bg-[var(--card)]/30 dark:bg-red-950/20">{row.quantum}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -588,7 +588,7 @@ export default function BackgroundChecksPage() {
             <div className="mt-12 text-center">
               <Button 
                 asChild
-                className="bg-red-500 hover:bg-red-600 text-qgd-fg px-8 py-6 text-lg"
+                className="bg-[var(--card)]0 hover:bg-red-600 text-qgd-fg px-8 py-6 text-lg"
               >
                 <a href="/consultation">🧠 Which level of investigation do you need? → Schedule a consultation to discuss your role</a>
               </Button>
@@ -724,7 +724,7 @@ export default function BackgroundChecksPage() {
                 >
                   {tier.popular && (
                     <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                      <span className="bg-red-500 text-qgd-fg px-4 py-1 rounded-full text-sm font-bold">
+                      <span className="bg-[var(--card)]0 text-qgd-fg px-4 py-1 rounded-full text-sm font-bold">
                         MOST POPULAR
                       </span>
                     </div>
@@ -746,8 +746,8 @@ export default function BackgroundChecksPage() {
                       asChild
                       className={`w-full ${
                         tier.popular 
-                          ? 'bg-red-500 hover:bg-red-600 text-qgd-fg' 
-                          : 'bg-[#0c0c12] border-2 border-red-500 text-red-500 hover:bg-red-50 dark:hover:bg-red-950/20'
+                          ? 'bg-[var(--card)]0 hover:bg-red-600 text-qgd-fg' 
+                          : 'bg-[#0c0c12] border-2 border-red-500 text-red-500 hover:bg-[var(--card)] dark:hover:bg-red-950/20'
                       }`}
                     >
                       <a href="/consultation">{tier.cta}</a>
@@ -767,7 +767,7 @@ export default function BackgroundChecksPage() {
                     <p className="text-lg font-semibold text-[#b8b6c9] dark:text-qgd-fg mb-2">
                       Investigation Cost:
                     </p>
-                    <p className="text-3xl font-bold text-red-600 dark:text-red-400 mb-2">
+                    <p className="text-3xl font-bold text-[var(--accent)] dark:text-red-400 mb-2">
                       Less than 2%
                     </p>
                     <p className="text-[#b8b6c9] dark:text-[#b8b6c9]">
@@ -788,7 +788,7 @@ export default function BackgroundChecksPage() {
                 </div>
                 <p className="text-center text-lg text-[#b8b6c9] dark:text-qgd-fg mt-6 font-semibold">
                   The question isn't "Can I afford an investigation?"<br />
-                  The question is <span className="text-red-600 dark:text-red-400">"Can I afford not to?"</span>
+                  The question is <span className="text-[var(--accent)] dark:text-red-400">"Can I afford not to?"</span>
                 </p>
               </CardContent>
             </Card>
@@ -796,7 +796,7 @@ export default function BackgroundChecksPage() {
             <div className="mt-12 text-center">
               <Button 
                 asChild
-                className="bg-red-500 hover:bg-red-600 text-qgd-fg px-10 py-6 text-lg font-semibold"
+                className="bg-[var(--card)]0 hover:bg-red-600 text-qgd-fg px-10 py-6 text-lg font-semibold"
               >
                 <a href="/consultation">💰 Get Your Custom Quote for This Role → Schedule Free Consultation</a>
               </Button>
@@ -890,7 +890,7 @@ export default function BackgroundChecksPage() {
 
                 <div className="prose prose-lg dark:prose-invert max-w-none">
                   <p className="text-xl text-[#b8b6c9] dark:text-qgd-fg leading-relaxed mb-6">
-                    If our first investigation doesn't uncover <strong>at least three significant findings</strong> (beyond what a standard background check would show), <strong className="text-red-600 dark:text-red-400">you don't pay</strong>.
+                    If our first investigation doesn't uncover <strong>at least three significant findings</strong> (beyond what a standard background check would show), <strong className="text-[var(--accent)] dark:text-red-400">you don't pay</strong>.
                   </p>
 
                   <Card className="my-8 border-blue-200 dark:border-blue-800 bg-[#0c0c12] dark:bg-[#0c0c12]">
@@ -953,13 +953,13 @@ export default function BackgroundChecksPage() {
 
                   <p className="text-lg text-[#b8b6c9] dark:text-qgd-fg text-center mb-6">
                     The question isn't whether you can afford this investigation.<br />
-                    <strong className="text-red-600 dark:text-red-400">It's whether you can afford to hire blindly.</strong>
+                    <strong className="text-[var(--accent)] dark:text-red-400">It's whether you can afford to hire blindly.</strong>
                   </p>
 
                   <div className="text-center">
                     <Button 
                       asChild
-                      className="bg-red-500 hover:bg-red-600 text-qgd-fg px-10 py-6 text-lg font-semibold"
+                      className="bg-[var(--card)]0 hover:bg-red-600 text-qgd-fg px-10 py-6 text-lg font-semibold"
                     >
                       <a href="/consultation">🛡️ Start Your Risk-Free Investigation → Schedule Now</a>
                     </Button>
@@ -1005,9 +1005,9 @@ export default function BackgroundChecksPage() {
                       Still, something felt off.
                     </p>
                     <p>
-                      QuantumLeap dug deeper and <strong className="text-red-600 dark:text-red-400">uncovered a stolen identity linked to an international criminal network</strong>. He wasn't who he claimed to be. He had come for money, not for our daughter.
+                      QuantumLeap dug deeper and <strong className="text-[var(--accent)] dark:text-red-400">uncovered a stolen identity linked to an international criminal network</strong>. He wasn't who he claimed to be. He had come for money, not for our daughter.
                     </p>
-                    <p className="text-xl font-bold text-red-600 dark:text-red-400">
+                    <p className="text-xl font-bold text-[var(--accent)] dark:text-red-400">
                       QuantumLeap didn't just protect our assets—they protected our family.
                     </p>
                   </div>
@@ -1033,12 +1033,12 @@ export default function BackgroundChecksPage() {
                       "We hired a CTO who looked like a dream candidate on paper. Within months, he nearly destroyed two client projects through incompetence and hostile behavior."
                     </p>
                     <p>
-                      QuantumLeap's investigation found he'd been <strong className="text-red-600 dark:text-red-400">fired from three previous companies (under a different name)</strong> and his online presence showed a pattern of hate-filled posts and links to extremist groups.
+                      QuantumLeap's investigation found he'd been <strong className="text-[var(--accent)] dark:text-red-400">fired from three previous companies (under a different name)</strong> and his online presence showed a pattern of hate-filled posts and links to extremist groups.
                     </p>
                     <p>
                       None of this appeared on any standard check because he'd never been arrested. He just kept getting hired—and fired—under different identities.
                     </p>
-                    <p className="text-xl font-bold text-red-600 dark:text-red-400">
+                    <p className="text-xl font-bold text-[var(--accent)] dark:text-red-400">
                       Result: Avoided $250K in losses, saved our reputation, and prevented a toxic culture disaster.
                     </p>
                   </div>
@@ -1064,12 +1064,12 @@ export default function BackgroundChecksPage() {
                       "In real estate, trust is everything. I was about to sign a partnership agreement when something told me to dig deeper."
                     </p>
                     <p>
-                      QuantumLeap flagged <strong className="text-red-600 dark:text-red-400">hidden legal issues abroad, fake shell companies, and financial patterns showing distress</strong>. He was planning to use my license to run schemes.
+                      QuantumLeap flagged <strong className="text-[var(--accent)] dark:text-red-400">hidden legal issues abroad, fake shell companies, and financial patterns showing distress</strong>. He was planning to use my license to run schemes.
                     </p>
                     <p>
                       Standard check said "clear." QuantumLeap said "run."
                     </p>
-                    <p className="text-xl font-bold text-red-600 dark:text-red-400">
+                    <p className="text-xl font-bold text-[var(--accent)] dark:text-red-400">
                       Result: Saved $250K and 100 hours of legal hell. Worth every penny.
                     </p>
                   </div>
@@ -1092,12 +1092,12 @@ export default function BackgroundChecksPage() {
                   </div>
                   <div className="space-y-4 text-[#b8b6c9] dark:text-qgd-fg leading-relaxed">
                     <p className="italic text-lg">
-                      "I hired someone who passed every standard check. Three months later, he <strong className="text-red-600 dark:text-red-400">locked down our entire network and demanded $4 million in cryptocurrency</strong> to release the data he'd encrypted himself."
+                      "I hired someone who passed every standard check. Three months later, he <strong className="text-[var(--accent)] dark:text-red-400">locked down our entire network and demanded $4 million in cryptocurrency</strong> to release the data he'd encrypted himself."
                     </p>
                     <p>
                       The FBI called it "an inside job." He was a former ethical hacker who'd turned rogue—and he passed every standard background check in the book.
                     </p>
-                    <p className="text-xl font-bold text-red-600 dark:text-red-400">
+                    <p className="text-xl font-bold text-[var(--accent)] dark:text-red-400">
                       If I'd known about QuantumLeap before, I would've discovered his alias activity in underground hacking forums. That investigation would've cost $5K. My mistake cost $4 million.
                     </p>
                     <p className="font-bold">
@@ -1111,7 +1111,7 @@ export default function BackgroundChecksPage() {
             <div className="mt-12 text-center">
               <Button 
                 asChild
-                className="bg-red-500 hover:bg-red-600 text-qgd-fg px-8 py-6 text-lg"
+                className="bg-[var(--card)]0 hover:bg-red-600 text-qgd-fg px-8 py-6 text-lg"
               >
                 <a href="/consultation">🛡️ I Can't Afford This Kind of Mistake → Run My Risk Assessment Now</a>
               </Button>
@@ -1145,7 +1145,7 @@ export default function BackgroundChecksPage() {
                     <p className="text-xl leading-relaxed">
                       After five years running her consulting business alone, she was ready to hire an operations manager. She found the perfect candidate—smart, charismatic, experienced. His background check came back clean: no criminal record, good credit, verified education.
                     </p>
-                    <p className="text-2xl font-bold text-red-600 dark:text-red-400 leading-relaxed">
+                    <p className="text-2xl font-bold text-[var(--accent)] dark:text-red-400 leading-relaxed">
                       Three months after hiring him, he locked down the entire company network and demanded $4 million in cryptocurrency to release the data he'd encrypted himself.
                     </p>
                     <p className="text-xl leading-relaxed">
@@ -1154,7 +1154,7 @@ export default function BackgroundChecksPage() {
                   </div>
 
                   {/* The Cost Breakdown */}
-                  <div className="my-8 bg-red-50 dark:bg-red-950/30 rounded-lg p-6">
+                  <div className="my-8 bg-[var(--card)] dark:bg-red-950/30 rounded-lg p-6">
                     <h3 className="text-2xl font-bold mb-4 text-[#f6f7ff]">The Real Numbers</h3>
                     <p className="mb-4">When Sarah added up the real numbers, this "clean hire" had cost:</p>
                     <div className="space-y-2 text-lg">
@@ -1187,8 +1187,8 @@ export default function BackgroundChecksPage() {
                         <span className="font-bold">$108,000</span>
                       </div>
                       <div className="flex justify-between pt-2 text-2xl">
-                        <span className="font-bold text-red-600 dark:text-red-400">Total:</span>
-                        <span className="font-bold text-red-600 dark:text-red-400">$846,000</span>
+                        <span className="font-bold text-[var(--accent)] dark:text-red-400">Total:</span>
+                        <span className="font-bold text-[var(--accent)] dark:text-red-400">$846,000</span>
                       </div>
                     </div>
                     <p className="mt-4 text-[#b8b6c9] dark:text-[#b8b6c9] italic">
@@ -1222,35 +1222,35 @@ export default function BackgroundChecksPage() {
                       </ul>
                     </div>
 
-                    <div className="bg-red-50 dark:bg-red-950/30 rounded-lg p-6 mb-6">
+                    <div className="bg-[var(--card)] dark:bg-red-950/30 rounded-lg p-6 mb-6">
                       <p className="font-bold text-red-700 dark:text-red-400 mb-3">Here's what they DON'T do:</p>
                       <ul className="space-y-2">
                         <li className="flex items-start gap-2">
-                          <span className="text-red-600 dark:text-red-400">✗</span>
+                          <span className="text-[var(--accent)] dark:text-red-400">✗</span>
                           <span>Look for behavior patterns online</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <span className="text-red-600 dark:text-red-400">✗</span>
+                          <span className="text-[var(--accent)] dark:text-red-400">✗</span>
                           <span>Search for multiple identities or fake names</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <span className="text-red-600 dark:text-red-400">✗</span>
+                          <span className="text-[var(--accent)] dark:text-red-400">✗</span>
                           <span>Check areas of the internet where criminals operate</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <span className="text-red-600 dark:text-red-400">✗</span>
+                          <span className="text-[var(--accent)] dark:text-red-400">✗</span>
                           <span>Analyze communication style for red flags</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <span className="text-red-600 dark:text-red-400">✗</span>
+                          <span className="text-[var(--accent)] dark:text-red-400">✗</span>
                           <span>Verify if "references" are actually friends posing as managers</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <span className="text-red-600 dark:text-red-400">✗</span>
+                          <span className="text-[var(--accent)] dark:text-red-400">✗</span>
                           <span>Find lawsuits that were settled (not public)</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <span className="text-red-600 dark:text-red-400">✗</span>
+                          <span className="text-[var(--accent)] dark:text-red-400">✗</span>
                           <span>Detect financial distress that doesn't show on credit reports</span>
                         </li>
                       </ul>
@@ -1268,7 +1268,7 @@ export default function BackgroundChecksPage() {
                       <li>Patterns of accessing systems he shouldn't have touched</li>
                       <li>Conversations about exploiting company weaknesses</li>
                     </ul>
-                    <p className="text-lg mt-4 font-bold text-red-600 dark:text-red-400">
+                    <p className="text-lg mt-4 font-bold text-[var(--accent)] dark:text-red-400">
                       All of this was visible—just not in the databases that standard checks search.
                     </p>
                   </div>
@@ -1316,7 +1316,7 @@ export default function BackgroundChecksPage() {
                       </div>
                       <div>
                         <p className="text-sm text-[#b8b6c9] dark:text-[#b8b6c9]">Result</p>
-                        <p className="text-2xl font-bold text-red-600 dark:text-red-400">Do Not Hire</p>
+                        <p className="text-2xl font-bold text-[var(--accent)] dark:text-red-400">Do Not Hire</p>
                       </div>
                     </div>
 
@@ -1335,7 +1335,7 @@ export default function BackgroundChecksPage() {
                     </p>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
-                      <div className="bg-gray-100 dark:bg-qgd-card rounded-lg p-6">
+                      <div className="bg-[var(--card)] rounded-lg p-6">
                         <p className="font-bold text-xl mb-3 text-[#f6f7ff]">Database Checks</p>
                         <p className="text-sm text-[#b8b6c9] dark:text-[#b8b6c9] mb-2">(what most people buy)</p>
                         <p className="mb-4">Searches only public criminal records and credit reports.</p>
@@ -1346,8 +1346,8 @@ export default function BackgroundChecksPage() {
                         </div>
                       </div>
                       
-                      <div className="bg-red-50 dark:bg-red-950/30 rounded-lg p-6 border-2 border-red-500">
-                        <p className="font-bold text-xl mb-3 text-red-600 dark:text-red-400">Intelligence Investigations</p>
+                      <div className="bg-[var(--card)] dark:bg-red-950/30 rounded-lg p-6 border-2 border-red-500">
+                        <p className="font-bold text-xl mb-3 text-[var(--accent)] dark:text-red-400">Intelligence Investigations</p>
                         <p className="text-sm text-[#b8b6c9] dark:text-[#b8b6c9] mb-2">(what we do)</p>
                         <p className="mb-4">Analyzes behavior, finds hidden identities, searches areas criminals use, reviewed by human experts.</p>
                         <div className="space-y-2 text-sm">
@@ -1362,7 +1362,7 @@ export default function BackgroundChecksPage() {
                       The problem? Most people think a "clean background check" means someone is safe.
                     </p>
                     <p className="text-xl text-center mb-6">
-                      It doesn't. <span className="font-bold text-red-600 dark:text-red-400">It just means they haven't been arrested yet.</span>
+                      It doesn't. <span className="font-bold text-[var(--accent)] dark:text-red-400">It just means they haven't been arrested yet.</span>
                     </p>
                     <p className="text-lg text-center">
                       And by the time you discover the truth, the damage is done.
@@ -1384,14 +1384,14 @@ export default function BackgroundChecksPage() {
                       </div>
                       <div>
                         <p className="text-sm text-[#b8b6c9] dark:text-[#b8b6c9] mb-2">Cost of one bad hire:</p>
-                        <p className="text-3xl font-bold text-red-600 dark:text-red-400">$200K–$4M+</p>
+                        <p className="text-3xl font-bold text-[var(--accent)] dark:text-red-400">$200K–$4M+</p>
                       </div>
                     </div>
 
                     <p className="text-2xl font-bold mb-4 text-[#f6f7ff]">
                       The question isn't "Can I afford an investigation?"
                     </p>
-                    <p className="text-2xl font-bold text-red-600 dark:text-red-400">
+                    <p className="text-2xl font-bold text-[var(--accent)] dark:text-red-400">
                       The question is "Can I afford not to?"
                     </p>
                   </div>
@@ -1399,12 +1399,12 @@ export default function BackgroundChecksPage() {
                   <div className="text-center mt-8">
                     <Button 
                       asChild
-                      className="bg-red-500 hover:bg-red-600 text-qgd-fg px-8 py-6 text-lg"
+                      className="bg-[var(--card)]0 hover:bg-red-600 text-qgd-fg px-8 py-6 text-lg"
                     >
                       <a href="/consultation">🔍 See What Standard Checks Are Missing → Run Free Risk Assessment</a>
                     </Button>
                     <p className="mt-4 text-[#b8b6c9] dark:text-[#b8b6c9]">
-                      or <a href="/consultation" className="text-red-600 dark:text-red-400 underline hover:text-red-700 dark:hover:text-red-300">Schedule Confidential Investigation Briefing → Speak with Intelligence Analyst</a>
+                      or <a href="/consultation" className="text-[var(--accent)] dark:text-red-400 underline hover:text-red-700 dark:hover:text-red-300">Schedule Confidential Investigation Briefing → Speak with Intelligence Analyst</a>
                     </p>
                   </div>
                 </div>
@@ -1441,10 +1441,10 @@ export default function BackgroundChecksPage() {
                         <li>Places where criminals buy and sell stolen information</li>
                         <li>Underground networks where people hide their real identities</li>
                       </ul>
-                      <p className="font-bold text-red-600 dark:text-red-400">Why this matters for hiring:</p>
+                      <p className="font-bold text-[var(--accent)] dark:text-red-400">Why this matters for hiring:</p>
                       <p>If someone has a shady past, they often hide it in these areas. Standard background checks only search the 4% you can Google. We search the 96% where people hide what they don't want you to find.</p>
                       <div className="mt-4 text-center">
-                        <Button asChild className="bg-red-500 hover:bg-red-600 text-qgd-fg">
+                        <Button asChild className="bg-[var(--card)]0 hover:bg-red-600 text-qgd-fg">
                           <a href="/consultation">🔍 Want to see if your candidate shows up in hidden areas? → Run the free risk assessment</a>
                         </Button>
                       </div>
@@ -1472,10 +1472,10 @@ export default function BackgroundChecksPage() {
                         <li>Have human intelligence analysts review everything</li>
                       </ul>
                       <p>We take 5–7 days with custom pricing based on depth needed.</p>
-                      <p className="font-bold text-red-600 dark:text-red-400">The difference:</p>
+                      <p className="font-bold text-[var(--accent)] dark:text-red-400">The difference:</p>
                       <p>Standard checks tell you if someone got caught. We tell you if someone is dangerous.</p>
                       <div className="mt-4 text-center">
-                        <Button asChild className="bg-red-500 hover:bg-red-600 text-qgd-fg">
+                        <Button asChild className="bg-[var(--card)]0 hover:bg-red-600 text-qgd-fg">
                           <a href="/consultation">💡 Which level of investigation do you need for this role? → Schedule a confidential consultation</a>
                         </Button>
                       </div>
@@ -1488,7 +1488,7 @@ export default function BackgroundChecksPage() {
                     <div className="space-y-4">
                       <p>Because most problem employees never get arrested.</p>
                       <p>They get fired quietly. References aren't checked thoroughly. They change jobs before anyone presses charges. They use different names to hide their past.</p>
-                      <p className="font-bold text-red-600 dark:text-red-400">Here are real patterns we've seen:</p>
+                      <p className="font-bold text-[var(--accent)] dark:text-red-400">Here are real patterns we've seen:</p>
                       <div className="space-y-3">
                         <div>
                           <p className="font-bold">Pattern 1: The Serial Job-Hopper</p>
@@ -1512,7 +1512,7 @@ export default function BackgroundChecksPage() {
                       <p className="font-bold">The lesson? No criminal record ≠ Safe to hire</p>
                       <p>It just means they haven't been arrested yet.</p>
                       <div className="mt-4 text-center">
-                        <Button asChild className="bg-red-500 hover:bg-red-600 text-qgd-fg">
+                        <Button asChild className="bg-[var(--card)]0 hover:bg-red-600 text-qgd-fg">
                           <a href="/consultation">🛡️ See what hidden patterns exist for your candidate → Run the risk assessment</a>
                         </Button>
                       </div>
@@ -1531,12 +1531,12 @@ export default function BackgroundChecksPage() {
                         <li>$87K in legal fees (if they create HR problems)</li>
                         <li>$120K+ in reputation damage (lost clients, reviews)</li>
                       </ul>
-                      <p className="text-2xl font-bold text-red-600 dark:text-red-400">Total: $320K+ for one bad hire</p>
+                      <p className="text-2xl font-bold text-[var(--accent)] dark:text-red-400">Total: $320K+ for one bad hire</p>
                       <p>An intelligence investigation costs a fraction of that—typically less than 2% of what a bad hire costs you.</p>
                       <p className="font-bold">Here's the truth: Small businesses can't afford mistakes.</p>
                       <p>You don't have a PR department, a legal team on retainer, or cash reserves to absorb a $320K loss. One bad hire can destroy a small business.</p>
                       <div className="mt-4 text-center">
-                        <Button asChild className="bg-red-500 hover:bg-red-600 text-qgd-fg">
+                        <Button asChild className="bg-[var(--card)]0 hover:bg-red-600 text-qgd-fg">
                           <a href="/consultation">📊 See your specific cost-benefit breakdown → Schedule a free consultation</a>
                         </Button>
                       </div>
@@ -1558,7 +1558,7 @@ export default function BackgroundChecksPage() {
                       </ul>
                       <p>We'll give you preliminary red flags within 72 hours if we find something urgent.</p>
                       <div className="mt-4 text-center">
-                        <Button asChild className="bg-red-500 hover:bg-red-600 text-qgd-fg">
+                        <Button asChild className="bg-[var(--card)]0 hover:bg-red-600 text-qgd-fg">
                           <a href="/consultation">📅 Need faster results for a critical hire? → Schedule an expedited investigation</a>
                         </Button>
                       </div>
@@ -1579,11 +1579,11 @@ export default function BackgroundChecksPage() {
                         <li>✓ References are legitimate</li>
                         <li>✓ Resume is accurate</li>
                       </ul>
-                      <p className="font-bold text-red-600 dark:text-red-400">You get peace of mind backed by intelligence-grade due diligence.</p>
+                      <p className="font-bold text-[var(--accent)] dark:text-red-400">You get peace of mind backed by intelligence-grade due diligence.</p>
                       <p>That peace of mind is worth it when you're trusting someone with your company's money, client relationships, confidential data, your reputation, and your team's safety.</p>
                       <p>Think of it like insurance: You hope you never need it, but you're glad you have it.</p>
                       <div className="mt-4 text-center">
-                        <Button asChild className="bg-red-500 hover:bg-red-600 text-qgd-fg">
+                        <Button asChild className="bg-[var(--card)]0 hover:bg-red-600 text-qgd-fg">
                           <a href="/consultation">✅ Get peace of mind before your next hire → Start your investigation</a>
                         </Button>
                       </div>
@@ -1618,10 +1618,10 @@ export default function BackgroundChecksPage() {
                           </ul>
                         </div>
                       </div>
-                      <p className="font-bold text-red-600 dark:text-red-400">Remember:</p>
+                      <p className="font-bold text-[var(--accent)] dark:text-red-400">Remember:</p>
                       <p>One bad $50K hire costs $200K–$4M in losses. Our most comprehensive investigation is less than 2% of that cost.</p>
                       <div className="mt-4 text-center">
-                        <Button asChild className="bg-red-500 hover:bg-red-600 text-qgd-fg">
+                        <Button asChild className="bg-[var(--card)]0 hover:bg-red-600 text-qgd-fg">
                           <a href="/consultation">💰 Get a custom quote for your situation → Schedule a free consultation</a>
                         </Button>
                       </div>
@@ -1633,7 +1633,7 @@ export default function BackgroundChecksPage() {
                   a: (
                     <div className="space-y-4">
                       <p className="font-bold">Yes, completely legal—and we follow strict compliance protocols.</p>
-                      <p className="font-bold text-red-600 dark:text-red-400">What we do is legal because:</p>
+                      <p className="font-bold text-[var(--accent)] dark:text-red-400">What we do is legal because:</p>
                       <ul className="list-disc list-inside space-y-2 ml-4">
                         <li>We only access publicly available information and commercial databases</li>
                         <li>We don't hack, breach, or access private accounts</li>
@@ -1645,7 +1645,7 @@ export default function BackgroundChecksPage() {
                       <p>✅ We CAN access: Social media posts, forum comments, court records, business filings, arrest records, online behavior, professional profiles</p>
                       <p>❌ We CANNOT access: Private messages, medical records, sealed court records, banking details (without consent), email inboxes</p>
                       <div className="mt-4 text-center">
-                        <Button asChild className="bg-red-500 hover:bg-red-600 text-qgd-fg">
+                        <Button asChild className="bg-[var(--card)]0 hover:bg-red-600 text-qgd-fg">
                           <a href="/consultation">⚖️ Want to review our legal compliance documentation? → Request our compliance whitepaper</a>
                         </Button>
                       </div>
@@ -1659,7 +1659,7 @@ export default function BackgroundChecksPage() {
                       <p className="font-bold">Trust your gut—but here are specific warning signs:</p>
                       <div className="space-y-3">
                         <div>
-                          <p className="font-bold text-red-600 dark:text-red-400">Resume Red Flags:</p>
+                          <p className="font-bold text-[var(--accent)] dark:text-red-400">Resume Red Flags:</p>
                           <ul className="list-disc list-inside ml-4">
                             <li>Unexplained employment gaps (more than 6 months)</li>
                             <li>Job titles that don't match company size</li>
@@ -1668,7 +1668,7 @@ export default function BackgroundChecksPage() {
                           </ul>
                         </div>
                         <div>
-                          <p className="font-bold text-red-600 dark:text-red-400">Interview Red Flags:</p>
+                          <p className="font-bold text-[var(--accent)] dark:text-red-400">Interview Red Flags:</p>
                           <ul className="list-disc list-inside ml-4">
                             <li>Stories don't add up or change between interviews</li>
                             <li>Overly defensive about past jobs</li>
@@ -1677,7 +1677,7 @@ export default function BackgroundChecksPage() {
                           </ul>
                         </div>
                         <div>
-                          <p className="font-bold text-red-600 dark:text-red-400">Gut Feeling Red Flags:</p>
+                          <p className="font-bold text-[var(--accent)] dark:text-red-400">Gut Feeling Red Flags:</p>
                           <ul className="list-disc list-inside ml-4">
                             <li>Something just feels "off"</li>
                             <li>Too good to be true</li>
@@ -1688,7 +1688,7 @@ export default function BackgroundChecksPage() {
                       </div>
                       <p className="font-bold">The rule: If you have 2+ red flags, investigate before hiring.</p>
                       <div className="mt-4 text-center">
-                        <Button asChild className="bg-red-500 hover:bg-red-600 text-qgd-fg">
+                        <Button asChild className="bg-[var(--card)]0 hover:bg-red-600 text-qgd-fg">
                           <a href="/consultation">🚨 Found red flags in your candidate? → Get an immediate risk assessment</a>
                         </Button>
                       </div>
@@ -1699,7 +1699,7 @@ export default function BackgroundChecksPage() {
                   q: 'Do you offer any guarantees?',
                   a: (
                     <div className="space-y-4">
-                      <p className="font-bold text-red-600 dark:text-red-400">Yes. Our "Find It or Free" Guarantee.</p>
+                      <p className="font-bold text-[var(--accent)] dark:text-red-400">Yes. Our "Find It or Free" Guarantee.</p>
                       <p>If our first investigation doesn't uncover at least three significant findings (beyond what a standard background check would show), you don't pay.</p>
                       <p className="font-bold">Qualifying findings include:</p>
                       <ul className="list-disc list-inside space-y-2 ml-4">
@@ -1715,7 +1715,7 @@ export default function BackgroundChecksPage() {
                       <p>Because in 15 years and 2,000+ investigations, we've found disqualifying information 73% of the time.</p>
                       <p>Most candidates have something worth knowing—even if it's not disqualifying. Our job is to find it.</p>
                       <div className="mt-4 text-center">
-                        <Button asChild className="bg-red-500 hover:bg-red-600 text-qgd-fg">
+                        <Button asChild className="bg-[var(--card)]0 hover:bg-red-600 text-qgd-fg">
                           <a href="/consultation">🛡️ Start risk-free → Schedule your guaranteed investigation</a>
                         </Button>
                       </div>
@@ -1734,7 +1734,7 @@ export default function BackgroundChecksPage() {
                         <li><strong>Romantic partners</strong> (personal investigations—very common)</li>
                         <li><strong>Board members</strong> before appointments</li>
                       </ul>
-                      <p className="mt-4 font-bold text-red-600 dark:text-red-400">
+                      <p className="mt-4 font-bold text-[var(--accent)] dark:text-red-400">
                         If someone will have access to your money, data, or reputation—you should know who they really are.
                       </p>
                       <p className="font-bold mt-4">Common scenarios:</p>
@@ -1745,7 +1745,7 @@ export default function BackgroundChecksPage() {
                         <li>"I'm promoting someone to CFO—want to verify they're trustworthy"</li>
                       </ul>
                       <div className="mt-4 text-center">
-                        <Button asChild className="bg-red-500 hover:bg-red-600 text-qgd-fg">
+                        <Button asChild className="bg-[var(--card)]0 hover:bg-red-600 text-qgd-fg">
                           <a href="/consultation">🕵️ Need to investigate someone already in your life? → Schedule a confidential consultation</a>
                         </Button>
                       </div>
@@ -1759,7 +1759,7 @@ export default function BackgroundChecksPage() {
                       <p className="font-bold">Any business where trust matters:</p>
                       
                       <div className="my-4">
-                        <p className="font-bold text-red-600 dark:text-red-400">Most common clients:</p>
+                        <p className="font-bold text-[var(--accent)] dark:text-red-400">Most common clients:</p>
                         <ul className="list-disc list-inside space-y-2 ml-4">
                           <li><strong>Small businesses</strong> hiring first employees (can't afford mistakes)</li>
                           <li><strong>Finance and accounting firms</strong> (handling client money)</li>
@@ -1773,7 +1773,7 @@ export default function BackgroundChecksPage() {
                       </div>
 
                       <div className="my-4">
-                        <p className="font-bold text-red-600 dark:text-red-400">Personal clients:</p>
+                        <p className="font-bold text-[var(--accent)] dark:text-red-400">Personal clients:</p>
                         <ul className="list-disc list-inside space-y-2 ml-4">
                           <li>Parents vetting romantic partners for their children</li>
                           <li>High-net-worth individuals protecting family wealth</li>
@@ -1786,7 +1786,7 @@ export default function BackgroundChecksPage() {
                       </p>
 
                       <div className="mt-4 text-center">
-                        <Button asChild className="bg-red-500 hover:bg-red-600 text-qgd-fg">
+                        <Button asChild className="bg-[var(--card)]0 hover:bg-red-600 text-qgd-fg">
                           <a href="/consultation">📋 See how others in your industry use this service → Read case studies</a>
                         </Button>
                       </div>

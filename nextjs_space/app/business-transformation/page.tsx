@@ -601,7 +601,7 @@ export default function BusinessTransformationPage() {
                   </div>
 
                   <div className="space-y-4 mb-6">
-                    <div className="p-4 rounded-lg bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-800">
+                    <div className="p-4 rounded-lg bg-[var(--card)] border border-red-200 dark:border-red-800">
                       <p className="text-sm font-semibold text-red-600 dark:text-red-400 mb-1">Before:</p>
                       <p className="text-sm text-muted-foreground">{testimonial.before}</p>
                     </div>

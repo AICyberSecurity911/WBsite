@@ -195,7 +195,7 @@ export function AITeamCalculator() {
                   className={`w-full rounded-xl border-2 p-5 text-left transition-all duration-200 hover:shadow-md cursor-pointer hover:scale-[1.01] ${
                     answers[currentQuestion.id] === option
                       ? 'border-teal-500 bg-qgd-primary/50 dark:bg-qgd-primary/900/30 shadow-lg'
-                      : 'border-gray-300 dark:border-gray-600 bg-qgd-card dark:bg-qgd-card hover:border-teal-400'
+                      : 'border-[var(--border)] bg-qgd-card dark:bg-qgd-card hover:border-teal-400'
                   }`}
                   onClick={(e) => {
                     e.preventDefault()
@@ -221,7 +221,7 @@ export function AITeamCalculator() {
               variant="outline"
               onClick={() => goToStep(currentStep - 1)}
               disabled={currentStep === 0}
-              className="flex items-center gap-2 border-2 hover:bg-gray-100 dark:hover:bg-qgd-card"
+              className="flex items-center gap-2 border-2 hover:bg-[var(--card)] dark:hover:bg-qgd-card"
               size="lg"
             >
               <ArrowLeft className="h-5 w-5" />

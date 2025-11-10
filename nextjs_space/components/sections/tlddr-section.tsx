@@ -5,6 +5,7 @@ import { useInView } from 'react-intersection-observer'
 import { motion } from 'framer-motion'
 import { CheckCircle, ArrowRight, Users } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { FlameBorder } from '@/components/ui/flame-border'
 import Link from 'next/link'
 
 export function TLDDRSection() {
@@ -14,7 +15,7 @@ export function TLDDRSection() {
   })
 
   return (
-    <section ref={ref} className="section-padding bg-qgd-primary/50 dark:bg-qgd-primary/950/20">
+    <section ref={ref} className="section-padding" style={{ background: 'var(--bg)' }}>
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -89,12 +90,15 @@ export function TLDDRSection() {
             initial={{ opacity: 0.8, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="mb-8 rounded-2xl border border-teal-200 bg-qgd-card p-6 dark:border-teal-800 dark:bg-qgd-card"
+            className="mb-8 relative rounded-2xl qgd-card qgd-card-hover p-6 overflow-hidden"
           >
-            <h3 className="mb-2 font-bold text-[#f6f7ff]">Research Note:</h3>
-            <p className="text-sm text-qgd-muted dark:text-qgd-muted">
-              Based on analysis of 10,000+ hours of business operations across 200+ companies, our AI employees consistently outperform human counterparts in accuracy, speed, and cost-effectiveness. Data compiled by our team of former McKinsey consultants and AI researchers.
-            </p>
+            <FlameBorder />
+            <div className="relative z-20">
+              <h3 className="mb-2 font-bold text-[#f6f7ff]">Research Note:</h3>
+              <p className="text-sm text-qgd-muted">
+                Based on analysis of 10,000+ hours of business operations across 200+ companies, our AI employees consistently outperform human counterparts in accuracy, speed, and cost-effectiveness. Data compiled by our team of former McKinsey consultants and AI researchers.
+              </p>
+            </div>
           </motion.div>
 
           {/* Critical Decision Point */}
@@ -102,19 +106,23 @@ export function TLDDRSection() {
             initial={{ opacity: 0.8, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 1 }}
-            className="rounded-2xl bg-gradient-to-r from-teal-600 to-emerald-600 p-8 text-center text-qgd-fg"
+            className="relative rounded-2xl qgd-card qgd-card-hover p-8 text-center overflow-hidden"
+            style={{ background: 'linear-gradient(135deg, var(--primary), var(--accent))' }}
           >
-            <h3 className="mb-4 text-2xl font-bold">The Critical Decision Point</h3>
-            <p className="mb-6 text-lg">
-              Every day you delay is another day of unnecessary costs, errors, and management headaches. 
-              The question isn't whether AI will replace traditional business operations—it's whether you'll be ahead of the curve or behind it.
-            </p>
-            <Button asChild size="lg" className="bg-qgd-card text-qgd-ring700 hover:bg-qgd-card font-semibold">
-              <Link href="#calculator">
-                Get My Free Assessment Now
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
+            <FlameBorder />
+            <div className="relative z-20 text-qgd-fg">
+              <h3 className="mb-4 text-2xl font-bold">The Critical Decision Point</h3>
+              <p className="mb-6 text-lg">
+                Every day you delay is another day of unnecessary costs, errors, and management headaches. 
+                The question isn't whether AI will replace traditional business operations—it's whether you'll be ahead of the curve or behind it.
+              </p>
+              <Button asChild size="lg" className="qgd-btn-primary">
+                <Link href="#calculator">
+                  Get My Free Assessment Now
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
           </motion.div>
 
           {/* Author Attribution */}
@@ -128,13 +136,17 @@ export function TLDDRSection() {
               {[1, 2, 3].map((i) => (
                 <div
                   key={i}
-                  className="h-10 w-10 rounded-full border-2 border-white bg-gradient-to-r from-teal-400 to-emerald-500"
+                  className="h-10 w-10 rounded-full border-2"
+                  style={{ 
+                    borderColor: 'var(--border)',
+                    background: 'linear-gradient(135deg, var(--primary), var(--accent))'
+                  }}
                 />
               ))}
             </div>
             <div className="text-left text-sm">
               <p className="font-semibold text-[#f6f7ff]">QuantumLeap AI Research Team</p>
-              <p className="text-[#f6f7ff]">Former McKinsey consultants & AI researchers</p>
+              <p className="text-[#b8b6c9]">Former McKinsey consultants & AI researchers</p>
             </div>
           </motion.div>
         </motion.div>

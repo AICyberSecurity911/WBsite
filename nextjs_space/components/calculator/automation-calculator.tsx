@@ -216,7 +216,7 @@ export function AutomationCalculator() {
 
           {/* Stats Grid */}
           <div className="grid md:grid-cols-3 gap-4 mb-8">
-            <div className="p-6 rounded-xl bg-gray-50 dark:bg-zinc-800 border border-qgd-border dark:border-zinc-700 text-center">
+            <div className="p-6 rounded-xl bg-[var(--card)] dark:bg-zinc-800 border border-qgd-border dark:border-zinc-700 text-center">
               <div className="text-sm text-qgd-muted dark:text-qgd-muted mb-2">
                 Current Monthly Human Cost
               </div>

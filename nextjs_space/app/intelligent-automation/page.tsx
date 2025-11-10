@@ -602,7 +602,7 @@ export default function IntelligentAutomationPage() {
                     <th className="p-4 text-center font-bold text-qgd-muted dark:text-qgd-fg">
                       Zapier/Make
                     </th>
-                    <th className="p-4 text-center font-bold bg-gradient-to-r from-teal-600 to-emerald-600 text-qgd-fg">
+                    <th className="p-4 text-center font-bold bg-gradient-to-r linear-gradient(135deg, var(--primary), var(--accent)) text-qgd-fg">
                       QuantumLeap
                     </th>
                   </tr>
@@ -693,7 +693,7 @@ export default function IntelligentAutomationPage() {
               <Button
                 size="lg"
                 onClick={scrollToCalculator}
-                className="bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-qgd-fg font-semibold"
+                className="bg-gradient-to-r linear-gradient(135deg, var(--primary), var(--accent)) hover:from-teal-700 hover:to-emerald-700 text-qgd-fg font-semibold"
               >
                 <Zap className="w-5 h-5 mr-2" />
                 See What We'd Automate for You
@@ -1757,7 +1757,7 @@ export default function IntelligentAutomationPage() {
         {/* GUARANTEE SECTION */}
         <section 
           ref={guaranteeRef}
-          className="py-20 bg-gradient-to-br from-teal-600 to-emerald-600 text-qgd-fg relative overflow-hidden"
+          className="py-20 bg-gradient-to-br linear-gradient(135deg, var(--primary), var(--accent)) text-qgd-fg relative overflow-hidden"
         >
           <div className="absolute inset-0 bg-grid-pattern opacity-10" />
           

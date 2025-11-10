@@ -433,7 +433,7 @@ export function ProfitPotentialCalculator() {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-qgd-card text-purple-700 hover:bg-gray-100 font-semibold"
+                  className="w-full bg-qgd-card text-purple-700 hover:bg-[var(--card)] font-semibold"
                 >
                   {isSubmitting ? (
                     <>

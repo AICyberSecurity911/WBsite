@@ -45,14 +45,23 @@
 }
 
 @layer components {
-  /* Card Base Styles */
+  /* Card Base Styles with Permanent Glow */
   .qgd-card {
     @apply bg-[color:var(--cardbg)] border border-[color:var(--border)] rounded-xl;
-    box-shadow: 0 10px 30px -10px var(--shadow);
+    box-shadow: 
+      0 10px 30px -10px var(--shadow),
+      0 0 20px rgba(124, 58, 237, 0.3);
   }
   
   .qgd-card-hover {
-    @apply transition duration-300 hover:shadow-[0_20px_40px_-10px_var(--shadow)];
+    @apply transition-all duration-300;
+  }
+  
+  .qgd-card-hover:hover {
+    box-shadow: 
+      0 20px 40px -10px var(--shadow),
+      0 0 40px rgba(124, 58, 237, 0.6),
+      0 0 80px rgba(124, 58, 237, 0.4);
   }
   
   /* Button Styles */
@@ -61,6 +70,11 @@
            px-6 py-3 rounded-lg font-semibold
            transition duration-300 hover:scale-105
            focus:outline-none focus:ring-2 focus:ring-[color:var(--ring)];
+    box-shadow: 0 0 15px rgba(124, 58, 237, 0.4);
+  }
+  
+  .qgd-btn-primary:hover {
+    box-shadow: 0 0 30px rgba(124, 58, 237, 0.6);
   }
   
   .qgd-btn-secondary {
@@ -68,6 +82,11 @@
            px-6 py-3 rounded-lg font-semibold
            transition duration-300 hover:scale-105
            focus:outline-none focus:ring-2 focus:ring-[color:var(--ring)];
+    box-shadow: 0 0 15px rgba(255, 127, 80, 0.4);
+  }
+  
+  .qgd-btn-secondary:hover {
+    box-shadow: 0 0 30px rgba(255, 127, 80, 0.6);
   }
   
   /* Text Styles */
