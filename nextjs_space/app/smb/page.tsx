@@ -168,7 +168,7 @@ function TestimonialsCarousel() {
           className={`
             rounded-2xl p-8 md:p-12 border
             ${theme === 'dark'
-              ? 'bg-gradient-to-br from-secondary-bg to-primary-bg border-accent-cyan/30'
+              ? 'bg-gradient-to-br from-[#07070b] to-[#0c0c12] border-[#22d3ee]/30'
               : 'bg-[#f3f3f3] border-gray-400'
             }
             shadow-2xl
@@ -182,7 +182,7 @@ function TestimonialsCarousel() {
             </h4>
             
             {/* Title | Company - Smaller, Colored */}
-            <p className={`text-lg font-semibold ${theme === 'dark' ? 'text-accent-cyan' : 'text-[#14b8a6]'}`}>
+            <p className={`text-lg font-semibold ${theme === 'dark' ? 'text-[#22d3ee]' : 'text-[#14b8a6]'}`}>
               {currentTestimonial.title} | {currentTestimonial.company}
             </p>
           </div>
@@ -190,7 +190,7 @@ function TestimonialsCarousel() {
           {/* Stars Rating */}
           <div className="flex items-center justify-center gap-1 mb-6">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-6 h-6 text-accent-gold fill-accent-gold" />
+              <Star key={i} className="w-6 h-6 text-[#ff7f50] fill-[#ff7f50]" />
             ))}
           </div>
 
@@ -225,12 +225,12 @@ function TestimonialsCarousel() {
             <div className={`
               rounded-xl p-6 border
               ${theme === 'dark'
-                ? 'bg-accent-lime/10 border-accent-lime/30'
-                : 'bg-green-50 border-green-300'
+                ? 'bg-[#5312c4]/10 border-accent-lime/30'
+                : 'bg-[#0c0c12] border-[#2c2c3d]'
               }
             `}>
               <div className="flex items-center gap-2 mb-3">
-                <span className={`px-3 py-1 rounded-full text-xs font-bold ${theme === 'dark' ? 'bg-accent-lime/20 text-accent-lime' : 'bg-[#ffcd38] text-[#111111]'}`}>
+                <span className={`px-3 py-1 rounded-full text-xs font-bold ${theme === 'dark' ? 'bg-[#5312c4]/20 text-[#ff7f50]' : 'bg-[#ffcd38] text-[#111111]'}`}>
                   AFTER
                 </span>
               </div>
@@ -250,7 +250,7 @@ function TestimonialsCarousel() {
           w-12 h-12 rounded-full flex items-center justify-center
           transition-all duration-300 hover:scale-110
           ${theme === 'dark'
-            ? 'bg-accent-cyan/20 hover:bg-accent-cyan/40 text-accent-cyan border border-accent-cyan/50'
+            ? 'bg-[#22d3ee]/20 hover:bg-[#22d3ee]/40 text-[#22d3ee] border border-[#22d3ee]/50'
             : 'bg-[#14b8a6]/20 hover:bg-[#14b8a6]/40 text-[#14b8a6] border border-[#14b8a6]/50'
           }
         `}
@@ -266,7 +266,7 @@ function TestimonialsCarousel() {
           w-12 h-12 rounded-full flex items-center justify-center
           transition-all duration-300 hover:scale-110
           ${theme === 'dark'
-            ? 'bg-accent-cyan/20 hover:bg-accent-cyan/40 text-accent-cyan border border-accent-cyan/50'
+            ? 'bg-[#22d3ee]/20 hover:bg-[#22d3ee]/40 text-[#22d3ee] border border-[#22d3ee]/50'
             : 'bg-[#14b8a6]/20 hover:bg-[#14b8a6]/40 text-[#14b8a6] border border-[#14b8a6]/50'
           }
         `}
@@ -285,7 +285,7 @@ function TestimonialsCarousel() {
               w-3 h-3 rounded-full transition-all duration-300
               ${index === currentIndex
                 ? theme === 'dark'
-                  ? 'bg-accent-cyan w-8'
+                  ? 'bg-[#22d3ee] w-8'
                   : 'bg-[#14b8a6] w-8'
                 : theme === 'dark'
                   ? 'bg-gray-600 hover:bg-gray-500'
@@ -305,7 +305,7 @@ function TestimonialsCarousel() {
             px-6 py-3 rounded-full flex items-center gap-2 font-semibold
             transition-all duration-300 hover:scale-105
             ${theme === 'dark'
-              ? 'bg-accent-cyan/20 hover:bg-accent-cyan/30 text-accent-cyan border border-accent-cyan/50'
+              ? 'bg-[#22d3ee]/20 hover:bg-[#22d3ee]/30 text-[#22d3ee] border border-[#22d3ee]/50'
               : 'bg-[#14b8a6]/20 hover:bg-[#14b8a6]/30 text-[#14b8a6] border border-[#14b8a6]/50'
             }
           `}
@@ -367,7 +367,7 @@ function FAQSection() {
           key={index}
           className={`border rounded-xl overflow-hidden transition-all duration-300
             ${theme === 'dark'
-              ? 'bg-gradient-to-br from-secondary-bg to-primary-bg border-accent-cyan/30 hover:border-accent-cyan'
+              ? 'bg-gradient-to-br from-[#07070b] to-[#0c0c12] border-[#22d3ee]/30 hover:border-[#22d3ee]'
               : 'bg-[#f3f3f3] border-gray-400 hover:border-[#14b8a6]'
             }`}
         >
@@ -381,7 +381,7 @@ function FAQSection() {
             <ChevronDown
               className={`w-6 h-6 flex-shrink-0 transition-transform duration-300 ${
                 openIndex === index ? 'rotate-180' : ''
-              } ${theme === 'dark' ? 'text-accent-cyan' : 'text-[#14b8a6]'}`}
+              } ${theme === 'dark' ? 'text-[#22d3ee]' : 'text-[#14b8a6]'}`}
             />
           </button>
           
@@ -434,18 +434,18 @@ function BlogSection() {
         <Link key={index} href={post.link} className="group">
           <div className={`h-full border rounded-2xl p-8 transition-all duration-300 hover:shadow-xl
             ${theme === 'dark'
-              ? 'bg-gradient-to-br from-secondary-bg to-primary-bg border-accent-cyan/30 hover:border-accent-cyan hover:shadow-accent-cyan/20'
+              ? 'bg-gradient-to-br from-[#07070b] to-[#0c0c12] border-[#22d3ee]/30 hover:border-[#22d3ee] hover:shadow-accent-cyan/20'
               : 'bg-[#f3f3f3] border-gray-400 hover:border-[#14b8a6] hover:shadow-lg'
             }`}
           >
             <div className="flex items-center gap-3 mb-4">
-              <BookOpen className={`w-8 h-8 ${theme === 'dark' ? 'text-accent-cyan' : 'text-[#14b8a6]'}`} />
-              <span className={`text-sm font-semibold ${theme === 'dark' ? 'text-accent-cyan' : 'text-[#14b8a6]'}`}>
+              <BookOpen className={`w-8 h-8 ${theme === 'dark' ? 'text-[#22d3ee]' : 'text-[#14b8a6]'}`} />
+              <span className={`text-sm font-semibold ${theme === 'dark' ? 'text-[#22d3ee]' : 'text-[#14b8a6]'}`}>
                 ARTICLE
               </span>
             </div>
             
-            <h3 className={`text-xl font-bold mb-3 group-hover:text-accent-cyan transition-colors
+            <h3 className={`text-xl font-bold mb-3 group-hover:text-[#22d3ee] transition-colors
               ${theme === 'dark' ? 'text-white' : 'text-[#008080]'}`}
             >
               {post.title}
@@ -455,7 +455,7 @@ function BlogSection() {
               {post.excerpt}
             </p>
             
-            <div className="flex items-center gap-2 text-sm font-semibold text-accent-cyan group-hover:gap-3 transition-all">
+            <div className="flex items-center gap-2 text-sm font-semibold text-[#22d3ee] group-hover:gap-3 transition-all">
               Read More
               <ArrowRight className="w-4 h-4" />
             </div>
@@ -822,11 +822,11 @@ function SMBLandingPageContent() {
                     <div className="flex justify-center mb-6">
                       <div className={`p-6 rounded-2xl ${
                         theme === 'dark' 
-                          ? 'bg-accent-cyan/10 border border-accent-cyan/30' 
+                          ? 'bg-[#22d3ee]/10 border border-[#22d3ee]/30' 
                           : 'bg-[#14b8a6]/10 border border-[#14b8a6]/30'
                       }`}>
                         <Clipboard className={`w-12 h-12 ${
-                          theme === 'dark' ? 'text-accent-cyan' : 'text-[#14b8a6]'
+                          theme === 'dark' ? 'text-[#22d3ee]' : 'text-[#14b8a6]'
                         }`} />
                       </div>
                     </div>
@@ -847,27 +847,27 @@ function SMBLandingPageContent() {
                     {/* What Happens Box */}
                     <div className={`p-6 rounded-xl ${
                       theme === 'dark'
-                        ? 'bg-secondary-bg/50 border border-accent-cyan/20'
+                        ? 'bg-secondary-bg/50 border border-[#22d3ee]/20'
                         : 'bg-white border border-gray-300'
                     }`}>
-                      <h4 className="text-sm font-bold dark:text-accent-cyan text-[#14b8a6] mb-3">
+                      <h4 className="text-sm font-bold dark:text-[#22d3ee] text-[#14b8a6] mb-3">
                         What happens:
                       </h4>
                       <ul className="space-y-2 text-sm dark:text-gray-400 text-[#111111]">
                         <li className="flex items-start gap-2">
-                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-accent-cyan text-[#14b8a6]" />
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-[#22d3ee] text-[#14b8a6]" />
                           <span>Video call with automation specialist</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-accent-cyan text-[#14b8a6]" />
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-[#22d3ee] text-[#14b8a6]" />
                           <span>We map your current workflows</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-accent-cyan text-[#14b8a6]" />
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-[#22d3ee] text-[#14b8a6]" />
                           <span>Identify top 3 time-drains</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-accent-cyan text-[#14b8a6]" />
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-[#22d3ee] text-[#14b8a6]" />
                           <span>Show potential time savings</span>
                         </li>
                       </ul>
@@ -942,11 +942,11 @@ function SMBLandingPageContent() {
                     <div className="flex justify-center mb-6">
                       <div className={`p-6 rounded-2xl ${
                         theme === 'dark' 
-                          ? 'bg-accent-lime/10 border border-accent-lime/30' 
+                          ? 'bg-[#5312c4]/10 border border-accent-lime/30' 
                           : 'bg-green-100 border border-green-300'
                       }`}>
                         <Rocket className={`w-12 h-12 ${
-                          theme === 'dark' ? 'text-accent-lime' : 'text-green-600'
+                          theme === 'dark' ? 'text-[#ff7f50]' : 'text-green-600'
                         }`} />
                       </div>
                     </div>
@@ -970,28 +970,28 @@ function SMBLandingPageContent() {
                         ? 'bg-secondary-bg/50 border border-accent-lime/20'
                         : 'bg-white border border-gray-300'
                     }`}>
-                      <h4 className="text-sm font-bold dark:text-accent-lime text-green-600 mb-3">
+                      <h4 className="text-sm font-bold dark:text-[#ff7f50] text-green-600 mb-3">
                         What we do:
                       </h4>
                       <ul className="space-y-2 text-sm dark:text-gray-400 text-[#111111]">
                         <li className="flex items-start gap-2">
-                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-accent-lime text-green-600" />
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-[#ff7f50] text-green-600" />
                           <span>Build automations</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-accent-lime text-green-600" />
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-[#ff7f50] text-green-600" />
                           <span>Test everything</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-accent-lime text-green-600" />
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-[#ff7f50] text-green-600" />
                           <span>Train your team</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-accent-lime text-green-600" />
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-[#ff7f50] text-green-600" />
                           <span>Monitor for 30 days</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-accent-lime text-green-600" />
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-[#ff7f50] text-green-600" />
                           <span>Ongoing optimization</span>
                         </li>
                       </ul>
@@ -1103,7 +1103,7 @@ function SMBLandingPageContent() {
                     Ready to Get Your Time Back?
                   </h2>
                   <p className="text-xl dark:text-gray-300 text-[#111111] mb-4">
-                    Stop working <span className="dark:text-primary-accent text-[#ff5440] font-bold">IN</span> your business. Start working <span className="dark:text-accent-cyan text-[#14b8a6] font-bold">ON</span> your business.
+                    Stop working <span className="dark:text-primary-accent text-[#ff5440] font-bold">IN</span> your business. Start working <span className="dark:text-[#22d3ee] text-[#14b8a6] font-bold">ON</span> your business.
                   </p>
                   <p className="text-lg dark:text-gray-400 text-[#111111] max-w-2xl mx-auto">
                     Over 200 entrepreneurs have already taken back control. The only question is: how much longer can you afford to wait?
@@ -1115,8 +1115,8 @@ function SMBLandingPageContent() {
                   variants={fadeInUp}
                   className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
                 >
-                  <div className="dark:bg-secondary-bg/80 bg-[#f3f3f3] border dark:border-accent-cyan/30 border-gray-400 rounded-xl p-6 shadow-lg">
-                    <CheckCircle className="w-8 h-8 dark:text-accent-lime text-green-600 mx-auto mb-3" />
+                  <div className="dark:bg-secondary-bg/80 bg-[#f3f3f3] border dark:border-[#22d3ee]/30 border-gray-400 rounded-xl p-6 shadow-lg">
+                    <CheckCircle className="w-8 h-8 dark:text-[#ff7f50] text-green-600 mx-auto mb-3" />
                     <p className="dark:text-white text-[#111111] font-semibold mb-1">Fast Setup</p>
                     <p className="dark:text-gray-400 text-[#111111] text-sm">Live in 48 hours</p>
                   </div>

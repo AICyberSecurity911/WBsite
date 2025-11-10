@@ -6,7 +6,7 @@ import { AITeamCalculator } from '@/components/calculator/ai-team-calculator'
 
 export function CalculatorSection() {
   return (
-    <section id="calculator" className="section-padding bg-gray-50 dark:bg-gray-900/50">
+    <section id="calculator" className="section-padding bg-[#07070b]">
       <div className="container">
         <div>
           <div className="mb-12 text-center">
@@ -15,11 +15,11 @@ export function CalculatorSection() {
               Interactive Assessment
             </div>
             
-            <h2 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
+            <h2 className="mb-4 text-3xl font-extrabold text-[#f6f7ff] sm:text-4xl">
               Calculate Your AI Workforce Savings
             </h2>
             
-            <p className="mx-auto max-w-2xl text-lg font-medium text-gray-900 dark:text-gray-100">
+            <p className="mx-auto max-w-2xl text-lg font-medium text-[#f6f7ff]">
               See exactly how much time and money you could save—get your free estimate in 2 minutes
             </p>
           </div>

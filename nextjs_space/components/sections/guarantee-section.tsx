@@ -33,12 +33,12 @@ export function GuaranteeSection() {
               <Shield className="h-16 w-16 text-white" />
             </div>
             
-            <h2 className="mb-4 text-4xl font-bold text-gray-900 dark:text-white sm:text-5xl">
+            <h2 className="mb-4 text-4xl font-bold text-[#f6f7ff] sm:text-5xl">
               Our 30-Day "Time-Back & ROI" Guarantee
             </h2>
             
-            <p className="mx-auto max-w-3xl text-xl text-gray-600 dark:text-gray-300">
-              If you don't save at least 10 hours a week OR see measurable ROI within 30 days, we'll continue optimizing your automations <strong className="font-semibold text-gray-900 dark:text-white">at no additional cost</strong> until you do. Terms and conditions apply.*
+            <p className="mx-auto max-w-3xl text-xl text-[#b8b6c9]">
+              If you don't save at least 10 hours a week OR see measurable ROI within 30 days, we'll continue optimizing your automations <strong className="font-semibold text-[#f6f7ff]">at no additional cost</strong> until you do. Terms and conditions apply.*
             </p>
           </motion.div>
 
@@ -74,10 +74,10 @@ export function GuaranteeSection() {
                 <div className={`mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r ${feature.color}`}>
                   <feature.icon className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">
+                <h3 className="mb-2 text-xl font-bold text-[#f6f7ff]">
                   {feature.title}
                 </h3>
-                <p className="text-gray-700 dark:text-gray-200">
+                <p className="text-[#b8b6c9]">
                   {feature.description}
                 </p>
               </motion.div>
@@ -163,7 +163,7 @@ export function GuaranteeSection() {
                 <div className="mb-2 text-3xl font-bold text-teal-600 dark:text-teal-400">
                   {stat.value}
                 </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">
+                <div className="text-sm text-[#b8b6c9]">
                   {stat.label}
                 </div>
               </div>
@@ -177,10 +177,10 @@ export function GuaranteeSection() {
             transition={{ duration: 0.6, delay: 1.1 }}
             className="text-center"
           >
-            <h3 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white">
+            <h3 className="mb-4 text-3xl font-bold text-[#f6f7ff]">
               Ready to Get Your Time Back?
             </h3>
-            <p className="mb-8 text-xl text-gray-600 dark:text-gray-300">
+            <p className="mb-8 text-xl text-[#b8b6c9]">
               See exactly how much time and money you could save—get your free estimate in 2 minutes
             </p>
             
@@ -200,7 +200,7 @@ export function GuaranteeSection() {
             </div>
 
             {/* Contact Options */}
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-gray-600 dark:text-gray-400">
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-[#b8b6c9]">
               <div className="flex items-center gap-2">
                 <Phone className="h-4 w-4" />
                 <span>Questions? Call us: (555) 123-4567</span>
@@ -222,7 +222,7 @@ export function GuaranteeSection() {
             className="mt-12 border-t border-gray-200 pt-8 text-center text-sm text-gray-500 dark:border-gray-700 dark:text-gray-400"
           >
             <p className="mb-4">
-              <strong className="text-gray-900 dark:text-white">Zero Risk.</strong> If you're not saving time within 30 days, we'll continue optimizing at no additional cost. 
+              <strong className="text-[#f6f7ff]">Zero Risk.</strong> If you're not saving time within 30 days, we'll continue optimizing at no additional cost. 
               That's how confident we are that intelligent automation will transform your business.
             </p>
             <p className="text-xs">

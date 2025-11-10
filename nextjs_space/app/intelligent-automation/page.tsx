@@ -318,12 +318,13 @@ export default function IntelligentAutomationPage() {
 
       <Header />
 
-      <main className="min-h-screen bg-white dark:bg-zinc-950">
+      <main className="min-h-screen bg-[#07070b] text-[#f6f7ff]">
         
         {/* HERO SECTION */}
         <section 
           ref={heroRef}
-          className="relative overflow-hidden bg-gradient-to-br from-white via-teal-50/30 to-white dark:from-zinc-950 dark:via-teal-950/10 dark:to-zinc-950 py-20 lg:py-32"
+          className="relative overflow-hidden py-20 lg:py-32"
+          style={{ background: 'linear-gradient(135deg, #07070b 0%, rgba(83, 18, 196, 0.1) 50%, #07070b 100%)' }}
         >
           <div className="absolute inset-0 bg-grid-pattern opacity-[0.03]" />
           
@@ -339,22 +340,22 @@ export default function IntelligentAutomationPage() {
               <motion.div variants={fadeInUp} className="space-y-8">
                 
                 {/* Trust Bar Badge */}
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-teal-100 dark:bg-teal-900/30 rounded-full">
-                  <Shield className="w-4 h-4 text-teal-600 dark:text-teal-400" />
-                  <span className="text-sm font-semibold text-teal-700 dark:text-teal-300">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full" style={{ background: 'rgba(83, 18, 196, 0.2)' }}>
+                  <Shield className="w-4 h-4" style={{ color: '#ff7f50' }} />
+                  <span className="text-sm font-semibold" style={{ color: '#ff7f50' }}>
                     Fortune 500 Strategy | MIT & Caltech Engineering | NASA-Recognized Security
                   </span>
                 </div>
                 
                 {/* Main Headline */}
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight" style={{ color: '#f6f7ff' }}>
                   Save 20+ Hours a Week and Cut Costs by{' '}
-                  <span className="text-teal-600 dark:text-teal-400">60–85%</span>
+                  <span style={{ color: '#ff7f50' }}>60–85%</span>
                   {' '}— Automate the Busywork That's Holding You Back
                 </h1>
                 
                 {/* Subheadline */}
-                <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
+                <p className="text-xl leading-relaxed" style={{ color: '#b8b6c9' }}>
                   Your time drives growth. Our Intelligent Automations connect your tools, remove repetitive tasks, and work 24/7—so you can do the work that moves the needle.
                 </p>
                 
@@ -434,7 +435,7 @@ export default function IntelligentAutomationPage() {
                       whileHover={{ scale: 1.1 }}
                       className="absolute inset-0 flex items-center justify-center bg-black/30 backdrop-blur-[2px] group-hover:bg-black/40 transition-all"
                     >
-                      <div className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center shadow-xl group-hover:bg-white transition-colors">
+                      <div className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center shadow-xl group-hover:bg-[#0c0c12] transition-colors">
                         <div className="w-0 h-0 border-l-[20px] border-l-teal-600 border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent ml-1" />
                       </div>
                     </motion.div>
@@ -1783,7 +1784,7 @@ export default function IntelligentAutomationPage() {
               <Button
                 size="lg"
                 onClick={scrollToCalculator}
-                className="bg-white text-teal-700 hover:bg-gray-100 font-semibold px-8 py-6 text-lg shadow-xl"
+                className="bg-[#5312c4] text-[#f7f7fb] teal-700 hover:bg-gray-100 font-semibold px-8 py-6 text-lg shadow-xl"
               >
                 <BarChart3 className="w-5 h-5 mr-2" />
                 Get My Free Automation Blueprint
@@ -1792,7 +1793,7 @@ export default function IntelligentAutomationPage() {
                 size="lg"
                 variant="outline"
                 asChild
-                className="border-2 border-white text-white hover:bg-white/10 backdrop-blur-sm px-8 py-6 text-lg font-semibold"
+                className="border-2 border-[#2c2c3d] text-white hover:bg-[#0c0c12]/10 backdrop-blur-sm px-8 py-6 text-lg font-semibold"
               >
                 <a 
                   href={process.env.NEXT_PUBLIC_TIDYCAL_BOOK_URL || '#'}
@@ -1805,7 +1806,7 @@ export default function IntelligentAutomationPage() {
               </Button>
             </motion.div>
             
-            <motion.div variants={fadeInUp} className="mt-12 pt-8 border-t border-white/20">
+            <motion.div variants={fadeInUp} className="mt-12 pt-8 border-t border-[#2c2c3d]/20">
               <div className="grid md:grid-cols-3 gap-8 text-center">
                 <div>
                   <div className="text-4xl font-bold mb-2">14</div>

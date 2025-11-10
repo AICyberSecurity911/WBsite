@@ -162,7 +162,7 @@ export function TestimonialsSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mb-6 text-4xl lg:text-5xl xl:text-6xl font-black text-gray-900 dark:text-white"
+              className="mb-6 text-4xl lg:text-5xl xl:text-6xl font-black text-[#f6f7ff]"
             >
               See How Businesses Like Yours{' '}
               <span className="text-shimmer relative inline-block">
@@ -180,7 +180,7 @@ export function TestimonialsSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="mx-auto max-w-3xl text-xl font-medium text-gray-600 dark:text-gray-300"
+              className="mx-auto max-w-3xl text-xl font-medium text-[#b8b6c9]"
             >
               From construction to healthcare, businesses are cutting costs by{' '}
               <span className="font-bold text-teal-600 dark:text-teal-400">87%</span>
@@ -256,7 +256,7 @@ export function TestimonialsSection() {
                         </motion.div>
                         
                         <motion.blockquote 
-                          className="mb-10 text-lg lg:text-xl xl:text-2xl font-medium leading-relaxed text-gray-900 dark:text-white break-words hyphens-auto"
+                          className="mb-10 text-lg lg:text-xl xl:text-2xl font-medium leading-relaxed text-[#f6f7ff] break-words hyphens-auto"
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.9 }}
@@ -277,17 +277,17 @@ export function TestimonialsSection() {
                             whileHover={{ scale: 1.1, rotate: 5 }}
                             transition={{ type: "spring", stiffness: 400 }}
                           >
-                            <div className="h-full w-full rounded-xl bg-white dark:bg-gray-900 flex items-center justify-center">
+                            <div className="h-full w-full rounded-xl bg-[#0c0c12] flex items-center justify-center">
                               <span className="text-3xl font-black text-transparent bg-gradient-to-br from-teal-600 to-emerald-600 bg-clip-text">
                                 {currentTestimonial.name.charAt(0)}
                               </span>
                             </div>
                           </motion.div>
                           <div>
-                            <div className="text-xl font-bold text-gray-900 dark:text-white mb-1">
+                            <div className="text-xl font-bold text-[#f6f7ff] mb-1">
                               {currentTestimonial.name}
                             </div>
-                            <div className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                            <div className="text-sm font-medium text-[#b8b6c9]">
                               {currentTestimonial.role}
                             </div>
                             <div className="text-sm font-semibold text-teal-600 dark:text-teal-400">
@@ -327,10 +327,10 @@ export function TestimonialsSection() {
                             </motion.div>
                             
                             <div className="relative z-10">
-                              <div className="text-4xl lg:text-5xl font-black text-gray-900 dark:text-white mb-1 tracking-tight">
+                              <div className="text-4xl lg:text-5xl font-black text-[#f6f7ff] mb-1 tracking-tight">
                                 {metric.value}
                               </div>
-                              <div className="text-base font-semibold text-gray-700 dark:text-gray-300">
+                              <div className="text-base font-semibold text-[#b8b6c9]">
                                 {metric.label}
                               </div>
                             </div>

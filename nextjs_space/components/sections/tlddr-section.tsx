@@ -28,7 +28,7 @@ export function TLDDRSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="mb-4 text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl"
+              className="mb-4 text-3xl font-bold text-[#f6f7ff] sm:text-4xl"
             >
               What You Need to Know About AI Workforce Solutions
             </motion.h2>
@@ -36,9 +36,9 @@ export function TLDDRSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-lg text-gray-600 dark:text-gray-300"
+              className="text-lg text-[#b8b6c9]"
             >
-              <strong className="text-gray-900 dark:text-white">Bottom Line:</strong> Traditional hiring is broken, expensive, and unreliable. AI employees work 24/7, never quit, never complain, and cost 87% less than human employees.
+              <strong className="text-[#f6f7ff]">Bottom Line:</strong> Traditional hiring is broken, expensive, and unreliable. AI employees work 24/7, never quit, never complain, and cost 87% less than human employees.
             </motion.p>
           </div>
 
@@ -77,8 +77,8 @@ export function TLDDRSection() {
                   <item.icon className="h-4 w-4 text-teal-600" />
                 </div>
                 <div>
-                  <h3 className="mb-1 font-bold text-gray-900 dark:text-white">{item.title}</h3>
-                  <p className="text-sm font-medium text-gray-800 dark:text-gray-300">{item.description}</p>
+                  <h3 className="mb-1 font-bold text-[#f6f7ff]">{item.title}</h3>
+                  <p className="text-sm font-medium text-[#f6f7ff]">{item.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -91,7 +91,7 @@ export function TLDDRSection() {
             transition={{ duration: 0.6, delay: 0.8 }}
             className="mb-8 rounded-2xl border border-teal-200 bg-white p-6 dark:border-teal-800 dark:bg-gray-800"
           >
-            <h3 className="mb-2 font-bold text-gray-900 dark:text-white">Research Note:</h3>
+            <h3 className="mb-2 font-bold text-[#f6f7ff]">Research Note:</h3>
             <p className="text-sm text-gray-700 dark:text-gray-400">
               Based on analysis of 10,000+ hours of business operations across 200+ companies, our AI employees consistently outperform human counterparts in accuracy, speed, and cost-effectiveness. Data compiled by our team of former McKinsey consultants and AI researchers.
             </p>
@@ -133,8 +133,8 @@ export function TLDDRSection() {
               ))}
             </div>
             <div className="text-left text-sm">
-              <p className="font-semibold text-gray-900 dark:text-white">QuantumLeap AI Research Team</p>
-              <p className="text-gray-800 dark:text-gray-200">Former McKinsey consultants & AI researchers</p>
+              <p className="font-semibold text-[#f6f7ff]">QuantumLeap AI Research Team</p>
+              <p className="text-[#f6f7ff]">Former McKinsey consultants & AI researchers</p>
             </div>
           </motion.div>
         </motion.div>

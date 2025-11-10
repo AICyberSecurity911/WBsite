@@ -52,7 +52,7 @@ export function ProblemSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.25 }}
-              className="mb-3 text-xl sm:text-2xl font-semibold text-gray-700 dark:text-gray-300"
+              className="mb-3 text-xl sm:text-2xl font-semibold text-[#b8b6c9]"
             >
               What's Breaking You?
             </motion.p>
@@ -61,7 +61,7 @@ export function ProblemSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mb-4 text-section-title text-gray-900 dark:text-white"
+              className="mb-4 text-section-title text-[#f6f7ff]"
             >
               You're Working Harder Than Ever, But Getting Less Time Back
               <span className="block mt-3 bg-gradient-to-r from-red-700 via-red-600 to-rose-600 dark:from-red-400 dark:via-red-300 dark:to-rose-300 bg-clip-text text-transparent font-extrabold">Why That "$50K Employee" Just Bankrupted Your Q4</span>
@@ -84,11 +84,11 @@ export function ProblemSection() {
                 J
               </motion.div>
               <div>
-                <h3 className="font-bold text-lg text-gray-900 dark:text-white">Jennifer's Story</h3>
-                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Restaurant Owner, Austin TX</p>
+                <h3 className="font-bold text-lg text-[#f6f7ff]">Jennifer's Story</h3>
+                <p className="text-sm font-medium text-[#b8b6c9]">Restaurant Owner, Austin TX</p>
               </div>
             </div>
-            <blockquote className="text-gray-800 dark:text-gray-200 space-y-4">
+            <blockquote className="text-[#f6f7ff] space-y-4">
               <p className="text-lg leading-relaxed">
                 "I hired Sarah as my bookkeeper for '$50K' thinking I was getting a great deal. Three months later, 
                 I discovered $23,000 in uncategorized expenses, missed tax deadlines, and she quit via text message 
@@ -112,7 +112,7 @@ export function ProblemSection() {
               The "$50,000 Salary" Lie
             </h3>
             
-            <div className="overflow-hidden rounded-3xl bg-white shadow-2xl dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+            <div className="overflow-hidden rounded-3xl bg-white shadow-2xl dark:bg-gray-800 border border-[#2c2c3d]">
               <div className="bg-gradient-to-r from-red-600 via-red-500 to-pink-600 px-8 py-6 text-white">
                 <h4 className="text-xl font-bold mb-1">TRUE Cost Breakdown</h4>
                 <p className="text-sm font-medium opacity-95">What that "affordable" employee actually costs</p>
@@ -128,7 +128,7 @@ export function ProblemSection() {
                     transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
                     className="flex items-center justify-between px-8 py-5 hover:bg-red-50/50 dark:hover:bg-red-950/20 transition-colors"
                   >
-                    <span className="font-semibold text-gray-900 dark:text-gray-100">{item.item}</span>
+                    <span className="font-semibold text-[#f6f7ff]">{item.item}</span>
                     <span className="font-bold text-lg text-red-800 dark:text-red-300">{item.amount}</span>
                   </motion.div>
                 ))}
@@ -211,10 +211,10 @@ export function ProblemSection() {
                   </div>
                   <div>
                     <div className={`text-sm font-bold ${item.textColor}`}>{item.title}</div>
-                    <div className="font-bold text-lg text-gray-900 dark:text-white">{item.problem}</div>
+                    <div className="font-bold text-lg text-[#f6f7ff]">{item.problem}</div>
                   </div>
                 </div>
-                <p className="text-base font-medium leading-relaxed text-gray-700 dark:text-gray-300">{item.description}</p>
+                <p className="text-base font-medium leading-relaxed text-[#b8b6c9]">{item.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -264,10 +264,10 @@ export function ProblemSection() {
             transition={{ duration: 0.6, delay: 2.2 }}
             className="mt-12 text-center"
           >
-            <p className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
+            <p className="mb-4 text-xl font-semibold text-[#f6f7ff]">
               What if there was a better way?
             </p>
-            <p className="text-lg text-gray-600 dark:text-gray-300">
+            <p className="text-lg text-[#b8b6c9]">
               Imagine employees who never quit, never make mistakes, and cost 87% less...
             </p>
           </motion.div>

@@ -7,6 +7,7 @@ import { ThemeProvider } from '@/components/smb/theme-context'
 import { ThemeToggle } from '@/components/smb/theme-toggle'
 import { HeroSection } from '@/components/smb/hero-section'
 import { ScrollProgress } from '@/components/smb/scroll-progress'
+import { TrustBarSection } from '@/components/sections/trust-bar-section'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { 
@@ -25,7 +26,10 @@ import {
   ChevronDown,
   BookOpen,
   DollarSign,
-  Calculator
+  Lock as LockIcon,
+  Clipboard,
+  BarChart3,
+  Rocket
 } from 'lucide-react'
 import Link from 'next/link'
 import { useState, useEffect, useRef } from 'react'
@@ -46,60 +50,60 @@ const staggerContainer = {
   }
 }
 
-// Testimonials Data
+// Testimonials Data - 6 SPECIFIC TESTIMONIALS FROM REQUIREMENTS
 const testimonials = [
   {
-    name: "Harper L. Kingsley",
-    title: "Founder",
-    company: "Adroit",
-    initials: "HK",
-    before: "Working 65-hour weeks, drowning in admin tasks. My family barely saw me. Growth was stalled because I couldn't focus on strategy.",
-    after: "QuantumLeap AI cut my admin time in half. I have my weekends back, and revenue is up 28%. My team actually enjoys coming to work now because we're not constantly firefighting.",
+    name: "Peter Fernandes",
+    title: "Owner",
+    company: "AAA Construction Services",
+    quote: "The AI bookkeeper caught a $15,000 accounting error our human bookkeeper missed three times. It paid for itself in the first month.",
+    before: "70-hour weeks, constantly behind, growth stalled at $750K.",
+    after: "Revenue hit $1.3M, work ON the business now, weekends off.",
     gradient: "from-accent-cyan to-accent-teal"
   },
   {
-    name: "Lydia V. Penrose",
-    title: "CTO",
-    company: "Code Vibe Studio",
-    initials: "LP",
-    before: "We thought we were too small for a cyberattack. No security plan, no backups, just hoping for the best.",
-    after: "QuantumLeap found 19 vulnerabilities we fixed immediately. That peace of mind is priceless. Now I sleep at night knowing our clients' data is actually protected.",
+    name: "Harper L. Kingsley",
+    title: "VP",
+    company: "Adroit",
+    quote: "Our AI assistant handles 80% of routine inquiries, freeing our human staff to focus on complex customer needs. Response times went from hours to seconds.",
+    before: "Working 65-hour weeks, drowning in admin. My family barely saw me.",
+    after: "Admin time cut in half. Revenue up 28%. I have my weekends back.",
     gradient: "from-accent-purple to-accent-pink"
   },
   {
-    name: "Tiffany Duncan",
-    title: "CEO",
-    company: "Talent Leap AI",
-    initials: "TD",
-    before: "I nearly hired someone with a hidden history of fraud that a standard background check missed completely. My gut said something was off, but the paperwork looked clean.",
-    after: "QuantumLeap flagged it instantly and saved us from a disaster. They found court records under a different name, social media posts bragging about scams—stuff no regular check would catch. Worth every penny.",
+    name: "Lydia V. Penrose",
+    title: "Co-Founder",
+    company: "Code Vibe Studio",
+    quote: "We thought we were too small to be attacked. QuantumLeap found 19 vulnerabilities we fixed immediately. Three months later, we blocked a ransomware attack that would've cost us $500K.",
+    before: "No security plan, no backups, just hoping for the best.",
+    after: "Sleep at night knowing our data is actually protected. Avoided a $500K disaster.",
     gradient: "from-primary-accent to-accent-coral"
   },
   {
-    name: "Marcus Chen",
-    title: "Operations Director",
-    company: "Swift Logistics",
-    initials: "MC",
-    before: "Manual data entry was eating 15 hours of my week. We were making costly errors and missing shipment deadlines.",
-    after: "Their automation handles everything now. Zero errors, instant updates, and I finally have time to focus on growing the business instead of putting out fires.",
+    name: "Gaurav Arora",
+    title: "CEO",
+    company: "Rudraksh Marketing",
+    quote: "Our AI marketing manager handles social media scheduling, campaign tracking, and client reporting. What used to take my team 25 hours now runs automatically—and clients actually get reports faster.",
+    before: "Junior staff burned out doing repetitive tasks, client reports always late, couldn't take on more accounts.",
+    after: "Team focuses on strategy instead of busywork, reports delivered same-day, took on 4 new clients without hiring.",
     gradient: "from-accent-gold to-accent-lime"
   },
   {
-    name: "Sarah Mitchell",
-    title: "Founder",
-    company: "Bloom Marketing",
-    initials: "SM",
-    before: "Juggling 8 clients manually meant I was working nights and weekends. Couldn't take on more business without hiring expensive staff.",
-    after: "With QuantumLeap's AI workforce, I've doubled my client capacity without hiring anyone. My profit margins went from 20% to 45% in 4 months.",
+    name: "Tiffany Duncan",
+    title: "Director",
+    company: "Talent Leap AI",
+    quote: "Standard background check was clean. QuantumLeap's investigation revealed the candidate was tied to criminal groups and active on the Dark Web. We dodged a bullet that would've cost us major client relationships.",
+    before: "Nearly hired someone with hidden fraud history that standard checks missed.",
+    after: "Saved us from a $200K+ disaster. Found court records under a different name.",
     gradient: "from-accent-teal to-accent-cyan"
   },
   {
-    name: "James Rodriguez",
+    name: "Dr. Mann",
     title: "Owner",
-    company: "Rodriguez Construction",
-    initials: "JR",
-    before: "Losing track of projects, missed invoices, constant communication breakdowns with my crew. It was chaos.",
-    after: "Everything's centralized and automated now. My crew knows what to do, invoices go out on time, and I can actually take a vacation without everything falling apart.",
+    company: "Sterling Dentistry",
+    quote: "The AI assistant handles appointment scheduling, insurance verification, and patient follow-ups 24/7. We're booking patients at 9 PM on Sundays—times we used to lose business.",
+    before: "Missing calls after hours, losing patients to competitors who answered first, front desk always behind.",
+    after: "Never miss a patient call, booking rate up 34%, front desk finally has time for in-office patients.",
     gradient: "from-accent-purple to-accent-gold"
   }
 ]
@@ -184,10 +188,17 @@ function TestimonialsCarousel() {
           </div>
 
           {/* Stars Rating */}
-          <div className="flex items-center justify-center gap-1 mb-8">
+          <div className="flex items-center justify-center gap-1 mb-6">
             {[...Array(5)].map((_, i) => (
               <Star key={i} className="w-6 h-6 text-accent-gold fill-accent-gold" />
             ))}
+          </div>
+
+          {/* Quote Section - Prominent */}
+          <div className="mb-8">
+            <blockquote className={`text-xl md:text-2xl font-semibold italic text-center leading-relaxed ${theme === 'dark' ? 'text-white' : 'text-[#111111]'}`}>
+              "{currentTestimonial.quote}"
+            </blockquote>
           </div>
 
           {/* Before/After Sections */}
@@ -312,136 +323,6 @@ function TestimonialsCarousel() {
             </>
           )}
         </button>
-      </div>
-    </div>
-  )
-}
-
-// ROI Calculator Component
-function ROICalculator() {
-  const { theme } = useTheme()
-  const [hoursPerWeek, setHoursPerWeek] = useState(20)
-  const [hourlyRate, setHourlyRate] = useState(50)
-  const [teamSize, setTeamSize] = useState(1)
-
-  const weeklyTimeSaved = hoursPerWeek * 0.7 // 70% time savings
-  const weeklyCostSavings = weeklyTimeSaved * hourlyRate * teamSize
-  const yearlyCostSavings = weeklyCostSavings * 52
-
-  return (
-    <div className="space-y-8">
-      {/* Input Fields */}
-      <div className="space-y-6">
-        <div>
-          <label className={`block text-sm font-semibold mb-2 ${theme === 'dark' ? 'text-white' : 'text-[#111111]'}`}>
-            Hours spent on admin per week
-          </label>
-          <input
-            type="range"
-            min="5"
-            max="60"
-            value={hoursPerWeek}
-            onChange={(e) => setHoursPerWeek(Number(e.target.value))}
-            className="w-full h-2 bg-gray-300 dark:bg-gray-600 rounded-lg appearance-none cursor-pointer accent-[#ff5440]"
-          />
-          <div className={`text-right mt-1 text-2xl font-bold ${theme === 'dark' ? 'text-accent-cyan' : 'text-[#ff5440]'}`}>
-            {hoursPerWeek} hours
-          </div>
-        </div>
-
-        <div>
-          <label className={`block text-sm font-semibold mb-2 ${theme === 'dark' ? 'text-white' : 'text-[#111111]'}`}>
-            Your hourly rate ($)
-          </label>
-          <input
-            type="range"
-            min="25"
-            max="200"
-            step="5"
-            value={hourlyRate}
-            onChange={(e) => setHourlyRate(Number(e.target.value))}
-            className="w-full h-2 bg-gray-300 dark:bg-gray-600 rounded-lg appearance-none cursor-pointer accent-[#ff5440]"
-          />
-          <div className={`text-right mt-1 text-2xl font-bold ${theme === 'dark' ? 'text-accent-cyan' : 'text-[#ff5440]'}`}>
-            ${hourlyRate}/hr
-          </div>
-        </div>
-
-        <div>
-          <label className={`block text-sm font-semibold mb-2 ${theme === 'dark' ? 'text-white' : 'text-[#111111]'}`}>
-            Team size
-          </label>
-          <input
-            type="range"
-            min="1"
-            max="20"
-            value={teamSize}
-            onChange={(e) => setTeamSize(Number(e.target.value))}
-            className="w-full h-2 bg-gray-300 dark:bg-gray-600 rounded-lg appearance-none cursor-pointer accent-[#ff5440]"
-          />
-          <div className={`text-right mt-1 text-2xl font-bold ${theme === 'dark' ? 'text-accent-cyan' : 'text-[#ff5440]'}`}>
-            {teamSize} {teamSize === 1 ? 'person' : 'people'}
-          </div>
-        </div>
-      </div>
-
-      {/* Results */}
-      <div className={`border-t-2 pt-8 ${theme === 'dark' ? 'border-accent-cyan/30' : 'border-[#14b8a6]/30'}`}>
-        <h3 className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-[#008080]'}`}>
-          Your Potential Savings
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className={`p-6 rounded-xl ${theme === 'dark' ? 'bg-accent-cyan/10 border border-accent-cyan/30' : 'bg-[#14b8a6]/10 border border-[#14b8a6]/30'}`}>
-            <div className="flex items-center gap-2 mb-2">
-              <Clock className={`w-5 h-5 ${theme === 'dark' ? 'text-accent-cyan' : 'text-[#14b8a6]'}`} />
-              <p className={`text-sm font-semibold ${theme === 'dark' ? 'text-gray-300' : 'text-[#111111]'}`}>
-                Time Saved/Week
-              </p>
-            </div>
-            <p className={`text-3xl font-bold ${theme === 'dark' ? 'text-accent-cyan' : 'text-[#ff5440]'}`}>
-              {weeklyTimeSaved.toFixed(1)} hrs
-            </p>
-          </div>
-
-          <div className={`p-6 rounded-xl ${theme === 'dark' ? 'bg-primary-accent/10 border border-primary-accent/30' : 'bg-[#ff5440]/10 border border-[#ff5440]/30'}`}>
-            <div className="flex items-center gap-2 mb-2">
-              <DollarSign className={`w-5 h-5 ${theme === 'dark' ? 'text-primary-accent' : 'text-[#ff5440]'}`} />
-              <p className={`text-sm font-semibold ${theme === 'dark' ? 'text-gray-300' : 'text-[#111111]'}`}>
-                Money Saved/Week
-              </p>
-            </div>
-            <p className={`text-3xl font-bold ${theme === 'dark' ? 'text-primary-accent' : 'text-[#ff5440]'}`}>
-              ${weeklyCostSavings.toLocaleString()}
-            </p>
-          </div>
-
-          <div className={`p-6 rounded-xl ${theme === 'dark' ? 'bg-accent-lime/10 border border-accent-lime/30' : 'bg-green-100 border border-green-300'}`}>
-            <div className="flex items-center gap-2 mb-2">
-              <TrendingUp className={`w-5 h-5 ${theme === 'dark' ? 'text-accent-lime' : 'text-green-600'}`} />
-              <p className={`text-sm font-semibold ${theme === 'dark' ? 'text-gray-300' : 'text-[#111111]'}`}>
-                Money Saved/Year
-              </p>
-            </div>
-            <p className={`text-3xl font-bold ${theme === 'dark' ? 'text-accent-lime' : 'text-green-600'}`}>
-              ${yearlyCostSavings.toLocaleString()}
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* CTA */}
-      <div className="text-center pt-4">
-        <Link 
-          href="/consultation"
-          className={`inline-flex items-center gap-3 px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg
-            ${theme === 'dark'
-              ? 'bg-gradient-to-r from-primary-accent to-accent-coral text-white hover:shadow-primary-accent/50'
-              : 'bg-gradient-to-r from-[#ff5440] to-[#ff6b6b] text-white hover:shadow-lg'
-            }`}
-        >
-          <Calculator className="w-6 h-6" />
-          Start Saving Now
-        </Link>
       </div>
     </div>
   )
@@ -585,9 +466,11 @@ function BlogSection() {
   )
 }
 
-export default function SMBLandingPage() {
+// Main content component that uses theme
+function SMBLandingPageContent() {
   const [servicesRef, servicesInView] = useInView({ threshold: 0.1, triggerOnce: true })
   const [testimonialsRef, testimonialsInView] = useInView({ threshold: 0.1, triggerOnce: true })
+  const { theme } = useTheme()
 
   // Schema markup for SEO/AEO/AGO
   const pageSchema = {
@@ -618,7 +501,7 @@ export default function SMBLandingPage() {
   }
 
   return (
-    <ThemeProvider>
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
@@ -663,10 +546,10 @@ export default function SMBLandingPage() {
                 {/* Section Header */}
                 <motion.div variants={fadeInUp} className="text-center mb-16">
                   <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold dark:text-white text-[#008080] mb-4">
-                    Your Complete Small Business Toolkit
+                    5 Ways AI Automation Helps Small Businesses Stop Drowning in Busywork
                   </h2>
                   <p className="text-lg dark:text-gray-300 text-[#111111] max-w-2xl mx-auto">
-                    Everything you need to run your business like the big players—without the enterprise price tag.
+                    Pick what's bleeding the most time and money. Start there. Add more as you grow.
                   </p>
                 </motion.div>
 
@@ -683,20 +566,38 @@ export default function SMBLandingPage() {
                         
                         {/* Title with proper spacing */}
                         <h3 className="text-2xl font-bold text-white mb-3 group-hover:scale-105 transition-transform">
-                          AI Workforce
+                          Stop Doing Everything Yourself with AI Employees
                         </h3>
                         
-                        {/* Subtitle with proper spacing */}
-                        <p className="text-white/90 text-lg font-semibold mb-4">
-                          Your on-demand team of experts.
-                        </p>
-                        
                         {/* Description with proper spacing */}
-                        <p className="text-white/80 leading-relaxed">
-                          Need a marketing manager? Data analyst? Customer service team? Get AI employees who work 24/7, never call in sick, and cost less than hiring one intern.
+                        <p className="text-white/90 leading-relaxed mb-4">
+                          Your AI team handles bookkeeping, lead follow-up, scheduling, and customer service—24/7. No hiring. No training. No drama. Just reliable help that costs 87% less than one employee.
                         </p>
                         
-                        <ArrowRight className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity absolute top-8 right-8" />
+                        {/* Key Benefits */}
+                        <ul className="space-y-2 mb-4">
+                          <li className="flex items-start gap-2 text-white/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                            <span>24/7 availability (never miss a lead)</span>
+                          </li>
+                          <li className="flex items-start gap-2 text-white/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                            <span>99.2% accuracy rate</span>
+                          </li>
+                          <li className="flex items-start gap-2 text-white/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                            <span>87% cost savings vs. human employees</span>
+                          </li>
+                          <li className="flex items-start gap-2 text-white/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                            <span>Deploys in 48 hours</span>
+                          </li>
+                        </ul>
+                        
+                        <div className="mt-auto pt-4 flex items-center gap-2 text-white font-semibold">
+                          <span>Learn More About AI Workforce</span>
+                          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                        </div>
                       </div>
                     </Link>
                   </motion.div>
@@ -712,20 +613,38 @@ export default function SMBLandingPage() {
                         
                         {/* Title with proper spacing */}
                         <h3 className="text-2xl font-bold text-white mb-3 group-hover:scale-105 transition-transform">
-                          Intelligent Automation
+                          Eliminate Repetitive Tasks That Waste 20+ Hours Weekly
                         </h3>
                         
-                        {/* Subtitle with proper spacing */}
-                        <p className="text-white/90 text-lg font-semibold mb-4">
-                          Save hours every week, automatically.
-                        </p>
-                        
                         {/* Description with proper spacing */}
-                        <p className="text-white/80 leading-relaxed">
-                          Stop copying data between systems, chasing invoices, and sending the same emails over and over. Let automation handle the boring stuff while you focus on growth.
+                        <p className="text-white/90 leading-relaxed mb-4">
+                          Stop copying data between spreadsheets. Stop chasing invoices. Stop sending the same emails 50 times. Automation handles it while you sleep. Average savings: 20+ hours per week.
                         </p>
                         
-                        <ArrowRight className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity absolute top-8 right-8" />
+                        {/* Key Benefits */}
+                        <ul className="space-y-2 mb-4">
+                          <li className="flex items-start gap-2 text-white/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                            <span>Connects all your business tools</span>
+                          </li>
+                          <li className="flex items-start gap-2 text-white/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                            <span>Eliminates manual data entry</span>
+                          </li>
+                          <li className="flex items-start gap-2 text-white/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                            <span>Automates invoice follow-ups</span>
+                          </li>
+                          <li className="flex items-start gap-2 text-white/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                            <span>Saves 20+ hours weekly</span>
+                          </li>
+                        </ul>
+                        
+                        <div className="mt-auto pt-4 flex items-center gap-2 text-white font-semibold">
+                          <span>Learn More About Business Automation</span>
+                          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                        </div>
                       </div>
                     </Link>
                   </motion.div>
@@ -741,20 +660,38 @@ export default function SMBLandingPage() {
                         
                         {/* Title with proper spacing */}
                         <h3 className="text-2xl font-bold text-white mb-3 group-hover:scale-105 transition-transform">
-                          Beyond Background Checks™
+                          Avoid Hiring Mistakes That Cost $200K+ in Damage
                         </h3>
                         
-                        {/* Subtitle with proper spacing */}
-                        <p className="text-white/90 text-lg font-semibold mb-4">
-                          Avoid disastrous hires with deep vetting.
-                        </p>
-                        
                         {/* Description with proper spacing */}
-                        <p className="text-white/80 leading-relaxed">
-                          Standard background checks miss the red flags that cost you everything. Find out what they're hiding before they join your team—not after they destroy it.
+                        <p className="text-white/90 leading-relaxed mb-4">
+                          Standard background checks only catch criminals who got caught. We find the liars, fraudsters, and problem employees BEFORE they cost you $200K in damage. One check can save your business.
                         </p>
                         
-                        <ArrowRight className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity absolute top-8 right-8" />
+                        {/* Key Benefits */}
+                        <ul className="space-y-2 mb-4">
+                          <li className="flex items-start gap-2 text-white/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                            <span>Finds hidden criminal records</span>
+                          </li>
+                          <li className="flex items-start gap-2 text-white/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                            <span>Detects fake credentials</span>
+                          </li>
+                          <li className="flex items-start gap-2 text-white/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                            <span>Uncovers dark web activity</span>
+                          </li>
+                          <li className="flex items-start gap-2 text-white/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                            <span>Prevents disastrous hires</span>
+                          </li>
+                        </ul>
+                        
+                        <div className="mt-auto pt-4 flex items-center gap-2 text-white font-semibold">
+                          <span>Learn More About Deep Background Checks</span>
+                          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                        </div>
                       </div>
                     </Link>
                   </motion.div>
@@ -765,25 +702,43 @@ export default function SMBLandingPage() {
                       <div className="relative bg-gradient-to-br from-[#4f46e5] to-[#4338ca] hover:from-[#6366f1] hover:to-[#4f46e5] border border-[#4f46e5]/50 hover:border-[#6366f1] rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:shadow-[#4f46e5]/30 h-full flex flex-col">
                         {/* Icon with proper spacing */}
                         <div className="p-3 bg-white/20 rounded-xl w-fit mb-4">
-                          <Award className="w-8 h-8 text-white" />
+                          <LockIcon className="w-8 h-8 text-white" />
                         </div>
                         
                         {/* Title with proper spacing */}
                         <h3 className="text-2xl font-bold text-white mb-3 group-hover:scale-105 transition-transform">
-                          Cyber Intelligence
+                          Protect Your Small Business Before Hackers Hold It Hostage
                         </h3>
                         
-                        {/* Subtitle with proper spacing */}
-                        <p className="text-white/90 text-lg font-semibold mb-4">
-                          NASA-trusted protection at a small business price.
-                        </p>
-                        
                         {/* Description with proper spacing */}
-                        <p className="text-white/80 leading-relaxed">
-                          Think you're too small for hackers? Think again. Get the same intelligence protection trusted by NASA and Fortune 500s—before a cyberattack wipes you out.
+                        <p className="text-white/90 leading-relaxed mb-4">
+                          Hackers target small businesses because you're unguarded. One breach = $80K+ ransom, lost clients, destroyed reputation. We find and fix vulnerabilities before criminals exploit them.
                         </p>
                         
-                        <ArrowRight className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity absolute top-8 right-8" />
+                        {/* Key Benefits */}
+                        <ul className="space-y-2 mb-4">
+                          <li className="flex items-start gap-2 text-white/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                            <span>NASA-recognized security protocols</span>
+                          </li>
+                          <li className="flex items-start gap-2 text-white/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                            <span>Finds vulnerabilities before hackers do</span>
+                          </li>
+                          <li className="flex items-start gap-2 text-white/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                            <span>Prevents $80K+ ransomware attacks</span>
+                          </li>
+                          <li className="flex items-start gap-2 text-white/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                            <span>Custom security for your business</span>
+                          </li>
+                        </ul>
+                        
+                        <div className="mt-auto pt-4 flex items-center gap-2 text-white font-semibold">
+                          <span>Learn More About Cybersecurity</span>
+                          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                        </div>
                       </div>
                     </Link>
                   </motion.div>
@@ -799,25 +754,266 @@ export default function SMBLandingPage() {
                         
                         {/* Title with proper spacing */}
                         <h3 className="text-2xl font-bold text-white mb-3 group-hover:scale-105 transition-transform">
-                          Business Transformation
+                          Build Systems That Let Your Business Run Without You
                         </h3>
                         
-                        {/* Subtitle with proper spacing */}
-                        <p className="text-white/90 text-lg font-semibold mb-4">
-                          The roadmap to scale your business without the chaos.
-                        </p>
-                        
                         {/* Description with proper spacing */}
-                        <p className="text-white/80 leading-relaxed">
-                          Struggling to grow without burning out? Get a proven, step-by-step plan to scale profitably—without working more hours or hiring a massive team.
+                        <p className="text-white/90 leading-relaxed mb-4">
+                          Revenue growing but you're still the bottleneck? We build the systems, workflows, and automations that let you scale profitably—without working more hours or micromanaging everything.
                         </p>
                         
-                        <ArrowRight className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity absolute top-8 right-8" />
+                        {/* Key Benefits */}
+                        <ul className="space-y-2 mb-4">
+                          <li className="flex items-start gap-2 text-white/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                            <span>Custom operational systems</span>
+                          </li>
+                          <li className="flex items-start gap-2 text-white/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                            <span>Eliminate decision bottlenecks</span>
+                          </li>
+                          <li className="flex items-start gap-2 text-white/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                            <span>Scale without working more</span>
+                          </li>
+                          <li className="flex items-start gap-2 text-white/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                            <span>90-180 day transformation</span>
+                          </li>
+                        </ul>
+                        
+                        <div className="mt-auto pt-4 flex items-center gap-2 text-white font-semibold">
+                          <span>Learn More About Business Transformation</span>
+                          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                        </div>
                       </div>
                     </Link>
                   </motion.div>
                 </div>
               </motion.div>
+            </div>
+          </section>
+
+          {/* Trust Bar Section */}
+          <TrustBarSection />
+
+          {/* How It Works Section */}
+          <section className="py-20 md:py-32 dark:bg-gradient-to-b dark:from-primary-bg/10 dark:to-secondary-bg bg-gradient-to-b from-[#e5e7eb] to-[#f3f3f3]">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="max-w-6xl mx-auto">
+                {/* Section Header */}
+                <div className="text-center mb-16">
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold dark:text-white text-[#008080] mb-4">
+                    How Small Businesses Automate in 3 Simple Steps
+                  </h2>
+                  <p className="text-xl dark:text-gray-300 text-[#111111] mb-2">
+                    (From Overwhelmed to Automated in 14 Days)
+                  </p>
+                  <p className="text-lg dark:text-gray-400 text-[#111111] max-w-3xl mx-auto mt-4">
+                    Getting started with business automation doesn't require technical skills or weeks of implementation. Our proven 3-step process has helped over 200 small businesses reclaim 25+ hours per week. Here's exactly how it works:
+                  </p>
+                </div>
+
+                {/* 3 Steps Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+                  {/* Step 1 */}
+                  <div className="relative">
+                    {/* Icon */}
+                    <div className="flex justify-center mb-6">
+                      <div className={`p-6 rounded-2xl ${
+                        theme === 'dark' 
+                          ? 'bg-accent-cyan/10 border border-accent-cyan/30' 
+                          : 'bg-[#14b8a6]/10 border border-[#14b8a6]/30'
+                      }`}>
+                        <Clipboard className={`w-12 h-12 ${
+                          theme === 'dark' ? 'text-accent-cyan' : 'text-[#14b8a6]'
+                        }`} />
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="text-center mb-6">
+                      <h3 className="text-2xl font-bold dark:text-white text-[#008080] mb-4">
+                        Step 1: Free Business Automation Assessment
+                      </h3>
+                      <p className="text-sm dark:text-gray-400 text-gray-600 mb-4">
+                        (15 Minutes)
+                      </p>
+                      <p className="text-base dark:text-gray-300 text-[#111111] leading-relaxed mb-6">
+                        We analyze where you're losing the most time and money in your business operations. Zero pressure. Zero sales pitch. Just honest insights into what's actually costing you hours every week.
+                      </p>
+                    </div>
+
+                    {/* What Happens Box */}
+                    <div className={`p-6 rounded-xl ${
+                      theme === 'dark'
+                        ? 'bg-secondary-bg/50 border border-accent-cyan/20'
+                        : 'bg-white border border-gray-300'
+                    }`}>
+                      <h4 className="text-sm font-bold dark:text-accent-cyan text-[#14b8a6] mb-3">
+                        What happens:
+                      </h4>
+                      <ul className="space-y-2 text-sm dark:text-gray-400 text-[#111111]">
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-accent-cyan text-[#14b8a6]" />
+                          <span>Video call with automation specialist</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-accent-cyan text-[#14b8a6]" />
+                          <span>We map your current workflows</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-accent-cyan text-[#14b8a6]" />
+                          <span>Identify top 3 time-drains</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-accent-cyan text-[#14b8a6]" />
+                          <span>Show potential time savings</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* Step 2 */}
+                  <div className="relative">
+                    {/* Icon */}
+                    <div className="flex justify-center mb-6">
+                      <div className={`p-6 rounded-2xl ${
+                        theme === 'dark' 
+                          ? 'bg-primary-accent/10 border border-primary-accent/30' 
+                          : 'bg-[#ff5440]/10 border border-[#ff5440]/30'
+                      }`}>
+                        <BarChart3 className={`w-12 h-12 ${
+                          theme === 'dark' ? 'text-primary-accent' : 'text-[#ff5440]'
+                        }`} />
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="text-center mb-6">
+                      <h3 className="text-2xl font-bold dark:text-white text-[#008080] mb-4">
+                        Step 2: Custom Automation Blueprint
+                      </h3>
+                      <p className="text-sm dark:text-gray-400 text-gray-600 mb-4">
+                        (Delivered in 48 Hours)
+                      </p>
+                      <p className="text-base dark:text-gray-300 text-[#111111] leading-relaxed mb-6">
+                        We create a detailed plan showing exactly what to automate first for maximum ROI. You see the timeline, the cost, and the expected time savings before you approve anything.
+                      </p>
+                    </div>
+
+                    {/* What You Get Box */}
+                    <div className={`p-6 rounded-xl ${
+                      theme === 'dark'
+                        ? 'bg-secondary-bg/50 border border-primary-accent/20'
+                        : 'bg-white border border-gray-300'
+                    }`}>
+                      <h4 className="text-sm font-bold dark:text-primary-accent text-[#ff5440] mb-3">
+                        What you get:
+                      </h4>
+                      <ul className="space-y-2 text-sm dark:text-gray-400 text-[#111111]">
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-primary-accent text-[#ff5440]" />
+                          <span>Priority automation list</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-primary-accent text-[#ff5440]" />
+                          <span>Cost breakdown</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-primary-accent text-[#ff5440]" />
+                          <span>Expected time savings</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-primary-accent text-[#ff5440]" />
+                          <span>Implementation timeline</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-primary-accent text-[#ff5440]" />
+                          <span>Nothing starts without your approval</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* Step 3 */}
+                  <div className="relative">
+                    {/* Icon */}
+                    <div className="flex justify-center mb-6">
+                      <div className={`p-6 rounded-2xl ${
+                        theme === 'dark' 
+                          ? 'bg-accent-lime/10 border border-accent-lime/30' 
+                          : 'bg-green-100 border border-green-300'
+                      }`}>
+                        <Rocket className={`w-12 h-12 ${
+                          theme === 'dark' ? 'text-accent-lime' : 'text-green-600'
+                        }`} />
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="text-center mb-6">
+                      <h3 className="text-2xl font-bold dark:text-white text-[#008080] mb-4">
+                        Step 3: Build, Test, Launch
+                      </h3>
+                      <p className="text-sm dark:text-gray-400 text-gray-600 mb-4">
+                        (Live Within 2 Weeks)
+                      </p>
+                      <p className="text-base dark:text-gray-300 text-[#111111] leading-relaxed mb-6">
+                        We handle all the technical work. You and your team get trained on the new systems. Most clients see time savings in the first week.
+                      </p>
+                    </div>
+
+                    {/* What We Do Box */}
+                    <div className={`p-6 rounded-xl ${
+                      theme === 'dark'
+                        ? 'bg-secondary-bg/50 border border-accent-lime/20'
+                        : 'bg-white border border-gray-300'
+                    }`}>
+                      <h4 className="text-sm font-bold dark:text-accent-lime text-green-600 mb-3">
+                        What we do:
+                      </h4>
+                      <ul className="space-y-2 text-sm dark:text-gray-400 text-[#111111]">
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-accent-lime text-green-600" />
+                          <span>Build automations</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-accent-lime text-green-600" />
+                          <span>Test everything</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-accent-lime text-green-600" />
+                          <span>Train your team</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-accent-lime text-green-600" />
+                          <span>Monitor for 30 days</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-accent-lime text-green-600" />
+                          <span>Ongoing optimization</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* CTA Button */}
+                <div className="text-center mt-16">
+                  <Link 
+                    href="/consultation"
+                    className={`inline-flex items-center gap-3 px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg ${
+                      theme === 'dark'
+                        ? 'bg-gradient-to-r from-primary-accent to-accent-coral text-white hover:shadow-primary-accent/50'
+                        : 'bg-gradient-to-r from-[#ff5440] to-[#ff6b6b] text-white hover:shadow-lg'
+                    }`}
+                  >
+                    Start My Free Assessment
+                    <ArrowRight className="w-6 h-6" />
+                  </Link>
+                </div>
+              </div>
             </div>
           </section>
 
@@ -836,10 +1032,10 @@ export default function SMBLandingPage() {
                 {/* Section Header */}
                 <motion.div variants={fadeInUp} className="text-center mb-16">
                   <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold dark:text-white text-[#008080] mb-4">
-                    Join 200+ Business Owners Who Escaped the 70-Hour Work Week
+                    Real Small Business Owners Share How AI Automation Gave Them Their Lives Back
                   </h2>
                   <p className="text-lg dark:text-gray-300 text-[#111111] max-w-2xl mx-auto">
-                    Real entrepreneurs. Real results. Real freedom.
+                    See what happens when you stop doing everything yourself. Real results from real entrepreneurs in your position.
                   </p>
                 </motion.div>
 
@@ -849,25 +1045,6 @@ export default function SMBLandingPage() {
             </div>
           </section>
 
-          {/* ROI Calculator Section */}
-          <section className="py-20 md:py-32 dark:bg-gradient-to-b dark:from-primary-bg/10 dark:to-secondary-bg bg-gradient-to-b from-[#e5e7eb] to-[#f3f3f3]">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="max-w-4xl mx-auto">
-                <div className="text-center mb-12">
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold dark:text-white text-[#008080] mb-4">
-                    Calculate Your Time Savings
-                  </h2>
-                  <p className="text-lg dark:text-gray-300 text-[#111111]">
-                    See how much time and money you could save with AI automation
-                  </p>
-                </div>
-
-                <div className="dark:bg-gradient-to-br dark:from-secondary-bg dark:to-primary-bg bg-[#f3f3f3] border dark:border-accent-cyan/30 border-gray-400 rounded-2xl p-8 md:p-12 shadow-2xl">
-                  <ROICalculator />
-                </div>
-              </div>
-            </div>
-          </section>
 
           {/* FAQ Section */}
           <section className="py-20 md:py-32 dark:bg-gradient-to-b dark:from-secondary-bg dark:to-primary-bg/10 bg-gradient-to-b from-[#f3f3f3] to-[#e5e7eb]">
@@ -975,6 +1152,15 @@ export default function SMBLandingPage() {
 
         <Footer />
       </div>
+    </>
+  )
+}
+
+// Wrapper component that provides ThemeProvider
+export default function SMBLandingPage() {
+  return (
+    <ThemeProvider>
+      <SMBLandingPageContent />
     </ThemeProvider>
   )
 }

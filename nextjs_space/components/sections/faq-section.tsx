@@ -164,7 +164,7 @@ export function FAQSection() {
   }
 
   return (
-    <section id="faq" ref={ref} className="section-padding bg-gray-50 dark:bg-gray-900/50">
+    <section id="faq" ref={ref} className="section-padding bg-[#07070b]">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -188,7 +188,7 @@ export function FAQSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mb-4 text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl"
+              className="mb-4 text-3xl font-bold text-[#f6f7ff] sm:text-4xl"
             >
               "I'm Skeptical. Here's Why You Should Be Too."
             </motion.h2>
@@ -197,7 +197,7 @@ export function FAQSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-lg text-gray-900 dark:text-gray-300"
+              className="text-lg text-[#f6f7ff]"
             >
               Real concerns from business owners like you—and the honest answers you deserve
             </motion.p>
@@ -215,10 +215,10 @@ export function FAQSection() {
               >
                 <button
                   onClick={() => toggleItem(index)}
-                  className="w-full px-6 py-5 text-left transition-colors hover:bg-gray-50 dark:hover:bg-gray-700/50"
+                  className="w-full px-6 py-5 text-left transition-colors hover:bg-[#0c0c12]"
                 >
                   <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+                    <h3 className="text-lg font-bold text-[#f6f7ff]">
                       {item.question}
                     </h3>
                     <ChevronDown 
@@ -239,7 +239,7 @@ export function FAQSection() {
                   className="overflow-hidden"
                 >
                   <div className="border-t border-gray-200 px-6 py-5 dark:border-gray-700">
-                    <p className="mb-4 text-gray-600 dark:text-gray-300">
+                    <p className="mb-4 text-[#b8b6c9]">
                       {item.answer}
                     </p>
                     
@@ -275,7 +275,7 @@ export function FAQSection() {
             transition={{ duration: 0.6, delay: 1.5 }}
             className="mt-12 text-center"
           >
-            <p className="mb-6 text-lg text-gray-600 dark:text-gray-300">
+            <p className="mb-6 text-lg text-[#b8b6c9]">
               Still have questions? We're here to help.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">

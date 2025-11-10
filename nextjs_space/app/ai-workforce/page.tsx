@@ -15,7 +15,7 @@ import { ExitIntentProvider } from '@/components/exit-intent-provider'
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen" style={{ background: 'var(--bg)', color: 'var(--fg)' }}>
       <Header />
       <main>
         <HeroSection />

@@ -1172,3 +1172,15 @@ img {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* Input placeholder styling for dark theme */
+input::placeholder,
+textarea::placeholder {
+  color: #b8b6c9;
+  opacity: 0.7;
+}
+
+input:focus::placeholder,
+textarea:focus::placeholder {
+  opacity: 0.5;
+}

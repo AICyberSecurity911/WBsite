@@ -89,7 +89,7 @@ export function BlogSection() {
   const regularPosts = blogPosts.filter(post => !post.featured)
 
   return (
-    <section id="blog" ref={ref} className="section-padding bg-white dark:bg-dark-bg">
+    <section id="blog" ref={ref} className="section-padding bg-[#07070b]">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -112,7 +112,7 @@ export function BlogSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mb-4 text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl"
+              className="mb-4 text-3xl font-bold text-[#f6f7ff] sm:text-4xl"
             >
               From Overworked to Unstoppable
             </motion.h2>
@@ -121,7 +121,7 @@ export function BlogSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300"
+              className="mx-auto max-w-2xl text-lg text-[#b8b6c9]"
             >
               Real business owners share their journey from burnout to breakthrough—and exactly how they did it
             </motion.p>
@@ -139,7 +139,7 @@ export function BlogSection() {
               >
                 <Link href={`/blog/${post.slug}`}>
                   {/* Image */}
-                  <div className="relative aspect-video overflow-hidden bg-gray-200 dark:bg-gray-700">
+                  <div className="relative aspect-video overflow-hidden bg-[#0c0c12]">
                     {/* Placeholder gradient - replace with actual images */}
                     <div className="absolute inset-0 bg-gradient-to-br from-teal-400 to-emerald-500 opacity-80 transition-opacity group-hover:opacity-100" />
                     <div className="absolute inset-0 flex items-center justify-center">
@@ -165,7 +165,7 @@ export function BlogSection() {
                       {post.title}
                     </h3>
                     
-                    <p className="mb-4 text-gray-600 dark:text-gray-300">
+                    <p className="mb-4 text-[#b8b6c9]">
                       {post.excerpt}
                     </p>
                     
@@ -194,7 +194,7 @@ export function BlogSection() {
                     <span className="rounded-full bg-teal-100 px-3 py-1 text-xs font-semibold text-teal-800 dark:bg-teal-900 dark:text-teal-200">
                       {post.category}
                     </span>
-                    <span className="flex items-center gap-1 text-xs text-gray-700 dark:text-gray-300">
+                    <span className="flex items-center gap-1 text-xs text-[#b8b6c9]">
                       <Clock className="h-3 w-3" />
                       {post.readTime}
                     </span>
@@ -204,7 +204,7 @@ export function BlogSection() {
                     {post.title}
                   </h3>
                   
-                  <p className="mb-3 text-sm text-gray-700 dark:text-gray-300">
+                  <p className="mb-3 text-sm text-[#b8b6c9]">
                     {post.excerpt}
                   </p>
                   

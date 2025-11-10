@@ -83,7 +83,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="mb-6 text-hero text-gray-900 dark:text-white"
+              className="mb-6 text-hero text-[#f6f7ff]"
             >
               <span className="text-gradient block">Fire Your Biggest Headache.</span>
               <span className="mt-2 block">Hire Your Most</span>
@@ -96,10 +96,10 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="mb-10 text-body-large text-gray-600 dark:text-gray-300"
+              className="mb-10 text-body-large text-[#b8b6c9]"
             >
               Hire digital employees that work 24/7, cost 85% less than humans, and never miss a task.{' '}
-              <strong className="font-semibold text-gray-900 dark:text-white">Free yourself from busywork and finally run a business that runs without you.</strong>
+              <strong className="font-semibold text-[#f6f7ff]">Free yourself from busywork and finally run a business that runs without you.</strong>
             </motion.p>
 
             {/* CTA Buttons */}
@@ -126,7 +126,7 @@ export function HeroSection() {
               transition={{ duration: 0.8, delay: 0.55 }}
               className="mb-8 text-center lg:text-left"
             >
-              <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 tracking-wide">
+              <p className="text-sm font-semibold text-[#b8b6c9] tracking-wide">
                 <span className="text-gradient-subtle">Fortune 500 Strategy</span>
                 <span className="mx-2 text-gray-400 dark:text-gray-600">|</span>
                 <span className="text-gradient-subtle">MIT & Caltech Engineering</span>
@@ -140,7 +140,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-600 dark:text-gray-400 lg:justify-start"
+              className="flex flex-wrap items-center justify-center gap-6 text-sm text-[#b8b6c9] lg:justify-start"
             >
               <motion.div 
                 whileHover={{ scale: 1.05 }}
@@ -150,7 +150,7 @@ export function HeroSection() {
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-teal-500 to-emerald-500 shadow-md">
                   <Users className="h-5 w-5 text-white" />
                 </div>
-                <span className="font-semibold text-gray-900 dark:text-white">200+ Businesses Transformed</span>
+                <span className="font-semibold text-[#f6f7ff]">200+ Businesses Transformed</span>
               </motion.div>
               <motion.div 
                 whileHover={{ scale: 1.05 }}
@@ -160,7 +160,7 @@ export function HeroSection() {
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 shadow-md">
                   <Shield className="h-5 w-5 text-white" />
                 </div>
-                <span className="font-semibold text-gray-900 dark:text-white">Money Back Guarantee</span>
+                <span className="font-semibold text-[#f6f7ff]">Money Back Guarantee</span>
               </motion.div>
             </motion.div>
           </motion.div>
@@ -251,7 +251,7 @@ export function HeroSection() {
               >
                 <div className="text-center">
                   <div className="mb-2 text-4xl font-bold bg-gradient-to-r from-teal-600 to-cyan-600 dark:from-teal-400 dark:to-cyan-400 bg-clip-text text-transparent">87%</div>
-                  <div className="text-sm font-semibold text-gray-700 dark:text-gray-300">Cost Savings</div>
+                  <div className="text-sm font-semibold text-[#b8b6c9]">Cost Savings</div>
                 </div>
               </motion.div>
 
@@ -264,7 +264,7 @@ export function HeroSection() {
               >
                 <div className="text-center">
                   <div className="mb-2 text-4xl font-bold bg-gradient-to-r from-emerald-600 to-green-600 dark:from-emerald-400 dark:to-green-400 bg-clip-text text-transparent">99.2%</div>
-                  <div className="text-sm font-semibold text-gray-700 dark:text-gray-300">Accuracy Rate</div>
+                  <div className="text-sm font-semibold text-[#b8b6c9]">Accuracy Rate</div>
                 </div>
               </motion.div>
 
@@ -279,8 +279,8 @@ export function HeroSection() {
                     <CheckCircle className="h-5 w-5 text-white" />
                   </div>
                   <div>
-                    <div className="text-sm font-semibold text-gray-900 dark:text-white">24/7</div>
-                    <div className="text-xs text-gray-700 dark:text-gray-300">Always On</div>
+                    <div className="text-sm font-semibold text-[#f6f7ff]">24/7</div>
+                    <div className="text-xs text-[#b8b6c9]">Always On</div>
                   </div>
                 </div>
               </motion.div>

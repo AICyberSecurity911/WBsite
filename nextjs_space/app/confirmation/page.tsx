@@ -74,7 +74,7 @@ function ConfirmationContent() {
           </p>
 
           {/* What's Next Section */}
-          <div className="mb-8 rounded-2xl bg-teal-50 p-6 dark:bg-teal-950">
+          <div className="mb-8 rounded-2xl bg-[#0c0c12] p-6">
             <h2 className="mb-4 text-xl font-semibold text-teal-900 dark:text-teal-100">
               What Happens Next?
             </h2>
