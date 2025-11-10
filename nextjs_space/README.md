@@ -41,7 +41,7 @@ A comprehensive Next.js website showcasing QuantumLeap AI's services including C
 - **ORM:** Prisma
 - **Authentication:** JWT-based admin auth
 - **APIs:** Gmail, Google Calendar, TidyCal, Have I Been Pwned
-- **Package Manager:** Yarn
+- **Package Manager:** npm
 
 ## 📦 Installation
 
@@ -50,18 +50,18 @@ A comprehensive Next.js website showcasing QuantumLeap AI's services including C
 git clone https://github.com/AICyberSecurity911/quantumleap-io.git
 cd quantumleap-io
 
-# Install dependencies
-yarn install
+# Install dependencies (use --legacy-peer-deps due to peer dependency conflicts)
+npm install --legacy-peer-deps
 
 # Set up environment variables (see .env.example)
 cp .env.example .env
 
 # Run database migrations
-yarn prisma generate
-yarn prisma db push
+npm run prisma generate
+npm run prisma db push
 
 # Start development server
-yarn dev
+npm run dev
 ```
 
 ## 🔧 Environment Variables

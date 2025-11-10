@@ -15,7 +15,7 @@
 
 3. **Design System**: "Coral Reef" - Dark-mode-first palette with 8 accent colors (coral, cyan, purple, gold, lime, pink, teal, white).
 
-4. **Package Manager**: **ALWAYS use Yarn** (not npm/npx). Commands: `yarn add`, `yarn dev`, `yarn build`.
+4. **Package Manager**: **ALWAYS use npm**. Commands: `npm install`, `npm run dev`, `npm run build`.
 
 5. **Project Structure**: Working directory is `/home/ubuntu/quantumleap_io/nextjs_space/` - all development happens here.
 
@@ -130,7 +130,7 @@
 20. **Starting Dev Server**: 
     ```bash
     cd /home/ubuntu/quantumleap_io/nextjs_space
-    yarn dev
+    npm run dev
     ```
     - Runs on `http://localhost:3000`
     - Hot reload enabled
@@ -138,8 +138,8 @@
 21. **Building for Production**:
     ```bash
     cd /home/ubuntu/quantumleap_io/nextjs_space
-    yarn build
-    yarn start
+    npm run build
+    npm start
     ```
 
 22. **Testing**: No automated tests currently. Manual testing via browser.
@@ -154,7 +154,7 @@
     - **Platform**: Abacus.AI (Vercel-style)
     - **Domain**: quantumleapai.abacusai.app
     - **Process**: Push to GitHub → auto-deploys from designated branch
-    - **Build command**: `yarn build`
+    - **Build command**: `npm run build`
 
 ---
 
@@ -231,8 +231,9 @@
     - Use meaningful alt text (not "image" or "picture")
 
 36. **Build Failures**:
-    - Run `yarn build` to check TypeScript errors
-    - Common issue: Missing dependencies → run `yarn install`
+    - Run `npm run build` to check TypeScript errors
+    - Common issue: Missing dependencies → run `npm install --legacy-peer-deps`
+    - **Note**: Always use `--legacy-peer-deps` flag with npm install due to peer dependency conflicts
     - Check `tsconfig.json` for strict mode issues
 
 37. **Duplicate Trust Bar Images**:
@@ -315,17 +316,17 @@
 
 46. **Quick Commands Reference**:
     ```bash
-    # Install dependencies
-    yarn install
+    # Install dependencies (always use --legacy-peer-deps flag)
+    npm install --legacy-peer-deps
     
     # Run dev server
-    yarn dev
+    npm run dev
     
     # Build production
-    yarn build
+    npm run build
     
     # Generate Prisma client
-    yarn prisma generate
+    npm run prisma generate
     
     # Push to GitHub
     git add -A
@@ -356,11 +357,11 @@
 
 ## 🎯 Critical Reminders
 
-49. **ALWAYS USE YARN**: Never use npm or npx. The project is configured for Yarn only.
+49. **PACKAGE MANAGER**: This project uses npm for all workflows. All dependencies and scripts are configured for npm.
 
 50. **NEVER COMMIT CREDENTIALS**: Ensure `.gitignore` includes `.env`, `quantumleap_credentials.json`, and OAuth secrets.
 
-51. **TEST BEFORE PUSHING**: Run `yarn build` to catch TypeScript errors before pushing to GitHub.
+51. **TEST BEFORE PUSHING**: Run `npm run build` to catch TypeScript errors before pushing to GitHub.
 
 52. **MAINTAIN CORAL REEF PALETTE**: All new components must use the 8-accent color system defined in `globals.css`.
 

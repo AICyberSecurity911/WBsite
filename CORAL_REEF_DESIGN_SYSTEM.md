@@ -356,7 +356,7 @@ xl: '1280px'  // Large desktops
 **Development:**
 ```bash
 cd /home/ubuntu/quantumleap_io/nextjs_space
-yarn dev
+npm run dev
 # Visit: http://localhost:3000/coral-reef-demo
 ```
 
