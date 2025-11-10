@@ -160,7 +160,7 @@ export default function BackgroundChecksPage() {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#07070b] text-[#f6f7ff]">
       <Header />
       
       <main>
@@ -179,7 +179,7 @@ export default function BackgroundChecksPage() {
                 <span className="text-red-500">Everything You've Built</span>
               </h1>
               
-              <p className="text-xl lg:text-2xl text-gray-700 dark:text-gray-300 mb-8 max-w-4xl mx-auto animate-fade-in-up animation-delay-200">
+              <p className="text-xl lg:text-2xl text-[#b8b6c9] dark:text-gray-300 mb-8 max-w-4xl mx-auto animate-fade-in-up animation-delay-200">
                 Standard background checks only catch criminals who got caught. We reveal who they really are—their hidden behavior, red flags, and risks lurking beneath the surface.
               </p>
               
@@ -200,7 +200,7 @@ export default function BackgroundChecksPage() {
 
               {/* Trust Bar */}
               <div className="mt-12 animate-fade-in-up animation-delay-600">
-                <p className="text-sm text-gray-600 dark:text-gray-400 mb-3 font-semibold">
+                <p className="text-sm text-[#b8b6c9] dark:text-[#b8b6c9] mb-3 font-semibold">
                   Fortune 500 Strategy | MIT & Caltech Engineering | Team That Helped Secure NASA
                 </p>
               </div>
@@ -213,14 +213,14 @@ export default function BackgroundChecksPage() {
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <Card className="border-red-300 dark:border-red-700 shadow-[0_0_40px_rgba(239,68,68,0.2)]">
               <CardContent className="p-8 lg:p-12">
-                <h3 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+                <h3 className="text-3xl font-bold mb-6 text-[#f6f7ff]">
                   What Is Beyond Background Checks?
                 </h3>
-                <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                <p className="text-lg text-[#b8b6c9] dark:text-gray-300 mb-6 leading-relaxed">
                   A deep investigation that reveals the complete picture of who someone really is—not just what shows up in public records. We analyze online behavior, uncover hidden identities, and expose risks that standard checks can't see.
                 </p>
 
-                <div className="bg-white dark:bg-gray-800 rounded-lg p-6 mb-6">
+                <div className="bg-[#0c0c12] rounded-lg p-6 mb-6">
                   <p className="font-bold text-xl mb-4 text-red-600 dark:text-red-400">Real Results for SMBs:</p>
                   <ul className="space-y-3">
                     {[
@@ -229,7 +229,7 @@ export default function BackgroundChecksPage() {
                       { icon: '🎯', text: '63% fewer bad hires using behavioral intelligence' },
                       { icon: '🔍', text: '4 of 5 cases uncover hidden data exposure' }
                     ].map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-3 text-gray-700 dark:text-gray-300">
+                      <li key={idx} className="flex items-start gap-3 text-[#b8b6c9] dark:text-gray-300">
                         <span className="text-2xl flex-shrink-0">{item.icon}</span>
                         <span className="text-lg pt-1">{item.text}</span>
                       </li>
@@ -238,11 +238,11 @@ export default function BackgroundChecksPage() {
                 </div>
 
                 <div className="border-l-4 border-red-500 pl-6 py-2 bg-red-50 dark:bg-red-950/30 rounded-r-lg">
-                  <p className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-2">
+                  <p className="text-sm font-semibold text-[#b8b6c9] dark:text-[#b8b6c9] mb-2">
                     <em>Founder's Note—Paras Khurana, CEO</em>
                   </p>
-                  <p className="font-bold text-lg text-gray-900 dark:text-white mb-1">Critical Insight:</p>
-                  <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                  <p className="font-bold text-lg text-[#f6f7ff] mb-1">Critical Insight:</p>
+                  <p className="text-lg text-[#b8b6c9] dark:text-gray-300 leading-relaxed">
                     "One unverified connection can collapse a company. Beyond Background Checks gives you clarity before you commit—because what you don't know will hurt you."
                   </p>
                 </div>
@@ -252,20 +252,20 @@ export default function BackgroundChecksPage() {
         </section>
 
         {/* The Problem Section */}
-        <section className="py-20 bg-white dark:bg-gray-900">
+        <section className="py-20 bg-[#0c0c12]">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
                 The Dangerous Lie of a<br />
                 <span className="text-red-500">"Clean" Background Check</span>
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mt-4">
+              <p className="text-xl text-[#b8b6c9] dark:text-[#b8b6c9] max-w-3xl mx-auto mt-4">
                 Ever wonder why so many "good hires" turn bad? Here's what most business owners don't know...
               </p>
             </div>
 
             <div className="prose prose-lg dark:prose-invert max-w-none">
-              <div className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed space-y-6">
+              <div className="text-xl text-[#b8b6c9] dark:text-gray-300 leading-relaxed space-y-6">
                 <p>
                   You find a candidate who looks perfect.
                 </p>
@@ -295,10 +295,10 @@ export default function BackgroundChecksPage() {
                     <p className="text-xl font-bold mb-4 text-red-600 dark:text-red-400">
                       Here's what most business owners don't know:
                     </p>
-                    <p className="text-lg text-gray-700 dark:text-gray-300 mb-4">
+                    <p className="text-lg text-[#b8b6c9] dark:text-gray-300 mb-4">
                       Standard background checks only search criminal databases and credit reports. They don't see:
                     </p>
-                    <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                    <ul className="space-y-2 text-[#b8b6c9] dark:text-gray-300">
                       <li>• Online behavior showing bias, aggression, or dishonesty</li>
                       <li>• Fake identities used to hide past problems</li>
                       <li>• Hidden connections to fraud networks</li>
@@ -316,13 +316,13 @@ export default function BackgroundChecksPage() {
                   The worst part? <strong>You won't see it coming if you rely on a database search that only shows who got caught.</strong>
                 </p>
 
-                <p className="text-lg text-gray-700 dark:text-gray-300 mt-4">
+                <p className="text-lg text-[#b8b6c9] dark:text-gray-300 mt-4">
                   Here's the thing most business owners don't realize: Hiring the wrong person wastes the time you could spend on <a href="/business-transformation" className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 underline">growing your business</a>. And once they have access to your <a href="/intelligent-automation" className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 underline">automated workflows and systems</a>, a bad actor can cause exponential damage.
                 </p>
 
-                <Card className="my-8 border-blue-200 dark:border-blue-800 bg-blue-50/50 dark:bg-blue-950/20">
+                <Card className="my-8 border-blue-200 dark:border-blue-800 bg-[#0c0c12] dark:bg-[#0c0c12]">
                   <CardContent className="p-6">
-                    <p className="text-lg italic text-gray-700 dark:text-gray-300">
+                    <p className="text-lg italic text-[#b8b6c9] dark:text-gray-300">
                       <strong className="not-italic">Think of it this way:</strong> Standard background checks are like checking someone's driver's license. It tells you if they got caught speeding—not if they're a good driver. We look at how they actually drive.
                     </p>
                   </CardContent>
@@ -342,20 +342,20 @@ export default function BackgroundChecksPage() {
         </section>
 
         {/* Solution Section */}
-        <section id="how-it-works" className="py-20 bg-gray-50 dark:bg-gray-800">
+        <section id="how-it-works" className="py-20 bg-[#07070b]">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
                 The Only Background Check Built Like a<br />
                 <span className="text-red-500">Detective Investigation—Not a Database Search</span>
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto leading-relaxed">
+              <p className="text-xl text-[#b8b6c9] dark:text-[#b8b6c9] max-w-4xl mx-auto leading-relaxed">
                 Standard checks pull from databases anyone can access. We investigate like a private detective—following trails, connecting dots, and uncovering what's deliberately hidden.
               </p>
-              <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mt-4">
+              <p className="text-lg text-[#b8b6c9] dark:text-gray-300 max-w-3xl mx-auto mt-4">
                 <strong>Here's what we do differently.</strong> While others search public records for 10 minutes, we spend days investigating behavior, connections, and hidden identities. We don't just ask "Were they caught?" We ask <strong>"Are they dangerous?"</strong>
               </p>
-              <p className="text-base text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mt-4 italic">
+              <p className="text-base text-[#b8b6c9] dark:text-[#b8b6c9] max-w-3xl mx-auto mt-4 italic">
                 That's the difference.
               </p>
             </div>
@@ -364,14 +364,14 @@ export default function BackgroundChecksPage() {
               {/* Behavioral Pattern Analysis */}
               <Card className="border-red-200 dark:border-red-800 hover:border-red-400 dark:hover:border-red-600 transition-all">
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-3">
+                  <h3 className="text-2xl font-bold mb-4 text-[#f6f7ff] flex items-center gap-3">
                     <span className="text-3xl">🔍</span> Behavioral Pattern Analysis
                   </h3>
-                  <p className="text-lg text-gray-700 dark:text-gray-300 mb-4">
+                  <p className="text-lg text-[#b8b6c9] dark:text-gray-300 mb-4">
                     We analyze how someone communicates online—their words, tone, and topics. This reveals biases, aggression patterns, and red flags that predict future problems.
                   </p>
-                  <div className="bg-blue-50 dark:bg-blue-950/30 border-l-4 border-blue-500 p-4 rounded-r-lg">
-                    <p className="text-gray-700 dark:text-gray-300 italic">
+                  <div className="bg-[#0c0c12] dark:bg-[#0c0c12] border-l-4 border-blue-500 p-4 rounded-r-lg">
+                    <p className="text-[#b8b6c9] dark:text-gray-300 italic">
                       <strong className="not-italic text-blue-600 dark:text-blue-400">Translation:</strong> We read their social media, forum posts, and comments to see who they are when nobody's watching.
                     </p>
                   </div>
@@ -381,14 +381,14 @@ export default function BackgroundChecksPage() {
               {/* Hidden Identity Detection */}
               <Card className="border-red-200 dark:border-red-800 hover:border-red-400 dark:hover:border-red-600 transition-all">
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-3">
+                  <h3 className="text-2xl font-bold mb-4 text-[#f6f7ff] flex items-center gap-3">
                     <span className="text-3xl">🎭</span> Hidden Identity Detection
                   </h3>
-                  <p className="text-lg text-gray-700 dark:text-gray-300 mb-4">
+                  <p className="text-lg text-[#b8b6c9] dark:text-gray-300 mb-4">
                     Criminals and problem employees often use fake names, altered birthdates, or multiple email addresses to hide their past. We connect these identities back to the real person.
                   </p>
-                  <div className="bg-blue-50 dark:bg-blue-950/30 border-l-4 border-blue-500 p-4 rounded-r-lg">
-                    <p className="text-gray-700 dark:text-gray-300 italic">
+                  <div className="bg-[#0c0c12] dark:bg-[#0c0c12] border-l-4 border-blue-500 p-4 rounded-r-lg">
+                    <p className="text-[#b8b6c9] dark:text-gray-300 italic">
                       <strong className="not-italic text-blue-600 dark:text-blue-400">Translation:</strong> We find all their aliases and link them together—so you see their complete history, not just the clean version.
                     </p>
                   </div>
@@ -398,20 +398,20 @@ export default function BackgroundChecksPage() {
               {/* Deep Web Intelligence */}
               <Card className="border-red-200 dark:border-red-800 hover:border-red-400 dark:hover:border-red-600 transition-all">
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-3">
-                    <span className="text-3xl">🕵️</span> Deep Web Intelligence <span className="text-base font-normal text-gray-500">(Explaining the "Hidden Internet" Simply)</span>
+                  <h3 className="text-2xl font-bold mb-4 text-[#f6f7ff] flex items-center gap-3">
+                    <span className="text-3xl">🕵️</span> Deep Web Intelligence <span className="text-base font-normal text-[#b8b6c9]">(Explaining the "Hidden Internet" Simply)</span>
                   </h3>
-                  <p className="text-lg text-gray-700 dark:text-gray-300 mb-4">
+                  <p className="text-lg text-[#b8b6c9] dark:text-gray-300 mb-4">
                     Most people only search Google—but that's less than 4% of the internet. The other 96% is hidden from search engines. That's where leaked passwords, stolen data, and criminal networks operate.
                   </p>
-                  <p className="text-lg text-gray-700 dark:text-gray-300 mb-4">
+                  <p className="text-lg text-[#b8b6c9] dark:text-gray-300 mb-4">
                     We search these hidden areas to see if your candidate's information has been compromised or if they're connected to illegal activity.
                   </p>
-                  <div className="bg-blue-50 dark:bg-blue-950/30 border-l-4 border-blue-500 p-4 rounded-r-lg mb-4">
-                    <p className="text-gray-700 dark:text-gray-300 italic mb-3">
+                  <div className="bg-[#0c0c12] dark:bg-[#0c0c12] border-l-4 border-blue-500 p-4 rounded-r-lg mb-4">
+                    <p className="text-[#b8b6c9] dark:text-gray-300 italic mb-3">
                       <strong className="not-italic text-blue-600 dark:text-blue-400">Translation:</strong> We look in places where criminals share stolen information and plan illegal activity—places standard checks never see.
                     </p>
-                    <p className="text-gray-700 dark:text-gray-300">
+                    <p className="text-[#b8b6c9] dark:text-gray-300">
                       <strong className="text-red-600 dark:text-red-400">Why this matters:</strong> If this person will have access to your company's <a href="/cyber-intelligence" className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 underline">financial systems or sensitive data</a>, you need to know if their credentials are floating around in criminal networks. Identity theft victims create legal liability—and active criminals create catastrophic risk.
                     </p>
                   </div>
@@ -421,20 +421,20 @@ export default function BackgroundChecksPage() {
               {/* Civil & Financial Pattern Analysis */}
               <Card className="border-red-200 dark:border-red-800 hover:border-red-400 dark:hover:border-red-600 transition-all">
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-3">
+                  <h3 className="text-2xl font-bold mb-4 text-[#f6f7ff] flex items-center gap-3">
                     <span className="text-3xl">📊</span> Civil & Financial Pattern Analysis
                   </h3>
-                  <p className="text-lg text-gray-700 dark:text-gray-300 mb-4">
+                  <p className="text-lg text-[#b8b6c9] dark:text-gray-300 mb-4">
                     We look beyond criminal records to find:
                   </p>
-                  <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 mb-4">
+                  <ul className="list-disc list-inside space-y-2 text-[#b8b6c9] dark:text-gray-300 mb-4">
                     <li>Lawsuits filed or settled privately</li>
                     <li>Business bankruptcies or closures</li>
                     <li>Conflicts of interest with competitors</li>
                     <li>Financial distress patterns that increase theft risk</li>
                   </ul>
-                  <div className="bg-blue-50 dark:bg-blue-950/30 border-l-4 border-blue-500 p-4 rounded-r-lg">
-                    <p className="text-gray-700 dark:text-gray-300 italic">
+                  <div className="bg-[#0c0c12] dark:bg-[#0c0c12] border-l-4 border-blue-500 p-4 rounded-r-lg">
+                    <p className="text-[#b8b6c9] dark:text-gray-300 italic">
                       <strong className="not-italic text-blue-600 dark:text-blue-400">Translation:</strong> We find legal problems that never resulted in criminal charges—but still show a pattern of trouble.
                     </p>
                   </div>
@@ -444,14 +444,14 @@ export default function BackgroundChecksPage() {
               {/* Human Verification */}
               <Card className="border-red-200 dark:border-red-800 hover:border-red-400 dark:hover:border-red-600 transition-all">
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-3">
+                  <h3 className="text-2xl font-bold mb-4 text-[#f6f7ff] flex items-center gap-3">
                     <span className="text-3xl">✅</span> Human Verification by Intelligence Experts
                   </h3>
-                  <p className="text-lg text-gray-700 dark:text-gray-300 mb-4">
+                  <p className="text-lg text-[#b8b6c9] dark:text-gray-300 mb-4">
                     Every investigation is reviewed by former intelligence analysts and cybersecurity experts—the same professionals who helped secure NASA systems.
                   </p>
-                  <div className="bg-blue-50 dark:bg-blue-950/30 border-l-4 border-blue-500 p-4 rounded-r-lg">
-                    <p className="text-gray-700 dark:text-gray-300 italic">
+                  <div className="bg-[#0c0c12] dark:bg-[#0c0c12] border-l-4 border-blue-500 p-4 rounded-r-lg">
+                    <p className="text-[#b8b6c9] dark:text-gray-300 italic">
                       <strong className="not-italic text-blue-600 dark:text-blue-400">Translation:</strong> Real humans with military and government experience review everything—not just software pulling automated reports.
                     </p>
                   </div>
@@ -471,7 +471,7 @@ export default function BackgroundChecksPage() {
         </section>
 
         {/* Hiring Risk Calculator Section */}
-        <section id="risk-calculator" className="py-20 bg-gray-50 dark:bg-gray-800">
+        <section id="risk-calculator" className="py-20 bg-[#07070b]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <div className="inline-block bg-red-100 dark:bg-red-900/30 rounded-full px-4 py-2 mb-4">
@@ -483,7 +483,7 @@ export default function BackgroundChecksPage() {
                 How Much is a Bad Hire<br />
                 <span className="text-red-500">Costing Your Business?</span>
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+              <p className="text-xl text-[#b8b6c9] dark:text-[#b8b6c9] max-w-3xl mx-auto">
                 One bad hire can cost $200K-$4M in losses. Calculate your actual risk and see how intelligence-grade investigations protect your business.
               </p>
             </div>
@@ -493,7 +493,7 @@ export default function BackgroundChecksPage() {
         </section>
 
         {/* Comparison Table Section */}
-        <section className="py-20 bg-white dark:bg-gray-900">
+        <section className="py-20 bg-[#0c0c12]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
@@ -506,12 +506,12 @@ export default function BackgroundChecksPage() {
               <table className="w-full border-collapse">
                 <thead>
                   <tr className="bg-red-50 dark:bg-red-950/30">
-                    <th className="border border-red-200 dark:border-red-800 p-4 text-left font-bold text-gray-900 dark:text-white">Question</th>
-                    <th className="border border-red-200 dark:border-red-800 p-4 text-left font-bold text-gray-900 dark:text-white">Standard Background Check</th>
+                    <th className="border border-red-200 dark:border-red-800 p-4 text-left font-bold text-[#f6f7ff]">Question</th>
+                    <th className="border border-red-200 dark:border-red-800 p-4 text-left font-bold text-[#f6f7ff]">Standard Background Check</th>
                     <th className="border border-red-200 dark:border-red-800 p-4 text-left font-bold text-red-600 dark:text-red-400">QuantumLeap Intelligence Investigation</th>
                   </tr>
                 </thead>
-                <tbody className="text-gray-700 dark:text-gray-300">
+                <tbody className="text-[#b8b6c9] dark:text-gray-300">
                   {[
                     {
                       question: 'How long does it take?',
@@ -596,13 +596,13 @@ export default function BackgroundChecksPage() {
         </section>
 
         {/* What You Get Section */}
-        <section className="py-20 bg-gray-50 dark:bg-gray-800">
+        <section className="py-20 bg-[#07070b]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
                 What You <span className="text-red-500">Receive</span>
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+              <p className="text-xl text-[#b8b6c9] dark:text-[#b8b6c9] max-w-3xl mx-auto">
                 Every assessment includes a comprehensive report and ongoing support
               </p>
             </div>
@@ -610,7 +610,7 @@ export default function BackgroundChecksPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <Card className="border-red-200 dark:border-red-800 hover:shadow-[0_0_30px_rgba(239,68,68,0.2)] transition-all duration-300">
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">📄 Comprehensive Report Includes:</h3>
+                  <h3 className="text-2xl font-bold mb-6 text-[#f6f7ff]">📄 Comprehensive Report Includes:</h3>
                   <ul className="space-y-4">
                     {[
                       'Executive summary with hire/don\'t hire recommendation',
@@ -624,7 +624,7 @@ export default function BackgroundChecksPage() {
                     ].map((item, idx) => (
                       <li key={idx} className="flex items-start gap-3">
                         <CheckCircle2 className="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-700 dark:text-gray-300 font-medium">{item}</span>
+                        <span className="text-[#b8b6c9] dark:text-gray-300 font-medium">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -633,7 +633,7 @@ export default function BackgroundChecksPage() {
 
               <Card className="border-red-200 dark:border-red-800 hover:shadow-[0_0_30px_rgba(239,68,68,0.2)] transition-all duration-300">
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">🛡️ Additional Support:</h3>
+                  <h3 className="text-2xl font-bold mb-6 text-[#f6f7ff]">🛡️ Additional Support:</h3>
                   <ul className="space-y-4">
                     {[
                       '30-minute consultation to review findings',
@@ -647,7 +647,7 @@ export default function BackgroundChecksPage() {
                     ].map((item, idx) => (
                       <li key={idx} className="flex items-start gap-3">
                         <CheckCircle2 className="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-700 dark:text-gray-300 font-medium">{item}</span>
+                        <span className="text-[#b8b6c9] dark:text-gray-300 font-medium">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -658,14 +658,14 @@ export default function BackgroundChecksPage() {
         </section>
 
         {/* Custom Pricing Section */}
-        <section className="py-20 bg-white dark:bg-gray-900">
+        <section className="py-20 bg-[#0c0c12]">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
                 Investment Tailored to<br />
                 <span className="text-red-500">Your Specific Needs</span>
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+              <p className="text-xl text-[#b8b6c9] dark:text-[#b8b6c9] max-w-3xl mx-auto">
                 Every investigation is customized based on the role, risk level, and depth of search required. No one-size-fits-all packages—just the intelligence you need.
               </p>
             </div>
@@ -730,14 +730,14 @@ export default function BackgroundChecksPage() {
                   )}
                   <CardContent className="p-8">
                     <div className="text-5xl mb-4">{tier.icon}</div>
-                    <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">{tier.name}</h3>
-                    <p className="text-gray-600 dark:text-gray-400 mb-6 text-lg font-semibold">Custom Pricing</p>
-                    <p className="text-gray-600 dark:text-gray-400 mb-6">{tier.description}</p>
+                    <h3 className="text-2xl font-bold mb-2 text-[#f6f7ff]">{tier.name}</h3>
+                    <p className="text-[#b8b6c9] dark:text-[#b8b6c9] mb-6 text-lg font-semibold">Custom Pricing</p>
+                    <p className="text-[#b8b6c9] dark:text-[#b8b6c9] mb-6">{tier.description}</p>
                     <ul className="space-y-3 mb-8">
                       {tier.features.map((feature, featureIdx) => (
                         <li key={featureIdx} className="flex items-start gap-2">
                           <CheckCircle2 className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
-                          <span className="text-sm text-gray-700 dark:text-gray-300">{feature}</span>
+                          <span className="text-sm text-[#b8b6c9] dark:text-gray-300">{feature}</span>
                         </li>
                       ))}
                     </ul>
@@ -746,7 +746,7 @@ export default function BackgroundChecksPage() {
                       className={`w-full ${
                         tier.popular 
                           ? 'bg-red-500 hover:bg-red-600 text-white' 
-                          : 'bg-white dark:bg-gray-800 border-2 border-red-500 text-red-500 hover:bg-red-50 dark:hover:bg-red-950/20'
+                          : 'bg-[#0c0c12] border-2 border-red-500 text-red-500 hover:bg-red-50 dark:hover:bg-red-950/20'
                       }`}
                     >
                       <a href="/consultation">{tier.cta}</a>
@@ -758,34 +758,34 @@ export default function BackgroundChecksPage() {
 
             <Card className="border-red-300 dark:border-red-700 bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-950/30 dark:to-pink-950/30">
               <CardContent className="p-8">
-                <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white text-center">
+                <h3 className="text-2xl font-bold mb-4 text-[#f6f7ff] text-center">
                   💡 The Real Cost Comparison
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                   <div className="text-center">
-                    <p className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                    <p className="text-lg font-semibold text-[#b8b6c9] dark:text-gray-300 mb-2">
                       Investigation Cost:
                     </p>
                     <p className="text-3xl font-bold text-red-600 dark:text-red-400 mb-2">
                       Less than 2%
                     </p>
-                    <p className="text-gray-600 dark:text-gray-400">
+                    <p className="text-[#b8b6c9] dark:text-[#b8b6c9]">
                       of what a bad hire costs you
                     </p>
                   </div>
                   <div className="text-center">
-                    <p className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                    <p className="text-lg font-semibold text-[#b8b6c9] dark:text-gray-300 mb-2">
                       Bad Hire Cost:
                     </p>
-                    <p className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                    <p className="text-3xl font-bold text-[#f6f7ff] mb-2">
                       $200K–$4M+
                     </p>
-                    <p className="text-gray-600 dark:text-gray-400">
+                    <p className="text-[#b8b6c9] dark:text-[#b8b6c9]">
                       in legal fees, losses, and reputation damage
                     </p>
                   </div>
                 </div>
-                <p className="text-center text-lg text-gray-700 dark:text-gray-300 mt-6 font-semibold">
+                <p className="text-center text-lg text-[#b8b6c9] dark:text-gray-300 mt-6 font-semibold">
                   The question isn't "Can I afford an investigation?"<br />
                   The question is <span className="text-red-600 dark:text-red-400">"Can I afford not to?"</span>
                 </p>
@@ -799,7 +799,7 @@ export default function BackgroundChecksPage() {
               >
                 <a href="/consultation">💰 Get Your Custom Quote for This Role → Schedule Free Consultation</a>
               </Button>
-              <p className="text-gray-600 dark:text-gray-400 mt-4">
+              <p className="text-[#b8b6c9] dark:text-[#b8b6c9] mt-4">
                 <strong>Volume Discounts Available:</strong> Screen 10+ candidates annually and save 15-25%
               </p>
             </div>
@@ -807,13 +807,13 @@ export default function BackgroundChecksPage() {
         </section>
 
         {/* Trusted By Section - Organizations That Demand Excellence */}
-        <section className="py-20 bg-white dark:bg-gray-900">
+        <section className="py-20 bg-[#0c0c12]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
                 Trusted by Organizations That <span className="text-red-500">Demand Excellence</span>
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto leading-relaxed">
+              <p className="text-xl text-[#b8b6c9] dark:text-[#b8b6c9] max-w-4xl mx-auto leading-relaxed">
                 Our team has conducted intelligence investigations and security operations for these organizations—now we bring that expertise to entrepreneurs, SMBs, and families.
               </p>
             </div>
@@ -860,7 +860,7 @@ export default function BackgroundChecksPage() {
                 <Card key={idx} className="border-red-200 dark:border-red-800 text-center hover:border-red-400 dark:hover:border-red-600 transition-all">
                   <CardContent className="p-6">
                     <div className="text-4xl mb-3">{item.icon}</div>
-                    <p className="text-sm text-gray-700 dark:text-gray-300 font-medium leading-relaxed">
+                    <p className="text-sm text-[#b8b6c9] dark:text-gray-300 font-medium leading-relaxed">
                       {item.text}
                     </p>
                   </CardContent>
@@ -881,30 +881,30 @@ export default function BackgroundChecksPage() {
                       🛡️ Our Iron-Clad Guarantee
                     </span>
                   </div>
-                  <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
+                  <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-[#f6f7ff]">
                     Our "Find It or Free" Guarantee—<br />
                     <span className="text-red-500">You Only Pay If We Uncover What Others Miss</span>
                   </h2>
                 </div>
 
                 <div className="prose prose-lg dark:prose-invert max-w-none">
-                  <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+                  <p className="text-xl text-[#b8b6c9] dark:text-gray-300 leading-relaxed mb-6">
                     If our first investigation doesn't uncover <strong>at least three significant findings</strong> (beyond what a standard background check would show), <strong className="text-red-600 dark:text-red-400">you don't pay</strong>.
                   </p>
 
-                  <Card className="my-8 border-blue-200 dark:border-blue-800 bg-blue-50/50 dark:bg-blue-950/20">
+                  <Card className="my-8 border-blue-200 dark:border-blue-800 bg-[#0c0c12] dark:bg-[#0c0c12]">
                     <CardContent className="p-6">
                       <p className="text-lg font-bold text-blue-600 dark:text-blue-400 mb-4">
                         Why? Because 73% of the time, we find disqualifying information that standard checks miss.
                       </p>
-                      <p className="text-gray-700 dark:text-gray-300">
+                      <p className="text-[#b8b6c9] dark:text-gray-300">
                         We're confident we'll find something worth knowing—or you don't pay.
                       </p>
                     </CardContent>
                   </Card>
 
-                  <div className="bg-white dark:bg-gray-800 rounded-lg p-6 mb-6">
-                    <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+                  <div className="bg-[#0c0c12] rounded-lg p-6 mb-6">
+                    <h3 className="text-2xl font-bold mb-4 text-[#f6f7ff]">
                       Qualifying Findings Include:
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -920,7 +920,7 @@ export default function BackgroundChecksPage() {
                       ].map((finding, idx) => (
                         <div key={idx} className="flex items-start gap-3">
                           <CheckCircle2 className="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5" />
-                          <span className="text-gray-700 dark:text-gray-300">{finding}</span>
+                          <span className="text-[#b8b6c9] dark:text-gray-300">{finding}</span>
                         </div>
                       ))}
                     </div>
@@ -928,19 +928,19 @@ export default function BackgroundChecksPage() {
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
                     <div className="text-center p-6 bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-950/30 dark:to-pink-950/30 rounded-lg">
-                      <p className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-2">Your Investment</p>
-                      <p className="text-3xl font-bold text-gray-900 dark:text-white">$3,000–$7,500</p>
-                      <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">Varies by role & depth</p>
+                      <p className="text-sm font-semibold text-[#b8b6c9] dark:text-[#b8b6c9] mb-2">Your Investment</p>
+                      <p className="text-3xl font-bold text-[#f6f7ff]">$3,000–$7,500</p>
+                      <p className="text-sm text-[#b8b6c9] dark:text-[#b8b6c9] mt-2">Varies by role & depth</p>
                     </div>
                     <div className="text-center p-6 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30 rounded-lg">
-                      <p className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-2">Your Protection</p>
+                      <p className="text-sm font-semibold text-[#b8b6c9] dark:text-[#b8b6c9] mb-2">Your Protection</p>
                       <p className="text-3xl font-bold text-green-600 dark:text-green-400">Complete Refund</p>
-                      <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">If we don't find 3+ findings</p>
+                      <p className="text-sm text-[#b8b6c9] dark:text-[#b8b6c9] mt-2">If we don't find 3+ findings</p>
                     </div>
                     <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg">
-                      <p className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-2">Your Peace of Mind</p>
+                      <p className="text-sm font-semibold text-[#b8b6c9] dark:text-[#b8b6c9] mb-2">Your Peace of Mind</p>
                       <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">Priceless</p>
-                      <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">Know before you commit</p>
+                      <p className="text-sm text-[#b8b6c9] dark:text-[#b8b6c9] mt-2">Know before you commit</p>
                     </div>
                   </div>
 
@@ -950,7 +950,7 @@ export default function BackgroundChecksPage() {
                     </p>
                   </div>
 
-                  <p className="text-lg text-gray-700 dark:text-gray-300 text-center mb-6">
+                  <p className="text-lg text-[#b8b6c9] dark:text-gray-300 text-center mb-6">
                     The question isn't whether you can afford this investigation.<br />
                     <strong className="text-red-600 dark:text-red-400">It's whether you can afford to hire blindly.</strong>
                   </p>
@@ -970,13 +970,13 @@ export default function BackgroundChecksPage() {
         </section>
 
         {/* Testimonials Carousel Section */}
-        <section className="py-20 bg-white dark:bg-gray-900">
+        <section className="py-20 bg-[#0c0c12]">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
                 Real Stories from <span className="text-red-500">People We Protected</span>
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+              <p className="text-xl text-[#b8b6c9] dark:text-[#b8b6c9] max-w-3xl mx-auto">
                 These aren't hypothetical scenarios—these are real investigations that prevented disaster
               </p>
             </div>
@@ -991,12 +991,12 @@ export default function BackgroundChecksPage() {
                         F
                       </div>
                       <div>
-                        <p className="font-bold text-gray-900 dark:text-white">Fortune 500 CEO</p>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">(Name withheld for privacy)</p>
+                        <p className="font-bold text-[#f6f7ff]">Fortune 500 CEO</p>
+                        <p className="text-sm text-[#b8b6c9] dark:text-[#b8b6c9]">(Name withheld for privacy)</p>
                       </div>
                     </div>
                   </div>
-                  <div className="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+                  <div className="space-y-4 text-[#b8b6c9] dark:text-gray-300 leading-relaxed">
                     <p className="italic text-lg">
                       "He seemed perfect for our daughter—polished, respectful, successful. We ran a standard background check; it came back clean."
                     </p>
@@ -1022,12 +1022,12 @@ export default function BackgroundChecksPage() {
                         LP
                       </div>
                       <div>
-                        <p className="font-bold text-gray-900 dark:text-white">Lydia V. Penrose</p>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">Co-Founder, Code Vibe Studio</p>
+                        <p className="font-bold text-[#f6f7ff]">Lydia V. Penrose</p>
+                        <p className="text-sm text-[#b8b6c9] dark:text-[#b8b6c9]">Co-Founder, Code Vibe Studio</p>
                       </div>
                     </div>
                   </div>
-                  <div className="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+                  <div className="space-y-4 text-[#b8b6c9] dark:text-gray-300 leading-relaxed">
                     <p className="italic text-lg">
                       "We hired a CTO who looked like a dream candidate on paper. Within months, he nearly destroyed two client projects through incompetence and hostile behavior."
                     </p>
@@ -1053,12 +1053,12 @@ export default function BackgroundChecksPage() {
                         GS
                       </div>
                       <div>
-                        <p className="font-bold text-gray-900 dark:text-white">Gurpreet Sandhu</p>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">Broker, Real Estate Vision</p>
+                        <p className="font-bold text-[#f6f7ff]">Gurpreet Sandhu</p>
+                        <p className="text-sm text-[#b8b6c9] dark:text-[#b8b6c9]">Broker, Real Estate Vision</p>
                       </div>
                     </div>
                   </div>
-                  <div className="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+                  <div className="space-y-4 text-[#b8b6c9] dark:text-gray-300 leading-relaxed">
                     <p className="italic text-lg">
                       "In real estate, trust is everything. I was about to sign a partnership agreement when something told me to dig deeper."
                     </p>
@@ -1084,12 +1084,12 @@ export default function BackgroundChecksPage() {
                         SM
                       </div>
                       <div>
-                        <p className="font-bold text-gray-900 dark:text-white">Sarah Martinez</p>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">Operations Manager</p>
+                        <p className="font-bold text-[#f6f7ff]">Sarah Martinez</p>
+                        <p className="text-sm text-[#b8b6c9] dark:text-[#b8b6c9]">Operations Manager</p>
                       </div>
                     </div>
                   </div>
-                  <div className="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+                  <div className="space-y-4 text-[#b8b6c9] dark:text-gray-300 leading-relaxed">
                     <p className="italic text-lg">
                       "I hired someone who passed every standard check. Three months later, he <strong className="text-red-600 dark:text-red-400">locked down our entire network and demanded $4 million in cryptocurrency</strong> to release the data he'd encrypted himself."
                     </p>
@@ -1119,7 +1119,7 @@ export default function BackgroundChecksPage() {
         </section>
 
         {/* Strategic Blog Section - The Complete Hacker Story */}
-        <section className="py-20 bg-gray-50 dark:bg-gray-800">
+        <section className="py-20 bg-[#07070b]">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <div className="inline-block bg-red-100 dark:bg-red-900/30 rounded-full px-4 py-2 mb-4">
@@ -1154,7 +1154,7 @@ export default function BackgroundChecksPage() {
 
                   {/* The Cost Breakdown */}
                   <div className="my-8 bg-red-50 dark:bg-red-950/30 rounded-lg p-6">
-                    <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">The Real Numbers</h3>
+                    <h3 className="text-2xl font-bold mb-4 text-[#f6f7ff]">The Real Numbers</h3>
                     <p className="mb-4">When Sarah added up the real numbers, this "clean hire" had cost:</p>
                     <div className="space-y-2 text-lg">
                       <div className="flex justify-between border-b border-red-200 dark:border-red-800 pb-2">
@@ -1190,16 +1190,16 @@ export default function BackgroundChecksPage() {
                         <span className="font-bold text-red-600 dark:text-red-400">$846,000</span>
                       </div>
                     </div>
-                    <p className="mt-4 text-gray-600 dark:text-gray-400 italic">
+                    <p className="mt-4 text-[#b8b6c9] dark:text-[#b8b6c9] italic">
                       And that doesn't count the emotional toll—sleepless nights, client relationships destroyed, years of trust-building erased.
                     </p>
                   </div>
 
                   {/* What Went Wrong */}
                   <div className="my-8">
-                    <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">What Went Wrong: The Gap Standard Checks Leave</h3>
+                    <h3 className="text-2xl font-bold mb-4 text-[#f6f7ff]">What Went Wrong: The Gap Standard Checks Leave</h3>
                     
-                    <div className="bg-green-50 dark:bg-green-950/30 rounded-lg p-6 mb-6">
+                    <div className="bg-[#0c0c12] dark:bg-[#0c0c12] rounded-lg p-6 mb-6">
                       <p className="font-bold text-green-700 dark:text-green-400 mb-3">Here's what standard background checks actually do:</p>
                       <ul className="space-y-2">
                         <li className="flex items-start gap-2">
@@ -1255,7 +1255,7 @@ export default function BackgroundChecksPage() {
                       </ul>
                     </div>
 
-                    <p className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+                    <p className="text-xl font-bold text-[#f6f7ff] mb-4">
                       Sarah's hire had no criminal record because he'd never been caught.
                     </p>
                     <p className="text-lg mb-4">
@@ -1273,8 +1273,8 @@ export default function BackgroundChecksPage() {
                   </div>
 
                   {/* The Investigation That Could Have Prevented This */}
-                  <div className="my-8 bg-blue-50 dark:bg-blue-950/30 rounded-lg p-6">
-                    <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+                  <div className="my-8 bg-[#0c0c12] dark:bg-[#0c0c12] rounded-lg p-6">
+                    <h3 className="text-2xl font-bold mb-4 text-[#f6f7ff]">
                       The Investigation That Could Have Prevented This
                     </h3>
                     <p className="text-lg mb-6">
@@ -1306,15 +1306,15 @@ export default function BackgroundChecksPage() {
 
                     <div className="mt-6 grid grid-cols-3 gap-4 text-center">
                       <div>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">Cost</p>
+                        <p className="text-sm text-[#b8b6c9] dark:text-[#b8b6c9]">Cost</p>
                         <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">$5,000</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">Time</p>
+                        <p className="text-sm text-[#b8b6c9] dark:text-[#b8b6c9]">Time</p>
                         <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">7 days</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">Result</p>
+                        <p className="text-sm text-[#b8b6c9] dark:text-[#b8b6c9]">Result</p>
                         <p className="text-2xl font-bold text-red-600 dark:text-red-400">Do Not Hire</p>
                       </div>
                     </div>
@@ -1326,7 +1326,7 @@ export default function BackgroundChecksPage() {
 
                   {/* Why This Keeps Happening */}
                   <div className="my-8">
-                    <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+                    <h3 className="text-2xl font-bold mb-4 text-[#f6f7ff]">
                       Why This Keeps Happening
                     </h3>
                     <p className="text-lg mb-4">
@@ -1335,8 +1335,8 @@ export default function BackgroundChecksPage() {
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
                       <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-6">
-                        <p className="font-bold text-xl mb-3 text-gray-900 dark:text-white">Database Checks</p>
-                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">(what most people buy)</p>
+                        <p className="font-bold text-xl mb-3 text-[#f6f7ff]">Database Checks</p>
+                        <p className="text-sm text-[#b8b6c9] dark:text-[#b8b6c9] mb-2">(what most people buy)</p>
                         <p className="mb-4">Searches only public criminal records and credit reports.</p>
                         <div className="space-y-2 text-sm">
                           <p><strong>Takes:</strong> 10 minutes</p>
@@ -1347,7 +1347,7 @@ export default function BackgroundChecksPage() {
                       
                       <div className="bg-red-50 dark:bg-red-950/30 rounded-lg p-6 border-2 border-red-500">
                         <p className="font-bold text-xl mb-3 text-red-600 dark:text-red-400">Intelligence Investigations</p>
-                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">(what we do)</p>
+                        <p className="text-sm text-[#b8b6c9] dark:text-[#b8b6c9] mb-2">(what we do)</p>
                         <p className="mb-4">Analyzes behavior, finds hidden identities, searches areas criminals use, reviewed by human experts.</p>
                         <div className="space-y-2 text-sm">
                           <p><strong>Takes:</strong> Days</p>
@@ -1357,7 +1357,7 @@ export default function BackgroundChecksPage() {
                       </div>
                     </div>
 
-                    <p className="text-xl font-bold text-center my-6 text-gray-900 dark:text-white">
+                    <p className="text-xl font-bold text-center my-6 text-[#f6f7ff]">
                       The problem? Most people think a "clean background check" means someone is safe.
                     </p>
                     <p className="text-xl text-center mb-6">
@@ -1370,24 +1370,24 @@ export default function BackgroundChecksPage() {
 
                   {/* The Bottom Line */}
                   <div className="my-8 bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-950/30 dark:to-pink-950/30 rounded-lg p-8 text-center">
-                    <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">The Bottom Line</h3>
+                    <h3 className="text-2xl font-bold mb-6 text-[#f6f7ff]">The Bottom Line</h3>
                     
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                       <div>
-                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">Standard background check:</p>
-                        <p className="text-3xl font-bold text-gray-900 dark:text-white">$50–200</p>
+                        <p className="text-sm text-[#b8b6c9] dark:text-[#b8b6c9] mb-2">Standard background check:</p>
+                        <p className="text-3xl font-bold text-[#f6f7ff]">$50–200</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">Intelligence investigation:</p>
+                        <p className="text-sm text-[#b8b6c9] dark:text-[#b8b6c9] mb-2">Intelligence investigation:</p>
                         <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">$3,000–7,500</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">Cost of one bad hire:</p>
+                        <p className="text-sm text-[#b8b6c9] dark:text-[#b8b6c9] mb-2">Cost of one bad hire:</p>
                         <p className="text-3xl font-bold text-red-600 dark:text-red-400">$200K–$4M+</p>
                       </div>
                     </div>
 
-                    <p className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+                    <p className="text-2xl font-bold mb-4 text-[#f6f7ff]">
                       The question isn't "Can I afford an investigation?"
                     </p>
                     <p className="text-2xl font-bold text-red-600 dark:text-red-400">
@@ -1402,7 +1402,7 @@ export default function BackgroundChecksPage() {
                     >
                       <a href="/consultation">🔍 See What Standard Checks Are Missing → Run Free Risk Assessment</a>
                     </Button>
-                    <p className="mt-4 text-gray-600 dark:text-gray-400">
+                    <p className="mt-4 text-[#b8b6c9] dark:text-[#b8b6c9]">
                       or <a href="/consultation" className="text-red-600 dark:text-red-400 underline hover:text-red-700 dark:hover:text-red-300">Schedule Confidential Investigation Briefing → Speak with Intelligence Analyst</a>
                     </p>
                   </div>
@@ -1414,13 +1414,13 @@ export default function BackgroundChecksPage() {
 
 
         {/* Comprehensive Educational FAQ Section */}
-        <section className="py-20 bg-gray-50 dark:bg-gray-800">
+        <section className="py-20 bg-[#07070b]">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
                 Frequently Asked <span className="text-red-500">Questions</span>
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-400">
+              <p className="text-xl text-[#b8b6c9] dark:text-[#b8b6c9]">
                 Everything you need to know about intelligence-grade background investigations
               </p>
             </div>
@@ -1800,13 +1800,13 @@ export default function BackgroundChecksPage() {
                 >
                   <CardContent className="p-6">
                     <div className="flex justify-between items-start gap-4">
-                      <h3 className="text-lg font-bold text-gray-900 dark:text-white">{faq.q}</h3>
+                      <h3 className="text-lg font-bold text-[#f6f7ff]">{faq.q}</h3>
                       <div className="text-red-500 text-2xl flex-shrink-0">
                         {openFaq === idx ? '−' : '+'}
                       </div>
                     </div>
                     {openFaq === idx && (
-                      <div className="mt-4 text-gray-600 dark:text-gray-400 leading-relaxed">
+                      <div className="mt-4 text-[#b8b6c9] dark:text-[#b8b6c9] leading-relaxed">
                         {faq.a}
                       </div>
                     )}
@@ -1829,14 +1829,14 @@ export default function BackgroundChecksPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 asChild
-                className="bg-white text-red-500 hover:bg-gray-100 px-8 py-6 text-lg font-semibold"
+                className="bg-[#5312c4] text-[#f7f7fb] red-500 hover:bg-gray-100 px-8 py-6 text-lg font-semibold"
               >
                 <a href="/consultation">Schedule Free Consultation</a>
               </Button>
               <Button 
                 asChild
                 variant="outline"
-                className="border-2 border-white text-white hover:bg-white/10 px-8 py-6 text-lg font-semibold"
+                className="border-2 border-[#2c2c3d] text-white hover:bg-[#0c0c12]/10 px-8 py-6 text-lg font-semibold"
               >
                 <a href="/">Learn About Our Other Services</a>
               </Button>

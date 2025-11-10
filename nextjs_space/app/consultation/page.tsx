@@ -75,7 +75,7 @@ export default function ConsultationPage() {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <div className="min-h-screen bg-qgd-card dark:bg-gray-900">
         <div className="container section-padding">
           <div className="mx-auto max-w-2xl text-center">
             <div className="mb-8 flex justify-center">
@@ -137,7 +137,7 @@ export default function ConsultationPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-qgd-card dark:bg-gray-900">
       <div className="container section-padding">
         <div className="mx-auto max-w-2xl">
           <div className="mb-12 text-center">

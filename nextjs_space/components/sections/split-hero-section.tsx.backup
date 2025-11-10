@@ -64,7 +64,7 @@ export function SplitHeroSection() {
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.8 }}
-                  className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-qgd-fg drop-shadow-2xl"
+                  className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white drop-shadow-2xl"
                   style={{
                     textShadow: '0 4px 20px rgba(0,0,0,0.9), 0 0 40px rgba(255,255,255,0.4)'
                   }}
@@ -79,7 +79,7 @@ export function SplitHeroSection() {
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.8 }}
-                  className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-qgd-fg drop-shadow-2xl"
+                  className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white drop-shadow-2xl"
                   style={{
                     textShadow: '0 4px 20px rgba(0,0,0,0.9), 0 0 40px rgba(255,255,255,0.4)'
                   }}
@@ -117,7 +117,7 @@ export function SplitHeroSection() {
               </div>
 
               {/* Content */}
-              <div className="relative h-full flex flex-col items-center justify-center p-8 lg:p-12 text-qgd-fg z-10">
+              <div className="relative h-full flex flex-col items-center justify-center p-8 lg:p-12 text-white z-10">
                 <motion.div
                   className="text-center space-y-8"
                   initial={{ opacity: 0, y: 30 }}
@@ -125,7 +125,7 @@ export function SplitHeroSection() {
                   transition={{ delay: 0.3, duration: 0.8 }}
                 >
                   <motion.h2 
-                    className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-qgd-fg drop-shadow-lg"
+                    className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white drop-shadow-lg"
                     initial={{ scale: 0.9 }}
                     animate={{ scale: 1 }}
                     transition={{ delay: 0.5, type: 'spring', stiffness: 200 }}
@@ -134,7 +134,7 @@ export function SplitHeroSection() {
                   </motion.h2>
 
                   <motion.p
-                    className="text-xl md:text-2xl lg:text-3xl font-light text-qgd-fg max-w-md mx-auto"
+                    className="text-xl md:text-2xl lg:text-3xl font-light text-white max-w-md mx-auto"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.7 }}
@@ -144,7 +144,7 @@ export function SplitHeroSection() {
 
                   <Link href="/business-transformation">
                     <motion.button
-                      className="mt-8 px-10 py-5 bg-qgd-card text-[#004D40] rounded-2xl font-bold text-lg md:text-xl shadow-2xl hover:shadow-teal-300/60 hover:bg-qgd-primary/50 transition-all flex items-center gap-3 mx-auto group"
+                      className="mt-8 px-10 py-5 bg-white text-[#004D40] rounded-2xl font-bold text-lg md:text-xl shadow-2xl hover:shadow-teal-300/60 hover:bg-teal-50 transition-all flex items-center gap-3 mx-auto group"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.9 }}
@@ -181,7 +181,7 @@ export function SplitHeroSection() {
               </div>
 
               {/* Content */}
-              <div className="relative h-full flex flex-col items-center justify-center p-8 lg:p-12 text-qgd-fg">
+              <div className="relative h-full flex flex-col items-center justify-center p-8 lg:p-12 text-white">
                 <motion.div
                   className="text-center space-y-8"
                   initial={{ opacity: 0, y: 30 }}
@@ -189,7 +189,7 @@ export function SplitHeroSection() {
                   transition={{ delay: 0.3, duration: 0.8 }}
                 >
                   <motion.h2 
-                    className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-qgd-fg drop-shadow-lg"
+                    className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white drop-shadow-lg"
                     initial={{ scale: 0.9 }}
                     animate={{ scale: 1 }}
                     transition={{ delay: 0.5, type: 'spring', stiffness: 200 }}
@@ -198,7 +198,7 @@ export function SplitHeroSection() {
                   </motion.h2>
 
                   <motion.p
-                    className="text-xl md:text-2xl lg:text-3xl font-light text-qgd-fg max-w-md mx-auto"
+                    className="text-xl md:text-2xl lg:text-3xl font-light text-white max-w-md mx-auto"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.7 }}
@@ -208,7 +208,7 @@ export function SplitHeroSection() {
 
                   <Link href="/consultation">
                     <motion.button
-                      className="mt-8 px-10 py-5 bg-qgd-card text-[#FF4500] rounded-2xl font-bold text-lg md:text-xl shadow-2xl hover:shadow-orange-300/60 hover:bg-orange-50 transition-all flex items-center gap-3 mx-auto group"
+                      className="mt-8 px-10 py-5 bg-white text-[#FF4500] rounded-2xl font-bold text-lg md:text-xl shadow-2xl hover:shadow-orange-300/60 hover:bg-orange-50 transition-all flex items-center gap-3 mx-auto group"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.9 }}

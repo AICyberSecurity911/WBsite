@@ -1,7 +1,6 @@
 'use client'
 
 import { Header } from '@/components/layout/header'
-import { FlameBorder } from '@/components/ui/flame-border'
 import { Footer } from '@/components/layout/footer'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
@@ -365,7 +364,7 @@ export default function IntelligentAutomationPage() {
                   <Button 
                     size="lg"
                     onClick={scrollToCalculator}
-                    className="bg-qgd-primary/600 hover:bg-qgd-primary/700 text-qgd-fg font-semibold px-8 py-6 text-lg group"
+                    className="bg-teal-600 hover:bg-teal-700 text-white font-semibold px-8 py-6 text-lg group"
                   >
                     <Timer className="w-5 h-5 mr-2" />
                     Reveal My Hidden Hours & Savings
@@ -375,7 +374,7 @@ export default function IntelligentAutomationPage() {
                     size="lg"
                     variant="outline"
                     asChild
-                    className="border-2 border-teal-600 text-qgd-ring700 dark:text-qgd-ring400 hover:bg-qgd-primary/50 dark:hover:bg-qgd-primary/950/30 px-8 py-6 text-lg font-semibold"
+                    className="border-2 border-teal-600 text-teal-700 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950/30 px-8 py-6 text-lg font-semibold"
                   >
                     <Link href="#solution">
                       <Workflow className="w-5 h-5 mr-2" />
@@ -395,7 +394,7 @@ export default function IntelligentAutomationPage() {
                     
                     {/* Transformation Story Visual */}
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center text-qgd-fg px-6">
+                      <div className="text-center text-white px-6">
                         <div className="mb-6 space-y-3">
                           {/* Before State */}
                           <motion.div
@@ -404,7 +403,7 @@ export default function IntelligentAutomationPage() {
                             transition={{ duration: 2, repeat: Infinity, repeatDelay: 6 }}
                             className="text-left"
                           >
-                            <div className="text-sm font-semibold text-qgd-ring200 mb-1">BEFORE</div>
+                            <div className="text-sm font-semibold text-teal-200 mb-1">BEFORE</div>
                             <div className="text-lg font-bold">12-hour days. Manual chaos. Burnout.</div>
                           </motion.div>
                           
@@ -414,7 +413,7 @@ export default function IntelligentAutomationPage() {
                             transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 6.5 }}
                             className="flex items-center justify-center"
                           >
-                            <ArrowRight className="w-8 h-8 text-qgd-fg" />
+                            <ArrowRight className="w-8 h-8 text-white" />
                           </motion.div>
                           
                           {/* After State */}
@@ -436,13 +435,13 @@ export default function IntelligentAutomationPage() {
                       whileHover={{ scale: 1.1 }}
                       className="absolute inset-0 flex items-center justify-center bg-black/30 backdrop-blur-[2px] group-hover:bg-black/40 transition-all"
                     >
-                      <div className="w-20 h-20 bg-qgd-card/90 rounded-full flex items-center justify-center shadow-xl group-hover:bg-[#0c0c12] transition-colors">
+                      <div className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center shadow-xl group-hover:bg-[#0c0c12] transition-colors">
                         <div className="w-0 h-0 border-l-[20px] border-l-teal-600 border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent ml-1" />
                       </div>
                     </motion.div>
                     
                     {/* Video Coming Soon Badge */}
-                    <div className="absolute top-4 right-4 bg-qgd-card/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-semibold text-qgd-muted shadow-lg">
+                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-semibold text-gray-700 shadow-lg">
                       🎬 8-Second Story
                     </div>
                   </div>
@@ -452,25 +451,25 @@ export default function IntelligentAutomationPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.8 }}
-                    className="absolute -bottom-4 -left-4 bg-qgd-card dark:bg-zinc-900 rounded-xl shadow-xl p-4 border border-qgd-border dark:border-zinc-800"
+                    className="absolute -bottom-4 -left-4 bg-white dark:bg-zinc-900 rounded-xl shadow-xl p-4 border border-gray-200 dark:border-zinc-800"
                   >
-                    <div className="text-3xl font-bold text-qgd-ring600 dark:text-qgd-ring400">20+</div>
-                    <div className="text-sm text-qgd-muted dark:text-qgd-muted">Hours Saved/Week</div>
+                    <div className="text-3xl font-bold text-teal-600 dark:text-teal-400">20+</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">Hours Saved/Week</div>
                   </motion.div>
                   
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1 }}
-                    className="absolute -top-4 -right-4 bg-qgd-card dark:bg-zinc-900 rounded-xl shadow-xl p-4 border border-qgd-border dark:border-zinc-800"
+                    className="absolute -top-4 -right-4 bg-white dark:bg-zinc-900 rounded-xl shadow-xl p-4 border border-gray-200 dark:border-zinc-800"
                   >
                     <div className="text-3xl font-bold text-emerald-600 dark:text-emerald-400">60-85%</div>
-                    <div className="text-sm text-qgd-muted dark:text-qgd-muted">Cost Reduction</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">Cost Reduction</div>
                   </motion.div>
                 </div>
                 
                 {/* Video Caption */}
-                <p className="text-center text-sm text-qgd-muted dark:text-qgd-muted mt-4 italic">
+                <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-4 italic">
                   Watch: From overwhelmed to automated in 8 seconds
                 </p>
               </motion.div>
@@ -482,7 +481,7 @@ export default function IntelligentAutomationPage() {
         {/* TL;DR SECTION (AEO/AGO Optimized) */}
         <section 
           ref={tlddrRef}
-          className="py-16 bg-qgd-card dark:bg-zinc-900/50"
+          className="py-16 bg-gray-50 dark:bg-zinc-900/50"
         >
           <motion.div
             variants={fadeInUp}
@@ -490,33 +489,33 @@ export default function IntelligentAutomationPage() {
             animate={tlddrInView ? "visible" : "hidden"}
             className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
           >
-            <div className="bg-qgd-card dark:bg-zinc-900 rounded-2xl border-2 border-teal-200 dark:border-teal-800 p-8 shadow-lg">
+            <div className="bg-white dark:bg-zinc-900 rounded-2xl border-2 border-teal-200 dark:border-teal-800 p-8 shadow-lg">
               
               {/* Header */}
               <div className="flex items-start gap-4 mb-6">
-                <div className="flex-shrink-0 w-12 h-12 bg-qgd-primary/100 dark:bg-qgd-primary/900/30 rounded-xl flex items-center justify-center">
-                  <LightbulbIcon className="w-6 h-6 text-qgd-ring600 dark:text-qgd-ring400" />
+                <div className="flex-shrink-0 w-12 h-12 bg-teal-100 dark:bg-teal-900/30 rounded-xl flex items-center justify-center">
+                  <LightbulbIcon className="w-6 h-6 text-teal-600 dark:text-teal-400" />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-qgd-fg dark:text-gray-100 mb-2">
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
                     What is QuantumLeap Intelligent Automations?
                   </h2>
-                  <p className="text-qgd-muted dark:text-qgd-muted">
+                  <p className="text-gray-600 dark:text-gray-400">
                     The executive summary for decision-makers
                   </p>
                 </div>
               </div>
               
               {/* Bottom Line */}
-              <div className="bg-qgd-primary/50 dark:bg-qgd-primary/900/20 rounded-lg p-6 mb-6">
-                <p className="text-qgd-fg dark:text-gray-100 leading-relaxed">
+              <div className="bg-teal-50 dark:bg-teal-900/20 rounded-lg p-6 mb-6">
+                <p className="text-gray-900 dark:text-gray-100 leading-relaxed">
                   An automation layer that connects your CRM, email, finance, and ops tools—then handles the repetitive work automatically.
                 </p>
               </div>
               
               {/* Key Outcomes */}
               <div className="mb-6">
-                <h3 className="font-semibold text-qgd-fg dark:text-gray-100 mb-4">
+                <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-4">
                   Outcomes (typical):
                 </h3>
                 <ul className="space-y-3">
@@ -527,8 +526,8 @@ export default function IntelligentAutomationPage() {
                     { icon: Shield, text: 'Built by the team that secured NASA systems' }
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-3">
-                      <item.icon className="w-5 h-5 text-qgd-ring600 dark:text-qgd-ring400 flex-shrink-0 mt-0.5" />
-                      <span className="text-qgd-muted dark:text-qgd-fg">
+                      <item.icon className="w-5 h-5 text-teal-600 dark:text-teal-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700 dark:text-gray-300">
                         {item.text}
                       </span>
                     </li>
@@ -537,21 +536,21 @@ export default function IntelligentAutomationPage() {
               </div>
               
               {/* Founder Quote */}
-              <div className="bg-qgd-card dark:bg-zinc-800 rounded-lg p-6 mb-6">
-                <p className="text-qgd-fg dark:text-gray-100 italic mb-3">
+              <div className="bg-gray-50 dark:bg-zinc-800 rounded-lg p-6 mb-6">
+                <p className="text-gray-900 dark:text-gray-100 italic mb-3">
                   "Automation doesn't replace people. It replaces the repetitive grind that keeps them from doing their best work."
                 </p>
-                <p className="text-sm font-semibold text-qgd-muted dark:text-qgd-fg">
+                <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">
                   — Paras Khurana, Founder & CEO
                 </p>
               </div>
               
               {/* Critical Insight */}
               <div className="border-l-4 border-amber-500 pl-6 mb-6">
-                <h4 className="font-semibold text-qgd-fg dark:text-gray-100 mb-2">
+                <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">
                   Critical Insight (250+ years combined experience):
                 </h4>
-                <p className="text-qgd-muted dark:text-qgd-fg">
+                <p className="text-gray-700 dark:text-gray-300">
                   Every manual workflow is a hidden expense center. Find it, automate it, and your margins expand.
                 </p>
               </div>
@@ -561,7 +560,7 @@ export default function IntelligentAutomationPage() {
                 <Button
                   size="lg"
                   onClick={scrollToCalculator}
-                  className="bg-qgd-primary/600 hover:bg-qgd-primary/700 text-qgd-fg font-semibold"
+                  className="bg-teal-600 hover:bg-teal-700 text-white font-semibold"
                 >
                   Take the 90-Second Assessment
                 </Button>
@@ -572,7 +571,7 @@ export default function IntelligentAutomationPage() {
         </section>
 
         {/* COMPARISON TABLE SECTION */}
-        <section className="py-20 bg-qgd-card dark:bg-zinc-950">
+        <section className="py-20 bg-white dark:bg-zinc-950">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             
             {/* Section Header */}
@@ -583,26 +582,26 @@ export default function IntelligentAutomationPage() {
                   WHY QUANTUMLEAP WINS
                 </span>
               </div>
-              <h2 className="text-3xl lg:text-4xl font-bold text-qgd-fg dark:text-gray-100 mb-4">
+              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
                 QuantumLeap vs. DIY Automation Tools
               </h2>
-              <p className="text-lg text-qgd-muted dark:text-qgd-muted max-w-3xl mx-auto">
+              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
                 Zapier and Make are powerful—but they're <em>tools you maintain yourself</em>. QuantumLeap is a done-for-you service with 24/7 support.
               </p>
             </div>
 
             {/* Comparison Table */}
             <div className="overflow-x-auto">
-              <table className="w-full border-collapse bg-qgd-card dark:bg-zinc-900 rounded-2xl overflow-hidden shadow-xl">
+              <table className="w-full border-collapse bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden shadow-xl">
                 <thead>
                   <tr className="bg-gradient-to-r from-gray-100 to-gray-200 dark:from-zinc-800 dark:to-zinc-700">
-                    <th className="p-4 text-left font-bold text-qgd-fg dark:text-gray-100 border-r border-gray-300 dark:border-zinc-600">
+                    <th className="p-4 text-left font-bold text-gray-900 dark:text-gray-100 border-r border-gray-300 dark:border-zinc-600">
                       Feature
                     </th>
-                    <th className="p-4 text-center font-bold text-qgd-muted dark:text-qgd-fg">
+                    <th className="p-4 text-center font-bold text-gray-600 dark:text-gray-300">
                       Zapier/Make
                     </th>
-                    <th className="p-4 text-center font-bold bg-gradient-to-r from-teal-600 to-emerald-600 text-qgd-fg">
+                    <th className="p-4 text-center font-bold bg-gradient-to-r from-teal-600 to-emerald-600 text-white">
                       QuantumLeap
                     </th>
                   </tr>
@@ -662,17 +661,17 @@ export default function IntelligentAutomationPage() {
                   ].map((row, i) => (
                     <tr
                       key={i}
-                      className={`border-t border-qgd-border dark:border-zinc-800 ${
-                        i % 2 === 0 ? 'bg-qgd-card dark:bg-zinc-900/50' : 'bg-qgd-card dark:bg-zinc-900'
+                      className={`border-t border-gray-200 dark:border-zinc-800 ${
+                        i % 2 === 0 ? 'bg-gray-50 dark:bg-zinc-900/50' : 'bg-white dark:bg-zinc-900'
                       }`}
                     >
-                      <td className="p-4 font-semibold text-qgd-fg dark:text-gray-100 border-r border-qgd-border dark:border-zinc-800">
+                      <td className="p-4 font-semibold text-gray-900 dark:text-gray-100 border-r border-gray-200 dark:border-zinc-800">
                         {row.feature}
                       </td>
-                      <td className="p-4 text-center text-qgd-muted dark:text-qgd-muted text-sm">
+                      <td className="p-4 text-center text-gray-600 dark:text-gray-400 text-sm">
                         {row.zapier}
                       </td>
-                      <td className="p-4 text-center font-semibold text-qgd-ring700 dark:text-qgd-ring300 text-sm bg-qgd-primary/50/50 dark:bg-qgd-primary/950/20">
+                      <td className="p-4 text-center font-semibold text-teal-700 dark:text-teal-300 text-sm bg-teal-50/50 dark:bg-teal-950/20">
                         {row.quantumleap}
                       </td>
                     </tr>
@@ -683,17 +682,17 @@ export default function IntelligentAutomationPage() {
 
             {/* Bottom Line */}
             <div className="mt-10 bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-950/20 dark:to-orange-950/20 border-2 border-amber-300 dark:border-amber-700 rounded-2xl p-8 text-center">
-              <h3 className="text-2xl font-bold text-qgd-fg dark:text-gray-100 mb-4">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
                 The Bottom Line
               </h3>
-              <p className="text-lg text-qgd-muted dark:text-qgd-fg max-w-3xl mx-auto mb-6">
+              <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mb-6">
                 Zapier and Make are great <em>if you have the time and technical skill to maintain them</em>. 
                 QuantumLeap is for founders who want automation <strong>done right, without becoming IT managers</strong>.
               </p>
               <Button
                 size="lg"
                 onClick={scrollToCalculator}
-                className="bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-qgd-fg font-semibold"
+                className="bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-semibold"
               >
                 <Zap className="w-5 h-5 mr-2" />
                 See What We'd Automate for You
@@ -706,7 +705,7 @@ export default function IntelligentAutomationPage() {
         {/* PROBLEM SECTION */}
         <section 
           ref={problemRef}
-          className="py-20 bg-qgd-card dark:bg-zinc-950"
+          className="py-20 bg-white dark:bg-zinc-950"
         >
           <motion.div
             variants={staggerContainer}
@@ -717,10 +716,10 @@ export default function IntelligentAutomationPage() {
             
             {/* Section Header */}
             <motion.div variants={fadeInUp} className="text-center mb-16">
-              <h2 className="text-4xl lg:text-5xl font-bold text-qgd-fg dark:text-gray-100 mb-6">
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
                 The Manual Trap
               </h2>
-              <p className="text-xl text-qgd-muted dark:text-qgd-fg max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                 You didn't start a business to babysit spreadsheets
               </p>
             </motion.div>
@@ -728,7 +727,7 @@ export default function IntelligentAutomationPage() {
             {/* Problem Cards */}
             <motion.div variants={fadeInUp} className="max-w-4xl mx-auto space-y-6 mb-12">
               <div className="bg-gradient-to-r from-red-50 to-amber-50 dark:from-red-950/20 dark:to-amber-950/20 border border-red-200 dark:border-red-800 rounded-xl p-8">
-                <h3 className="text-2xl font-bold text-qgd-fg dark:text-gray-100 mb-4">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
                   But today you:
                 </h3>
                 <ul className="space-y-3">
@@ -739,7 +738,7 @@ export default function IntelligentAutomationPage() {
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <AlertCircle className="w-5 h-5 text-red-600 dark:text-red-400 flex-shrink-0 mt-1" />
-                      <span className="text-qgd-fg dark:text-gray-200 text-lg">
+                      <span className="text-gray-800 dark:text-gray-200 text-lg">
                         {item}
                       </span>
                     </li>
@@ -748,20 +747,20 @@ export default function IntelligentAutomationPage() {
               </div>
               
               <div className="bg-amber-50 dark:bg-amber-950/20 border-l-4 border-amber-500 rounded-lg p-6">
-                <p className="text-lg text-qgd-fg dark:text-gray-100 font-semibold mb-2">
+                <p className="text-lg text-gray-900 dark:text-gray-100 font-semibold mb-2">
                   Reality:
                 </p>
-                <p className="text-qgd-fg dark:text-gray-200">
+                <p className="text-gray-800 dark:text-gray-200">
                   The average SMB loses <strong>~1,200 hours/year</strong> to manual tasks—that's{' '}
                   <strong className="text-amber-600 dark:text-amber-400">~$93,000 in hidden waste</strong>.
                 </p>
               </div>
               
               <div className="bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-800 rounded-lg p-6">
-                <p className="text-lg text-qgd-fg dark:text-gray-100 font-semibold mb-2">
+                <p className="text-lg text-gray-900 dark:text-gray-100 font-semibold mb-2">
                   Result:
                 </p>
-                <p className="text-qgd-fg dark:text-gray-200">
+                <p className="text-gray-800 dark:text-gray-200">
                   Burnout, errors, slow cash flow, missed sales.
                 </p>
               </div>
@@ -769,13 +768,13 @@ export default function IntelligentAutomationPage() {
             
             {/* CTA */}
             <motion.div variants={fadeInUp} className="text-center">
-              <p className="text-xl text-qgd-muted dark:text-qgd-fg mb-6">
+              <p className="text-xl text-gray-700 dark:text-gray-300 mb-6">
                 There's a better way. Let automation handle the grind while you focus on growth.
               </p>
               <Button
                 size="lg"
                 onClick={scrollToCalculator}
-                className="bg-qgd-primary/600 hover:bg-qgd-primary/700 text-qgd-fg font-semibold"
+                className="bg-teal-600 hover:bg-teal-700 text-white font-semibold"
               >
                 <Zap className="w-5 h-5 mr-2" />
                 See What You Can Automate
@@ -800,20 +799,20 @@ export default function IntelligentAutomationPage() {
             
             {/* Section Header */}
             <motion.div variants={fadeInUp} className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-qgd-primary/100 dark:bg-qgd-primary/900/30 rounded-full mb-6">
-                <Workflow className="w-4 h-4 text-qgd-ring600 dark:text-qgd-ring400" />
-                <span className="text-sm font-semibold text-qgd-ring700 dark:text-qgd-ring300">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-teal-100 dark:bg-teal-900/30 rounded-full mb-6">
+                <Workflow className="w-4 h-4 text-teal-600 dark:text-teal-400" />
+                <span className="text-sm font-semibold text-teal-700 dark:text-teal-300">
                   THE INTELLIGENT AUTOMATION SUITE
                 </span>
               </div>
-              <h2 className="text-4xl lg:text-5xl font-bold text-qgd-fg dark:text-gray-100 mb-6">
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
                 The Intelligent Automation Suite—Built Around Your Tools & Workflows
               </h2>
               <div className="max-w-3xl mx-auto space-y-4">
-                <p className="text-xl text-qgd-muted dark:text-qgd-fg">
+                <p className="text-xl text-gray-600 dark:text-gray-300">
                   We don't sell templates. We map your tech stack, find what's bleeding time and money, then build custom workflows that run 24/7 in the background.
                 </p>
-                <p className="text-lg text-qgd-muted dark:text-qgd-muted italic">
+                <p className="text-lg text-gray-500 dark:text-gray-400 italic">
                   Below are examples from past clients. Your solution will be custom-built for how you operate.
                 </p>
               </div>
@@ -827,26 +826,26 @@ export default function IntelligentAutomationPage() {
                   <motion.div
                     key={i}
                     whileHover={{ y: -4, scale: 1.02 }}
-                    className="bg-qgd-card dark:bg-zinc-900 rounded-xl border border-qgd-border dark:border-zinc-800 p-6 shadow-sm hover:shadow-xl transition-all group"
+                    className="bg-white dark:bg-zinc-900 rounded-xl border border-gray-200 dark:border-zinc-800 p-6 shadow-sm hover:shadow-xl transition-all group"
                   >
-                    <div className="w-14 h-14 bg-qgd-primary/100 dark:bg-qgd-primary/900/30 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                      <Icon className="w-7 h-7 text-qgd-ring600 dark:text-qgd-ring400" />
+                    <div className="w-14 h-14 bg-teal-100 dark:bg-teal-900/30 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                      <Icon className="w-7 h-7 text-teal-600 dark:text-teal-400" />
                     </div>
-                    <h3 className="text-xl font-bold text-qgd-fg dark:text-gray-100 mb-2">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
                       {auto.name}
                     </h3>
-                    <p className="text-qgd-muted dark:text-qgd-muted mb-4 text-sm leading-relaxed">
+                    <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm leading-relaxed">
                       {auto.description}
                     </p>
-                    <div className="mt-auto pt-4 border-t border-qgd-border dark:border-zinc-800">
+                    <div className="mt-auto pt-4 border-t border-gray-200 dark:border-zinc-800">
                       <div className="text-center">
-                        <p className="text-xs text-qgd-muted dark:text-qgd-muted mb-1">
+                        <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">
                           Starting from
                         </p>
-                        <p className="text-lg font-bold text-qgd-ring600 dark:text-qgd-ring400">
+                        <p className="text-lg font-bold text-teal-600 dark:text-teal-400">
                           $299/mo
                         </p>
-                        <p className="text-xs text-qgd-muted dark:text-qgd-muted mt-1 italic">
+                        <p className="text-xs text-gray-400 dark:text-gray-500 mt-1 italic">
                           *Final pricing based on scope
                         </p>
                       </div>
@@ -858,23 +857,23 @@ export default function IntelligentAutomationPage() {
             
             {/* Disclaimer Note */}
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <p className="text-sm text-qgd-muted dark:text-qgd-muted italic max-w-3xl mx-auto">
+              <p className="text-sm text-gray-500 dark:text-gray-400 italic max-w-3xl mx-auto">
                 *Sample automation types. Your solution will be custom-designed for your business.
               </p>
             </motion.div>
             
             {/* CTA */}
             <motion.div variants={fadeInUp} className="text-center bg-gradient-to-r from-teal-50 to-emerald-50 dark:from-teal-900/20 dark:to-emerald-900/20 rounded-2xl p-8 border border-teal-200 dark:border-teal-800">
-              <h3 className="text-2xl font-bold text-qgd-fg dark:text-gray-100 mb-4">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
                 Build My Automated Business Plan (Free)
               </h3>
-              <p className="text-qgd-muted dark:text-qgd-fg mb-6 max-w-2xl mx-auto">
+              <p className="text-gray-700 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
                 Pinpoint the top 3 workflows to automate first and the ROI you can expect.
               </p>
               <Button
                 size="lg"
                 onClick={scrollToCalculator}
-                className="bg-qgd-primary/600 hover:bg-qgd-primary/700 text-qgd-fg font-semibold"
+                className="bg-teal-600 hover:bg-teal-700 text-white font-semibold"
               >
                 <BarChart3 className="w-5 h-5 mr-2" />
                 Get My Free Automation Plan
@@ -887,7 +886,7 @@ export default function IntelligentAutomationPage() {
         {/* TESTIMONIALS SECTION */}
         <section 
           ref={testimonialsRef}
-          className="py-20 bg-qgd-card dark:bg-zinc-950"
+          className="py-20 bg-white dark:bg-zinc-950"
         >
           <motion.div
             variants={staggerContainer}
@@ -898,13 +897,13 @@ export default function IntelligentAutomationPage() {
             
             {/* Section Header */}
             <motion.div variants={fadeInUp} className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-qgd-primary/100 dark:bg-qgd-primary/900/30 rounded-full mb-6">
-                <Award className="w-4 h-4 text-qgd-ring600 dark:text-qgd-ring400" />
-                <span className="text-sm font-semibold text-qgd-ring700 dark:text-qgd-ring300">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-teal-100 dark:bg-teal-900/30 rounded-full mb-6">
+                <Award className="w-4 h-4 text-teal-600 dark:text-teal-400" />
+                <span className="text-sm font-semibold text-teal-700 dark:text-teal-300">
                   REAL BEFORE/AFTER RESULTS
                 </span>
               </div>
-              <h2 className="text-4xl lg:text-5xl font-bold text-qgd-fg dark:text-gray-100 mb-6">
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
                 Results That Speak for Themselves
               </h2>
             </motion.div>
@@ -914,13 +913,13 @@ export default function IntelligentAutomationPage() {
               {testimonials.map((test, i) => (
                 <div
                   key={i}
-                  className="bg-gradient-to-br from-gray-50 to-teal-50 dark:from-zinc-900 dark:to-teal-950/10 border border-qgd-border dark:border-zinc-800 rounded-xl p-6 hover:shadow-lg transition-shadow flex flex-col"
+                  className="bg-gradient-to-br from-gray-50 to-teal-50 dark:from-zinc-900 dark:to-teal-950/10 border border-gray-200 dark:border-zinc-800 rounded-xl p-6 hover:shadow-lg transition-shadow flex flex-col"
                 >
                   <div className="mb-4">
-                    <h4 className="font-bold text-lg text-qgd-fg dark:text-gray-100">
+                    <h4 className="font-bold text-lg text-gray-900 dark:text-gray-100">
                       {test.name}
                     </h4>
-                    <p className="text-sm text-qgd-muted dark:text-qgd-muted">
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
                       {test.title && `${test.title}, `}{test.company}
                     </p>
                   </div>
@@ -929,22 +928,22 @@ export default function IntelligentAutomationPage() {
                     <div className="flex items-start gap-2">
                       <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
                       <div>
-                        <p className="text-xs font-semibold text-qgd-muted dark:text-qgd-fg mb-1">
+                        <p className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">
                           Before:
                         </p>
-                        <p className="text-sm text-qgd-muted dark:text-qgd-muted">
+                        <p className="text-sm text-gray-600 dark:text-gray-400">
                           {test.before}
                         </p>
                       </div>
                     </div>
                     
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-qgd-ring600 flex-shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-5 h-5 text-teal-600 flex-shrink-0 mt-0.5" />
                       <div>
-                        <p className="text-xs font-semibold text-qgd-muted dark:text-qgd-fg mb-1">
+                        <p className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">
                           After:
                         </p>
-                        <p className="text-sm text-qgd-muted dark:text-qgd-muted">
+                        <p className="text-sm text-gray-600 dark:text-gray-400">
                           {test.after}
                         </p>
                       </div>
@@ -963,7 +962,7 @@ export default function IntelligentAutomationPage() {
                   {/* Emotional Quote */}
                   {test.quote && (
                     <div className="mt-auto pt-4 border-t border-gray-300 dark:border-zinc-700">
-                      <p className="text-sm italic text-qgd-muted dark:text-qgd-fg">
+                      <p className="text-sm italic text-gray-700 dark:text-gray-300">
                         {test.quote}
                       </p>
                     </div>
@@ -977,7 +976,7 @@ export default function IntelligentAutomationPage() {
               <Button
                 size="lg"
                 onClick={scrollToCalculator}
-                className="bg-emerald-600 hover:bg-emerald-700 text-qgd-fg font-semibold"
+                className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold"
               >
                 <TrendingUp className="w-5 h-5 mr-2" />
                 I Want Results Like These
@@ -1002,10 +1001,10 @@ export default function IntelligentAutomationPage() {
             
             {/* Section Header */}
             <div className="text-center mb-12">
-              <h2 className="text-4xl lg:text-5xl font-bold text-qgd-fg dark:text-gray-100 mb-6">
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
                 You're Not Just "Busy." You're Leaking Profit.
               </h2>
-              <p className="text-xl text-qgd-muted dark:text-qgd-fg max-w-3xl mx-auto">
+              <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
                 In under 2 minutes, this free scan shows how many hours manual work is stealing each month, 
                 how much money that equals at your rate, and which automations recover the most time and cost first.
               </p>
@@ -1021,7 +1020,7 @@ export default function IntelligentAutomationPage() {
         {/* STRATEGIC BLOG SECTION */}
         <section 
           ref={blogRef}
-          className="py-20 bg-qgd-card dark:bg-zinc-950"
+          className="py-20 bg-white dark:bg-zinc-950"
         >
           <motion.div
             variants={staggerContainer}
@@ -1034,80 +1033,80 @@ export default function IntelligentAutomationPage() {
             <motion.article variants={fadeInUp} className="prose prose-lg dark:prose-invert max-w-none">
               
               <div className="text-center mb-12">
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-qgd-primary/100 dark:bg-qgd-primary/900/30 rounded-full mb-6">
-                  <FileText className="w-4 h-4 text-qgd-ring600 dark:text-qgd-ring400" />
-                  <span className="text-sm font-semibold text-qgd-ring700 dark:text-qgd-ring300">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-teal-100 dark:bg-teal-900/30 rounded-full mb-6">
+                  <FileText className="w-4 h-4 text-teal-600 dark:text-teal-400" />
+                  <span className="text-sm font-semibold text-teal-700 dark:text-teal-300">
                     STRATEGIC INSIGHT
                   </span>
                 </div>
-                <h2 className="text-3xl lg:text-4xl font-bold text-qgd-fg dark:text-gray-100 mb-4">
+                <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
                   When Busy Feels Productive — The Hidden Cost of Doing Everything Manually
                 </h2>
               </div>
               
-              <div className="bg-qgd-card dark:bg-zinc-900 rounded-xl p-8 mb-8 border border-qgd-border dark:border-zinc-800">
+              <div className="bg-gray-50 dark:bg-zinc-900 rounded-xl p-8 mb-8 border border-gray-200 dark:border-zinc-800">
                 <p className="text-lg leading-relaxed">
                   Mark thought he was productive. He ran a small design agency, worked 12-hour days, and never missed a deadline.
                 </p>
                 <p className="text-lg leading-relaxed">
                   But he was constantly copying leads from email into his CRM, manually sending invoices, and checking Slack at midnight to see if a client approved a mockup.
                 </p>
-                <p className="text-lg leading-relaxed font-semibold text-qgd-fg dark:text-gray-100">
+                <p className="text-lg leading-relaxed font-semibold text-gray-900 dark:text-gray-100">
                   On paper, he was "busy." In reality, he was stuck in maintenance mode — running the business instead of growing it.
                 </p>
               </div>
               
-              <h3 className="text-2xl font-bold text-qgd-fg dark:text-gray-100 mt-10 mb-4 flex items-center gap-2">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-10 mb-4 flex items-center gap-2">
                 <AlertCircle className="w-6 h-6 text-amber-600" />
                 The Myth of "I'll Just Do It Myself"
               </h3>
               
               <p>Most entrepreneurs start with this mindset. It feels smart at first:</p>
               
-              <blockquote className="border-l-4 border-teal-500 pl-6 my-6 italic text-qgd-muted dark:text-qgd-fg">
+              <blockquote className="border-l-4 border-teal-500 pl-6 my-6 italic text-gray-700 dark:text-gray-300">
                 "Why pay for tools or help when I can just do it myself?"
               </blockquote>
               
               <p>But over time, every "quick manual fix" becomes a brick in a wall that traps your time.</p>
               
               <div className="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800 rounded-xl p-6 my-8">
-                <h4 className="text-xl font-bold text-qgd-fg dark:text-gray-100 mb-4">
+                <h4 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">
                   Here's what it really costs:
                 </h4>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
-                    <span className="text-qgd-muted dark:text-qgd-fg">Copying leads/emails</span>
+                    <span className="text-gray-700 dark:text-gray-300">Copying leads/emails</span>
                     <span className="font-bold text-amber-600 dark:text-amber-400">312 hrs/year</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-qgd-muted dark:text-qgd-fg">Creating invoices</span>
+                    <span className="text-gray-700 dark:text-gray-300">Creating invoices</span>
                     <span className="font-bold text-amber-600 dark:text-amber-400">208 hrs/year</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-qgd-muted dark:text-qgd-fg">Updating reports</span>
+                    <span className="text-gray-700 dark:text-gray-300">Updating reports</span>
                     <span className="font-bold text-amber-600 dark:text-amber-400">156 hrs/year</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-qgd-muted dark:text-qgd-fg">Managing projects manually</span>
+                    <span className="text-gray-700 dark:text-gray-300">Managing projects manually</span>
                     <span className="font-bold text-amber-600 dark:text-amber-400">260 hrs/year</span>
                   </div>
                   <div className="border-t-2 border-amber-300 dark:border-amber-700 pt-3 mt-3 flex justify-between items-center">
-                    <span className="font-bold text-qgd-fg dark:text-gray-100">Total</span>
+                    <span className="font-bold text-gray-900 dark:text-gray-100">Total</span>
                     <span className="text-2xl font-bold text-amber-600 dark:text-amber-400">936 hrs/year</span>
                   </div>
-                  <p className="text-sm text-qgd-muted dark:text-qgd-muted italic pt-2">
+                  <p className="text-sm text-gray-600 dark:text-gray-400 italic pt-2">
                     That's almost 24 work weeks — on things a simple automation could do in the background.
                   </p>
                 </div>
               </div>
               
-              <p className="text-lg font-semibold text-qgd-fg dark:text-gray-100">
+              <p className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                 So when you say, "I don't have time to automate," what you're really saying is: 
-                <em className="text-qgd-ring600 dark:text-qgd-ring400"> "I'd rather spend six months every year on tasks a bot can do."</em>
+                <em className="text-teal-600 dark:text-teal-400"> "I'd rather spend six months every year on tasks a bot can do."</em>
               </p>
               
-              <h3 className="text-2xl font-bold text-qgd-fg dark:text-gray-100 mt-10 mb-4 flex items-center gap-2">
-                <Zap className="w-6 h-6 text-qgd-ring600" />
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-10 mb-4 flex items-center gap-2">
+                <Zap className="w-6 h-6 text-teal-600" />
                 The Automation Effect: Turning Chaos into Flow
               </h3>
               
@@ -1115,15 +1114,15 @@ export default function IntelligentAutomationPage() {
               
               <ul className="space-y-2 my-6">
                 <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-qgd-ring600 flex-shrink-0 mt-1" />
+                  <CheckCircle2 className="w-5 h-5 text-teal-600 flex-shrink-0 mt-1" />
                   <span><strong>LeadFlow</strong> captured every web inquiry and tagged it in his CRM.</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-qgd-ring600 flex-shrink-0 mt-1" />
+                  <CheckCircle2 className="w-5 h-5 text-teal-600 flex-shrink-0 mt-1" />
                   <span><strong>InvoiceIQ</strong> generated and sent invoices automatically after client approvals.</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-qgd-ring600 flex-shrink-0 mt-1" />
+                  <CheckCircle2 className="w-5 h-5 text-teal-600 flex-shrink-0 mt-1" />
                   <span><strong>OpsSync</strong> updated tasks across ClickUp, Slack, and Google Sheets without him touching a thing.</span>
                 </li>
               </ul>
@@ -1137,46 +1136,46 @@ export default function IntelligentAutomationPage() {
                 <ul className="space-y-2">
                   <li className="flex items-center gap-2">
                     <Clock className="w-5 h-5 text-emerald-600" />
-                    <span className="font-semibold text-qgd-fg dark:text-gray-100">19 hours a week freed</span>
+                    <span className="font-semibold text-gray-900 dark:text-gray-100">19 hours a week freed</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <DollarSign className="w-5 h-5 text-emerald-600" />
-                    <span className="font-semibold text-qgd-fg dark:text-gray-100">$48,000 in recovered productivity</span>
+                    <span className="font-semibold text-gray-900 dark:text-gray-100">$48,000 in recovered productivity</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-5 h-5 text-emerald-600" />
-                    <span className="font-semibold text-qgd-fg dark:text-gray-100">Zero "forgotten" client follow-ups</span>
+                    <span className="font-semibold text-gray-900 dark:text-gray-100">Zero "forgotten" client follow-ups</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Users className="w-5 h-5 text-emerald-600" />
-                    <span className="font-semibold text-qgd-fg dark:text-gray-100">And his evenings — finally quiet</span>
+                    <span className="font-semibold text-gray-900 dark:text-gray-100">And his evenings — finally quiet</span>
                   </li>
                 </ul>
               </div>
               
-              <p className="text-lg font-semibold text-qgd-fg dark:text-gray-100">
+              <p className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                 Mark realized something powerful: automation didn't make him less human. It made his business more intelligent.
               </p>
               
               {/* Related Services Callout */}
               <div className="bg-blue-50 dark:bg-blue-950/20 border-l-4 border-blue-500 rounded-lg p-6 my-8">
-                <h4 className="font-bold text-qgd-fg dark:text-gray-100 mb-3 flex items-center gap-2">
+                <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-3 flex items-center gap-2">
                   <Building className="w-5 h-5 text-blue-600" />
                   Ready to Transform Your Entire Business?
                 </h4>
-                <p className="text-qgd-muted dark:text-qgd-fg mb-3">
+                <p className="text-gray-700 dark:text-gray-300 mb-3">
                   Automation is powerful—but it's just one piece. If you're also dealing with burnout, growth plateaus, or operational chaos, explore our{' '}
                   <Link href="/business-transformation" className="text-blue-600 dark:text-blue-400 font-semibold hover:underline">
                     Business Transformation services
                   </Link>
                   . We'll restructure your entire operation for sustainable growth.
                 </p>
-                <p className="text-sm text-qgd-muted dark:text-qgd-muted italic">
+                <p className="text-sm text-gray-600 dark:text-gray-400 italic">
                   Think of it this way: automation handles the tasks. Transformation redesigns the system.
                 </p>
               </div>
               
-              <h3 className="text-2xl font-bold text-qgd-fg dark:text-gray-100 mt-10 mb-4">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-10 mb-4">
                 Why Automation Pays for Itself
               </h3>
               
@@ -1188,73 +1187,73 @@ export default function IntelligentAutomationPage() {
                 that's <strong className="text-red-600 dark:text-red-400">$39,000 a year</strong> burned on low-value tasks.
               </p>
               
-              <div className="bg-qgd-primary/50 dark:bg-qgd-primary/900/20 border border-teal-200 dark:border-teal-800 rounded-xl p-6 my-8">
-                <p className="text-lg text-qgd-fg dark:text-gray-100">
-                  QuantumLeap's Intelligent Automations start at just <strong className="text-qgd-ring600 dark:text-qgd-ring400">$299/month</strong>, 
+              <div className="bg-teal-50 dark:bg-teal-900/20 border border-teal-200 dark:border-teal-800 rounded-xl p-6 my-8">
+                <p className="text-lg text-gray-900 dark:text-gray-100">
+                  QuantumLeap's Intelligent Automations start at just <strong className="text-teal-600 dark:text-teal-400">$299/month</strong>, 
                   which means the first automation typically <strong>pays for itself in under two weeks</strong>.
                 </p>
-                <p className="text-sm text-qgd-muted dark:text-qgd-muted mt-3">
+                <p className="text-sm text-gray-600 dark:text-gray-400 mt-3">
                   That's not "nice to have." That's profit recovery.
                 </p>
               </div>
               
-              <h3 className="text-2xl font-bold text-qgd-fg dark:text-gray-100 mt-10 mb-4 flex items-center gap-2">
-                <Building className="w-6 h-6 text-qgd-muted" />
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-10 mb-4 flex items-center gap-2">
+                <Building className="w-6 h-6 text-gray-600" />
                 The QuantumLeap Difference
               </h3>
               
               <p>Other automation agencies sell complexity — custom scripts, long onboarding, or "digital transformation" buzzwords.</p>
               
-              <p className="font-semibold text-qgd-fg dark:text-gray-100">
+              <p className="font-semibold text-gray-900 dark:text-gray-100">
                 QuantumLeap's Intelligent Automations are built differently:
               </p>
               
               <ul className="space-y-3 my-6">
                 <li className="flex items-start gap-3">
-                  <Zap className="w-5 h-5 text-qgd-ring600 flex-shrink-0 mt-1" />
+                  <Zap className="w-5 h-5 text-teal-600 flex-shrink-0 mt-1" />
                   <div>
-                    <strong className="text-qgd-fg dark:text-gray-100">No-Code Deployments:</strong>
-                    <span className="text-qgd-muted dark:text-qgd-fg"> Launch within 14 days.</span>
+                    <strong className="text-gray-900 dark:text-gray-100">No-Code Deployments:</strong>
+                    <span className="text-gray-700 dark:text-gray-300"> Launch within 14 days.</span>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Clock className="w-5 h-5 text-qgd-ring600 flex-shrink-0 mt-1" />
+                  <Clock className="w-5 h-5 text-teal-600 flex-shrink-0 mt-1" />
                   <div>
-                    <strong className="text-qgd-fg dark:text-gray-100">24/7 Monitoring:</strong>
-                    <span className="text-qgd-muted dark:text-qgd-fg"> Runs in the background, silently.</span>
+                    <strong className="text-gray-900 dark:text-gray-100">24/7 Monitoring:</strong>
+                    <span className="text-gray-700 dark:text-gray-300"> Runs in the background, silently.</span>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <TrendingUp className="w-5 h-5 text-qgd-ring600 flex-shrink-0 mt-1" />
+                  <TrendingUp className="w-5 h-5 text-teal-600 flex-shrink-0 mt-1" />
                   <div>
-                    <strong className="text-qgd-fg dark:text-gray-100">Scalable:</strong>
-                    <span className="text-qgd-muted dark:text-qgd-fg"> Start with one workflow and grow to enterprise-grade.</span>
+                    <strong className="text-gray-900 dark:text-gray-100">Scalable:</strong>
+                    <span className="text-gray-700 dark:text-gray-300"> Start with one workflow and grow to enterprise-grade.</span>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Shield className="w-5 h-5 text-qgd-ring600 flex-shrink-0 mt-1" />
+                  <Shield className="w-5 h-5 text-teal-600 flex-shrink-0 mt-1" />
                   <div>
-                    <strong className="text-qgd-fg dark:text-gray-100">Secure:</strong>
-                    <span className="text-qgd-muted dark:text-qgd-fg"> Built by the team that helped secure NASA systems. Need additional protection?{' '}
-                      <Link href="/cyber-intelligence" className="text-qgd-ring600 dark:text-qgd-ring400 font-semibold hover:underline whitespace-nowrap">
+                    <strong className="text-gray-900 dark:text-gray-100">Secure:</strong>
+                    <span className="text-gray-700 dark:text-gray-300"> Built by the team that helped secure NASA systems. Need additional protection?{' '}
+                      <Link href="/cyber-intelligence" className="text-teal-600 dark:text-teal-400 font-semibold hover:underline whitespace-nowrap">
                         Explore Cyber Intelligence →
                       </Link>
                     </span>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Award className="w-5 h-5 text-qgd-ring600 flex-shrink-0 mt-1" />
+                  <Award className="w-5 h-5 text-teal-600 flex-shrink-0 mt-1" />
                   <div>
-                    <strong className="text-qgd-fg dark:text-gray-100">World's best:</strong>
-                    <span className="text-qgd-muted dark:text-qgd-fg"> Team from MIT, Caltech, and leading tech institutes.</span>
+                    <strong className="text-gray-900 dark:text-gray-100">World's best:</strong>
+                    <span className="text-gray-700 dark:text-gray-300"> Team from MIT, Caltech, and leading tech institutes.</span>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Users className="w-5 h-5 text-qgd-ring600 flex-shrink-0 mt-1" />
+                  <Users className="w-5 h-5 text-teal-600 flex-shrink-0 mt-1" />
                   <div>
-                    <strong className="text-qgd-fg dark:text-gray-100">Expertise:</strong>
-                    <span className="text-qgd-muted dark:text-qgd-fg"> 250+ years of combined experience. Building a team?{' '}
-                      <Link href="/background-checks" className="text-qgd-ring600 dark:text-qgd-ring400 font-semibold hover:underline whitespace-nowrap">
+                    <strong className="text-gray-900 dark:text-gray-100">Expertise:</strong>
+                    <span className="text-gray-700 dark:text-gray-300"> 250+ years of combined experience. Building a team?{' '}
+                      <Link href="/background-checks" className="text-teal-600 dark:text-teal-400 font-semibold hover:underline whitespace-nowrap">
                         See our Background Checks →
                       </Link>
                     </span>
@@ -1263,21 +1262,21 @@ export default function IntelligentAutomationPage() {
               </ul>
               
               {/* Security & Hiring Callout */}
-              <div className="bg-qgd-primary/50 dark:bg-qgd-primary/950/20 border-l-4 border-purple-500 rounded-lg p-6 my-8">
-                <h4 className="font-bold text-qgd-fg dark:text-gray-100 mb-3 flex items-center gap-2">
-                  <Lock className="w-5 h-5 text-qgd-primary600" />
+              <div className="bg-purple-50 dark:bg-purple-950/20 border-l-4 border-purple-500 rounded-lg p-6 my-8">
+                <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-3 flex items-center gap-2">
+                  <Lock className="w-5 h-5 text-purple-600" />
                   Automation + Security = Peace of Mind
                 </h4>
-                <p className="text-qgd-muted dark:text-qgd-fg mb-3">
+                <p className="text-gray-700 dark:text-gray-300 mb-3">
                   More integrations mean more attack surface. That's why we recommend pairing automation with our{' '}
-                  <Link href="/cyber-intelligence" className="text-qgd-primary600 dark:text-qgd-primary400 font-semibold hover:underline">
+                  <Link href="/cyber-intelligence" className="text-purple-600 dark:text-purple-400 font-semibold hover:underline">
                     Cyber Intelligence services
                   </Link>
                   —24/7 threat monitoring, breach detection, and penetration testing to keep your automated systems safe.
                 </p>
-                <p className="text-qgd-muted dark:text-qgd-fg">
+                <p className="text-gray-700 dark:text-gray-300">
                   And if you're hiring to scale? Our{' '}
-                  <Link href="/background-checks" className="text-qgd-primary600 dark:text-qgd-primary400 font-semibold hover:underline">
+                  <Link href="/background-checks" className="text-purple-600 dark:text-purple-400 font-semibold hover:underline">
                     Background Check services
                   </Link>
                   {' '}screen candidates in 48 hours—so you hire with confidence.
@@ -1285,30 +1284,30 @@ export default function IntelligentAutomationPage() {
               </div>
               
               <div className="bg-gradient-to-r from-teal-50 to-emerald-50 dark:from-teal-900/20 dark:to-emerald-900/20 border-2 border-teal-300 dark:border-teal-700 rounded-xl p-8 my-8 text-center">
-                <p className="text-xl font-semibold text-qgd-fg dark:text-gray-100 mb-4">
+                <p className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
                   Your only job? Tell us what drains your time.
                 </p>
-                <p className="text-lg text-qgd-muted dark:text-qgd-fg mb-6">
+                <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
                   We'll automate it and show you exactly how much it's worth.
                 </p>
                 <Button
                   size="lg"
                   onClick={scrollToCalculator}
-                  className="bg-qgd-primary/600 hover:bg-qgd-primary/700 text-qgd-fg font-semibold"
+                  className="bg-teal-600 hover:bg-teal-700 text-white font-semibold"
                 >
                   <BarChart3 className="w-5 h-5 mr-2" />
                   Reveal My Hidden Hours & Savings
                 </Button>
               </div>
               
-              <div className="border-t-2 border-qgd-border dark:border-zinc-800 pt-8 mt-12">
-                <h3 className="text-2xl font-bold text-qgd-fg dark:text-gray-100 mb-4">
+              <div className="border-t-2 border-gray-200 dark:border-zinc-800 pt-8 mt-12">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
                   The Bottom Line
                 </h3>
                 <p className="text-lg">
                   Automation isn't about robots taking over. It's about reclaiming what matters — your time, focus, and sanity.
                 </p>
-                <p className="text-lg font-semibold text-qgd-ring600 dark:text-qgd-ring400 mt-4">
+                <p className="text-lg font-semibold text-teal-600 dark:text-teal-400 mt-4">
                   You can't scale chaos. But you can automate it.
                 </p>
               </div>
@@ -1322,7 +1321,7 @@ export default function IntelligentAutomationPage() {
         {/* FAQ SECTION */}
         <section 
           ref={faqRef}
-          className="py-20 bg-qgd-card dark:bg-zinc-900/50"
+          className="py-20 bg-gray-50 dark:bg-zinc-900/50"
         >
           <motion.div
             variants={staggerContainer}
@@ -1333,10 +1332,10 @@ export default function IntelligentAutomationPage() {
             
             {/* Section Header */}
             <motion.div variants={fadeInUp} className="text-center mb-12">
-              <h2 className="text-4xl lg:text-5xl font-bold text-qgd-fg dark:text-gray-100 mb-6">
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
                 Frequently Asked Questions
               </h2>
-              <p className="text-xl text-qgd-muted dark:text-qgd-fg">
+              <p className="text-xl text-gray-600 dark:text-gray-300">
                 Get answers to common questions about intelligent automation
               </p>
             </motion.div>
@@ -1346,11 +1345,11 @@ export default function IntelligentAutomationPage() {
               <Accordion type="single" collapsible className="space-y-4">
                 
                 {/* First FAQ - Custom vs Templates */}
-                <AccordionItem value="faq-0" className="bg-qgd-card dark:bg-zinc-900 border border-qgd-border dark:border-zinc-800 rounded-lg px-6">
-                  <AccordionTrigger className="text-left text-lg font-semibold text-qgd-fg dark:text-gray-100 hover:text-qgd-ring600 dark:hover:text-qgd-ring400">
+                <AccordionItem value="faq-0" className="bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-lg px-6">
+                  <AccordionTrigger className="text-left text-lg font-semibold text-gray-900 dark:text-gray-100 hover:text-teal-600 dark:hover:text-teal-400">
                     Do you provide plug-and-play automation, or do you build custom?
                   </AccordionTrigger>
-                  <AccordionContent className="text-qgd-muted dark:text-qgd-fg pt-4 space-y-4">
+                  <AccordionContent className="text-gray-700 dark:text-gray-300 pt-4 space-y-4">
                     <p>
                       We custom-build every automation to fit your exact tools, workflows, and business logic. You're not buying a pre-built template—you're getting intelligent workflows designed specifically for how <em>you</em> operate.
                     </p>
@@ -1361,7 +1360,7 @@ export default function IntelligentAutomationPage() {
                       size="sm"
                       asChild
                       variant="outline"
-                      className="border-teal-600 text-qgd-ring700 dark:text-qgd-ring400 hover:bg-qgd-primary/50 dark:hover:bg-qgd-primary/950/30"
+                      className="border-teal-600 text-teal-700 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950/30"
                     >
                       <Link href="/consultation">
                         Book Your Free Discovery Call →
@@ -1370,11 +1369,11 @@ export default function IntelligentAutomationPage() {
                   </AccordionContent>
                 </AccordionItem>
                 
-                <AccordionItem value="faq-1" className="bg-qgd-card dark:bg-zinc-900 border border-qgd-border dark:border-zinc-800 rounded-lg px-6">
-                  <AccordionTrigger className="text-left text-lg font-semibold text-qgd-fg dark:text-gray-100 hover:text-qgd-ring600 dark:hover:text-qgd-ring400">
+                <AccordionItem value="faq-1" className="bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-lg px-6">
+                  <AccordionTrigger className="text-left text-lg font-semibold text-gray-900 dark:text-gray-100 hover:text-teal-600 dark:hover:text-teal-400">
                     Isn't automation expensive or complicated?
                   </AccordionTrigger>
-                  <AccordionContent className="text-qgd-muted dark:text-qgd-fg pt-4 space-y-4">
+                  <AccordionContent className="text-gray-700 dark:text-gray-300 pt-4 space-y-4">
                     <p>
                       No. Intelligent Automations are modular and plug directly into your existing tools—no rip-and-replace required.
                     </p>
@@ -1389,7 +1388,7 @@ export default function IntelligentAutomationPage() {
                         size="sm"
                         onClick={scrollToCalculator}
                         variant="outline"
-                        className="border-teal-600 text-qgd-ring700 dark:text-qgd-ring400 hover:bg-qgd-primary/50 dark:hover:bg-qgd-primary/950/30"
+                        className="border-teal-600 text-teal-700 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950/30"
                       >
                         Show Me My ROI →
                       </Button>
@@ -1397,7 +1396,7 @@ export default function IntelligentAutomationPage() {
                         size="sm"
                         asChild
                         variant="outline"
-                        className="border-teal-600 text-qgd-ring700 dark:text-qgd-ring400 hover:bg-qgd-primary/50 dark:hover:bg-qgd-primary/950/30"
+                        className="border-teal-600 text-teal-700 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950/30"
                       >
                         <Link href="/consultation">
                           Book a Consultation →
@@ -1407,11 +1406,11 @@ export default function IntelligentAutomationPage() {
                   </AccordionContent>
                 </AccordionItem>
                 
-                <AccordionItem value="faq-2" className="bg-qgd-card dark:bg-zinc-900 border border-qgd-border dark:border-zinc-800 rounded-lg px-6">
-                  <AccordionTrigger className="text-left text-lg font-semibold text-qgd-fg dark:text-gray-100 hover:text-qgd-ring600 dark:hover:text-qgd-ring400">
+                <AccordionItem value="faq-2" className="bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-lg px-6">
+                  <AccordionTrigger className="text-left text-lg font-semibold text-gray-900 dark:text-gray-100 hover:text-teal-600 dark:hover:text-teal-400">
                     Will automation replace my employees?
                   </AccordionTrigger>
-                  <AccordionContent className="text-qgd-muted dark:text-qgd-fg pt-4 space-y-4">
+                  <AccordionContent className="text-gray-700 dark:text-gray-300 pt-4 space-y-4">
                     <p>
                       Not at all. Automation replaces <em>tasks</em>, not people.
                     </p>
@@ -1425,7 +1424,7 @@ export default function IntelligentAutomationPage() {
                       size="sm"
                       asChild
                       variant="outline"
-                      className="border-teal-600 text-qgd-ring700 dark:text-qgd-ring400 hover:bg-qgd-primary/50 dark:hover:bg-qgd-primary/950/30"
+                      className="border-teal-600 text-teal-700 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950/30"
                     >
                       <Link href="/consultation">
                         See How Automation Complements Your Team →
@@ -1434,11 +1433,11 @@ export default function IntelligentAutomationPage() {
                   </AccordionContent>
                 </AccordionItem>
                 
-                <AccordionItem value="faq-3" className="bg-qgd-card dark:bg-zinc-900 border border-qgd-border dark:border-zinc-800 rounded-lg px-6">
-                  <AccordionTrigger className="text-left text-lg font-semibold text-qgd-fg dark:text-gray-100 hover:text-qgd-ring600 dark:hover:text-qgd-ring400">
+                <AccordionItem value="faq-3" className="bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-lg px-6">
+                  <AccordionTrigger className="text-left text-lg font-semibold text-gray-900 dark:text-gray-100 hover:text-teal-600 dark:hover:text-teal-400">
                     How secure is it?
                   </AccordionTrigger>
-                  <AccordionContent className="text-qgd-muted dark:text-qgd-fg pt-4 space-y-4">
+                  <AccordionContent className="text-gray-700 dark:text-gray-300 pt-4 space-y-4">
                     <p>
                       Every integration is built on encrypted APIs and monitored 24/7 by a team that's helped secure NASA systems.
                     </p>
@@ -1458,7 +1457,7 @@ export default function IntelligentAutomationPage() {
                       size="sm"
                       asChild
                       variant="outline"
-                      className="border-teal-600 text-qgd-ring700 dark:text-qgd-ring400 hover:bg-qgd-primary/50 dark:hover:bg-qgd-primary/950/30"
+                      className="border-teal-600 text-teal-700 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950/30"
                     >
                       <Link href="/consultation">
                         Request a Security Walkthrough →
@@ -1467,11 +1466,11 @@ export default function IntelligentAutomationPage() {
                   </AccordionContent>
                 </AccordionItem>
                 
-                <AccordionItem value="faq-4" className="bg-qgd-card dark:bg-zinc-900 border border-qgd-border dark:border-zinc-800 rounded-lg px-6">
-                  <AccordionTrigger className="text-left text-lg font-semibold text-qgd-fg dark:text-gray-100 hover:text-qgd-ring600 dark:hover:text-qgd-ring400">
+                <AccordionItem value="faq-4" className="bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-lg px-6">
+                  <AccordionTrigger className="text-left text-lg font-semibold text-gray-900 dark:text-gray-100 hover:text-teal-600 dark:hover:text-teal-400">
                     What if I don't know where to start?
                   </AccordionTrigger>
-                  <AccordionContent className="text-qgd-muted dark:text-qgd-fg pt-4 space-y-4">
+                  <AccordionContent className="text-gray-700 dark:text-gray-300 pt-4 space-y-4">
                     <p>
                       That's exactly why we built the calculator and free audit.
                     </p>
@@ -1491,7 +1490,7 @@ export default function IntelligentAutomationPage() {
                         size="sm"
                         asChild
                         variant="outline"
-                        className="border-teal-600 text-qgd-ring700 dark:text-qgd-ring400 hover:bg-qgd-primary/50 dark:hover:bg-qgd-primary/950/30"
+                        className="border-teal-600 text-teal-700 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950/30"
                       >
                         <Link href="/consultation">
                           Start Your Free Audit →
@@ -1501,7 +1500,7 @@ export default function IntelligentAutomationPage() {
                         size="sm"
                         onClick={scrollToCalculator}
                         variant="outline"
-                        className="border-teal-600 text-qgd-ring700 dark:text-qgd-ring400 hover:bg-qgd-primary/50 dark:hover:bg-qgd-primary/950/30"
+                        className="border-teal-600 text-teal-700 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950/30"
                       >
                         Run the Calculator →
                       </Button>
@@ -1509,11 +1508,11 @@ export default function IntelligentAutomationPage() {
                   </AccordionContent>
                 </AccordionItem>
                 
-                <AccordionItem value="faq-5" className="bg-qgd-card dark:bg-zinc-900 border border-qgd-border dark:border-zinc-800 rounded-lg px-6">
-                  <AccordionTrigger className="text-left text-lg font-semibold text-qgd-fg dark:text-gray-100 hover:text-qgd-ring600 dark:hover:text-qgd-ring400">
+                <AccordionItem value="faq-5" className="bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-lg px-6">
+                  <AccordionTrigger className="text-left text-lg font-semibold text-gray-900 dark:text-gray-100 hover:text-teal-600 dark:hover:text-teal-400">
                     How long does it take to see results?
                   </AccordionTrigger>
-                  <AccordionContent className="text-qgd-muted dark:text-qgd-fg pt-4 space-y-4">
+                  <AccordionContent className="text-gray-700 dark:text-gray-300 pt-4 space-y-4">
                     <p>
                       Preliminary findings within 72 hours. Full deployment in 7–14 days.
                     </p>
@@ -1524,7 +1523,7 @@ export default function IntelligentAutomationPage() {
                       size="sm"
                       asChild
                       variant="outline"
-                      className="border-teal-600 text-qgd-ring700 dark:text-qgd-ring400 hover:bg-qgd-primary/50 dark:hover:bg-qgd-primary/950/30"
+                      className="border-teal-600 text-teal-700 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950/30"
                     >
                       <Link href="/consultation">
                         Book a Free Scoping Call →
@@ -1533,11 +1532,11 @@ export default function IntelligentAutomationPage() {
                   </AccordionContent>
                 </AccordionItem>
                 
-                <AccordionItem value="faq-6" className="bg-qgd-card dark:bg-zinc-900 border border-qgd-border dark:border-zinc-800 rounded-lg px-6">
-                  <AccordionTrigger className="text-left text-lg font-semibold text-qgd-fg dark:text-gray-100 hover:text-qgd-ring600 dark:hover:text-qgd-ring400">
+                <AccordionItem value="faq-6" className="bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-lg px-6">
+                  <AccordionTrigger className="text-left text-lg font-semibold text-gray-900 dark:text-gray-100 hover:text-teal-600 dark:hover:text-teal-400">
                     What if my tools are unique or niche?
                   </AccordionTrigger>
-                  <AccordionContent className="text-qgd-muted dark:text-qgd-fg pt-4 space-y-4">
+                  <AccordionContent className="text-gray-700 dark:text-gray-300 pt-4 space-y-4">
                     <p>
                       Perfect. That's what we're built for.
                     </p>
@@ -1551,7 +1550,7 @@ export default function IntelligentAutomationPage() {
                       size="sm"
                       asChild
                       variant="outline"
-                      className="border-teal-600 text-qgd-ring700 dark:text-qgd-ring400 hover:bg-qgd-primary/50 dark:hover:bg-qgd-primary/950/30"
+                      className="border-teal-600 text-teal-700 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950/30"
                     >
                       <Link href="/consultation">
                         Book a Technical Review Call →
@@ -1560,11 +1559,11 @@ export default function IntelligentAutomationPage() {
                   </AccordionContent>
                 </AccordionItem>
                 
-                <AccordionItem value="faq-7" className="bg-qgd-card dark:bg-zinc-900 border border-qgd-border dark:border-zinc-800 rounded-lg px-6">
-                  <AccordionTrigger className="text-left text-lg font-semibold text-qgd-fg dark:text-gray-100 hover:text-qgd-ring600 dark:hover:text-qgd-ring400">
+                <AccordionItem value="faq-7" className="bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-lg px-6">
+                  <AccordionTrigger className="text-left text-lg font-semibold text-gray-900 dark:text-gray-100 hover:text-teal-600 dark:hover:text-teal-400">
                     Is this affordable for SMBs?
                   </AccordionTrigger>
-                  <AccordionContent className="text-qgd-muted dark:text-qgd-fg pt-4 space-y-4">
+                  <AccordionContent className="text-gray-700 dark:text-gray-300 pt-4 space-y-4">
                     <p>
                       Yes. Our automations cost a fraction of a typical hire—and far less than the profit you're losing to manual work.
                     </p>
@@ -1578,18 +1577,18 @@ export default function IntelligentAutomationPage() {
                       size="sm"
                       onClick={scrollToCalculator}
                       variant="outline"
-                      className="border-teal-600 text-qgd-ring700 dark:text-qgd-ring400 hover:bg-qgd-primary/50 dark:hover:bg-qgd-primary/950/30"
+                      className="border-teal-600 text-teal-700 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950/30"
                     >
                       See Your Cost-Benefit Breakdown →
                     </Button>
                   </AccordionContent>
                 </AccordionItem>
                 
-                <AccordionItem value="faq-8" className="bg-qgd-card dark:bg-zinc-900 border border-qgd-border dark:border-zinc-800 rounded-lg px-6">
-                  <AccordionTrigger className="text-left text-lg font-semibold text-qgd-fg dark:text-gray-100 hover:text-qgd-ring600 dark:hover:text-qgd-ring400">
+                <AccordionItem value="faq-8" className="bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-lg px-6">
+                  <AccordionTrigger className="text-left text-lg font-semibold text-gray-900 dark:text-gray-100 hover:text-teal-600 dark:hover:text-teal-400">
                     What happens after deployment?
                   </AccordionTrigger>
-                  <AccordionContent className="text-qgd-muted dark:text-qgd-fg pt-4 space-y-4">
+                  <AccordionContent className="text-gray-700 dark:text-gray-300 pt-4 space-y-4">
                     <p>
                       You get ongoing monitoring, optimization, and monthly ROI reports.
                     </p>
@@ -1609,7 +1608,7 @@ export default function IntelligentAutomationPage() {
                       size="sm"
                       asChild
                       variant="outline"
-                      className="border-teal-600 text-qgd-ring700 dark:text-qgd-ring400 hover:bg-qgd-primary/50 dark:hover:bg-qgd-primary/950/30"
+                      className="border-teal-600 text-teal-700 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950/30"
                     >
                       <Link href="/consultation">
                         Meet Your Potential Success Manager →
@@ -1618,11 +1617,11 @@ export default function IntelligentAutomationPage() {
                   </AccordionContent>
                 </AccordionItem>
                 
-                <AccordionItem value="faq-9" className="bg-qgd-card dark:bg-zinc-900 border border-qgd-border dark:border-zinc-800 rounded-lg px-6">
-                  <AccordionTrigger className="text-left text-lg font-semibold text-qgd-fg dark:text-gray-100 hover:text-qgd-ring600 dark:hover:text-qgd-ring400">
+                <AccordionItem value="faq-9" className="bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-lg px-6">
+                  <AccordionTrigger className="text-left text-lg font-semibold text-gray-900 dark:text-gray-100 hover:text-teal-600 dark:hover:text-teal-400">
                     Can I start small and scale later?
                   </AccordionTrigger>
-                  <AccordionContent className="text-qgd-muted dark:text-qgd-fg pt-4 space-y-4">
+                  <AccordionContent className="text-gray-700 dark:text-gray-300 pt-4 space-y-4">
                     <p>
                       Absolutely. That's our recommended approach.
                     </p>
@@ -1636,7 +1635,7 @@ export default function IntelligentAutomationPage() {
                       size="sm"
                       asChild
                       variant="outline"
-                      className="border-teal-600 text-qgd-ring700 dark:text-qgd-ring400 hover:bg-qgd-primary/50 dark:hover:bg-qgd-primary/950/30"
+                      className="border-teal-600 text-teal-700 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950/30"
                     >
                       <Link href="/consultation">
                         Start Small. Scale Smart. →
@@ -1645,11 +1644,11 @@ export default function IntelligentAutomationPage() {
                   </AccordionContent>
                 </AccordionItem>
                 
-                <AccordionItem value="faq-10" className="bg-qgd-card dark:bg-zinc-900 border border-qgd-border dark:border-zinc-800 rounded-lg px-6">
-                  <AccordionTrigger className="text-left text-lg font-semibold text-qgd-fg dark:text-gray-100 hover:text-qgd-ring600 dark:hover:text-qgd-ring400">
+                <AccordionItem value="faq-10" className="bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-lg px-6">
+                  <AccordionTrigger className="text-left text-lg font-semibold text-gray-900 dark:text-gray-100 hover:text-teal-600 dark:hover:text-teal-400">
                     What if it breaks or stops working?
                   </AccordionTrigger>
-                  <AccordionContent className="text-qgd-muted dark:text-qgd-fg pt-4 space-y-4">
+                  <AccordionContent className="text-gray-700 dark:text-gray-300 pt-4 space-y-4">
                     <p>
                       We monitor 24/7 and fix issues proactively—usually before you even notice.
                     </p>
@@ -1663,7 +1662,7 @@ export default function IntelligentAutomationPage() {
                       size="sm"
                       asChild
                       variant="outline"
-                      className="border-teal-600 text-qgd-ring700 dark:text-qgd-ring400 hover:bg-qgd-primary/50 dark:hover:bg-qgd-primary/950/30"
+                      className="border-teal-600 text-teal-700 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950/30"
                     >
                       <Link href="/consultation">
                         Request Service Level Agreement Details →
@@ -1672,11 +1671,11 @@ export default function IntelligentAutomationPage() {
                   </AccordionContent>
                 </AccordionItem>
                 
-                <AccordionItem value="faq-11" className="bg-qgd-card dark:bg-zinc-900 border border-qgd-border dark:border-zinc-800 rounded-lg px-6">
-                  <AccordionTrigger className="text-left text-lg font-semibold text-qgd-fg dark:text-gray-100 hover:text-qgd-ring600 dark:hover:text-qgd-ring400">
+                <AccordionItem value="faq-11" className="bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-lg px-6">
+                  <AccordionTrigger className="text-left text-lg font-semibold text-gray-900 dark:text-gray-100 hover:text-teal-600 dark:hover:text-teal-400">
                     How is this different from Zapier or Make?
                   </AccordionTrigger>
-                  <AccordionContent className="text-qgd-muted dark:text-qgd-fg pt-4 space-y-4">
+                  <AccordionContent className="text-gray-700 dark:text-gray-300 pt-4 space-y-4">
                     <p>
                       Great question.
                     </p>
@@ -1700,7 +1699,7 @@ export default function IntelligentAutomationPage() {
                       size="sm"
                       asChild
                       variant="outline"
-                      className="border-teal-600 text-qgd-ring700 dark:text-qgd-ring400 hover:bg-qgd-primary/50 dark:hover:bg-qgd-primary/950/30"
+                      className="border-teal-600 text-teal-700 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950/30"
                     >
                       <Link href="/consultation">
                         Book a Live Demo →
@@ -1709,11 +1708,11 @@ export default function IntelligentAutomationPage() {
                   </AccordionContent>
                 </AccordionItem>
                 
-                <AccordionItem value="faq-12" className="bg-qgd-card dark:bg-zinc-900 border border-qgd-border dark:border-zinc-800 rounded-lg px-6">
-                  <AccordionTrigger className="text-left text-lg font-semibold text-qgd-fg dark:text-gray-100 hover:text-qgd-ring600 dark:hover:text-qgd-ring400">
+                <AccordionItem value="faq-12" className="bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-lg px-6">
+                  <AccordionTrigger className="text-left text-lg font-semibold text-gray-900 dark:text-gray-100 hover:text-teal-600 dark:hover:text-teal-400">
                     How do I get started?
                   </AccordionTrigger>
-                  <AccordionContent className="text-qgd-muted dark:text-qgd-fg pt-4 space-y-4">
+                  <AccordionContent className="text-gray-700 dark:text-gray-300 pt-4 space-y-4">
                     <p>
                       Simple:
                     </p>
@@ -1730,7 +1729,7 @@ export default function IntelligentAutomationPage() {
                       <Button
                         size="sm"
                         onClick={scrollToCalculator}
-                        className="bg-qgd-primary/600 hover:bg-qgd-primary/700 text-qgd-fg"
+                        className="bg-teal-600 hover:bg-teal-700 text-white"
                       >
                         Start Your Free Automation Scan →
                       </Button>
@@ -1738,7 +1737,7 @@ export default function IntelligentAutomationPage() {
                         size="sm"
                         asChild
                         variant="outline"
-                        className="border-teal-600 text-qgd-ring700 dark:text-qgd-ring400 hover:bg-qgd-primary/50 dark:hover:bg-qgd-primary/950/30"
+                        className="border-teal-600 text-teal-700 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950/30"
                       >
                         <Link href="/consultation">
                           Book Your Strategy Call →
@@ -1757,7 +1756,7 @@ export default function IntelligentAutomationPage() {
         {/* GUARANTEE SECTION */}
         <section 
           ref={guaranteeRef}
-          className="py-20 bg-gradient-to-br from-teal-600 to-emerald-600 text-qgd-fg relative overflow-hidden"
+          className="py-20 bg-gradient-to-br from-teal-600 to-emerald-600 text-white relative overflow-hidden"
         >
           <div className="absolute inset-0 bg-grid-pattern opacity-10" />
           
@@ -1769,13 +1768,13 @@ export default function IntelligentAutomationPage() {
           >
             
             <motion.div variants={fadeInUp} className="mb-8">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-qgd-card/20 backdrop-blur-sm rounded-full mb-6">
-                <Shield className="w-10 h-10 text-qgd-fg" />
+              <div className="inline-flex items-center justify-center w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full mb-6">
+                <Shield className="w-10 h-10 text-white" />
               </div>
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
                 Our 60-Day "Time-Back" Guarantee
               </h2>
-              <p className="text-xl text-qgd-fg/90 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
                 If you don't save at least 10 hours a week or see measurable ROI in 60 days, 
                 we'll continue optimizing your automations free until you do.
               </p>
@@ -1794,7 +1793,7 @@ export default function IntelligentAutomationPage() {
                 size="lg"
                 variant="outline"
                 asChild
-                className="border-2 border-[#2c2c3d] text-qgd-fg hover:bg-[#0c0c12]/10 backdrop-blur-sm px-8 py-6 text-lg font-semibold"
+                className="border-2 border-[#2c2c3d] text-white hover:bg-[#0c0c12]/10 backdrop-blur-sm px-8 py-6 text-lg font-semibold"
               >
                 <a 
                   href={process.env.NEXT_PUBLIC_TIDYCAL_BOOK_URL || '#'}
@@ -1811,15 +1810,15 @@ export default function IntelligentAutomationPage() {
               <div className="grid md:grid-cols-3 gap-8 text-center">
                 <div>
                   <div className="text-4xl font-bold mb-2">14</div>
-                  <div className="text-qgd-fg/80">Days to Deploy</div>
+                  <div className="text-white/80">Days to Deploy</div>
                 </div>
                 <div>
                   <div className="text-4xl font-bold mb-2">60-85%</div>
-                  <div className="text-qgd-fg/80">Cost Savings</div>
+                  <div className="text-white/80">Cost Savings</div>
                 </div>
                 <div>
                   <div className="text-4xl font-bold mb-2">24/7</div>
-                  <div className="text-qgd-fg/80">Always Working</div>
+                  <div className="text-white/80">Always Working</div>
                 </div>
               </div>
             </motion.div>

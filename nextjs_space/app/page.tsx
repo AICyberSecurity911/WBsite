@@ -1,37 +1,32 @@
-
-import { Header } from '@/components/layout/header'
-import { Footer } from '@/components/layout/footer'
 import { CoralReefHero } from '@/components/sections/coral-reef-hero'
 import { TrustBarSection } from '@/components/sections/trust-bar-section'
-import { HomeTestimonialsCarousel } from '@/components/sections/home-testimonials-carousel'
+import { CoralReefFeatures } from '@/components/sections/coral-reef-features'
 import { ValuePropositionSection } from '@/components/sections/value-proposition-section'
+import { HomeTestimonialsCarousel } from '@/components/sections/home-testimonials-carousel'
 import { FounderStorySection } from '@/components/sections/founder-story-section'
-import AdvisoryBoardSection from '@/components/sections/advisory-board-section'
+import { FAQSection } from '@/components/sections/faq-section'
+import type { Metadata } from 'next'
 
-export const metadata = {
-  title: 'AI Business Transformation | Reclaim Your Time & Secure Your Growth | QuantumLeap AI',
-  description: 'Stop working 70-hour weeks or losing millions to preventable risks. Get Fortune 500 AI power and NASA-recognized security for your business. Free assessment in 3 minutes.',
-  keywords: 'AI business automation, small business AI solutions, enterprise AI transformation, cybersecurity for businesses, business process automation, AI workforce solutions',
+export const metadata: Metadata = {
+  title: 'QuantumLeap AI | Scale Your Business Without the Chaos',
+  description: 'AI employees, intelligent automation, and NASA-grade security for businesses of all sizes. Get Fortune 500 capabilities at startup prices.',
   openGraph: {
-    title: 'AI Business Transformation | Reclaim Your Time & Secure Your Growth | QuantumLeap AI',
-    description: 'Stop working 70-hour weeks or losing millions to preventable risks. Get Fortune 500 AI power and NASA-recognized security for your business. Free assessment in 3 minutes.',
+    title: 'QuantumLeap AI | Scale Your Business Without the Chaos',
+    description: 'AI employees, intelligent automation, and NASA-grade security for businesses of all sizes.',
     images: ['/og-image.png'],
   },
 }
 
-export default function LandingPage() {
+export default function HomePage() {
   return (
-    <div className="min-h-screen bg-qgd-bg">
-      <Header />
-      <main>
-        <CoralReefHero />
-        <TrustBarSection />
-        <HomeTestimonialsCarousel />
-        <ValuePropositionSection />
-        <FounderStorySection />
-        <AdvisoryBoardSection />
-      </main>
-      <Footer />
-    </div>
+    <main className="min-h-screen bg-qgd-bg">
+      <CoralReefHero />
+      <TrustBarSection />
+      <CoralReefFeatures />
+      <ValuePropositionSection />
+      <HomeTestimonialsCarousel />
+      <FounderStorySection />
+      <FAQSection />
+    </main>
   )
 }

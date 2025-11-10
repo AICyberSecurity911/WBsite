@@ -132,7 +132,7 @@ export function BusinessTransformationExitIntent() {
         <div className="p-6 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-              <TrendingUp className="h-6 w-6 text-qgd-fg" />
+              <TrendingUp className="h-6 w-6 text-white" />
             </div>
             <div>
               <h3 className="text-xl font-bold">Before You Go...</h3>
@@ -147,7 +147,7 @@ export function BusinessTransformationExitIntent() {
           <div className="space-y-3">
             <Button
               onClick={scrollToCalculator}
-              className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-qgd-fg text-lg py-6 h-auto"
+              className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white text-lg py-6 h-auto"
             >
               Show Me My Profit Leak
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -166,7 +166,7 @@ export function BusinessTransformationExitIntent() {
           </div>
         </div>
 
-        <div className="p-6 bg-qgd-card dark:bg-gray-950">
+        <div className="p-6 bg-white dark:bg-gray-950">
           <h4 className="font-bold mb-2">Get Our Free Checklist</h4>
           <p className="text-sm text-muted-foreground mb-4">
             <strong>The 12 Questions Every Founder Should Ask Before Hiring a Consultant</strong>
@@ -183,7 +183,7 @@ export function BusinessTransformationExitIntent() {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-purple-500 hover:bg-purple-600 text-qgd-fg"
+              className="w-full bg-purple-500 hover:bg-purple-600 text-white"
             >
               {isSubmitting ? (
                 <>

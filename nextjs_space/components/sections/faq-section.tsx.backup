@@ -178,7 +178,7 @@ export function FAQSection() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="mb-6 inline-flex items-center gap-2 rounded-full bg-qgd-primary/100 px-4 py-2 text-sm font-semibold text-qgd-ring900 dark:bg-qgd-primary/900 dark:text-qgd-ring300"
+              className="mb-6 inline-flex items-center gap-2 rounded-full bg-teal-100 px-4 py-2 text-sm font-semibold text-teal-900 dark:bg-teal-900 dark:text-teal-300"
             >
               <HelpCircle className="h-4 w-4" />
               Your Questions, Honestly Answered
@@ -211,7 +211,7 @@ export function FAQSection() {
                 initial={{ opacity: 0.7, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-                className="overflow-hidden rounded-2xl bg-qgd-card shadow-sm dark:bg-qgd-card"
+                className="overflow-hidden rounded-2xl bg-white shadow-sm dark:bg-gray-800"
               >
                 <button
                   onClick={() => toggleItem(index)}
@@ -222,7 +222,7 @@ export function FAQSection() {
                       {item.question}
                     </h3>
                     <ChevronDown 
-                      className={`h-5 w-5 text-qgd-muted transition-transform duration-200 ${
+                      className={`h-5 w-5 text-gray-500 transition-transform duration-200 ${
                         openItems.includes(index) ? 'rotate-180' : ''
                       }`}
                     />
@@ -238,7 +238,7 @@ export function FAQSection() {
                   transition={{ duration: 0.3 }}
                   className="overflow-hidden"
                 >
-                  <div className="border-t border-qgd-border px-6 py-5 dark:border-qgd-border">
+                  <div className="border-t border-gray-200 px-6 py-5 dark:border-gray-700">
                     <p className="mb-4 text-[#b8b6c9]">
                       {item.answer}
                     </p>
@@ -257,7 +257,7 @@ export function FAQSection() {
                     
                     {item.category && (
                       <div className="mt-4">
-                        <span className="rounded-full bg-qgd-primary/100 px-3 py-1 text-xs font-medium text-qgd-ring700 dark:bg-qgd-primary/900 dark:text-qgd-ring300">
+                        <span className="rounded-full bg-teal-100 px-3 py-1 text-xs font-medium text-teal-700 dark:bg-teal-900 dark:text-teal-300">
                           {item.category}
                         </span>
                       </div>

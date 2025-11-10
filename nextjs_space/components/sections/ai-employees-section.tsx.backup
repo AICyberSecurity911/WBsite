@@ -42,7 +42,7 @@ const aiEmployees: AIEmployee[] = [
     name: 'AVA',
     title: 'AI Virtual Administrator',
     badge: 'Most Requested',
-    badgeColor: 'bg-qgd-primary/100 dark:bg-qgd-primary/900/30 text-qgd-ring700 dark:text-qgd-ring300',
+    badgeColor: 'bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300',
     tagline: 'Handles emails, scheduling, expense approvals, and reporting—reclaim 40+ hours/month',
     customBuiltFor: 'Construction company owner drowning in admin work—missing family dinners to approve expenses',
     realResults: [
@@ -103,7 +103,7 @@ const aiEmployees: AIEmployee[] = [
     name: 'BOOKIE',
     title: 'AI Bookkeeper',
     badge: 'Fastest ROI',
-    badgeColor: 'bg-qgd-primary/100 dark:bg-qgd-primary/900/30 text-qgd-primary700 dark:text-qgd-primary300',
+    badgeColor: 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300',
     tagline: 'Syncs with QuickBooks/Xero, categorizes transactions, reconciles accounts—99.2% accuracy, books closed by the 3rd',
     customBuiltFor: 'E-commerce founder spending 18 hours/month on bookkeeping with errors every quarter',
     realResults: [
@@ -287,7 +287,7 @@ export function AIEmployeesSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-qgd-fg mb-4"
+            className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4"
           >
             Meet Your AI Workforce—Custom-Built Digital Employees That Never Sleep
           </motion.h2>
@@ -319,11 +319,11 @@ export function AIEmployeesSection() {
 
               {/* Icon */}
               <div className={`w-14 h-14 bg-gradient-to-br ${employee.color} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                <employee.icon className="w-7 h-7 text-qgd-fg" />
+                <employee.icon className="w-7 h-7 text-white" />
               </div>
 
               {/* Title */}
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-qgd-fg mb-2">
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
                 {employee.name} — {employee.title}
               </h3>
 
@@ -353,7 +353,7 @@ export function AIEmployeesSection() {
                 <ul className="space-y-2 text-sm">
                   {employee.realResults.map((result, i) => (
                     <li key={i} className="flex items-start space-x-2">
-                      <Check className="w-4 h-4 text-qgd-ring600 flex-shrink-0 mt-0.5" />
+                      <Check className="w-4 h-4 text-teal-600 flex-shrink-0 mt-0.5" />
                       <span className="text-slate-700 dark:text-slate-300">{result}</span>
                     </li>
                   ))}
@@ -362,7 +362,7 @@ export function AIEmployeesSection() {
 
               {/* Expandable Technical Details */}
               <details className="mb-4 group/details">
-                <summary className="cursor-pointer text-sm font-semibold text-qgd-ring600 dark:text-qgd-ring400 hover:text-qgd-ring700 dark:hover:text-qgd-ring300 flex items-center gap-2">
+                <summary className="cursor-pointer text-sm font-semibold text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 flex items-center gap-2">
                   What We Built (Technical)
                   <ChevronDown className="w-4 h-4 group-open/details:rotate-180 transition-transform" />
                 </summary>
@@ -375,7 +375,7 @@ export function AIEmployeesSection() {
 
               {/* Expandable Customization Options */}
               <details className="mb-6 group/details">
-                <summary className="cursor-pointer text-sm font-semibold text-qgd-ring600 dark:text-qgd-ring400 hover:text-qgd-ring700 dark:hover:text-qgd-ring300 flex items-center gap-2">
+                <summary className="cursor-pointer text-sm font-semibold text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 flex items-center gap-2">
                   This Could Be Customized For You
                   <ChevronDown className="w-4 h-4 group-open/details:rotate-180 transition-transform" />
                 </summary>
@@ -389,14 +389,14 @@ export function AIEmployeesSection() {
               {/* Pricing */}
               <div className="flex items-baseline space-x-2 mb-4">
                 <DollarSign className="w-5 h-5 text-slate-500" />
-                <span className="text-2xl font-bold text-slate-900 dark:text-qgd-fg">{employee.pricing.replace('$', '')}</span>
+                <span className="text-2xl font-bold text-slate-900 dark:text-white">{employee.pricing.replace('$', '')}</span>
                 <span className="text-slate-500 dark:text-slate-400">monthly</span>
               </div>
 
               {/* CTA */}
               <Link 
                 href="#calculator" 
-                className="block w-full text-center bg-qgd-primary/600 hover:bg-qgd-primary/700 text-qgd-fg py-3 rounded-xl font-semibold transition-all group-hover:shadow-lg"
+                className="block w-full text-center bg-teal-600 hover:bg-teal-700 text-white py-3 rounded-xl font-semibold transition-all group-hover:shadow-lg"
               >
                 See How {employee.name} Would Work for Me →
               </Link>
@@ -415,7 +415,7 @@ export function AIEmployeesSection() {
             Want to see what a custom AI workforce would look like for your business?
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-qgd-primary/600 hover:bg-qgd-primary/700 text-qgd-fg">
+            <Button asChild size="lg" className="bg-teal-600 hover:bg-teal-700 text-white">
               <Link href="#calculator">
                 Take the Free Assessment
                 <ArrowRight className="ml-2 h-4 w-4" />

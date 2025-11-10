@@ -2,6 +2,7 @@
 'use client'
 
 import { Header } from '@/components/layout/header'
+import { FlameBorder } from '@/components/ui/flame-border'
 import { Footer } from '@/components/layout/footer'
 import { ThemeProvider } from '@/components/smb/theme-context'
 import { ThemeToggle } from '@/components/smb/theme-toggle'
@@ -169,7 +170,7 @@ function TestimonialsCarousel() {
             rounded-2xl p-8 md:p-12 border
             ${theme === 'dark'
               ? 'bg-gradient-to-br from-[#07070b] to-[#0c0c12] border-[#22d3ee]/30'
-              : 'bg-[#f3f3f3] border-gray-400'
+              : 'bg-qgd-bg border-gray-400'
             }
             shadow-2xl
           `}
@@ -177,7 +178,7 @@ function TestimonialsCarousel() {
           {/* Top Section: Name + Title (NO INITIALS) */}
           <div className="flex flex-col items-center text-center mb-8">
             {/* Full Name - Prominent */}
-            <h4 className={`text-3xl font-bold mb-3 ${theme === 'dark' ? 'text-white' : 'text-[#111111]'}`}>
+            <h4 className={`text-3xl font-bold mb-3 ${theme === 'dark' ? 'text-qgd-fg' : 'text-[#111111]'}`}>
               {currentTestimonial.name}
             </h4>
             
@@ -196,7 +197,7 @@ function TestimonialsCarousel() {
 
           {/* Quote Section - Prominent */}
           <div className="mb-8">
-            <blockquote className={`text-xl md:text-2xl font-semibold italic text-center leading-relaxed ${theme === 'dark' ? 'text-white' : 'text-[#111111]'}`}>
+            <blockquote className={`text-xl md:text-2xl font-semibold italic text-center leading-relaxed ${theme === 'dark' ? 'text-qgd-fg' : 'text-[#111111]'}`}>
               "{currentTestimonial.quote}"
             </blockquote>
           </div>
@@ -216,7 +217,7 @@ function TestimonialsCarousel() {
                   BEFORE
                 </span>
               </div>
-              <p className={`text-base leading-relaxed ${theme === 'dark' ? 'text-gray-300' : 'text-[#111111]'}`}>
+              <p className={`text-base leading-relaxed ${theme === 'dark' ? 'text-qgd-fg' : 'text-[#111111]'}`}>
                 {currentTestimonial.before}
               </p>
             </div>
@@ -234,7 +235,7 @@ function TestimonialsCarousel() {
                   AFTER
                 </span>
               </div>
-              <p className={`text-base leading-relaxed ${theme === 'dark' ? 'text-gray-300' : 'text-[#111111]'}`}>
+              <p className={`text-base leading-relaxed ${theme === 'dark' ? 'text-qgd-fg' : 'text-[#111111]'}`}>
                 {currentTestimonial.after}
               </p>
             </div>
@@ -368,14 +369,14 @@ function FAQSection() {
           className={`border rounded-xl overflow-hidden transition-all duration-300
             ${theme === 'dark'
               ? 'bg-gradient-to-br from-[#07070b] to-[#0c0c12] border-[#22d3ee]/30 hover:border-[#22d3ee]'
-              : 'bg-[#f3f3f3] border-gray-400 hover:border-[#14b8a6]'
+              : 'bg-qgd-bg border-gray-400 hover:border-[#14b8a6]'
             }`}
         >
           <button
             onClick={() => setOpenIndex(openIndex === index ? null : index)}
             className="w-full p-6 text-left flex items-center justify-between gap-4 transition-colors"
           >
-            <h3 className={`text-lg font-bold ${theme === 'dark' ? 'text-white' : 'text-[#008080]'}`}>
+            <h3 className={`text-lg font-bold ${theme === 'dark' ? 'text-qgd-fg' : 'text-[#008080]'}`}>
               {faq.question}
             </h3>
             <ChevronDown
@@ -394,7 +395,7 @@ function FAQSection() {
                 transition={{ duration: 0.3 }}
                 className="overflow-hidden"
               >
-                <div className={`px-6 pb-6 ${theme === 'dark' ? 'text-gray-300' : 'text-[#111111]'}`}>
+                <div className={`px-6 pb-6 ${theme === 'dark' ? 'text-qgd-fg' : 'text-[#111111]'}`}>
                   <p className="leading-relaxed">{faq.answer}</p>
                 </div>
               </motion.div>
@@ -435,7 +436,7 @@ function BlogSection() {
           <div className={`h-full border rounded-2xl p-8 transition-all duration-300 hover:shadow-xl
             ${theme === 'dark'
               ? 'bg-gradient-to-br from-[#07070b] to-[#0c0c12] border-[#22d3ee]/30 hover:border-[#22d3ee] hover:shadow-accent-cyan/20'
-              : 'bg-[#f3f3f3] border-gray-400 hover:border-[#14b8a6] hover:shadow-lg'
+              : 'bg-qgd-bg border-gray-400 hover:border-[#14b8a6] hover:shadow-lg'
             }`}
           >
             <div className="flex items-center gap-3 mb-4">
@@ -446,12 +447,12 @@ function BlogSection() {
             </div>
             
             <h3 className={`text-xl font-bold mb-3 group-hover:text-[#22d3ee] transition-colors
-              ${theme === 'dark' ? 'text-white' : 'text-[#008080]'}`}
+              ${theme === 'dark' ? 'text-qgd-fg' : 'text-[#008080]'}`}
             >
               {post.title}
             </h3>
             
-            <p className={`leading-relaxed mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-[#111111]'}`}>
+            <p className={`leading-relaxed mb-4 ${theme === 'dark' ? 'text-qgd-fg' : 'text-[#111111]'}`}>
               {post.excerpt}
             </p>
             
@@ -516,9 +517,9 @@ function SMBLandingPageContent() {
         }
       `}</style>
       
-      <div className="smb-page min-h-screen transition-colors duration-300 dark:bg-[#0A0E27] bg-[#f3f3f3]">
+      <div className="smb-page min-h-screen transition-colors duration-300 dark:bg-[#0A0E27] bg-qgd-bg">
         {/* Header with Theme Toggle */}
-        <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-[#f3f3f3]/80 dark:bg-[#0A0E27]/80 border-b border-gray-300 dark:border-white/10">
+        <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-qgd-bg/80 dark:bg-[#0A0E27]/80 border-b border-gray-300 dark:border-white/10">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
               <Header />
@@ -545,10 +546,10 @@ function SMBLandingPageContent() {
               >
                 {/* Section Header */}
                 <motion.div variants={fadeInUp} className="text-center mb-16">
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold dark:text-white text-[#008080] mb-4">
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold dark:text-qgd-fg text-[#008080] mb-4">
                     5 Ways AI Automation Helps Small Businesses Stop Drowning in Busywork
                   </h2>
-                  <p className="text-lg dark:text-gray-300 text-[#111111] max-w-2xl mx-auto">
+                  <p className="text-lg dark:text-qgd-fg text-[#111111] max-w-2xl mx-auto">
                     Pick what's bleeding the most time and money. Start there. Add more as you grow.
                   </p>
                 </motion.div>
@@ -560,41 +561,41 @@ function SMBLandingPageContent() {
                     <Link href="/ai-workforce" className="block group h-full">
                       <div className="relative bg-gradient-to-br from-[#6366f1] to-[#4f46e5] hover:from-[#7c7ff6] hover:to-[#6366f1] border border-[#6366f1]/50 hover:border-[#8b8ff8] rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:shadow-[#6366f1]/30 h-full flex flex-col">
                         {/* Icon with proper spacing */}
-                        <div className="p-3 bg-white/20 rounded-xl w-fit mb-4">
-                          <Users className="w-8 h-8 text-white" />
+                        <div className="p-3 bg-qgd-card/20 rounded-xl w-fit mb-4">
+                          <Users className="w-8 h-8 text-qgd-fg" />
                         </div>
                         
                         {/* Title with proper spacing */}
-                        <h3 className="text-2xl font-bold text-white mb-3 group-hover:scale-105 transition-transform">
+                        <h3 className="text-2xl font-bold text-qgd-fg mb-3 group-hover:scale-105 transition-transform">
                           Stop Doing Everything Yourself with AI Employees
                         </h3>
                         
                         {/* Description with proper spacing */}
-                        <p className="text-white/90 leading-relaxed mb-4">
+                        <p className="text-qgd-fg/90 leading-relaxed mb-4">
                           Your AI team handles bookkeeping, lead follow-up, scheduling, and customer service—24/7. No hiring. No training. No drama. Just reliable help that costs 87% less than one employee.
                         </p>
                         
                         {/* Key Benefits */}
                         <ul className="space-y-2 mb-4">
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                          <li className="flex items-start gap-2 text-qgd-fg/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-qgd-fg flex-shrink-0 mt-0.5" />
                             <span>24/7 availability (never miss a lead)</span>
                           </li>
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                          <li className="flex items-start gap-2 text-qgd-fg/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-qgd-fg flex-shrink-0 mt-0.5" />
                             <span>99.2% accuracy rate</span>
                           </li>
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                          <li className="flex items-start gap-2 text-qgd-fg/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-qgd-fg flex-shrink-0 mt-0.5" />
                             <span>87% cost savings vs. human employees</span>
                           </li>
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                          <li className="flex items-start gap-2 text-qgd-fg/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-qgd-fg flex-shrink-0 mt-0.5" />
                             <span>Deploys in 48 hours</span>
                           </li>
                         </ul>
                         
-                        <div className="mt-auto pt-4 flex items-center gap-2 text-white font-semibold">
+                        <div className="mt-auto pt-4 flex items-center gap-2 text-qgd-fg font-semibold">
                           <span>Learn More About AI Workforce</span>
                           <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </div>
@@ -607,41 +608,41 @@ function SMBLandingPageContent() {
                     <Link href="/intelligent-automation" className="block group h-full">
                       <div className="relative bg-gradient-to-br from-[#14b8a6] to-[#0d9488] hover:from-[#2dd4bf] hover:to-[#14b8a6] border border-[#14b8a6]/50 hover:border-[#2dd4bf] rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:shadow-[#14b8a6]/30 h-full flex flex-col">
                         {/* Icon with proper spacing */}
-                        <div className="p-3 bg-white/20 rounded-xl w-fit mb-4">
-                          <Zap className="w-8 h-8 text-white" />
+                        <div className="p-3 bg-qgd-card/20 rounded-xl w-fit mb-4">
+                          <Zap className="w-8 h-8 text-qgd-fg" />
                         </div>
                         
                         {/* Title with proper spacing */}
-                        <h3 className="text-2xl font-bold text-white mb-3 group-hover:scale-105 transition-transform">
+                        <h3 className="text-2xl font-bold text-qgd-fg mb-3 group-hover:scale-105 transition-transform">
                           Eliminate Repetitive Tasks That Waste 20+ Hours Weekly
                         </h3>
                         
                         {/* Description with proper spacing */}
-                        <p className="text-white/90 leading-relaxed mb-4">
+                        <p className="text-qgd-fg/90 leading-relaxed mb-4">
                           Stop copying data between spreadsheets. Stop chasing invoices. Stop sending the same emails 50 times. Automation handles it while you sleep. Average savings: 20+ hours per week.
                         </p>
                         
                         {/* Key Benefits */}
                         <ul className="space-y-2 mb-4">
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                          <li className="flex items-start gap-2 text-qgd-fg/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-qgd-fg flex-shrink-0 mt-0.5" />
                             <span>Connects all your business tools</span>
                           </li>
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                          <li className="flex items-start gap-2 text-qgd-fg/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-qgd-fg flex-shrink-0 mt-0.5" />
                             <span>Eliminates manual data entry</span>
                           </li>
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                          <li className="flex items-start gap-2 text-qgd-fg/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-qgd-fg flex-shrink-0 mt-0.5" />
                             <span>Automates invoice follow-ups</span>
                           </li>
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                          <li className="flex items-start gap-2 text-qgd-fg/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-qgd-fg flex-shrink-0 mt-0.5" />
                             <span>Saves 20+ hours weekly</span>
                           </li>
                         </ul>
                         
-                        <div className="mt-auto pt-4 flex items-center gap-2 text-white font-semibold">
+                        <div className="mt-auto pt-4 flex items-center gap-2 text-qgd-fg font-semibold">
                           <span>Learn More About Business Automation</span>
                           <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </div>
@@ -654,41 +655,41 @@ function SMBLandingPageContent() {
                     <Link href="/background-checks" className="block group h-full">
                       <div className="relative bg-gradient-to-br from-[#3b82f6] to-[#2563eb] hover:from-[#60a5fa] hover:to-[#3b82f6] border border-[#3b82f6]/50 hover:border-[#60a5fa] rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:shadow-[#3b82f6]/30 h-full flex flex-col">
                         {/* Icon with proper spacing */}
-                        <div className="p-3 bg-white/20 rounded-xl w-fit mb-4">
-                          <Shield className="w-8 h-8 text-white" />
+                        <div className="p-3 bg-qgd-card/20 rounded-xl w-fit mb-4">
+                          <Shield className="w-8 h-8 text-qgd-fg" />
                         </div>
                         
                         {/* Title with proper spacing */}
-                        <h3 className="text-2xl font-bold text-white mb-3 group-hover:scale-105 transition-transform">
+                        <h3 className="text-2xl font-bold text-qgd-fg mb-3 group-hover:scale-105 transition-transform">
                           Avoid Hiring Mistakes That Cost $200K+ in Damage
                         </h3>
                         
                         {/* Description with proper spacing */}
-                        <p className="text-white/90 leading-relaxed mb-4">
+                        <p className="text-qgd-fg/90 leading-relaxed mb-4">
                           Standard background checks only catch criminals who got caught. We find the liars, fraudsters, and problem employees BEFORE they cost you $200K in damage. One check can save your business.
                         </p>
                         
                         {/* Key Benefits */}
                         <ul className="space-y-2 mb-4">
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                          <li className="flex items-start gap-2 text-qgd-fg/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-qgd-fg flex-shrink-0 mt-0.5" />
                             <span>Finds hidden criminal records</span>
                           </li>
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                          <li className="flex items-start gap-2 text-qgd-fg/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-qgd-fg flex-shrink-0 mt-0.5" />
                             <span>Detects fake credentials</span>
                           </li>
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                          <li className="flex items-start gap-2 text-qgd-fg/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-qgd-fg flex-shrink-0 mt-0.5" />
                             <span>Uncovers dark web activity</span>
                           </li>
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                          <li className="flex items-start gap-2 text-qgd-fg/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-qgd-fg flex-shrink-0 mt-0.5" />
                             <span>Prevents disastrous hires</span>
                           </li>
                         </ul>
                         
-                        <div className="mt-auto pt-4 flex items-center gap-2 text-white font-semibold">
+                        <div className="mt-auto pt-4 flex items-center gap-2 text-qgd-fg font-semibold">
                           <span>Learn More About Deep Background Checks</span>
                           <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </div>
@@ -701,41 +702,41 @@ function SMBLandingPageContent() {
                     <Link href="/cyber-intelligence" className="block group h-full">
                       <div className="relative bg-gradient-to-br from-[#4f46e5] to-[#4338ca] hover:from-[#6366f1] hover:to-[#4f46e5] border border-[#4f46e5]/50 hover:border-[#6366f1] rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:shadow-[#4f46e5]/30 h-full flex flex-col">
                         {/* Icon with proper spacing */}
-                        <div className="p-3 bg-white/20 rounded-xl w-fit mb-4">
-                          <LockIcon className="w-8 h-8 text-white" />
+                        <div className="p-3 bg-qgd-card/20 rounded-xl w-fit mb-4">
+                          <LockIcon className="w-8 h-8 text-qgd-fg" />
                         </div>
                         
                         {/* Title with proper spacing */}
-                        <h3 className="text-2xl font-bold text-white mb-3 group-hover:scale-105 transition-transform">
+                        <h3 className="text-2xl font-bold text-qgd-fg mb-3 group-hover:scale-105 transition-transform">
                           Protect Your Small Business Before Hackers Hold It Hostage
                         </h3>
                         
                         {/* Description with proper spacing */}
-                        <p className="text-white/90 leading-relaxed mb-4">
+                        <p className="text-qgd-fg/90 leading-relaxed mb-4">
                           Hackers target small businesses because you're unguarded. One breach = $80K+ ransom, lost clients, destroyed reputation. We find and fix vulnerabilities before criminals exploit them.
                         </p>
                         
                         {/* Key Benefits */}
                         <ul className="space-y-2 mb-4">
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                          <li className="flex items-start gap-2 text-qgd-fg/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-qgd-fg flex-shrink-0 mt-0.5" />
                             <span>NASA-recognized security protocols</span>
                           </li>
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                          <li className="flex items-start gap-2 text-qgd-fg/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-qgd-fg flex-shrink-0 mt-0.5" />
                             <span>Finds vulnerabilities before hackers do</span>
                           </li>
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                          <li className="flex items-start gap-2 text-qgd-fg/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-qgd-fg flex-shrink-0 mt-0.5" />
                             <span>Prevents $80K+ ransomware attacks</span>
                           </li>
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                          <li className="flex items-start gap-2 text-qgd-fg/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-qgd-fg flex-shrink-0 mt-0.5" />
                             <span>Custom security for your business</span>
                           </li>
                         </ul>
                         
-                        <div className="mt-auto pt-4 flex items-center gap-2 text-white font-semibold">
+                        <div className="mt-auto pt-4 flex items-center gap-2 text-qgd-fg font-semibold">
                           <span>Learn More About Cybersecurity</span>
                           <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </div>
@@ -748,41 +749,41 @@ function SMBLandingPageContent() {
                     <Link href="/business-transformation" className="block group h-full">
                       <div className="relative bg-gradient-to-br from-[#10b981] to-[#059669] hover:from-[#34d399] hover:to-[#10b981] border border-[#10b981]/50 hover:border-[#34d399] rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:shadow-[#10b981]/30 h-full flex flex-col">
                         {/* Icon with proper spacing */}
-                        <div className="p-3 bg-white/20 rounded-xl w-fit mb-4">
-                          <TrendingUp className="w-8 h-8 text-white" />
+                        <div className="p-3 bg-qgd-card/20 rounded-xl w-fit mb-4">
+                          <TrendingUp className="w-8 h-8 text-qgd-fg" />
                         </div>
                         
                         {/* Title with proper spacing */}
-                        <h3 className="text-2xl font-bold text-white mb-3 group-hover:scale-105 transition-transform">
+                        <h3 className="text-2xl font-bold text-qgd-fg mb-3 group-hover:scale-105 transition-transform">
                           Build Systems That Let Your Business Run Without You
                         </h3>
                         
                         {/* Description with proper spacing */}
-                        <p className="text-white/90 leading-relaxed mb-4">
+                        <p className="text-qgd-fg/90 leading-relaxed mb-4">
                           Revenue growing but you're still the bottleneck? We build the systems, workflows, and automations that let you scale profitably—without working more hours or micromanaging everything.
                         </p>
                         
                         {/* Key Benefits */}
                         <ul className="space-y-2 mb-4">
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                          <li className="flex items-start gap-2 text-qgd-fg/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-qgd-fg flex-shrink-0 mt-0.5" />
                             <span>Custom operational systems</span>
                           </li>
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                          <li className="flex items-start gap-2 text-qgd-fg/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-qgd-fg flex-shrink-0 mt-0.5" />
                             <span>Eliminate decision bottlenecks</span>
                           </li>
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                          <li className="flex items-start gap-2 text-qgd-fg/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-qgd-fg flex-shrink-0 mt-0.5" />
                             <span>Scale without working more</span>
                           </li>
-                          <li className="flex items-start gap-2 text-white/90 text-sm">
-                            <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                          <li className="flex items-start gap-2 text-qgd-fg/90 text-sm">
+                            <CheckCircle className="w-5 h-5 text-qgd-fg flex-shrink-0 mt-0.5" />
                             <span>90-180 day transformation</span>
                           </li>
                         </ul>
                         
-                        <div className="mt-auto pt-4 flex items-center gap-2 text-white font-semibold">
+                        <div className="mt-auto pt-4 flex items-center gap-2 text-qgd-fg font-semibold">
                           <span>Learn More About Business Transformation</span>
                           <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </div>
@@ -803,13 +804,13 @@ function SMBLandingPageContent() {
               <div className="max-w-6xl mx-auto">
                 {/* Section Header */}
                 <div className="text-center mb-16">
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold dark:text-white text-[#008080] mb-4">
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold dark:text-qgd-fg text-[#008080] mb-4">
                     How Small Businesses Automate in 3 Simple Steps
                   </h2>
-                  <p className="text-xl dark:text-gray-300 text-[#111111] mb-2">
+                  <p className="text-xl dark:text-qgd-fg text-[#111111] mb-2">
                     (From Overwhelmed to Automated in 14 Days)
                   </p>
-                  <p className="text-lg dark:text-gray-400 text-[#111111] max-w-3xl mx-auto mt-4">
+                  <p className="text-lg dark:text-qgd-muted text-[#111111] max-w-3xl mx-auto mt-4">
                     Getting started with business automation doesn't require technical skills or weeks of implementation. Our proven 3-step process has helped over 200 small businesses reclaim 25+ hours per week. Here's exactly how it works:
                   </p>
                 </div>
@@ -833,13 +834,13 @@ function SMBLandingPageContent() {
 
                     {/* Content */}
                     <div className="text-center mb-6">
-                      <h3 className="text-2xl font-bold dark:text-white text-[#008080] mb-4">
+                      <h3 className="text-2xl font-bold dark:text-qgd-fg text-[#008080] mb-4">
                         Step 1: Free Business Automation Assessment
                       </h3>
-                      <p className="text-sm dark:text-gray-400 text-gray-600 mb-4">
+                      <p className="text-sm dark:text-qgd-muted text-qgd-muted mb-4">
                         (15 Minutes)
                       </p>
-                      <p className="text-base dark:text-gray-300 text-[#111111] leading-relaxed mb-6">
+                      <p className="text-base dark:text-qgd-fg text-[#111111] leading-relaxed mb-6">
                         We analyze where you're losing the most time and money in your business operations. Zero pressure. Zero sales pitch. Just honest insights into what's actually costing you hours every week.
                       </p>
                     </div>
@@ -848,12 +849,12 @@ function SMBLandingPageContent() {
                     <div className={`p-6 rounded-xl ${
                       theme === 'dark'
                         ? 'bg-secondary-bg/50 border border-[#22d3ee]/20'
-                        : 'bg-white border border-gray-300'
+                        : 'bg-qgd-card border border-gray-300'
                     }`}>
                       <h4 className="text-sm font-bold dark:text-[#22d3ee] text-[#14b8a6] mb-3">
                         What happens:
                       </h4>
-                      <ul className="space-y-2 text-sm dark:text-gray-400 text-[#111111]">
+                      <ul className="space-y-2 text-sm dark:text-qgd-muted text-[#111111]">
                         <li className="flex items-start gap-2">
                           <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-[#22d3ee] text-[#14b8a6]" />
                           <span>Video call with automation specialist</span>
@@ -891,13 +892,13 @@ function SMBLandingPageContent() {
 
                     {/* Content */}
                     <div className="text-center mb-6">
-                      <h3 className="text-2xl font-bold dark:text-white text-[#008080] mb-4">
+                      <h3 className="text-2xl font-bold dark:text-qgd-fg text-[#008080] mb-4">
                         Step 2: Custom Automation Blueprint
                       </h3>
-                      <p className="text-sm dark:text-gray-400 text-gray-600 mb-4">
+                      <p className="text-sm dark:text-qgd-muted text-qgd-muted mb-4">
                         (Delivered in 48 Hours)
                       </p>
-                      <p className="text-base dark:text-gray-300 text-[#111111] leading-relaxed mb-6">
+                      <p className="text-base dark:text-qgd-fg text-[#111111] leading-relaxed mb-6">
                         We create a detailed plan showing exactly what to automate first for maximum ROI. You see the timeline, the cost, and the expected time savings before you approve anything.
                       </p>
                     </div>
@@ -906,12 +907,12 @@ function SMBLandingPageContent() {
                     <div className={`p-6 rounded-xl ${
                       theme === 'dark'
                         ? 'bg-secondary-bg/50 border border-primary-accent/20'
-                        : 'bg-white border border-gray-300'
+                        : 'bg-qgd-card border border-gray-300'
                     }`}>
                       <h4 className="text-sm font-bold dark:text-primary-accent text-[#ff5440] mb-3">
                         What you get:
                       </h4>
-                      <ul className="space-y-2 text-sm dark:text-gray-400 text-[#111111]">
+                      <ul className="space-y-2 text-sm dark:text-qgd-muted text-[#111111]">
                         <li className="flex items-start gap-2">
                           <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-primary-accent text-[#ff5440]" />
                           <span>Priority automation list</span>
@@ -953,13 +954,13 @@ function SMBLandingPageContent() {
 
                     {/* Content */}
                     <div className="text-center mb-6">
-                      <h3 className="text-2xl font-bold dark:text-white text-[#008080] mb-4">
+                      <h3 className="text-2xl font-bold dark:text-qgd-fg text-[#008080] mb-4">
                         Step 3: Build, Test, Launch
                       </h3>
-                      <p className="text-sm dark:text-gray-400 text-gray-600 mb-4">
+                      <p className="text-sm dark:text-qgd-muted text-qgd-muted mb-4">
                         (Live Within 2 Weeks)
                       </p>
-                      <p className="text-base dark:text-gray-300 text-[#111111] leading-relaxed mb-6">
+                      <p className="text-base dark:text-qgd-fg text-[#111111] leading-relaxed mb-6">
                         We handle all the technical work. You and your team get trained on the new systems. Most clients see time savings in the first week.
                       </p>
                     </div>
@@ -968,12 +969,12 @@ function SMBLandingPageContent() {
                     <div className={`p-6 rounded-xl ${
                       theme === 'dark'
                         ? 'bg-secondary-bg/50 border border-accent-lime/20'
-                        : 'bg-white border border-gray-300'
+                        : 'bg-qgd-card border border-gray-300'
                     }`}>
                       <h4 className="text-sm font-bold dark:text-[#ff7f50] text-green-600 mb-3">
                         What we do:
                       </h4>
-                      <ul className="space-y-2 text-sm dark:text-gray-400 text-[#111111]">
+                      <ul className="space-y-2 text-sm dark:text-qgd-muted text-[#111111]">
                         <li className="flex items-start gap-2">
                           <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 dark:text-[#ff7f50] text-green-600" />
                           <span>Build automations</span>
@@ -1005,8 +1006,8 @@ function SMBLandingPageContent() {
                     href="/consultation"
                     className={`inline-flex items-center gap-3 px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg ${
                       theme === 'dark'
-                        ? 'bg-gradient-to-r from-primary-accent to-accent-coral text-white hover:shadow-primary-accent/50'
-                        : 'bg-gradient-to-r from-[#ff5440] to-[#ff6b6b] text-white hover:shadow-lg'
+                        ? 'bg-gradient-to-r from-primary-accent to-accent-coral text-qgd-fg hover:shadow-primary-accent/50'
+                        : 'bg-gradient-to-r from-[#ff5440] to-[#ff6b6b] text-qgd-fg hover:shadow-lg'
                     }`}
                   >
                     Start My Free Assessment
@@ -1031,10 +1032,10 @@ function SMBLandingPageContent() {
               >
                 {/* Section Header */}
                 <motion.div variants={fadeInUp} className="text-center mb-16">
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold dark:text-white text-[#008080] mb-4">
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold dark:text-qgd-fg text-[#008080] mb-4">
                     Real Small Business Owners Share How AI Automation Gave Them Their Lives Back
                   </h2>
-                  <p className="text-lg dark:text-gray-300 text-[#111111] max-w-2xl mx-auto">
+                  <p className="text-lg dark:text-qgd-fg text-[#111111] max-w-2xl mx-auto">
                     See what happens when you stop doing everything yourself. Real results from real entrepreneurs in your position.
                   </p>
                 </motion.div>
@@ -1051,10 +1052,10 @@ function SMBLandingPageContent() {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
               <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-12">
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold dark:text-white text-[#008080] mb-4">
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold dark:text-qgd-fg text-[#008080] mb-4">
                     Frequently Asked Questions
                   </h2>
-                  <p className="text-lg dark:text-gray-300 text-[#111111]">
+                  <p className="text-lg dark:text-qgd-fg text-[#111111]">
                     Everything you need to know before getting started
                   </p>
                 </div>
@@ -1069,10 +1070,10 @@ function SMBLandingPageContent() {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
               <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-12">
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold dark:text-white text-[#008080] mb-4">
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold dark:text-qgd-fg text-[#008080] mb-4">
                     Latest Insights
                   </h2>
-                  <p className="text-lg dark:text-gray-300 text-[#111111]">
+                  <p className="text-lg dark:text-qgd-fg text-[#111111]">
                     Learn how to transform your business with AI and automation
                   </p>
                 </div>
@@ -1099,13 +1100,13 @@ function SMBLandingPageContent() {
               >
                 <motion.div variants={fadeInUp} className="mb-8">
                   <Clock className="w-16 h-16 mx-auto dark:text-primary-accent text-[#ff5440] mb-6" />
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold dark:text-white text-[#008080] mb-6">
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold dark:text-qgd-fg text-[#008080] mb-6">
                     Ready to Get Your Time Back?
                   </h2>
-                  <p className="text-xl dark:text-gray-300 text-[#111111] mb-4">
+                  <p className="text-xl dark:text-qgd-fg text-[#111111] mb-4">
                     Stop working <span className="dark:text-primary-accent text-[#ff5440] font-bold">IN</span> your business. Start working <span className="dark:text-[#22d3ee] text-[#14b8a6] font-bold">ON</span> your business.
                   </p>
-                  <p className="text-lg dark:text-gray-400 text-[#111111] max-w-2xl mx-auto">
+                  <p className="text-lg dark:text-qgd-muted text-[#111111] max-w-2xl mx-auto">
                     Over 200 entrepreneurs have already taken back control. The only question is: how much longer can you afford to wait?
                   </p>
                 </motion.div>
@@ -1115,20 +1116,20 @@ function SMBLandingPageContent() {
                   variants={fadeInUp}
                   className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
                 >
-                  <div className="dark:bg-secondary-bg/80 bg-[#f3f3f3] border dark:border-[#22d3ee]/30 border-gray-400 rounded-xl p-6 shadow-lg">
+                  <div className="dark:bg-secondary-bg/80 bg-qgd-bg border dark:border-[#22d3ee]/30 border-gray-400 rounded-xl p-6 shadow-lg">
                     <CheckCircle className="w-8 h-8 dark:text-[#ff7f50] text-green-600 mx-auto mb-3" />
-                    <p className="dark:text-white text-[#111111] font-semibold mb-1">Fast Setup</p>
-                    <p className="dark:text-gray-400 text-[#111111] text-sm">Live in 48 hours</p>
+                    <p className="dark:text-qgd-fg text-[#111111] font-semibold mb-1">Fast Setup</p>
+                    <p className="dark:text-qgd-muted text-[#111111] text-sm">Live in 48 hours</p>
                   </div>
-                  <div className="dark:bg-secondary-bg/80 bg-[#f3f3f3] border dark:border-accent-purple/30 border-gray-400 rounded-xl p-6 shadow-lg">
+                  <div className="dark:bg-secondary-bg/80 bg-qgd-bg border dark:border-accent-purple/30 border-gray-400 rounded-xl p-6 shadow-lg">
                     <Target className="w-8 h-8 dark:text-accent-purple text-[#14b8a6] mx-auto mb-3" />
-                    <p className="dark:text-white text-[#111111] font-semibold mb-1">Zero Risk</p>
-                    <p className="dark:text-gray-400 text-[#111111] text-sm">30-day guarantee</p>
+                    <p className="dark:text-qgd-fg text-[#111111] font-semibold mb-1">Zero Risk</p>
+                    <p className="dark:text-qgd-muted text-[#111111] text-sm">30-day guarantee</p>
                   </div>
-                  <div className="dark:bg-secondary-bg/80 bg-[#f3f3f3] border dark:border-primary-accent/30 border-gray-400 rounded-xl p-6 shadow-lg">
+                  <div className="dark:bg-secondary-bg/80 bg-qgd-bg border dark:border-primary-accent/30 border-gray-400 rounded-xl p-6 shadow-lg">
                     <Award className="w-8 h-8 dark:text-primary-accent text-[#ff5440] mx-auto mb-3" />
-                    <p className="dark:text-white text-[#111111] font-semibold mb-1">Real Results</p>
-                    <p className="dark:text-gray-400 text-[#111111] text-sm">Proven ROI</p>
+                    <p className="dark:text-qgd-fg text-[#111111] font-semibold mb-1">Real Results</p>
+                    <p className="dark:text-qgd-muted text-[#111111] text-sm">Proven ROI</p>
                   </div>
                 </motion.div>
 
@@ -1136,12 +1137,12 @@ function SMBLandingPageContent() {
                 <motion.div variants={fadeInUp}>
                   <Link 
                     href="/consultation"
-                    className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-[#ff5440] via-[#ff6b6b] to-[#ff5440] bg-size-200 bg-pos-0 hover:bg-pos-100 text-white text-xl font-bold rounded-xl shadow-2xl hover:shadow-[#ff5440]/50 transition-all duration-500 transform hover:scale-105"
+                    className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-[#ff5440] via-[#ff6b6b] to-[#ff5440] bg-size-200 bg-pos-0 hover:bg-pos-100 text-qgd-fg text-xl font-bold rounded-xl shadow-2xl hover:shadow-[#ff5440]/50 transition-all duration-500 transform hover:scale-105"
                   >
                     Claim My Spot
                     <ArrowRight className="w-6 h-6" />
                   </Link>
-                  <p className="dark:text-gray-400 text-[#111111] text-sm mt-4">
+                  <p className="dark:text-qgd-muted text-[#111111] text-sm mt-4">
                     Free consultation • No obligations • Results guaranteed
                   </p>
                 </motion.div>

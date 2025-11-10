@@ -1,6 +1,7 @@
 'use client'
 
 import { Header } from '@/components/layout/header'
+import { FlameBorder } from '@/components/ui/flame-border'
 import { Footer } from '@/components/layout/footer'
 import { useState, useEffect } from 'react'
 import { 
@@ -318,7 +319,7 @@ export default function CyberIntelligencePage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a 
                   href="/consultation" 
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-red-500 hover:bg-red-600 rounded-lg transition shadow-lg shadow-red-500/20"
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-qgd-fg bg-red-500 hover:bg-red-600 rounded-lg transition shadow-lg shadow-red-500/20"
                 >
                   <Shield className="w-5 h-5 mr-2" />
                   Audit My Business Now →
@@ -377,7 +378,7 @@ export default function CyberIntelligencePage() {
             <div className="text-center">
               <a 
                 href="/consultation" 
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-red-500 hover:bg-red-600 rounded-lg transition shadow-lg shadow-red-500/20"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-qgd-fg bg-red-500 hover:bg-red-600 rounded-lg transition shadow-lg shadow-red-500/20"
               >
                 Run My Security Audit →
               </a>
@@ -462,7 +463,7 @@ export default function CyberIntelligencePage() {
             <div className="text-center">
               <a 
                 href="/consultation" 
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-blue-500 hover:bg-blue-600 rounded-lg transition shadow-lg shadow-blue-500/20"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-qgd-fg bg-blue-500 hover:bg-blue-600 rounded-lg transition shadow-lg shadow-blue-500/20"
               >
                 See My Full Risk Map →
               </a>
@@ -565,7 +566,7 @@ export default function CyberIntelligencePage() {
                   <button
                     type="submit"
                     disabled={breachLoading || checksRemaining <= 0}
-                    className="px-8 py-3 bg-blue-500 hover:bg-blue-600 disabled:bg-muted disabled:cursor-not-allowed text-white font-semibold rounded-lg transition flex items-center justify-center gap-2"
+                    className="px-8 py-3 bg-blue-500 hover:bg-blue-600 disabled:bg-muted disabled:cursor-not-allowed text-qgd-fg font-semibold rounded-lg transition flex items-center justify-center gap-2"
                   >
                     {breachLoading ? (
                       <>
@@ -646,7 +647,7 @@ export default function CyberIntelligencePage() {
                         <p className="font-semibold mb-4">Found a breach? Get a full security audit →</p>
                         <a 
                           href="/consultation"
-                          className="inline-flex items-center justify-center px-6 py-3 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg transition"
+                          className="inline-flex items-center justify-center px-6 py-3 bg-red-500 hover:bg-red-600 text-qgd-fg font-semibold rounded-lg transition"
                         >
                           Schedule My Security Audit
                         </a>
@@ -660,7 +661,7 @@ export default function CyberIntelligencePage() {
                           <div className="p-4 rounded-lg bg-[#0c0c12] border border-red-200 dark:border-red-800">
                             <div className="flex items-start gap-3">
                               <div className="rounded-lg bg-gradient-to-br from-red-500 to-pink-500 p-2">
-                                <Shield className="h-5 w-5 text-white" />
+                                <Shield className="h-5 w-5 text-qgd-fg" />
                               </div>
                               <div className="flex-1">
                                 <h5 className="font-bold text-sm mb-1">Beyond Background Checks</h5>
@@ -668,7 +669,7 @@ export default function CyberIntelligencePage() {
                                   If this is an employee email, verify their identity hasn't been compromised
                                 </p>
                                 <a href="/background-checks">
-                                  <button className="text-xs px-3 py-1 bg-red-500 hover:bg-red-600 text-white rounded-lg transition">
+                                  <button className="text-xs px-3 py-1 bg-red-500 hover:bg-red-600 text-qgd-fg rounded-lg transition">
                                     Learn More →
                                   </button>
                                 </a>
@@ -680,7 +681,7 @@ export default function CyberIntelligencePage() {
                           <div className="p-4 rounded-lg bg-[#0c0c12] border border-teal-200 dark:border-teal-800">
                             <div className="flex items-start gap-3">
                               <div className="rounded-lg bg-gradient-to-br from-teal-500 to-emerald-500 p-2">
-                                <Zap className="h-5 w-5 text-white" />
+                                <Zap className="h-5 w-5 text-qgd-fg" />
                               </div>
                               <div className="flex-1">
                                 <h5 className="font-bold text-sm mb-1">Intelligent Automation</h5>
@@ -688,7 +689,7 @@ export default function CyberIntelligencePage() {
                                   Automate security monitoring and credential rotation
                                 </p>
                                 <a href="/intelligent-automation">
-                                  <button className="text-xs px-3 py-1 bg-teal-500 hover:bg-teal-600 text-white rounded-lg transition">
+                                  <button className="text-xs px-3 py-1 bg-qgd-primary/500 hover:bg-qgd-primary/600 text-qgd-fg rounded-lg transition">
                                     Explore Solutions →
                                   </button>
                                 </a>
@@ -711,7 +712,7 @@ export default function CyberIntelligencePage() {
                         <p className="font-semibold mb-4">Want to check your full security posture?</p>
                         <a 
                           href="/consultation"
-                          className="inline-flex items-center justify-center px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition"
+                          className="inline-flex items-center justify-center px-6 py-3 bg-blue-500 hover:bg-blue-600 text-qgd-fg font-semibold rounded-lg transition"
                         >
                           Get a Comprehensive Audit
                         </a>
@@ -725,7 +726,7 @@ export default function CyberIntelligencePage() {
                           <div className="p-4 rounded-lg bg-[#0c0c12] border border-purple-200 dark:border-purple-800">
                             <div className="flex items-start gap-3">
                               <div className="rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 p-2">
-                                <TrendingUp className="h-5 w-5 text-white" />
+                                <TrendingUp className="h-5 w-5 text-qgd-fg" />
                               </div>
                               <div className="flex-1">
                                 <h5 className="font-bold text-sm mb-1">Business Transformation</h5>
@@ -733,7 +734,7 @@ export default function CyberIntelligencePage() {
                                   Build security into your business systems from the ground up
                                 </p>
                                 <a href="/business-transformation">
-                                  <button className="text-xs px-3 py-1 bg-purple-500 hover:bg-purple-600 text-white rounded-lg transition">
+                                  <button className="text-xs px-3 py-1 bg-qgd-primary/500 hover:bg-qgd-primary/600 text-qgd-fg rounded-lg transition">
                                     Transform Your Business →
                                   </button>
                                 </a>
@@ -745,7 +746,7 @@ export default function CyberIntelligencePage() {
                           <div className="p-4 rounded-lg bg-[#0c0c12] border border-red-200 dark:border-red-800">
                             <div className="flex items-start gap-3">
                               <div className="rounded-lg bg-gradient-to-br from-red-500 to-pink-500 p-2">
-                                <Shield className="h-5 w-5 text-white" />
+                                <Shield className="h-5 w-5 text-qgd-fg" />
                               </div>
                               <div className="flex-1">
                                 <h5 className="font-bold text-sm mb-1">Beyond Background Checks</h5>
@@ -753,7 +754,7 @@ export default function CyberIntelligencePage() {
                                   Prevent insider threats before they happen
                                 </p>
                                 <a href="/background-checks">
-                                  <button className="text-xs px-3 py-1 bg-red-500 hover:bg-red-600 text-white rounded-lg transition">
+                                  <button className="text-xs px-3 py-1 bg-red-500 hover:bg-red-600 text-qgd-fg rounded-lg transition">
                                     Learn More →
                                   </button>
                                 </a>
@@ -793,7 +794,7 @@ export default function CyberIntelligencePage() {
             </p>
             <a 
               href="/consultation"
-              className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-blue-500 hover:bg-blue-600 rounded-lg transition shadow-lg shadow-blue-500/20"
+              className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-qgd-fg bg-blue-500 hover:bg-blue-600 rounded-lg transition shadow-lg shadow-blue-500/20"
             >
               Start Risk-Free →
             </a>
@@ -864,7 +865,7 @@ export default function CyberIntelligencePage() {
                       <p className="font-semibold">Your size isn't protection—it's the reason you're targeted.</p>
                       <a 
                         href="#breach-checker"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition mt-4"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-qgd-fg font-semibold rounded-lg transition mt-4"
                       >
                         <Lock className="w-4 h-4" />
                         Find Out How Exposed You Are →
@@ -880,7 +881,7 @@ export default function CyberIntelligencePage() {
                       <p className="font-semibold">You'll see exactly what criminals see, without the damage.</p>
                       <a 
                         href="/consultation"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition mt-4"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-qgd-fg font-semibold rounded-lg transition mt-4"
                       >
                         <Shield className="w-4 h-4" />
                         Book a Non-Disruptive Audit →
@@ -896,7 +897,7 @@ export default function CyberIntelligencePage() {
                       <p className="font-semibold">We don't just scan—we think like the attacker who's planning your breach right now.</p>
                       <a 
                         href="#solution"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition mt-4"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-qgd-fg font-semibold rounded-lg transition mt-4"
                       >
                         <FileSearch className="w-4 h-4" />
                         Compare: Scan vs. Custom Pen Test →
@@ -912,7 +913,7 @@ export default function CyberIntelligencePage() {
                       <p className="font-semibold">Every report is custom-built—no templates, no generic PDFs.</p>
                       <a 
                         href="/consultation"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition mt-4"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-qgd-fg font-semibold rounded-lg transition mt-4"
                       >
                         <FileSearch className="w-4 h-4" />
                         Request a Sample Report →
@@ -928,7 +929,7 @@ export default function CyberIntelligencePage() {
                       <p className="font-semibold">Think of it as insurance—except we also fix the vulnerabilities before they're exploited.</p>
                       <a 
                         href="/consultation"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition mt-4"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-qgd-fg font-semibold rounded-lg transition mt-4"
                       >
                         <DollarSign className="w-4 h-4" />
                         See Custom Pricing for Your Business →
@@ -944,7 +945,7 @@ export default function CyberIntelligencePage() {
                       <p className="font-semibold">We've never had to honor this guarantee—because every business has blind spots.</p>
                       <a 
                         href="/consultation"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition mt-4"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-qgd-fg font-semibold rounded-lg transition mt-4"
                       >
                         <Target className="w-4 h-4" />
                         Start Your Risk-Free Assessment →
@@ -980,7 +981,7 @@ export default function CyberIntelligencePage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
                 href="#breach-checker"
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-red-500 hover:bg-red-600 rounded-lg transition shadow-lg shadow-red-500/20"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-qgd-fg bg-red-500 hover:bg-red-600 rounded-lg transition shadow-lg shadow-red-500/20"
               >
                 <Lock className="w-5 h-5 mr-2" />
                 Check Any Email for Breaches →
@@ -1038,7 +1039,7 @@ export default function CyberIntelligencePage() {
                   />
                   <button
                     type="submit"
-                    className="w-full px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition"
+                    className="w-full px-6 py-3 bg-blue-500 hover:bg-blue-600 text-qgd-fg font-semibold rounded-lg transition"
                   >
                     Send It to My Inbox →
                   </button>

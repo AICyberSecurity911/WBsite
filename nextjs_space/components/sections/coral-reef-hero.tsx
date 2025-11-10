@@ -1,241 +1,152 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { ArrowRight, Play, Sparkles } from 'lucide-react'
+import { motion, useAnimation } from 'framer-motion'
+import { FlameBorder } from '@/components/ui/flame-border'
 
 export function CoralReefHero() {
-  const [mounted, setMounted] = useState(false)
   const [videoEnded, setVideoEnded] = useState(false)
-  const videoRef = useRef<HTMLVideoElement>(null)
+  const [showPanels, setShowPanels] = useState(false)
+  const controls = useAnimation()
 
   useEffect(() => {
-    setMounted(true)
-    // Autoplay video on mount
-    if (videoRef.current) {
-      videoRef.current.play().catch(err => {
-        console.log('Autoplay prevented:', err)
-        // If autoplay fails, just show the slides
-        setVideoEnded(true)
-      })
-    }
-  }, [])
+    // Auto-show panels after 8 seconds if video doesn't load/play
+    const timer = setTimeout(() => {
+      if (!videoEnded) {
+        setShowPanels(true)
+      }
+    }, 8000)
+
+    return () => clearTimeout(timer)
+  }, [videoEnded])
 
   const handleVideoEnd = () => {
     setVideoEnded(true)
-  }
-
-  if (!mounted) {
-    return null
+    setShowPanels(true)
   }
 
   return (
-    <section
-      className="relative w-full overflow-hidden"
-      style={{ 
-        height: 'calc(100vh - 26px)', // Increased by 1cm (38px)
-        marginTop: '64px'
-      }}
-    >
-      <AnimatePresence mode="wait">
-        {!videoEnded ? (
-          // VIDEO PHASE - Full Screen Split Video with Text Overlays
-          <motion.div
-            key="video-phase"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
-            className="relative w-full h-full"
-          >
-            {/* Full-Width Video */}
-            <video
-              ref={videoRef}
-              className="absolute inset-0 w-full h-full object-cover"
-              muted
-              playsInline
-              autoPlay
-              onEnded={handleVideoEnd}
-            >
-              <source src="/hero-video.mp4" type="video/mp4" />
-            </video>
+    <section className="relative min-h-[calc(100vh-64px)] flex items-center justify-center overflow-hidden bg-qgd-bg">
+      {/* Background Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-qgd-primary/20 via-qgd-bg to-qgd-accent/10" />
+      
+      {/* Video Background (if not ended) */}
+      {!showPanels && (
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            muted
+            playsInline
+            onEnded={handleVideoEnd}
+            className="w-full h-full object-cover opacity-90"
             
-            {/* Text Overlays Container - Split Screen Format */}
-            <div className="absolute inset-0 flex flex-col md:flex-row">
-              {/* LEFT - "Entrepreneur" Overlay - 3mm (11px) top margin */}
-              <div className="relative flex-1 flex items-start justify-start pl-6 md:pl-8 lg:pl-12" style={{ paddingTop: '11px' }}>
-                <motion.h1
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3, duration: 0.8 }}
-                  className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white drop-shadow-2xl"
-                  style={{
-                    textShadow: '0 4px 20px rgba(0,0,0,0.9), 0 0 40px rgba(255,255,255,0.4)'
-                  }}
-                >
-                  Entrepreneur
-                </motion.h1>
-              </div>
+          >
+            <source src="/hero-video.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-qgd-bg/40 backdrop-blur-sm" />
+        </div>
+      )}
 
-              {/* RIGHT - "Enterprise" Overlay - 3mm (11px) top margin */}
-              <div className="relative flex-1 flex items-start justify-start pl-6 md:pl-8 lg:pl-12" style={{ paddingTop: '11px' }}>
-                <motion.h1
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3, duration: 0.8 }}
-                  className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white drop-shadow-2xl"
-                  style={{
-                    textShadow: '0 4px 20px rgba(0,0,0,0.9), 0 0 40px rgba(255,255,255,0.4)'
-                  }}
-                >
-                  Enterprise
-                </motion.h1>
+      {/* Split Panel Layout */}
+      <div className={`container relative z-10 transition-opacity duration-1000 ${showPanels ? 'opacity-100' : 'opacity-0'}`}>
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          {/* Left Panel: SMB/Entrepreneur */}
+          <motion.div
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative"
+          >
+            <div className="relative group">
+              <div className="absolute -inset-0.5 rounded-2xl opacity-0 blur transition duration-500 group-hover:opacity-100 qgd-gradient-overlay" />
+              <div className="relative bg-qgd-card border border-qgd-border rounded-xl p-8 lg:p-10 shadow-qgd">
+                <div className="flex items-center gap-2 mb-4">
+                  <Sparkles className="w-6 h-6 text-qgd-accent" />
+                  <span className="text-sm font-semibold text-qgd-accent uppercase tracking-wide">
+                    For Entrepreneurs & SMBs
+                  </span>
+                </div>
+                <h2 className="text-3xl lg:text-4xl font-bold text-qgd-fg mb-4">
+                  Compete Like Fortune 500s
+                </h2>
+                <p className="text-qgd-muted mb-6 leading-relaxed">
+                  Get AI employees, intelligent automation, and NASA-grade security at a fraction of enterprise costs. No massive budgets required.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link
+                    href="/smb"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-qgd-primary hover:bg-qgd-primary/90 text-qgd-primaryContrast rounded-lg font-semibold transition-all hover:shadow-qgd-glow"
+                  >
+                    View Solutions
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                  <Link
+                    href="/smb#calculator"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-qgd-ring/10 hover:bg-qgd-ring/20 text-qgd-ring border border-qgd-ring/30 rounded-lg font-semibold transition-all"
+                  >
+                    Calculate Savings
+                  </Link>
+                </div>
+                <div className="mt-6 pt-6 border-t border-qgd-border">
+                  <p className="text-xs text-qgd-muted">
+                    ✓ Setup in 15 minutes  |  ✓ Results in 48 hours  |  ✓ 100% money-back guarantee
+                  </p>
+                </div>
               </div>
+              <FlameBorder />
             </div>
           </motion.div>
-        ) : (
-          // SLIDE PANELS PHASE - After Video Ends (ALWAYS SPLIT SCREEN LEFT/RIGHT)
+
+          {/* Right Panel: Enterprise */}
           <motion.div
-            key="slides-phase"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, ease: 'easeInOut' }}
-            className="relative h-full grid grid-cols-2"
+            initial={{ x: 50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="relative"
           >
-
-            {/* LEFT SLIDE: Small Business Edition (Quantum Deep Background) */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
-              className="relative bg-qgd-bg flex items-center justify-center p-4 sm:p-6 md:p-8 lg:p-12 h-full"
-            >
-              {/* Background Pattern */}
-              <div className="absolute inset-0 opacity-5">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(246,247,255,0.1)_1px,transparent_1px)] bg-[length:32px_32px]" />
-              </div>
-
-              {/* Content Container */}
-              <div className="relative z-10 max-w-xl space-y-4 md:space-y-6">
-                {/* Headline */}
-                <motion.h1
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4, duration: 0.6 }}
-                  className="font-display font-bold text-qgd-fg leading-[1.15]"
-                  style={{ fontSize: 'clamp(1.5rem, 4vw, 3rem)' }}
-                >
-                  Finally Compete with Fortune 500s—
-                  <span className="text-qgd-accent">Without Their Budget</span>
-                </motion.h1>
-
-                {/* Subheadline */}
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5, duration: 0.6 }}
-                  className="text-sm sm:text-base md:text-lg text-qgd-muted leading-relaxed"
-                >
-                  Stop doing everything yourself. Get the AI workforce and intelligence protection that billion-dollar companies use, at prices that make sense for your business.
-                </motion.p>
-
-                {/* CTA Buttons */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6, duration: 0.6 }}
-                  className="pt-4 space-y-3"
-                >
-                  {/* Primary CTA - View Small Business Solutions */}
-                  <Link href="/smb">
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="bg-qgd-primary text-qgd-primary-contrast font-bold text-sm md:text-base lg:text-lg px-4 sm:px-6 md:px-8 lg:px-10 py-3 sm:py-4 md:py-5 rounded-full shadow-2xl hover:shadow-qgd transition-all duration-300 hover:ring-4 hover:ring-qgd-ring/30 focus-visible:ring-4 focus-visible:ring-qgd-ring focus-visible:outline-none group flex items-center justify-center gap-2 md:gap-3 w-full"
-                    >
-                      <span>View Small Business Solutions</span>
-                      <ArrowRight className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 group-hover:translate-x-1 transition-transform" />
-                    </motion.button>
+            <div className="relative group">
+              <div className="absolute -inset-0.5 rounded-2xl opacity-0 blur transition duration-500 group-hover:opacity-100 qgd-gradient-overlay" />
+              <div className="relative bg-qgd-card border border-qgd-border rounded-xl p-8 lg:p-10 shadow-qgd">
+                <div className="flex items-center gap-2 mb-4">
+                  <Play className="w-6 h-6 text-qgd-ring" />
+                  <span className="text-sm font-semibold text-qgd-ring uppercase tracking-wide">
+                    For Enterprises
+                  </span>
+                </div>
+                <h2 className="text-3xl lg:text-4xl font-bold text-qgd-fg mb-4">
+                  Scale Without the Chaos
+                </h2>
+                <p className="text-qgd-muted mb-6 leading-relaxed">
+                  Transform your operations with AI workforce deployment, intelligent automation, and comprehensive cyber intelligence. Built for scale.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link
+                    href="/business-transformation"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-qgd-accent hover:bg-qgd-accent/90 text-qgd-primaryContrast rounded-lg font-semibold transition-all hover:shadow-qgd-glow"
+                  >
+                    Explore Services
+                    <ArrowRight className="w-4 h-4" />
                   </Link>
-
-                  {/* Secondary CTA - Stop the Burnout */}
-                  <Link href="/smb">
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="bg-qgd-ring/20 border-2 border-qgd-ring text-qgd-fg font-bold text-sm md:text-base lg:text-lg px-4 sm:px-6 md:px-8 lg:px-10 py-3 sm:py-4 md:py-5 rounded-full shadow-xl hover:shadow-qgd-glow hover:bg-qgd-ring/30 transition-all duration-300 hover:ring-4 hover:ring-qgd-ring/30 focus-visible:ring-4 focus-visible:ring-qgd-ring focus-visible:outline-none group flex items-center justify-center gap-2 md:gap-3 w-full"
-                    >
-                      <span>Stop the Burnout—Get My Freedom Back</span>
-                      <ArrowRight className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 group-hover:translate-x-1 transition-transform" />
-                    </motion.button>
+                  <Link
+                    href="/consultation"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-qgd-primary/10 hover:bg-qgd-primary/20 text-qgd-primary border border-qgd-primary/30 rounded-lg font-semibold transition-all"
+                  >
+                    Book Consultation
                   </Link>
-                </motion.div>
+                </div>
+                <div className="mt-6 pt-6 border-t border-qgd-border">
+                  <p className="text-xs text-qgd-muted">
+                    ✓ MIT/Caltech alumni  |  ✓ NASA recognition  |  ✓ 65+ transformations
+                  </p>
+                </div>
               </div>
-            </motion.div>
-
-            {/* RIGHT SLIDE: Enterprise Edition (Quantum Card Background) */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
-              className="relative bg-qgd-card flex items-center justify-center p-4 sm:p-6 md:p-8 lg:p-12 h-full"
-            >
-              {/* Background Pattern */}
-              <div className="absolute inset-0 opacity-5">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,127,80,0.1)_1px,transparent_1px)] bg-[length:32px_32px]" />
-              </div>
-
-              {/* Ambient Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-radial from-qgd-accent/10 via-transparent to-transparent opacity-30" />
-
-              {/* Content Container */}
-              <div className="relative z-10 max-w-xl space-y-4 md:space-y-6">
-                {/* Headline */}
-                <motion.h1
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4, duration: 0.6 }}
-                  className="font-display font-bold text-qgd-fg leading-[1.15]"
-                  style={{ fontSize: 'clamp(1.5rem, 4vw, 3rem)' }}
-                >
-                  Enterprise AI That Turns{' '}
-                  <span className="text-qgd-accent">Risk Into Profit</span>
-                </motion.h1>
-
-                {/* Subheadline */}
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5, duration: 0.6 }}
-                  className="text-sm sm:text-base md:text-lg text-qgd-muted leading-relaxed"
-                >
-                  Stop gambling with AI experiments. Scale automation with intelligence-grade security to capture 30% efficiency gains while competitors fail.
-                </motion.p>
-
-                {/* CTA Button */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6, duration: 0.6 }}
-                  className="pt-4"
-                >
-                  <Link href="/consultation">
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="bg-qgd-accent text-white font-bold text-sm md:text-base lg:text-lg px-4 sm:px-6 md:px-8 lg:px-10 py-3 sm:py-4 md:py-5 rounded-full shadow-2xl hover:shadow-qgd transition-all duration-300 hover:ring-4 hover:ring-qgd-accent/30 focus-visible:ring-4 focus-visible:ring-qgd-accent focus-visible:outline-none group flex items-center justify-center gap-2 md:gap-3 w-full"
-                    >
-                      <span>View Enterprise Solutions</span>
-                      <ArrowRight className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 group-hover:translate-x-1 transition-transform" />
-                    </motion.button>
-                  </Link>
-                </motion.div>
-              </div>
-            </motion.div>
+              <FlameBorder />
+            </div>
           </motion.div>
-        )}
-      </AnimatePresence>
+        </div>
+      </div>
     </section>
   )
 }

@@ -135,7 +135,7 @@ export function HiringRiskCalculator() {
 
             <Button
               onClick={handleCalculate}
-              className="w-full bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700 text-qgd-fg font-bold text-lg py-6 h-auto shadow-lg hover:shadow-xl transition-all duration-200"
+              className="w-full bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700 text-white font-bold text-lg py-6 h-auto shadow-lg hover:shadow-xl transition-all duration-200"
             >
               Calculate My Hiring Risk
               <AlertTriangle className="ml-2 h-5 w-5" />
@@ -230,10 +230,10 @@ export function HiringRiskCalculator() {
           className="mt-8 p-6 rounded-2xl bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-blue-950 dark:via-purple-950 dark:to-pink-950 border-2 border-red-300 dark:border-red-800"
         >
           <div className="mb-4">
-            <h3 className="text-2xl font-bold text-qgd-fg dark:text-qgd-fg mb-2">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
               💡 Protect Your Business with These Solutions:
             </h3>
-            <p className="text-qgd-muted dark:text-gray-300">
+            <p className="text-gray-700 dark:text-gray-300">
               Based on your risk profile, these services can help you avoid costly bad hires:
             </p>
           </div>
@@ -241,33 +241,33 @@ export function HiringRiskCalculator() {
           <div className="space-y-4">
             {/* Cyber Intelligence Recommendation */}
             {results.riskScore > 60 && (
-              <div className="rounded-xl border-2 border-qgd-border bg-qgd-card p-6 shadow-sm dark:border-qgd-border dark:bg-qgd-card">
+              <div className="rounded-xl border-2 border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
                 <div className="flex items-start gap-4">
                   <div className="rounded-lg bg-gradient-to-br from-blue-500 to-indigo-500 p-3">
-                    <Shield className="h-6 w-6 text-qgd-fg" />
+                    <Shield className="h-6 w-6 text-white" />
                   </div>
                   <div className="flex-1">
-                    <h4 className="text-lg font-bold text-qgd-fg dark:text-qgd-fg mb-1">
+                    <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
                       Cyber Intelligence
                     </h4>
-                    <p className="text-sm text-qgd-muted dark:text-gray-300 mb-3">
+                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
                       Verify candidates haven't had credentials exposed in data breaches
                     </p>
                     <div className="mb-3 space-y-1">
-                      <p className="text-xs font-semibold uppercase text-qgd-muted dark:text-qgd-muted">
+                      <p className="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400">
                         Why this is perfect for you:
                       </p>
-                      <p className="flex items-start gap-2 text-sm text-qgd-muted dark:text-gray-300">
+                      <p className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300">
                         <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-blue-600" />
                         Your risk score is {results.riskScore}/100 - protect sensitive access
                       </p>
-                      <p className="flex items-start gap-2 text-sm text-qgd-muted dark:text-gray-300">
+                      <p className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300">
                         <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-blue-600" />
                         One compromised employee could cost ${(results.annualRiskCost / 1000).toFixed(0)}K+
                       </p>
                     </div>
                     <a href="/cyber-intelligence">
-                      <Button className="w-full sm:w-auto bg-qgd-primary/600 hover:bg-qgd-primary/700 text-qgd-fg">
+                      <Button className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white">
                         Check Email Security →
                       </Button>
                     </a>
@@ -278,33 +278,33 @@ export function HiringRiskCalculator() {
 
             {/* Business Transformation Recommendation */}
             {hires[0] > 10 && (
-              <div className="rounded-xl border-2 border-qgd-border bg-qgd-card p-6 shadow-sm dark:border-qgd-border dark:bg-qgd-card">
+              <div className="rounded-xl border-2 border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
                 <div className="flex items-start gap-4">
                   <div className="rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 p-3">
-                    <TrendingUp className="h-6 w-6 text-qgd-fg" />
+                    <TrendingUp className="h-6 w-6 text-white" />
                   </div>
                   <div className="flex-1">
-                    <h4 className="text-lg font-bold text-qgd-fg dark:text-qgd-fg mb-1">
+                    <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
                       Business Transformation
                     </h4>
-                    <p className="text-sm text-qgd-muted dark:text-gray-300 mb-3">
+                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
                       Build hiring systems that reduce bad hire risk by design
                     </p>
                     <div className="mb-3 space-y-1">
-                      <p className="text-xs font-semibold uppercase text-qgd-muted dark:text-qgd-muted">
+                      <p className="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400">
                         Why this is perfect for you:
                       </p>
-                      <p className="flex items-start gap-2 text-sm text-qgd-muted dark:text-gray-300">
+                      <p className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300">
                         <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-purple-600" />
                         Hiring {hires[0]} people/year needs structured systems
                       </p>
-                      <p className="flex items-start gap-2 text-sm text-qgd-muted dark:text-gray-300">
+                      <p className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300">
                         <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-purple-600" />
                         Prevent bad hires before they happen with better processes
                       </p>
                     </div>
                     <a href="/business-transformation">
-                      <Button className="w-full sm:w-auto bg-qgd-primary/600 hover:bg-qgd-primary/700 text-qgd-fg">
+                      <Button className="w-full sm:w-auto bg-purple-600 hover:bg-purple-700 text-white">
                         Transform Your Hiring →
                       </Button>
                     </a>
@@ -314,33 +314,33 @@ export function HiringRiskCalculator() {
             )}
 
             {/* Intelligent Automation Recommendation */}
-            <div className="rounded-xl border-2 border-qgd-border bg-qgd-card p-6 shadow-sm dark:border-qgd-border dark:bg-qgd-card">
+            <div className="rounded-xl border-2 border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
               <div className="flex items-start gap-4">
                 <div className="rounded-lg bg-gradient-to-br from-teal-500 to-emerald-500 p-3">
-                  <Zap className="h-6 w-6 text-qgd-fg" />
+                  <Zap className="h-6 w-6 text-white" />
                 </div>
                 <div className="flex-1">
-                  <h4 className="text-lg font-bold text-qgd-fg dark:text-qgd-fg mb-1">
+                  <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
                     Intelligent Automation
                   </h4>
-                  <p className="text-sm text-qgd-muted dark:text-gray-300 mb-3">
+                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
                     Automate reference checks and credential verification
                   </p>
                   <div className="mb-3 space-y-1">
-                    <p className="text-xs font-semibold uppercase text-qgd-muted dark:text-qgd-muted">
+                    <p className="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400">
                       Why this is perfect for you:
                     </p>
-                    <p className="flex items-start gap-2 text-sm text-qgd-muted dark:text-gray-300">
-                      <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-qgd-ring600" />
+                    <p className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300">
+                      <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-teal-600" />
                       Save time on every hire with automated verification
                     </p>
-                    <p className="flex items-start gap-2 text-sm text-qgd-muted dark:text-gray-300">
-                      <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-qgd-ring600" />
+                    <p className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300">
+                      <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-teal-600" />
                       Catch discrepancies faster than manual review
                     </p>
                   </div>
                   <a href="/intelligent-automation">
-                    <Button className="w-full sm:w-auto bg-qgd-primary/600 hover:bg-qgd-primary/700 text-qgd-fg">
+                    <Button className="w-full sm:w-auto bg-teal-600 hover:bg-teal-700 text-white">
                       Automate Verification →
                     </Button>
                   </a>

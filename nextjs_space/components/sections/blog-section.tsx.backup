@@ -102,7 +102,7 @@ export function BlogSection() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="mb-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-100 to-pink-100 px-4 py-2 text-sm font-semibold text-qgd-primary700 dark:from-purple-900/50 dark:to-pink-900/50 dark:text-qgd-primary300"
+              className="mb-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-100 to-pink-100 px-4 py-2 text-sm font-semibold text-purple-700 dark:from-purple-900/50 dark:to-pink-900/50 dark:text-purple-300"
             >
               <BookOpen className="h-4 w-4" />
               Real Stories, Real Results
@@ -135,7 +135,7 @@ export function BlogSection() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.5 + idx * 0.1 }}
-                className="group overflow-hidden rounded-2xl bg-qgd-card shadow-lg transition-all hover:shadow-2xl dark:bg-qgd-card"
+                className="group overflow-hidden rounded-2xl bg-white shadow-lg transition-all hover:shadow-2xl dark:bg-gray-800"
               >
                 <Link href={`/blog/${post.slug}`}>
                   {/* Image */}
@@ -143,12 +143,12 @@ export function BlogSection() {
                     {/* Placeholder gradient - replace with actual images */}
                     <div className="absolute inset-0 bg-gradient-to-br from-teal-400 to-emerald-500 opacity-80 transition-opacity group-hover:opacity-100" />
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <BookOpen className="h-16 w-16 text-qgd-fg opacity-50" />
+                      <BookOpen className="h-16 w-16 text-white opacity-50" />
                     </div>
                     
                     {/* Category Badge */}
                     <div className="absolute left-4 top-4">
-                      <span className="rounded-full bg-qgd-card/90 px-3 py-1 text-xs font-semibold text-qgd-fg backdrop-blur-sm">
+                      <span className="rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-gray-900 backdrop-blur-sm">
                         {post.category}
                       </span>
                     </div>
@@ -156,12 +156,12 @@ export function BlogSection() {
 
                   {/* Content */}
                   <div className="p-6">
-                    <div className="mb-3 flex items-center gap-2 text-sm text-qgd-muted dark:text-qgd-muted">
+                    <div className="mb-3 flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
                       <Clock className="h-4 w-4" />
                       {post.readTime}
                     </div>
                     
-                    <h3 className="mb-3 text-xl font-bold text-qgd-fg transition-colors group-hover:text-qgd-ring600 dark:text-qgd-fg dark:group-hover:text-qgd-ring400">
+                    <h3 className="mb-3 text-xl font-bold text-gray-900 transition-colors group-hover:text-teal-600 dark:text-white dark:group-hover:text-teal-400">
                       {post.title}
                     </h3>
                     
@@ -169,7 +169,7 @@ export function BlogSection() {
                       {post.excerpt}
                     </p>
                     
-                    <div className="flex items-center gap-2 font-semibold text-qgd-ring600 dark:text-qgd-ring400">
+                    <div className="flex items-center gap-2 font-semibold text-teal-600 dark:text-teal-400">
                       Read More
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </div>
@@ -187,11 +187,11 @@ export function BlogSection() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.8 + idx * 0.1 }}
-                className="group overflow-hidden rounded-xl bg-qgd-card transition-all hover:shadow-lg dark:bg-qgd-card/50"
+                className="group overflow-hidden rounded-xl bg-gray-50 transition-all hover:shadow-lg dark:bg-gray-800/50"
               >
                 <Link href={`/blog/${post.slug}`} className="block p-6">
                   <div className="mb-3 flex items-center justify-between">
-                    <span className="rounded-full bg-qgd-primary/100 px-3 py-1 text-xs font-semibold text-qgd-ring800 dark:bg-qgd-primary/900 dark:text-qgd-ring200">
+                    <span className="rounded-full bg-teal-100 px-3 py-1 text-xs font-semibold text-teal-800 dark:bg-teal-900 dark:text-teal-200">
                       {post.category}
                     </span>
                     <span className="flex items-center gap-1 text-xs text-[#b8b6c9]">
@@ -200,7 +200,7 @@ export function BlogSection() {
                     </span>
                   </div>
                   
-                  <h3 className="mb-2 text-lg font-bold text-qgd-fg transition-colors group-hover:text-qgd-ring600 dark:text-qgd-fg dark:group-hover:text-qgd-ring400">
+                  <h3 className="mb-2 text-lg font-bold text-gray-900 transition-colors group-hover:text-teal-600 dark:text-white dark:group-hover:text-teal-400">
                     {post.title}
                   </h3>
                   
@@ -208,7 +208,7 @@ export function BlogSection() {
                     {post.excerpt}
                   </p>
                   
-                  <div className="flex items-center gap-2 text-sm font-semibold text-qgd-ring700 dark:text-qgd-ring300">
+                  <div className="flex items-center gap-2 text-sm font-semibold text-teal-700 dark:text-teal-300">
                     Read Article
                     <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
                   </div>

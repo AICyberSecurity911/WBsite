@@ -1,4 +1,5 @@
 import { Header } from '@/components/layout/header'
+import { FlameBorder } from '@/components/ui/flame-border'
 import { Footer } from '@/components/layout/footer'
 import { Metadata } from 'next'
 import { Button } from '@/components/ui/button'
@@ -152,15 +153,15 @@ export default function BusinessTransformationPage() {
         <section className="relative min-h-screen overflow-hidden gradient-bg flex items-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
             <div className="text-center">
-              <div className="inline-block bg-purple-100 dark:bg-purple-900/30 rounded-full px-4 py-2 mb-6">
-                <span className="text-sm font-semibold text-purple-700 dark:text-purple-300 uppercase tracking-wide">
+              <div className="inline-block bg-qgd-primary/100 dark:bg-qgd-primary/900/30 rounded-full px-4 py-2 mb-6">
+                <span className="text-sm font-semibold text-qgd-primary700 dark:text-qgd-primary300 uppercase tracking-wide">
                   Business Transformation
                 </span>
               </div>
               
               <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
                 Stop Being a Prisoner<br />
-                <span className="text-purple-500">of Your Business.</span><br />
+                <span className="text-qgd-primary500">of Your Business.</span><br />
                 Start Leading It.
               </h1>
               
@@ -176,7 +177,7 @@ export default function BusinessTransformationPage() {
                 <Button 
                   asChild
                   size="lg"
-                  className="bg-purple-500 hover:bg-purple-600 text-white text-lg px-8 py-6 h-auto"
+                  className="bg-qgd-primary/500 hover:bg-qgd-primary/600 text-qgd-fg text-lg px-8 py-6 h-auto"
                 >
                   <a href="#calculator">
                     Show Me What's Draining My Profit
@@ -203,7 +204,7 @@ export default function BusinessTransformationPage() {
           <div className="container max-w-6xl">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                You're Not Failing. <span className="text-purple-500">Your Systems Are.</span>
+                You're Not Failing. <span className="text-qgd-primary500">Your Systems Are.</span>
               </h2>
             </div>
 
@@ -217,7 +218,7 @@ export default function BusinessTransformationPage() {
               </p>
               
               <p className="text-xl font-semibold text-[#f6f7ff]">
-                Here's the truth no one tells you: <span className="text-purple-600 dark:text-purple-400">Growth without systems creates chaos that looks like progress.</span>
+                Here's the truth no one tells you: <span className="text-qgd-primary600 dark:text-qgd-primary400">Growth without systems creates chaos that looks like progress.</span>
               </p>
             </div>
 
@@ -236,7 +237,7 @@ export default function BusinessTransformationPage() {
                     icon: DollarSign,
                     title: "Profit Leaks",
                     description: "You're spending $8K/month on tools your team barely uses. You're losing 15–20% to inefficient workflows. You're writing off \"necessary\" expenses that a Fortune 500 would cut immediately.",
-                    color: "text-orange-500"
+                    color: "text-qgd-accent500"
                   },
                   {
                     icon: Users,
@@ -248,12 +249,12 @@ export default function BusinessTransformationPage() {
                     icon: Scale,
                     title: "Founder Burnout",
                     description: "You haven't taken a real vacation in two years. You're answering emails during family dinner. Your partner asks, \"When does it get easier?\" and you don't have an answer.",
-                    color: "text-purple-500"
+                    color: "text-qgd-primary500"
                   }
                 ].map((item, index) => (
                   <div
                     key={index}
-                    className="p-8 rounded-2xl border-2 border-gray-200 dark:border-gray-800 hover:border-purple-300 dark:hover:border-purple-700 transition-all duration-300"
+                    className="p-8 rounded-2xl border-2 border-qgd-border dark:border-qgd-border hover:border-purple-300 dark:hover:border-purple-700 transition-all duration-300"
                   >
                     <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 mb-4 ${item.color}`}>
                       <item.icon className="h-6 w-6" />
@@ -281,7 +282,7 @@ export default function BusinessTransformationPage() {
               <Button 
                 asChild
                 size="lg"
-                className="bg-purple-500 hover:bg-purple-600 text-white text-lg px-8 py-6 h-auto"
+                className="bg-qgd-primary/500 hover:bg-qgd-primary/600 text-qgd-fg text-lg px-8 py-6 h-auto"
               >
                 <a href="#calculator">
                   Find My Profit Leaks (Free Assessment)
@@ -296,13 +297,13 @@ export default function BusinessTransformationPage() {
         <section className="section-padding bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
           <div className="container max-w-6xl">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 bg-purple-50 dark:bg-purple-950/30 text-purple-600 dark:text-purple-400 px-4 py-2 rounded-full mb-4">
+              <div className="inline-flex items-center gap-2 bg-qgd-primary/50 dark:bg-qgd-primary/950/30 text-qgd-primary600 dark:text-qgd-primary400 px-4 py-2 rounded-full mb-4">
                 <Rocket className="h-4 w-4" />
                 <span className="text-sm font-semibold">Our Methodology</span>
               </div>
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
                 We Don't Sell Transformation.<br />
-                <span className="text-purple-500">We Engineer It—Custom-Built for You.</span>
+                <span className="text-qgd-primary500">We Engineer It—Custom-Built for You.</span>
               </h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
                 Most consultants hand you a 60-page strategy deck and disappear. We're different.<br /><br />
@@ -382,7 +383,7 @@ export default function BusinessTransformationPage() {
                   }
                 ].map((phase, index) => {
                   const colorClasses = {
-                    purple: "border-purple-300 dark:border-purple-700 bg-purple-50 dark:bg-purple-950/20",
+                    purple: "border-purple-300 dark:border-purple-700 bg-qgd-primary/50 dark:bg-qgd-primary/950/20",
                     blue: "border-blue-300 dark:border-blue-700 bg-[#0c0c12] dark:bg-[#0c0c12]",
                     teal: "border-teal-300 dark:border-teal-700 bg-[#0c0c12] dark:bg-[#0c0c12]",
                     emerald: "border-emerald-300 dark:border-emerald-700 bg-[#0c0c12] dark:bg-[#0c0c12]"
@@ -399,13 +400,13 @@ export default function BusinessTransformationPage() {
                           phase.color === 'blue' ? 'from-blue-500 to-blue-600' :
                           phase.color === 'teal' ? 'from-teal-500 to-teal-600' :
                           'from-emerald-500 to-emerald-600'
-                        } flex items-center justify-center text-white shadow-lg`}>
+                        } flex items-center justify-center text-qgd-fg shadow-lg`}>
                           <phase.icon className="h-8 w-8" />
                         </div>
                         
                         <div className="flex-1">
                           <div className="flex items-center gap-3 mb-2">
-                            <span className="text-sm font-bold text-purple-600 dark:text-purple-400 uppercase tracking-wide">
+                            <span className="text-sm font-bold text-qgd-primary600 dark:text-qgd-primary400 uppercase tracking-wide">
                               {phase.phase}
                             </span>
                             <span className="text-sm text-muted-foreground">•</span>
@@ -424,7 +425,7 @@ export default function BusinessTransformationPage() {
                             ))}
                           </div>
 
-                          <div className="p-4 rounded-lg bg-[#0c0c12] border border-gray-200 dark:border-gray-800">
+                          <div className="p-4 rounded-lg bg-[#0c0c12] border border-qgd-border dark:border-qgd-border">
                             <p className="text-sm font-semibold text-[#f6f7ff]">
                               <strong>Deliverable:</strong> {phase.deliverable}
                             </p>
@@ -434,19 +435,19 @@ export default function BusinessTransformationPage() {
                             <div className="mt-4 p-4 rounded-lg bg-[#0c0c12] dark:bg-[#0c0c12] border border-teal-200 dark:border-teal-800">
                               <p className="text-sm text-muted-foreground">
                                 <strong>How we do it:</strong> We integrate{' '}
-                                <Link href="/intelligent-automation" className="text-teal-600 dark:text-teal-400 hover:underline font-semibold">
+                                <Link href="/intelligent-automation" className="text-qgd-ring600 dark:text-qgd-ring400 hover:underline font-semibold">
                                   AI employees
                                 </Link>
                                 {' '}where humans shouldn't be doing repetitive work, deploy{' '}
-                                <Link href="/intelligent-automation" className="text-teal-600 dark:text-teal-400 hover:underline font-semibold">
+                                <Link href="/intelligent-automation" className="text-qgd-ring600 dark:text-qgd-ring400 hover:underline font-semibold">
                                   intelligent automations
                                 </Link>
                                 {' '}to eliminate manual tasks, and ensure{' '}
-                                <Link href="/cyber-intelligence" className="text-teal-600 dark:text-teal-400 hover:underline font-semibold">
+                                <Link href="/cyber-intelligence" className="text-qgd-ring600 dark:text-qgd-ring400 hover:underline font-semibold">
                                   cyber intelligence
                                 </Link>
                                 {' '}protects what you've built. We also help verify your partners with{' '}
-                                <Link href="/background-checks" className="text-teal-600 dark:text-teal-400 hover:underline font-semibold">
+                                <Link href="/background-checks" className="text-qgd-ring600 dark:text-qgd-ring400 hover:underline font-semibold">
                                   thorough background checks
                                 </Link>
                                 {' '}before you commit.
@@ -477,9 +478,9 @@ export default function BusinessTransformationPage() {
               <div className="overflow-x-auto">
                 <table className="w-full border-collapse">
                   <thead>
-                    <tr className="border-b-2 border-gray-300 dark:border-gray-700">
+                    <tr className="border-b-2 border-gray-300 dark:border-qgd-border">
                       <th className="text-left p-4 font-bold text-lg">Traditional Consulting</th>
-                      <th className="text-left p-4 font-bold text-lg text-purple-600 dark:text-purple-400">QuantumLeap Transformation</th>
+                      <th className="text-left p-4 font-bold text-lg text-qgd-primary600 dark:text-qgd-primary400">QuantumLeap Transformation</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -491,7 +492,7 @@ export default function BusinessTransformationPage() {
                       ["Deliver reports", "Deliver working systems"],
                       ["Work above your team", "Work with your team (embed, don't observe)"]
                     ].map((row, index) => (
-                      <tr key={index} className="border-b border-gray-200 dark:border-gray-800">
+                      <tr key={index} className="border-b border-qgd-border dark:border-qgd-border">
                         <td className="p-4 text-muted-foreground">{row[0]}</td>
                         <td className="p-4 font-semibold text-[#f6f7ff]">{row[1]}</td>
                       </tr>
@@ -500,7 +501,7 @@ export default function BusinessTransformationPage() {
                 </table>
               </div>
 
-              <p className="text-center text-xl font-bold mt-8 text-purple-600 dark:text-purple-400">
+              <p className="text-center text-xl font-bold mt-8 text-qgd-primary600 dark:text-qgd-primary400">
                 We don't tell you what to do. We do it with you—and train your team so it lasts after we leave.
               </p>
             </div>
@@ -509,7 +510,7 @@ export default function BusinessTransformationPage() {
               <Button 
                 asChild
                 size="lg"
-                className="bg-purple-500 hover:bg-purple-600 text-white text-lg px-8 py-6 h-auto"
+                className="bg-qgd-primary/500 hover:bg-qgd-primary/600 text-qgd-fg text-lg px-8 py-6 h-auto"
               >
                 <a href="/consultation">
                   Book My Business Diagnosis Call
@@ -524,13 +525,13 @@ export default function BusinessTransformationPage() {
         <section id="calculator" className="section-padding bg-[#07070b]">
           <div className="container max-w-7xl">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 bg-purple-50 dark:bg-purple-950/30 text-purple-600 dark:text-purple-400 px-4 py-2 rounded-full mb-4">
+              <div className="inline-flex items-center gap-2 bg-qgd-primary/50 dark:bg-qgd-primary/950/30 text-qgd-primary600 dark:text-qgd-primary400 px-4 py-2 rounded-full mb-4">
                 <BarChart3 className="h-4 w-4" />
                 <span className="text-sm font-semibold">Interactive Tool</span>
               </div>
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
                 How Much Profit Is Hiding in<br />
-                <span className="text-purple-500">Your Business Right Now?</span>
+                <span className="text-qgd-primary500">Your Business Right Now?</span>
               </h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
                 Most businesses leak 15–35% of revenue to inefficiency. In 60 seconds, see how much you could recover—and what it would mean for your freedom.
@@ -546,7 +547,7 @@ export default function BusinessTransformationPage() {
           <div className="container max-w-6xl">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                Real Founders. <span className="text-purple-500">Real Freedom.</span>
+                Real Founders. <span className="text-qgd-primary500">Real Freedom.</span>
               </h2>
             </div>
 
@@ -591,7 +592,7 @@ export default function BusinessTransformationPage() {
               ].map((testimonial, index) => (
                 <div
                   key={index}
-                  className="p-8 rounded-2xl border-2 border-gray-200 dark:border-gray-800 hover:border-purple-300 dark:hover:border-purple-700 transition-all duration-300 bg-[#07070b]"
+                  className="p-8 rounded-2xl border-2 border-qgd-border dark:border-qgd-border hover:border-purple-300 dark:hover:border-purple-700 transition-all duration-300 bg-[#07070b]"
                 >
                   <div className="mb-6">
                     <p className="text-2xl font-bold text-[#f6f7ff] mb-4">
@@ -616,12 +617,12 @@ export default function BusinessTransformationPage() {
                     </div>
                   </div>
 
-                  <p className="text-lg font-semibold text-purple-600 dark:text-purple-400 italic mb-4">
+                  <p className="text-lg font-semibold text-qgd-primary600 dark:text-qgd-primary400 italic mb-4">
                     "{testimonial.testimonial}"
                   </p>
 
-                  <div className="flex items-center gap-3 pt-4 border-t border-gray-200 dark:border-gray-800">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold">
+                  <div className="flex items-center gap-3 pt-4 border-t border-qgd-border dark:border-qgd-border">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-qgd-fg font-bold">
                       {testimonial.name.charAt(0)}
                     </div>
                     <div>
@@ -637,7 +638,7 @@ export default function BusinessTransformationPage() {
               <Button 
                 asChild
                 size="lg"
-                className="bg-purple-500 hover:bg-purple-600 text-white text-lg px-8 py-6 h-auto"
+                className="bg-qgd-primary/500 hover:bg-qgd-primary/600 text-qgd-fg text-lg px-8 py-6 h-auto"
               >
                 <a href="/consultation">
                   I Want Results Like These — Show Me How
@@ -654,7 +655,7 @@ export default function BusinessTransformationPage() {
             <article className="prose prose-lg dark:prose-invert max-w-none">
               <h2 className="text-4xl font-bold mb-6 text-center">
                 The Day I Realized My Business Was Running Me<br />
-                <span className="text-purple-500">(And How I Finally Took It Back)</span>
+                <span className="text-qgd-primary500">(And How I Finally Took It Back)</span>
               </h2>
 
               <div className="text-muted-foreground mb-12 text-center">
@@ -723,7 +724,7 @@ export default function BusinessTransformationPage() {
                 Her exit interview destroyed me.
               </p>
 
-              <p className="pl-6 border-l-4 border-gray-300 dark:border-gray-700">
+              <p className="pl-6 border-l-4 border-gray-300 dark:border-qgd-border">
                 "I love this company," she said. "But I can't keep working in chaos. Nothing is documented. Every process changes based on your mood that day. I need structure. I need to know what success looks like without asking you first."
               </p>
 
@@ -757,14 +758,14 @@ export default function BusinessTransformationPage() {
               </ul>
 
               <p>
-                Nothing stuck. Because I was treating "systems" like a product I could buy instead of what it actually is: <strong className="text-purple-600 dark:text-purple-400">the operating system that runs your business when you're not in the room.</strong>
+                Nothing stuck. Because I was treating "systems" like a product I could buy instead of what it actually is: <strong className="text-qgd-primary600 dark:text-qgd-primary400">the operating system that runs your business when you're not in the room.</strong>
               </p>
 
               <p>
                 Here's what I finally learned:
               </p>
 
-              <p className="text-xl font-bold text-purple-600 dark:text-purple-400">
+              <p className="text-xl font-bold text-qgd-primary600 dark:text-qgd-primary400">
                 Systems = Documented Decisions + Automated Workflows + Clear Accountability
               </p>
 
@@ -894,7 +895,7 @@ export default function BusinessTransformationPage() {
                 But the ROI that changed my life?
               </p>
 
-              <p className="text-2xl font-bold text-purple-600 dark:text-purple-400">
+              <p className="text-2xl font-bold text-qgd-primary600 dark:text-qgd-primary400">
                 Freedom.
               </p>
 
@@ -940,7 +941,7 @@ export default function BusinessTransformationPage() {
                 Growth without systems doesn't set you free. It traps you deeper.
               </p>
 
-              <div className="my-12 p-8 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 text-white">
+              <div className="my-12 p-8 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 text-qgd-fg">
                 <h3 className="text-3xl font-bold mb-4">See How Much Freedom You're Leaving on the Table</h3>
                 <p className="text-lg mb-6">
                   Take 60 seconds to see:
@@ -988,7 +989,7 @@ export default function BusinessTransformationPage() {
           <div className="container max-w-4xl">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                What Founders Ask <span className="text-purple-500">Before Starting</span>
+                What Founders Ask <span className="text-qgd-primary500">Before Starting</span>
               </h2>
             </div>
 
@@ -1217,9 +1218,9 @@ export default function BusinessTransformationPage() {
                 <AccordionItem 
                   key={index} 
                   value={`item-${index}`}
-                  className="border-2 border-gray-200 dark:border-gray-800 rounded-xl px-6 hover:border-purple-300 dark:hover:border-purple-700 transition-colors"
+                  className="border-2 border-qgd-border dark:border-qgd-border rounded-xl px-6 hover:border-purple-300 dark:hover:border-purple-700 transition-colors"
                 >
-                  <AccordionTrigger className="text-left font-semibold hover:text-purple-600 dark:hover:text-purple-400">
+                  <AccordionTrigger className="text-left font-semibold hover:text-qgd-primary600 dark:hover:text-qgd-primary400">
                     {item.question}
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground leading-relaxed">
@@ -1236,7 +1237,7 @@ export default function BusinessTransformationPage() {
           <div className="container max-w-4xl">
             <div className="text-center mb-12">
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                The Only <span className="text-purple-500">Risk-Free</span><br />
+                The Only <span className="text-qgd-primary500">Risk-Free</span><br />
                 Business Transformation You'll Ever Make
               </h2>
             </div>
@@ -1269,7 +1270,7 @@ export default function BusinessTransformationPage() {
                   <Button 
                     asChild
                     size="lg"
-                    className="bg-[#0c0c12] hover:bg-[#0c0c12] text-white text-lg px-8 py-6 h-auto"
+                    className="bg-[#0c0c12] hover:bg-[#0c0c12] text-qgd-fg text-lg px-8 py-6 h-auto"
                   >
                     <a href="/consultation">
                       Start My Risk-Free Transformation
@@ -1287,7 +1288,7 @@ export default function BusinessTransformationPage() {
           <div className="container max-w-6xl">
             <div className="text-center mb-12">
               <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-                Trusted by Organizations That <span className="text-purple-500">Demand Excellence</span>
+                Trusted by Organizations That <span className="text-qgd-primary500">Demand Excellence</span>
               </h2>
               <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
                 Our team has served in strategic roles at Fortune 500 companies and built systems that processed billions in transactions. We bring that enterprise rigor to ambitious SMBs—<strong>custom-built for your business, not templated from a playbook.</strong>
@@ -1312,7 +1313,7 @@ export default function BusinessTransformationPage() {
         </section>
 
         {/* Final CTA */}
-        <section className="section-padding bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+        <section className="section-padding bg-gradient-to-r from-purple-600 to-pink-600 text-qgd-fg">
           <div className="container max-w-4xl text-center">
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">
               Stop Fighting Your Business.<br />Start Scaling It.

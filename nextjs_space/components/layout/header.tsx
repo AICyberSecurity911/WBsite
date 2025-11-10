@@ -1,4 +1,3 @@
-
 'use client'
 
 import { useState, useEffect } from 'react'
@@ -48,8 +47,8 @@ export function Header() {
     <header 
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${
         scrolled 
-          ? 'glass-effect shadow-lg' 
-          : 'bg-transparent'
+          ? 'bg-qgd-bg/90 backdrop-blur-xl shadow-qgd border-b border-qgd-border' 
+          : 'bg-qgd-bg/50 backdrop-blur-sm'
       }`}
     >
       <nav className="container flex h-16 items-center justify-between px-4 sm:px-6">
@@ -64,8 +63,8 @@ export function Header() {
               priority
             />
           </div>
-          <span className="text-base sm:text-lg font-bold text-gray-900 dark:text-white whitespace-nowrap">
-            QuantumLeap <span className="ai-pulse text-orange-500">AI</span>
+          <span className="text-base sm:text-lg font-bold text-qgd-fg whitespace-nowrap">
+            QuantumLeap <span className="ai-pulse text-qgd-accent">AI</span>
           </span>
         </Link>
 
@@ -78,7 +77,7 @@ export function Header() {
                   href={item.href}
                   onMouseEnter={() => setServicesOpen(true)}
                   onMouseLeave={() => setServicesOpen(false)}
-                  className="flex items-center gap-1 text-sm font-medium text-gray-700 transition-colors hover:text-teal-600 dark:text-gray-300 dark:hover:text-teal-400 whitespace-nowrap"
+                  className="flex items-center gap-1 text-sm font-medium text-qgd-muted transition-colors hover:text-qgd-ring whitespace-nowrap"
                 >
                   {item.name}
                   <ChevronDown className="h-4 w-4" />
@@ -89,19 +88,18 @@ export function Header() {
                     onMouseLeave={() => setServicesOpen(false)}
                     className="absolute left-0 top-full z-50 pt-2 w-80"
                   >
-                    <div className="rounded-xl bg-white p-2 shadow-xl dark:bg-gray-900 dark:border dark:border-gray-800"
-                    >
+                    <div className="rounded-xl bg-qgd-card p-2 shadow-qgd border border-qgd-border">
                       {services.map((service) => (
                         <Link
                           key={service.name}
                           href={service.href}
                           onClick={() => setServicesOpen(false)}
-                          className="block rounded-lg p-3 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800"
+                          className="block rounded-lg p-3 transition-colors hover:bg-qgd-primary/10 hover:border-qgd-ring/20 border border-transparent"
                         >
-                          <div className="font-semibold text-gray-900 dark:text-white text-sm">
+                          <div className="font-semibold text-qgd-fg text-sm">
                             {service.name}
                           </div>
-                          <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                          <div className="text-xs text-qgd-muted mt-0.5">
                             {service.description}
                           </div>
                         </Link>
@@ -114,7 +112,7 @@ export function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm font-medium text-gray-700 transition-colors hover:text-teal-600 dark:text-gray-300 dark:hover:text-teal-400 whitespace-nowrap"
+                className="text-sm font-medium text-qgd-muted transition-colors hover:text-qgd-ring whitespace-nowrap"
               >
                 {item.name}
               </Link>
@@ -126,7 +124,7 @@ export function Header() {
             variant="ghost"
             size="sm"
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="h-9 w-9 p-0 rounded-full"
+            className="h-9 w-9 p-0 rounded-full text-qgd-muted hover:text-qgd-ring hover:bg-qgd-primary/10"
           >
             {theme === 'dark' ? (
               <Sun className="h-4 w-4" />
@@ -140,7 +138,7 @@ export function Header() {
           <Button 
             asChild
             size="sm"
-            className="btn-primary rounded-full px-4 xl:px-5 shadow-lg hover:shadow-xl transition-shadow text-sm"
+            className="bg-qgd-primary hover:bg-qgd-primary/90 text-qgd-primaryContrast rounded-full px-4 xl:px-5 shadow-qgd hover:shadow-qgd-glow transition-all text-sm"
           >
             <Link href="/consultation">
               Start Free
@@ -154,7 +152,7 @@ export function Header() {
             variant="ghost"
             size="icon"
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="h-9 w-9"
+            className="h-9 w-9 text-qgd-muted hover:text-qgd-ring"
           >
             {theme === 'dark' ? (
               <Sun className="h-5 w-5" />
@@ -166,7 +164,7 @@ export function Header() {
           <Button
             variant="ghost"
             size="icon"
-            className="h-9 w-9"
+            className="h-9 w-9 text-qgd-muted hover:text-qgd-ring"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? (
@@ -180,11 +178,11 @@ export function Header() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="absolute left-0 right-0 top-16 z-40 border-t bg-white dark:bg-gray-900 lg:hidden max-h-[calc(100vh-4rem)] overflow-y-auto shadow-xl">
+          <div className="absolute left-0 right-0 top-16 z-40 border-t border-qgd-border bg-qgd-card lg:hidden max-h-[calc(100vh-4rem)] overflow-y-auto shadow-qgd">
             <div className="container space-y-1 py-6">
               {/* Services Section */}
               <div className="mb-4">
-                <div className="px-3 py-2 text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                <div className="px-3 py-2 text-xs font-bold uppercase tracking-wider text-qgd-muted">
                   Services
                 </div>
                 <div className="space-y-1">
@@ -192,13 +190,13 @@ export function Header() {
                     <Link
                       key={service.name}
                       href={service.href}
-                      className="block rounded-lg px-3 py-3 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                      className="block rounded-lg px-3 py-3 hover:bg-qgd-primary/10 transition-colors border border-transparent hover:border-qgd-ring/20"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      <div className="font-semibold text-gray-900 dark:text-white text-sm">
+                      <div className="font-semibold text-qgd-fg text-sm">
                         {service.name}
                       </div>
-                      <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                      <div className="text-xs text-qgd-muted mt-0.5">
                         {service.description}
                       </div>
                     </Link>
@@ -212,7 +210,7 @@ export function Header() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="block rounded-lg px-3 py-3 text-sm font-semibold text-gray-700 hover:bg-gray-50 hover:text-teal-600 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-teal-400 transition-colors"
+                    className="block rounded-lg px-3 py-3 text-sm font-semibold text-qgd-muted hover:bg-qgd-primary/10 hover:text-qgd-ring transition-colors"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.name}
@@ -220,9 +218,9 @@ export function Header() {
                 ))}
               </div>
 
-              <div className="pt-4 border-t border-gray-200 dark:border-gray-800 mt-4">
-                <Button asChild className="btn-primary w-full rounded-full shadow-lg text-base py-6">
-                  <Link href="#calculator" onClick={() => setMobileMenuOpen(false)}>
+              <div className="pt-4 border-t border-qgd-border mt-4">
+                <Button asChild className="bg-qgd-primary hover:bg-qgd-primary/90 text-qgd-primaryContrast w-full rounded-full shadow-qgd text-base py-6">
+                  <Link href="/consultation" onClick={() => setMobileMenuOpen(false)}>
                     Start Free
                   </Link>
                 </Button>

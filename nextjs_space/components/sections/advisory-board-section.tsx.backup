@@ -155,7 +155,7 @@ export default function AdvisoryBoardSection() {
           transition={{ duration: 0.6 }}
         >
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-6 text-slate-900 dark:text-qgd-fg"
+            className="text-4xl md:text-5xl font-bold mb-6 text-slate-900 dark:text-white"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -179,7 +179,7 @@ export default function AdvisoryBoardSection() {
           {/* Navigation Buttons */}
           <button
             onClick={handlePrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-20 bg-qgd-card dark:bg-slate-800 p-3 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 border border-slate-200 dark:border-slate-700 group"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-20 bg-white dark:bg-slate-800 p-3 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 border border-slate-200 dark:border-slate-700 group"
             aria-label="Previous board members"
           >
             <ChevronLeft className="w-6 h-6 text-slate-600 dark:text-slate-300 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
@@ -187,7 +187,7 @@ export default function AdvisoryBoardSection() {
 
           <button
             onClick={handleNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 z-20 bg-qgd-card dark:bg-slate-800 p-3 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 border border-slate-200 dark:border-slate-700 group"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 z-20 bg-white dark:bg-slate-800 p-3 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 border border-slate-200 dark:border-slate-700 group"
             aria-label="Next board members"
           >
             <ChevronRight className="w-6 h-6 text-slate-600 dark:text-slate-300 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
@@ -212,7 +212,7 @@ export default function AdvisoryBoardSection() {
                 {getCurrentMembers().map((member, idx) => (
                   <motion.div
                     key={member.name}
-                    className="bg-qgd-card dark:bg-slate-800 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-slate-200 dark:border-slate-700 group h-full"
+                    className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-slate-200 dark:border-slate-700 group h-full"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: idx * 0.1 }}
@@ -237,7 +237,7 @@ export default function AdvisoryBoardSection() {
 
                         {/* Name Only (Right of Image) */}
                         <div className="flex-1">
-                          <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-qgd-fg group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-tight">
+                          <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-tight">
                             {member.name}
                           </h3>
                         </div>

@@ -1,6 +1,5 @@
 
 import { Header } from '@/components/layout/header'
-import { FlameBorder } from '@/components/ui/flame-border'
 import { Footer } from '@/components/layout/footer'
 import { HeroSection } from '@/components/sections/hero-section'
 import { TrustBarSection } from '@/components/sections/trust-bar-section'
