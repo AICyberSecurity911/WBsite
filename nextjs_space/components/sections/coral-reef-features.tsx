@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import { LucideIcon, Zap, Shield, Users, TrendingUp, Clock, Lock, Target, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import { FlameBorder } from '@/components/ui/flame-border'
 
 // Feature Card Type
 interface FeatureCardProps {
@@ -51,20 +52,23 @@ export function FeatureCard({
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       className={`
-        relative bg-secondary-bg rounded-2xl p-6 
+        relative bg-qgd-card border border-qgd-border rounded-2xl p-6 
         min-h-[280px] flex flex-col
-        transition-all duration-300 ease-in-out
-        hover:scale-[1.03] hover:ring-2 ${ringClass}
-        focus-within:ring-2 focus-within:ring-primary-accent
+        transition-all duration-500 ease-in-out
+        hover:scale-[1.02] hover:shadow-qgd
+        focus-within:ring-2 focus-within:ring-qgd-ring
         group cursor-pointer
       `}
     >
+      {/* Flame Border */}
+      {isHovered && <FlameBorder r={16} color="var(--copper)" seg={2} width={1} dur={28} />}
+      
       {/* Top Accent Bar */}
       <div 
-        className="absolute top-0 left-0 right-0 h-1 rounded-t-2xl transition-all duration-300"
+        className="absolute top-0 left-0 right-0 h-1 rounded-t-2xl transition-all duration-300 z-0"
         style={{ 
-          backgroundColor: isHovered ? `var(--${accentColor})` : 'transparent',
-          opacity: isHovered ? 1 : 0
+          backgroundColor: isHovered ? 'var(--accent)' : 'transparent',
+          opacity: isHovered ? 0.5 : 0
         }}
       />
 
@@ -75,29 +79,29 @@ export function FeatureCard({
           rotate: isHovered ? 5 : 0
         }}
         transition={{ duration: 0.3 }}
-        className="flex items-center justify-center w-14 h-14 rounded-xl mb-4"
+        className="flex items-center justify-center w-14 h-14 rounded-xl mb-4 relative z-10"
         style={{ 
-          backgroundColor: `rgba(var(--${accentColor}-rgb, 255, 127, 80), 0.1)`,
+          backgroundColor: isHovered ? 'rgba(124,58,237,0.15)' : 'rgba(255,127,80,0.1)',
         }}
       >
         <Icon 
           className="w-7 h-7 transition-colors duration-300"
           style={{ 
             color: isHovered 
-              ? `var(--${accentColor})` 
-              : 'var(--text-secondary)'
+              ? 'var(--primary)' 
+              : 'var(--muted)'
           }}
           strokeWidth={1.5}
         />
       </motion.div>
 
       {/* Title */}
-      <h3 className="text-xl font-display font-bold text-text-primary mb-3 group-hover:text-primary-accent transition-colors duration-300">
+      <h3 className="text-xl font-display font-bold text-qgd-fg mb-3 group-hover:text-qgd-accent transition-colors duration-300 relative z-10">
         {title}
       </h3>
 
       {/* Description */}
-      <p className="text-text-secondary leading-relaxed flex-grow mb-4">
+      <p className="text-qgd-muted leading-relaxed flex-grow mb-4 relative z-10">
         {description}
       </p>
 
@@ -105,7 +109,7 @@ export function FeatureCard({
       {link && (
         <Link 
           href={link}
-          className="text-sm font-semibold text-primary-accent hover:text-accent-cyan transition-colors duration-200 flex items-center gap-1 group/link focus-visible:ring-2 focus-visible:ring-primary-accent focus-visible:outline-none rounded px-1 -mx-1"
+          className="text-sm font-semibold text-qgd-accent hover:text-qgd-ring transition-colors duration-200 flex items-center gap-1 group/link focus-visible:ring-2 focus-visible:ring-qgd-ring focus-visible:outline-none rounded px-1 -mx-1 relative z-10"
         >
           Learn more 
           <motion.span
@@ -119,10 +123,10 @@ export function FeatureCard({
 
       {/* Glow Effect on Hover */}
       <div 
-        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0"
         style={{
           boxShadow: isHovered 
-            ? `0 0 40px rgba(var(--${accentColor}-rgb, 255, 127, 80), 0.15)` 
+            ? '0 0 40px var(--glow)' 
             : 'none'
         }}
       />
@@ -192,10 +196,10 @@ export function CoralReefFeatures() {
   ]
 
   return (
-    <section className="relative py-20 lg:py-32 bg-primary-bg overflow-hidden">
+    <section className="relative py-20 lg:py-32 bg-qgd-bg overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:32px_32px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(246,247,255,0.1)_1px,transparent_1px)] bg-[length:32px_32px]" />
       </div>
 
       <div className="container relative z-10 px-4 sm:px-6">

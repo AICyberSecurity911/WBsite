@@ -5,16 +5,22 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Coral Reef Palette CSS Variables */
+/* Quantum Gradient (Dark) CSS Variables */
 :root {
-  --accent-coral-rgb: 255, 127, 80;
-  --accent-cyan-rgb: 64, 224, 208;
-  --accent-purple-rgb: 167, 85, 248;
-  --accent-gold-rgb: 255, 193, 7;
-  --accent-lime-rgb: 198, 255, 0;
-  --accent-pink-rgb: 245, 0, 87;
-  --accent-teal-rgb: 38, 166, 154;
-  --accent-white-rgb: 255, 255, 255;
+  --bg: #07070b;
+  --fg: #f6f7ff;
+  --muted: #b8b6c9;
+  --card: #0c0c12;
+  --primary: #5312c4;
+  --primary-contrast: #f7f7fb;
+  --accent: #ff7f50;
+  --ring: #22d3ee;
+  --glow: rgba(124,58,237,0.55);
+  --border: #2c2c3d;
+  --shadow: rgba(255,127,80,0.28);
+  --cardbg: #0c0c12;
+  --glow-strength: 0.97;
+  --copper: #b87333;
 }
 
 /* ============================================
@@ -150,89 +156,94 @@
   }
 }
 
+@keyframes dashTravel {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -1000;
+  }
+}
+
 @layer base {
   :root {
-    /* QuantumLeap AI Brand Colors - Refined Electric Teal */
-    --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    /* Quantum Gradient (Dark) - Base HSL colors for Shadcn compatibility */
+    --background: 240 40% 4%; /* #07070b */
+    --foreground: 240 100% 98%; /* #f6f7ff */
+    --card: 240 30% 6%; /* #0c0c12 */
+    --card-foreground: 240 100% 98%;
+    --popover: 240 30% 6%;
+    --popover-foreground: 240 100% 98%;
     
-    /* Primary - Electric Teal (single action color) */
-    --primary: 175 100% 38%;
-    --primary-foreground: 0 0% 100%;
+    /* Primary - Purple */
+    --primary: 265 95% 42%; /* #5312c4 */
+    --primary-foreground: 240 100% 98%; /* #f7f7fb */
     
-    /* Accent - Coral for subtle highlights only */
-    --accent-coral: 14 100% 63%;
+    /* Accent - Coral/Orange */
+    --accent-hsl: 16 100% 65%; /* #ff7f50 */
     
-    /* Navy for text emphasis */
-    --navy: 222 47% 11%;
+    /* Muted Elements */
+    --muted: 250 20% 75%; /* #b8b6c9 */
+    --muted-foreground: 250 20% 75%;
     
-    /* Muted/Subtle Elements */
-    --muted: 220 13% 97%;
-    --muted-foreground: 215 16% 47%;
+    --accent: 240 30% 6%;
+    --accent-foreground: 240 100% 98%;
     
-    --accent: 220 13% 97%;
-    --accent-foreground: 222 47% 11%;
-    
-    --secondary: 220 13% 97%;
-    --secondary-foreground: 222 47% 11%;
+    --secondary: 240 30% 6%;
+    --secondary-foreground: 240 100% 98%;
     
     --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive-foreground: 240 100% 98%;
     
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 175 100% 38%;
-    --radius: 1rem;
+    --border: 240 25% 18%; /* #2c2c3d */
+    --input: 240 25% 18%;
+    --ring: 190 77% 51%; /* #22d3ee */
+    --radius: 0.75rem;
     
-    /* Chart colors */
-    --chart-1: 175 100% 38%;
-    --chart-2: 175 100% 48%;
-    --chart-3: 175 80% 58%;
-    --chart-4: 220 9% 46%;
-    --chart-5: 222 47% 11%;
+    /* Chart colors - Quantum palette */
+    --chart-1: 265 95% 42%;
+    --chart-2: 190 77% 51%;
+    --chart-3: 16 100% 65%;
+    --chart-4: 250 20% 75%;
+    --chart-5: 240 100% 98%;
   }
 
   .dark {
-    --background: 222 47% 11%;
-    --foreground: 210 40% 98%;
-    --card: 220 13% 18%;
-    --card-foreground: 210 40% 98%;
-    --popover: 220 13% 18%;
-    --popover-foreground: 210 40% 98%;
+    /* Dark mode inherits the same Quantum Gradient colors */
+    --background: 240 40% 4%;
+    --foreground: 240 100% 98%;
+    --card: 240 30% 6%;
+    --card-foreground: 240 100% 98%;
+    --popover: 240 30% 6%;
+    --popover-foreground: 240 100% 98%;
     
-    /* Primary - Electric Teal for dark mode */
-    --primary: 175 100% 38%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 265 95% 42%;
+    --primary-foreground: 240 100% 98%;
     
-    /* Accent - Coral for subtle highlights */
-    --accent-coral: 14 100% 63%;
+    --accent-hsl: 16 100% 65%;
     
-    --muted: 220 13% 18%;
-    --muted-foreground: 220 9% 63%;
+    --muted: 250 20% 75%;
+    --muted-foreground: 250 20% 75%;
     
-    --accent: 220 13% 18%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 240 30% 6%;
+    --accent-foreground: 240 100% 98%;
     
-    --secondary: 220 13% 18%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 240 30% 6%;
+    --secondary-foreground: 240 100% 98%;
     
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 240 100% 98%;
     
-    --border: 220 13% 28%;
-    --input: 220 13% 28%;
-    --ring: 175 100% 38%;
+    --border: 240 25% 18%;
+    --input: 240 25% 18%;
+    --ring: 190 77% 51%;
     
     /* Chart colors */
-    --chart-1: 175 100% 38%;
-    --chart-2: 175 100% 48%;
-    --chart-3: 175 80% 58%;
-    --chart-4: 220 9% 63%;
-    --chart-5: 210 40% 98%;
+    --chart-1: 265 95% 42%;
+    --chart-2: 190 77% 51%;
+    --chart-3: 16 100% 65%;
+    --chart-4: 250 20% 75%;
+    --chart-5: 240 100% 98%;
   }
 }
 
@@ -276,15 +287,15 @@
   }
 
   .gradient-bg {
-    background: linear-gradient(135deg, #ffffff 0%, #f0fdfa 50%, #ffffff 100%);
+    background: linear-gradient(135deg, #07070b 0%, #0c0c12 50%, #07070b 100%);
   }
 
   .dark .gradient-bg {
-    background: linear-gradient(135deg, #071230 0%, #0a1a2e 50%, #071230 100%);
+    background: linear-gradient(135deg, #07070b 0%, #0c0c12 50%, #07070b 100%);
   }
 
   .text-gradient {
-    background: linear-gradient(135deg, #00c2b3 0%, #00a8a0 100%);
+    background: linear-gradient(135deg, #5312c4 0%, #7c3aed 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -369,13 +380,13 @@
      ============================================ */
   .btn-primary {
     @apply relative inline-flex items-center justify-center gap-2 
-    px-8 py-4 rounded-xl text-base font-semibold text-white
-    bg-gradient-to-br from-teal-500 to-teal-600 shadow-lg shadow-teal-500/30
+    px-8 py-4 rounded-xl text-base font-semibold
+    bg-[#5312c4] text-[#f7f7fb] shadow-lg
     transition-all duration-300 ease-out overflow-hidden
-    hover:from-teal-600 hover:to-teal-700 hover:shadow-xl hover:shadow-teal-600/40 
+    hover:bg-[#7c3aed] hover:shadow-xl
     hover:scale-[1.02] hover:-translate-y-0.5
     active:scale-[0.98]
-    focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2
+    focus:outline-none focus:ring-2 focus:ring-[#22d3ee] focus:ring-offset-2
     disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100
     before:absolute before:inset-0 before:bg-white/0 before:transition-all before:duration-300
     hover:before:bg-white/10;
@@ -395,30 +406,28 @@
   .btn-secondary {
     @apply relative inline-flex items-center justify-center gap-2 
     px-8 py-4 rounded-xl text-base font-semibold overflow-hidden
-    bg-transparent border-2 border-teal-500 text-teal-600
+    bg-transparent border-2 border-[#ff7f50] text-[#ff7f50]
     transition-all duration-300 ease-out
-    hover:bg-teal-50 hover:scale-[1.02] hover:-translate-y-0.5 hover:border-teal-600
-    hover:shadow-lg hover:shadow-teal-500/20
+    hover:bg-[#ff7f50]/10 hover:scale-[1.02] hover:-translate-y-0.5
+    hover:shadow-lg
     active:scale-[0.98]
-    focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2
+    focus:outline-none focus:ring-2 focus:ring-[#22d3ee] focus:ring-offset-2
     disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100
-    dark:text-teal-400 dark:border-teal-500 dark:hover:bg-teal-950/50
-    before:absolute before:inset-0 before:bg-teal-500/0 before:transition-all before:duration-300
-    hover:before:bg-teal-500/10;
+    before:absolute before:inset-0 before:bg-[#ff7f50]/0 before:transition-all before:duration-300
+    hover:before:bg-[#ff7f50]/10;
   }
 
   .btn-ghost {
     @apply relative inline-flex items-center justify-center gap-2 
     px-8 py-4 rounded-xl text-base font-semibold
-    bg-transparent text-teal-600
+    bg-transparent text-[#b8b6c9]
     transition-all duration-300 ease-out overflow-hidden
-    hover:bg-teal-50 hover:scale-[1.02]
+    hover:bg-[#0c0c12] hover:scale-[1.02] hover:text-[#f6f7ff]
     active:scale-[0.98]
-    focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2
+    focus:outline-none focus:ring-2 focus:ring-[#22d3ee] focus:ring-offset-2
     disabled:opacity-50 disabled:cursor-not-allowed
-    dark:text-teal-400 dark:hover:bg-teal-950/50
-    before:absolute before:inset-0 before:bg-teal-500/0 before:transition-all before:duration-300
-    hover:before:bg-teal-500/5;
+    before:absolute before:inset-0 before:bg-white/0 before:transition-all before:duration-300
+    hover:before:bg-white/5;
   }
 
   .btn-magnetic {

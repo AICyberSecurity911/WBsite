@@ -64,22 +64,26 @@ const config: Config = {
           foreground: 'hsl(var(--card-foreground))',
         },
         
-        // 🌊 CORAL REEF PALETTE - Dark Mode First
-        'primary-bg': '#004D40',      // Deep Forest Teal
-        'secondary-bg': '#121212',    // Almost Black
-        'primary-accent': '#FF7F50',  // Vibrant Coral
-        'text-primary': '#FFFFFF',    // White
-        'text-secondary': '#B0BFC6',  // Light Grey
+        // ⚡ QUANTUM GRADIENT (DARK) PALETTE
+        'qgd': {
+          bg: '#07070b',           // Deep background
+          fg: '#f6f7ff',           // Near-white text
+          muted: '#b8b6c9',        // Muted text
+          card: '#0c0c12',         // Card background
+          primary: '#5312c4',      // Purple primary
+          'primary-contrast': '#f7f7fb',  // Text on primary
+          accent: '#ff7f50',       // Coral accent
+          ring: '#22d3ee',         // Cyan focus ring
+          border: '#2c2c3d',       // Border color
+          copper: '#b87333',       // Copper flame
+        },
         
-        // Extended 8-Card Accent Palette
-        'accent-coral': '#FF7F50',    // Vibrant Coral
-        'accent-cyan': '#40E0D0',     // Bright Cyan
-        'accent-purple': '#A755F8',   // Vibrant Purple
-        'accent-gold': '#FFC107',     // Bright Gold
-        'accent-lime': '#C6FF00',     // Lime Green
-        'accent-pink': '#F50057',     // Hot Pink
-        'accent-teal': '#26A69A',     // Bright Teal
-        'accent-white': '#FFFFFF',    // White
+        // Legacy compatibility
+        'primary-bg': '#07070b',
+        'secondary-bg': '#0c0c12',
+        'primary-accent': '#ff7f50',
+        'text-primary': '#f6f7ff',
+        'text-secondary': '#b8b6c9',
         
         // Legacy QuantumLeap colors (preserved for backward compatibility)
         teal: {
@@ -126,6 +130,10 @@ const config: Config = {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+      },
+      boxShadow: {
+        qgd: '0 10px 30px -10px rgba(255,127,80,0.28)',
+        'qgd-glow': '0 0 20px var(--glow)',
       },
       keyframes: {
         'accordion-down': {

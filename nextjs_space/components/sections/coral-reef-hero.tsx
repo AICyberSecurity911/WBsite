@@ -104,16 +104,16 @@ export function CoralReefHero() {
             className="relative h-full grid grid-cols-2"
           >
 
-            {/* LEFT SLIDE: Small Business Edition (Deep Forest Teal #004D40) */}
+            {/* LEFT SLIDE: Small Business Edition (Quantum Deep Background) */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
-              className="relative bg-primary-bg flex items-center justify-center p-4 sm:p-6 md:p-8 lg:p-12 h-full"
+              className="relative bg-qgd-bg flex items-center justify-center p-4 sm:p-6 md:p-8 lg:p-12 h-full"
             >
               {/* Background Pattern */}
               <div className="absolute inset-0 opacity-5">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:32px_32px]" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(246,247,255,0.1)_1px,transparent_1px)] bg-[length:32px_32px]" />
               </div>
 
               {/* Content Container */}
@@ -123,11 +123,11 @@ export function CoralReefHero() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4, duration: 0.6 }}
-                  className="font-display font-bold text-white leading-[1.15]"
+                  className="font-display font-bold text-qgd-fg leading-[1.15]"
                   style={{ fontSize: 'clamp(1.5rem, 4vw, 3rem)' }}
                 >
                   Finally Compete with Fortune 500s—
-                  <span className="text-primary-accent">Without Their Budget</span>
+                  <span className="text-qgd-accent">Without Their Budget</span>
                 </motion.h1>
 
                 {/* Subheadline */}
@@ -135,7 +135,7 @@ export function CoralReefHero() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.6 }}
-                  className="text-sm sm:text-base md:text-lg text-white leading-relaxed"
+                  className="text-sm sm:text-base md:text-lg text-qgd-muted leading-relaxed"
                 >
                   Stop doing everything yourself. Get the AI workforce and intelligence protection that billion-dollar companies use, at prices that make sense for your business.
                 </motion.p>
@@ -152,7 +152,7 @@ export function CoralReefHero() {
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="bg-primary-accent text-white font-bold text-sm md:text-base lg:text-lg px-4 sm:px-6 md:px-8 lg:px-10 py-3 sm:py-4 md:py-5 rounded-full shadow-2xl hover:shadow-primary-accent/50 transition-all duration-300 hover:ring-4 hover:ring-primary-accent/30 focus-visible:ring-4 focus-visible:ring-primary-accent focus-visible:outline-none group flex items-center justify-center gap-2 md:gap-3 w-full"
+                      className="bg-qgd-primary text-qgd-primary-contrast font-bold text-sm md:text-base lg:text-lg px-4 sm:px-6 md:px-8 lg:px-10 py-3 sm:py-4 md:py-5 rounded-full shadow-2xl hover:shadow-qgd transition-all duration-300 hover:ring-4 hover:ring-qgd-ring/30 focus-visible:ring-4 focus-visible:ring-qgd-ring focus-visible:outline-none group flex items-center justify-center gap-2 md:gap-3 w-full"
                     >
                       <span>View Small Business Solutions</span>
                       <ArrowRight className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 group-hover:translate-x-1 transition-transform" />
@@ -164,7 +164,7 @@ export function CoralReefHero() {
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="bg-accent-cyan/20 border-2 border-accent-cyan text-white font-bold text-sm md:text-base lg:text-lg px-4 sm:px-6 md:px-8 lg:px-10 py-3 sm:py-4 md:py-5 rounded-full shadow-xl hover:shadow-accent-cyan/50 hover:bg-accent-cyan/30 transition-all duration-300 hover:ring-4 hover:ring-accent-cyan/30 focus-visible:ring-4 focus-visible:ring-accent-cyan focus-visible:outline-none group flex items-center justify-center gap-2 md:gap-3 w-full"
+                      className="bg-qgd-ring/20 border-2 border-qgd-ring text-qgd-fg font-bold text-sm md:text-base lg:text-lg px-4 sm:px-6 md:px-8 lg:px-10 py-3 sm:py-4 md:py-5 rounded-full shadow-xl hover:shadow-qgd-glow hover:bg-qgd-ring/30 transition-all duration-300 hover:ring-4 hover:ring-qgd-ring/30 focus-visible:ring-4 focus-visible:ring-qgd-ring focus-visible:outline-none group flex items-center justify-center gap-2 md:gap-3 w-full"
                     >
                       <span>Stop the Burnout—Get My Freedom Back</span>
                       <ArrowRight className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 group-hover:translate-x-1 transition-transform" />
@@ -174,12 +174,12 @@ export function CoralReefHero() {
               </div>
             </motion.div>
 
-            {/* RIGHT SLIDE: Enterprise Edition (Almost Black #121212) */}
+            {/* RIGHT SLIDE: Enterprise Edition (Quantum Card Background) */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
-              className="relative bg-secondary-bg flex items-center justify-center p-4 sm:p-6 md:p-8 lg:p-12 h-full"
+              className="relative bg-qgd-card flex items-center justify-center p-4 sm:p-6 md:p-8 lg:p-12 h-full"
             >
               {/* Background Pattern */}
               <div className="absolute inset-0 opacity-5">
@@ -187,7 +187,7 @@ export function CoralReefHero() {
               </div>
 
               {/* Ambient Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-radial from-primary-accent/10 via-transparent to-transparent opacity-30" />
+              <div className="absolute inset-0 bg-gradient-radial from-qgd-accent/10 via-transparent to-transparent opacity-30" />
 
               {/* Content Container */}
               <div className="relative z-10 max-w-xl space-y-4 md:space-y-6">
@@ -196,11 +196,11 @@ export function CoralReefHero() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4, duration: 0.6 }}
-                  className="font-display font-bold text-white leading-[1.15]"
+                  className="font-display font-bold text-qgd-fg leading-[1.15]"
                   style={{ fontSize: 'clamp(1.5rem, 4vw, 3rem)' }}
                 >
                   Enterprise AI That Turns{' '}
-                  <span className="text-primary-accent">Risk Into Profit</span>
+                  <span className="text-qgd-accent">Risk Into Profit</span>
                 </motion.h1>
 
                 {/* Subheadline */}
@@ -208,7 +208,7 @@ export function CoralReefHero() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.6 }}
-                  className="text-sm sm:text-base md:text-lg text-white leading-relaxed"
+                  className="text-sm sm:text-base md:text-lg text-qgd-muted leading-relaxed"
                 >
                   Stop gambling with AI experiments. Scale automation with intelligence-grade security to capture 30% efficiency gains while competitors fail.
                 </motion.p>
@@ -224,7 +224,7 @@ export function CoralReefHero() {
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="bg-primary-accent text-white font-bold text-sm md:text-base lg:text-lg px-4 sm:px-6 md:px-8 lg:px-10 py-3 sm:py-4 md:py-5 rounded-full shadow-2xl hover:shadow-primary-accent/50 transition-all duration-300 hover:ring-4 hover:ring-primary-accent/30 focus-visible:ring-4 focus-visible:ring-primary-accent focus-visible:outline-none group flex items-center justify-center gap-2 md:gap-3 w-full"
+                      className="bg-qgd-accent text-white font-bold text-sm md:text-base lg:text-lg px-4 sm:px-6 md:px-8 lg:px-10 py-3 sm:py-4 md:py-5 rounded-full shadow-2xl hover:shadow-qgd transition-all duration-300 hover:ring-4 hover:ring-qgd-accent/30 focus-visible:ring-4 focus-visible:ring-qgd-accent focus-visible:outline-none group flex items-center justify-center gap-2 md:gap-3 w-full"
                     >
                       <span>View Enterprise Solutions</span>
                       <ArrowRight className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 group-hover:translate-x-1 transition-transform" />
