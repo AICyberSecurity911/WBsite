@@ -21,7 +21,7 @@ export const metadata = {
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-950">
+    <div className="min-h-screen bg-qgd-bg">
       <Header />
       <main>
         <CoralReefHero />

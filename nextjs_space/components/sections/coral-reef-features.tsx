@@ -29,19 +29,8 @@ export function FeatureCard({
 }: FeatureCardProps) {
   const [isHovered, setIsHovered] = useState(false)
 
-  // Ring color mapping for Tailwind
-  const ringColorMap: Record<string, string> = {
-    'accent-coral': 'hover:ring-accent-coral',
-    'accent-cyan': 'hover:ring-accent-cyan',
-    'accent-purple': 'hover:ring-accent-purple',
-    'accent-gold': 'hover:ring-accent-gold',
-    'accent-lime': 'hover:ring-accent-lime',
-    'accent-pink': 'hover:ring-accent-pink',
-    'accent-teal': 'hover:ring-accent-teal',
-    'accent-white': 'hover:ring-accent-white',
-  }
-
-  const ringClass = ringColorMap[accentColor] || 'hover:ring-primary-accent'
+  // All cards use copper accent color from Quantum Gradient theme
+  const ringClass = 'hover:ring-qgd-accent'
 
   return (
     <motion.div
@@ -141,56 +130,56 @@ export function CoralReefFeatures() {
       icon: Zap,
       title: 'Lightning Fast Deployment',
       description: 'Get your AI workforce up and running in 48 hours. No lengthy onboarding, no training delays.',
-      accentColor: 'accent-coral',
+      accentColor: 'qgd-accent',
       link: '/intelligent-automation'
     },
     {
       icon: Shield,
       title: 'NASA-Grade Security',
       description: 'Military-level encryption and compliance. Your data is protected by the same standards used in aerospace.',
-      accentColor: 'accent-cyan',
+      accentColor: 'qgd-accent',
       link: '/cyber-intelligence'
     },
     {
       icon: Users,
       title: 'AI Workforce Scaling',
       description: 'Scale your team from 1 to 100 AI employees in minutes. Pay only for what you use.',
-      accentColor: 'accent-purple',
+      accentColor: 'qgd-accent',
       link: '/ai-workforce'
     },
     {
       icon: TrendingUp,
       title: '87% Cost Reduction',
       description: 'Average savings across all clients. Eliminate overhead, benefits, and turnover costs.',
-      accentColor: 'accent-gold',
+      accentColor: 'qgd-accent',
       link: '/business-transformation'
     },
     {
       icon: Clock,
       title: '24/7 Operations',
       description: 'Your AI team never sleeps, takes breaks, or calls in sick. Continuous productivity guaranteed.',
-      accentColor: 'accent-lime',
+      accentColor: 'qgd-accent',
       link: '/ai-workforce'
     },
     {
       icon: Lock,
       title: 'Zero Data Leakage',
       description: 'Advanced threat detection catches risks that traditional background checks miss.',
-      accentColor: 'accent-pink',
+      accentColor: 'qgd-accent',
       link: '/background-checks'
     },
     {
       icon: Target,
       title: '99.2% Accuracy Rate',
       description: 'Proven performance across 10,000+ hours of training. Human-level decision making.',
-      accentColor: 'accent-teal',
+      accentColor: 'qgd-accent',
       link: '/intelligent-automation'
     },
     {
       icon: Sparkles,
       title: 'Fortune 500 Quality',
       description: 'Enterprise-grade AI accessible to businesses of all sizes. Level the playing field.',
-      accentColor: 'accent-white',
+      accentColor: 'qgd-accent',
       link: '/business-transformation'
     },
   ]
@@ -212,18 +201,18 @@ export function CoralReefFeatures() {
           className="text-center max-w-3xl mx-auto mb-16"
         >
           <div className="flex items-center justify-center gap-2 mb-4">
-            <div className="h-px w-8 bg-primary-accent" />
-            <span className="text-sm font-medium tracking-wider uppercase text-primary-accent">
+            <div className="h-px w-8 bg-qgd-accent" />
+            <span className="text-sm font-medium tracking-wider uppercase text-qgd-accent">
               Why Choose QuantumLeap AI
             </span>
-            <div className="h-px w-8 bg-primary-accent" />
+            <div className="h-px w-8 bg-qgd-accent" />
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-text-primary mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-qgd-fg mb-6">
             Built for Modern Business Challenges
           </h2>
 
-          <p className="text-lg text-text-secondary leading-relaxed">
+          <p className="text-lg text-qgd-muted leading-relaxed">
             Every feature is designed to solve real problems. No gimmicks, just proven technology 
             that delivers measurable results.
           </p>
@@ -251,7 +240,7 @@ export function CoralReefFeatures() {
           <Button
             asChild
             size="lg"
-            className="bg-primary-accent hover:bg-primary-accent/90 text-text-primary font-semibold text-base px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] hover:ring-2 hover:ring-primary-accent hover:ring-offset-2 hover:ring-offset-primary-bg focus-visible:ring-2 focus-visible:ring-primary-accent focus-visible:outline-none"
+            className="bg-qgd-primary hover:bg-qgd-primary/90 text-qgd-bg font-semibold text-base px-8 py-6 rounded-full shadow-lg hover:shadow-qgd transition-all duration-300 hover:scale-[1.02] hover:ring-2 hover:ring-qgd-ring focus-visible:ring-2 focus-visible:ring-qgd-ring focus-visible:outline-none"
           >
             <Link href="/consultation">
               Start Your Free Assessment
