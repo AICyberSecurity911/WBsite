@@ -1,0 +1,21 @@
+name: Quality
+on:
+  push:
+    branches: [ semi-final ]
+  pull_request:
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - run: npm ci --legacy-peer-deps
+        working-directory: nextjs_space
+      - run: npm run lint -- --no-cache
+        working-directory: nextjs_space
+      - run: npm run typecheck
+        working-directory: nextjs_space
+      - run: npm run build
+        working-directory: nextjs_space
