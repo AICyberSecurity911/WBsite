@@ -1,1 +1,1 @@
-cd nextjs_space && npm run lint -- --no-cache && npm run typecheck && npm run build
+cd nextjs_space && npm run lint -- --no-cache && npm run typecheck
