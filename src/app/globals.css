@@ -1,0 +1,38 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap');
+
+/* Tailwind CSS base styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Variables for Design System */
+:root {
+  --background: 249 249 249; /* #F9F9F9 */
+  --foreground: 30 30 30; /* #1E1E1E */
+  --muted: 161 161 161; /* #A1A1A1 */
+
+  --primary: 0 128 128; /* #008080 */
+  --primary-foreground: 255 255 255; /* #FFFFFF */
+  
+  --accent: 229 115 115; /* #E57373 */
+  --accent-foreground: 255 255 255; /* #FFFFFF */
+
+  --border: 220 220 220; /* #DCDCDC */
+  --card: 255 255 255; /* #FFFFFF */
+
+  --radius: 0.5rem;
+}
+
+/* Base styles */
+@layer base {
+  body {
+    background-color: rgb(var(--background));
+    color: rgb(var(--foreground));
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif;
+  }
+}
