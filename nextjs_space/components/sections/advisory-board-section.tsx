@@ -94,19 +94,10 @@ export default function AdvisoryBoardSection() {
   const itemsPerPage = 2;
   const totalPages = Math.ceil(boardMembers.length / itemsPerPage);
 
-  // Auto-rotate every 6 seconds
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      handleNext();
-    }, 6000);
-
-    return () => clearInterval(interval);
-  }, [currentIndex]);
-
-  const handleNext = () => {
+  const handleNext = React.useCallback(() => {
     setDirection(1);
     setCurrentIndex((prev) => (prev + 1) % totalPages);
-  };
+  }, [totalPages]);
 
   const handlePrev = () => {
     setDirection(-1);
@@ -117,6 +108,15 @@ export default function AdvisoryBoardSection() {
     const startIndex = currentIndex * itemsPerPage;
     return boardMembers.slice(startIndex, startIndex + itemsPerPage);
   };
+
+  // Auto-rotate every 6 seconds
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      handleNext();
+    }, 6000);
+
+    return () => clearInterval(interval);
+  }, [handleNext]);
 
   const slideVariants = {
     enter: (direction: number) => ({
