@@ -1,3 +1,34 @@
+import Image from "next/image";
+import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Beyond Background Checks: Find What Standard Checks Miss",
+  description:
+    "Standard background checks only catch criminals who got caught. We reveal hidden identities, dark web activity, and red flags lurking beneath the surface.",
+  keywords:
+    "background check intelligence, deep background investigation, hidden identity detection, dark web screening, beyond criminal records, executive vetting, pre-employment screening, hiring risk assessment",
+  alternates: {
+    canonical: "https://quantumleapai.abacusai.app/background-checks",
+  },
+  robots: "index, follow, max-image-preview:large",
+  openGraph: {
+    title: "Beyond Background Checks: Find What Standard Checks Miss",
+    description:
+      "Standard background checks only catch criminals who got caught. We reveal hidden identities, dark web activity, and red flags lurking beneath the surface.",
+    url: "https://quantumleapai.abacusai.app/background-checks",
+    type: "website",
+    images: [
+      {
+        url: "/og-background-checks.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Beyond Background Checks Intelligence Investigation",
+      },
+    ],
+  },
+};
+
 const faqs = [
   {
     question:
@@ -347,55 +378,804 @@ export default function BackgroundChecksPage() {
             </ol>
           </nav>
 
-          <header className="space-y-6 text-center">
-            <span className="inline-block text-sm font-semibold uppercase tracking-wide text-red-400">
-              BEYOND BACKGROUND CHECKS (TM)
-            </span>
-            <h1 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
-              That "Clean" Background Check You Just Got? It Missed Everything
-              That Actually Matters.
+          <section className="relative rounded-3xl bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 py-20 px-8 text-center shadow-lg">
+            <h1 className="mb-6 text-5xl font-bold text-white">
+              Beyond Background Checks: Find What Standard Checks Miss
             </h1>
-            <p className="text-lg leading-relaxed text-[#d1d4e0] sm:text-xl">
-              Standard background checks only search criminal databases and
-              credit reports. They're looking for arrests that happened.
-              Convictions that stuck. Public records that made it into the
-              system.
-              <br />
-              <br />
-              Here's what they DON'T see:
-              <br />
-              The fraud that never got reported. The lawsuit that settled
-              privately. The fake identity hiding a criminal past. The dark web
-              activity planning the next scam. The behavior patterns screaming
-              "this person will destroy your company."
-              <br />
-              <br />
-              A "clean" background check doesn't mean someone is safe. It means
-              they're good at hiding problems or haven't been caught yet.
-              <br />
-              <br />
-              One bad hire can drain $200K in legal fees, lost clients, and
-              reputation damage. Most cost way more than that.
-              <br />
-              <br />
-              What you don't know will absolutely hurt you. Pair this
-              investigation with{" "}
-              <a
-                href="/intelligent-automation"
-                className="text-red-300 underline underline-offset-2 hover:text-red-200"
-              >
-                Intelligent Automation
-              </a>{" "}
-              and{" "}
-              <a
-                href="/cyber-intelligence"
-                className="text-red-300 underline underline-offset-2 hover:text-red-200"
-              >
-                Cyber Intelligence
-              </a>{" "}
-              to lock down every entry point.
+            <p className="mb-8 text-xl text-gray-300">
+              Standard background checks only catch criminals who got caught. We
+              reveal hidden identities, dark web activity, and red flags lurking
+              beneath the surface.
             </p>
-          </header>
+            <div className="flex flex-col justify-center gap-4 sm:flex-row">
+              <Link
+                href="#contact"
+                className="rounded-full bg-red-500 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-red-400"
+              >
+                Start Intelligence Investigation
+              </Link>
+              <Link
+                href="#methodology"
+                className="rounded-full border border-white/40 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-white/10"
+              >
+                See How It Works
+              </Link>
+            </div>
+          </section>
+
+          <article
+            aria-labelledby="dangerous-lie-heading"
+            className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-10 shadow-lg"
+          >
+            <h2
+              id="dangerous-lie-heading"
+              className="text-3xl font-semibold text-white sm:text-4xl"
+            >
+              The Dangerous Lie You&apos;ve Been Sold
+            </h2>
+            <div className="space-y-4 text-lg text-[#d6d9ec]">
+              <p>A background check only tells you if someone was convicted.</p>
+              <div>
+                <p className="font-semibold text-white">
+                  It doesn&apos;t tell you:
+                </p>
+                <ul className="mt-2 list-disc space-y-2 pl-6 text-base text-[#d1d4e0]">
+                  <li>If they&apos;re using a different name</li>
+                  <li>
+                    If they&apos;re hiding criminal activity in another state or
+                    country
+                  </li>
+                  <li>
+                    If they have{" "}
+                    <Link
+                      href="/cyber-intelligence"
+                      className="text-red-300 underline underline-offset-2 hover:text-red-200"
+                    >
+                      dark web accounts
+                    </Link>{" "}
+                    tied to illegal marketplaces
+                  </li>
+                  <li>
+                    If they&apos;ve been flagged in private databases for fraud,
+                    harassment, or worse
+                  </li>
+                </ul>
+              </div>
+              <p>
+                Most hiring mistakes aren&apos;t from criminals with
+                records—they&apos;re from people who haven&apos;t been caught
+                yet.
+              </p>
+              <div className="mt-6 rounded-2xl border border-yellow-400/40 bg-yellow-400/10 p-6 text-base text-yellow-100">
+                <strong className="flex items-center gap-2 text-yellow-200">
+                  <span aria-hidden="true">⚠️</span> Warning
+                </strong>
+                <p className="mt-2">
+                  78% of identity fraud involves synthetic or stolen
+                  credentials. A standard background check won&apos;t find them.
+                </p>
+              </div>
+            </div>
+            <div className="mt-6 rounded-2xl border border-white/10 bg-black/30 p-6">
+              <h3 className="text-lg font-semibold text-white">
+                Q: What don&apos;t background checks reveal?
+              </h3>
+              <p className="mt-2 text-base text-[#d1d4e0]">
+                A: They miss alias identities, cross-border criminal activity,
+                covert{" "}
+                <Link
+                  href="/cyber-intelligence"
+                  className="text-red-300 underline underline-offset-2 hover:text-red-200"
+                >
+                  dark web presence
+                </Link>
+                , and private data sources that expose fraud, harassment, or
+                insider threat behavior.
+              </p>
+            </div>
+          </article>
+
+          <section
+            id="methodology"
+            className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-10 shadow-lg"
+          >
+            <h2 className="text-3xl font-semibold text-white sm:text-4xl">
+              Our Five-Layer Intelligence Investigation
+            </h2>
+            <p className="text-lg text-[#d6d9ec]">
+              Standard background checks scratch the surface. We go five layers
+              deeper to uncover what others miss—before it becomes your problem.
+            </p>
+            <div className="grid gap-6 md:grid-cols-2">
+              <article className="rounded-3xl border border-white/10 bg-black/40 p-6">
+                <h3 className="text-xl font-semibold text-red-300">
+                  Layer 1: Identity Verification &amp; Alias Detection
+                </h3>
+                <p className="mt-3 text-base text-[#d1d4e0]">
+                  We don&apos;t just verify a name—we map every identity
+                  variation.
+                </p>
+                <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-[#d6d9ec]">
+                  <li>
+                    Cross-reference 47 national &amp; international databases
+                  </li>
+                  <li>
+                    Detect name variations, maiden names, and deliberate aliases
+                  </li>
+                  <li>
+                    Identify synthetic identities created from stolen
+                    credentials
+                  </li>
+                  <li>
+                    Uncover undisclosed previous addresses and employment gaps
+                  </li>
+                </ul>
+                <p className="mt-3 text-sm text-[#d1d4e0]">
+                  Real-world example: A CFO candidate passed 3 background checks
+                  using a slight name variation. We found 2 bankruptcies and an
+                  SEC investigation under his legal name.
+                </p>
+              </article>
+              <article className="rounded-3xl border border-white/10 bg-black/40 p-6">
+                <h3 className="text-xl font-semibold text-red-300">
+                  Layer 2: Deep Criminal &amp; Legal History
+                </h3>
+                <p className="mt-3 text-base text-[#d1d4e0]">
+                  Standard checks only search one jurisdiction. We search
+                  everywhere.
+                </p>
+                <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-[#d6d9ec]">
+                  <li>Multi-state and international criminal record search</li>
+                  <li>
+                    Civil litigation history (lawsuits, restraining orders,
+                    judgments)
+                  </li>
+                  <li>
+                    Regulatory actions and professional license suspensions
+                  </li>
+                  <li>Sealed or expunged records that still show patterns</li>
+                </ul>
+                <p className="mt-3 text-sm text-[#d1d4e0]">
+                  Why it matters: 34% of criminal records are filed in a
+                  different county than where the person currently lives.
+                </p>
+              </article>
+              <article className="rounded-3xl border border-white/10 bg-black/40 p-6">
+                <h3 className="text-xl font-semibold text-red-300">
+                  Layer 3: Digital Footprint &amp; Dark Web Monitoring
+                </h3>
+                <p className="mt-3 text-base text-[#d1d4e0]">
+                  Your background check doesn&apos;t look online. We do.
+                </p>
+                <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-[#d6d9ec]">
+                  <li>
+                    <Link
+                      href="/cyber-intelligence"
+                      className="text-red-300 underline underline-offset-2 hover:text-red-200"
+                    >
+                      Dark web monitoring
+                    </Link>{" "}
+                    (illegal marketplaces, hacker forums, data breaches)
+                  </li>
+                  <li>
+                    Social media behavior analysis (deleted posts, hidden
+                    profiles)
+                  </li>
+                  <li>Online reputation &amp; review patterns</li>
+                  <li>Data breach exposure and compromised credentials</li>
+                </ul>
+                <p className="mt-3 text-sm text-[#d1d4e0]">
+                  Red flag example: An IT director candidate had active accounts
+                  on 3 dark web forums selling stolen data. His background check
+                  was clean.
+                </p>
+              </article>
+              <article className="rounded-3xl border border-white/10 bg-black/40 p-6">
+                <h3 className="text-xl font-semibold text-red-300">
+                  Layer 4: Financial Behavior &amp; Risk Indicators
+                </h3>
+                <p className="mt-3 text-base text-[#d1d4e0]">
+                  Financial desperation is the #1 predictor of theft and fraud.
+                </p>
+                <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-[#d6d9ec]">
+                  <li>Bankruptcies, foreclosures, tax liens, and judgments</li>
+                  <li>
+                    Unusual spending patterns and lifestyle inconsistencies
+                  </li>
+                  <li>
+                    Hidden business ownership and shell company connections
+                  </li>
+                  <li>Offshore accounts and suspicious transactions</li>
+                </ul>
+                <p className="mt-3 text-sm text-[#d1d4e0]">
+                  Case study: A controller embezzled $2.1M over 4 years. We
+                  would have flagged his 3 bankruptcies, 2 foreclosures, and
+                  luxury car purchases on a $60K salary.
+                </p>
+              </article>
+              <article className="rounded-3xl border border-white/10 bg-black/40 p-6 md:col-span-2">
+                <h3 className="text-xl font-semibold text-red-300">
+                  Layer 5: Behavioral Threat Assessment
+                </h3>
+                <p className="mt-3 text-base text-[#d1d4e0]">
+                  Past behavior predicts future risk. We analyze patterns others
+                  ignore.
+                </p>
+                <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-[#d6d9ec]">
+                  <li>History of workplace disputes and terminations</li>
+                  <li>
+                    Restraining orders, harassment complaints, and threats
+                  </li>
+                  <li>
+                    Online extremism, hate group affiliation, and violent
+                    rhetoric
+                  </li>
+                  <li>Substance abuse indicators and rehabilitation history</li>
+                </ul>
+                <p className="mt-3 text-sm text-[#d1d4e0]">
+                  Why this matters: 67% of workplace violence incidents had
+                  warning signs that were dismissed or missed. Tap our{" "}
+                  <Link
+                    href="/ai-workforce"
+                    className="text-red-300 underline underline-offset-2 hover:text-red-200"
+                  >
+                    AI Workforce
+                  </Link>{" "}
+                  insights to train managers on spotting them early.
+                </p>
+              </article>
+            </div>
+            <div className="mt-10 overflow-hidden rounded-3xl border border-white/10 bg-black/30 p-6 text-center">
+              <Image
+                src="/images/five-layer-methodology.png"
+                alt="Five-layer background check methodology infographic"
+                loading="lazy"
+                width={1280}
+                height={720}
+                className="mx-auto w-full max-w-4xl"
+              />
+              <p className="mt-4 text-sm text-[#d6d9ec]">
+                Standard checks skim the surface. Our intelligence investigation
+                delivers five layers of assurance.
+              </p>
+            </div>
+          </section>
+
+          <section className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-10 shadow-lg">
+            <h2 className="text-3xl font-semibold text-white sm:text-4xl">
+              Real Results: What Our Clients Discovered
+            </h2>
+            <div className="grid gap-6 md:grid-cols-2">
+              {[
+                {
+                  name: "Tiffany Duncan",
+                  title: "HR Director",
+                  quote:
+                    "We almost hired someone with a spotless background check. QuantumLeap's investigation revealed he was using a stolen identity—his real name had 3 felonies and 2 restraining orders. This would have been catastrophic.",
+                },
+                {
+                  name: "Immigration Case",
+                  title: "Cross-Border Investigation",
+                  quote:
+                    "A routine immigration background check revealed nothing. We found 7 aliases, offshore bank accounts, and ties to organized crime in 3 countries. Standard checks would never catch this.",
+                },
+                {
+                  name: "Fortune 500 CHRO",
+                  title: "Chief Human Resources Officer",
+                  quote:
+                    "Our internal screening missed a CFO candidate's hidden bankruptcy and SEC investigation. QuantumLeap found it in 48 hours. Worth every penny.",
+                },
+                {
+                  name: "Personal Matter",
+                  title: "Private Client",
+                  quote:
+                    "I needed to know who I was dating. His background was clean. QuantumLeap found 2 restraining orders from ex-partners, hidden debt, and active profiles on affair sites. Dodged a bullet.",
+                },
+              ].map((testimonial) => (
+                <article
+                  key={testimonial.name}
+                  itemScope
+                  itemType="https://schema.org/Review"
+                  className="flex h-full flex-col gap-4 rounded-3xl border border-white/10 bg-black/30 p-6 text-left text-[#d1d4e0]"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/10 text-lg font-semibold text-white">
+                      {testimonial.name.slice(0, 2).toUpperCase()}
+                    </div>
+                    <div>
+                      <p
+                        className="font-semibold text-white"
+                        itemProp="author"
+                        itemScope
+                        itemType="https://schema.org/Person"
+                      >
+                        <span itemProp="name">{testimonial.name}</span>
+                      </p>
+                      <p className="text-sm text-red-300" itemProp="name">
+                        {testimonial.title}
+                      </p>
+                    </div>
+                  </div>
+                  <p className="text-sm leading-relaxed" itemProp="reviewBody">
+                    "{testimonial.quote}"
+                  </p>
+                  <div
+                    className="mt-auto flex items-center gap-1 text-yellow-300"
+                    itemProp="reviewRating"
+                    itemScope
+                    itemType="https://schema.org/Rating"
+                  >
+                    {Array.from({ length: 5 }).map((_, idx) => (
+                      <span key={idx} aria-hidden="true">
+                        ★
+                      </span>
+                    ))}
+                    <meta itemProp="ratingValue" content="5" />
+                    <span className="sr-only">5 star rating</span>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-10 shadow-lg">
+            <h2 className="text-3xl font-semibold text-white sm:text-4xl">
+              Standard Background Checks vs. Intelligence Investigation
+            </h2>
+            <div className="overflow-x-auto rounded-2xl border border-white/10 bg-black/30">
+              <table className="min-w-full divide-y divide-white/10 text-left text-sm text-[#d6d9ec]">
+                <thead className="bg-white/5 text-xs uppercase tracking-wide text-red-200">
+                  <tr>
+                    <th scope="col" className="px-6 py-4">
+                      Feature
+                    </th>
+                    <th scope="col" className="px-6 py-4">
+                      Standard Background Check
+                    </th>
+                    <th scope="col" className="px-6 py-4">
+                      Intelligence Investigation
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/10">
+                  {[
+                    [
+                      "Criminal Records",
+                      "Single jurisdiction only",
+                      "Multi-state & international",
+                    ],
+                    [
+                      "Identity Verification",
+                      "Name & SSN match",
+                      "47-database cross-reference, alias detection",
+                    ],
+                    [
+                      "Digital Footprint",
+                      "Not included",
+                      "Dark web, social media, data breaches",
+                    ],
+                    [
+                      "Financial History",
+                      "Basic credit check",
+                      "Bankruptcies, liens, hidden assets, offshore accounts",
+                    ],
+                    [
+                      "Civil Records",
+                      "Often missed",
+                      "Lawsuits, restraining orders, judgments",
+                    ],
+                    [
+                      "Behavioral Analysis",
+                      "Not included",
+                      "Threat assessment, workplace history",
+                    ],
+                    ["Turnaround Time", "3-5 days", "24-72 hours"],
+                    ["Miss Rate", "67% incomplete data", "<3% (comprehensive)"],
+                    ["Cost", "$29-99", "Starting at $499"],
+                  ].map((row, index) => (
+                    <tr
+                      key={row[0]}
+                      className={index % 2 === 0 ? "bg-white/5" : "bg-black/20"}
+                    >
+                      <th
+                        scope="row"
+                        className="px-6 py-4 font-semibold text-white"
+                      >
+                        {row[0]}
+                      </th>
+                      <td className="px-6 py-4">{row[1]}</td>
+                      <td className="px-6 py-4 text-white">{row[2]}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-sm text-[#d1d4e0]">
+              Intelligence investigations answer the question “What&apos;s the
+              difference between a standard background check and an intelligence
+              investigation?”—multi-layer verification, deep digital
+              intelligence, and behavioral risk modeling in under 72 hours.
+            </p>
+          </section>
+
+          <section className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-10 shadow-lg">
+            <h2 className="text-3xl font-semibold text-white sm:text-4xl">
+              Intelligence Investigation Pricing
+            </h2>
+            <p className="text-lg text-[#d6d9ec]">
+              Transparent pricing. No hidden fees. Results guaranteed.
+            </p>
+            <div className="grid gap-6 md:grid-cols-3">
+              {[
+                {
+                  name: "Basic Intelligence",
+                  price: "$499",
+                  bestFor:
+                    "Individual screening, dating background checks, personal matters",
+                  features: [
+                    "Identity verification across 47 databases",
+                    "Multi-state criminal & civil records",
+                    "Digital footprint analysis",
+                    "Social media investigation",
+                    "Basic financial history",
+                  ],
+                  delivery: "48-72 hours",
+                  cta: "Start Basic Investigation",
+                  popular: false,
+                },
+                {
+                  name: "Standard Intelligence",
+                  price: "$999",
+                  bestFor:
+                    "Pre-employment screening, tenant verification, business partnerships",
+                  features: [
+                    "Everything in Basic, PLUS:",
+                    "Dark web monitoring & breach detection",
+                    "International records search",
+                    "Comprehensive financial analysis",
+                    "Behavioral threat assessment",
+                    "Priority 24-hour delivery",
+                  ],
+                  delivery: "24-48 hours",
+                  cta: "Start Standard Investigation",
+                  popular: true,
+                },
+                {
+                  name: "Executive Intelligence",
+                  price: "$2,499+",
+                  bestFor:
+                    "C-suite hiring, high-stakes investments, due diligence",
+                  features: [
+                    "Everything in Standard, PLUS:",
+                    "Offshore account investigation",
+                    "Corporate intelligence & shell company detection",
+                    "Regulatory & SEC investigation history",
+                    "International organized crime databases",
+                    "Dedicated investigator assigned",
+                    "Rush 12-hour delivery available",
+                  ],
+                  delivery: "12-24 hours",
+                  cta: "Request Executive Investigation",
+                  popular: false,
+                },
+              ].map((tier) => (
+                <article
+                  key={tier.name}
+                  itemScope
+                  itemType="https://schema.org/Offer"
+                  className={`relative flex h-full flex-col gap-6 rounded-3xl border p-6 ${
+                    tier.popular
+                      ? "border-red-400/80 bg-gradient-to-br from-red-500/20 via-red-500/10 to-transparent shadow-[0_0_48px_rgba(255,64,64,0.18)]"
+                      : "border-white/10 bg-black/30"
+                  }`}
+                >
+                  {tier.popular && (
+                    <span className="absolute right-6 top-6 rounded-full bg-red-500 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
+                      Most Popular
+                    </span>
+                  )}
+                  <meta
+                    itemProp="price"
+                    content={tier.price.replace(/[^0-9.]/g, "") || "0"}
+                  />
+                  <meta itemProp="priceCurrency" content="USD" />
+                  <div>
+                    <h3
+                      className="text-xl font-semibold text-white"
+                      itemProp="name"
+                    >
+                      {tier.name}
+                    </h3>
+                    <p className="text-lg font-bold text-red-200">
+                      {tier.price}
+                    </p>
+                    <p className="mt-2 text-sm text-[#d1d4e0]">
+                      {tier.bestFor}
+                    </p>
+                  </div>
+                  <ul
+                    className="space-y-2 text-sm text-[#d6d9ec]"
+                    itemProp="description"
+                  >
+                    {tier.features.map((feature) => (
+                      <li key={feature} className="flex items-start gap-2">
+                        <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-red-400" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="text-sm text-[#d1d4e0]">
+                    Delivery: {tier.delivery}
+                  </p>
+                  <Link
+                    href="#contact"
+                    className={`rounded-full px-6 py-3 text-center text-sm font-semibold uppercase tracking-wide transition ${
+                      tier.popular
+                        ? "bg-white text-[#07070b] hover:bg-red-100"
+                        : "border border-white/40 text-white hover:bg-white/10"
+                    }`}
+                  >
+                    {tier.cta}
+                  </Link>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-10 text-left text-[#d6d9ec] shadow-lg">
+            <h2 className="text-3xl font-semibold text-white sm:text-4xl">
+              The &apos;Find 3 or Free&apos; Guarantee
+            </h2>
+            <p className="text-lg text-[#f0f2ff]">
+              We&apos;re so confident in our intelligence investigation that we
+              offer this guarantee:
+            </p>
+            <p className="text-base">
+              If we don&apos;t find at least 3 significant red flags,
+              discrepancies, or pieces of critical information that a standard
+              background check would miss, your investigation is 100% FREE. No
+              questions asked. No fine print.
+            </p>
+            <div>
+              <h3 className="text-lg font-semibold text-white">
+                What counts as a &apos;significant finding&apos;:
+              </h3>
+              <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-[#d1d4e0]">
+                <li>Hidden aliases or identity variations</li>
+                <li>Criminal or civil records in other jurisdictions</li>
+                <li>Dark web presence or data breach exposure</li>
+                <li>
+                  Undisclosed financial issues (bankruptcies, liens, judgments)
+                </li>
+                <li>Social media red flags or deleted content</li>
+                <li>Discrepancies in employment or education history</li>
+                <li>Behavioral warning signs or threat indicators</li>
+              </ul>
+            </div>
+            <p className="text-base">
+              <strong className="text-red-200">The reality:</strong> In 94% of
+              cases, we find 7+ items a standard check missed.
+            </p>
+            <div className="mt-6 inline-flex items-center gap-3 rounded-full border border-red-400/60 bg-red-500/10 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-red-200">
+              <span aria-hidden="true">✔</span> 94% Success Rate
+            </div>
+          </section>
+
+          <section className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-10 shadow-lg">
+            <h2 className="text-3xl font-semibold text-white sm:text-4xl">
+              Frequently Asked Questions
+            </h2>
+            <div className="space-y-4">
+              {[
+                {
+                  question:
+                    "What's the difference between a background check and an intelligence investigation?",
+                  answer:
+                    "A standard background check only searches one jurisdiction for criminal convictions. An intelligence investigation cross-references 47+ databases, searches multiple jurisdictions internationally, monitors the dark web, analyzes financial behavior, and identifies hidden aliases and synthetic identities. We find what background checks miss—67% of the time, critical information exists outside the standard search parameters.",
+                },
+                {
+                  question: "How long does an intelligence investigation take?",
+                  answer:
+                    "Basic: 48-72 hours. Standard: 24-48 hours. Executive: 12-24 hours. Rush delivery available for Executive tier.",
+                },
+                {
+                  question: "Is this legal?",
+                  answer:
+                    "Yes. All our investigations use 100% legal, publicly available data sources and comply with FCRA, GDPR, and all applicable privacy laws. We don't hack, break into accounts, or use illegal methods.",
+                },
+                {
+                  question: "What if the person has a common name?",
+                  answer:
+                    "We use advanced identity resolution across 47 databases to ensure we're investigating the correct individual. We verify using multiple data points: SSN, DOB, addresses, known aliases, and biometric matching where available.",
+                },
+                {
+                  question: "Can I use this for pre-employment screening?",
+                  answer:
+                    "Yes. Our investigations are FCRA-compliant and can be used for employment decisions. We provide a compliant disclosure and consent process.",
+                },
+                {
+                  question: "Do you investigate internationally?",
+                  answer:
+                    "Yes. Our Executive Intelligence tier includes international records searches, offshore account detection, and access to INTERPOL and international criminal databases.",
+                },
+                {
+                  question: "How confidential is this?",
+                  answer:
+                    "Completely confidential. We never contact the subject, their employer, or anyone else. All reports are encrypted and delivered via secure portal. We don't share your information with anyone.",
+                },
+                {
+                  question: "What if I need this urgently?",
+                  answer:
+                    "Executive tier includes rush 12-hour delivery. Contact us for emergency same-day investigations (additional fees apply).",
+                },
+                {
+                  question: "Do you notify the person being investigated?",
+                  answer:
+                    "No. This is a passive investigation using publicly available records. The subject will never know they were investigated.",
+                },
+                {
+                  question: "What's included in the final report?",
+                  answer:
+                    "A comprehensive PDF report with executive summary, detailed findings organized by category, source documentation, risk assessment, and actionable recommendations.",
+                },
+                {
+                  question: "What if you don't find anything?",
+                  answer:
+                    "If we find fewer than 3 significant items that a standard background check would miss, your investigation is 100% free under our 'Find 3 or Free' guarantee.",
+                },
+              ].map((faq) => (
+                <article
+                  key={faq.question}
+                  className="rounded-2xl border border-white/10 bg-black/30 p-6"
+                >
+                  <h3 className="text-lg font-semibold text-white">
+                    {faq.question}
+                  </h3>
+                  <p className="mt-2 text-sm text-[#d1d4e0]">{faq.answer}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="space-y-6 rounded-3xl border border-white/10 bg-gradient-to-br from-blue-900 via-slate-900 to-blue-950 p-12 text-center shadow-[0_0_60px_rgba(64,128,255,0.25)]">
+            <h2 className="text-3xl font-semibold text-white sm:text-4xl">
+              Don't Hire a Mistake. Don't Date a Danger. Don't Partner with a
+              Fraud.
+            </h2>
+            <p className="text-lg text-[#d6d9ec]">
+              Get the truth in 24-72 hours. Guaranteed.
+            </p>
+            <div className="mx-auto grid max-w-4xl gap-8 text-left text-sm text-[#d1d4e0] sm:grid-cols-3">
+              <div>
+                <h3 className="text-base font-semibold text-white">
+                  Step 1: Choose Your Investigation Tier
+                </h3>
+                <p className="mt-2">
+                  Basic ($499) | Standard ($999) | Executive ($2,499+) — select
+                  based on your needs and urgency.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-base font-semibold text-white">
+                  Step 2: Submit Subject Information
+                </h3>
+                <p className="mt-2">
+                  Provide: Full name, DOB, last known address, SSN (optional but
+                  recommended). Upload any additional context or concerns.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-base font-semibold text-white">
+                  Step 3: Receive Your Confidential Report
+                </h3>
+                <p className="mt-2">
+                  Delivery: 12-72 hours depending on tier. Format: Encrypted PDF
+                  via secure portal. Analyst support included.
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Link
+                href="#contact"
+                className="inline-flex items-center justify-center rounded-full bg-red-500 px-8 py-4 text-base font-semibold uppercase tracking-wide text-white transition hover:bg-red-400"
+              >
+                Start Your Investigation Now
+              </Link>
+              <Link
+                href="/consultation"
+                className="inline-flex items-center justify-center rounded-full border border-white/40 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-white/10"
+              >
+                Schedule a Consultation
+              </Link>
+            </div>
+            <p className="text-sm text-red-200">
+              Limited investigation slots available this week. Secure your spot
+              now.
+            </p>
+            <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-black/30 px-6 py-3 text-sm text-[#d1d4e0]">
+              <span
+                className="inline-flex h-3 w-3 animate-pulse rounded-full bg-green-400"
+                aria-hidden="true"
+              />
+              7 investigations in progress
+            </div>
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-xs uppercase tracking-wide text-[#c3c7e6]">
+              <span>256-bit encryption</span>
+              <span>•</span>
+              <span>FCRA compliant</span>
+              <span>•</span>
+              <span>BBB A+ rating</span>
+              <span>•</span>
+              <span>10,000+ investigations completed</span>
+              <span>•</span>
+              <span>94% success rate</span>
+            </div>
+          </section>
+          <section className="space-y-4 rounded-3xl border border-white/10 bg-white/5 p-10 shadow-lg">
+            <h2 className="text-3xl font-semibold text-white sm:text-4xl">
+              Case Studies: What We&apos;ve Uncovered
+            </h2>
+            <p className="text-lg text-[#d6d9ec]">
+              Real investigations, real results. See how intelligence
+              investigation prevents disaster.
+            </p>
+            <div className="grid gap-6 md:grid-cols-3">
+              {[
+                {
+                  title:
+                    "The CFO Who Wasn't: How We Stopped a $4.2M Fraud Before It Started",
+                  excerpt:
+                    "A Fortune 500 company almost hired a CFO with impeccable credentials. We found the real story...",
+                  href: "/blog/cfo-fraud-prevention",
+                  alt: "Fraud detection case study illustration",
+                },
+                {
+                  title:
+                    "7 Aliases, 3 Countries, 1 Investigation: International Background Intelligence",
+                  excerpt:
+                    "When standard checks revealed nothing, we uncovered a network of hidden identities spanning continents...",
+                  href: "/blog/international-alias-detection",
+                  alt: "International investigation case study illustration",
+                },
+                {
+                  title:
+                    "The Dark Web Connection: IT Director with Active Hacker Forum Accounts",
+                  excerpt:
+                    "His technical background check passed. Our dark web monitoring revealed he was selling stolen data...",
+                  href: "/blog/dark-web-employee-screening",
+                  alt: "Cyber security case study illustration",
+                },
+              ].map((post) => (
+                <article
+                  key={post.href}
+                  className="group flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-black/30 transition hover:border-red-400/60 hover:bg-black/40"
+                >
+                  <div className="relative h-40 w-full overflow-hidden bg-gradient-to-br from-red-500/40 via-red-500/10 to-transparent">
+                    <Image
+                      src="/images/case-study-placeholder.jpg"
+                      alt={post.alt}
+                      loading="lazy"
+                      width={640}
+                      height={320}
+                      className="h-full w-full object-cover opacity-60 transition duration-300 group-hover:scale-105 group-hover:opacity-80"
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col gap-4 p-6 text-left">
+                    <h3 className="text-lg font-semibold text-white">
+                      {post.title}
+                    </h3>
+                    <p className="text-sm text-[#d1d4e0]">{post.excerpt}</p>
+                    <Link
+                      href={post.href}
+                      className="mt-auto inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-red-300 underline-offset-4 transition hover:text-red-200 hover:underline"
+                    >
+                      Read Full Case Study <span aria-hidden="true">→</span>
+                    </Link>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
 
           <section className="rounded-3xl border border-white/10 bg-white/5 p-10 shadow-[0_0_48px_rgba(255,0,64,0.12)] backdrop-blur">
             <h2 className="text-left text-3xl font-semibold text-red-300 sm:text-4xl">
