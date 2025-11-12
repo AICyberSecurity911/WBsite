@@ -23,7 +23,7 @@ jobs:
         run: npx prisma generate
         working-directory: nextjs_space
       - name: Lint
-        run: npm run lint -- --no-cache
+        run: npm run lint -- --no-cache --max-warnings=0
         working-directory: nextjs_space
       - name: Typecheck
         run: npm run typecheck

@@ -8,7 +8,8 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
-    "prepare": "husky"
+    "prepare": "husky",
+    "postinstall": "prisma generate"
   },
   "prisma": {
     "seed": "tsx --require dotenv/config scripts/seed.ts"
@@ -139,6 +140,6 @@
   },
   "lint-staged": {
     "**/*.{ts,tsx,js,jsx}": "eslint --fix",
-    "**/*": "prettier --write"
+    "**/*.{ts,tsx,js,jsx,cts,mts,cjs,mjs,css,scss,less,json,md,mdx,yml,yaml,html}": "prettier --write"
   }
 }
