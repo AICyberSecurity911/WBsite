@@ -1,0 +1,1 @@
+cd nextjs_space && npx lint-staged

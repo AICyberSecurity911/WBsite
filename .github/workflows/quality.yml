@@ -6,16 +6,28 @@ on:
 jobs:
   quality:
     runs-on: ubuntu-latest
+    env:
+      CI: true
+      NEXT_TELEMETRY_DISABLED: 1
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '18'
-      - run: npm ci --legacy-peer-deps
+          cache: 'npm'
+          cache-dependency-path: nextjs_space/package-lock.json
+      - name: Install (npm ci)
+        run: npm ci --legacy-peer-deps
         working-directory: nextjs_space
-      - run: npm run lint -- --no-cache
+      - name: Prisma generate
+        run: npx prisma generate
         working-directory: nextjs_space
-      - run: npm run typecheck
+      - name: Lint
+        run: npm run lint -- --no-cache
         working-directory: nextjs_space
-      - run: npm run build
+      - name: Typecheck
+        run: npm run typecheck
+        working-directory: nextjs_space
+      - name: Build
+        run: npm run build
         working-directory: nextjs_space
