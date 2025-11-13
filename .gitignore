@@ -1,7 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
+**/node_modules
 /.pnp
 .pnp.*
 .yarn/*
@@ -9,19 +9,35 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
+**/.yarn/
+!**/.yarn/patches
+!**/.yarn/plugins
+!**/.yarn/releases
+!**/.yarn/sdks
+!**/.yarn/versions
+!**/.yarn/cache
+**/.yarn/build-state.yml
+**/.yarn/install-state.gz
+
+# build outputs
+.next
+/.next/
+.cache
+.build
+/build
+dist
+target
+out
+/out/
+.deploy
+.logs
 
 # testing
 /coverage
 
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
 # misc
 .DS_Store
+*.nfs*
 *.pem
 
 # debug

@@ -1,0 +1,340 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================================
+   QUANTUM GRADIENT (DARK) THEME
+   ======================================== */
+:root {
+  /* Core Colors */
+  --bg: #07070b;
+  --fg: #f6f7ff;
+  --muted: #b8b6c9;
+  --card: #0c0c12;
+  --cardbg: #0c0c12;
+  --border: #2c2c3d;
+  
+  /* Primary & Accent */
+  --primary: #5312c4;
+  --primary-contrast: #f7f7fb;
+  --accent: #ff7f50;
+  --ring: #22d3ee;
+  
+  /* Effects */
+  --glow: rgba(124, 58, 237, 0.55);
+  --shadow: rgba(255, 127, 80, 0.28);
+  --glow-strength: 0.97;
+  
+  /* Flame Animation */
+  --flame-color: #b87333;
+  --flame-speed: 28s;
+  --flame-radius: 12px;
+}
+
+@layer base {
+  * {
+    @apply border-[color:var(--border)];
+  }
+  
+  body {
+    @apply bg-[color:var(--bg)] text-[color:var(--fg)];
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  /* Professional GlowCard - Award-Winning Design with 3D Effects */
+  .glow-card {
+    position: relative;
+    border-radius: 24px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    box-shadow: 
+      0 10px 30px -10px var(--shadow),
+      0 0 0 1px rgba(255, 255, 255, 0.1),
+      0 4px 6px -1px rgba(0, 0, 0, 0.3),
+      0 2px 4px -1px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+    transform: perspective(1000px) translateZ(0);
+    transform-style: preserve-3d;
+  }
+  
+  .glow-card::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 24px;
+    background: radial-gradient(
+      ellipse at top left,
+      rgba(255, 255, 255, 0.1),
+      transparent 40%
+    ),
+    radial-gradient(
+      ellipse at bottom right,
+      rgba(255, 255, 255, 0.05),
+      transparent 40%
+    );
+    opacity: 1;
+    z-index: -1;
+    pointer-events: none;
+    filter: blur(8px);
+  }
+  
+  .glow-card:hover {
+    box-shadow: 
+      0 25px 50px -12px var(--shadow),
+      0 0 0 1px rgba(255, 255, 255, 0.15),
+      0 8px 16px -4px rgba(0, 0, 0, 0.4),
+      0 4px 8px -2px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+    transform: perspective(1000px) translateY(-4px) translateZ(8px);
+  }
+  
+  .glow-card:hover::before {
+    opacity: 1;
+    filter: blur(12px);
+  }
+  
+  /* Lavender showcase variant */
+  .glow-card-lavender {
+    border-color: #c4b5fd;
+  }
+  
+  /* Card Field (Input Styling) */
+  .card-field {
+    position: relative;
+    border: 1px solid #c4b5fd;
+    border-radius: 24px;
+    background: #0b0b0b;
+    padding: 14px 16px;
+    box-shadow: 0 10px 30px -10px var(--shadow);
+  }
+  
+  .card-field::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 24px;
+    background: radial-gradient(
+      ellipse at top left,
+      rgba(255, 255, 255, 0.1),
+      transparent 40%
+    ),
+    radial-gradient(
+      ellipse at bottom right,
+      rgba(255, 255, 255, 0.05),
+      transparent 40%
+    );
+    opacity: 1;
+    z-index: -1;
+    pointer-events: none;
+    filter: blur(8px);
+  }
+  
+  /* Apply glow to all cards with rounded corners */
+  [class*="rounded-3xl"],
+  [class*="rounded-2xl"] {
+    position: relative;
+  }
+  
+  /* Ensure cards have glow effect and 3D styling */
+  article[class*="rounded"],
+  div[class*="rounded"][class*="border"],
+  section[class*="rounded"][class*="border"],
+  aside[class*="rounded"] {
+    position: relative;
+  }
+  
+  /* Apply 3D effect to all cards with borders */
+  article[class*="rounded"][class*="border"],
+  div[class*="rounded"][class*="border"],
+  section[class*="rounded"][class*="border"],
+  aside[class*="rounded"][class*="border"] {
+    box-shadow: 
+      0 10px 30px -10px var(--shadow),
+      0 0 0 1px rgba(255, 255, 255, 0.1),
+      0 4px 6px -1px rgba(0, 0, 0, 0.3),
+      0 2px 4px -1px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+    transform: perspective(1000px) translateZ(0);
+    transform-style: preserve-3d;
+  }
+  
+  article[class*="rounded"][class*="border"]:hover,
+  div[class*="rounded"][class*="border"]:hover,
+  section[class*="rounded"][class*="border"]:hover,
+  aside[class*="rounded"][class*="border"]:hover {
+    box-shadow: 
+      0 25px 50px -12px var(--shadow),
+      0 0 0 1px rgba(255, 255, 255, 0.15),
+      0 8px 16px -4px rgba(0, 0, 0, 0.4),
+      0 4px 8px -2px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+    transform: perspective(1000px) translateY(-4px) translateZ(8px);
+  }
+  
+  /* Carousel containers */
+  .carousel-container,
+  [class*="carousel"] {
+    position: relative;
+  }
+  
+  .card-field input,
+  .card-field textarea {
+    width: 100%;
+    background: transparent;
+    color: var(--fg);
+    outline: none;
+    border: none;
+    font-size: 0.875rem;
+  }
+  
+  .card-field input::placeholder,
+  .card-field textarea::placeholder {
+    color: var(--muted);
+  }
+  
+  /* Professional Button Styles */
+  .btn-primary {
+    background: var(--primary);
+    color: var(--primary-contrast);
+    border: 1px solid transparent;
+    border-radius: 9999px;
+    padding: 12px 24px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .btn-primary:hover {
+    filter: brightness(0.95);
+  }
+  
+  .btn-secondary {
+    background: var(--accent);
+    color: white;
+    border: 1px solid transparent;
+    border-radius: 9999px;
+    padding: 12px 24px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .btn-secondary:hover {
+    filter: brightness(0.95);
+  }
+  
+  /* Text Styles */
+  .qgd-heading {
+    @apply text-[color:var(--fg)] font-bold;
+  }
+  
+  .qgd-body {
+    @apply text-[color:var(--fg)];
+  }
+  
+  .qgd-muted {
+    @apply text-[color:var(--muted)];
+  }
+}
+
+@layer utilities {
+  /* Glow Effects */
+  .qgd-glow {
+    filter: drop-shadow(0 0 10px var(--glow));
+  }
+  
+  .qgd-glow-hover {
+    @apply transition duration-300;
+  }
+  
+  .qgd-glow-hover:hover {
+    filter: drop-shadow(0 0 20px var(--glow));
+  }
+  
+  /* Gradient Overlays */
+  .qgd-gradient-overlay {
+    background: radial-gradient(
+      ellipse at top left,
+      rgba(255, 255, 255, 0.1),
+      transparent 40%
+    ),
+    radial-gradient(
+      ellipse at bottom right,
+      rgba(255, 255, 255, 0.05),
+      transparent 40%
+    );
+  }
+}
+
+/* ========================================
+   GLOBAL KEYFRAMES - Professional Animations
+   ======================================== */
+@keyframes dashTravelCSS {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -1000;
+  }
+}
+
+@keyframes haloPulse {
+  0%, 100% {
+    opacity: 0.24;
+  }
+  50% {
+    opacity: 0.36;
+  }
+}
+
+@keyframes floaty {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
