@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { Zap, Shield, Users, TrendingUp, Bot, Lock, BarChart, Rocket } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { FlameBorder } from '@/components/ui/flame-border'
+import { GlowCard } from '@/components/ui/glow-card'
 
 const features = [
   {
@@ -78,7 +78,7 @@ export function CoralReefFeatures() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
@@ -87,24 +87,17 @@ export function CoralReefFeatures() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Link href={feature.href} className="block h-full group">
-                <div className="relative h-full">
-                  <div className="absolute -inset-0.5 rounded-2xl opacity-0 blur transition duration-500 group-hover:opacity-100 qgd-gradient-overlay" />
-                  <div className="relative h-full bg-qgd-card border border-qgd-border rounded-xl p-6 transition-all duration-300 hover:shadow-qgd-glow">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-2 rounded-lg bg-qgd-primary/10 border border-qgd-primary/20 group-hover:bg-qgd-primary/20 transition-colors">
-                        <feature.icon className="w-6 h-6 text-qgd-primary group-hover:text-qgd-accent transition-colors" />
-                      </div>
+              <Link href={feature.href} className="block h-full">
+                <GlowCard
+                  title={feature.title}
+                  desc={feature.description}
+                  icon={
+                    <div className="p-2 rounded-lg bg-[color:var(--primary)]/10 border border-[color:var(--primary)]/20 group-hover:bg-[color:var(--primary)]/20 transition-colors">
+                      <feature.icon className="w-6 h-6 text-[color:var(--primary)] group-hover:text-[color:var(--accent)] transition-colors" />
                     </div>
-                    <h3 className="text-lg font-semibold text-qgd-fg mb-2">
-                      {feature.title}
-                    </h3>
-                    <p className="text-sm text-qgd-muted leading-relaxed">
-                      {feature.description}
-                    </p>
-                  </div>
-                  <FlameBorder />
-                </div>
+                  }
+                  className="h-full cursor-pointer"
+                />
               </Link>
             </motion.div>
           ))}

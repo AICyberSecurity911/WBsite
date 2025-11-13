@@ -5,22 +5,22 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-semibold transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-semibold transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--ring)] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
         default:
-          "bg-teal-500 text-white shadow-lg hover:bg-teal-600 hover:shadow-xl hover:scale-[1.02] hover:-translate-y-0.5 active:scale-[0.98]",
+          "bg-[color:var(--primary)] text-[color:var(--primary-contrast)] shadow-lg hover:shadow-xl hover:scale-[1.02] hover:-translate-y-0.5 active:scale-[0.98]",
         destructive:
           "bg-red-500 text-white shadow-sm hover:bg-red-600 hover:shadow-md hover:scale-[1.02] active:scale-[0.98]",
         outline:
-          "border-2 border-teal-500 bg-transparent text-teal-600 hover:bg-teal-50 hover:scale-[1.02] hover:-translate-y-0.5 active:scale-[0.98] dark:text-teal-400 dark:hover:bg-teal-950/50",
+          "border-2 border-[color:var(--border)] bg-transparent text-[color:var(--fg)] hover:bg-[color:var(--card)] hover:scale-[1.02] hover:-translate-y-0.5 active:scale-[0.98]",
         secondary:
-          "bg-gray-100 text-gray-900 shadow-sm hover:bg-gray-200 hover:scale-[1.02] active:scale-[0.98] dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700",
+          "bg-[color:var(--accent)] text-[color:var(--primary-contrast)] shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98]",
         ghost: 
-          "bg-transparent text-teal-600 hover:bg-teal-50 hover:scale-[1.02] active:scale-[0.98] dark:text-teal-400 dark:hover:bg-teal-950/50",
+          "bg-transparent text-[color:var(--fg)] hover:bg-[color:var(--card)] hover:scale-[1.02] active:scale-[0.98]",
         link: 
-          "text-teal-600 underline-offset-4 hover:underline dark:text-teal-400",
+          "text-[color:var(--accent)] underline-offset-4 hover:underline",
       },
       size: {
         default: "h-11 px-6 py-3",

@@ -93,9 +93,8 @@ export function HomeTestimonialsCarousel() {
                 transition={{ duration: 0.5 }}
                 className="relative"
               >
-                <div className="relative group">
-                  <div className="absolute -inset-0.5 rounded-2xl opacity-0 blur transition duration-500 group-hover:opacity-100 qgd-gradient-overlay" />
-                  <div className="relative bg-qgd-card border border-qgd-border rounded-xl p-8 lg:p-12 shadow-qgd">
+                <div className="relative group glow-card">
+                  <div className="relative bg-[color:var(--card)] border border-[color:var(--border)] rounded-[24px] p-8 lg:p-12">
                     {/* Rating Stars */}
                     <div className="flex gap-1 mb-6">
                       {Array.from({ length: testimonials[currentIndex].rating }).map((_, i) => (

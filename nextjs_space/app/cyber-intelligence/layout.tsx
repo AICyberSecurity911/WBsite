@@ -1,32 +1,33 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cyber Intelligence & Penetration Testing | Prevent Breaches Before They Happen | QuantumLeap AI',
-  description: 'Your business is already vulnerable. Our intelligence-grade cyber audits find and fix threats before criminals exploit them. Free email breach check included. Get your security report.',
-  keywords: 'cyber intelligence, penetration testing, cybersecurity audit, threat intelligence, security testing, SMB cybersecurity, breach prevention, security assessment',
+  title: 'Cyber Intelligence: NASA-Level Security for Small Business',
+  description: 'Stop hackers before they attack. NASA-recognized cybersecurity that finds vulnerabilities standard IT scans miss. Find 3 critical risks or it\'s free.',
+  keywords: 'cybersecurity for small business, penetration testing services, dark web monitoring, security audit, ransomware protection, data breach prevention, IT security assessment, cyber threat intelligence',
   openGraph: {
-    title: 'Cyber Intelligence | Find & Fix Threats Before Criminals Do',
-    description: 'Intelligence-grade cyber audits that prevent breaches. Free email breach check. Get your security report.',
+    title: 'Cyber Intelligence: NASA-Level Security for Small Business',
+    description: 'Stop hackers before they attack. NASA-recognized cybersecurity that finds vulnerabilities standard IT scans miss.',
     type: 'website',
-    url: 'https://quantumleap-io-55l56u.abacusai.app/cyber-intelligence',
+    url: 'https://quantumleapai.abacusai.app/cyber-intelligence',
     images: [
       {
-        url: 'https://quantumleap-io-55l56u.abacusai.app/og-image.png',
+        url: '/og-cyber-intelligence.jpg',
         width: 1200,
         height: 630,
-        alt: 'QuantumLeap AI - Cyber Intelligence & Penetration Testing',
+        alt: 'Cyber Intelligence Protection Services',
       }
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Cyber Intelligence | Prevent Breaches Before They Happen',
-    description: 'Intelligence-grade cyber audits. Free email breach check.',
-    images: ['https://quantumleap-io-55l56u.abacusai.app/og-image.png'],
+    title: 'Cyber Intelligence: NASA-Level Security for Small Business',
+    description: 'Stop hackers before they attack. Find 3 critical risks or it\'s free.',
+    images: ['/twitter-cyber-intelligence.jpg'],
   },
   alternates: {
-    canonical: 'https://quantumleap-io-55l56u.abacusai.app/cyber-intelligence',
-  }
+    canonical: 'https://quantumleapai.abacusai.app/cyber-intelligence',
+  },
+  robots: 'index, follow, max-image-preview:large',
 }
 
 export default function CyberIntelligenceLayout({

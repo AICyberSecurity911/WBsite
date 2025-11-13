@@ -4,6 +4,7 @@ import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from '@/components/ui/toaster'
 import { Toaster as SonnerToaster } from '@/components/ui/sonner'
+import { AmbientBackground } from '@/components/ui/ambient-background'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -92,11 +93,14 @@ export default function RootLayout({
       <body className={`${inter.variable} ${manrope.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme="dark"
           enableSystem={false}
           disableTransitionOnChange={false}
         >
-          {children}
+          <AmbientBackground />
+          <div className="relative z-10">
+            {children}
+          </div>
           <Toaster />
           <SonnerToaster />
         </ThemeProvider>

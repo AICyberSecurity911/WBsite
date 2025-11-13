@@ -1,1838 +1,1449 @@
 'use client'
 
 import { Header } from '@/components/layout/header'
-import { FlameBorder } from '@/components/ui/flame-border'
 import { Footer } from '@/components/layout/footer'
-import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
+import { GlowCard } from '@/components/ui/glow-card'
+import { FlameBorder } from '@/components/ui/flame-border'
+import { useState, useEffect } from 'react'
 import { 
-  Clock, 
-  DollarSign, 
-  TrendingUp, 
-  Zap, 
-  Mail, 
-  FileText, 
-  Calendar, 
-  Database,
-  CheckCircle,
-  CheckCircle2,
-  AlertCircle,
-  Workflow,
-  Target,
-  BarChart3,
-  Shield,
-  ArrowRight,
+  Shield, 
+  AlertTriangle, 
+  Clock,
   Users,
-  Lock,
-  Award,
-  LightbulbIcon,
+  DollarSign,
+  TrendingUp,
+  Target,
+  Mail,
+  Zap,
+  ArrowRight,
+  Star,
+  CheckCircle2,
+  FileText,
+  Workflow,
+  Database,
   Timer,
-  Building
+  Calculator,
+  ChevronRight,
+  Play,
+  Building,
+  Award,
+  Lock
 } from 'lucide-react'
 import Link from 'next/link'
-import { AutomationCalculator } from '@/components/calculator/automation-calculator'
-import { AutomationExitIntent } from '@/components/automation-exit-intent'
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
-import { Button } from '@/components/ui/button'
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-}
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15
-    }
-  }
-}
-
-export default function IntelligentAutomationPage() {
-  // Schema markup for SEO/AEO/AGO
-  const serviceSchema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Custom Intelligent Automations for SMBs",
-    "description": "Stop losing time and profit to manual work. QuantumLeap's custom Intelligent Automations connect your tools, eliminate repetitive tasks, and save 20+ hours/week—without hiring. Run the free ROI scan and get your personalized automation blueprint.",
-    "provider": {
-      "@type": "Organization",
-      "name": "QuantumLeap AI",
-      "url": "https://quantumleapai.abacusai.app"
-    },
-    "areaServed": "United States",
-    "serviceType": "Custom Business Process Automation",
-    "offers": {
-      "@type": "Offer",
-      "priceCurrency": "USD",
-      "price": "299",
-      "priceSpecification": {
-        "@type": "UnitPriceSpecification",
-        "price": "299",
-        "priceCurrency": "USD",
-        "billingIncrement": "Monthly"
-      }
-    }
-  }
-
-  const organizationSchema = {
-    "@context": "https://schema.org",
+// ========================================
+// PHASE 1: SEO & META DATA
+// ========================================
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Intelligent Automation Workflows",
+  "description": "Custom-built automation systems that connect business tools, eliminate repetitive tasks, and save 15-25 hours per week per employee",
+  "provider": {
     "@type": "Organization",
-    "name": "QuantumLeap AI",
-    "url": "https://quantumleapai.abacusai.app",
-    "logo": "https://quantumleapai.abacusai.app/logo.png",
-    "description": "Intelligent automations, AI workforce solutions, cyber intelligence, and business transformation for SMBs.",
-    "founder": {
-      "@type": "Person",
-      "name": "Paras Khurana"
-    }
-  }
-
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
+    "name": "QuantumLeap AI"
+  },
+  "areaServed": ["US", "CA", "International"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Automation Services",
     "itemListElement": [
       {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://quantumleapai.abacusai.app"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Intelligent Automation",
-        "item": "https://quantumleapai.abacusai.app/intelligent-automation"
-      }
-    ]
-  }
-
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Do you provide plug-and-play automation, or do you build custom?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "We custom-build every automation to fit your exact tools, workflows, and business logic. You're not buying a pre-built template—you're getting intelligent workflows designed specifically for how you operate."
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "LeadFlow Automation"
         }
       },
       {
-        "@type": "Question",
-        "name": "Isn't automation expensive or complicated?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. Intelligent Automations are modular and plug directly into your existing tools. Most clients see ROI within the first month. The average SMB loses $93,000/year to manual work. Our automations typically cost a fraction of that."
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "InvoiceIQ Automation"
         }
       },
       {
-        "@type": "Question",
-        "name": "Will automation replace my employees?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Not at all. Automation replaces tasks, not people. Your team spends less time on manual work and more time creating value."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How secure is it?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Every integration is built on encrypted APIs and monitored 24/7 by a team that's helped secure NASA systems. We follow enterprise-grade security protocols including end-to-end encryption (AES-256) and SOC2-compliant data handling."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What if I don't know where to start?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "That's exactly why we built the calculator and free audit. You'll get a clear roadmap showing which workflows cost you the most time, which automations deliver the fastest ROI, and a 30-day deployment plan."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How long does it take to see results?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Preliminary findings within 72 hours. Full deployment in 7–14 days. We prioritize quick wins first so you start seeing time savings within the first week."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What if my tools are unique or niche?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Perfect. We've integrated with hundreds of platforms—from mainstream to niche industry software. If your tools have APIs or CSV exports, we can automate them."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is this affordable for SMBs?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. A custom automation costs ~$299–499/mo—less than one day of an employee's salary but works 24/7. Most clients save 10–20x the cost in recovered productivity."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What happens after deployment?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "You get ongoing monitoring, optimization, and monthly ROI reports. Your dedicated success manager monitors performance 24/7 and handles any tweaks or expansions."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I start small and scale later?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Absolutely. Most founders start with 1–2 high-impact automations. Once you see the ROI, you expand. Every automation is modular so you can scale without rebuilding."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What if it breaks or stops working?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "We monitor 24/7 and fix issues proactively. Average response time is under 2 hours. Most issues are resolved in under 30 minutes."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How is this different from Zapier or Make?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Zapier and Make are DIY tools you maintain yourself. QuantumLeap is done-for-you: we design, build, monitor 24/7, and provide human support. Think of it this way: Zapier is buying lumber; QuantumLeap is hiring an architect and crew."
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Custom Workflow Automation"
         }
       }
     ]
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "200"
   }
+}
 
-  const [heroRef, heroInView] = useInView({ triggerOnce: true, threshold: 0.1 })
-  const [tlddrRef, tlddrInView] = useInView({ triggerOnce: true, threshold: 0.1 })
-  const [problemRef, problemInView] = useInView({ triggerOnce: true, threshold: 0.1 })
-  const [solutionRef, solutionInView] = useInView({ triggerOnce: true, threshold: 0.1 })
-  const [testimonialsRef, testimonialsInView] = useInView({ triggerOnce: true, threshold: 0.1 })
-  const [calculatorRef, calculatorInView] = useInView({ triggerOnce: true, threshold: 0.1 })
-  const [blogRef, blogInView] = useInView({ triggerOnce: true, threshold: 0.1 })
-  const [faqRef, faqInView] = useInView({ triggerOnce: true, threshold: 0.1 })
-  const [guaranteeRef, guaranteeInView] = useInView({ triggerOnce: true, threshold: 0.1 })
-
-  const automations = [
-    { name: 'LeadFlow', description: 'Custom-captures and routes leads from every source you use—web forms, email, calls, chat', price: 'Custom pricing', icon: Target },
-    { name: 'InvoiceIQ', description: 'Auto-creates invoices based on your triggers and sends smart follow-ups on your schedule', price: 'Custom pricing', icon: FileText },
-    { name: 'MailPilot', description: 'Reads, tags, prioritizes, and auto-responds to emails using your tone and rules', price: 'Custom pricing', icon: Mail },
-    { name: 'OpsSync', description: 'Links your CRMs, Sheets, and project apps into one unified system—no manual imports, ever', price: 'Custom pricing', icon: Workflow },
-    { name: 'ClientPulse', description: 'Automated feedback loops and retention triggers tailored to your customer lifecycle', price: 'Custom pricing', icon: TrendingUp },
-    { name: 'DataBridge', description: 'Syncs your apps in real-time—custom-built for your exact software stack', price: 'Custom pricing', icon: Database },
-    { name: 'FormFlow', description: 'Auto-processes forms and PDFs, routing data exactly where you need it', price: 'Custom pricing', icon: FileText },
-    { name: 'SmartDocs', description: 'Auto-routes and summarizes reports based on your business logic', price: 'Custom pricing', icon: FileText }
-  ]
-
-  const testimonials = [
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
     {
-      name: 'Peter Fernandes',
-      company: 'AAA Construction Services',
-      before: '7 days/month on invoicing; late payments bleeding cash',
-      after: 'InvoiceIQ + OpsSync automated billing & reminders',
-      result: '12 hours/week saved, 62% faster collections, +$45K cash-flow gain',
-      quote: '"I used to dread month-end. Now everything closes by the 3rd—automatically."',
-      image: '/company-logos/allianz.png'
-    },
-    {
-      name: 'Tiffany Duncan',
-      company: 'Talent Leap AI',
-      title: 'Director',
-      before: '6 platforms to track leads and follow-ups; deals falling through cracks',
-      after: 'LeadFlow + MailPilot centralized and nurtured automatically',
-      result: '+34% revenue; 2 extra client slots/month',
-      quote: '"We went from reactive chaos to proactive growth—without adding headcount."',
-      image: '/company-logos/ibm.png'
-    },
-    {
-      name: 'Gurpreet Sandhu',
-      company: 'Real Estate Vision',
-      title: 'Broker',
-      before: 'Manual listing updates across CRM, MLS, and ads—18 hours/week',
-      after: 'OpsSync + DataBridge synced all channels in real-time',
-      result: '18 hours/week saved; errors down 97%; ~$61K annual savings',
-      quote: '"I got my weekends back. And my team stopped making costly mistakes."',
-      image: '/company-logos/deloitte.png'
-    },
-    {
-      name: 'Lydia V. Penrose',
-      company: 'Code Vibe Studio',
-      title: 'Co-Founder',
-      before: 'Clients waited days for reports; manual compilation killed velocity',
-      after: 'SmartDocs compiled insights overnight',
-      result: 'Turnaround cut from 72h to 6h; retention up 29%',
-      quote: '"Our clients think we\'re psychic. We\'re just automated."',
-      image: '/company-logos/ge.png'
-    },
-    {
-      name: 'Harper Kingsley',
-      company: 'Adroit Infosystems',
-      title: 'VP',
-      before: 'Overwhelmed inbox; missed deals; team drowning in triage',
-      after: 'MailPilot handled 75% of inbound messages',
-      result: 'Team stress ↓68%; close rate ↑41%',
-      quote: '"MailPilot didn\'t replace us—it freed us to do our actual jobs."',
-      image: '/company-logos/hsbc.png'
+      "@type": "Question",
+      "name": "How is this different from Zapier or Make?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Zapier and Make require you to build and maintain automations yourself. We design, build, monitor, and optimize custom automation workflows for you—with dedicated support and guaranteed ROI."
+      }
     }
   ]
+}
 
-  const scrollToCalculator = () => {
-    const calc = document.getElementById('calculator')
-    if (calc) {
-      calc.scrollIntoView({ behavior: 'smooth', block: 'start' })
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://quantumleapai.abacusai.app"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Services",
+      "item": "https://quantumleapai.abacusai.app/services"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Intelligent Automations",
+      "item": "https://quantumleapai.abacusai.app/intelligent-automation"
     }
+  ]
+}
+
+// ========================================
+// COMPONENT: Countdown Timer
+// ========================================
+const CountdownTimer = ({ elementId, hoursRemaining }: { elementId: string; hoursRemaining: number }) => {
+  const [timeLeft, setTimeLeft] = useState('')
+
+  useEffect(() => {
+    const endTime = new Date().getTime() + (hoursRemaining * 60 * 60 * 1000)
+    
+    const update = () => {
+      const now = new Date().getTime()
+      const distance = endTime - now
+      
+      if (distance < 0) {
+        setTimeLeft("Contact us for next availability")
+        return
+      }
+      
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24))
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+      
+      setTimeLeft(`${days} days, ${hours} hours, ${minutes} minutes`)
+    }
+    
+    update()
+    const interval = setInterval(update, 1000)
+    return () => clearInterval(interval)
+  }, [hoursRemaining])
+
+  return <span id={elementId}>{timeLeft}</span>
+}
+
+// ========================================
+// COMPONENT: ROI Calculator (Simplified - Full version will be separate component)
+// ========================================
+const ROICalculator = () => {
+  const [hourlyRate, setHourlyRate] = useState(100)
+  const [hoursPerWeek, setHoursPerWeek] = useState(20)
+  const [taskType, setTaskType] = useState('general')
+  const [results, setResults] = useState<any>(null)
+
+  const calculateWaste = () => {
+    const weeklyManualCost = hourlyRate * hoursPerWeek
+    const annualManualCost = weeklyManualCost * 52
+    const weeksWasted = (hoursPerWeek * 52) / 40
+
+    let monthlyAutomationCost
+    if (hoursPerWeek <= 10) {
+      monthlyAutomationCost = 399
+    } else if (hoursPerWeek <= 20) {
+      monthlyAutomationCost = 799
+    } else if (hoursPerWeek <= 30) {
+      monthlyAutomationCost = 1299
+    } else {
+      monthlyAutomationCost = 1799
+    }
+
+    const annualAutomationCost = monthlyAutomationCost * 12
+    const annualSavings = annualManualCost - annualAutomationCost
+    const roi = ((annualSavings / annualAutomationCost) * 100).toFixed(0)
+
+    setResults({
+      annualCost: annualManualCost,
+      weeksWasted: weeksWasted.toFixed(1),
+      automationCost: annualAutomationCost,
+      savings: annualSavings,
+      roi: roi
+    })
   }
 
   return (
-    <>
-      {/* Schema Markup */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+    <GlowCard className="p-8" showFlame={true}>
+      <h3 className="text-2xl font-bold mb-6 text-[color:var(--fg)]">💸 Time Waste Calculator</h3>
+      <p className="text-[color:var(--muted)] mb-6">See exactly how much your manual processes are costing you</p>
+      
+      <div className="space-y-6">
+        <div>
+          <label className="block text-sm font-semibold mb-2 text-[color:var(--fg)]">
+            What's your hourly rate? (or what you could charge)
+          </label>
+          <input
+            type="number"
+            value={hourlyRate}
+            onChange={(e) => setHourlyRate(parseFloat(e.target.value) || 100)}
+            className="w-full px-4 py-3 rounded-xl border border-[color:var(--border)] bg-[color:var(--card)] text-[color:var(--fg)] focus:outline-none focus:ring-2 focus:ring-[color:var(--primary)]"
+            min="0"
+            step="10"
+          />
+        </div>
 
-      <Header />
+        <div>
+          <label className="block text-sm font-semibold mb-2 text-[color:var(--fg)]">
+            Hours per week spent on repetitive tasks: {hoursPerWeek}
+          </label>
+          <input
+            type="range"
+            value={hoursPerWeek}
+            onChange={(e) => setHoursPerWeek(parseInt(e.target.value))}
+            min="1"
+            max="40"
+            step="1"
+            className="w-full"
+          />
+        </div>
 
-      <main className="min-h-screen bg-[#07070b] text-[#f6f7ff]">
-        
-        {/* HERO SECTION */}
-        <section 
-          ref={heroRef}
-          className="relative overflow-hidden py-20 lg:py-32"
-          style={{ background: 'linear-gradient(135deg, #07070b 0%, rgba(83, 18, 196, 0.1) 50%, #07070b 100%)' }}
-        >
-          <div className="absolute inset-0 bg-grid-pattern opacity-[0.03]" />
-          
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            animate={heroInView ? "visible" : "hidden"}
-            className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        <div>
+          <label className="block text-sm font-semibold mb-2 text-[color:var(--fg)]">
+            What types of tasks?
+          </label>
+          <select
+            value={taskType}
+            onChange={(e) => setTaskType(e.target.value)}
+            className="w-full px-4 py-3 rounded-xl border border-[color:var(--border)] bg-[color:var(--card)] text-[color:var(--fg)] focus:outline-none focus:ring-2 focus:ring-[color:var(--primary)]"
           >
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              
-              {/* Left Column: Copy */}
-              <motion.div variants={fadeInUp} className="space-y-8">
-                
-                {/* Trust Bar Badge */}
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full" style={{ background: 'rgba(83, 18, 196, 0.2)' }}>
-                  <Shield className="w-4 h-4" style={{ color: '#ff7f50' }} />
-                  <span className="text-sm font-semibold" style={{ color: '#ff7f50' }}>
-                    Fortune 500 Strategy | MIT & Caltech Engineering | NASA-Recognized Security
-                  </span>
-                </div>
-                
-                {/* Main Headline */}
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight" style={{ color: '#f6f7ff' }}>
-                  Save 20+ Hours a Week and Cut Costs by{' '}
-                  <span style={{ color: '#ff7f50' }}>60–85%</span>
-                  {' '}— Automate the Busywork That's Holding You Back
-                </h1>
-                
-                {/* Subheadline */}
-                <p className="text-xl leading-relaxed" style={{ color: '#b8b6c9' }}>
-                  Your time drives growth. Our Intelligent Automations connect your tools, remove repetitive tasks, and work 24/7—so you can do the work that moves the needle.
-                </p>
-                
-                {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button 
-                    size="lg"
-                    onClick={scrollToCalculator}
-                    className="bg-qgd-primary/600 hover:bg-qgd-primary/700 text-qgd-fg font-semibold px-8 py-6 text-lg group"
-                  >
-                    <Timer className="w-5 h-5 mr-2" />
-                    Reveal My Hidden Hours & Savings
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                  <Button 
-                    size="lg"
-                    variant="outline"
-                    asChild
-                    className="border-2 border-teal-600 text-qgd-ring700 dark:text-qgd-ring400 hover:bg-qgd-primary/50 dark:hover:bg-qgd-primary/950/30 px-8 py-6 text-lg font-semibold"
-                  >
-                    <Link href="#solution">
-                      <Workflow className="w-5 h-5 mr-2" />
-                      Show Me What I Can Automate
-                    </Link>
-                  </Button>
-                </div>
-                
-              </motion.div>
-              
-              {/* Right Column: Hero Video */}
-              <motion.div variants={fadeInUp} className="relative">
-                <div className="relative aspect-video rounded-2xl overflow-hidden bg-gradient-to-br from-teal-100 to-emerald-100 dark:from-teal-900/20 dark:to-emerald-900/20 border-2 border-teal-300 dark:border-teal-700 shadow-2xl group cursor-pointer">
-                  
-                  {/* Video Placeholder with Play Button */}
-                  <div className="relative h-full flex items-center justify-center bg-gradient-to-br from-teal-600 via-emerald-600 to-teal-700">
-                    
-                    {/* Transformation Story Visual */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center text-qgd-fg px-6">
-                        <div className="mb-6 space-y-3">
-                          {/* Before State */}
-                          <motion.div
-                            initial={{ opacity: 1, x: 0 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 2, repeat: Infinity, repeatDelay: 6 }}
-                            className="text-left"
-                          >
-                            <div className="text-sm font-semibold text-qgd-ring200 mb-1">BEFORE</div>
-                            <div className="text-lg font-bold">12-hour days. Manual chaos. Burnout.</div>
-                          </motion.div>
-                          
-                          {/* Arrow */}
-                          <motion.div
-                            animate={{ scale: [1, 1.2, 1] }}
-                            transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 6.5 }}
-                            className="flex items-center justify-center"
-                          >
-                            <ArrowRight className="w-8 h-8 text-qgd-fg" />
-                          </motion.div>
-                          
-                          {/* After State */}
-                          <motion.div
-                            initial={{ opacity: 1, x: 0 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 2, repeat: Infinity, repeatDelay: 6, delay: 4 }}
-                            className="text-right"
-                          >
-                            <div className="text-sm font-semibold text-emerald-200 mb-1">AFTER</div>
-                            <div className="text-lg font-bold">20+ hours freed. Systems running 24/7.</div>
-                          </motion.div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    {/* Play Button Overlay */}
-                    <motion.div
-                      whileHover={{ scale: 1.1 }}
-                      className="absolute inset-0 flex items-center justify-center bg-black/30 backdrop-blur-[2px] group-hover:bg-black/40 transition-all"
-                    >
-                      <div className="w-20 h-20 bg-qgd-card/90 rounded-full flex items-center justify-center shadow-xl group-hover:bg-[#0c0c12] transition-colors">
-                        <div className="w-0 h-0 border-l-[20px] border-l-teal-600 border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent ml-1" />
-                      </div>
-                    </motion.div>
-                    
-                    {/* Video Coming Soon Badge */}
-                    <div className="absolute top-4 right-4 bg-qgd-card/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-semibold text-qgd-muted shadow-lg">
-                      🎬 8-Second Story
-                    </div>
-                  </div>
-                  
-                  {/* Floating Stats */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.8 }}
-                    className="absolute -bottom-4 -left-4 bg-qgd-card dark:bg-zinc-900 rounded-xl shadow-xl p-4 border border-qgd-border dark:border-zinc-800"
-                  >
-                    <div className="text-3xl font-bold text-qgd-ring600 dark:text-qgd-ring400">20+</div>
-                    <div className="text-sm text-qgd-muted dark:text-qgd-muted">Hours Saved/Week</div>
-                  </motion.div>
-                  
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1 }}
-                    className="absolute -top-4 -right-4 bg-qgd-card dark:bg-zinc-900 rounded-xl shadow-xl p-4 border border-qgd-border dark:border-zinc-800"
-                  >
-                    <div className="text-3xl font-bold text-emerald-600 dark:text-emerald-400">60-85%</div>
-                    <div className="text-sm text-qgd-muted dark:text-qgd-muted">Cost Reduction</div>
-                  </motion.div>
-                </div>
-                
-                {/* Video Caption */}
-                <p className="text-center text-sm text-qgd-muted dark:text-qgd-muted mt-4 italic">
-                  Watch: From overwhelmed to automated in 8 seconds
-                </p>
-              </motion.div>
-              
+            <option value="general">General administrative tasks</option>
+            <option value="data-entry">Data entry & updates</option>
+            <option value="email">Email management</option>
+            <option value="invoicing">Invoicing & payment tracking</option>
+            <option value="scheduling">Scheduling & calendar management</option>
+            <option value="reporting">Report generation</option>
+            <option value="lead-management">Lead capture & follow-up</option>
+          </select>
+        </div>
+
+        <button
+          onClick={calculateWaste}
+          className="w-full btn-primary py-4 text-lg font-semibold"
+          style={{ backgroundColor: '#2563EB', color: 'white' }}
+        >
+          Calculate My Hidden Costs
+        </button>
+
+        {results && (
+          <div className="mt-8 space-y-4 p-6 bg-[color:var(--card)] rounded-xl border border-[color:var(--border)]">
+            <div>
+              <div className="text-sm text-[color:var(--muted)] mb-1">Annual Cost of Manual Work:</div>
+              <div className="text-3xl font-bold text-red-500">${results.annualCost.toLocaleString()}</div>
+              <div className="text-xs text-[color:var(--muted)] mt-1">This is what you're spending per year on tasks a computer should handle</div>
             </div>
-          </motion.div>
-        </section>
+            <div>
+              <div className="text-sm text-[color:var(--muted)] mb-1">Full Work Weeks Wasted Per Year:</div>
+              <div className="text-3xl font-bold text-red-500">{results.weeksWasted}</div>
+              <div className="text-xs text-[color:var(--muted)] mt-1">Equivalent full 40-hour work weeks spent on busywork</div>
+            </div>
+            <div>
+              <div className="text-sm text-[color:var(--muted)] mb-1">Automation Cost (Annual):</div>
+              <div className="text-3xl font-bold text-green-500">${results.automationCost.toLocaleString()}</div>
+            </div>
+            <div>
+              <div className="text-sm text-[color:var(--muted)] mb-1">Your Annual Savings:</div>
+              <div className="text-3xl font-bold text-green-500">${results.savings.toLocaleString()}</div>
+            </div>
+            <div>
+              <div className="text-sm text-[color:var(--muted)] mb-1">ROI:</div>
+              <div className="text-3xl font-bold text-green-500">{results.roi}%</div>
+            </div>
+            <Link
+              href="#assessment"
+              className="block mt-6 btn-primary text-center py-3"
+              style={{ backgroundColor: '#16a34a', color: 'white' }}
+            >
+              Get My Free Automation Assessment →
+            </Link>
+          </div>
+        )}
+      </div>
+    </GlowCard>
+  )
+}
 
-        {/* TL;DR SECTION (AEO/AGO Optimized) */}
-        <section 
-          ref={tlddrRef}
-          className="py-16 bg-qgd-card dark:bg-zinc-900/50"
-        >
-          <motion.div
-            variants={fadeInUp}
-            initial="hidden"
-            animate={tlddrInView ? "visible" : "hidden"}
-            className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
-          >
-            <div className="bg-qgd-card dark:bg-zinc-900 rounded-2xl border-2 border-teal-200 dark:border-teal-800 p-8 shadow-lg">
-              
-              {/* Header */}
-              <div className="flex items-start gap-4 mb-6">
-                <div className="flex-shrink-0 w-12 h-12 bg-qgd-primary/100 dark:bg-qgd-primary/900/30 rounded-xl flex items-center justify-center">
-                  <LightbulbIcon className="w-6 h-6 text-qgd-ring600 dark:text-qgd-ring400" />
-                </div>
-                <div>
-                  <h2 className="text-2xl font-bold text-qgd-fg dark:text-gray-100 mb-2">
-                    What is QuantumLeap Intelligent Automations?
-                  </h2>
-                  <p className="text-qgd-muted dark:text-qgd-muted">
-                    The executive summary for decision-makers
-                  </p>
-                </div>
-              </div>
-              
-              {/* Bottom Line */}
-              <div className="bg-qgd-primary/50 dark:bg-qgd-primary/900/20 rounded-lg p-6 mb-6">
-                <p className="text-qgd-fg dark:text-gray-100 leading-relaxed">
-                  An automation layer that connects your CRM, email, finance, and ops tools—then handles the repetitive work automatically.
-                </p>
-              </div>
-              
-              {/* Key Outcomes */}
-              <div className="mb-6">
-                <h3 className="font-semibold text-qgd-fg dark:text-gray-100 mb-4">
-                  Outcomes (typical):
-                </h3>
-                <ul className="space-y-3">
-                  {[
-                    { icon: Clock, text: 'Reclaim 15–25 hours per week per employee' },
-                    { icon: DollarSign, text: 'Reduce manual labor costs by 60–85%' },
-                    { icon: Zap, text: 'Deploy in ≤ 14 days (no code)' },
-                    { icon: Shield, text: 'Built by the team that secured NASA systems' }
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <item.icon className="w-5 h-5 text-qgd-ring600 dark:text-qgd-ring400 flex-shrink-0 mt-0.5" />
-                      <span className="text-qgd-muted dark:text-qgd-fg">
-                        {item.text}
-                      </span>
-                    </li>
-                  ))}
+export default function IntelligentAutomationPage() {
+  // Smooth scroll to anchors
+  useEffect(() => {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault()
+        const href = anchor.getAttribute('href') || ''
+        const target = document.querySelector(href)
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          history.pushState(null, '', href)
+        }
+      })
+    })
+  }, [])
+
+  return (
+    <div className="min-h-screen bg-[color:var(--bg)] text-[color:var(--fg)]">
+      <Header />
+      
+      <main id="main-content">
+        {/* ========================================
+            PHASE 2: HERO SECTION - COMPLETE OVERHAUL
+            ======================================== */}
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 bg-gradient-to-b from-[color:var(--bg)] via-[color:var(--bg)]/95 to-[color:var(--bg)]" />
+          </div>
+
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div className="text-center">
+              {/* Section Label */}
+              <span className="inline-block text-xs uppercase tracking-wider text-[color:var(--muted)] mb-6">
+                INTELLIGENT AUTOMATIONS
+              </span>
+
+              {/* H1 Headline */}
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-8 leading-tight">
+                Stop Wasting Hours on Repetitive Tasks—Let AI Handle It
+              </h1>
+
+              {/* Subheadline */}
+              <p className="max-w-4xl mx-auto mb-12 text-lg sm:text-xl text-[color:var(--muted)] leading-relaxed">
+                From invoicing to customer follow-ups, we build AI automations that save you time, eliminate costly errors, and let you focus on growth.
+              </p>
+
+              {/* Opening Body Copy */}
+              <div className="max-w-4xl mx-auto space-y-6 mb-12 text-lg text-[color:var(--muted)] leading-relaxed text-left">
+                <p>Your time should drive growth—not busywork.</p>
+                <p>We build custom automation workflows that connect your CRM, email, finance tools, and operations software—that handles the repetitive work automatically. 24/7. Zero errors. Zero management.</p>
+                <p>You focus on strategy, sales, and scaling. Everything else runs itself.</p>
+                <p className="font-semibold text-[color:var(--fg)]">You started a business to build something meaningful, not to spend your days buried in invoices, emails, and data entry. This "busywork" isn't just annoying; it's a silent killer of growth. Every hour you spend on a task a computer could do is an hour you're not spending with customers, innovating, or leading your team.</p>
+                <p>We identify your most time-consuming manual processes and build a seamless AI automation engine to run them for you.</p>
+                <ul className="list-disc list-inside space-y-2 ml-4">
+                  <li><strong>Invoice & Payment Automation:</strong> Generate, send, and follow up on invoices automatically. Get paid 40% faster.</li>
+                  <li><strong>Customer Onboarding:</strong> Automatically send welcome emails, create accounts, and schedule check-ins.</li>
+                  <li><strong>Lead Follow-Up:</strong> Instantly respond to new leads 24/7 and nurture them with automated sequences.</li>
                 </ul>
               </div>
-              
-              {/* Founder Quote */}
-              <div className="bg-qgd-card dark:bg-zinc-800 rounded-lg p-6 mb-6">
-                <p className="text-qgd-fg dark:text-gray-100 italic mb-3">
-                  "Automation doesn't replace people. It replaces the repetitive grind that keeps them from doing their best work."
-                </p>
-                <p className="text-sm font-semibold text-qgd-muted dark:text-qgd-fg">
-                  — Paras Khurana, Founder & CEO
-                </p>
+
+              {/* Hero Video Placeholder */}
+              <div className="mb-12 max-w-4xl mx-auto">
+                <GlowCard className="p-0 overflow-hidden" showFlame={true}>
+                  <div className="relative aspect-video bg-gradient-to-br from-blue-900/20 to-purple-900/20 flex items-center justify-center">
+                    <div className="text-center">
+                      <Play className="w-16 h-16 text-blue-500 mx-auto mb-4" />
+                      <p className="text-[color:var(--muted)]">Hero Video Placeholder</p>
+                      <p className="text-sm text-[color:var(--muted)] mt-2">16-second automation transformation visualization</p>
+                    </div>
+                  </div>
+                </GlowCard>
               </div>
-              
-              {/* Critical Insight */}
-              <div className="border-l-4 border-amber-500 pl-6 mb-6">
-                <h4 className="font-semibold text-qgd-fg dark:text-gray-100 mb-2">
-                  Critical Insight (250+ years combined experience):
-                </h4>
-                <p className="text-qgd-muted dark:text-qgd-fg">
-                  Every manual workflow is a hidden expense center. Find it, automate it, and your margins expand.
-                </p>
-              </div>
-              
-              {/* CTA */}
-              <div className="text-center">
-                <Button
-                  size="lg"
-                  onClick={scrollToCalculator}
-                  className="bg-qgd-primary/600 hover:bg-qgd-primary/700 text-qgd-fg font-semibold"
+
+              {/* Primary CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                <Link
+                  href="#calculator"
+                  className="btn-primary inline-flex items-center justify-center h-14 px-8 text-lg"
+                  style={{ backgroundColor: '#2563EB', color: 'white' }}
                 >
-                  Take the 90-Second Assessment
-                </Button>
+                  Calculate How Much Time I'm Wasting →
+                </Link>
+                <Link
+                  href="#automation-suite"
+                  className="btn-secondary inline-flex items-center justify-center h-14 px-8 text-lg border-2"
+                  style={{ borderColor: '#2563EB', color: '#2563EB', background: 'transparent' }}
+                >
+                  See Automation Examples
+                </Link>
               </div>
-              
-            </div>
-          </motion.div>
-        </section>
 
-        {/* COMPARISON TABLE SECTION */}
-        <section className="py-20 bg-qgd-card dark:bg-zinc-950">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            {/* Section Header */}
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-100 dark:bg-amber-900/30 rounded-full mb-6">
-                <AlertCircle className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-                <span className="text-sm font-semibold text-amber-700 dark:text-amber-300">
-                  WHY QUANTUMLEAP WINS
-                </span>
+              {/* Microcopy */}
+              <div className="text-sm text-[color:var(--muted)] mb-12 space-y-1">
+                <p>✓ Free workflow analysis (no obligation)</p>
+                <p>✓ Custom-built for your business (not templates)</p>
+                <p>✓ Deploy in 7-14 days</p>
+                <p>✓ 60-day ROI guarantee</p>
               </div>
-              <h2 className="text-3xl lg:text-4xl font-bold text-qgd-fg dark:text-gray-100 mb-4">
-                QuantumLeap vs. DIY Automation Tools
-              </h2>
-              <p className="text-lg text-qgd-muted dark:text-qgd-muted max-w-3xl mx-auto">
-                Zapier and Make are powerful—but they're <em>tools you maintain yourself</em>. QuantumLeap is a done-for-you service with 24/7 support.
-              </p>
-            </div>
 
-            {/* Comparison Table */}
-            <div className="overflow-x-auto">
-              <table className="w-full border-collapse bg-qgd-card dark:bg-zinc-900 rounded-2xl overflow-hidden shadow-xl">
-                <thead>
-                  <tr className="bg-gradient-to-r from-gray-100 to-gray-200 dark:from-zinc-800 dark:to-zinc-700">
-                    <th className="p-4 text-left font-bold text-qgd-fg dark:text-gray-100 border-r border-gray-300 dark:border-zinc-600">
-                      Feature
-                    </th>
-                    <th className="p-4 text-center font-bold text-qgd-muted dark:text-qgd-fg">
-                      Zapier/Make
-                    </th>
-                    <th className="p-4 text-center font-bold bg-gradient-to-r linear-gradient(135deg, var(--primary), var(--accent)) text-qgd-fg">
-                      QuantumLeap
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {[
-                    {
-                      feature: 'Who builds it?',
-                      zapier: 'You do (DIY)',
-                      quantumleap: 'We design & build for you'
-                    },
-                    {
-                      feature: 'Custom logic & workflows',
-                      zapier: 'Limited by templates',
-                      quantumleap: 'Fully custom to your business'
-                    },
-                    {
-                      feature: 'Deployment time',
-                      zapier: 'Weeks to months (your time)',
-                      quantumleap: '7-14 days (done-for-you)'
-                    },
-                    {
-                      feature: '24/7 monitoring',
-                      zapier: '❌ You monitor & fix issues',
-                      quantumleap: '✅ Proactive 24/7 monitoring'
-                    },
-                    {
-                      feature: 'Expert support',
-                      zapier: 'Community forums',
-                      quantumleap: 'Dedicated success manager'
-                    },
-                    {
-                      feature: 'Troubleshooting',
-                      zapier: 'Figure it out yourself',
-                      quantumleap: 'We fix it (avg <2hr response)'
-                    },
-                    {
-                      feature: 'Security & compliance',
-                      zapier: 'Your responsibility',
-                      quantumleap: 'Enterprise-grade (NASA-level)'
-                    },
-                    {
-                      feature: 'Scaling & optimization',
-                      zapier: 'Manual rebuild required',
-                      quantumleap: 'Modular & auto-optimized'
-                    },
-                    {
-                      feature: 'Monthly ROI reports',
-                      zapier: '❌ No reporting',
-                      quantumleap: '✅ Detailed ROI tracking'
-                    },
-                    {
-                      feature: 'Best for',
-                      zapier: 'Tech-savvy teams with time',
-                      quantumleap: 'Busy founders who need results'
-                    }
-                  ].map((row, i) => (
-                    <tr
-                      key={i}
-                      className={`border-t border-qgd-border dark:border-zinc-800 ${
-                        i % 2 === 0 ? 'bg-qgd-card dark:bg-zinc-900/50' : 'bg-qgd-card dark:bg-zinc-900'
-                      }`}
-                    >
-                      <td className="p-4 font-semibold text-qgd-fg dark:text-gray-100 border-r border-qgd-border dark:border-zinc-800">
-                        {row.feature}
-                      </td>
-                      <td className="p-4 text-center text-qgd-muted dark:text-qgd-muted text-sm">
-                        {row.zapier}
-                      </td>
-                      <td className="p-4 text-center font-semibold text-qgd-ring700 dark:text-qgd-ring300 text-sm bg-qgd-primary/50/50 dark:bg-qgd-primary/950/20">
-                        {row.quantumleap}
-                      </td>
-                    </tr>
+              {/* Trust Badge Bar */}
+              <div className="mb-12">
+                <p className="text-xs text-[color:var(--muted)] mb-4">Trusted by:</p>
+                <div className="flex flex-wrap justify-center items-center gap-8 opacity-60 grayscale hover:grayscale-0 transition-all">
+                  {['Fortune 500 Companies', '200+ Businesses Automated', '60-85% Cost Reduction', '$47K Average Annual Savings'].map((name) => (
+                    <div key={name} className="text-lg font-semibold text-[color:var(--muted)]">
+                      {name}
+                    </div>
                   ))}
-                </tbody>
-              </table>
-            </div>
+                </div>
+              </div>
 
-            {/* Bottom Line */}
-            <div className="mt-10 bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-950/20 dark:to-orange-950/20 border-2 border-amber-300 dark:border-amber-700 rounded-2xl p-8 text-center">
-              <h3 className="text-2xl font-bold text-qgd-fg dark:text-gray-100 mb-4">
-                The Bottom Line
-              </h3>
-              <p className="text-lg text-qgd-muted dark:text-qgd-fg max-w-3xl mx-auto mb-6">
-                Zapier and Make are great <em>if you have the time and technical skill to maintain them</em>. 
-                QuantumLeap is for founders who want automation <strong>done right, without becoming IT managers</strong>.
-              </p>
-              <Button
-                size="lg"
-                onClick={scrollToCalculator}
-                className="bg-gradient-to-r linear-gradient(135deg, var(--primary), var(--accent)) hover:from-teal-700 hover:to-emerald-700 text-qgd-fg font-semibold"
-              >
-                <Zap className="w-5 h-5 mr-2" />
-                See What We'd Automate for You
-              </Button>
+              {/* Urgency Element */}
+              <GlowCard className="p-8 max-w-3xl mx-auto border-2" showFlame={true} style={{ borderColor: '#2563EB' }}>
+                <div className="text-left">
+                  <h3 className="text-blue-500 text-xl font-bold mb-4 flex items-center gap-2">
+                    <AlertTriangle className="w-6 h-6" />
+                    ⚠️ THE TIME THEFT YOU DON'T SEE:
+                  </h3>
+                  <div className="space-y-4 text-[color:var(--muted)]">
+                    <p>If you're spending 20 hours/week on repetitive tasks:</p>
+                    <ul className="list-disc list-inside space-y-2 ml-4">
+                      <li>→ 20 hours × 52 weeks = 1,040 hours per year</li>
+                      <li>→ 1,040 hours ÷ 40 hours/week = 26 FULL WORK WEEKS</li>
+                    </ul>
+                    <p>You're spending half your year on busywork that a computer should handle.</p>
+                    <p className="font-semibold text-[color:var(--fg)]">What could you accomplish with 26 extra weeks?</p>
+                  </div>
+                  <GlowCard className="mt-6 p-4 bg-white/5" showFlame={true}>
+                    <p className="text-blue-500 font-semibold mb-2">🔥 AUTOMATION AVAILABILITY:</p>
+                    <p>Custom automation builds require dedicated engineering time.</p>
+                    <p>Current wait time: <strong>2-3 weeks</strong></p>
+                    <p>Next available build slot: <CountdownTimer elementId="availability-countdown" hoursRemaining={192} /></p>
+                    <p className="text-blue-500 mt-2">Only 4 automation projects remaining this quarter</p>
+                  </GlowCard>
+                </div>
+              </GlowCard>
             </div>
-
           </div>
         </section>
 
-        {/* PROBLEM SECTION */}
-        <section 
-          ref={problemRef}
-          className="py-20 bg-qgd-card dark:bg-zinc-950"
-        >
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            animate={problemInView ? "visible" : "hidden"}
-            className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-          >
-            
-            {/* Section Header */}
-            <motion.div variants={fadeInUp} className="text-center mb-16">
-              <h2 className="text-4xl lg:text-5xl font-bold text-qgd-fg dark:text-gray-100 mb-6">
-                The Manual Trap
-              </h2>
-              <p className="text-xl text-qgd-muted dark:text-qgd-fg max-w-3xl mx-auto">
-                You didn't start a business to babysit spreadsheets
-              </p>
-            </motion.div>
-            
-            {/* Problem Cards */}
-            <motion.div variants={fadeInUp} className="max-w-4xl mx-auto space-y-6 mb-12">
-              <div className="bg-gradient-to-r from-red-50 to-amber-50 dark:from-red-950/20 dark:to-amber-950/20 border border-red-200 dark:border-red-800 rounded-xl p-8">
-                <h3 className="text-2xl font-bold text-qgd-fg dark:text-gray-100 mb-4">
-                  But today you:
-                </h3>
-                <ul className="space-y-3">
-                  {[
-                    'Copy/paste data between CRMs and sheets',
-                    'Manually chase invoices and follow-ups',
-                    'Spend weekends "catching up" on reports'
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <AlertCircle className="w-5 h-5 text-red-600 dark:text-red-400 flex-shrink-0 mt-1" />
-                      <span className="text-qgd-fg dark:text-gray-200 text-lg">
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              
-              <div className="bg-amber-50 dark:bg-amber-950/20 border-l-4 border-amber-500 rounded-lg p-6">
-                <p className="text-lg text-qgd-fg dark:text-gray-100 font-semibold mb-2">
-                  Reality:
-                </p>
-                <p className="text-qgd-fg dark:text-gray-200">
-                  The average SMB loses <strong>~1,200 hours/year</strong> to manual tasks—that's{' '}
-                  <strong className="text-amber-600 dark:text-amber-400">~$93,000 in hidden waste</strong>.
-                </p>
-              </div>
-              
-              <div className="bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-800 rounded-lg p-6">
-                <p className="text-lg text-qgd-fg dark:text-gray-100 font-semibold mb-2">
-                  Result:
-                </p>
-                <p className="text-qgd-fg dark:text-gray-200">
-                  Burnout, errors, slow cash flow, missed sales.
-                </p>
-              </div>
-            </motion.div>
-            
-            {/* CTA */}
-            <motion.div variants={fadeInUp} className="text-center">
-              <p className="text-xl text-qgd-muted dark:text-qgd-fg mb-6">
-                There's a better way. Let automation handle the grind while you focus on growth.
-              </p>
-              <Button
-                size="lg"
-                onClick={scrollToCalculator}
-                className="bg-qgd-primary/600 hover:bg-qgd-primary/700 text-qgd-fg font-semibold"
-              >
-                <Zap className="w-5 h-5 mr-2" />
-                See What You Can Automate
-              </Button>
-            </motion.div>
-            
-          </motion.div>
-        </section>
-
-        {/* SOLUTION SECTION */}
-        <section 
-          id="solution"
-          ref={solutionRef}
-          className="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-zinc-900/50 dark:to-zinc-950"
-        >
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            animate={solutionInView ? "visible" : "hidden"}
-            className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-          >
-            
-            {/* Section Header */}
-            <motion.div variants={fadeInUp} className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-qgd-primary/100 dark:bg-qgd-primary/900/30 rounded-full mb-6">
-                <Workflow className="w-4 h-4 text-qgd-ring600 dark:text-qgd-ring400" />
-                <span className="text-sm font-semibold text-qgd-ring700 dark:text-qgd-ring300">
-                  THE INTELLIGENT AUTOMATION SUITE
-                </span>
-              </div>
-              <h2 className="text-4xl lg:text-5xl font-bold text-qgd-fg dark:text-gray-100 mb-6">
-                The Intelligent Automation Suite—Built Around Your Tools & Workflows
-              </h2>
-              <div className="max-w-3xl mx-auto space-y-4">
-                <p className="text-xl text-qgd-muted dark:text-qgd-fg">
-                  We don't sell templates. We map your tech stack, find what's bleeding time and money, then build custom workflows that run 24/7 in the background.
-                </p>
-                <p className="text-lg text-qgd-muted dark:text-qgd-muted italic">
-                  Below are examples from past clients. Your solution will be custom-built for how you operate.
-                </p>
-              </div>
-            </motion.div>
-            
-            {/* Automation Cards Grid */}
-            <motion.div variants={fadeInUp} className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-              {automations.map((auto, i) => {
-                const Icon = auto.icon
-                return (
-                  <motion.div
-                    key={i}
-                    whileHover={{ y: -4, scale: 1.02 }}
-                    className="bg-qgd-card dark:bg-zinc-900 rounded-xl border border-qgd-border dark:border-zinc-800 p-6 shadow-sm hover:shadow-xl transition-all group"
-                  >
-                    <div className="w-14 h-14 bg-qgd-primary/100 dark:bg-qgd-primary/900/30 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                      <Icon className="w-7 h-7 text-qgd-ring600 dark:text-qgd-ring400" />
-                    </div>
-                    <h3 className="text-xl font-bold text-qgd-fg dark:text-gray-100 mb-2">
-                      {auto.name}
-                    </h3>
-                    <p className="text-qgd-muted dark:text-qgd-muted mb-4 text-sm leading-relaxed">
-                      {auto.description}
-                    </p>
-                    <div className="mt-auto pt-4 border-t border-qgd-border dark:border-zinc-800">
-                      <div className="text-center">
-                        <p className="text-xs text-qgd-muted dark:text-qgd-muted mb-1">
-                          Starting from
-                        </p>
-                        <p className="text-lg font-bold text-qgd-ring600 dark:text-qgd-ring400">
-                          $299/mo
-                        </p>
-                        <p className="text-xs text-qgd-muted dark:text-qgd-muted mt-1 italic">
-                          *Final pricing based on scope
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-                )
-              })}
-            </motion.div>
-            
-            {/* Disclaimer Note */}
-            <motion.div variants={fadeInUp} className="text-center mb-12">
-              <p className="text-sm text-qgd-muted dark:text-qgd-muted italic max-w-3xl mx-auto">
-                *Sample automation types. Your solution will be custom-designed for your business.
-              </p>
-            </motion.div>
-            
-            {/* CTA */}
-            <motion.div variants={fadeInUp} className="text-center bg-gradient-to-r from-teal-50 to-emerald-50 dark:from-teal-900/20 dark:to-emerald-900/20 rounded-2xl p-8 border border-teal-200 dark:border-teal-800">
-              <h3 className="text-2xl font-bold text-qgd-fg dark:text-gray-100 mb-4">
-                Build My Automated Business Plan (Free)
-              </h3>
-              <p className="text-qgd-muted dark:text-qgd-fg mb-6 max-w-2xl mx-auto">
-                Pinpoint the top 3 workflows to automate first and the ROI you can expect.
-              </p>
-              <Button
-                size="lg"
-                onClick={scrollToCalculator}
-                className="bg-qgd-primary/600 hover:bg-qgd-primary/700 text-qgd-fg font-semibold"
-              >
-                <BarChart3 className="w-5 h-5 mr-2" />
-                Get My Free Automation Plan
-              </Button>
-            </motion.div>
-            
-          </motion.div>
-        </section>
-
-        {/* TESTIMONIALS SECTION */}
-        <section 
-          ref={testimonialsRef}
-          className="py-20 bg-qgd-card dark:bg-zinc-950"
-        >
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            animate={testimonialsInView ? "visible" : "hidden"}
-            className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-          >
-            
-            {/* Section Header */}
-            <motion.div variants={fadeInUp} className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-qgd-primary/100 dark:bg-qgd-primary/900/30 rounded-full mb-6">
-                <Award className="w-4 h-4 text-qgd-ring600 dark:text-qgd-ring400" />
-                <span className="text-sm font-semibold text-qgd-ring700 dark:text-qgd-ring300">
-                  REAL BEFORE/AFTER RESULTS
-                </span>
-              </div>
-              <h2 className="text-4xl lg:text-5xl font-bold text-qgd-fg dark:text-gray-100 mb-6">
-                Results That Speak for Themselves
-              </h2>
-            </motion.div>
-            
-            {/* Testimonials Grid */}
-            <motion.div variants={fadeInUp} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-              {testimonials.map((test, i) => (
-                <div
-                  key={i}
-                  className="bg-gradient-to-br from-gray-50 to-teal-50 dark:from-zinc-900 dark:to-teal-950/10 border border-qgd-border dark:border-zinc-800 rounded-xl p-6 hover:shadow-lg transition-shadow flex flex-col"
-                >
-                  <div className="mb-4">
-                    <h4 className="font-bold text-lg text-qgd-fg dark:text-gray-100">
-                      {test.name}
-                    </h4>
-                    <p className="text-sm text-qgd-muted dark:text-qgd-muted">
-                      {test.title && `${test.title}, `}{test.company}
-                    </p>
-                  </div>
-                  
-                  <div className="space-y-3 mb-4">
-                    <div className="flex items-start gap-2">
-                      <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
-                      <div>
-                        <p className="text-xs font-semibold text-qgd-muted dark:text-qgd-fg mb-1">
-                          Before:
-                        </p>
-                        <p className="text-sm text-qgd-muted dark:text-qgd-muted">
-                          {test.before}
-                        </p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-qgd-ring600 flex-shrink-0 mt-0.5" />
-                      <div>
-                        <p className="text-xs font-semibold text-qgd-muted dark:text-qgd-fg mb-1">
-                          After:
-                        </p>
-                        <p className="text-sm text-qgd-muted dark:text-qgd-muted">
-                          {test.after}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800 rounded-lg p-3 mb-4">
-                    <p className="text-xs font-semibold text-emerald-700 dark:text-emerald-300 mb-1">
-                      Result:
-                    </p>
-                    <p className="text-sm font-bold text-emerald-600 dark:text-emerald-400">
-                      {test.result}
-                    </p>
-                  </div>
-                  
-                  {/* Emotional Quote */}
-                  {test.quote && (
-                    <div className="mt-auto pt-4 border-t border-gray-300 dark:border-zinc-700">
-                      <p className="text-sm italic text-qgd-muted dark:text-qgd-fg">
-                        {test.quote}
-                      </p>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </motion.div>
-            
-            {/* CTA */}
-            <motion.div variants={fadeInUp} className="text-center">
-              <Button
-                size="lg"
-                onClick={scrollToCalculator}
-                className="bg-emerald-600 hover:bg-emerald-700 text-qgd-fg font-semibold"
-              >
-                <TrendingUp className="w-5 h-5 mr-2" />
-                I Want Results Like These
-              </Button>
-            </motion.div>
-            
-          </motion.div>
-        </section>
-
-        {/* CALCULATOR SECTION */}
-        <section 
-          id="calculator"
-          ref={calculatorRef}
-          className="py-20 bg-gradient-to-br from-teal-50 via-emerald-50 to-teal-50 dark:from-teal-950/20 dark:via-emerald-950/20 dark:to-teal-950/20"
-        >
-          <motion.div
-            variants={fadeInUp}
-            initial="hidden"
-            animate={calculatorInView ? "visible" : "hidden"}
-            className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
-          >
-            
-            {/* Section Header */}
+        {/* ========================================
+            PHASE 11: ROI CALCULATOR TOOL
+            ======================================== */}
+        <section id="calculator" className="py-20">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-4xl lg:text-5xl font-bold text-qgd-fg dark:text-gray-100 mb-6">
-                You're Not Just "Busy." You're Leaking Profit.
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+                Calculate How Much Time You're Wasting
               </h2>
-              <p className="text-xl text-qgd-muted dark:text-qgd-fg max-w-3xl mx-auto">
-                In under 2 minutes, this free scan shows how many hours manual work is stealing each month, 
-                how much money that equals at your rate, and which automations recover the most time and cost first.
+              <p className="text-lg text-[color:var(--muted)] max-w-3xl mx-auto">
+                See exactly how much your manual processes are costing you—and how much you'll save with automation.
               </p>
             </div>
-            
-            {/* Calculator Component */}
-            <AutomationCalculator />
-            
-          </motion.div>
+            <ROICalculator />
+          </div>
         </section>
 
-
-        {/* STRATEGIC BLOG SECTION */}
-        <section 
-          ref={blogRef}
-          className="py-20 bg-qgd-card dark:bg-zinc-950"
-        >
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            animate={blogInView ? "visible" : "hidden"}
-            className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
-          >
-            
-            {/* Blog Article */}
-            <motion.article variants={fadeInUp} className="prose prose-lg dark:prose-invert max-w-none">
-              
-              <div className="text-center mb-12">
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-qgd-primary/100 dark:bg-qgd-primary/900/30 rounded-full mb-6">
-                  <FileText className="w-4 h-4 text-qgd-ring600 dark:text-qgd-ring400" />
-                  <span className="text-sm font-semibold text-qgd-ring700 dark:text-qgd-ring300">
-                    STRATEGIC INSIGHT
-                  </span>
-                </div>
-                <h2 className="text-3xl lg:text-4xl font-bold text-qgd-fg dark:text-gray-100 mb-4">
-                  When Busy Feels Productive — The Hidden Cost of Doing Everything Manually
-                </h2>
-              </div>
-              
-              <div className="bg-qgd-card dark:bg-zinc-900 rounded-xl p-8 mb-8 border border-qgd-border dark:border-zinc-800">
-                <p className="text-lg leading-relaxed">
-                  Mark thought he was productive. He ran a small design agency, worked 12-hour days, and never missed a deadline.
-                </p>
-                <p className="text-lg leading-relaxed">
-                  But he was constantly copying leads from email into his CRM, manually sending invoices, and checking Slack at midnight to see if a client approved a mockup.
-                </p>
-                <p className="text-lg leading-relaxed font-semibold text-qgd-fg dark:text-gray-100">
-                  On paper, he was "busy." In reality, he was stuck in maintenance mode — running the business instead of growing it.
-                </p>
-              </div>
-              
-              <h3 className="text-2xl font-bold text-qgd-fg dark:text-gray-100 mt-10 mb-4 flex items-center gap-2">
-                <AlertCircle className="w-6 h-6 text-amber-600" />
-                The Myth of "I'll Just Do It Myself"
-              </h3>
-              
-              <p>Most entrepreneurs start with this mindset. It feels smart at first:</p>
-              
-              <blockquote className="border-l-4 border-teal-500 pl-6 my-6 italic text-qgd-muted dark:text-qgd-fg">
-                "Why pay for tools or help when I can just do it myself?"
-              </blockquote>
-              
-              <p>But over time, every "quick manual fix" becomes a brick in a wall that traps your time.</p>
-              
-              <div className="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800 rounded-xl p-6 my-8">
-                <h4 className="text-xl font-bold text-qgd-fg dark:text-gray-100 mb-4">
-                  Here's what it really costs:
-                </h4>
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-qgd-muted dark:text-qgd-fg">Copying leads/emails</span>
-                    <span className="font-bold text-amber-600 dark:text-amber-400">312 hrs/year</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-qgd-muted dark:text-qgd-fg">Creating invoices</span>
-                    <span className="font-bold text-amber-600 dark:text-amber-400">208 hrs/year</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-qgd-muted dark:text-qgd-fg">Updating reports</span>
-                    <span className="font-bold text-amber-600 dark:text-amber-400">156 hrs/year</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-qgd-muted dark:text-qgd-fg">Managing projects manually</span>
-                    <span className="font-bold text-amber-600 dark:text-amber-400">260 hrs/year</span>
-                  </div>
-                  <div className="border-t-2 border-amber-300 dark:border-amber-700 pt-3 mt-3 flex justify-between items-center">
-                    <span className="font-bold text-qgd-fg dark:text-gray-100">Total</span>
-                    <span className="text-2xl font-bold text-amber-600 dark:text-amber-400">936 hrs/year</span>
-                  </div>
-                  <p className="text-sm text-qgd-muted dark:text-qgd-muted italic pt-2">
-                    That's almost 24 work weeks — on things a simple automation could do in the background.
-                  </p>
-                </div>
-              </div>
-              
-              <p className="text-lg font-semibold text-qgd-fg dark:text-gray-100">
-                So when you say, "I don't have time to automate," what you're really saying is: 
-                <em className="text-qgd-ring600 dark:text-qgd-ring400"> "I'd rather spend six months every year on tasks a bot can do."</em>
+        {/* ========================================
+            PHASE 3: THE HIDDEN COST OF MANUAL WORK
+            ======================================== */}
+        <section className="py-20 bg-[color:var(--card)]">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <span className="text-xs uppercase tracking-wider text-[color:var(--muted)] mb-4 block">
+                THE BRUTAL MATH YOU'VE BEEN IGNORING
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+                You're Not "Saving Money" by Doing It Manually. You're Bleeding Cash You Can't See.
+              </h2>
+              <p className="text-lg text-[color:var(--muted)] max-w-3xl mx-auto">
+                Most entrepreneurs think automation is expensive. They compare the cost of automation to "$0" (doing it manually).
               </p>
-              
-              <h3 className="text-2xl font-bold text-qgd-fg dark:text-gray-100 mt-10 mb-4 flex items-center gap-2">
-                <Zap className="w-6 h-6 text-qgd-ring600" />
-                The Automation Effect: Turning Chaos into Flow
-              </h3>
-              
-              <p>When Mark finally automated, the change was instant.</p>
-              
-              <ul className="space-y-2 my-6">
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-qgd-ring600 flex-shrink-0 mt-1" />
-                  <span><strong>LeadFlow</strong> captured every web inquiry and tagged it in his CRM.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-qgd-ring600 flex-shrink-0 mt-1" />
-                  <span><strong>InvoiceIQ</strong> generated and sent invoices automatically after client approvals.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-qgd-ring600 flex-shrink-0 mt-1" />
-                  <span><strong>OpsSync</strong> updated tasks across ClickUp, Slack, and Google Sheets without him touching a thing.</span>
-                </li>
-              </ul>
-              
-              <p>He didn't add new staff. He added systems that never sleep.</p>
-              
-              <div className="bg-emerald-50 dark:bg-emerald-950/20 border-2 border-emerald-500 rounded-xl p-6 my-8">
-                <h4 className="text-xl font-bold text-emerald-700 dark:text-emerald-300 mb-4">
-                  The result?
-                </h4>
-                <ul className="space-y-2">
-                  <li className="flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-emerald-600" />
-                    <span className="font-semibold text-qgd-fg dark:text-gray-100">19 hours a week freed</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <DollarSign className="w-5 h-5 text-emerald-600" />
-                    <span className="font-semibold text-qgd-fg dark:text-gray-100">$48,000 in recovered productivity</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-emerald-600" />
-                    <span className="font-semibold text-qgd-fg dark:text-gray-100">Zero "forgotten" client follow-ups</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Users className="w-5 h-5 text-emerald-600" />
-                    <span className="font-semibold text-qgd-fg dark:text-gray-100">And his evenings — finally quiet</span>
-                  </li>
+              <p className="text-lg text-[color:var(--muted)] max-w-3xl mx-auto mt-4">
+                But manual work isn't free. It's invisible expensive.
+              </p>
+              <p className="text-lg font-semibold text-[color:var(--fg)] max-w-3xl mx-auto mt-4">
+                Let me show you the real numbers.
+              </p>
+            </div>
+
+            <div className="space-y-8">
+              <GlowCard className="p-8" showFlame={true}>
+                <h3 className="text-2xl font-bold mb-6 text-red-500">THE "$0" LIE:</h3>
+                <p className="mb-4">You tell yourself: "I'll just do this manually. It's free."</p>
+                <p className="mb-6 font-semibold">Here's what "free" actually costs you:</p>
+                
+                <div className="bg-[#1F2937] p-6 rounded-lg mb-6">
+                  <h4 className="font-semibold mb-4">SCENARIO: PROCESSING 50 LEADS PER WEEK MANUALLY</h4>
+                  <div className="space-y-3 text-sm">
+                    <p><strong>Manual Process:</strong></p>
+                    <ul className="list-disc list-inside space-y-1 ml-4">
+                      <li>→ Copy lead data from form to CRM: 3 minutes per lead</li>
+                      <li>→ Send welcome email: 2 minutes per lead</li>
+                      <li>→ Schedule follow-up reminder: 1 minute per lead</li>
+                      <li>→ Update sales pipeline: 2 minutes per lead</li>
+                      <li>→ Create task for sales team: 2 minutes per lead</li>
+                    </ul>
+                    <p className="mt-4"><strong>Total time per lead:</strong> 10 minutes</p>
+                    <p><strong>Total leads per week:</strong> 50</p>
+                    <p><strong>Total time per week:</strong> 500 minutes = 8.3 hours</p>
+                    <p className="mt-4"><strong>Annual time investment:</strong> 432 hours (nearly 11 work weeks)</p>
+                    <p className="mt-4">
+                      <strong>If your time is worth $100/hour:</strong> $43,200 in annual labor cost<br/>
+                      <strong>If your time is worth $200/hour:</strong> $86,400 in annual labor cost
+                    </p>
+                    <p className="mt-4 text-green-500">
+                      <strong>Automation cost:</strong> $299/month = $3,588/year<br/>
+                      <strong>Automation time:</strong> 0 hours (runs automatically)
+                    </p>
+                    <p className="mt-4">
+                      <strong>Annual savings at $100/hour rate:</strong> $39,612<br/>
+                      <strong>Annual savings at $200/hour rate:</strong> $82,812
+                    </p>
+                  </div>
+                </div>
+                <p className="font-semibold text-red-500 text-lg">You're not "saving money" by doing it manually. You're spending $40K-$80K you can't see.</p>
+              </GlowCard>
+
+              <GlowCard className="p-8" showFlame={true}>
+                <h3 className="text-2xl font-bold mb-6">THE FIVE COSTS OF MANUAL WORK:</h3>
+                <div className="space-y-8">
+                  {[
+                    {
+                      title: 'COST #1: Your Actual Time',
+                      content: 'This one\'s obvious. But entrepreneurs consistently undervalue their own time. You charge clients $200/hour for your expertise. But you spend 15 hours/week doing $15/hour tasks. 15 hours × $200/hour = $3,000 in weekly opportunity cost. $3,000 × 52 weeks = $156,000 per year. That\'s $156,000 in revenue you didn\'t generate because you were copying data into spreadsheets.'
+                    },
+                    {
+                      title: 'COST #2: Human Errors',
+                      content: 'Manual work means human errors. And errors cost money. Real examples from our clients: Invoice sent to wrong client: $8,500 payment lost. Follow-up email never sent: $15,000 deal died. Data entered in wrong field: 3 hours to fix, project delayed. Forgot to update CRM: Sales team called same lead 4 times (embarrassing). Missed deadline because manual reminder failed: Client left ($50K annual contract). Conservative estimate: 5% error rate on manual tasks. Cost per error: $500-$5,000 in lost time, revenue, or reputation.'
+                    },
+                    {
+                      title: 'COST #3: Inconsistency',
+                      content: 'When humans do repetitive work, consistency suffers. Monday morning: You send detailed, thoughtful follow-ups. Friday afternoon: You send rushed, generic messages. When you\'re busy: Tasks get skipped entirely. When you\'re tired: Quality drops. Automation doesn\'t get tired. Doesn\'t get busy. Doesn\'t skip steps. Every lead gets the same quality treatment. Every time. Forever.'
+                    },
+                    {
+                      title: 'COST #4: Scaling Limitations',
+                      content: 'Manual processes can\'t scale without hiring more people. Example: You process 50 leads/week manually (8 hours of work). Marketing campaign brings 200 leads/week. Now you need 32 hours/week just to process leads. You can\'t handle it alone. You hire someone: $50K salary + $15K benefits + 4 weeks training. Total cost: $65K/year for one workflow. Automation cost for same work: $3,588/year.'
+                    },
+                    {
+                      title: 'COST #5: Opportunity Cost (The Killer)',
+                      content: 'Every hour you spend on manual tasks is an hour you\'re NOT spending on: Closing high-value deals. Developing strategic partnerships. Creating new products/services. Building relationships with key clients. Hiring and training your team. Marketing and business development. You didn\'t start a business to copy data into spreadsheets. But that\'s where your time goes. The question isn\'t: "Can I afford automation?" The question is: "Can I afford NOT to automate?"'
+                    }
+                  ].map((cost, idx) => (
+                    <div key={idx} className="border-l-4 border-red-500 pl-4">
+                      <h4 className="text-lg font-bold mb-2">{cost.title}</h4>
+                      <p className="text-[color:var(--muted)]">{cost.content}</p>
+                    </div>
+                  ))}
+                </div>
+              </GlowCard>
+
+              {/* Statistics Callout */}
+              <GlowCard className="p-8 bg-[#1F2937] text-white" showFlame={true}>
+                <h3 className="text-red-500 text-2xl font-bold mb-6 text-center">📊 THE REAL COST OF "FREE" MANUAL WORK:</h3>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
+                  <div className="text-center">
+                    <p className="text-4xl font-bold text-red-500 mb-2">$78K-$260K</p>
+                    <p className="text-sm text-[#D1D5DB]">Annual cost of manual work</p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-4xl font-bold text-green-500 mb-2">$3.6K-$7.2K</p>
+                    <p className="text-sm text-[#D1D5DB]">Automation cost per year</p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-4xl font-bold text-green-500 mb-2">$70K-$252K</p>
+                    <p className="text-sm text-[#D1D5DB]">Annual savings</p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-4xl font-bold text-green-500 mb-2">2-4 weeks</p>
+                    <p className="text-sm text-[#D1D5DB]">ROI Timeline</p>
+                  </div>
+                </div>
+                <p className="text-center font-semibold text-lg">You're not saving money doing it manually. You're spending money invisibly.</p>
+                <p className="text-center mt-4">The only question: How much longer can you afford to bleed cash you can't see?</p>
+              </GlowCard>
+
+              <div className="text-center">
+                <Link
+                  href="#calculator"
+                  className="btn-primary inline-flex items-center"
+                  style={{ backgroundColor: '#2563EB', color: 'white' }}
+                >
+                  Calculate My Hidden Costs (Free Assessment) →
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================
+            PHASE 4: DIY AUTOMATION VS. DONE-FOR-YOU SECTION
+            ======================================== */}
+        <section className="py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <span className="text-xs uppercase tracking-wider text-[color:var(--muted)] mb-4 block">
+                THE ZAPIER TRAP (WHY DIY AUTOMATION FAILS)
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+                "I'll Just Use Zapier" Works Great—Until It Doesn't. Here's Why DIY Automation Fails 80% of the Time.
+              </h2>
+              <p className="text-lg text-[color:var(--muted)] max-w-3xl mx-auto">
+                Zapier, Make, and other DIY tools are powerful. But they require something most entrepreneurs don't have: time, technical knowledge, and constant maintenance.
+              </p>
+              <p className="text-lg font-semibold text-[color:var(--fg)] max-w-3xl mx-auto mt-4">
+                Here's the honest comparison nobody else will give you.
+              </p>
+            </div>
+
+            <div className="max-w-5xl mx-auto overflow-x-auto mb-12">
+              <GlowCard className="p-0 overflow-hidden" showFlame={true}>
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse">
+                    <thead>
+                      <tr className="bg-[#1F2937] text-white">
+                        <th className="px-4 py-4 text-left border-r border-[color:var(--border)]">The Critical Question</th>
+                        <th className="px-4 py-4 text-left border-r border-[color:var(--border)]">Zapier/Make (DIY)</th>
+                        <th className="px-4 py-4 text-left">QuantumLeap Automation</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {[
+                        { q: 'Who builds it?', diy: 'You do (requires 10-40 hours to learn and build)', custom: 'We design and build for you (zero learning curve)' },
+                        { q: 'Technical skill required?', diy: 'Moderate to advanced (need to understand APIs, logic, data mapping)', custom: 'None—you describe what you need, we build it' },
+                        { q: 'Custom logic & workflows', diy: 'Limited by templates and your technical ability', custom: 'Fully custom—we build exactly what your business needs' },
+                        { q: 'Deployment time', diy: 'Weeks to months (depending on complexity and your availability)', custom: '7-14 days (done-for-you, professionally built)' },
+                        { q: '24/7 monitoring', diy: '❌ You monitor and fix issues yourself', custom: '✅ Proactive monitoring—we fix before you notice' },
+                        { q: 'When something breaks', diy: 'You troubleshoot (hope you remember how you built it)', custom: 'We fix it—avg <2 hour response time' },
+                        { q: 'Expert support', diy: 'Community forums and generic help docs', custom: 'Dedicated success manager who knows your business' },
+                        { q: 'Security & compliance', diy: 'Your responsibility to configure correctly', custom: 'Enterprise-grade security (NASA-level protocols)' },
+                        { q: 'Scaling & optimization', diy: 'Manual rebuild required as business grows', custom: 'Modular design—automations scale with you' },
+                        { q: 'Monthly ROI reports', diy: '❌ No reporting', custom: '✅ Detailed time savings and cost reduction tracking' },
+                        { q: 'Best for', diy: 'Tech-savvy teams with 40+ hours to invest', custom: 'Busy entrepreneurs who need results, not projects' },
+                        { q: 'Typical monthly cost', diy: '$20-$200 (tools) + your time (20-40 hours)', custom: '$299-$799 (everything included)' },
+                        { q: 'Setup cost', diy: '"Free" (just your time: 40 hours × $200/hour = $8,000)', custom: 'Included in service—we handle everything' }
+                      ].map((row, idx) => (
+                        <tr key={idx} className={idx % 2 === 0 ? 'bg-[color:var(--card)]' : 'bg-[color:var(--bg)]'}>
+                          <td className="px-4 py-4 font-semibold border-r border-[color:var(--border)]">{row.q}</td>
+                          <td className="px-4 py-4 text-sm text-[color:var(--muted)] border-r border-[color:var(--border)]">{row.diy}</td>
+                          <td className="px-4 py-4 text-sm bg-green-500/10">{row.custom}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </GlowCard>
+            </div>
+
+            <GlowCard className="max-w-3xl mx-auto p-8 border-2 border-blue-500" showFlame={true}>
+              <h3 className="text-blue-500 text-xl font-bold mb-4">💡 THE HONEST QUESTION:</h3>
+              <div className="space-y-4 text-[color:var(--muted)]">
+                <p>If you had 40 hours to invest in your business, would you spend it:</p>
+                <p><strong>A)</strong> Learning Zapier, building automations, troubleshooting errors, maintaining workflows</p>
+                <p><strong>B)</strong> Closing deals, developing strategy, hiring great people, growing revenue</p>
+                <p className="font-semibold text-[color:var(--fg)]">DIY automation costs $20/month in tools + $8,000 in your time = $8,020 total cost</p>
+                <p className="font-semibold text-[color:var(--fg)]">Done-for-you automation costs $299-$799/month = $3,588-$9,588/year total cost (everything included)</p>
+                <p className="font-semibold text-blue-500">One lets you spend 40 hours doing $15/hour work. One lets you spend 40 hours doing $500/hour work.</p>
+                <p className="font-semibold text-[color:var(--fg)]">Which investment actually makes sense?</p>
+              </div>
+              <div className="text-center mt-6">
+                <Link
+                  href="#assessment"
+                  className="btn-primary inline-flex items-center"
+                  style={{ backgroundColor: '#2563EB', color: 'white' }}
+                >
+                  Let Experts Build It—I'll Focus on Revenue →
+                </Link>
+              </div>
+            </GlowCard>
+          </div>
+        </section>
+
+        {/* ========================================
+            PHASE 5: THE AUTOMATION SUITE - COMPLETE REWRITE
+            ======================================== */}
+        <section id="automation-suite" className="py-20 bg-[color:var(--card)]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <span className="text-xs uppercase tracking-wider text-[color:var(--muted)] mb-4 block">
+                YOUR CUSTOM AUTOMATION TOOLKIT
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+                The Eight Automation Workflows That Save 20+ Hours Per Week (Built Specifically for Your Business)
+              </h2>
+              <p className="text-lg text-[color:var(--muted)] max-w-3xl mx-auto">
+                These aren't off-the-shelf templates. Every automation is custom-built to connect YOUR specific tools, match YOUR workflows, and solve YOUR bottlenecks.
+              </p>
+              <p className="text-lg font-semibold text-[color:var(--fg)] max-w-3xl mx-auto mt-4">
+                Here's what we typically build for clients (starting points—fully customizable):
+              </p>
+            </div>
+
+            <div className="space-y-12">
+              {[
+                {
+                  icon: '🎯',
+                  name: 'LeadFlow',
+                  headline: 'Capture Leads from Everywhere—Route Them Instantly to the Right Person',
+                  problem: 'Leads come from everywhere: website forms, social media, referrals, events, email inquiries. Right now, you\'re manually: Checking each source multiple times per day, Copying lead data into your CRM, Assigning leads to sales team, Sending welcome emails, Creating follow-up tasks. If you forget to check one source: Lead dies. Deal lost.',
+                  automates: [
+                    'Captures leads from website, Facebook, LinkedIn, Google Ads, referral forms (every source)',
+                    'Automatically enriches data (pulls company info, social profiles, contact details)',
+                    'Routes to correct team member based on lead source, location, or product interest',
+                    'Sends personalized welcome email immediately',
+                    'Creates follow-up tasks in CRM with reminders',
+                    'Alerts you via Slack/SMS when high-value leads arrive',
+                    'Tracks response time and conversion rates automatically'
+                  ],
+                  result: 'Masoud Nasserie, Real Estate Broker: BEFORE: Missing leads that came in after 5 PM, losing deals to faster competitors. AFTER: LeadFlow captures and responds 24/7—34% revenue increase in 3 months. TIME SAVED: 12 hours/week no longer manually processing leads.',
+                  investment: 'Starting at $299/month',
+                  roi: '2-4 weeks'
+                },
+                {
+                  icon: '💰',
+                  name: 'InvoiceIQ',
+                  headline: 'Generate Invoices Automatically—Chase Payments Without Lifting a Finger',
+                  problem: 'Creating invoices manually is soul-crushing: Project completes, you create invoice (15 minutes), Send invoice to client (2 minutes), Wait for payment (hoping they remember), Send reminder 1 week later (5 minutes), Send "gentle" reminder 2 weeks later (5 minutes), Send "urgent" reminder 3 weeks later (10 minutes), Call client because payment is now 30 days late (20 minutes). Per invoice time investment: 57 minutes. If you do 20 invoices/month: 19 hours per month just chasing money you\'re already owed',
+                  automates: [
+                    'Generates invoices automatically when project status = "Complete"',
+                    'Pulls correct line items, pricing, client details from CRM',
+                    'Sends invoice via email with payment link',
+                    'Sends polite reminder 7 days before due date',
+                    'Sends second reminder on due date',
+                    'Sends escalating reminders at 7, 14, and 21 days overdue',
+                    'Notifies you only when invoice is paid or hits 30 days overdue',
+                    'Updates accounting software automatically when payment received',
+                    'Generates cash flow reports every Monday morning'
+                  ],
+                  result: 'Peter Fernandes, AAA Construction Services: BEFORE: 7 days per month creating invoices and chasing payments. AFTER: InvoiceIQ automated entire billing workflow. TIME SAVED: 12 hours/week, 62% faster payment collection, +$45K cash flow improvement.',
+                  investment: 'Starting at $499/month',
+                  roi: '1-2 weeks (first time invoices get paid faster)'
+                },
+                {
+                  icon: '✉️',
+                  name: 'MailPilot',
+                  headline: 'Read, Prioritize, and Respond to Emails While You Sleep',
+                  problem: 'You spend 2-3 hours per day managing email: Reading messages, Deciding what\'s urgent vs. noise, Responding to common questions (same answers every time), Filing emails into folders, Flagging follow-ups, Searching for buried conversations. 2.5 hours/day × 5 days = 12.5 hours per week on email.',
+                  automates: [
+                    'Reads every incoming email and categorizes by priority (urgent, important, can wait, spam)',
+                    'Auto-responds to common questions using your pre-approved templates',
+                    'Extracts action items and creates tasks in your project management tool',
+                    'Schedules meetings automatically when clients request availability',
+                    'Files emails into correct folders based on content',
+                    'Summarizes long email threads into bullet points',
+                    'Alerts you ONLY to emails requiring human judgment',
+                    'Drafts responses to complex emails for your review and approval'
+                  ],
+                  result: 'Tiffany Duncan, Director, Talent Leap AI: BEFORE: 15 hours/week buried in email, missing important messages. AFTER: MailPilot handles routine emails automatically. TIME SAVED: 10 hours/week, zero missed client messages.',
+                  investment: 'Starting at $399/month',
+                  roi: 'Week 1 (immediately noticeable)'
+                },
+                {
+                  icon: '🔗',
+                  name: 'OpsSync',
+                  headline: 'Connect Every Tool—Stop Updating the Same Information in Five Different Places',
+                  problem: 'Your business runs on 10+ tools: CRM, accounting, project management, email, calendar, Slack, Google Sheets. None of them talk to each other. So you manually update the same information everywhere: New client signed: Update CRM, update accounting, update project tool, update team via Slack. Project complete: Update PM tool, create invoice, update client in CRM, notify team. Payment received: Update accounting, update CRM, send thank-you email, trigger next phase. Per client/project cycle: 30-45 minutes of manual updates across tools',
+                  automates: [
+                    'Connects CRM + Accounting + Project Management + Email + Slack + Google Workspace',
+                    'One update in any tool = automatic updates everywhere else',
+                    'Client data syncs in real-time across all platforms',
+                    'Project status changes trigger automatic workflows',
+                    'Financial data flows between invoicing and accounting automatically',
+                    'Team notifications happen automatically based on triggers',
+                    'Reports pull real-time data from all sources into single dashboard'
+                  ],
+                  result: 'Gurpreet Sandhu, Real Estate Broker: BEFORE: 18 hours/week manually updating listings across MLS, CRM, website, and advertising platforms. AFTER: OpsSync syncs everything in real-time. TIME SAVED: 18 hours/week, 97% reduction in data errors, ~$61K annual savings.',
+                  investment: 'Starting at $499/month',
+                  roi: '2-3 weeks'
+                },
+                {
+                  icon: '💬',
+                  name: 'ClientPulse',
+                  headline: 'Keep Clients Happy Automatically—Before They Think About Leaving',
+                  problem: 'You lose clients because you don\'t stay in touch consistently: Client completes project—you forget to follow up, 6 months pass—client doesn\'t hear from you, Client needs service again—hires your competitor instead. You meant to stay in touch. You were just too busy.',
+                  automates: [
+                    'Sends automated check-ins at strategic intervals (30, 60, 90 days post-project)',
+                    'Triggers satisfaction surveys after major milestones',
+                    'Monitors client health scores (engagement, payment speed, communication frequency)',
+                    'Alerts you when client shows signs of churn risk',
+                    'Sends birthday/anniversary messages automatically',
+                    'Triggers retention campaigns when clients go quiet',
+                    'Automates referral requests after successful projects',
+                    'Creates upsell opportunities based on client behavior'
+                  ],
+                  result: 'Marketing Agency Client: BEFORE: 23% annual client churn (losing clients to neglect). AFTER: ClientPulse keeps engagement consistent. RESULT: Churn reduced to 8%, referrals increased 34%.',
+                  investment: 'Starting at $299/month',
+                  roi: '3-6 months (retention compound effect)'
+                },
+                {
+                  icon: '🌉',
+                  name: 'DataBridge',
+                  headline: 'Sync Data in Real-Time—Stop Exporting CSVs and Manually Importing Files',
+                  problem: 'Your data lives in silos: Sales data in CRM, Financial data in QuickBooks, Operations data in spreadsheets, Marketing data in ad platforms. Getting complete business picture requires: Export CSV from Tool A, Manually clean data, Import into Tool B, Repeat for 5+ tools, Data is already outdated by the time you\'re done',
+                  automates: [
+                    'Real-time data sync between all business tools',
+                    'Automatic data transformation (formats data correctly for each tool)',
+                    'Scheduled data transfers (nightly, weekly, or on-demand)',
+                    'Error handling and validation (catches problems before they spread)',
+                    'Historical data preservation (never lose information during transfers)',
+                    'Unified reporting dashboard (all data in one view)'
+                  ],
+                  result: 'E-commerce Business: BEFORE: 8 hours/week manually exporting, cleaning, importing data. AFTER: DataBridge syncs everything automatically. TIME SAVED: 8 hours/week, zero data errors, real-time visibility.',
+                  investment: 'Starting at $399/month',
+                  roi: '2-4 weeks'
+                },
+                {
+                  icon: '📋',
+                  name: 'FormFlow',
+                  headline: 'Process Forms and Documents Automatically—Stop Copy-Pasting from PDFs',
+                  problem: 'Your business receives forms, applications, contracts, invoices: Client submits PDF application, You manually read it, Copy data into your system field by field, File PDF in correct folder, Trigger next workflow step manually. Per form time investment: 15-30 minutes',
+                  automates: [
+                    'Extracts data from PDFs, images, and scanned documents (OCR technology)',
+                    'Populates your systems automatically with extracted data',
+                    'Routes documents to correct approver based on content',
+                    'Files documents in correct folders automatically',
+                    'Triggers next workflow steps based on form type',
+                    'Sends notifications when action required',
+                    'Generates reports from form data automatically'
+                  ],
+                  result: 'Insurance Agency: BEFORE: Processing 50 applications/week manually (25 hours). AFTER: FormFlow extracts and processes automatically. TIME SAVED: 22 hours/week, 94% faster application processing.',
+                  investment: 'Starting at $399/month',
+                  roi: '2-3 weeks'
+                },
+                {
+                  icon: '📄',
+                  name: 'SmartDocs',
+                  headline: 'Generate Reports, Contracts, and Documents Automatically—Stop Creating the Same Files Over and Over',
+                  problem: 'You create the same documents repeatedly with minor variations: Client proposals (same structure, different client names), Monthly reports (same format, updated numbers), Contracts (same terms, different details), Invoices (same items, different clients), Status updates (same template, current progress). Per document creation: 20-45 minutes of copying, pasting, updating',
+                  automates: [
+                    'Generates documents automatically from templates',
+                    'Pulls data from your CRM, accounting, project tools',
+                    'Populates all fields automatically (names, dates, numbers, terms)',
+                    'Formats documents professionally (branded, consistent)',
+                    'Sends for e-signature automatically when required',
+                    'Files completed documents in correct folders',
+                    'Sends to clients via email with tracking',
+                    'Notifies you when documents are viewed/signed'
+                  ],
+                  result: 'Consulting Firm: BEFORE: 6 hours/week creating proposals and reports manually. AFTER: SmartDocs generates everything automatically. TIME SAVED: 5.5 hours/week, 100% brand consistency.',
+                  investment: 'Starting at $299/month',
+                  roi: '2-4 weeks'
+                }
+              ].map((auto, idx) => (
+                <GlowCard key={idx} className="p-8" showFlame={true}>
+                  <div className="flex items-start gap-4 mb-6">
+                    <span className="text-4xl">{auto.icon}</span>
+                    <div className="flex-1">
+                      <h3 className="text-2xl font-bold mb-2">{auto.name}</h3>
+                      <h4 className="text-xl font-semibold mb-4">{auto.headline}</h4>
+                    </div>
+                  </div>
+                  
+                  <div className="mb-6">
+                    <h5 className="font-semibold mb-2 text-red-500">The Problem You're Solving:</h5>
+                    <p className="text-[color:var(--muted)]">{auto.problem}</p>
+                  </div>
+
+                  <div className="mb-6">
+                    <h5 className="font-semibold mb-2 text-green-500">What {auto.name} Automates:</h5>
+                    <ul className="list-disc list-inside space-y-2 text-[color:var(--muted)] ml-4">
+                      {auto.automates.map((item, i) => (
+                        <li key={i}>✓ {item}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <GlowCard className="p-4 bg-green-500/10 border-l-4 border-green-500 mb-4" showFlame={true}>
+                    <h5 className="font-semibold mb-2">Real Result:</h5>
+                    <p className="text-sm text-[color:var(--muted)]">{auto.result}</p>
+                  </GlowCard>
+
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <p className="text-sm text-[color:var(--muted)]">Typical Investment: <strong className="text-[color:var(--fg)]">{auto.investment}</strong></p>
+                      <p className="text-sm text-[color:var(--muted)]">Typical ROI Timeline: <strong className="text-green-500">{auto.roi}</strong></p>
+                    </div>
+                    <Link
+                      href="#assessment"
+                      className="btn-primary inline-flex items-center"
+                      style={{ backgroundColor: '#2563EB', color: 'white' }}
+                    >
+                      Automate My {auto.name} →
+                    </Link>
+                  </div>
+                </GlowCard>
+              ))}
+            </div>
+
+            {/* Automation Summary Callout */}
+            <GlowCard className="mt-12 p-8 border-2 border-blue-500" showFlame={true}>
+              <h3 className="text-blue-500 text-2xl font-bold mb-6 text-center">🎯 THE COMPLETE AUTOMATION SUITE:</h3>
+              <p className="text-center mb-6 text-[color:var(--muted)]">Pick individual automations or combine them for maximum impact:</p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <GlowCard className="p-6" showFlame={true}>
+                  <h4 className="font-bold mb-2">STARTER PACKAGE (Most Popular):</h4>
+                  <ul className="text-sm space-y-1 mb-4">
+                    <li>→ LeadFlow + InvoiceIQ + MailPilot</li>
+                  </ul>
+                  <p className="font-semibold mb-1">Investment: $1,097/month</p>
+                  <p className="text-sm text-[color:var(--muted)] mb-2">Time Saved: 15-20 hours/week</p>
+                  <p className="text-sm text-green-500">ROI Timeline: 3-4 weeks</p>
+                </GlowCard>
+                <GlowCard className="p-6" showFlame={true}>
+                  <h4 className="font-bold mb-2">GROWTH PACKAGE:</h4>
+                  <ul className="text-sm space-y-1 mb-4">
+                    <li>→ All Starter + OpsSync + ClientPulse</li>
+                  </ul>
+                  <p className="font-semibold mb-1">Investment: $1,795/month</p>
+                  <p className="text-sm text-[color:var(--muted)] mb-2">Time Saved: 25-30 hours/week</p>
+                  <p className="text-sm text-green-500">ROI Timeline: 4-6 weeks</p>
+                </GlowCard>
+                <GlowCard className="p-6" showFlame={true}>
+                  <h4 className="font-bold mb-2">ENTERPRISE PACKAGE:</h4>
+                  <ul className="text-sm space-y-1 mb-4">
+                    <li>→ All 8 Automations + Custom Workflows</li>
+                  </ul>
+                  <p className="font-semibold mb-1">Investment: Custom pricing</p>
+                  <p className="text-sm text-[color:var(--muted)] mb-2">Time Saved: 35+ hours/week</p>
+                  <p className="text-sm text-green-500">ROI Timeline: 6-8 weeks</p>
+                </GlowCard>
+              </div>
+              <p className="text-center mt-6 text-[color:var(--muted)]">Every automation is custom-built for YOUR tools, YOUR workflows, YOUR business.</p>
+              <p className="text-center font-semibold">Not templates. Not one-size-fits-all. Custom engineering.</p>
+              <div className="text-center mt-6">
+                <Link
+                  href="#assessment"
+                  className="btn-primary inline-flex items-center"
+                  style={{ backgroundColor: '#2563EB', color: 'white' }}
+                >
+                  Build My Custom Automation Stack →
+                </Link>
+              </div>
+            </GlowCard>
+          </div>
+        </section>
+
+        {/* ========================================
+            PHASE 6: TESTIMONIALS SECTION - ENHANCED
+            ======================================== */}
+        <section className="py-20">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <span className="text-xs uppercase tracking-wider text-[color:var(--muted)] mb-4 block">
+                REAL ENTREPRENEURS • REAL TIME SAVED • REAL REVENUE GROWTH
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+                "I Got My Life Back. And Revenue Went Up 34%."
+              </h2>
+              <p className="text-lg text-[color:var(--muted)] max-w-3xl mx-auto">
+                These aren't theoretical time savings. These are real business owners who automated repetitive work—and used the reclaimed time to actually grow their businesses.
+              </p>
+              <p className="text-lg font-semibold text-[color:var(--fg)] max-w-3xl mx-auto mt-4">
+                Every one of them said the same thing: "I wish I had done this years ago."
+              </p>
+            </div>
+
+            {/* Featured Testimonial - Peter Fernandes */}
+            <GlowCard className="p-8 md:p-12 mb-8" showFlame={true}>
+              <div className="flex flex-col md:flex-row gap-8 mb-8">
+                <div className="w-48 h-48 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center flex-shrink-0">
+                  <Users className="w-24 h-24 text-white" />
+                </div>
+                <div>
+                  <div className="mb-4">
+                    <p className="text-xl font-bold mb-1">💬 Peter Fernandes</p>
+                    <p className="text-[color:var(--muted)] text-sm">Owner, AAA Construction Services</p>
+                    <div className="flex gap-1 mt-2">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-yellow-500 text-yellow-500" />
+                      ))}
+                    </div>
+                  </div>
+                  <div className="space-y-4 text-[color:var(--muted)] leading-relaxed">
+                    <p>"Before QuantumLeap, I was working 70-hour weeks and drowning in administrative work that had nothing to do with construction.</p>
+                    <p>Every single day: 90 minutes creating invoices and chasing payments, 2 hours updating project status across three different tools, 45 minutes responding to the same client questions via email, 1 hour manually reconciling expenses in QuickBooks.</p>
+                    <p className="font-semibold text-[color:var(--fg)]">I was spending 4-5 hours daily on busywork. My actual job—running construction projects—was happening in whatever time was left over.</p>
+                    <p>Revenue was stuck at $750K. Not because we couldn't handle more work. Because I couldn't handle more administration.</p>
+                    <p>QuantumLeap deployed three automations: InvoiceIQ, OpsSync, and MailPilot.</p>
+                    <p className="text-xl font-bold text-green-500">The results: TIME SAVED: 25 hours/week (I have weekends now), REVENUE GROWTH: Went from $750K to $1.3M in 18 months (73% increase), CASH FLOW: 62% faster payment collection, ERRORS: Found $15K in accounting errors the AI caught that we missed.</p>
+                    <p className="font-semibold text-[color:var(--fg)]">But here's the real impact: I work ON my business now instead of IN it. I'm bidding bigger projects. Building client relationships. Training my team. Strategic planning.</p>
+                    <p>My wife said: 'I finally have my husband back.' That's worth more than any revenue number.</p>
+                    <p>The automation paid for itself in the first month. Everything after that is pure profit and reclaimed life."</p>
+                  </div>
+                </div>
+              </div>
+
+              <GlowCard className="p-6 bg-green-500/10 border-l-4 border-green-500" showFlame={true}>
+                <h4 className="text-green-500 font-bold mb-4">📊 PETER'S RESULTS:</h4>
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                  <div>
+                    <p className="text-xs text-[color:var(--muted)] mb-1">Hours/Week Reclaimed</p>
+                    <p className="text-2xl font-bold text-green-500">25</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-[color:var(--muted)] mb-1">Revenue Growth</p>
+                    <p className="text-2xl font-bold text-green-500">73%</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-[color:var(--muted)] mb-1">Faster Payments</p>
+                    <p className="text-2xl font-bold text-green-500">62%</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-[color:var(--muted)] mb-1">Errors Caught</p>
+                    <p className="text-2xl font-bold text-green-500">$15K</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-[color:var(--muted)] mb-1">Annual Savings</p>
+                    <p className="text-2xl font-bold text-green-500">$47K</p>
+                  </div>
+                </div>
+                <p className="text-xs text-[color:var(--muted)] mt-4 text-right">— Peter Fernandes, Owner, AAA Construction Services ★★★★★</p>
+              </GlowCard>
+
+              <div className="text-center mt-8">
+                <Link
+                  href="#assessment"
+                  className="btn-primary inline-flex items-center"
+                  style={{ backgroundColor: '#2563EB', color: 'white' }}
+                >
+                  Get My Time Back Like Peter Did
+                </Link>
+              </div>
+            </GlowCard>
+
+            {/* Additional Testimonials */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                {
+                  name: 'Tiffany Duncan',
+                  company: 'Talent Leap AI',
+                  title: 'Director',
+                  quote: '"We went from reactive chaos to proactive growth—without adding headcount."',
+                  results: ['15 hours/week saved', '0% missed leads (down from 12%)', '2-minute response time (down from 4 hours)', '34% revenue increase in 90 days']
+                },
+                {
+                  name: 'Gurpreet Sandhu',
+                  company: 'Real Estate Vision',
+                  title: 'Broker',
+                  quote: '"I got my weekends back. And my team stopped making costly mistakes."',
+                  results: ['18 hours/week reclaimed', '97% reduction in data errors', '~$61K annual cost savings', '23 additional deals closed']
+                }
+              ].map((testimonial, idx) => (
+                <GlowCard key={idx} className="p-6" showFlame={true}>
+                  <div className="mb-4">
+                    <p className="text-lg font-bold mb-1">💬 {testimonial.name}</p>
+                    <p className="text-sm text-[color:var(--muted)]">{testimonial.title}, {testimonial.company}</p>
+                    <div className="flex gap-1 mt-2">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-yellow-500 text-yellow-500" />
+                      ))}
+                    </div>
+                  </div>
+                  <p className="text-[color:var(--muted)] mb-4 italic">"{testimonial.quote}"</p>
+                  <div className="space-y-2">
+                    <p className="text-sm font-semibold mb-2">Results:</p>
+                    {testimonial.results.map((result, i) => (
+                      <p key={i} className="text-sm text-green-500">• {result}</p>
+                    ))}
+                  </div>
+                </GlowCard>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================
+            PHASE 7: 60-DAY ROI GUARANTEE - EXPANDED
+            ======================================== */}
+        <section className="py-20 bg-[color:var(--card)]">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <span className="text-xs uppercase tracking-wider text-[color:var(--muted)] mb-4 block">
+                ZERO-RISK GUARANTEE
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+                Our 60-Day "Time-Back & ROI" Guarantee—You Get Results or We Keep Working Until You Do (Free)
+              </h2>
+              <p className="text-lg text-[color:var(--muted)] max-w-3xl mx-auto">
+                If you don't save at least 10 hours per week OR see measurable ROI within 60 days, we'll continue optimizing your automations at no additional cost until you do.
+              </p>
+              <p className="text-lg font-semibold text-[color:var(--fg)] max-w-3xl mx-auto mt-4">
+                That's not a refund. That's us working for free until you get the results we promised.
+              </p>
+              <p className="text-lg text-[color:var(--muted)] max-w-3xl mx-auto mt-4">
+                Why can we offer this guarantee? Because 93% of clients see measurable results in the first 30 days.
+              </p>
+            </div>
+
+            <GlowCard className="p-8 border-2 border-green-500" showFlame={true}>
+              <h3 className="text-green-500 text-xl font-bold mb-4">🛡️ THE PROMISE IN WRITING:</h3>
+              <div className="space-y-4 text-[color:var(--muted)]">
+                <p>Deploy your custom automation workflows. Track results for 60 days.</p>
+                <p className="font-semibold">If you're not saving 10+ hours/week OR seeing measurable ROI:</p>
+                <ul className="list-disc list-inside space-y-2 ml-4">
+                  <li>→ We continue optimizing at no additional cost</li>
+                  <li>→ We add new automations as needed</li>
+                  <li>→ We refine existing workflows</li>
+                  <li>→ We work until you get the results we promised</li>
                 </ul>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6 p-4 bg-white/5 rounded-lg">
+                  <div>
+                    <p className="font-semibold mb-1">Your Investment:</p>
+                    <p className="text-sm">$299-$799/month (varies by package)</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold mb-1">Your Protection:</p>
+                    <p className="text-sm">Guaranteed results or free ongoing optimization</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold mb-1">Your Risk:</p>
+                    <p className="text-sm">Zero (you only pay for automation that works)</p>
+                  </div>
+                </div>
+                <p className="font-semibold text-center mt-6">We don't get paid for promises. We get paid for performance.</p>
               </div>
-              
-              <p className="text-lg font-semibold text-qgd-fg dark:text-gray-100">
-                Mark realized something powerful: automation didn't make him less human. It made his business more intelligent.
-              </p>
-              
-              {/* Related Services Callout */}
-              <div className="bg-blue-50 dark:bg-blue-950/20 border-l-4 border-blue-500 rounded-lg p-6 my-8">
-                <h4 className="font-bold text-qgd-fg dark:text-gray-100 mb-3 flex items-center gap-2">
-                  <Building className="w-5 h-5 text-blue-600" />
-                  Ready to Transform Your Entire Business?
-                </h4>
-                <p className="text-qgd-muted dark:text-qgd-fg mb-3">
-                  Automation is powerful—but it's just one piece. If you're also dealing with burnout, growth plateaus, or operational chaos, explore our{' '}
-                  <Link href="/business-transformation" className="text-blue-600 dark:text-blue-400 font-semibold hover:underline">
-                    Business Transformation services
-                  </Link>
-                  . We'll restructure your entire operation for sustainable growth.
-                </p>
-                <p className="text-sm text-qgd-muted dark:text-qgd-muted italic">
-                  Think of it this way: automation handles the tasks. Transformation redesigns the system.
-                </p>
-              </div>
-              
-              <h3 className="text-2xl font-bold text-qgd-fg dark:text-gray-100 mt-10 mb-4">
-                Why Automation Pays for Itself
-              </h3>
-              
-              <p>Let's talk numbers — because entrepreneurs respect math.</p>
-              
-              <p>
-                If your effective hourly value is <strong>$75/hour</strong> (what your time's truly worth), 
-                and you spend even <strong>10 hours/week</strong> on manual admin, 
-                that's <strong className="text-red-600 dark:text-red-400">$39,000 a year</strong> burned on low-value tasks.
-              </p>
-              
-              <div className="bg-qgd-primary/50 dark:bg-qgd-primary/900/20 border border-teal-200 dark:border-teal-800 rounded-xl p-6 my-8">
-                <p className="text-lg text-qgd-fg dark:text-gray-100">
-                  QuantumLeap's Intelligent Automations start at just <strong className="text-qgd-ring600 dark:text-qgd-ring400">$299/month</strong>, 
-                  which means the first automation typically <strong>pays for itself in under two weeks</strong>.
-                </p>
-                <p className="text-sm text-qgd-muted dark:text-qgd-muted mt-3">
-                  That's not "nice to have." That's profit recovery.
-                </p>
-              </div>
-              
-              <h3 className="text-2xl font-bold text-qgd-fg dark:text-gray-100 mt-10 mb-4 flex items-center gap-2">
-                <Building className="w-6 h-6 text-qgd-muted" />
-                The QuantumLeap Difference
-              </h3>
-              
-              <p>Other automation agencies sell complexity — custom scripts, long onboarding, or "digital transformation" buzzwords.</p>
-              
-              <p className="font-semibold text-qgd-fg dark:text-gray-100">
-                QuantumLeap's Intelligent Automations are built differently:
-              </p>
-              
-              <ul className="space-y-3 my-6">
-                <li className="flex items-start gap-3">
-                  <Zap className="w-5 h-5 text-qgd-ring600 flex-shrink-0 mt-1" />
-                  <div>
-                    <strong className="text-qgd-fg dark:text-gray-100">No-Code Deployments:</strong>
-                    <span className="text-qgd-muted dark:text-qgd-fg"> Launch within 14 days.</span>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Clock className="w-5 h-5 text-qgd-ring600 flex-shrink-0 mt-1" />
-                  <div>
-                    <strong className="text-qgd-fg dark:text-gray-100">24/7 Monitoring:</strong>
-                    <span className="text-qgd-muted dark:text-qgd-fg"> Runs in the background, silently.</span>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <TrendingUp className="w-5 h-5 text-qgd-ring600 flex-shrink-0 mt-1" />
-                  <div>
-                    <strong className="text-qgd-fg dark:text-gray-100">Scalable:</strong>
-                    <span className="text-qgd-muted dark:text-qgd-fg"> Start with one workflow and grow to enterprise-grade.</span>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Shield className="w-5 h-5 text-qgd-ring600 flex-shrink-0 mt-1" />
-                  <div>
-                    <strong className="text-qgd-fg dark:text-gray-100">Secure:</strong>
-                    <span className="text-qgd-muted dark:text-qgd-fg"> Built by the team that helped secure NASA systems. Need additional protection?{' '}
-                      <Link href="/cyber-intelligence" className="text-qgd-ring600 dark:text-qgd-ring400 font-semibold hover:underline whitespace-nowrap">
-                        Explore Cyber Intelligence →
-                      </Link>
-                    </span>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Award className="w-5 h-5 text-qgd-ring600 flex-shrink-0 mt-1" />
-                  <div>
-                    <strong className="text-qgd-fg dark:text-gray-100">World's best:</strong>
-                    <span className="text-qgd-muted dark:text-qgd-fg"> Team from MIT, Caltech, and leading tech institutes.</span>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Users className="w-5 h-5 text-qgd-ring600 flex-shrink-0 mt-1" />
-                  <div>
-                    <strong className="text-qgd-fg dark:text-gray-100">Expertise:</strong>
-                    <span className="text-qgd-muted dark:text-qgd-fg"> 250+ years of combined experience. Building a team?{' '}
-                      <Link href="/background-checks" className="text-qgd-ring600 dark:text-qgd-ring400 font-semibold hover:underline whitespace-nowrap">
-                        See our Background Checks →
-                      </Link>
-                    </span>
-                  </div>
-                </li>
-              </ul>
-              
-              {/* Security & Hiring Callout */}
-              <div className="bg-qgd-primary/50 dark:bg-qgd-primary/950/20 border-l-4 border-purple-500 rounded-lg p-6 my-8">
-                <h4 className="font-bold text-qgd-fg dark:text-gray-100 mb-3 flex items-center gap-2">
-                  <Lock className="w-5 h-5 text-qgd-primary600" />
-                  Automation + Security = Peace of Mind
-                </h4>
-                <p className="text-qgd-muted dark:text-qgd-fg mb-3">
-                  More integrations mean more attack surface. That's why we recommend pairing automation with our{' '}
-                  <Link href="/cyber-intelligence" className="text-qgd-primary600 dark:text-qgd-primary400 font-semibold hover:underline">
-                    Cyber Intelligence services
-                  </Link>
-                  —24/7 threat monitoring, breach detection, and penetration testing to keep your automated systems safe.
-                </p>
-                <p className="text-qgd-muted dark:text-qgd-fg">
-                  And if you're hiring to scale? Our{' '}
-                  <Link href="/background-checks" className="text-qgd-primary600 dark:text-qgd-primary400 font-semibold hover:underline">
-                    Background Check services
-                  </Link>
-                  {' '}screen candidates in 48 hours—so you hire with confidence.
-                </p>
-              </div>
-              
-              <div className="bg-gradient-to-r from-teal-50 to-emerald-50 dark:from-teal-900/20 dark:to-emerald-900/20 border-2 border-teal-300 dark:border-teal-700 rounded-xl p-8 my-8 text-center">
-                <p className="text-xl font-semibold text-qgd-fg dark:text-gray-100 mb-4">
-                  Your only job? Tell us what drains your time.
-                </p>
-                <p className="text-lg text-qgd-muted dark:text-qgd-fg mb-6">
-                  We'll automate it and show you exactly how much it's worth.
-                </p>
-                <Button
-                  size="lg"
-                  onClick={scrollToCalculator}
-                  className="bg-qgd-primary/600 hover:bg-qgd-primary/700 text-qgd-fg font-semibold"
+              <div className="text-center mt-6">
+                <Link
+                  href="#assessment"
+                  className="btn-primary inline-flex items-center"
+                  style={{ backgroundColor: '#16a34a', color: 'white' }}
                 >
-                  <BarChart3 className="w-5 h-5 mr-2" />
-                  Reveal My Hidden Hours & Savings
-                </Button>
+                  Start My Risk-Free Automation →
+                </Link>
               </div>
-              
-              <div className="border-t-2 border-qgd-border dark:border-zinc-800 pt-8 mt-12">
-                <h3 className="text-2xl font-bold text-qgd-fg dark:text-gray-100 mb-4">
-                  The Bottom Line
-                </h3>
-                <p className="text-lg">
-                  Automation isn't about robots taking over. It's about reclaiming what matters — your time, focus, and sanity.
-                </p>
-                <p className="text-lg font-semibold text-qgd-ring600 dark:text-qgd-ring400 mt-4">
-                  You can't scale chaos. But you can automate it.
-                </p>
-              </div>
-              
-            </motion.article>
-            
-          </motion.div>
+            </GlowCard>
+          </div>
         </section>
 
-
-        {/* FAQ SECTION */}
-        <section 
-          ref={faqRef}
-          className="py-20 bg-qgd-card dark:bg-zinc-900/50"
-        >
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            animate={faqInView ? "visible" : "hidden"}
-            className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
-          >
-            
-            {/* Section Header */}
-            <motion.div variants={fadeInUp} className="text-center mb-12">
-              <h2 className="text-4xl lg:text-5xl font-bold text-qgd-fg dark:text-gray-100 mb-6">
-                Frequently Asked Questions
+        {/* ========================================
+            PHASE 8: STRATEGIC FAQ SECTION - COMPLETE REWRITE
+            ======================================== */}
+        <section className="py-20">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <span className="text-xs uppercase tracking-wider text-[color:var(--muted)] mb-4 block">
+                EVERY QUESTION ANSWERED HONESTLY
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+                You Have Questions About Automation. We Have Answers That Don't Require a Computer Science Degree.
               </h2>
-              <p className="text-xl text-qgd-muted dark:text-qgd-fg">
-                Get answers to common questions about intelligent automation
+              <p className="text-lg text-[color:var(--muted)] max-w-3xl mx-auto">
+                Automation sounds complicated. It's not—when someone else builds it for you.
               </p>
-            </motion.div>
-            
-            {/* FAQ Accordion */}
-            <motion.div variants={fadeInUp}>
-              <Accordion type="single" collapsible className="space-y-4">
-                
-                {/* First FAQ - Custom vs Templates */}
-                <AccordionItem value="faq-0" className="bg-qgd-card dark:bg-zinc-900 border border-qgd-border dark:border-zinc-800 rounded-lg px-6">
-                  <AccordionTrigger className="text-left text-lg font-semibold text-qgd-fg dark:text-gray-100 hover:text-qgd-ring600 dark:hover:text-qgd-ring400">
-                    Do you provide plug-and-play automation, or do you build custom?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-qgd-muted dark:text-qgd-fg pt-4 space-y-4">
-                    <p>
-                      We custom-build every automation to fit your exact tools, workflows, and business logic. You're not buying a pre-built template—you're getting intelligent workflows designed specifically for how <em>you</em> operate.
-                    </p>
-                    <p>
-                      The automation types you see on this page (LeadFlow, InvoiceIQ, etc.) are examples from past client projects. Your solution will be tailored to your unique tech stack and processes.
-                    </p>
-                    <Button
-                      size="sm"
-                      asChild
-                      variant="outline"
-                      className="border-teal-600 text-qgd-ring700 dark:text-qgd-ring400 hover:bg-qgd-primary/50 dark:hover:bg-qgd-primary/950/30"
-                    >
-                      <Link href="/consultation">
-                        Book Your Free Discovery Call →
-                      </Link>
-                    </Button>
-                  </AccordionContent>
-                </AccordionItem>
-                
-                <AccordionItem value="faq-1" className="bg-qgd-card dark:bg-zinc-900 border border-qgd-border dark:border-zinc-800 rounded-lg px-6">
-                  <AccordionTrigger className="text-left text-lg font-semibold text-qgd-fg dark:text-gray-100 hover:text-qgd-ring600 dark:hover:text-qgd-ring400">
-                    Isn't automation expensive or complicated?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-qgd-muted dark:text-qgd-fg pt-4 space-y-4">
-                    <p>
-                      No. Intelligent Automations are modular and plug directly into your existing tools—no rip-and-replace required.
-                    </p>
-                    <p>
-                      We design each workflow to start simple and scale as you grow. Most clients see ROI within the first month because we focus on high-impact, low-complexity wins first.
-                    </p>
-                    <p>
-                      The average SMB loses $93,000/year to manual work. Our automations typically cost a fraction of that—and pay for themselves in weeks, not months.
-                    </p>
-                    <div className="flex flex-wrap gap-3">
-                      <Button
-                        size="sm"
-                        onClick={scrollToCalculator}
-                        variant="outline"
-                        className="border-teal-600 text-qgd-ring700 dark:text-qgd-ring400 hover:bg-qgd-primary/50 dark:hover:bg-qgd-primary/950/30"
-                      >
-                        Show Me My ROI →
-                      </Button>
-                      <Button
-                        size="sm"
-                        asChild
-                        variant="outline"
-                        className="border-teal-600 text-qgd-ring700 dark:text-qgd-ring400 hover:bg-qgd-primary/50 dark:hover:bg-qgd-primary/950/30"
-                      >
-                        <Link href="/consultation">
-                          Book a Consultation →
-                        </Link>
-                      </Button>
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-                
-                <AccordionItem value="faq-2" className="bg-qgd-card dark:bg-zinc-900 border border-qgd-border dark:border-zinc-800 rounded-lg px-6">
-                  <AccordionTrigger className="text-left text-lg font-semibold text-qgd-fg dark:text-gray-100 hover:text-qgd-ring600 dark:hover:text-qgd-ring400">
-                    Will automation replace my employees?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-qgd-muted dark:text-qgd-fg pt-4 space-y-4">
-                    <p>
-                      Not at all. Automation replaces <em>tasks</em>, not people.
-                    </p>
-                    <p>
-                      Your team spends less time clicking, copying, and chasing—and more time creating value. We've seen teams become more engaged (not less) because they finally have bandwidth for strategic work.
-                    </p>
-                    <p>
-                      Custom automation makes your team more productive, not redundant.
-                    </p>
-                    <Button
-                      size="sm"
-                      asChild
-                      variant="outline"
-                      className="border-teal-600 text-qgd-ring700 dark:text-qgd-ring400 hover:bg-qgd-primary/50 dark:hover:bg-qgd-primary/950/30"
-                    >
-                      <Link href="/consultation">
-                        See How Automation Complements Your Team →
-                      </Link>
-                    </Button>
-                  </AccordionContent>
-                </AccordionItem>
-                
-                <AccordionItem value="faq-3" className="bg-qgd-card dark:bg-zinc-900 border border-qgd-border dark:border-zinc-800 rounded-lg px-6">
-                  <AccordionTrigger className="text-left text-lg font-semibold text-qgd-fg dark:text-gray-100 hover:text-qgd-ring600 dark:hover:text-qgd-ring400">
-                    How secure is it?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-qgd-muted dark:text-qgd-fg pt-4 space-y-4">
-                    <p>
-                      Every integration is built on encrypted APIs and monitored 24/7 by a team that's helped secure NASA systems.
-                    </p>
-                    <p>
-                      We follow enterprise-grade security protocols:
-                    </p>
-                    <ul className="list-disc list-inside space-y-1 ml-4">
-                      <li>End-to-end encryption (AES-256)</li>
-                      <li>SOC2-compliant data handling</li>
-                      <li>Zero-storage of sensitive credentials</li>
-                      <li>Audit logs for every automated action</li>
-                    </ul>
-                    <p>
-                      Your data is more secure than most manual processes—because humans make mistakes, automation doesn't.
-                    </p>
-                    <Button
-                      size="sm"
-                      asChild
-                      variant="outline"
-                      className="border-teal-600 text-qgd-ring700 dark:text-qgd-ring400 hover:bg-qgd-primary/50 dark:hover:bg-qgd-primary/950/30"
-                    >
-                      <Link href="/consultation">
-                        Request a Security Walkthrough →
-                      </Link>
-                    </Button>
-                  </AccordionContent>
-                </AccordionItem>
-                
-                <AccordionItem value="faq-4" className="bg-qgd-card dark:bg-zinc-900 border border-qgd-border dark:border-zinc-800 rounded-lg px-6">
-                  <AccordionTrigger className="text-left text-lg font-semibold text-qgd-fg dark:text-gray-100 hover:text-qgd-ring600 dark:hover:text-qgd-ring400">
-                    What if I don't know where to start?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-qgd-muted dark:text-qgd-fg pt-4 space-y-4">
-                    <p>
-                      That's exactly why we built the calculator and free audit.
-                    </p>
-                    <p>
-                      You'll get a clear roadmap showing:
-                    </p>
-                    <ul className="list-disc list-inside space-y-1 ml-4">
-                      <li>Which workflows are costing you the most time</li>
-                      <li>Which automations deliver the fastest ROI</li>
-                      <li>A 30-day deployment plan tailored to your business</li>
-                    </ul>
-                    <p>
-                      No guesswork. No overwhelm. Just a prioritized plan you can act on immediately.
-                    </p>
-                    <div className="flex flex-wrap gap-3">
-                      <Button
-                        size="sm"
-                        asChild
-                        variant="outline"
-                        className="border-teal-600 text-qgd-ring700 dark:text-qgd-ring400 hover:bg-qgd-primary/50 dark:hover:bg-qgd-primary/950/30"
-                      >
-                        <Link href="/consultation">
-                          Start Your Free Audit →
-                        </Link>
-                      </Button>
-                      <Button
-                        size="sm"
-                        onClick={scrollToCalculator}
-                        variant="outline"
-                        className="border-teal-600 text-qgd-ring700 dark:text-qgd-ring400 hover:bg-qgd-primary/50 dark:hover:bg-qgd-primary/950/30"
-                      >
-                        Run the Calculator →
-                      </Button>
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-                
-                <AccordionItem value="faq-5" className="bg-qgd-card dark:bg-zinc-900 border border-qgd-border dark:border-zinc-800 rounded-lg px-6">
-                  <AccordionTrigger className="text-left text-lg font-semibold text-qgd-fg dark:text-gray-100 hover:text-qgd-ring600 dark:hover:text-qgd-ring400">
-                    How long does it take to see results?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-qgd-muted dark:text-qgd-fg pt-4 space-y-4">
-                    <p>
-                      Preliminary findings within 72 hours. Full deployment in 7–14 days.
-                    </p>
-                    <p>
-                      Because we're building custom workflows (not installing templates), the timeline depends on complexity. But we prioritize quick wins first—so you start seeing time savings within the first week of deployment.
-                    </p>
-                    <Button
-                      size="sm"
-                      asChild
-                      variant="outline"
-                      className="border-teal-600 text-qgd-ring700 dark:text-qgd-ring400 hover:bg-qgd-primary/50 dark:hover:bg-qgd-primary/950/30"
-                    >
-                      <Link href="/consultation">
-                        Book a Free Scoping Call →
-                      </Link>
-                    </Button>
-                  </AccordionContent>
-                </AccordionItem>
-                
-                <AccordionItem value="faq-6" className="bg-qgd-card dark:bg-zinc-900 border border-qgd-border dark:border-zinc-800 rounded-lg px-6">
-                  <AccordionTrigger className="text-left text-lg font-semibold text-qgd-fg dark:text-gray-100 hover:text-qgd-ring600 dark:hover:text-qgd-ring400">
-                    What if my tools are unique or niche?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-qgd-muted dark:text-qgd-fg pt-4 space-y-4">
-                    <p>
-                      Perfect. That's what we're built for.
-                    </p>
-                    <p>
-                      Most automation vendors only work with the top 20 SaaS tools. We've integrated with hundreds of platforms—from mainstream (HubSpot, Salesforce) to niche industry software.
-                    </p>
-                    <p>
-                      If your tools have APIs (or even just CSV exports), we can automate them. If they don't, we'll find creative workarounds.
-                    </p>
-                    <Button
-                      size="sm"
-                      asChild
-                      variant="outline"
-                      className="border-teal-600 text-qgd-ring700 dark:text-qgd-ring400 hover:bg-qgd-primary/50 dark:hover:bg-qgd-primary/950/30"
-                    >
-                      <Link href="/consultation">
-                        Book a Technical Review Call →
-                      </Link>
-                    </Button>
-                  </AccordionContent>
-                </AccordionItem>
-                
-                <AccordionItem value="faq-7" className="bg-qgd-card dark:bg-zinc-900 border border-qgd-border dark:border-zinc-800 rounded-lg px-6">
-                  <AccordionTrigger className="text-left text-lg font-semibold text-qgd-fg dark:text-gray-100 hover:text-qgd-ring600 dark:hover:text-qgd-ring400">
-                    Is this affordable for SMBs?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-qgd-muted dark:text-qgd-fg pt-4 space-y-4">
-                    <p>
-                      Yes. Our automations cost a fraction of a typical hire—and far less than the profit you're losing to manual work.
-                    </p>
-                    <p>
-                      <strong>Example:</strong> A custom DataBridge automation (syncing 3 tools) costs ~$299–499/mo. That's less than one day of an employee's salary—but it works 24/7 and never makes mistakes.
-                    </p>
-                    <p>
-                      Most clients save 10–20x the cost of automation in recovered productivity and reduced errors.
-                    </p>
-                    <Button
-                      size="sm"
-                      onClick={scrollToCalculator}
-                      variant="outline"
-                      className="border-teal-600 text-qgd-ring700 dark:text-qgd-ring400 hover:bg-qgd-primary/50 dark:hover:bg-qgd-primary/950/30"
-                    >
-                      See Your Cost-Benefit Breakdown →
-                    </Button>
-                  </AccordionContent>
-                </AccordionItem>
-                
-                <AccordionItem value="faq-8" className="bg-qgd-card dark:bg-zinc-900 border border-qgd-border dark:border-zinc-800 rounded-lg px-6">
-                  <AccordionTrigger className="text-left text-lg font-semibold text-qgd-fg dark:text-gray-100 hover:text-qgd-ring600 dark:hover:text-qgd-ring400">
-                    What happens after deployment?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-qgd-muted dark:text-qgd-fg pt-4 space-y-4">
-                    <p>
-                      You get ongoing monitoring, optimization, and monthly ROI reports.
-                    </p>
-                    <p>
-                      We don't just "set and forget." Your dedicated success manager:
-                    </p>
-                    <ul className="list-disc list-inside space-y-1 ml-4">
-                      <li>Monitors performance 24/7</li>
-                      <li>Optimizes workflows based on usage patterns</li>
-                      <li>Reports monthly time/cost savings</li>
-                      <li>Handles any tweaks or expansions</li>
-                    </ul>
-                    <p>
-                      You'll always have real human support—not chatbots.
-                    </p>
-                    <Button
-                      size="sm"
-                      asChild
-                      variant="outline"
-                      className="border-teal-600 text-qgd-ring700 dark:text-qgd-ring400 hover:bg-qgd-primary/50 dark:hover:bg-qgd-primary/950/30"
-                    >
-                      <Link href="/consultation">
-                        Meet Your Potential Success Manager →
-                      </Link>
-                    </Button>
-                  </AccordionContent>
-                </AccordionItem>
-                
-                <AccordionItem value="faq-9" className="bg-qgd-card dark:bg-zinc-900 border border-qgd-border dark:border-zinc-800 rounded-lg px-6">
-                  <AccordionTrigger className="text-left text-lg font-semibold text-qgd-fg dark:text-gray-100 hover:text-qgd-ring600 dark:hover:text-qgd-ring400">
-                    Can I start small and scale later?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-qgd-muted dark:text-qgd-fg pt-4 space-y-4">
-                    <p>
-                      Absolutely. That's our recommended approach.
-                    </p>
-                    <p>
-                      Most founders start with 1–2 high-impact automations (usually invoice processing or lead routing). Once you see the ROI, you expand.
-                    </p>
-                    <p>
-                      We design every automation to be modular—so you can add, adjust, or scale without rebuilding from scratch.
-                    </p>
-                    <Button
-                      size="sm"
-                      asChild
-                      variant="outline"
-                      className="border-teal-600 text-qgd-ring700 dark:text-qgd-ring400 hover:bg-qgd-primary/50 dark:hover:bg-qgd-primary/950/30"
-                    >
-                      <Link href="/consultation">
-                        Start Small. Scale Smart. →
-                      </Link>
-                    </Button>
-                  </AccordionContent>
-                </AccordionItem>
-                
-                <AccordionItem value="faq-10" className="bg-qgd-card dark:bg-zinc-900 border border-qgd-border dark:border-zinc-800 rounded-lg px-6">
-                  <AccordionTrigger className="text-left text-lg font-semibold text-qgd-fg dark:text-gray-100 hover:text-qgd-ring600 dark:hover:text-qgd-ring400">
-                    What if it breaks or stops working?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-qgd-muted dark:text-qgd-fg pt-4 space-y-4">
-                    <p>
-                      We monitor 24/7 and fix issues proactively—usually before you even notice.
-                    </p>
-                    <p>
-                      If an integration changes (like when a SaaS tool updates its API), we handle the update automatically. If something unexpected happens, we're alerted instantly and resolve it.
-                    </p>
-                    <p>
-                      Our average response time is under 2 hours. Most issues are resolved in under 30 minutes.
-                    </p>
-                    <Button
-                      size="sm"
-                      asChild
-                      variant="outline"
-                      className="border-teal-600 text-qgd-ring700 dark:text-qgd-ring400 hover:bg-qgd-primary/50 dark:hover:bg-qgd-primary/950/30"
-                    >
-                      <Link href="/consultation">
-                        Request Service Level Agreement Details →
-                      </Link>
-                    </Button>
-                  </AccordionContent>
-                </AccordionItem>
-                
-                <AccordionItem value="faq-11" className="bg-qgd-card dark:bg-zinc-900 border border-qgd-border dark:border-zinc-800 rounded-lg px-6">
-                  <AccordionTrigger className="text-left text-lg font-semibold text-qgd-fg dark:text-gray-100 hover:text-qgd-ring600 dark:hover:text-qgd-ring400">
-                    How is this different from Zapier or Make?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-qgd-muted dark:text-qgd-fg pt-4 space-y-4">
-                    <p>
-                      Great question.
-                    </p>
-                    <p>
-                      Zapier and Make are DIY automation tools—you build and maintain everything yourself. They're powerful, but they require technical knowledge, ongoing maintenance, and troubleshooting when things break.
-                    </p>
-                    <p>
-                      QuantumLeap is a done-for-you service. We:
-                    </p>
-                    <ul className="list-disc list-inside space-y-1 ml-4">
-                      <li>Design the automation logic</li>
-                      <li>Build and test the workflows</li>
-                      <li>Monitor performance 24/7</li>
-                      <li>Optimize and troubleshoot automatically</li>
-                      <li>Provide human support when you need it</li>
-                    </ul>
-                    <p>
-                      Think of it this way: Zapier is like buying lumber to build a house. QuantumLeap is hiring an architect and construction crew.
-                    </p>
-                    <Button
-                      size="sm"
-                      asChild
-                      variant="outline"
-                      className="border-teal-600 text-qgd-ring700 dark:text-qgd-ring400 hover:bg-qgd-primary/50 dark:hover:bg-qgd-primary/950/30"
-                    >
-                      <Link href="/consultation">
-                        Book a Live Demo →
-                      </Link>
-                    </Button>
-                  </AccordionContent>
-                </AccordionItem>
-                
-                <AccordionItem value="faq-12" className="bg-qgd-card dark:bg-zinc-900 border border-qgd-border dark:border-zinc-800 rounded-lg px-6">
-                  <AccordionTrigger className="text-left text-lg font-semibold text-qgd-fg dark:text-gray-100 hover:text-qgd-ring600 dark:hover:text-qgd-ring400">
-                    How do I get started?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-qgd-muted dark:text-qgd-fg pt-4 space-y-4">
-                    <p>
-                      Simple:
-                    </p>
-                    <ol className="list-decimal list-inside space-y-2 ml-4">
-                      <li><strong>Run the free automation scan</strong> (2 minutes) to see where you're losing time</li>
-                      <li><strong>Book a complimentary strategy call</strong> (30 minutes) to review your results</li>
-                      <li><strong>Get your custom 30-day automation plan</strong> (delivered within 48 hours)</li>
-                      <li><strong>Deploy your first automation</strong> (7–14 days from approval)</li>
-                    </ol>
-                    <p>
-                      No obligation. No pressure. Just clarity on what's possible for your business.
-                    </p>
-                    <div className="flex flex-wrap gap-3">
-                      <Button
-                        size="sm"
-                        onClick={scrollToCalculator}
-                        className="bg-qgd-primary/600 hover:bg-qgd-primary/700 text-qgd-fg"
-                      >
-                        Start Your Free Automation Scan →
-                      </Button>
-                      <Button
-                        size="sm"
-                        asChild
-                        variant="outline"
-                        className="border-teal-600 text-qgd-ring700 dark:text-qgd-ring400 hover:bg-qgd-primary/50 dark:hover:bg-qgd-primary/950/30"
-                      >
-                        <Link href="/consultation">
-                          Book Your Strategy Call →
-                        </Link>
-                      </Button>
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-                
-              </Accordion>
-            </motion.div>
-            
-          </motion.div>
+              <p className="text-lg font-semibold text-[color:var(--fg)] max-w-3xl mx-auto mt-4">
+                Here are the honest answers to every question we get asked—including the uncomfortable ones other automation companies avoid.
+              </p>
+            </div>
+
+            <div className="space-y-6">
+              {[
+                {
+                  q: 'I\'m barely keeping up as it is—how do I find time to implement this?',
+                  a: 'You don\'t. That\'s the point. Here\'s the actual implementation timeline: YOUR TIME INVESTMENT: Week 1: Strategy Call (60 minutes) - We analyze your workflows, identify what to automate first, you approve the plan. Week 2: You do nothing - We build your automations, we test everything, we configure all integrations. Week 3: Approval Call (30 minutes) - We show you what we built, you test it briefly, you approve deployment. Week 4: You do nothing - We deploy to production, we monitor for issues, we fix anything that needs adjusting. Total time investment from you: 90 minutes. Everything else? We handle it.',
+                  cta: 'Invest 90 Minutes to Save 20 Hours/Week →'
+                },
+                {
+                  q: 'What if this is just another "shiny object" that doesn\'t work for my industry?',
+                  a: 'Fair concern. We\'ve deployed automations across: Construction, Real estate, Professional services, Healthcare, Legal, Accounting, E-commerce, SaaS, Manufacturing, Restaurants, Retail, Nonprofits. What they all have in common: They all have repetitive workflows that follow patterns. If your business has workflows that repeat, they can be automated. Your industry knowledge is unique. Your repetitive tasks aren\'t.',
+                  cta: 'See Automation Examples in My Industry →'
+                },
+                {
+                  q: 'I\'ve been burned by tech promises before. How is this different?',
+                  a: 'DIFFERENCE #1: We Do the Work (Not You) - Zero learning curve. Zero maintenance burden. Zero technical skill required. DIFFERENCE #2: Guaranteed Results (Not Promises) - 60-day ROI guarantee in writing. Save 10+ hours/week or we keep optimizing for free. DIFFERENCE #3: Done-For-You (Not Do-It-Yourself) - We build it, we deploy it, we monitor it, we optimize it, you just use it. DIFFERENCE #4: Human Support (Not Community Forums) - Dedicated success manager who knows your business. 24/7 monitoring catches issues before they impact you.',
+                  cta: 'Try It Risk-Free for 60 Days →'
+                },
+                {
+                  q: 'Will AI replace my team or help them?',
+                  a: 'Automation doesn\'t replace people. It replaces the soul-crushing busywork that makes people want to quit. BEFORE AUTOMATION: Your team spends time on data entry, status updates, follow-up emails, report generation, invoice processing, scheduling. Employee satisfaction: Low (feeling like robots, not valued for skills). AFTER AUTOMATION: Automation handles all busywork. Your team focuses on client relationships, problem-solving, strategic work, creative projects, high-value activities. Employee satisfaction: High (doing work that matters, using actual skills).',
+                  cta: 'Upgrade My Team\'s Work →'
+                },
+                {
+                  q: 'Can I really trust a machine with sensitive client data?',
+                  a: 'This is actually backwards. Machines are MORE secure than humans with sensitive data. HUMAN SECURITY RISKS: Writes passwords on sticky notes, uses same password everywhere, clicks phishing emails, accidentally emails wrong client, leaves laptop unlocked. AUTOMATION SECURITY: Encrypted data transmission (256-bit SSL), access controls (role-based permissions), audit trails (every action logged), no password reuse, no phishing risk, no accidental disclosure, secure authentication (OAuth, API keys), automatic security updates. NASA-RECOGNIZED SECURITY PROTOCOLS: Our automation framework uses the same security standards trusted by NASA, Fortune 500 financial institutions, healthcare providers (HIPAA compliant), government agencies.',
+                  cta: 'Upgrade to Military-Grade Security →'
+                },
+                {
+                  q: 'How much does this actually cost?',
+                  a: 'PRICING TIERS: STARTER PACKAGE: $299-$599/month (1-2 core automations, 8-12 hours/week saved). GROWTH PACKAGE: $599-$999/month (3-5 core automations, 15-20 hours/week saved). SCALE PACKAGE: $999-$1,799/month (6+ automations, 25-35 hours/week saved). ENTERPRISE PACKAGE: Custom pricing (unlimited automations, 40+ hours/week saved). THE REAL COST COMPARISON: Let\'s say you choose the Growth Package: $799/month. Time saved: 20 hours/week. Annual time savings: 1,040 hours (26 full work weeks). Your time value: $100/hour (conservative). Annual value of reclaimed time: $104,000. Your actual ROI: 985%. You spend: $9,588. You gain: $104,000 in reclaimed time value.',
+                  cta: 'Calculate My Actual ROI →'
+                }
+              ].map((faq, idx) => (
+                <GlowCard key={idx} className="p-8" showFlame={true}>
+                  <h3 className="text-blue-500 text-xl font-bold mb-4">{faq.q}</h3>
+                  <div className="text-[color:var(--muted)] leading-relaxed mb-6">
+                    <p>{faq.a}</p>
+                  </div>
+                  <Link
+                    href="#assessment"
+                    className="btn-primary inline-flex items-center"
+                    style={{ backgroundColor: '#2563EB', color: 'white' }}
+                  >
+                    {faq.cta}
+                  </Link>
+                </GlowCard>
+              ))}
+            </div>
+          </div>
         </section>
 
-        {/* GUARANTEE SECTION */}
-        <section 
-          ref={guaranteeRef}
-          className="py-20 bg-gradient-to-br linear-gradient(135deg, var(--primary), var(--accent)) text-qgd-fg relative overflow-hidden"
-        >
-          <div className="absolute inset-0 bg-grid-pattern opacity-10" />
-          
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            animate={guaranteeInView ? "visible" : "hidden"}
-            className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
-          >
-            
-            <motion.div variants={fadeInUp} className="mb-8">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-qgd-card/20 backdrop-blur-sm rounded-full mb-6">
-                <Shield className="w-10 h-10 text-qgd-fg" />
-              </div>
-              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                Our 60-Day "Time-Back" Guarantee
+        {/* ========================================
+            PHASE 9: STRATEGIC BLOG INTEGRATION
+            ======================================== */}
+        <section className="py-20 bg-[color:var(--card)]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <span className="text-xs uppercase tracking-wider text-[color:var(--muted)] mb-4 block">
+                REAL AUTOMATIONS • REAL TIME SAVED • REAL LESSONS
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+                Learn From Businesses Who Automated Before Burning Out
               </h2>
-              <p className="text-xl text-qgd-fg/90 max-w-3xl mx-auto leading-relaxed">
-                If you don't save at least 10 hours a week or see measurable ROI in 60 days, 
-                we'll continue optimizing your automations free until you do.
+              <p className="text-lg text-[color:var(--muted)] max-w-3xl mx-auto">
+                These aren't generic "automation tips." These are real stories from real entrepreneurs who automated repetitive work—and used the reclaimed time to actually scale their businesses profitably.
               </p>
-            </motion.div>
-            
-            <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                onClick={scrollToCalculator}
-                className="bg-[#5312c4] text-[#f7f7fb] teal-700 hover:bg-gray-100 font-semibold px-8 py-6 text-lg shadow-xl"
-              >
-                <BarChart3 className="w-5 h-5 mr-2" />
-                Get My Free Automation Blueprint
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                asChild
-                className="border-2 border-[#2c2c3d] text-qgd-fg hover:bg-[#0c0c12]/10 backdrop-blur-sm px-8 py-6 text-lg font-semibold"
-              >
-                <a 
-                  href={process.env.NEXT_PUBLIC_TIDYCAL_BOOK_URL || '#'}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Calendar className="w-5 h-5 mr-2" />
-                  Schedule Free Consultation
-                </a>
-              </Button>
-            </motion.div>
-            
-            <motion.div variants={fadeInUp} className="mt-12 pt-8 border-t border-[#2c2c3d]/20">
-              <div className="grid md:grid-cols-3 gap-8 text-center">
-                <div>
-                  <div className="text-4xl font-bold mb-2">14</div>
-                  <div className="text-qgd-fg/80">Days to Deploy</div>
-                </div>
-                <div>
-                  <div className="text-4xl font-bold mb-2">60-85%</div>
-                  <div className="text-qgd-fg/80">Cost Savings</div>
-                </div>
-                <div>
-                  <div className="text-4xl font-bold mb-2">24/7</div>
-                  <div className="text-qgd-fg/80">Always Working</div>
-                </div>
-              </div>
-            </motion.div>
-            
-          </motion.div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                {
+                  title: 'From 4 Hours Daily in Email Hell to 30 Minutes of Strategic Communication: How MailPilot Transformed a Founder\'s Workday',
+                  excerpt: 'Marcus was drowning in email. 200+ messages per day. 4 hours every day reading, categorizing, responding, filing. Most were routine questions with identical answers. We deployed MailPilot with custom response templates and intelligent routing. Marcus went from 200 emails requiring responses to 12 emails requiring decisions. Time spent on email: From 4 hours/day to 30 minutes/day. Time reclaimed: 17.5 hours/week.',
+                  readTime: '9 min read',
+                  tag: 'CASE STUDY'
+                },
+                {
+                  title: 'The $127K Cash Flow Problem Solved by 15 Minutes of Automation Setup (InvoiceIQ Case Study)',
+                  excerpt: 'Sarah\'s consulting firm had a cash flow crisis. Not because clients weren\'t paying. Because they were paying slowly. Average payment time: 47 days. Outstanding invoices: $127,000. Sarah\'s time chasing payments: 6 hours/week. We deployed InvoiceIQ with automatic payment reminders and escalation protocols. Results in first 90 days: Average payment time: 47 days → 19 days (60% faster), Outstanding invoices: $127K → $31K (76% reduction), Cash flow improvement: $96,000 collected.',
+                  readTime: '10 min read',
+                  tag: 'TRUE STORY'
+                },
+                {
+                  title: 'How LeadFlow Captured 34% More Revenue Without Changing the Marketing Strategy (Just the Follow-Up)',
+                  excerpt: 'David\'s agency had a lead problem. Not too few leads. Too many leads getting lost. Leads came from website forms, LinkedIn messages, referral emails, networking events, social media inquiries. Five different sources. No centralized system. No consistent follow-up. We deployed LeadFlow with intelligent routing and automatic enrichment. Results in first 90 days: Lead response time: 4 hours → 2 minutes (99% faster), Lead leakage: 18% → 0%, Revenue: +34% from faster, more consistent lead nurturing.',
+                  readTime: '11 min read',
+                  tag: 'WARNING'
+                }
+              ].map((blog, idx) => (
+                <GlowCard key={idx} className="p-0 overflow-hidden" showFlame={true}>
+                  <div className="h-48 bg-gradient-to-br from-blue-900/20 to-purple-900/20 flex items-center justify-center relative">
+                    <div className="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded text-xs font-semibold">
+                      {blog.tag}
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-lg font-bold mb-3 leading-tight">{blog.title}</h3>
+                    <p className="text-sm text-[color:var(--muted)] mb-4 leading-relaxed">{blog.excerpt}</p>
+                    <div className="flex justify-between items-center">
+                      <span className="text-xs text-[color:var(--muted)]">{blog.readTime}</span>
+                      <Link href={`/blog/automation-case-study-${idx + 1}`} className="btn-primary text-sm px-4 py-2" style={{ backgroundColor: '#2563EB', color: 'white' }}>
+                        Read the Full Story →
+                      </Link>
+                    </div>
+                  </div>
+                </GlowCard>
+              ))}
+            </div>
+
+            <div className="text-center mt-12">
+              <Link href="/blog/automation-case-studies" className="btn-secondary inline-flex items-center border-2" style={{ borderColor: '#2563EB', color: '#2563EB', background: 'transparent' }}>
+                Browse All Automation Case Studies →
+              </Link>
+            </div>
+          </div>
         </section>
 
+        {/* ========================================
+            PHASE 10: FINAL CTA SECTION - COMPLETE REWRITE
+            ======================================== */}
+        <section id="assessment" className="py-20">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <span className="text-xs uppercase tracking-wider text-[color:var(--muted)] mb-4 block">
+                THE ONLY DECISION THAT MATTERS NOW
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+                Reclaim 20+ Hours Per Week Starting in 14 Days—Or Keep Doing It Manually Forever
+              </h2>
+              <div className="max-w-3xl mx-auto space-y-4 text-lg text-[color:var(--muted)]">
+                <p>Right now, you're at a decision point.</p>
+                <p>You can keep spending 20+ hours per week on repetitive tasks that don't require your expertise—and hope you find time to grow your business "someday."</p>
+                <p>Or you can automate the busywork in 14 days—and use the reclaimed time to actually scale profitably.</p>
+                <p className="font-semibold">Most entrepreneurs wait until they're drowning to automate. Smart entrepreneurs automate before they hit the wall.</p>
+                <p className="text-2xl font-bold text-blue-500">Which one are you?</p>
+              </div>
+            </div>
+
+            <div className="space-y-8 mb-12">
+              {[
+                {
+                  step: 1,
+                  title: 'Free Workflow Analysis Call (60 Minutes)',
+                  what: 'We analyze your current workflows to identify what\'s stealing your time—and what can be automated immediately for maximum ROI.',
+                  get: [
+                    '→ Workflow audit (we map where your time actually goes)',
+                    '→ Automation opportunity analysis (what to automate first)',
+                    '→ Time savings projection (hours you\'ll reclaim per week)',
+                    '→ Custom automation recommendations (specific to your business)',
+                    '→ Honest assessment: Is automation right for you right now?'
+                  ],
+                  time: '60 minutes on video call'
+                },
+                {
+                  step: 2,
+                  title: 'Custom Automation Proposal (Delivered in 48 Hours)',
+                  what: 'We create a detailed automation plan showing exactly what we\'ll build, how it will work, what tools we\'ll integrate, and what it will cost.',
+                  get: [
+                    '→ Custom automation architecture (visual workflow diagrams)',
+                    '→ Integration specifications (which tools connect to what)',
+                    '→ Time savings projections (specific tasks, specific hours)',
+                    '→ Implementation timeline (when automation goes live)',
+                    '→ Transparent pricing (no hidden fees, no surprises)',
+                    '→ 60-day ROI guarantee (in writing)'
+                  ],
+                  time: '30 minutes to review proposal'
+                },
+                {
+                  step: 3,
+                  title: 'Automation Build & Deployment (7-14 Days)',
+                  what: 'We design, build, test, and deploy your custom automation workflows. You approve at key milestones. We handle everything technical.',
+                  get: [
+                    '→ Custom-built automation workflows (designed for YOUR specific tools and processes)',
+                    '→ Complete testing (we break it so you don\'t have to)',
+                    '→ Deployment to production (goes live when you\'re ready)',
+                    '→ Team training (quick walkthrough of how it works)',
+                    '→ 30-day white-glove support (we monitor closely and optimize)',
+                    '→ Ongoing monitoring and maintenance (24/7 forever)'
+                  ],
+                  time: '2-3 approval calls (30 minutes each)'
+                }
+              ].map((stepData) => (
+                <GlowCard key={stepData.step} className="p-8 border-l-4 border-blue-500" showFlame={true}>
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="w-12 h-12 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-xl flex-shrink-0">
+                      {stepData.step}
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold mb-2">{stepData.title}</h3>
+                      <p className="text-[color:var(--muted)] mb-4">{stepData.what}</p>
+                      <div className="space-y-2">
+                        <p className="font-semibold mb-2">What You Get:</p>
+                        <ul className="list-disc list-inside space-y-1 text-sm text-[color:var(--muted)] ml-4">
+                          {stepData.get.map((item, i) => (
+                            <li key={i}>{item}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      <p className="text-sm text-[color:var(--muted)] mt-4">Your Time Investment: {stepData.time}</p>
+                    </div>
+                  </div>
+                </GlowCard>
+              ))}
+            </div>
+
+            {/* Trust Indicators */}
+            <GlowCard className="p-8 mb-8" showFlame={true}>
+              <h3 className="text-xl font-bold mb-6 text-center">Trust Indicators</h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {[
+                  { icon: '✓', text: 'Find 3 vulnerabilities or it\'s free' },
+                  { icon: '⏱️', text: 'Results in 7-10 days (initial findings)' },
+                  { icon: '👤', text: 'Human-led investigation (not automated scans)' },
+                  { icon: '🛡️', text: '200+ businesses protected successfully' },
+                  { icon: '🏛️', text: 'NASA-recognized security methodology' },
+                  { icon: '🎖️', text: 'Former intelligence analysts on team' },
+                  { icon: '🤝', text: '30-day post-audit support included' },
+                  { icon: '💯', text: 'Honest assessment even if we can\'t help' }
+                ].map((indicator, idx) => (
+                  <div key={idx} className="text-center">
+                    <p className="text-2xl mb-2">{indicator.icon}</p>
+                    <p className="text-sm text-[color:var(--muted)]">{indicator.text}</p>
+                  </div>
+                ))}
+              </div>
+            </GlowCard>
+
+            {/* Urgency Element */}
+            <GlowCard className="p-8 border-2 border-blue-500 mb-8" showFlame={true}>
+              <h3 className="text-blue-500 text-xl font-bold mb-4 text-center">⚠️ THE COST OF WAITING:</h3>
+              <div className="space-y-4 text-center text-[color:var(--muted)]">
+                <p>If you're spending 20 hours/week on manual tasks and your time is worth $100/hour:</p>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  <div>
+                    <p className="text-2xl font-bold text-red-500">$2,000</p>
+                    <p className="text-sm">Cost this week</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-red-500">$8,000</p>
+                    <p className="text-sm">Cost this month</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-red-500">$24,000</p>
+                    <p className="text-sm">Cost this quarter</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-red-500">$104,000</p>
+                    <p className="text-sm">Cost this year</p>
+                  </div>
+                </div>
+                <p className="font-semibold">Every week you delay is another $2,000 you'll never get back.</p>
+                <GlowCard className="mt-6 p-4 bg-[#1F2937] text-white" showFlame={true}>
+                  <p className="font-semibold mb-2 text-yellow-500">🔥 AUTOMATION AVAILABILITY:</p>
+                  <p className="mb-2">Custom automation builds require dedicated engineering time.</p>
+                  <p className="mb-4">Current wait time: <strong>2-3 weeks</strong></p>
+                  <div className="bg-blue-500/20 p-3 rounded border-l-4 border-blue-500">
+                    <p className="mb-1">Next available build slot: <CountdownTimer elementId="final-countdown" hoursRemaining={192} /></p>
+                    <p className="text-blue-300 font-semibold">Only 3 automation projects remaining this quarter.</p>
+                  </div>
+                </GlowCard>
+              </div>
+            </GlowCard>
+
+            {/* Primary CTA */}
+            <div className="text-center">
+              <Link
+                href="#calculator"
+                className="btn-primary inline-flex items-center text-xl px-12 py-6 font-bold"
+                style={{ backgroundColor: '#2563EB', color: 'white' }}
+              >
+                Calculate How Much Time I'm Wasting (Free Assessment) →
+              </Link>
+            </div>
+            <div className="text-center mt-4">
+              <Link
+                href="#automation-suite"
+                className="btn-secondary inline-flex items-center border-2"
+                style={{ borderColor: '#2563EB', color: '#2563EB', background: 'transparent' }}
+              >
+                See Automation Pricing & Packages
+              </Link>
+            </div>
+            <div className="text-center mt-6 text-sm text-[color:var(--muted)] space-y-1">
+              <p>✓ No commitment required • No credit card needed • No sales pressure</p>
+              <p>✓ Just honest analysis of where your time goes and what can be automated</p>
+              <p>✓ If we can't help you, we'll tell you immediately and suggest alternatives</p>
+              <p className="mt-4 font-semibold text-[color:var(--fg)]">Trusted by 200+ businesses who chose automation over burnout</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Schema Markup */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        />
       </main>
 
       <Footer />
-      
-      {/* Exit Intent Popup */}
-      <AutomationExitIntent />
-    </>
+    </div>
   )
 }

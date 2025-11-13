@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { GlowCard } from "@/components/ui/glow-card";
+import { FlameBorder } from "@/components/ui/flame-border";
+import { BackgroundChecksLeadForm } from "@/components/background-checks-lead-form";
 
 export const metadata: Metadata = {
   title: "Beyond Background Checks: Find What Standard Checks Miss",
@@ -349,10 +352,10 @@ const structuredData = [
 
 export default function BackgroundChecksPage() {
   return (
-    <div className="min-h-screen bg-[#07070b] text-[#f6f7ff]">
+    <div className="min-h-screen bg-[color:var(--bg)] text-[color:var(--fg)]">
       <main className="px-4 py-24 sm:px-8 lg:px-16">
         <article className="mx-auto flex max-w-6xl flex-col gap-24">
-          <nav aria-label="Breadcrumb" className="text-sm text-[#d6d9ec]">
+          <nav aria-label="Breadcrumb" className="text-sm text-[color:var(--muted)]">
             <ol className="flex flex-wrap items-center gap-2">
               <li>
                 <a
@@ -379,10 +382,10 @@ export default function BackgroundChecksPage() {
           </nav>
 
           <section className="relative rounded-3xl bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 py-20 px-8 text-center shadow-lg">
-            <h1 className="mb-6 text-5xl font-bold text-white">
+            <h1 className="mb-6 text-5xl font-bold text-[color:var(--fg)]">
               Beyond Background Checks: Find What Standard Checks Miss
             </h1>
-            <p className="mb-8 text-xl text-gray-300">
+            <p className="mb-8 text-xl text-[color:var(--muted)]">
               Standard background checks only catch criminals who got caught. We
               reveal hidden identities, dark web activity, and red flags lurking
               beneath the surface.
@@ -403,23 +406,23 @@ export default function BackgroundChecksPage() {
             </div>
           </section>
 
-          <article
+          <GlowCard
             aria-labelledby="dangerous-lie-heading"
-            className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-10 shadow-lg"
+            showFlame={true}
           >
             <h2
               id="dangerous-lie-heading"
-              className="text-3xl font-semibold text-white sm:text-4xl"
+              className="text-3xl font-semibold text-[color:var(--fg)] sm:text-4xl"
             >
               The Dangerous Lie You&apos;ve Been Sold
             </h2>
-            <div className="space-y-4 text-lg text-[#d6d9ec]">
+            <div className="space-y-4 text-lg text-[color:var(--muted)]">
               <p>A background check only tells you if someone was convicted.</p>
               <div>
-                <p className="font-semibold text-white">
+                <p className="font-semibold text-[color:var(--fg)]">
                   It doesn&apos;t tell you:
                 </p>
-                <ul className="mt-2 list-disc space-y-2 pl-6 text-base text-[#d1d4e0]">
+                <ul className="mt-2 list-disc space-y-2 pl-6 text-base text-[color:var(--muted)]">
                   <li>If they&apos;re using a different name</li>
                   <li>
                     If they&apos;re hiding criminal activity in another state or
@@ -473,21 +476,23 @@ export default function BackgroundChecksPage() {
                 insider threat behavior.
               </p>
             </div>
-          </article>
+          </GlowCard>
 
-          <section
+          <GlowCard
             id="methodology"
-            className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-10 shadow-lg"
+            showFlame={true}
           >
-            <h2 className="text-3xl font-semibold text-white sm:text-4xl">
+            <h2 className="text-3xl font-semibold text-[color:var(--fg)] sm:text-4xl">
               Our Five-Layer Intelligence Investigation
             </h2>
-            <p className="text-lg text-[#d6d9ec]">
+            <p className="text-lg text-[color:var(--muted)]">
               Standard background checks scratch the surface. We go five layers
               deeper to uncover what others miss—before it becomes your problem.
             </p>
             <div className="grid gap-6 md:grid-cols-2">
-              <article className="rounded-3xl border border-white/10 bg-black/40 p-6">
+              <article className="glow-card rounded-[24px] border border-[color:var(--border)] bg-[color:var(--card)] p-6 relative">
+                <FlameBorder />
+                <div className="relative z-20">
                 <h3 className="text-xl font-semibold text-red-300">
                   Layer 1: Identity Verification &amp; Alias Detection
                 </h3>
@@ -515,8 +520,11 @@ export default function BackgroundChecksPage() {
                   using a slight name variation. We found 2 bankruptcies and an
                   SEC investigation under his legal name.
                 </p>
+                </div>
               </article>
-              <article className="rounded-3xl border border-white/10 bg-black/40 p-6">
+              <article className="glow-card rounded-[24px] border border-[color:var(--border)] bg-[color:var(--card)] p-6 relative">
+                <FlameBorder />
+                <div className="relative z-20">
                 <h3 className="text-xl font-semibold text-red-300">
                   Layer 2: Deep Criminal &amp; Legal History
                 </h3>
@@ -539,8 +547,11 @@ export default function BackgroundChecksPage() {
                   Why it matters: 34% of criminal records are filed in a
                   different county than where the person currently lives.
                 </p>
+                </div>
               </article>
-              <article className="rounded-3xl border border-white/10 bg-black/40 p-6">
+              <article className="glow-card rounded-[24px] border border-[color:var(--border)] bg-[color:var(--card)] p-6 relative">
+                <FlameBorder />
+                <div className="relative z-20">
                 <h3 className="text-xl font-semibold text-red-300">
                   Layer 3: Digital Footprint &amp; Dark Web Monitoring
                 </h3>
@@ -569,8 +580,11 @@ export default function BackgroundChecksPage() {
                   on 3 dark web forums selling stolen data. His background check
                   was clean.
                 </p>
+                </div>
               </article>
-              <article className="rounded-3xl border border-white/10 bg-black/40 p-6">
+              <article className="glow-card rounded-[24px] border border-[color:var(--border)] bg-[color:var(--card)] p-6 relative">
+                <FlameBorder />
+                <div className="relative z-20">
                 <h3 className="text-xl font-semibold text-red-300">
                   Layer 4: Financial Behavior &amp; Risk Indicators
                 </h3>
@@ -592,8 +606,11 @@ export default function BackgroundChecksPage() {
                   would have flagged his 3 bankruptcies, 2 foreclosures, and
                   luxury car purchases on a $60K salary.
                 </p>
+                </div>
               </article>
-              <article className="rounded-3xl border border-white/10 bg-black/40 p-6 md:col-span-2">
+              <article className="glow-card rounded-[24px] border border-[color:var(--border)] bg-[color:var(--card)] p-6 md:col-span-2 relative">
+                <FlameBorder />
+                <div className="relative z-20">
                 <h3 className="text-xl font-semibold text-red-300">
                   Layer 5: Behavioral Threat Assessment
                 </h3>
@@ -623,6 +640,7 @@ export default function BackgroundChecksPage() {
                   </Link>{" "}
                   insights to train managers on spotting them early.
                 </p>
+                </div>
               </article>
             </div>
             <div className="mt-10 overflow-hidden rounded-3xl border border-white/10 bg-black/30 p-6 text-center">
@@ -639,7 +657,7 @@ export default function BackgroundChecksPage() {
                 delivers five layers of assurance.
               </p>
             </div>
-          </section>
+          </GlowCard>
 
           <section className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-10 shadow-lg">
             <h2 className="text-3xl font-semibold text-white sm:text-4xl">
@@ -672,12 +690,16 @@ export default function BackgroundChecksPage() {
                     "I needed to know who I was dating. His background was clean. QuantumLeap found 2 restraining orders from ex-partners, hidden debt, and active profiles on affair sites. Dodged a bullet.",
                 },
               ].map((testimonial) => (
-                <article
+                <GlowCard
                   key={testimonial.name}
-                  itemScope
-                  itemType="https://schema.org/Review"
-                  className="flex h-full flex-col gap-4 rounded-3xl border border-white/10 bg-black/30 p-6 text-left text-[#d1d4e0]"
+                  showFlame={true}
+                  className="flex h-full flex-col gap-4 p-6 text-left text-[color:var(--muted)]"
                 >
+                  <article
+                    itemScope
+                    itemType="https://schema.org/Review"
+                    className="relative z-20 flex h-full flex-col gap-4"
+                  >
                   <div className="flex items-center gap-4">
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/10 text-lg font-semibold text-white">
                       {testimonial.name.slice(0, 2).toUpperCase()}
@@ -713,7 +735,8 @@ export default function BackgroundChecksPage() {
                     <meta itemProp="ratingValue" content="5" />
                     <span className="sr-only">5 star rating</span>
                   </div>
-                </article>
+                  </article>
+                </GlowCard>
               ))}
             </div>
           </section>
@@ -798,14 +821,16 @@ export default function BackgroundChecksPage() {
             </p>
           </section>
 
-          <section className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-10 shadow-lg">
-            <h2 className="text-3xl font-semibold text-white sm:text-4xl">
-              Intelligence Investigation Pricing
-            </h2>
-            <p className="text-lg text-[#d6d9ec]">
-              Transparent pricing. No hidden fees. Results guaranteed.
-            </p>
-            <div className="grid gap-6 md:grid-cols-3">
+          <section className="space-y-8 py-16">
+            <div className="text-center space-y-4">
+              <h2 className="text-4xl font-bold text-[color:var(--fg)] sm:text-5xl">
+                Intelligence Investigation Pricing
+              </h2>
+              <p className="text-lg text-[color:var(--muted)] max-w-2xl mx-auto">
+                Transparent pricing. No hidden fees. Results guaranteed.
+              </p>
+            </div>
+            <div className="grid gap-8 md:grid-cols-3">
               {[
                 {
                   name: "Basic Intelligence",
@@ -859,88 +884,89 @@ export default function BackgroundChecksPage() {
                   popular: false,
                 },
               ].map((tier) => (
-                <article
+                <GlowCard
                   key={tier.name}
-                  itemScope
-                  itemType="https://schema.org/Offer"
-                  className={`relative flex h-full flex-col gap-6 rounded-3xl border p-6 ${
-                    tier.popular
-                      ? "border-red-400/80 bg-gradient-to-br from-red-500/20 via-red-500/10 to-transparent shadow-[0_0_48px_rgba(255,64,64,0.18)]"
-                      : "border-white/10 bg-black/30"
-                  }`}
+                  variant={tier.popular ? "lavender" : "default"}
+                  className={`h-full ${tier.popular ? "border-[color:var(--accent)]/80" : ""}`}
                 >
-                  {tier.popular && (
-                    <span className="absolute right-6 top-6 rounded-full bg-red-500 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
-                      Most Popular
-                    </span>
-                  )}
-                  <meta
-                    itemProp="price"
-                    content={tier.price.replace(/[^0-9.]/g, "") || "0"}
-                  />
-                  <meta itemProp="priceCurrency" content="USD" />
-                  <div>
-                    <h3
-                      className="text-xl font-semibold text-white"
-                      itemProp="name"
+                  <article
+                    itemScope
+                    itemType="https://schema.org/Offer"
+                    className="flex h-full flex-col gap-6"
+                  >
+                    {tier.popular && (
+                      <span className="absolute right-6 top-6 rounded-full bg-[color:var(--accent)] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white z-20">
+                        Most Popular
+                      </span>
+                    )}
+                    <meta
+                      itemProp="price"
+                      content={tier.price.replace(/[^0-9.]/g, "") || "0"}
+                    />
+                    <meta itemProp="priceCurrency" content="USD" />
+                    <div>
+                      <h3
+                        className="text-2xl font-bold text-[color:var(--fg)] mb-2"
+                        itemProp="name"
+                      >
+                        {tier.name}
+                      </h3>
+                      <p className="text-3xl font-bold text-[color:var(--accent)] mb-2">
+                        {tier.price}
+                      </p>
+                      <p className="text-sm text-[color:var(--muted)] leading-relaxed">
+                        {tier.bestFor}
+                      </p>
+                    </div>
+                    <ul
+                      className="flex-1 space-y-3 text-sm text-[color:var(--muted)]"
+                      itemProp="description"
                     >
-                      {tier.name}
-                    </h3>
-                    <p className="text-lg font-bold text-red-200">
-                      {tier.price}
-                    </p>
-                    <p className="mt-2 text-sm text-[#d1d4e0]">
-                      {tier.bestFor}
-                    </p>
-                  </div>
-                  <ul
-                    className="space-y-2 text-sm text-[#d6d9ec]"
-                    itemProp="description"
-                  >
-                    {tier.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-2">
-                        <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-red-400" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <p className="text-sm text-[#d1d4e0]">
-                    Delivery: {tier.delivery}
-                  </p>
-                  <Link
-                    href="#contact"
-                    className={`rounded-full px-6 py-3 text-center text-sm font-semibold uppercase tracking-wide transition ${
-                      tier.popular
-                        ? "bg-white text-[#07070b] hover:bg-red-100"
-                        : "border border-white/40 text-white hover:bg-white/10"
-                    }`}
-                  >
-                    {tier.cta}
-                  </Link>
-                </article>
+                      {tier.features.map((feature) => (
+                        <li key={feature} className="flex items-start gap-3">
+                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--accent)]" />
+                          <span className="leading-relaxed">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="space-y-3 pt-4 border-t border-[color:var(--border)]">
+                      <p className="text-sm font-medium text-[color:var(--fg)]">
+                        Delivery: <span className="text-[color:var(--accent)]">{tier.delivery}</span>
+                      </p>
+                      <Link
+                        href="#contact"
+                        className={`btn-primary block w-full text-center ${
+                          tier.popular ? "btn-secondary" : ""
+                        }`}
+                      >
+                        {tier.cta}
+                      </Link>
+                    </div>
+                  </article>
+                </GlowCard>
               ))}
             </div>
           </section>
 
-          <section className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-10 text-left text-[#d6d9ec] shadow-lg">
-            <h2 className="text-3xl font-semibold text-white sm:text-4xl">
+          <GlowCard className="space-y-6 p-10 text-left" showFlame={true}>
+            <h2 className="text-3xl font-semibold text-[color:var(--fg)] sm:text-4xl">
               The &apos;Find 3 or Free&apos; Guarantee
             </h2>
-            <p className="text-lg text-[#f0f2ff]">
+            <p className="text-lg text-[color:var(--fg)]">
               We&apos;re so confident in our intelligence investigation that we
               offer this guarantee:
             </p>
-            <p className="text-base">
+            <p className="text-base text-[color:var(--muted)]">
               If we don&apos;t find at least 3 significant red flags,
               discrepancies, or pieces of critical information that a standard
               background check would miss, your investigation is 100% FREE. No
               questions asked. No fine print.
             </p>
             <div>
-              <h3 className="text-lg font-semibold text-white">
+              <h3 className="text-lg font-semibold text-[color:var(--fg)]">
                 What counts as a &apos;significant finding&apos;:
               </h3>
-              <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-[#d1d4e0]">
+              <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-[color:var(--muted)]">
                 <li>Hidden aliases or identity variations</li>
                 <li>Criminal or civil records in other jurisdictions</li>
                 <li>Dark web presence or data breach exposure</li>
@@ -952,90 +978,15 @@ export default function BackgroundChecksPage() {
                 <li>Behavioral warning signs or threat indicators</li>
               </ul>
             </div>
-            <p className="text-base">
-              <strong className="text-red-200">The reality:</strong> In 94% of
+            <p className="text-base text-[color:var(--muted)]">
+              <strong className="text-[color:var(--accent)]">The reality:</strong> In 94% of
               cases, we find 7+ items a standard check missed.
             </p>
             <div className="mt-6 inline-flex items-center gap-3 rounded-full border border-red-400/60 bg-red-500/10 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-red-200">
               <span aria-hidden="true">✔</span> 94% Success Rate
             </div>
-          </section>
+          </GlowCard>
 
-          <section className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-10 shadow-lg">
-            <h2 className="text-3xl font-semibold text-white sm:text-4xl">
-              Frequently Asked Questions
-            </h2>
-            <div className="space-y-4">
-              {[
-                {
-                  question:
-                    "What's the difference between a background check and an intelligence investigation?",
-                  answer:
-                    "A standard background check only searches one jurisdiction for criminal convictions. An intelligence investigation cross-references 47+ databases, searches multiple jurisdictions internationally, monitors the dark web, analyzes financial behavior, and identifies hidden aliases and synthetic identities. We find what background checks miss—67% of the time, critical information exists outside the standard search parameters.",
-                },
-                {
-                  question: "How long does an intelligence investigation take?",
-                  answer:
-                    "Basic: 48-72 hours. Standard: 24-48 hours. Executive: 12-24 hours. Rush delivery available for Executive tier.",
-                },
-                {
-                  question: "Is this legal?",
-                  answer:
-                    "Yes. All our investigations use 100% legal, publicly available data sources and comply with FCRA, GDPR, and all applicable privacy laws. We don't hack, break into accounts, or use illegal methods.",
-                },
-                {
-                  question: "What if the person has a common name?",
-                  answer:
-                    "We use advanced identity resolution across 47 databases to ensure we're investigating the correct individual. We verify using multiple data points: SSN, DOB, addresses, known aliases, and biometric matching where available.",
-                },
-                {
-                  question: "Can I use this for pre-employment screening?",
-                  answer:
-                    "Yes. Our investigations are FCRA-compliant and can be used for employment decisions. We provide a compliant disclosure and consent process.",
-                },
-                {
-                  question: "Do you investigate internationally?",
-                  answer:
-                    "Yes. Our Executive Intelligence tier includes international records searches, offshore account detection, and access to INTERPOL and international criminal databases.",
-                },
-                {
-                  question: "How confidential is this?",
-                  answer:
-                    "Completely confidential. We never contact the subject, their employer, or anyone else. All reports are encrypted and delivered via secure portal. We don't share your information with anyone.",
-                },
-                {
-                  question: "What if I need this urgently?",
-                  answer:
-                    "Executive tier includes rush 12-hour delivery. Contact us for emergency same-day investigations (additional fees apply).",
-                },
-                {
-                  question: "Do you notify the person being investigated?",
-                  answer:
-                    "No. This is a passive investigation using publicly available records. The subject will never know they were investigated.",
-                },
-                {
-                  question: "What's included in the final report?",
-                  answer:
-                    "A comprehensive PDF report with executive summary, detailed findings organized by category, source documentation, risk assessment, and actionable recommendations.",
-                },
-                {
-                  question: "What if you don't find anything?",
-                  answer:
-                    "If we find fewer than 3 significant items that a standard background check would miss, your investigation is 100% free under our 'Find 3 or Free' guarantee.",
-                },
-              ].map((faq) => (
-                <article
-                  key={faq.question}
-                  className="rounded-2xl border border-white/10 bg-black/30 p-6"
-                >
-                  <h3 className="text-lg font-semibold text-white">
-                    {faq.question}
-                  </h3>
-                  <p className="mt-2 text-sm text-[#d1d4e0]">{faq.answer}</p>
-                </article>
-              ))}
-            </div>
-          </section>
 
           <section className="space-y-6 rounded-3xl border border-white/10 bg-gradient-to-br from-blue-900 via-slate-900 to-blue-950 p-12 text-center shadow-[0_0_60px_rgba(64,128,255,0.25)]">
             <h2 className="text-3xl font-semibold text-white sm:text-4xl">
@@ -1111,11 +1062,11 @@ export default function BackgroundChecksPage() {
               <span>94% success rate</span>
             </div>
           </section>
-          <section className="space-y-4 rounded-3xl border border-white/10 bg-white/5 p-10 shadow-lg">
-            <h2 className="text-3xl font-semibold text-white sm:text-4xl">
+          <GlowCard className="space-y-4 p-10" showFlame={true}>
+            <h2 className="text-3xl font-semibold text-[color:var(--fg)] sm:text-4xl">
               Case Studies: What We&apos;ve Uncovered
             </h2>
-            <p className="text-lg text-[#d6d9ec]">
+            <p className="text-lg text-[color:var(--muted)]">
               Real investigations, real results. See how intelligence
               investigation prevents disaster.
             </p>
@@ -1146,10 +1097,12 @@ export default function BackgroundChecksPage() {
                   alt: "Cyber security case study illustration",
                 },
               ].map((post) => (
-                <article
+                <GlowCard
                   key={post.href}
-                  className="group flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-black/30 transition hover:border-red-400/60 hover:bg-black/40"
+                  showFlame={true}
+                  className="group flex h-full flex-col overflow-hidden"
                 >
+                  <article className="relative z-20 flex h-full flex-col">
                   <div className="relative h-40 w-full overflow-hidden bg-gradient-to-br from-red-500/40 via-red-500/10 to-transparent">
                     <Image
                       src="/images/case-study-placeholder.jpg"
@@ -1160,22 +1113,23 @@ export default function BackgroundChecksPage() {
                       className="h-full w-full object-cover opacity-60 transition duration-300 group-hover:scale-105 group-hover:opacity-80"
                     />
                   </div>
-                  <div className="flex flex-1 flex-col gap-4 p-6 text-left">
-                    <h3 className="text-lg font-semibold text-white">
-                      {post.title}
-                    </h3>
-                    <p className="text-sm text-[#d1d4e0]">{post.excerpt}</p>
-                    <Link
-                      href={post.href}
-                      className="mt-auto inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-red-300 underline-offset-4 transition hover:text-red-200 hover:underline"
-                    >
-                      Read Full Case Study <span aria-hidden="true">→</span>
-                    </Link>
-                  </div>
-                </article>
+                    <div className="flex flex-1 flex-col gap-4 p-6 text-left">
+                      <h3 className="text-lg font-semibold text-[color:var(--fg)]">
+                        {post.title}
+                      </h3>
+                      <p className="text-sm text-[color:var(--muted)]">{post.excerpt}</p>
+                      <Link
+                        href={post.href}
+                        className="mt-auto inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-[color:var(--accent)] underline-offset-4 transition hover:text-[color:var(--accent)]/80 hover:underline"
+                      >
+                        Read Full Case Study <span aria-hidden="true">→</span>
+                      </Link>
+                    </div>
+                  </article>
+                </GlowCard>
               ))}
             </div>
-          </section>
+          </GlowCard>
 
           <section className="rounded-3xl border border-white/10 bg-white/5 p-10 shadow-[0_0_48px_rgba(255,0,64,0.12)] backdrop-blur">
             <h2 className="text-left text-3xl font-semibold text-red-300 sm:text-4xl">
@@ -1262,26 +1216,29 @@ export default function BackgroundChecksPage() {
           </section>
 
           <section className="space-y-6">
-            <h2 className="text-3xl font-semibold text-white sm:text-4xl">
+            <h2 className="text-3xl font-semibold text-[color:var(--fg)] sm:text-4xl">
               Case Files We Shut Down
             </h2>
-            <p className="max-w-3xl text-lg text-[#d6d9ec]">
+            <p className="max-w-3xl text-lg text-[color:var(--muted)]">
               These aren&apos;t hypotheticals. They&apos;re real investigations
               that kept clients out of headlines and depositions.
             </p>
             <div className="grid gap-8 md:grid-cols-3">
               {caseStudies.map((study) => (
-                <article
+                <GlowCard
                   key={study.headline}
-                  className="rounded-2xl border border-white/10 bg-white/5 p-6"
+                  showFlame={true}
+                  className="p-6"
                 >
-                  <h3 className="text-lg font-semibold text-red-200">
-                    {study.headline}
-                  </h3>
-                  <p className="mt-4 text-sm leading-relaxed text-[#d1d4e0]">
-                    {study.impact}
-                  </p>
-                </article>
+                  <article className="relative z-20">
+                    <h3 className="text-lg font-semibold text-[color:var(--accent)]">
+                      {study.headline}
+                    </h3>
+                    <p className="mt-4 text-sm leading-relaxed text-[color:var(--muted)]">
+                      {study.impact}
+                    </p>
+                  </article>
+                </GlowCard>
               ))}
             </div>
           </section>
@@ -1297,39 +1254,43 @@ export default function BackgroundChecksPage() {
             </p>
             <div className="mt-12 grid gap-8 md:grid-cols-3">
               {pricingPackages.map((pkg) => (
-                <article
+                <GlowCard
                   key={pkg.name}
-                  className={`rounded-3xl border p-8 ${
+                  showFlame={true}
+                  variant={pkg.featured ? "lavender" : "default"}
+                  className={`p-8 ${
                     pkg.featured
-                      ? "border-red-400/80 bg-gradient-to-br from-red-500/20 via-red-500/10 to-transparent shadow-[0_0_48px_rgba(255,64,64,0.18)]"
-                      : "border-white/10 bg-white/5"
+                      ? "border-[color:var(--accent)]/80"
+                      : ""
                   }`}
                 >
-                  <div className="text-sm uppercase tracking-wide text-red-300">
-                    {pkg.name}
-                  </div>
-                  <div className="mt-4 text-3xl font-bold text-white">
-                    {pkg.price}
-                  </div>
-                  <p className="mt-2 text-sm text-[#d1d4e0]">{pkg.idealFor}</p>
-                  <ul className="mt-6 space-y-3 text-sm text-[#e0e3f5]">
-                    {pkg.bullets.map((bullet) => (
-                      <li key={bullet} className="flex items-start gap-2">
-                        <span className="mt-1 h-2 w-2 rounded-full bg-red-400" />
-                        <span>{bullet}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </article>
+                  <article className="relative z-20">
+                    <div className="text-sm uppercase tracking-wide text-[color:var(--accent)]">
+                      {pkg.name}
+                    </div>
+                    <div className="mt-4 text-3xl font-bold text-[color:var(--fg)]">
+                      {pkg.price}
+                    </div>
+                    <p className="mt-2 text-sm text-[color:var(--muted)]">{pkg.idealFor}</p>
+                    <ul className="mt-6 space-y-3 text-sm text-[color:var(--muted)]">
+                      {pkg.bullets.map((bullet) => (
+                        <li key={bullet} className="flex items-start gap-2">
+                          <span className="mt-1 h-2 w-2 rounded-full bg-[color:var(--accent)]" />
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </article>
+                </GlowCard>
               ))}
             </div>
           </section>
 
-          <aside className="rounded-3xl border border-white/10 bg-white/5 p-10 text-center">
-            <h2 className="text-3xl font-semibold text-white sm:text-4xl">
+          <GlowCard className="p-10 text-center" showFlame={true}>
+            <h2 className="text-3xl font-semibold text-[color:var(--fg)] sm:text-4xl">
               Our Guarantee
             </h2>
-            <p className="mt-4 text-lg text-[#d6d9ec]">
+            <p className="mt-4 text-lg text-[color:var(--muted)]">
               If we don&apos;t surface intelligence that changes your hiring
               decision or your confidence in it, we refund every dollar. No
               small print. No excuses. We either keep your company safe or you
@@ -1340,50 +1301,165 @@ export default function BackgroundChecksPage() {
               <span className="text-red-300">|</span>
               <span>Signed NDA on day one</span>
             </div>
-          </aside>
+          </GlowCard>
 
           <section>
-            <h2 className="text-center text-3xl font-semibold text-white sm:text-4xl">
+            <h2 className="text-center text-3xl font-semibold text-[color:var(--fg)] sm:text-4xl">
               Executives Talk Straight
             </h2>
             <div className="mt-10 grid gap-8 md:grid-cols-3">
               {testimonials.map((item) => (
-                <article
+                <GlowCard
                   key={item.name}
-                  className="rounded-3xl border border-white/10 bg-black/40 p-6"
+                  showFlame={true}
+                  className="p-6"
                 >
-                  <p className="text-sm leading-relaxed text-[#d1d4e0]">
-                    "{item.quote}"
-                  </p>
-                  <div className="mt-6 text-sm font-semibold text-white">
-                    {item.name}
-                  </div>
-                  <div className="text-xs uppercase tracking-wide text-red-300">
-                    {item.title}
-                  </div>
-                </article>
+                  <article className="relative z-20">
+                    <p className="text-sm leading-relaxed text-[color:var(--muted)]">
+                      "{item.quote}"
+                    </p>
+                    <div className="mt-6 text-sm font-semibold text-[color:var(--fg)]">
+                      {item.name}
+                    </div>
+                    <div className="text-xs uppercase tracking-wide text-[color:var(--accent)]">
+                      {item.title}
+                    </div>
+                  </article>
+                </GlowCard>
               ))}
             </div>
           </section>
 
-          <section>
-            <h2 className="text-center text-3xl font-semibold text-white sm:text-4xl">
-              FAQ - Ask the Hard Questions
+          <GlowCard className="space-y-6 p-10" showFlame={true}>
+            <h2 className="text-3xl font-semibold text-[color:var(--fg)] sm:text-4xl text-center mb-8">
+              Frequently Asked Questions
             </h2>
-            <div className="mt-10 space-y-6">
-              {faqs.map((faq) => (
-                <article
+            <div className="space-y-6">
+              {/* First set of FAQs (from inline array) */}
+              {[
+                {
+                  question:
+                    "What's the difference between a background check and an intelligence investigation?",
+                  answer:
+                    "A standard background check only searches one jurisdiction for criminal convictions. An intelligence investigation cross-references 47+ databases, searches multiple jurisdictions internationally, monitors the dark web, analyzes financial behavior, and identifies hidden aliases and synthetic identities. We find what background checks miss—67% of the time, critical information exists outside the standard search parameters.",
+                },
+                {
+                  question: "How long does an intelligence investigation take?",
+                  answer:
+                    "Basic: 48-72 hours. Standard: 24-48 hours. Executive: 12-24 hours. Rush delivery available for Executive tier.",
+                },
+                {
+                  question: "Is this legal?",
+                  answer:
+                    "Yes. All our investigations use 100% legal, publicly available data sources and comply with FCRA, GDPR, and all applicable privacy laws. We don't hack, break into accounts, or use illegal methods.",
+                },
+                {
+                  question: "What if the person has a common name?",
+                  answer:
+                    "We use advanced identity resolution across 47 databases to ensure we're investigating the correct individual. We verify using multiple data points: SSN, DOB, addresses, known aliases, and biometric matching where available.",
+                },
+                {
+                  question: "Can I use this for pre-employment screening?",
+                  answer:
+                    "Yes. Our investigations are FCRA-compliant and can be used for employment decisions. We provide a compliant disclosure and consent process.",
+                },
+                {
+                  question: "Do you investigate internationally?",
+                  answer:
+                    "Yes. Our Executive Intelligence tier includes international records searches, offshore account detection, and access to INTERPOL and international criminal databases.",
+                },
+                {
+                  question: "Do you notify the person being investigated?",
+                  answer:
+                    "No. This is a passive investigation using publicly available records. The subject will never know they were investigated.",
+                },
+                {
+                  question: "What's included in the final report?",
+                  answer:
+                    "A comprehensive PDF report with executive summary, detailed findings organized by category, source documentation, risk assessment, and actionable recommendations.",
+                },
+                {
+                  question: "What if you don't find anything?",
+                  answer:
+                    "If we find fewer than 3 significant items that a standard background check would miss, your investigation is 100% free under our 'Find 3 or Free' guarantee.",
+                },
+              ].map((faq) => (
+                <GlowCard
                   key={faq.question}
-                  className="rounded-2xl border border-white/10 bg-white/5 p-6"
+                  showFlame={true}
+                  className="p-6"
                 >
-                  <h3 className="text-lg font-semibold text-red-200">
-                    {faq.question}
-                  </h3>
-                  <p className="mt-3 text-base text-[#d1d4e0]">{faq.answer}</p>
-                </article>
+                  <div className="relative z-20">
+                    <h3 className="text-lg font-semibold text-[color:var(--fg)]">
+                      {faq.question}
+                    </h3>
+                    <p className="mt-2 text-sm text-[color:var(--muted)]">{faq.answer}</p>
+                  </div>
+                </GlowCard>
+              ))}
+              
+              {/* Second set of FAQs from faqs array */}
+              {faqs.map((faq) => (
+                <GlowCard
+                  key={faq.question}
+                  showFlame={true}
+                  className="p-6"
+                >
+                  <div className="relative z-20">
+                    <h3 className="text-lg font-semibold text-[color:var(--fg)]">
+                      {faq.question}
+                    </h3>
+                    <p className="mt-3 text-base text-[color:var(--muted)]">{faq.answer}</p>
+                  </div>
+                </GlowCard>
               ))}
             </div>
-          </section>
+            
+            {/* CTA Section after FAQ */}
+            <div className="mt-12 pt-8 border-t border-[color:var(--border)]">
+              <GlowCard className="p-8 text-center" showFlame={true}>
+                <h3 className="text-2xl font-semibold text-[color:var(--fg)] mb-4">
+                  Ready to Uncover What Standard Checks Miss?
+                </h3>
+                <p className="text-lg text-[color:var(--muted)] mb-6 max-w-2xl mx-auto">
+                  Get a free consultation with our intelligence analysts. We'll review your current screening process and show you exactly what you're missing—no obligation.
+                </p>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                  <Link
+                    href={process.env.NEXT_PUBLIC_TIDYCAL_BOOK_URL || "#"}
+                    className="btn-primary inline-flex items-center justify-center"
+                  >
+                    Schedule Free Consultation
+                  </Link>
+                  <Link
+                    href="#gated-offer"
+                    className="btn-secondary inline-flex items-center justify-center"
+                  >
+                    Get Free Risk Assessment Guide
+                  </Link>
+                </div>
+              </GlowCard>
+            </div>
+          </GlowCard>
+
+          {/* Gated Offer Section - Lead Capture */}
+          <GlowCard id="gated-offer" className="p-12 text-center" showFlame={true}>
+            <div className="max-w-2xl mx-auto">
+              <h2 className="text-3xl font-semibold text-[color:var(--fg)] sm:text-4xl mb-4">
+                Free: 5 Red Flags Standard Background Checks Always Miss
+              </h2>
+              <p className="text-lg text-[color:var(--muted)] mb-8">
+                Download our exclusive guide revealing the hidden risks that cost companies millions. Learn what to look for before your next hire.
+              </p>
+              <div className="bg-[color:var(--card)] border border-[color:var(--border)] rounded-[24px] p-8">
+                <BackgroundChecksLeadForm />
+              </div>
+              <p className="mt-6 text-sm text-[color:var(--muted)]">
+                <span className="inline-block mr-1">🔒</span>
+                100% confidential. No spam. Unsubscribe anytime.
+              </p>
+            </div>
+          </GlowCard>
 
           <section className="rounded-3xl border border-red-400/50 bg-gradient-to-br from-red-500/20 via-red-500/10 to-transparent p-10 text-center shadow-[0_0_60px_rgba(255,0,80,0.18)]">
             <h2 className="text-3xl font-semibold text-white sm:text-4xl">

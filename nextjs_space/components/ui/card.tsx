@@ -1,19 +1,25 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
+import { FlameBorder } from "./flame-border"
 
 const Card = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
+  React.HTMLAttributes<HTMLDivElement> & { showFlame?: boolean }
+>(({ className, showFlame = true, ...props }, ref) => (
   <div
     ref={ref}
     className={cn(
-      "rounded-2xl border bg-card text-card-foreground shadow-sm transition-all duration-500 ease-out hover:shadow-xl hover:-translate-y-1",
+      "glow-card relative rounded-[24px] border border-[color:var(--border)] bg-[color:var(--card)] text-[color:var(--fg)] transition-all duration-300",
       className
     )}
     {...props}
-  />
+  >
+    <div className="relative z-20">
+      {props.children}
+    </div>
+    {showFlame && <FlameBorder />}
+  </div>
 ))
 Card.displayName = "Card"
 

@@ -1,37 +1,55 @@
-import React from "react";
+import React, { useMemo } from "react";
 
 /**
- * Animated Copper Flame Border Component
- * Based on Quantum Gradient (Dark) theme specification
- * Updated: Thicker, longer flame that stays on the border
+ * Professional Flame Border Component
+ * Quantum Gradient (Dark) - Award-Winning Design
+ * 
+ * Exact specifications:
+ * - Flame color: #7c3aed (purple) [copper alt: #8f5a2a]
+ * - Flame width: 4px
+ * - Flame segment: 2/1000
+ * - Speed: 28s per lap
+ * - Corner radius: 24px (must match card radius)
+ * - Path: rounded rectangle outside card border, no interior bleed
  */
 interface FlameBorderProps {
-  r?: number;        // Border radius (default: 12px)
-  color?: string;    // Flame color (default: #b87333 copper)
-  seg?: number;      // Segment length 1-1000 (default: 150 for longer flame)
-  width?: number;    // Stroke width in px (default: 3 for thicker)
+  r?: number;        // Border radius (default: 24px)
+  color?: string;    // Flame color (default: #7c3aed purple)
+  seg?: number;      // Segment length (default: 2)
+  width?: number;    // Stroke width in px (default: 4)
   dur?: number;      // Duration in seconds per lap (default: 28s)
 }
 
 export const FlameBorder: React.FC<FlameBorderProps> = ({
-  r = 12,
-  color = "#b87333",
-  seg = 150,
-  width = 3,
+  r = 24,
+  color = "#7c3aed",
+  seg = 2,
+  width = 4,
   dur = 28,
 }) => {
   const segClamped = Math.max(1, Math.min(980, Math.floor(seg)));
   const gap = 1000 - segClamped;
+  // Generate unique IDs for each instance
+  const uniqueId = useMemo(() => Math.random().toString(36).substring(7), []);
+  const filterId = `softGlow-${uniqueId}`;
+  const maskId = `outerRingMask-${uniqueId}-${r}-${width}`;
 
   return (
     <svg
-      className="pointer-events-none absolute inset-0 z-10 mix-blend-screen h-full w-full"
+      className="pointer-events-none absolute z-30"
+      style={{
+        top: '-4px',
+        left: '-4px',
+        width: 'calc(100% + 8px)',
+        height: 'calc(100% + 8px)',
+        overflow: 'visible',
+      }}
       viewBox="0 0 100 100"
       preserveAspectRatio="none"
-      aria-hidden="true"
+      aria-hidden
     >
       <defs>
-        <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+        <filter id={filterId} x="-50%" y="-50%" width="200%" height="200%">
           <feGaussianBlur
             in="SourceGraphic"
             stdDeviation="2"
@@ -42,20 +60,21 @@ export const FlameBorder: React.FC<FlameBorderProps> = ({
             <feMergeNode in="SourceGraphic" />
           </feMerge>
         </filter>
-        <mask id="outerRingMask">
+        <mask id={maskId}>
           <rect x="0" y="0" width="100" height="100" fill="white" />
-          <rect x="2" y="2" width="96" height="96" rx={r} ry={r} fill="black" />
+          {/* Inner rect creates the mask - flame only shows outside this */}
+          <rect x="4" y="4" width="92" height="92" rx={r * 0.96} ry={r * 0.96} fill="black" />
         </mask>
       </defs>
-      <style>{`@keyframes dashTravel{from{stroke-dashoffset:0}to{stroke-dashoffset:-1000}}`}</style>
-      <g mask="url(#outerRingMask)">
+      <g mask={`url(#${maskId})`}>
+        {/* Flame path positioned to stay on the border edge */}
         <rect
-          x="2"
-          y="2"
-          width="96"
-          height="96"
-          rx={r}
-          ry={r}
+          x="4"
+          y="4"
+          width="92"
+          height="92"
+          rx={r * 0.96}
+          ry={r * 0.96}
           pathLength={1000}
           fill="none"
           stroke={color}
@@ -63,9 +82,9 @@ export const FlameBorder: React.FC<FlameBorderProps> = ({
           strokeLinecap="round"
           strokeLinejoin="round"
           style={{
-            filter: "url(#softGlow) drop-shadow(0 0 12px var(--glow))",
+            filter: `url(#${filterId})`,
             strokeDasharray: `${segClamped} ${gap}`,
-            animation: `dashTravel ${dur}s linear infinite`,
+            animation: `dashTravelCSS ${dur}s linear infinite`,
           }}
         />
       </g>
